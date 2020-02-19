@@ -10,7 +10,7 @@
   "repository": "https://github.com/22mahmoud/mahmoudashraf.dev",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev",
+    "dev": "concurrently 'sapper dev' 'yarn watch:tailwind' ",
     "build": "yarn build:tailwind && sapper build --legacy",
     "export": "sapper export --legacy",
     "start": "node __sapper__/build",
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "compression": "^1.7.1",
+    "concurrently": "^5.1.0",
     "polka": "next",
     "sirv": "^0.4.0"
   },
