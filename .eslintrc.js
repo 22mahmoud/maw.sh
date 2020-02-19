@@ -15,5 +15,7 @@ module.exports = {
     ecmaVersion: 2019,
     sourceType: 'module',
   },
-  rules: {},
+  rules: {
+    'prettier/prettier': ['error'],
+  },
 };
