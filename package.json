@@ -1,6 +1,13 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "mahmoudashraf.dev",
+  "description": "Mahmoud Ashraf's personal website",
+  "private": true,
+  "author": {
+    "name": "Mahmoud Ashraf",
+    "email": "hello@mahmoudashraf.dev",
+    "url": "http://mahmoudashraf.dev"
+  },
+  "repository": "https://github.com/22mahmoud/mahmoudashraf.dev",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
