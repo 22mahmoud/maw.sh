@@ -578,6 +578,25 @@ video {
   height: auto;
 }
 
+@font-face {
+  font-family: 'Abril Fatface';
+
+  font-style: normal;
+
+  font-weight: 400;
+
+  src: url('./fonts/abril-fatface-v11-latin-regular.eot');
+
+  src: local('Abril Fatface'), local('AbrilFatface-Regular'),
+    url('./fonts/abril-fatface-v11-latin-regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('./fonts/abril-fatface-v11-latin-regular.woff2') format('woff2'),
+    url('./fonts/abril-fatface-v11-latin-regular.woff') format('woff'),
+    url('./fonts/abril-fatface-v11-latin-regular.ttf') format('truetype'),
+    url('./fonts/abril-fatface-v11-latin-regular.svg#AbrilFatface')
+      format('svg');
+}
+
 .container {
   width: 100%;
 }
@@ -3684,6 +3703,10 @@ video {
 
 .font-mono {
   font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.font-display {
+  font-family: Abril Fatface;
 }
 
 .font-hairline {
@@ -13984,6 +14007,10 @@ video {
 
   .sm\:font-mono {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .sm\:font-display {
+    font-family: Abril Fatface;
   }
 
   .sm\:font-hairline {
@@ -24287,6 +24314,10 @@ video {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .md\:font-display {
+    font-family: Abril Fatface;
+  }
+
   .md\:font-hairline {
     font-weight: 100;
   }
@@ -34588,6 +34619,10 @@ video {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .lg\:font-display {
+    font-family: Abril Fatface;
+  }
+
   .lg\:font-hairline {
     font-weight: 100;
   }
@@ -44887,6 +44922,10 @@ video {
 
   .xl\:font-mono {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .xl\:font-display {
+    font-family: Abril Fatface;
   }
 
   .xl\:font-hairline {
