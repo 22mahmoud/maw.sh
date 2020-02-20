@@ -3,6 +3,8 @@ import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
 import babel from 'rollup-plugin-babel';
+import postcss from 'rollup-plugin-postcss';
+import copy from 'rollup-plugin-copy';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import json from '@rollup/plugin-json';
@@ -17,6 +19,14 @@ const onwarn = (warning, onwarn) =>
   (warning.code === 'CIRCULAR_DEPENDENCY' &&
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
   onwarn(warning);
+
+const purgecss = require('@fullhuman/postcss-purgecss')({
+  // Specify the paths to all of the template files in your project
+  content: ['./src/**/*.html', './src/**/*.svelte', './src/**/*.css'],
+
+  // Include any special characters you're using in this regular expression
+  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+});
 
 export default {
   client: {
@@ -82,6 +92,24 @@ export default {
       svelte({
         generate: 'ssr',
         dev,
+      }),
+      copy({
+        targets: [{ src: 'src/assets/fonts/*', dest: 'static/assets/fonts' }],
+      }),
+      postcss({
+        extract: './static/global.css',
+        plugins: [
+          require('postcss-import'),
+          require('tailwindcss'), // See tailwind.config.js
+          require('autoprefixer'),
+          require('postcss-fail-on-warn'),
+          // Do not purge the CSS in dev mode to be able to play with classes in the browser dev-tools.
+          !dev && purgecss,
+          !dev &&
+            require('cssnano')({
+              preset: 'default',
+            }),
+        ].filter(Boolean),
       }),
       resolve({
         dedupe: ['svelte'],

@@ -1,0 +1,19 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+  font-family: 'Abril Fatface';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/abril-fatface-v11-latin-regular.eot');
+  src: local('Abril Fatface'), local('AbrilFatface-Regular'),
+    url('assets/fonts/abril-fatface-v11-latin-regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('assets/fonts/abril-fatface-v11-latin-regular.woff2') format('woff2'),
+    url('assets/fonts/abril-fatface-v11-latin-regular.woff') format('woff'),
+    url('assets/fonts/abril-fatface-v11-latin-regular.ttf') format('truetype'),
+    url('assets/fonts/abril-fatface-v11-latin-regular.svg#AbrilFatface')
+      format('svg');
+}
