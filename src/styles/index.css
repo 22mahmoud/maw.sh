@@ -1,6 +1,7 @@
 /* purgecss start ignore */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
+@import 'highlight.js/styles/dracula.css';
 /* purgecss end ignore */
 
 @import 'tailwindcss/utilities';
