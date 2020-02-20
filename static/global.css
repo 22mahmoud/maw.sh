@@ -13969,6 +13969,10 @@ video {
   transition-duration: 1000ms;
 }
 
+body {
+  background-color: #1a202c;
+}
+
 @font-face {
   font-family: 'Abril Fatface';
 

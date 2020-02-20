@@ -10,19 +10,24 @@
 </script>
 
 <PageLoadingBar {preloading} />
-<main
-  class="border-t-4 border-transparent bg-gray-900 text-gray-300 w-screen
-  h-screen "
->
-  <div transition:fade class="max-w-4xl h-full mx-auto flex flex-col">
-    {#if !$preloading}
+{#if !$preloading}
+  <main
+    transition:fade
+    class="border-t-4 border-transparent bg-gray-900 text-gray-300 w-screen
+    h-screen "
+  >
+    <div class="max-w-4xl h-full mx-auto flex flex-col">
       <Nav {segment} />
-      <slot />
-    {:else}
-      <Loader />
-    {/if}
+      <div class="h-full w-full flex flex-col">
+        <slot />
+      </div>
+    </div>
+  </main>
+{:else}
+  <div class="h-screen w-screen flex items-center content-center">
+    <Loader />
   </div>
-</main>
+{/if}
 
 <style>
 
