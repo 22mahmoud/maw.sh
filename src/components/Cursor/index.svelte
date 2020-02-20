@@ -11,23 +11,33 @@
   let size = spring(EMOJI_ZIE);
 
   function handleMouseMove(event) {
+    console.log(window);
+    console.log(event);
     pos.set({
       x: event.pageX,
       y: event.pageY,
     });
   }
 
+  function handleMouseDown() {
+    isEmojieFoodEnabled = true;
+    size.set(EMOJI_ZIE + 10);
+  }
+
+  function handleMouseUp() {
+    isEmojieFoodEnabled = false;
+    size.set(EMOJI_ZIE);
+  }
+
   onMount(() => {
     document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', () => {
-      isEmojieFoodEnabled = false;
-      size.set(EMOJI_ZIE);
-    });
-    document.addEventListener('mousedown', () => {
-      isEmojieFoodEnabled = true;
-      size.set(EMOJI_ZIE + 10);
-    });
+    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('touchend', handleMouseUp);
+    document.addEventListener('touchstart', handleMouseDown);
+    document.addEventListener('mousedown', handleMouseDown);
   });
+
+  let arr = Array.from({ length: 5 }).map(() => Math.random());
 </script>
 
 <div
@@ -35,11 +45,20 @@
   class="select-none cursor w-20 h-20 absolute"
 >
   <span>🍑</span>
-  {#if isEmojieFoodEnabled}
-    <span transition:fly="{{ y: 20, duration: 500 }}" class="text-xs flex">
-      {getRandEmoji()} {getRandEmoji()}{getRandEmoji()}{getRandEmoji()}
-    </span>
-  {/if}
+
+  <div class="flex">
+    {#each arr as number}
+      {#if isEmojieFoodEnabled}
+        <span
+          transition:fly="{{ y: 40 * number, duration: 800 }}"
+          class="text-xs"
+        >
+          {getRandEmoji()}
+        </span>
+      {/if}
+    {/each}
+  </div>
+
 </div>
 
 <style>
