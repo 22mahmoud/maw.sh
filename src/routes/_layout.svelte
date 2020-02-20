@@ -10,18 +10,13 @@
 </script>
 
 <PageLoadingBar {preloading} />
+<header class="max-w-2xl flex mx-auto my-4">
+  <Nav {segment} />
+</header>
+
 {#if !$preloading}
-  <main
-    transition:fade
-    class="border-t-4 border-transparent bg-gray-900 text-gray-300 w-screen
-    h-screen "
-  >
-    <div class="max-w-4xl px-4 h-full mx-auto flex flex-col">
-      <Nav {segment} />
-      <div class="h-full w-full flex flex-col">
-        <slot />
-      </div>
-    </div>
+  <main class="max-w-2xl flex mx-auto px-4 md:px-2">
+    <slot />
   </main>
 {:else}
   <div class="h-screen w-screen flex items-center content-center">

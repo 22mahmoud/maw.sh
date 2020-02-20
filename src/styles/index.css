@@ -6,7 +6,8 @@
 @import 'tailwindcss/utilities';
 
 body {
-  background-color: #1a202c;
+  @apply bg-gray-900;
+  @apply text-gray-300;
 }
 
 @font-face {
