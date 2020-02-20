@@ -1,21 +1,34 @@
 <script>
-  import Nav from '../components/Nav.svelte';
+  import { stores } from '@sapper/app';
+  import { fade } from 'svelte/transition';
+  import PageLoadingBar from 'sapper-page-loading-bar/PageLoadingBar.svelte';
+  import Loader from '../components/Loader.svelte';
 
+  import Nav from '../components/Nav.svelte';
   export let segment;
+  const { preloading } = stores();
 </script>
 
-<Nav {segment} />
-<main>
-  <slot />
-</main>
+<PageLoadingBar {preloading} />
+{#if !$preloading}
+  <main
+    transition:fade
+    class="border-t-4 border-transparent bg-gray-900 text-gray-300 w-screen
+    h-screen "
+  >
+    <div class="max-w-4xl h-full mx-auto flex flex-col">
+      <Nav {segment} />
+      <div class="h-full w-full flex flex-col">
+        <slot />
+      </div>
+    </div>
+  </main>
+{:else}
+  <div class="h-screen w-screen flex items-center content-center">
+    <Loader />
+  </div>
+{/if}
 
 <style>
-  main {
-    position: relative;
-    max-width: 56em;
-    background-color: white;
-    padding: 2em;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
+
 </style>

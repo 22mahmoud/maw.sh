@@ -1,7 +1,11 @@
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        display: ['Abril Fatface'],
+      },
+    },
   },
   variants: {},
   plugins: [],
-}
+};
