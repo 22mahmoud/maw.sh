@@ -16,7 +16,7 @@
     class="border-t-4 border-transparent bg-gray-900 text-gray-300 w-screen
     h-screen "
   >
-    <div class="max-w-4xl h-full mx-auto flex flex-col">
+    <div class="max-w-4xl px-4 h-full mx-auto flex flex-col">
       <Nav {segment} />
       <div class="h-full w-full flex flex-col">
         <slot />
