@@ -114,8 +114,8 @@ export default {
       resolve({
         dedupe: ['svelte'],
       }),
-      json(),
       commonjs(),
+      json(),
     ],
     external: Object.keys(pkg.dependencies).concat(
       require('module').builtinModules ||
