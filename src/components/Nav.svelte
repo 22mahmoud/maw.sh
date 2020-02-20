@@ -13,8 +13,7 @@
       <li class="mx-6">
         <span>/</span>
         <a
-          class:hover:text-teal-200="{segment !== key}"
-          class:text-teal-300="{segment === key}"
+          class="{segment === key ? 'text-teal-300' : 'hover:text-teal-200'}"
           href="/{key === undefined ? '.' : key}"
         >
           {value}
