@@ -1,18 +1,11 @@
-import posts from './_posts.js';
+import { getPosts } from '../../utils/posts';
 
-const contents = JSON.stringify(
-  posts.map(post => {
-    return {
-      title: post.title,
-      slug: post.slug,
-    };
-  })
-);
-
-export function get(req, res) {
+export async function get(req, res) {
   res.writeHead(200, {
     'Content-Type': 'application/json',
   });
 
-  res.end(contents);
+  res.end(
+    JSON.stringify(getPosts().map(post => ({ title: post, slug: post })))
+  );
 }

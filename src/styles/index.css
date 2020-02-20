@@ -6,7 +6,16 @@
 @import 'tailwindcss/utilities';
 
 body {
-  background-color: #1a202c;
+  @apply bg-gray-900;
+  @apply text-gray-300;
+}
+
+pre {
+  overflow: auto;
+  @apply rounded-md;
+  @apply bg-gray-800;
+  @apply my-4 p-3;
+  @apply shadow-xs;
 }
 
 @font-face {
