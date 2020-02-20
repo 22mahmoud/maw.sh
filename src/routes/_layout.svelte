@@ -9,9 +9,12 @@
   const { preloading } = stores();
 </script>
 
-<PageLoadingBar color1="#81e6d9" color2="#4FD1C5" {preloading} />
-<main transition:fade class="bg-gray-900 text-gray-300 w-screen h-screen ">
-  <div class="max-w-4xl h-full mx-auto flex flex-col">
+<PageLoadingBar {preloading} />
+<main
+  class="border-t-4 border-transparent bg-gray-900 text-gray-300 w-screen
+  h-screen "
+>
+  <div transition:fade class="max-w-4xl h-full mx-auto flex flex-col">
     {#if !$preloading}
       <Nav {segment} />
       <slot />
