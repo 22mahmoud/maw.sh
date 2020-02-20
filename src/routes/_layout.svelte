@@ -15,7 +15,7 @@
 </header>
 
 {#if !$preloading}
-  <main class="max-w-2xl flex mx-auto px-4 md:px-2">
+  <main class="max-w-2xl flex flex-col mx-auto px-4 md:px-2">
     <slot />
   </main>
 {:else}

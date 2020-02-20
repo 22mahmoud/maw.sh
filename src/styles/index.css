@@ -10,6 +10,14 @@ body {
   @apply text-gray-300;
 }
 
+pre {
+  overflow: auto;
+  @apply rounded-md;
+  @apply bg-gray-800;
+  @apply my-4 p-3;
+  @apply shadow-xs;
+}
+
 @font-face {
   font-family: 'Abril Fatface';
   font-style: normal;
