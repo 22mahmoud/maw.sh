@@ -1,3 +1,5 @@
+/* purgecss start ignore */
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -622,6 +624,8 @@ video {
     max-width: 1280px;
   }
 }
+
+/* purgecss end ignore */
 
 .sr-only {
   position: absolute;
