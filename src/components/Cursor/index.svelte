@@ -11,8 +11,6 @@
   let size = spring(EMOJI_ZIE);
 
   function handleMouseMove(event) {
-    console.log(window);
-    console.log(event);
     pos.set({
       x: event.pageX,
       y: event.pageY,
@@ -50,8 +48,8 @@
     {#each arr as number}
       {#if isEmojieFoodEnabled}
         <span
-          transition:fly="{{ y: 40 * number, duration: 800 }}"
-          class="text-xs"
+          transition:fly="{{ x: 20 * number, y: 20 * number, duration: 500 }}"
+          class="text-sm m-1"
         >
           {getRandEmoji()}
         </span>
@@ -63,7 +61,7 @@
 
 <style>
   .cursor {
-    top: calc(var(--pageY) + 20px);
+    top: calc(var(--pageY) + 30px);
     left: calc(var(--pageX) + 20px);
     font-size: var(--fontSize);
   }
