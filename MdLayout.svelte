@@ -23,8 +23,8 @@
   }
 
   .content h1,
-  h2,
-  h3 {
+  .content h2,
+  .content h3 {
     @apply font-bold;
     @apply mt-8 mb-6;
   }
