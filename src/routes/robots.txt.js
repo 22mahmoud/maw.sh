@@ -1,6 +1,7 @@
 const rules = {
   UserAgent: '*',
   Disallow: '/',
+  Sitemap: 'https://mahmoudashraf.dev/sitemap.xml',
 };
 
 export function get(req, res) {
