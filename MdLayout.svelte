@@ -19,22 +19,26 @@
   .content p {
     @apply mb-6;
     @apply leading-loose;
+    @apply text-lg;
   }
 
-  .content h1 {
-    @apply text-3xl;
-    @apply font-bold;
-  }
-
-  .content h2 {
-    @apply text-2xl;
+  .content h1,
+  h2,
+  h3 {
     @apply font-bold;
     @apply mt-8 mb-6;
   }
 
+  .content h1 {
+    @apply text-3xl;
+  }
+
+  .content h2 {
+    @apply text-2xl;
+  }
+
   .content h3 {
     @apply text-xl;
-    @apply font-bold;
   }
 
   .content p code {
@@ -42,5 +46,19 @@
     @apply text-gray-400;
     @apply p-1;
     @apply rounded;
+  }
+
+  .content blockquote {
+    @apply border-l-4 border-teal-200;
+    @apply pl-5;
+    @apply italic;
+  }
+
+  .content ul {
+    @apply list-disc list-inside;
+  }
+
+  .content li {
+    @apply mb-3;
   }
 </style>

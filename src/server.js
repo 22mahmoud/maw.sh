@@ -1,3 +1,4 @@
+require('dotenv').config();
 import polka from 'polka';
 import sirv from 'sirv';
 import compression from 'compression';

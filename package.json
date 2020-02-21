@@ -11,9 +11,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev --ext '.svx .svelte'",
-    "build": "sapper build",
-    "export": "sapper export --ext '.svx .svelte'",
-    "start": "node --ext '.svx .svelte'  __sapper__/build",
+    "build": "NODE_ENV=production sapper build",
+    "export": "NODE_ENV=production sapper export --ext '.svx .svelte'",
+    "start": "node  __sapper__/build/server/server.js",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "lint": "prettier --write ./src/**/*.{js,jsx,svelte}",
@@ -22,7 +22,9 @@
   "dependencies": {
     "compression": "^1.7.1",
     "concurrently": "^5.1.0",
+    "cross-env": "^7.0.0",
     "date-fns": "^2.9.0",
+    "dotenv": "^8.2.0",
     "fs-extra": "^8.1.0",
     "gray-matter": "^4.0.2",
     "highlight.js": "^9.18.1",

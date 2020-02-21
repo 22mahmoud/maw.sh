@@ -15,6 +15,7 @@ import hljs from 'highlight.js';
 import pkg from './package.json';
 
 const mode = process.env.NODE_ENV;
+
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
@@ -22,6 +23,19 @@ const onwarn = (warning, onwarn) =>
   (warning.code === 'CIRCULAR_DEPENDENCY' &&
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
   onwarn(warning);
+
+const preprocess = [
+  sveltePreprocess({ postcss: true }),
+  mdsvex({
+    extension: '.svx',
+    layout: path.join(__dirname, './MdLayout.svelte'),
+    markdownOptions: {
+      typographer: true,
+      linkify: true,
+      highlight: (str, lang) => hljs.highlight(str, lang),
+    },
+  }),
+];
 
 export default {
   client: {
@@ -33,19 +47,8 @@ export default {
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       svelte({
+        preprocess,
         extensions: ['.svelte', '.svexy', '.svx'],
-        preprocess: [
-          sveltePreprocess({ postcss: true }),
-          mdsvex({
-            extension: '.svx',
-            layout: path.join(__dirname, './MdLayout.svelte'),
-            markdownOptions: {
-              typographer: true,
-              linkify: true,
-              highlight: (str, lang) => hljs.highlight(str, lang),
-            },
-          }),
-        ],
         dev,
         hydratable: true,
         emitCss: true,
@@ -98,21 +101,10 @@ export default {
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       svelte({
+        preprocess,
         extensions: ['.svelte', '.svexy', '.svx'], // here actually
         generate: 'ssr',
         dev,
-        preprocess: [
-          sveltePreprocess({ postcss: true }),
-          mdsvex({
-            extension: '.svx',
-            layout: path.join(__dirname, './MdLayout.svelte'),
-            markdownOptions: {
-              typographer: true,
-              linkify: true,
-              highlight: (str, lang) => hljs.highlight(str, lang),
-            },
-          }),
-        ],
       }),
       copy({
         targets: [{ src: 'src/assets/fonts/*', dest: 'static/assets/fonts' }],
