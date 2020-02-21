@@ -7,7 +7,7 @@ export function get(req, res) {
   const { slug } = req.params;
 
   // retrive post md file text by provide his name
-  const post = getPost(slug);
+  const post = getPost(`${slug}.md`);
 
   // function that expose helpful callbacks
   // to manipulate the data before convert it into html

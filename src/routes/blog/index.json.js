@@ -5,7 +5,5 @@ export async function get(req, res) {
     'Content-Type': 'application/json',
   });
 
-  res.end(
-    JSON.stringify(getPosts().map(post => ({ title: post, slug: post })))
-  );
+  res.end(JSON.stringify(getPosts()));
 }

@@ -1,8 +1,13 @@
 import fs from 'fs-extra';
 import path from 'path';
+import grayMatter from 'gray-matter';
 
 export function getPosts() {
-  return fs.readdirSync(`content`);
+  return fs.readdirSync(`content`).map(fileName => {
+    const post = getPost(fileName);
+    const { data } = grayMatter(post);
+    return data;
+  });
 }
 
 export function getPost(filename) {

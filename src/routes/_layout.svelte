@@ -19,9 +19,13 @@
     <slot />
   </main>
 {:else}
-  <div class="h-screen w-screen flex items-center content-center">
+  <dev
+    style="width: 50px; height: 50px;"
+    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+    h-full"
+  >
     <Loader />
-  </div>
+  </dev>
 {/if}
 
 <style>
