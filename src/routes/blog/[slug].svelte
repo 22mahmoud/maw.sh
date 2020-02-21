@@ -12,6 +12,7 @@
 
 <script>
   import SEO from '../../components/SEO.svelte';
+  import MdLayout from '../../../MdLayout.svelte';
   export let post;
 </script>
 
@@ -22,9 +23,9 @@
   slug="{post.meta.slug}"
 />
 <h1>{post.meta.title}</h1>
-<div>
+<MdLayout>
   {@html post.content}
-</div>
+</MdLayout>
 
 <style>
 

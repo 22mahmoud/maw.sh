@@ -1,3 +1,4 @@
+import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
@@ -8,6 +9,9 @@ import copy from 'rollup-plugin-copy';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import json from '@rollup/plugin-json';
+import sveltePreprocess from 'svelte-preprocess';
+import { mdsvex } from 'mdsvex';
+import hljs from 'highlight.js';
 
 import pkg from './package.json';
 
@@ -20,19 +24,6 @@ const onwarn = (warning, onwarn) =>
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
   onwarn(warning);
 
-const purgecss = require('@fullhuman/postcss-purgecss')({
-  // Specify the paths to all of the template files in your project
-  content: [
-    './src/**/*.html',
-    './src/**/*.svelte',
-    './src/**/*.css',
-    './src/**/*.js',
-  ],
-
-  // Include any special characters you're using in this regular expression
-  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
-});
-
 export default {
   client: {
     input: config.client.input(),
@@ -43,6 +34,19 @@ export default {
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       svelte({
+        extensions: ['.svelte', '.svexy', '.svx'],
+        preprocess: [
+          sveltePreprocess({ postcss: true }),
+          mdsvex({
+            extension: '.svx',
+            layout: path.join(__dirname, './MdLayout.svelte'),
+            markdownOptions: {
+              typographer: true,
+              linkify: true,
+              highlight: (str, lang) => hljs.highlight(str, lang),
+            },
+          }),
+        ],
         dev,
         hydratable: true,
         emitCss: true,
@@ -95,8 +99,21 @@ export default {
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       svelte({
+        extensions: ['.svelte', '.svexy', '.svx'], // here actually
         generate: 'ssr',
         dev,
+        preprocess: [
+          sveltePreprocess({ postcss: true }),
+          mdsvex({
+            extension: '.svx',
+            layout: path.join(__dirname, './MdLayout.svelte'),
+            markdownOptions: {
+              typographer: true,
+              linkify: true,
+              highlight: (str, lang) => hljs.highlight(str, lang),
+            },
+          }),
+        ],
       }),
       copy({
         targets: [{ src: 'src/assets/fonts/*', dest: 'static/assets/fonts' }],
@@ -108,8 +125,6 @@ export default {
           require('tailwindcss'), // See tailwind.config.js
           require('autoprefixer'),
           require('postcss-fail-on-warn'),
-          // Do not purge the CSS in dev mode to be able to play with classes in the browser dev-tools.
-          !dev && purgecss,
           !dev &&
             require('cssnano')({
               preset: 'default',

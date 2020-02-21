@@ -5,10 +5,13 @@
   import Loader from '../components/Loader.svelte';
 
   import Nav from '../components/Nav.svelte';
+  import Tailwindcss from '../components/Tailwindcss.svelte';
+
   export let segment;
   const { preloading } = stores();
 </script>
 
+<Tailwindcss />
 <PageLoadingBar {preloading} />
 <header class="max-w-2xl flex mx-auto my-4">
   <Nav {segment} />
