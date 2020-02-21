@@ -4,6 +4,9 @@ module.exports = {
       fontFamily: {
         display: ['Abril Fatface'],
       },
+      inset: {
+        '1/2': '50%',
+      },
     },
   },
   variants: {},
