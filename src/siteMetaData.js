@@ -1,5 +1,5 @@
 const siteMetadata = {
-  siteUrl: 'http://mahmoudashraf.dev/',
+  siteUrl: 'https://mahmoudashraf.dev/',
   title: 'Mahmoud Ashraf',
   twitterHandle: '_22mahmoud',
   description:
@@ -11,7 +11,7 @@ const siteMetadata = {
   },
   organization: {
     name: 'Mahmoud Ashraf Tech',
-    url: 'http://mahmoudashraf.dev',
+    url: 'https://mahmoudashraf.dev',
     logo: './site-logo.png',
   },
   social: {
