@@ -23,6 +23,7 @@ pre {
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
+  font-display: swap;
   font-weight: 400;
   src: url('assets/fonts/open-sans-v17-latin-regular.eot');
   src: local('Open Sans Regular'), local('OpenSans-Regular'),
@@ -38,6 +39,7 @@ pre {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: url('assets/fonts/open-sans-v17-latin-700.eot');
   src: local('Open Sans Bold'), local('OpenSans-Bold'),
     url('assets/fonts/open-sans-v17-latin-700.eot?#iefix')
@@ -52,7 +54,7 @@ pre {
   font-family: 'Abril Fatface';
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url('assets/fonts/abril-fatface-v11-latin-regular.eot');
   src: local('Abril Fatface'), local('AbrilFatface-Regular'),
     url('assets/fonts/abril-fatface-v11-latin-regular.eot?#iefix')
