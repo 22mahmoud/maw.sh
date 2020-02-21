@@ -24,6 +24,7 @@
   "dependencies": {
     "compression": "^1.7.1",
     "concurrently": "^5.1.0",
+    "date-fns": "^2.9.0",
     "fs-extra": "^8.1.0",
     "gray-matter": "^4.0.2",
     "highlight.js": "^9.18.1",

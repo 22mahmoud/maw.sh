@@ -1,20 +1,15 @@
 ---
-slug: 'authentication-in-react-applications'
-title: 'Authentication in React Applications'
-date: '2019-05-20'
-author: 'Kent C. Dodds'
-description:
-  '_How to handle user authentication in modern React Applications with context
-  and hooks_'
+slug: 'this-is-a-sample-blog'
+title: 'This is a sample blog'
+date: '2020-02-21'
+author: 'Mahmoud Ashraf'
+description: 'This is a sample blog just to test the look of blog.'
 categories:
   - 'react'
+  - 'javascript'
 keywords:
   - 'javascript'
   - 'react'
-  - 'router'
-  - 'authentication'
-banner: './images/banner.jpg'
-bannerCredit: 'Photo by [Mike Enerio](https://unsplash.com/photos/H58bnmnedTc)'
 ---
 
 **[Watch "Organization of Authentication State in React Apps" on egghead.io](https://egghead.io/lessons/egghead-organization-of-authentication-state-in-react-apps?pl=kent-s-blog-posts-as-screencasts-eefa540c)**
