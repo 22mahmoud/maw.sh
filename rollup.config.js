@@ -28,7 +28,7 @@ const preprocess = [
   sveltePreprocess({ postcss: true }),
   mdsvex({
     extension: '.svx',
-    layout: path.join(__dirname, './MdLayout.svelte'),
+    layout: path.join(__dirname, 'src/components/MdLayout.svelte'),
     markdownOptions: {
       typographer: true,
       linkify: true,

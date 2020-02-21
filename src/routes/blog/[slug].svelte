@@ -12,7 +12,7 @@
 
 <script>
   import SEO from '../../components/SEO.svelte';
-  import MdLayout from '../../../MdLayout.svelte';
+  import MdLayout from '../../components/MdLayout.svelte';
   export let post;
 </script>
 

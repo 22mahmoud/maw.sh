@@ -1,10 +1,10 @@
 <script>
-  import siteMetadata from '../siteMetaData.js';
+  import siteMetadata from '../../config/siteMetaData.js';
   export let title = siteMetadata.title;
   export let description = siteMetadata.description;
   export let keywords = siteMetadata.keywords;
-  export let slug;
-  export let thumb;
+  export let slug = null;
+  export let thumb = null;
 </script>
 
 <svelte:head>
