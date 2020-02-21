@@ -11,14 +11,16 @@
 </script>
 
 <script>
-  import { onMount } from 'svelte';
+  import SEO from '../../components/SEO.svelte';
   export let post;
 </script>
 
-<svelte:head>
-  <title>{post.meta.title}</title>
-</svelte:head>
-
+<SEO
+  title="{post.meta.title}"
+  description="{post.meta.description}"
+  keywords="post.meta.keywords"
+  slug="{post.meta.slug}"
+/>
 <h1>{post.meta.title}</h1>
 <div>
   {@html post.content}

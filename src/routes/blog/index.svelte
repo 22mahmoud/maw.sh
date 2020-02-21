@@ -10,6 +10,7 @@
 
 <script>
   import format from 'date-fns/format';
+  import SEO from '../../components/SEO.svelte';
   export let posts;
   $: console.log(posts);
   function formatDate(date) {
@@ -17,10 +18,7 @@
   }
 </script>
 
-<svelte:head>
-  <title>Blog | Mahmoud Ashraf</title>
-</svelte:head>
-
+<SEO title="Blog | Mahmoud Ashraf" description="Mahmoud Ashraf blog posts" />
 {#each posts as { title, slug, date, description, categories }}
   <article class="my-6">
     <header>
