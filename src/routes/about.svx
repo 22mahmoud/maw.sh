@@ -2,8 +2,16 @@
 title: About Mahmoud Ashraf
 description: All about Mahmoud Ashraf
 ---
+
+```js exec
+import SEO from '../components/SEO.svelte'
+```
+
+<SEO title="About | Mahmoud Ashraf" description="All about Mahmoud Ashraf"/>
+
 # Hey! I'm Mahmoud 👋
 
 I'm a Software Engineer. I was born in 1997 and grew up in a beautiful blue city called Alexandria. look how the 
+
 
 
