@@ -4,7 +4,6 @@ import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
 import babel from 'rollup-plugin-babel';
-import postcss from 'rollup-plugin-postcss';
 import copy from 'rollup-plugin-copy';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
@@ -117,19 +116,6 @@ export default {
       }),
       copy({
         targets: [{ src: 'src/assets/fonts/*', dest: 'static/assets/fonts' }],
-      }),
-      postcss({
-        extract: './static/global.css',
-        plugins: [
-          require('postcss-import'),
-          require('tailwindcss'), // See tailwind.config.js
-          require('autoprefixer'),
-          require('postcss-fail-on-warn'),
-          !dev &&
-            require('cssnano')({
-              preset: 'default',
-            }),
-        ].filter(Boolean),
       }),
       resolve({
         dedupe: ['svelte'],
