@@ -3,6 +3,7 @@ module.exports = {
     extend: {
       fontFamily: {
         display: ['Abril Fatface'],
+        sans: ['Open Sans'],
       },
       inset: {
         '1/2': '50%',
