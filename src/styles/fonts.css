@@ -1,0 +1,46 @@
+/* open-sans-regular - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('assets/fonts/open-sans-v17-latin-regular.eot');
+  src: local('Open Sans Regular'), local('OpenSans-Regular'),
+    url('assets/fonts/open-sans-v17-latin-regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('assets/fonts/open-sans-v17-latin-regular.woff2') format('woff2'),
+    url('assets/fonts/open-sans-v17-latin-regular.woff') format('woff'),
+    url('assets/fonts/open-sans-v17-latin-regular.ttf') format('truetype'),
+    url('assets/fonts/open-sans-v17-latin-regular.svg#OpenSans') format('svg');
+}
+/* open-sans-700 - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('assets/fonts/open-sans-v17-latin-700.eot');
+  src: local('Open Sans Bold'), local('OpenSans-Bold'),
+    url('assets/fonts/open-sans-v17-latin-700.eot?#iefix')
+      format('embedded-opentype'),
+    url('assets/fonts/open-sans-v17-latin-700.woff2') format('woff2'),
+    url('assets/fonts/open-sans-v17-latin-700.woff') format('woff'),
+    url('assets/fonts/open-sans-v17-latin-700.ttf') format('truetype'),
+    url('assets/fonts/open-sans-v17-latin-700.svg#OpenSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Abril Fatface';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/abril-fatface-v11-latin-regular.eot');
+  src: local('Abril Fatface'), local('AbrilFatface-Regular'),
+    url('assets/fonts/abril-fatface-v11-latin-regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('assets/fonts/abril-fatface-v11-latin-regular.woff2') format('woff2'),
+    url('assets/fonts/abril-fatface-v11-latin-regular.woff') format('woff'),
+    url('assets/fonts/abril-fatface-v11-latin-regular.ttf') format('truetype'),
+    url('assets/fonts/abril-fatface-v11-latin-regular.svg#AbrilFatface')
+      format('svg');
+}
