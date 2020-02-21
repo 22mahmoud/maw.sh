@@ -494,7 +494,7 @@ ul {
  */
 
 html {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
+  font-family: Open Sans; /* 1 */
   line-height: 1.5; /* 2 */
 }
 
@@ -3852,7 +3852,7 @@ http://zenorocha.mit-license.org
 }
 
 .font-sans {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Open Sans;
 }
 
 .font-serif {
@@ -9898,6 +9898,13 @@ http://zenorocha.mit-license.org
   left: auto;
 }
 
+.inset-1\/2 {
+  top: 50%;
+  right: 50%;
+  bottom: 50%;
+  left: 50%;
+}
+
 .inset-y-0 {
   top: 0;
   bottom: 0;
@@ -9916,6 +9923,16 @@ http://zenorocha.mit-license.org
 .inset-x-auto {
   right: auto;
   left: auto;
+}
+
+.inset-y-1\/2 {
+  top: 50%;
+  bottom: 50%;
+}
+
+.inset-x-1\/2 {
+  right: 50%;
+  left: 50%;
 }
 
 .top-0 {
@@ -9948,6 +9965,22 @@ http://zenorocha.mit-license.org
 
 .left-auto {
   left: auto;
+}
+
+.top-1\/2 {
+  top: 50%;
+}
+
+.right-1\/2 {
+  right: 50%;
+}
+
+.bottom-1\/2 {
+  bottom: 50%;
+}
+
+.left-1\/2 {
+  left: 50%;
 }
 
 .resize-none {
@@ -14142,6 +14175,46 @@ pre {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
+/* open-sans-regular - latin */
+
+@font-face {
+  font-family: 'Open Sans';
+
+  font-style: normal;
+
+  font-weight: 400;
+
+  src: url('assets/fonts/open-sans-v17-latin-regular.eot');
+
+  src: local('Open Sans Regular'), local('OpenSans-Regular'),
+    url('assets/fonts/open-sans-v17-latin-regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('assets/fonts/open-sans-v17-latin-regular.woff2') format('woff2'),
+    url('assets/fonts/open-sans-v17-latin-regular.woff') format('woff'),
+    url('assets/fonts/open-sans-v17-latin-regular.ttf') format('truetype'),
+    url('assets/fonts/open-sans-v17-latin-regular.svg#OpenSans') format('svg');
+}
+
+/* open-sans-700 - latin */
+
+@font-face {
+  font-family: 'Open Sans';
+
+  font-style: normal;
+
+  font-weight: 700;
+
+  src: url('assets/fonts/open-sans-v17-latin-700.eot');
+
+  src: local('Open Sans Bold'), local('OpenSans-Bold'),
+    url('assets/fonts/open-sans-v17-latin-700.eot?#iefix')
+      format('embedded-opentype'),
+    url('assets/fonts/open-sans-v17-latin-700.woff2') format('woff2'),
+    url('assets/fonts/open-sans-v17-latin-700.woff') format('woff'),
+    url('assets/fonts/open-sans-v17-latin-700.ttf') format('truetype'),
+    url('assets/fonts/open-sans-v17-latin-700.svg#OpenSans') format('svg');
+}
+
 @font-face {
   font-family: 'Abril Fatface';
 
@@ -14149,7 +14222,7 @@ pre {
 
   font-weight: 400;
 
-  font-display: swap;
+  font-display: fallback;
 
   src: url('assets/fonts/abril-fatface-v11-latin-regular.eot');
 
@@ -17235,7 +17308,7 @@ pre {
   }
 
   .sm\:font-sans {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: Open Sans;
   }
 
   .sm\:font-serif {
@@ -23281,6 +23354,13 @@ pre {
     left: auto;
   }
 
+  .sm\:inset-1\/2 {
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
+  }
+
   .sm\:inset-y-0 {
     top: 0;
     bottom: 0;
@@ -23299,6 +23379,16 @@ pre {
   .sm\:inset-x-auto {
     right: auto;
     left: auto;
+  }
+
+  .sm\:inset-y-1\/2 {
+    top: 50%;
+    bottom: 50%;
+  }
+
+  .sm\:inset-x-1\/2 {
+    right: 50%;
+    left: 50%;
   }
 
   .sm\:top-0 {
@@ -23331,6 +23421,22 @@ pre {
 
   .sm\:left-auto {
     left: auto;
+  }
+
+  .sm\:top-1\/2 {
+    top: 50%;
+  }
+
+  .sm\:right-1\/2 {
+    right: 50%;
+  }
+
+  .sm\:bottom-1\/2 {
+    bottom: 50%;
+  }
+
+  .sm\:left-1\/2 {
+    left: 50%;
   }
 
   .sm\:resize-none {
@@ -30583,7 +30689,7 @@ pre {
   }
 
   .md\:font-sans {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: Open Sans;
   }
 
   .md\:font-serif {
@@ -36629,6 +36735,13 @@ pre {
     left: auto;
   }
 
+  .md\:inset-1\/2 {
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
+  }
+
   .md\:inset-y-0 {
     top: 0;
     bottom: 0;
@@ -36647,6 +36760,16 @@ pre {
   .md\:inset-x-auto {
     right: auto;
     left: auto;
+  }
+
+  .md\:inset-y-1\/2 {
+    top: 50%;
+    bottom: 50%;
+  }
+
+  .md\:inset-x-1\/2 {
+    right: 50%;
+    left: 50%;
   }
 
   .md\:top-0 {
@@ -36679,6 +36802,22 @@ pre {
 
   .md\:left-auto {
     left: auto;
+  }
+
+  .md\:top-1\/2 {
+    top: 50%;
+  }
+
+  .md\:right-1\/2 {
+    right: 50%;
+  }
+
+  .md\:bottom-1\/2 {
+    bottom: 50%;
+  }
+
+  .md\:left-1\/2 {
+    left: 50%;
   }
 
   .md\:resize-none {
@@ -43931,7 +44070,7 @@ pre {
   }
 
   .lg\:font-sans {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: Open Sans;
   }
 
   .lg\:font-serif {
@@ -49977,6 +50116,13 @@ pre {
     left: auto;
   }
 
+  .lg\:inset-1\/2 {
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
+  }
+
   .lg\:inset-y-0 {
     top: 0;
     bottom: 0;
@@ -49995,6 +50141,16 @@ pre {
   .lg\:inset-x-auto {
     right: auto;
     left: auto;
+  }
+
+  .lg\:inset-y-1\/2 {
+    top: 50%;
+    bottom: 50%;
+  }
+
+  .lg\:inset-x-1\/2 {
+    right: 50%;
+    left: 50%;
   }
 
   .lg\:top-0 {
@@ -50027,6 +50183,22 @@ pre {
 
   .lg\:left-auto {
     left: auto;
+  }
+
+  .lg\:top-1\/2 {
+    top: 50%;
+  }
+
+  .lg\:right-1\/2 {
+    right: 50%;
+  }
+
+  .lg\:bottom-1\/2 {
+    bottom: 50%;
+  }
+
+  .lg\:left-1\/2 {
+    left: 50%;
   }
 
   .lg\:resize-none {
@@ -57279,7 +57451,7 @@ pre {
   }
 
   .xl\:font-sans {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: Open Sans;
   }
 
   .xl\:font-serif {
@@ -63325,6 +63497,13 @@ pre {
     left: auto;
   }
 
+  .xl\:inset-1\/2 {
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
+  }
+
   .xl\:inset-y-0 {
     top: 0;
     bottom: 0;
@@ -63343,6 +63522,16 @@ pre {
   .xl\:inset-x-auto {
     right: auto;
     left: auto;
+  }
+
+  .xl\:inset-y-1\/2 {
+    top: 50%;
+    bottom: 50%;
+  }
+
+  .xl\:inset-x-1\/2 {
+    right: 50%;
+    left: 50%;
   }
 
   .xl\:top-0 {
@@ -63375,6 +63564,22 @@ pre {
 
   .xl\:left-auto {
     left: auto;
+  }
+
+  .xl\:top-1\/2 {
+    top: 50%;
+  }
+
+  .xl\:right-1\/2 {
+    right: 50%;
+  }
+
+  .xl\:bottom-1\/2 {
+    bottom: 50%;
+  }
+
+  .xl\:left-1\/2 {
+    left: 50%;
   }
 
   .xl\:resize-none {

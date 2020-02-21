@@ -1,4 +1,5 @@
 <script>
+  import SEO from '../components/SEO.svelte';
   const social = [
     {
       href: 'https://github.com/22mahmoud/',
@@ -24,13 +25,10 @@
   ];
 </script>
 
-<svelte:head>
-  <title>Sapper project template</title>
-</svelte:head>
-
+<SEO />
 <div class="h-full flex flex-col justify-center content-center">
   <p class="font-display text-4xl md:text-6xl">
-    Hi there, I'm Mahmoud Ashraf a front-end developer
+    Hi there 👋, I'm Mahmoud Ashraf a front-end developer
   </p>
   <p class="mt-5 text-xl font-light">- 🌍 🌊 Alexandria, Egypt</p>
   <div class="pt-6 mt-6">
