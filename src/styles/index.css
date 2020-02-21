@@ -52,7 +52,7 @@ pre {
   font-family: 'Abril Fatface';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-display: fallback;
   src: url('assets/fonts/abril-fatface-v11-latin-regular.eot');
   src: local('Abril Fatface'), local('AbrilFatface-Regular'),
     url('assets/fonts/abril-fatface-v11-latin-regular.eot?#iefix')

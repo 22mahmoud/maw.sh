@@ -12,7 +12,6 @@
   import format from 'date-fns/format';
   import SEO from '../../components/SEO.svelte';
   export let posts;
-  $: console.log(posts);
   function formatDate(date) {
     return format(new Date(date), 'PP');
   }
