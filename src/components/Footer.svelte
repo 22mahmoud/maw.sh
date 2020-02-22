@@ -28,17 +28,19 @@
       data-netlify="true"
       data-netlify-honeypot="bot-field"
     >
-      <label for="first_name" class="mb-1">First Name</label>
+      <label htmlFor="first_name" class="mb-1">First Name</label>
       <input
         bind:value="{firstName}"
         class="mb-2"
-        name="first_name"
+        id="firstName"
+        name="firstName"
         placeholder="Mahmoud"
         type="text"
       />
       <label for="email" class="mb-1">Email</label>
       <input
         bind:value="{email}"
+        id="email"
         name="email"
         placeholder="mahmoud@test.com"
         type="email"
