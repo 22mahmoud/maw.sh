@@ -1,3 +1,9 @@
+<script context="module">
+  export function preload() {
+    return this.fetch('sitemap.xml').then(() => this.fetch('robots.txt'));
+  }
+</script>
+
 <script>
   import SEO from '../components/SEO.svelte';
   const social = [
