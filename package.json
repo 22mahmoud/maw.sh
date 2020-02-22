@@ -10,7 +10,9 @@
   "repository": "https://github.com/22mahmoud/mahmoudashraf.dev",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev --ext '.svx .svelte'",
+    "dev:app": "sapper dev --ext '.svx .svelte'",
+    "dev:lambda": "netlify-lambda serve functions",
+    "dev": "concurrently `yarn dev:app` 'yarn dev:lambda'",
     "build": "NODE_ENV=production sapper build",
     "export": "NODE_ENV=production sapper export --ext '.svx .svelte'",
     "start": "node  __sapper__/build/server/server.js",
@@ -28,6 +30,7 @@
     "highlight.js": "^9.18.1",
     "marked": "^0.8.0",
     "mdsvex": "^0.4.0",
+    "netlify-lambda": "^1.6.3",
     "polka": "next",
     "sapper-page-loading-bar": "^1.0.0",
     "sirv": "^0.4.0"

@@ -1,18 +1,17 @@
 <script>
   let email = '';
   let firstName = '';
-  function encode(data) {
-    return Object.keys(data)
-      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-      .join('&');
-  }
 
   function handleSubmit() {
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'subscription', email, firstName }),
-    }).then(() => alert('success'));
+    if (email && firstName) {
+      fetch('/.netlify/functions/mailgun', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({ email, name: firstName }),
+      });
+    }
   }
 </script>
 
@@ -23,10 +22,6 @@
       on:submit|preventDefault="{handleSubmit}"
       class="flex flex-col"
       name="subscription"
-      action="/"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
     >
       <label for="firstName" class="mb-1">First Name</label>
       <input
