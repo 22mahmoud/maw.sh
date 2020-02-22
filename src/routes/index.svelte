@@ -33,24 +33,26 @@
 
 <SEO />
 <div class="h-full flex flex-col justify-center content-center">
-  <p class="font-display text-4xl md:text-6xl">
-    Hi there 👋, I'm Mahmoud Ashraf a front-end developer
-  </p>
-  <p class="mt-5 text-xl font-light">- 🌍 🌊 Alexandria, Egypt</p>
-  <div class="pt-6 mt-6">
-    <p class="text-left mx-2 my-3">Find me on social:</p>
-    <div class="flex flex-wrap text-left">
-      {#each social as { href, name, icon }}
-        <a
-          class="flex my-4 transition-all duration-200 ease-in content-center
-          justify-center fill-current text-gray-300 hover:text-teal-200
-          hover:border-b-2 border-teal-200 px-2 mx-4"
-          {href}
-        >
-          {@html icon}
-          <span class="ml-2">{name}</span>
-        </a>
-      {/each}
+  <div>
+    <p class="font-display text-4xl md:text-6xl">
+      Hi there 👋, I'm Mahmoud Ashraf a front-end developer
+    </p>
+    <p class="mt-5 text-xl font-light">- 🌍 🌊 Alexandria, Egypt</p>
+    <div class="pt-6 mt-6">
+      <p class="text-left mx-2 my-3">Find me on social:</p>
+      <div class="flex flex-wrap text-left">
+        {#each social as { href, name, icon }}
+          <a
+            class="flex my-4 transition-all duration-200 ease-in content-center
+            justify-center fill-current text-gray-300 hover:text-teal-200
+            hover:border-b-2 border-teal-200 px-2 mx-4"
+            {href}
+          >
+            {@html icon}
+            <span class="ml-2">{name}</span>
+          </a>
+        {/each}
+      </div>
     </div>
   </div>
 </div>

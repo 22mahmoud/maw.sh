@@ -28,8 +28,8 @@
     {/if}
   </div>
 
-  <footer class="border-t-2 border-gray-800 mt-6 w-full">
-    <div class="py-6 max-w-2xl mx-auto px-4 md:px-2">
+  <footer class="w-full">
+    <div class="my-24 max-w-2xl mx-auto px-4 md:px-2">
       <Footer />
     </div>
   </footer>
