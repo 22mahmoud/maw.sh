@@ -8,7 +8,7 @@
   }
 
   function handleSubmit() {
-    fetch('https://mahmoudashraf.dev', {
+    fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'subscription', email, firstName }),
