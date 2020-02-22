@@ -35,14 +35,8 @@ if you are interested in working together send an email to [hello@mahmoudashraf.
 ### Tech stack:
 
 I usually work as a front end developer, but I'm also enjoying writing backend stuff.
-- React
+- React, Gatsby, NextJS, Redux, React Apollo, React-Native
 - Typescript
-- Styled-Components
-- Redux
-- React Apollo
-- Svelte
-- Node
-- TypeGraphql
-- TypeORM
-
-
+- css, Styled-Components
+- Svelte, Sapper
+- Node, TypeGraphql, TypeORM
