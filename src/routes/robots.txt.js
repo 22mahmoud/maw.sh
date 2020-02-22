@@ -1,7 +1,7 @@
 const rules = {
-  UserAgent: '*',
-  Disallow: '/',
+  'User-agent': '*',
   Sitemap: 'https://mahmoudashraf.dev/sitemap.xml',
+  Host: 'https://mahmoudashraf.dev',
 };
 
 export function get(req, res) {
