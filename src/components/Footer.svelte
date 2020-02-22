@@ -28,7 +28,7 @@
       data-netlify="true"
       data-netlify-honeypot="bot-field"
     >
-      <label htmlFor="first_name" class="mb-1">First Name</label>
+      <label for="firstName" class="mb-1">First Name</label>
       <input
         bind:value="{firstName}"
         class="mb-2"
