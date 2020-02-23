@@ -28,14 +28,14 @@
         <date>{formatDate(date)}</date>
       </small>
       <div class="my-2 md:my-1">
-        {#each categories as category}
+        <!-- {#each categories as category}
           <span
             class="mr-2 px-2 bg-teal-800 hover:bg-teal-700 transation-all
             duration-200 ease-in rounded-md"
           >
             <a rel="prefetch" href="categories/{category}">{category}</a>
           </span>
-        {/each}
+        {/each} -->
       </div>
       <p class="text-base">{description}</p>
     </header>
