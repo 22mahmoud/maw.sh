@@ -124,6 +124,5 @@
     text-decoration-line: underline;
     text-decoration-style: wavy;
     text-decoration-color: #81e6d9;
-    text-decoration-thickness: 5rem;
   }
 </style>
