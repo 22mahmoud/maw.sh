@@ -4,7 +4,7 @@
   export let description = siteMetadata.description;
   export let keywords = siteMetadata.keywords;
   export let slug = null;
-  export let thumb = null;
+  export let thumb = siteMetadata.image;
 </script>
 
 <svelte:head>
