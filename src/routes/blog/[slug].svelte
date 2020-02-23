@@ -22,7 +22,9 @@
   keywords="post.meta.keywords"
   slug="{post.meta.slug}"
 />
-<h1>{post.meta.title}</h1>
+
+<h1 class="text-2xl my-8 font-bold">{post.meta.title}</h1>
+
 <MdLayout>
   {@html post.content}
 </MdLayout>
