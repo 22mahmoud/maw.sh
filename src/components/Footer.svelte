@@ -68,12 +68,8 @@
     {:else}
       <div in:fly="{{ delay: 400, y: 100, duration: 1000 }}">
         <h2 class="text-left mb-8 text-2xl font-bold">
-          Great, one last thing...
+          Thank you for subscribing 💙
         </h2>
-        <p class="text-xl">
-          I just sent you an email with the confirmation link.
-          <strong>Please check your inbox!</strong>
-        </p>
       </div>
     {/if}
   </div>

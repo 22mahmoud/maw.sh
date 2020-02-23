@@ -4,7 +4,7 @@ const Mailgun = require('mailgun-js');
 const API_KEY = process.env.MAILGUN_API_KEY;
 const DOMAIN = process.env.MAILGUN_DOMAIN;
 
-const sendConfirmationEmail = async ({ email }) => {
+const sendThankyouEmail = async ({ email }) => {
   return new Promise((resolve, reject) => {
     console.log('Sending the email');
     const mailgun = Mailgun({
@@ -15,8 +15,8 @@ const sendConfirmationEmail = async ({ email }) => {
     const mailData = {
       from: 'Mahmoud Ashraf <hello@mahmoudashraf.dev>',
       to: email,
-      subject: `👋 It's me. Confirm your subscription 👇`,
-      template: 'newsletter',
+      subject: `Thank You! 🎆`,
+      text: 'Thanks you for subscribing to my newsletter!',
     };
 
     mailgun.messages().send(mailData, err => {
@@ -60,12 +60,12 @@ exports.handler = async function(event) {
     const body = JSON.parse(event.body);
     const { email, name } = body;
 
-    // await addToMailingList({
-    //   email,
-    //   name,
-    //   listName: 'hello@mahmoudashraf.dev',
-    // });
-    await sendConfirmationEmail({ email });
+    await addToMailingList({
+      email,
+      name,
+      listName: 'hello@mahmoudashraf.dev',
+    });
+    await sendThankyouEmail({ email });
     return {
       statusCode: 200,
       body: JSON.stringify({
