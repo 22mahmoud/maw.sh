@@ -27,27 +27,27 @@ const sendThankyouEmail = async ({ email }) => {
   });
 };
 
-// const addToMailingList = async ({ name, email: address, listName }) => {
-//   return new Promise((resolve, reject) => {
-//     console.log('Adding to the mailing list');
-//     const mailgun = Mailgun({
-//       apiKey: API_KEY,
-//       domain: DOMAIN,
-//     });
+const addToMailingList = async ({ name, email: address, listName }) => {
+  return new Promise((resolve, reject) => {
+    console.log('Adding to the mailing list');
+    const mailgun = Mailgun({
+      apiKey: API_KEY,
+      domain: DOMAIN,
+    });
 
-//     const list = mailgun.lists(listName);
-//     list.members().create({ name, address }, err => {
-//       if (err) {
-//         if (err.message.includes('Address already exists')) {
-//           resolve();
-//         } else {
-//           return reject(err);
-//         }
-//       }
-//       resolve();
-//     });
-//   });
-// };
+    const list = mailgun.lists(listName);
+    list.members().create({ name, address }, err => {
+      if (err) {
+        if (err.message.includes('Address already exists')) {
+          resolve();
+        } else {
+          return reject(err);
+        }
+      }
+      resolve();
+    });
+  });
+};
 
 exports.handler = async function(event) {
   try {
