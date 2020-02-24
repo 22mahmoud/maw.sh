@@ -44,8 +44,8 @@
   </svg>
 </div>
 
-<nav class="my-12">
-  <ul class="flex py-8">
+<nav class="mt-12">
+  <ul class="flex py-6">
     {#each routes as { key, value }}
       <li class="mx-6">
         <span>/</span>
