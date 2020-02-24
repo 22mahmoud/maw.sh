@@ -52,6 +52,7 @@
         <a
           class="{segment === key ? 'text-teal-300' : 'hover:text-teal-200'}"
           href="/{key === undefined ? '.' : key}"
+          rel="prefetch"
         >
           {value}
         </a>
