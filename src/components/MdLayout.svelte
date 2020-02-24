@@ -50,7 +50,7 @@
 
   .content blockquote {
     @apply border-l-4 border-teal-200;
-    @apply pl-5;
+    @apply pl-5 my-6;
     @apply italic;
   }
 
