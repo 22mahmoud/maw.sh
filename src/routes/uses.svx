@@ -8,7 +8,7 @@ if you wanna sea all configuration files check my [dotfiles](https://github.com/
 - and I get that cool domain name from [NameCheap](https://www.namecheap.com/).
 - For Newsletter I'm using [Mailgun](https://www.mailgun.com) free plan 
 from [GitHub Student Developer Pack](https://education.github.com/pack).
-- Use Markdown for blogging and content pages using [Mdsvex](mdsvex.pngwn.io) package. 
+- Use Markdown for blogging and content pages using [Mdsvex](https://mdsvex.pngwn.io) package. 
 
 ### ⚙️  Development environment
 - [Manjaro](http://manjaro.org/) distribution as my main OS + [i3wm](https://i3wm.org/) version.
