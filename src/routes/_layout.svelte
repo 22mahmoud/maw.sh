@@ -1,6 +1,5 @@
 <script>
   import { stores } from '@sapper/app';
-  import { fade } from 'svelte/transition';
   import PageLoadingBar from 'sapper-page-loading-bar/PageLoadingBar.svelte';
 
   import Nav from '../components/Nav.svelte';
@@ -21,11 +20,9 @@
       </div>
     </header>
 
-    {#if !$preloading}
-      <main class="max-w-2xl flex flex-col mx-auto px-4 md:px-2">
-        <slot />
-      </main>
-    {/if}
+    <main class="max-w-2xl flex flex-col mx-auto px-4 md:px-2">
+      <slot />
+    </main>
   </div>
 
   <footer class="w-full">
