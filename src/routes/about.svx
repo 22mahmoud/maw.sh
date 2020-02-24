@@ -42,4 +42,4 @@ I usually work as a front end developer, but I'm also enjoying writing backend s
 - Node, TypeGraphql, TypeORM
 
 > P.S. Here are a few pages on this site that aren't included in the normal site navigation, but might interest you:
-> - [Uses](/uses) - links to all the stuff I use
+> - <a rel="prefetch" href="/uses"> Uses </a> - links to all the stuff I use
