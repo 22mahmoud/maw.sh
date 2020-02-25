@@ -3,6 +3,8 @@ import sirv from 'sirv';
 import compression from 'compression';
 import * as sapper from '@sapper/server';
 
+import './styles/index.css';
+
 const { PORT, NODE_ENV } = process.env; // eslint-disable-line no-undef
 const dev = NODE_ENV === 'development';
 

@@ -2,6 +2,7 @@ import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
+import postcss from 'rollup-plugin-postcss';
 import svelte from 'rollup-plugin-svelte';
 import babel from 'rollup-plugin-babel';
 import copy from 'rollup-plugin-copy';
@@ -23,6 +24,16 @@ const onwarn = (warning, onwarn) =>
   (warning.code === 'CIRCULAR_DEPENDENCY' &&
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
   onwarn(warning);
+
+const purgecss = require('@fullhuman/postcss-purgecss')({
+  content: [
+    './src/**/*.css',
+    './src/**/*.html',
+    './src/**/*.svelte',
+    './src/**/*.svx',
+  ],
+  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+});
 
 const preprocess = [
   sveltePreprocess({ postcss: true }),
@@ -105,6 +116,21 @@ export default {
         extensions: ['.svelte', '.svexy', '.svx'], // here actually
         generate: 'ssr',
         dev,
+      }),
+      postcss({
+        extract: './static/global.css',
+        plugins: [
+          require('postcss-import'),
+          require('tailwindcss'), // See tailwind.config.js
+          require('autoprefixer'),
+          require('postcss-fail-on-warn'),
+          // Do not purge the CSS in dev mode to be able to play with classes in the browser dev-tools.
+          !dev && purgecss,
+          !dev &&
+            require('cssnano')({
+              preset: 'default',
+            }),
+        ].filter(Boolean),
       }),
       copy({
         targets: [{ src: 'src/assets/fonts/*', dest: 'static/assets/fonts' }],

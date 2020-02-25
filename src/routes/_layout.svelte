@@ -4,13 +4,11 @@
 
   import Nav from '../components/Nav.svelte';
   import Footer from '../components/Footer.svelte';
-  import Tailwindcss from '../components/Tailwindcss.svelte';
 
   export let segment;
   const { preloading } = stores();
 </script>
 
-<Tailwindcss />
 <PageLoadingBar {preloading} />
 <div class="flex flex-col min-h-screen w-full">
   <div class="flex-1">
