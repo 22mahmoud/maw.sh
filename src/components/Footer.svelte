@@ -119,10 +119,4 @@
     @apply border-0;
     @apply text-gray-700;
   }
-
-  h3 {
-    text-decoration-line: underline;
-    text-decoration-style: wavy;
-    text-decoration-color: #81e6d9;
-  }
 </style>
