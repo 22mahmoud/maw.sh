@@ -133,7 +133,10 @@ export default {
         ].filter(Boolean),
       }),
       copy({
-        targets: [{ src: 'src/assets/fonts/*', dest: 'static/assets/fonts' }],
+        targets: [
+          { src: 'src/assets/fonts/*', dest: 'static/assets/fonts' },
+          { src: 'content/**/*.{png,jpg}', dest: 'static/assets/content' },
+        ],
       }),
       resolve({
         dedupe: ['svelte'],

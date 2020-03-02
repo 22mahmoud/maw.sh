@@ -22,6 +22,7 @@
     "postinstall": "netlify-lambda install"
   },
   "dependencies": {
+    "@sindresorhus/slugify": "^0.11.0",
     "compression": "^1.7.1",
     "concurrently": "^5.1.0",
     "date-fns": "^2.9.0",

@@ -24,7 +24,8 @@
 
   .content h1,
   .content h2,
-  .content h3 {
+  .content h3,
+  .content h4 {
     @apply font-bold;
     @apply mt-8 mb-6;
   }
@@ -41,6 +42,9 @@
     @apply text-xl;
   }
 
+  .content h4 {
+    @apply text-lg;
+  }
   .content p code {
     @apply bg-gray-700;
     @apply text-gray-400;
