@@ -3,6 +3,11 @@
 </div>
 
 <style global>
+  .content img {
+    max-width: 100%;
+    height: auto;
+  }
+
   .content pre {
     overflow: auto;
     @apply rounded-md;
