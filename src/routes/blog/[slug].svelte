@@ -19,7 +19,7 @@
 <SEO
   title="{post.meta.title}"
   description="{post.meta.description}"
-  keywords="post.meta.keywords"
+  keywords="{post.meta.keywords}"
   slug="{post.meta.slug}"
 />
 
