@@ -3,11 +3,14 @@ import path from 'path';
 import grayMatter from 'gray-matter';
 
 export function getPosts() {
-  return fs.readdirSync(`content`).map(fileName => {
-    const post = getPost(`${fileName}/index.md`);
-    const { data } = grayMatter(post);
-    return data;
-  });
+  return fs
+    .readdirSync(`content`)
+    .map(fileName => {
+      const post = getPost(`${fileName}/index.md`);
+      const { data } = grayMatter(post);
+      return data;
+    })
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
 export function getPost(filename) {
