@@ -34,7 +34,8 @@
     "netlify-lambda": "^1.6.3",
     "polka": "next",
     "sapper-page-loading-bar": "^1.0.0",
-    "sirv": "^0.4.0"
+    "sirv": "^0.4.0",
+    "svelte-i18n": "^3.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

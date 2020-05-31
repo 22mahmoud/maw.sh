@@ -1,3 +1,11 @@
+<script context="module">
+  import { waitLocale } from 'svelte-i18n';
+
+  export async function preload() {
+    return waitLocale();
+  }
+</script>
+
 <script>
   import { stores } from '@sapper/app';
   import PageLoadingBar from 'sapper-page-loading-bar/PageLoadingBar.svelte';

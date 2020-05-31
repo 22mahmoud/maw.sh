@@ -6,13 +6,15 @@
 
 <script>
   import SEO from '../components/SEO.svelte';
+  import { _ } from 'svelte-i18n';
+  const m = 'lol';
 </script>
 
 <SEO />
-<div class="h-full flex flex-col justify-center content-center">
+<div class="flex flex-col content-center justify-center h-full">
   <div>
-    <p class="font-display text-4xl md:text-6xl">
-      Hi there 👋, I'm Mahmoud Ashraf a front-end developer
+    <p class="text-4xl font-display md:text-6xl">
+      Hi there 👋, I'm {$_('page_title')} a front-end developer
     </p>
     <p class="mt-5 text-xl font-light">- 🌍 🌊 Alexandria, Egypt</p>
   </div>
