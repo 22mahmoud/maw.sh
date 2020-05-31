@@ -2,6 +2,9 @@
   "name": "mahmoudashraf.dev",
   "description": "Mahmoud Ashraf's personal website",
   "private": true,
+  "engines": {
+    "node": "12.17.0"
+  },
   "author": {
     "name": "Mahmoud Ashraf",
     "email": "hello@mahmoudashraf.dev",
