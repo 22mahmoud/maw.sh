@@ -9,8 +9,15 @@
   const { preloading } = stores();
 </script>
 
+<svelte:head>
+  <script 
+    data-goatcounter="https://stats.mahmoudashraf.dev/count" 
+    async 
+    src="//stats.mahmoudashraf.dev/count.js"></script>
+</svelte:head>
+
 <PageLoadingBar {preloading} />
-<div class="flex flex-col min-h-screen w-full">
+<div class="flex flex-col w-full min-h-screen">
   <div class="flex-1">
     <header class="w-full my-3">
       <div class="max-w-2xl mx-auto">
@@ -18,13 +25,13 @@
       </div>
     </header>
 
-    <main class="max-w-2xl flex flex-col mx-auto px-4 md:px-2">
+    <main class="flex flex-col max-w-2xl px-4 mx-auto md:px-2">
       <slot />
     </main>
   </div>
 
   <footer class="w-full">
-    <div class="my-24 max-w-2xl mx-auto px-4 md:px-2">
+    <div class="max-w-2xl px-4 mx-auto my-24 md:px-2">
       <Footer />
     </div>
   </footer>
