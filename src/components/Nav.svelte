@@ -1,66 +1,75 @@
-<script>
-  export let segment;
-  const routes = [
-    { key: undefined, value: 'Home' },
-    { key: 'about', value: 'About' },
-    { key: 'blog', value: 'Blog' },
-  ];
+<script lang="typescript">
+  export let segment: string;
 </script>
 
-<div class="flex absolute top-0 left-0 w-full ">
-  <svg width="100%" height="40" style="overflow:visible">
-    <defs>
-      <pattern
-        id="hex"
-        patternUnits="userSpaceOnUse"
-        patternTransform="translate(-3.5 0)"
-        viewBox="-14 -16 28 48"
-        width="26"
-        height="66"
-      >
-        <g fill="none" stroke-width="1" stroke="currentcolor">
-          <path
-            d=" M0 -16 L-14 -8 L -14 8 L 0 16 L 14 8 L 14 -8 L 0 -16 z "
-          ></path>
-          <path
-            d=" M0 -16 L-14 -8 L -14 8 L 0 16 L 14 8 L 14 -8 L 0 -16 z "
-            transform="translate(14 24)"
-          ></path>
-          <g stroke-width="1" opacity="0.5">
-            <path d=" M0 -16 L 0 0 M-14 8 L0 0 L14 8 "></path>
-            <path
-              d=" M0 -16 L 0 0 M-14 8 L0 0 L14 8 "
-              transform="translate(14 24)"
-            ></path>
-            <path
-              d=" M0 -16 L 0 0 M-14 8 L0 0 L14 8 "
-              transform="translate(-14 24)"
-            ></path>
-          </g>
-        </g>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#hex)"></rect>
-  </svg>
-</div>
+<style>
+  nav {
+    border-bottom: 1px solid rgba(255, 62, 0, 0.1);
+    font-weight: 300;
+    padding: 0 1em;
+  }
 
-<nav class="mt-12">
-  <ul class="flex py-6">
-    {#each routes as { key, value }}
-      <li class="mx-6">
-        <span>/</span>
-        <a
-          class="{segment === key ? 'text-teal-300' : 'hover:text-teal-200'}"
-          href="/{key === undefined ? '.' : key}"
-          rel="prefetch"
-        >
-          {value}
-        </a>
-      </li>
-    {/each}
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* clearfix */
+  ul::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  li {
+    display: block;
+    float: left;
+  }
+
+  [aria-current] {
+    position: relative;
+    display: inline-block;
+  }
+
+  [aria-current]::after {
+    position: absolute;
+    content: "";
+    width: calc(100% - 1em);
+    height: 2px;
+    background-color: rgb(255, 62, 0);
+    display: block;
+    bottom: -1px;
+  }
+
+  a {
+    text-decoration: none;
+    padding: 1em 0.5em;
+    display: block;
+  }
+</style>
+
+<nav>
+  <ul>
+    <li>
+      <a aria-current={segment === undefined ? 'page' : undefined} href=".">
+        home
+      </a>
+    </li>
+    <li>
+      <a aria-current={segment === 'about' ? 'page' : undefined} href="about">
+        about
+      </a>
+    </li>
+
+    <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
+		     the blog data when we hover over the link or tap it on a touchscreen -->
+    <li>
+      <a
+        rel="prefetch"
+        aria-current={segment === 'blog' ? 'page' : undefined}
+        href="blog">
+        blog
+      </a>
+    </li>
   </ul>
 </nav>
-
-<style>
-
-</style>

@@ -1,47 +1,34 @@
 <script context="module">
-  export function preload({ params, query }) {
-    return this.fetch(`blog.json`)
-      .then(r => r.json())
-      .then(posts => {
-        return { posts };
-      });
-  }
+	export function preload({ params, query }) {
+		return this.fetch(`blog.json`).then(r => r.json()).then(posts => {
+			return { posts };
+		});
+	}
 </script>
 
 <script>
-  import format from 'date-fns/format';
-  import SEO from '../../components/SEO.svelte';
-  export let posts;
-  function formatDate(date) {
-    return format(new Date(date), 'PP');
-  }
+	export let posts;
 </script>
 
-<SEO title="Blog | Mahmoud Ashraf" description="Mahmoud Ashraf blog posts" />
-{#each posts as { title, slug, date, description, categories }}
-  <article class="my-6">
-    <header>
-      <h3 class="font-bold text-2xl text-teal-300">
-        <a rel="prefetch" href="blog/{slug}">{title}</a>
-      </h3>
-      <small>
-        <date>{formatDate(date)}</date>
-      </small>
-      <div class="my-2 md:my-1">
-        <!-- {#each categories as category}
-          <span
-            class="mr-2 px-2 bg-teal-800 hover:bg-teal-700 transation-all
-            duration-200 ease-in rounded-md"
-          >
-            <a rel="prefetch" href="categories/{category}">{category}</a>
-          </span>
-        {/each} -->
-      </div>
-      <p class="text-base">{description}</p>
-    </header>
-  </article>
-{/each}
-
 <style>
-
+	ul {
+		margin: 0 0 1em 0;
+		line-height: 1.5;
+	}
 </style>
+
+<svelte:head>
+	<title>Blog</title>
+</svelte:head>
+
+<h1>Recent posts</h1>
+
+<ul>
+	{#each posts as post}
+		<!-- we're using the non-standard `rel=prefetch` attribute to
+				tell Sapper to load the data for the page as soon as
+				the user hovers over the link or taps it, instead of
+				waiting for the 'click' event -->
+		<li><a rel='prefetch' href='blog/{post.slug}'>{post.title}</a></li>
+	{/each}
+</ul>
