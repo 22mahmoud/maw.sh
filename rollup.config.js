@@ -1,7 +1,4 @@
-import { onwarn } from "./config/rollup/utils";
-import { client } from "./config/rollup/client";
-import { server } from "./config/rollup/server";
-import { serviceworker } from "./config/rollup/serviceworker";
+import { client, server, serviceworker } from "./config/rollup/index";
 
 export default {
   client,

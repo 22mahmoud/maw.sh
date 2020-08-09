@@ -7,6 +7,8 @@ import babel from "@rollup/plugin-babel";
 import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
 
+import * as postcss from "../../postcss.config";
+
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 const sourcemap = dev ? "inline" : false;
@@ -17,6 +19,7 @@ const preprocess = [
     defaults: {
       script: "typescript",
     },
+    postcss,
   }),
   // You could have more preprocessors, like MDsveX
 ];

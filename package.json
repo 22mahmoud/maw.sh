@@ -3,15 +3,16 @@
   "description": "TODO",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev",
-    "build": "sapper build --legacy",
-    "export": "sapper export --legacy",
-    "start": "node __sapper__/build"
+    "dev": "NODE_ENV=development sapper dev",
+    "build": "NODE_ENV=production sapper build --legacy",
+    "export": "NODE_ENV=production sapper export --legacy",
+    "start": "NODE_ENV=production node __sapper__/build"
   },
   "dependencies": {
     "compression": "^1.7.1",
     "express": "^4.17.1",
-    "sirv": "^1.0.0"
+    "sirv": "^1.0.0",
+    "tailwindcss": "^1.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -19,6 +20,7 @@
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/runtime": "^7.0.0",
+    "@fullhuman/postcss-purgecss": "^2.3.0",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
@@ -28,7 +30,11 @@
     "@types/compression": "^1.7.0",
     "@types/express": "^4.17.7",
     "@types/node": "^14.0.27",
+    "autoprefixer": "^9.8.6",
+    "cssnano": "^4.1.10",
     "npm-run-all": "^4.1.5",
+    "postcss": "^7.0.32",
+    "postcss-import": "^12.0.1",
     "rollup": "^2.3.4",
     "rollup-plugin-svelte": "^5.0.1",
     "rollup-plugin-terser": "^7.0.0",
