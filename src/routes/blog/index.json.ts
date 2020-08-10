@@ -1,15 +1,7 @@
-import { Response, Request } from "express";
+import { Request, Response } from "express";
 
-import posts from "./_posts";
+import { getPosts } from "../../utils/posts";
 
-const contents = posts.map((post) => {
-  return {
-    title: post.title,
-    slug: post.slug,
-  };
-});
-
-export function get(_req: Request, res: Response) {
-  res.status(200);
-  res.json(contents);
+export async function get(_req: Request, res: Response) {
+  res.status(200).json(getPosts());
 }

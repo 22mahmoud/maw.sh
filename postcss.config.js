@@ -7,10 +7,6 @@ import * as tailwindcssConfig from "./tailwind.config";
 
 const production = process.env.NODE_ENV === "production";
 
-console.log("===============");
-console.log(production);
-console.log("===============");
-
 export const plugins = [
   postcssImport,
 

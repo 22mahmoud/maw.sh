@@ -1,6 +1,6 @@
 import * as sapper from "@sapper/app";
 
-// import "./global.css";
+import "highlight.js/styles/dracula.css";
 
 sapper.start({
   target: document.querySelector("#sapper"),

@@ -1,31 +1,40 @@
 <script context="module">
-  export function preload({ params, query }) {
+  export function preload() {
+    // @ts-ignore
     return this.fetch(`blog.json`)
-      .then((r) => r.json())
-      .then((posts) => {
+      .then((r: any) => r.json())
+      .then((posts: any[]) => {
         return { posts };
       });
   }
 </script>
 
 <script>
-  export let posts;
+  import format from "date-fns/format";
+  import SEO from "../../components/SEO.svelte";
+  export let posts: any[];
+  function formatDate(date: string = Date()) {
+    return format(new Date(date), "PP");
+  }
 </script>
 
-<svelte:head>
-  <title>Blog</title>
-</svelte:head>
+<style>
 
-<h1>Recent posts</h1>
+</style>
 
-<ul>
-  {#each posts as post}
-    <!-- we're using the non-standard `rel=prefetch` attribute to
-				tell Sapper to load the data for the page as soon as
-				the user hovers over the link or taps it, instead of
-				waiting for the 'click' event -->
-    <li>
-      <a rel="prefetch" href="blog/{post.slug}">{post.title}</a>
-    </li>
-  {/each}
-</ul>
+<SEO title="Blog | Mahmoud Ashraf" description="Mahmoud Ashraf blog posts" />
+{#each posts as { title, slug, date, description }}
+  <article class="my-6">
+    <header>
+      <h3 class="text-2xl font-bold text-teal-300">
+        <a rel="prefetch" href="blog/{slug}">{title}</a>
+      </h3>
+      <small>
+        <date>{formatDate(date)}</date>
+      </small>
+      <div class="my-2 md:my-1">
+        <p class="text-base">{description}</p>
+      </div>
+    </header>
+  </article>
+{/each}

@@ -1,29 +1,59 @@
-<script lang="typescript">
+<script>
   export let segment: string;
+  const routes = [
+    { key: undefined, value: "Home" },
+    { key: "about", value: "About" },
+    { key: "blog", value: "Blog" },
+  ];
 </script>
 
-<nav>
-  <ul>
-    <li class="bg-gray-400">
-      <a aria-current={segment === undefined ? 'page' : undefined} href=".">
-        home
-      </a>
-    </li>
-    <li>
-      <a aria-current={segment === 'about' ? 'page' : undefined} href="about">
-        about
-      </a>
-    </li>
+<style>
 
-    <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-    <li>
-      <a
-        rel="prefetch"
-        aria-current={segment === 'blog' ? 'page' : undefined}
-        href="blog">
-        blog
-      </a>
-    </li>
+</style>
+
+<div class="absolute top-0 left-0 flex w-full ">
+  <svg width="100%" height="40" style="overflow:visible">
+    <defs>
+      <pattern
+        id="hex"
+        patternUnits="userSpaceOnUse"
+        patternTransform="translate(-3.5 0)"
+        viewBox="-14 -16 28 48"
+        width="26"
+        height="66">
+        <g fill="none" stroke-width="1" stroke="currentcolor">
+          <path d=" M0 -16 L-14 -8 L -14 8 L 0 16 L 14 8 L 14 -8 L 0 -16 z " />
+          <path
+            d=" M0 -16 L-14 -8 L -14 8 L 0 16 L 14 8 L 14 -8 L 0 -16 z "
+            transform="translate(14 24)" />
+          <g stroke-width="1" opacity="0.5">
+            <path d=" M0 -16 L 0 0 M-14 8 L0 0 L14 8 " />
+            <path
+              d=" M0 -16 L 0 0 M-14 8 L0 0 L14 8 "
+              transform="translate(14 24)" />
+            <path
+              d=" M0 -16 L 0 0 M-14 8 L0 0 L14 8 "
+              transform="translate(-14 24)" />
+          </g>
+        </g>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#hex)" />
+  </svg>
+</div>
+
+<nav class="mt-12">
+  <ul class="flex py-6">
+    {#each routes as { key, value }}
+      <li class="mx-6">
+        <span>/</span>
+        <a
+          class={segment === key ? 'text-teal-300' : 'hover:text-teal-200'}
+          href="/{key === undefined ? '.' : key}"
+          rel="prefetch">
+          {value}
+        </a>
+      </li>
+    {/each}
   </ul>
 </nav>
