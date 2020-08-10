@@ -3,7 +3,7 @@ export const theme = {
   extend: {
     fontFamily: {
       display: ["Abril Fatface"],
-      sans: ["Open Sans"],
+      sans: ["Merriweather Sans"],
     },
     inset: {
       "1/2": "50%",

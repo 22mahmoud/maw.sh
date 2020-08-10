@@ -81,6 +81,7 @@ const server = [
 
 const serviceWorker = [
   resolve(),
+  typescript({ sourceMap: !!sourcemap }),
   replace({
     "process.browser": true,
     "process.env.NODE_ENV": JSON.stringify(mode),

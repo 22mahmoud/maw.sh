@@ -3,16 +3,17 @@ import postcssImport from "postcss-import";
 import autoprefixer from "autoprefixer";
 import postcssPurgecss from "@fullhuman/postcss-purgecss";
 import tailwindcss from "tailwindcss";
+
 import * as tailwindcssConfig from "./tailwind.config";
 
 const production = process.env.NODE_ENV === "production";
 
 export const plugins = [
-  postcssImport,
+  postcssImport(),
 
   tailwindcss(tailwindcssConfig),
 
-  autoprefixer,
+  autoprefixer(),
 
   production &&
     postcssPurgecss({

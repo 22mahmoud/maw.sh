@@ -21,7 +21,9 @@
 
   </script>
 </svelte:head>
+
 <PageLoadingBar {preloading} />
+
 <div class="flex flex-col w-full min-h-screen">
   <div class="flex-1">
     <header class="w-full my-3">
