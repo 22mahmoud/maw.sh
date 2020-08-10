@@ -1,17 +1,13 @@
 <script>
-  import { stores } from "@sapper/app";
-  import PageLoadingBar from "sapper-page-loading-bar/PageLoadingBar.svelte";
+  import { stores } from '@sapper/app';
+  import PageLoadingBar from 'sapper-page-loading-bar/PageLoadingBar.svelte';
 
-  import Nav from "../components/Nav.svelte";
-  import Footer from "../components/Footer.svelte";
+  import Nav from '../components/Nav.svelte';
+  import Footer from '../components/Footer.svelte';
 
   export let segment: string;
   const { preloading } = stores();
 </script>
-
-<style global>
-  @import "../styles/index.css";
-</style>
 
 <svelte:head>
   <script
@@ -43,3 +39,7 @@
     </div>
   </footer>
 </div>
+
+<style global>
+  @import '../styles/index.css';
+</style>

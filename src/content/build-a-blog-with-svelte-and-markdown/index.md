@@ -44,7 +44,7 @@ After installing the dependencies, you should be good to go and start your serve
 
 Voila, 🎉 the application now up and running.
 
-![sapper template home page](./bg1.png)
+![sapper template home page](assets/content/g1.png)
 
 Let's open the project in your favorite editor. and go to the `blog` folder
 inside the `src/routes`.

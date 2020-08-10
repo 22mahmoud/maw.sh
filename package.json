@@ -14,7 +14,8 @@
     "validate": "svelte-check --ignore src/node_modules/@sapper",
     "build": "NODE_ENV=production sapper build --legacy --ext '.svelte .svx'",
     "export": "NODE_ENV=production sapper export --legacy --ext '.svelte .svx'",
-    "start": "NODE_ENV=production node __sapper__/build --ext '.svelte .svx'"
+    "start": "NODE_ENV=production node __sapper__/build --ext '.svelte .svx'",
+    "lint": "prettier --write ./src/**/*.{ts,svelte}"
   },
   "dependencies": {
     "compression": "^1.7.1",
@@ -54,7 +55,10 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^7.0.32",
     "postcss-import": "^12.0.1",
+    "prettier": "^2.0.5",
+    "prettier-plugin-svelte": "^1.1.0",
     "rollup": "^2.3.4",
+    "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-svelte": "^5.0.1",
     "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.0",

@@ -1,3 +1,7 @@
+<div class="content">
+  <slot />
+</div>
+
 <style global>
   .content img {
     max-width: 100%;
@@ -67,7 +71,3 @@
     @apply mb-3;
   }
 </style>
-
-<div class="content">
-  <slot />
-</div>

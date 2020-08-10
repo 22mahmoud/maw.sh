@@ -1,13 +1,12 @@
 import path from "path";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
-import image from "@rollup/plugin-image";
-import url from "@rollup/plugin-url";
 import json from "@rollup/plugin-json";
 import commonjs from "@rollup/plugin-commonjs";
 import svelte from "rollup-plugin-svelte";
 import babel from "@rollup/plugin-babel";
 import typescript from "@rollup/plugin-typescript";
+import copy from "rollup-plugin-copy";
 import { terser } from "rollup-plugin-terser";
 
 import { preprocess } from "./preprocess";
@@ -23,9 +22,10 @@ const shared = [
   typescript({ sourceMap: !!sourcemap }),
   commonjs(),
   json(),
-  url({
-    fileName: "[dirname][hash][extname]",
-    sourceDir: path.join(__dirname, "src"),
+  copy({
+    targets: [
+      { src: "src/content/**/*.{png,jpg}", dest: "static/assets/content" },
+    ],
   }),
 ];
 
