@@ -4,7 +4,3 @@
 yarn-error.log
 /cypress/screenshots/
 /__sapper__/
-
-# Local Netlify folder
-.netlify
-.env

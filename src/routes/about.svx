@@ -3,9 +3,9 @@ title: About Mahmoud Ashraf
 description: All about Mahmoud Ashraf
 ---
 
-```js exec
-import SEO from '../components/SEO.svelte'
-```
+<script>
+	import SEO from '../components/SEO.svelte'
+</script>
 
 <SEO title="About | Mahmoud Ashraf" description="All about Mahmoud Ashraf"/>
 

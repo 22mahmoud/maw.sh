@@ -1,16 +1,16 @@
 <script>
-  import siteMetadata from '../../config/siteMetaData.js';
+  import siteMetadata from '../siteMetaData';
   export let title = siteMetadata.title;
   export let description = siteMetadata.description;
   export let keywords = siteMetadata.keywords;
-  export let slug = null;
+  export let slug: string | null = null;
   export let thumb = `https://mahmoudashraf.dev/${siteMetadata.image}`;
 </script>
 
 <svelte:head>
   <title>{title}</title>
   <meta name="description" content="{description}" />
-  <meta name="keywords" content="{keywords}" />
+  <meta name="keywords" content="{keywords.join(', ')}" />
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{slug ? 'article' : 'website'}" />
   <meta

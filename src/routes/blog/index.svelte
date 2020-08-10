@@ -1,47 +1,40 @@
 <script context="module">
-  export function preload({ params, query }) {
+  export function preload() {
+    // @ts-ignore
     return this.fetch(`blog.json`)
-      .then(r => r.json())
-      .then(posts => {
+      .then((r: any) => r.json())
+      .then((posts: any[]) => {
         return { posts };
       });
   }
 </script>
 
 <script>
-  import format from 'date-fns/format';
-  import SEO from '../../components/SEO.svelte';
-  export let posts;
-  function formatDate(date) {
-    return format(new Date(date), 'PP');
+  import format from "date-fns/format";
+  import SEO from "../../components/SEO.svelte";
+  export let posts: any[];
+  function formatDate(date: string = Date()) {
+    return format(new Date(date), "PP");
   }
 </script>
 
+<style>
+
+</style>
+
 <SEO title="Blog | Mahmoud Ashraf" description="Mahmoud Ashraf blog posts" />
-{#each posts as { title, slug, date, description, categories }}
+{#each posts as { title, slug, date, description }}
   <article class="my-6">
     <header>
-      <h3 class="font-bold text-2xl text-teal-300">
+      <h3 class="text-2xl font-bold text-teal-300">
         <a rel="prefetch" href="blog/{slug}">{title}</a>
       </h3>
       <small>
         <date>{formatDate(date)}</date>
       </small>
       <div class="my-2 md:my-1">
-        <!-- {#each categories as category}
-          <span
-            class="mr-2 px-2 bg-teal-800 hover:bg-teal-700 transation-all
-            duration-200 ease-in rounded-md"
-          >
-            <a rel="prefetch" href="categories/{category}">{category}</a>
-          </span>
-        {/each} -->
+        <p class="text-base">{description}</p>
       </div>
-      <p class="text-base">{description}</p>
     </header>
   </article>
 {/each}
-
-<style>
-
-</style>

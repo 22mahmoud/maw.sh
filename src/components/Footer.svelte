@@ -16,7 +16,9 @@
 <div class="flex flex-wrap items-start">
   {#each social as { href, name, icon }}
     <a
-      class="flex content-center justify-center px-2 mx-4 my-4 text-gray-300 border-teal-200 fill-current transition-all duration-200 ease-in hover:text-teal-200 hover:border-b-2"
+      class="flex content-center justify-center px-2 mx-4 my-4 text-gray-300
+      border-teal-200 fill-current transition-all duration-200 ease-in
+      hover:text-teal-200 hover:border-b-2"
       {href}
     >
       {@html icon}

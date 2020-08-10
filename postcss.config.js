@@ -1,21 +1,31 @@
-const purgecss = require('@fullhuman/postcss-purgecss')({
-  content: ['./src/**/*.html', './src/**/*.svelte'],
-  whitelistPatterns: [/svelte-/],
-  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
-});
+import cssnano from "cssnano";
+import postcssImport from "postcss-import";
+import autoprefixer from "autoprefixer";
+import postcssPurgecss from "@fullhuman/postcss-purgecss";
+import tailwindcss from "tailwindcss";
 
-const production = process.env.NODE_ENV !== 'development';
+import * as tailwindcssConfig from "./tailwind.config";
 
-module.exports = {
-  plugins: [
-    require('postcss-import'),
-    require('tailwindcss'),
-    require('autoprefixer'),
-    require('postcss-fail-on-warn'),
-    production && purgecss,
-    production &&
-      require('cssnano')({
-        preset: 'default',
-      }),
-  ].filter(Boolean),
-};
+const production = process.env.NODE_ENV === "production";
+
+export const plugins = [
+  postcssImport(),
+
+  tailwindcss(tailwindcssConfig),
+
+  autoprefixer(),
+
+  production &&
+    postcssPurgecss({
+      content: ["./src/**/*.svelte", "./src/**/*.html"],
+      defaultExtractor: (content) =>
+        [...content.matchAll(/(?:class:)*([\w\d-/:%.]+)/gm)].map(
+          ([_match, group, ..._rest]) => group
+        ),
+    }),
+
+  production &&
+    cssnano({
+      preset: ["default", { discardComments: { removeAll: true } }],
+    }),
+].filter(Boolean);

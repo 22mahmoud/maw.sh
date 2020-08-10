@@ -5,18 +5,21 @@
   import Nav from '../components/Nav.svelte';
   import Footer from '../components/Footer.svelte';
 
-  export let segment;
+  export let segment: string;
   const { preloading } = stores();
 </script>
 
 <svelte:head>
-  <script 
-    data-goatcounter="https://stats.mahmoudashraf.dev/count" 
-    async 
-    src="//stats.mahmoudashraf.dev/count.js"></script>
+  <script
+    data-goatcounter="https://stats.mahmoudashraf.dev/count"
+    async
+    src="//stats.mahmoudashraf.dev/count.js">
+
+  </script>
 </svelte:head>
 
 <PageLoadingBar {preloading} />
+
 <div class="flex flex-col w-full min-h-screen">
   <div class="flex-1">
     <header class="w-full my-3">
@@ -37,6 +40,6 @@
   </footer>
 </div>
 
-<style>
-
+<style global>
+  @import '../styles/index.css';
 </style>

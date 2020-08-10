@@ -1,5 +1,5 @@
 <script>
-  export let segment;
+  export let segment: string;
   const routes = [
     { key: undefined, value: 'Home' },
     { key: 'about', value: 'About' },
@@ -7,7 +7,7 @@
   ];
 </script>
 
-<div class="flex absolute top-0 left-0 w-full ">
+<div class="absolute top-0 left-0 flex w-full ">
   <svg width="100%" height="40" style="overflow:visible">
     <defs>
       <pattern
