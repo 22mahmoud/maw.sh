@@ -19,7 +19,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan('dev'));
 
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 
 app.get('/', (_req, res) => {
   res.render('home', { name: 'Mahmoud' });
