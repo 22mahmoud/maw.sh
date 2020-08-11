@@ -41,6 +41,7 @@
     "lint-staged": ">=10",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
+    "typescript": "^3.9.7",
     "typesync": "^0.7.0"
   },
   "dependencies": {
