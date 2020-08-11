@@ -1,4 +1,9 @@
 {
   "extends": "./tsconfig.json",
-  "include": [".eslintrc.js", ".prettierrc.js"]
+  "include": [
+    ".eslintrc.js",
+    ".prettierrc.js",
+    "babel.config.js",
+    "webpack.config.js"
+  ]
 }

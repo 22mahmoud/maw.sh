@@ -5,7 +5,11 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.tooling.json'],
+    project: [
+      './tsconfig.json',
+      './tsconfig.tooling.json',
+      './tsconfig.web.json',
+    ],
   },
   extends: [
     'airbnb-typescript/base',

@@ -7,11 +7,11 @@ import helmet from 'helmet';
 
 const app = express();
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 app.use(compression());
 
-app.set('views', path.join(__dirname, '../', 'views'));
+app.set('views', path.join(__dirname, '../', 'web', 'views'));
 app.set('view engine', 'pug');
 
 app.use(bodyParser.json());
