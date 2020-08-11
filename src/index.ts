@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
 import compression from 'compression';
@@ -10,6 +11,9 @@ const port = process.env.PORT || 8000;
 
 app.use(compression());
 
+app.set('views', path.join(__dirname, '../', 'views'));
+app.set('view engine', 'pug');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -18,7 +22,7 @@ app.use(morgan('dev'));
 app.use(helmet());
 
 app.get('/', (_req, res) => {
-  res.send('Hello, World');
+  res.render('home', { name: 'Mahmoud' });
 });
 
 app.listen(port, () => {
