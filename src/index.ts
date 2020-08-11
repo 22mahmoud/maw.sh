@@ -25,6 +25,10 @@ app.use(
   })
 );
 
+app.use(
+  express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 })
+);
+
 app.get('/', (_req, res) => {
   res.render('home', { name: 'Mahmoud' });
 });
