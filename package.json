@@ -39,13 +39,5 @@
     "express": "^4.17.1",
     "helmet": "^4.0.0",
     "morgan": "^1.10.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix"
   }
 }
