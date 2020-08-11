@@ -9,6 +9,7 @@
     "build": "yarn build:tsc",
     "build:ts": "tsc",
     "start": "node dist/index.js",
+    "format:js": "prettier 'src/**/*.{js,ts}' --write",
     "lint": "eslint 'src/**/*.{js,ts}'",
     "lint:fix": "yarn eslint --fix",
     "dev": "concurrently -k -n TypeScript,Node -c cyan.bold,green.bold yarn:watch:ts yarn:watch:node",
@@ -27,11 +28,21 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "husky": ">=4",
+    "lint-staged": ">=10",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "typescript": "^3.9.7"
   },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }
