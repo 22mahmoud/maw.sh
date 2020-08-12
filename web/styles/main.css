@@ -1,5 +1,8 @@
+@import './fonts.css';
+
 body {
   margin: 0;
   padding: 0;
   background-color: red;
+  font-family: 'Merriweather Sans', sans-serif;
 }
