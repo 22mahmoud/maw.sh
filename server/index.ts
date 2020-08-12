@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import { manifestHelper } from './midllewares/manifestMiddleware';
 import { paths } from '../config/paths';
-import { clientDevServer } from './midllewares/clientDevServer';
+import { clientDevServer } from './utils/clientDevServer';
 
 const app = express();
 
