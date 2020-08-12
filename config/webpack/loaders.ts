@@ -2,6 +2,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { RuleSetRule } from 'webpack';
 
 const isProd = process.env.NODE_ENV === 'production';
+const isDev = process.env.NODE_ENV === 'development';
 
 const cssRegex = /\.css$/;
 
@@ -20,8 +21,15 @@ const cssLoader: RuleSetRule = {
   test: cssRegex,
   exclude: /node_modules/,
   use: [
-    MiniCssExtractPlugin.loader,
-    'css-loader',
+    {
+      loader: MiniCssExtractPlugin.loader,
+      options: {
+        sourceMap: true,
+        hmr: isDev,
+        reloadAll: isDev,
+      },
+    },
+    { loader: 'css-loader', options: { sourceMap: true } },
     {
       loader: 'postcss-loader',
       options: {

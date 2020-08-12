@@ -1,18 +1,22 @@
-import fs from 'fs';
-import path from 'path';
 import express from 'express';
 import compression from 'compression';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import { manifestHelper } from './midllewares/manifestMiddleware';
+import { paths } from '../config/paths';
+import { clientDevServer } from './midllewares/clientDevServer';
 
 const app = express();
 
 const port = process.env.PORT || 3000;
+const isDev = process.env.NODE_ENV === 'development';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+isDev && clientDevServer(app);
 
 app.use(compression());
 
-app.set('views', path.join(__dirname, '../', 'web', 'views'));
+app.set('views', paths.views);
 app.set('view engine', 'pug');
 
 app.use(express.json());
@@ -26,11 +30,9 @@ app.use(
   })
 );
 
-const publicPath = path.resolve(fs.realpathSync(process.cwd()), 'dist/public');
+app.use(express.static(paths.build, { maxAge: 31557600000 }));
 
-app.use(express.static(publicPath, { maxAge: 31557600000 }));
-
-app.use(manifestHelper(`${publicPath}/manifest.json`));
+app.use(manifestHelper(`${paths.build}/manifest.json`));
 
 app.get('/', (_req, res) => {
   res.render('home', { name: 'Mahmoud' });

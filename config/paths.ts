@@ -10,4 +10,5 @@ export const paths = {
   src: resolveApp('web'),
   static: resolveApp('web/static'),
   build: resolveApp('dist/public'),
+  views: resolveApp('web/views'),
 };

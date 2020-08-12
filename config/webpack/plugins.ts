@@ -22,4 +22,6 @@ export const plugins: Plugin[] = [
     __SERVER__: 'false',
     __BROWSER__: 'true',
   }),
-];
+
+  isDev() && new webpack.HotModuleReplacementPlugin(),
+].filter(Boolean) as Plugin[];

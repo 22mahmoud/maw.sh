@@ -5,10 +5,6 @@ const clientDevConfig: Configuration = {
 
   devtool: 'cheap-module-source-map',
 
-  devServer: {
-    writeToDisk: true,
-  },
-
   output: {
     filename: '[name].[hash:4].js',
     crossOriginLoading: 'anonymous',

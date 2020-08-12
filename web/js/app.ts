@@ -6,6 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   counterBtn.addEventListener('click', () => {
     counter += 1;
-    console.log(counter);
+    console.log(counter, 'w');
   });
 });

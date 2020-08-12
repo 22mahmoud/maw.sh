@@ -6,7 +6,7 @@
   "author": "22mahmoud <mahmoudss1997@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node dist/server/index.js",
     "clean": "rimraf dist",
     "build": "yarn clean && yarn build:web && yarn build:server",
     "build:server": "NODE_ENV=production tsc",
@@ -14,7 +14,7 @@
     "format:js": "prettier '{server,web}/**/*.{js,ts}' --write",
     "lint": "eslint '{server,web}/**/*.{js,ts}'",
     "lint:fix": "yarn eslint --fix",
-    "dev": "yarn clean && NODE_ENV=development concurrently -k -n Web,Server -c yellow.bold,cyan.bold,green.bold yarn:watch:web yarn:watch:server",
+    "dev": "yarn clean && yarn watch:server",
     "watch:server": "NODE_ENV=development tsnd ./server/index.ts",
     "watch:web": "NODE_ENV=development TS_NODE_PROJECT=tsconfig.tooling.json webpack-dev-server --config ./config/webpack/webpack.config.ts --env.env=dev",
     "postinstall": "typesync"
@@ -49,6 +49,7 @@
     "@types/webpack": "^4.41.21",
     "@types/webpack-dev-middleware": "^3.7.1",
     "@types/webpack-dev-server": "^3.11.0",
+    "@types/webpack-hot-middleware": "^2.25.3",
     "@types/webpack-manifest-plugin": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^3.6.1",
     "@typescript-eslint/parser": "^3.9.0",
@@ -83,6 +84,7 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-dev-server": "^3.11.0",
+    "webpack-hot-middleware": "^2.25.0",
     "webpack-manifest-plugin": "^2.2.0",
     "webpack-merge": "^5.1.1"
   },
