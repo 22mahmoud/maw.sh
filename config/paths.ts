@@ -8,5 +8,6 @@ const resolveApp = (relativePath: string): string =>
 
 export const paths = {
   src: resolveApp('web'),
+  static: resolveApp('web/static'),
   build: resolveApp('dist/public'),
 };

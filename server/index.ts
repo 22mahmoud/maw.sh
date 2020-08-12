@@ -26,13 +26,11 @@ app.use(
   })
 );
 
-app.use(
-  express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 })
-);
+const publicPath = path.join(__dirname, 'public');
 
-const manifestPath = path.join(__dirname, 'public');
+app.use(express.static(publicPath, { maxAge: 31557600000 }));
 
-app.use(manifestHelper(`${manifestPath}/manifest.json`));
+app.use(manifestHelper(`${publicPath}/manifest.json`));
 
 app.get('/', (_req, res) => {
   res.render('home', { name: 'Mahmoud' });
