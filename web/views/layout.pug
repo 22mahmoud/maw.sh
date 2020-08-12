@@ -1,0 +1,22 @@
+doctype html
+html(lang='en')
+	head
+		title=title ? `Mahmoud Ashraf - ${title}` : meta.defaultTitle
+		meta(name="description", content=description || meta.defaultDescription)
+		meta(charSet="utf-8")
+
+		// get styles path
+		- const styles = assetPath("app.css")
+		if styles 
+			link(rel='stylesheet', href=styles)
+
+	body
+		block content
+
+		// get both app and vendor scripts
+		- const appScript = assetPath("app.js")
+		- const vendorScript = assetPath("vendor.js")
+		if appScript
+			script(src=appScript)
+		if vendorScript
+			script(src=vendorScript)

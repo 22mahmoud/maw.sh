@@ -34,8 +34,17 @@ app.use(express.static(paths.build, { maxAge: 31557600000 }));
 
 app.use(manifestHelper(`${paths.build}/manifest.json`));
 
+app.use((_req, res, next) => {
+  res.locals.meta = {
+    defaultTitle: 'Mahmoud Ashraf',
+    defaultDescription: "Mahmoud Ashraf's sapce on the internet.",
+  };
+
+  next();
+});
+
 app.get('/', (_req, res) => {
-  res.render('home', { name: 'Mahmoud' });
+  res.render('home', { name: 'Mahmoud', title: 'Home' });
 });
 
 app.listen(port, () => {
