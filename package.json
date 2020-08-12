@@ -90,7 +90,6 @@
     "webpack-merge": "^5.1.1"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "helmet": "^4.0.0",

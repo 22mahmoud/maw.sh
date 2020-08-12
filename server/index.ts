@@ -1,6 +1,5 @@
 import path from 'path';
 import express from 'express';
-import bodyParser from 'body-parser';
 import compression from 'compression';
 import morgan from 'morgan';
 import helmet from 'helmet';
@@ -15,8 +14,8 @@ app.use(compression());
 app.set('views', path.join(__dirname, '../', 'web', 'views'));
 app.set('view engine', 'pug');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(morgan('dev'));
 
