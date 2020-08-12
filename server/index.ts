@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import compression from 'compression';
 import morgan from 'morgan';
 import helmet from 'helmet';
+import { manifestHelper } from './midllewares/manifestMiddleware';
 
 const app = express();
 
@@ -28,6 +29,10 @@ app.use(
 app.use(
   express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 })
 );
+
+const manifestPath = path.join(__dirname, 'public');
+
+app.use(manifestHelper(`${manifestPath}/manifest.json`));
 
 app.get('/', (_req, res) => {
   res.render('home', { name: 'Mahmoud' });

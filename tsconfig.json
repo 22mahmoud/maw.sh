@@ -1,15 +1,12 @@
 {
   "compilerOptions": {
+    "target": "esnext",
     "module": "commonjs",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "ESNext",
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "sourceMap": true,
+    "declaration": true,
     "outDir": "dist",
-    "baseUrl": "."
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["server/**/*"]
 }

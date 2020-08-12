@@ -1,9 +1,19 @@
 {
-  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "esModuleInterop": true
+  },
+  "exclude": ["server"],
   "include": [
+    "config",
+    "scripts",
     ".eslintrc.js",
-    ".prettierrc.js",
+    "prettier.config.js",
+    "postcss.config.js",
     "babel.config.js",
-    "webpack.config.js"
+    "stylelint.config.js",
+    ".huskyrc.js",
+    ".lintstagedrc.js"
   ]
 }

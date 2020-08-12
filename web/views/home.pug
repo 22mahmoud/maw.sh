@@ -4,9 +4,16 @@ html(lang='en')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0')
 		meta(name='description', content='')
 		title Mahmoud Ashraf
-		link(rel='stylesheet', href="app.css")
+		- const styles = assetPath("app.css")
+		if styles 
+			link(rel='stylesheet', href=styles)
 	body
 		h1 Hello #{name}
 		button(class='counter')
 			span Click me
-		script(src="app.js")
+		- const appScript = assetPath("app.js")
+		- const vendorScript = assetPath("vendor.js")
+		if assetPath('app.js') 
+			script(src=appScript)
+		if assetPath('vendor.js') 
+			script(src=vendorScript)
