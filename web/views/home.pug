@@ -9,11 +9,12 @@ html(lang='en')
 			link(rel='stylesheet', href=styles)
 	body
 		h1 Hello #{name}
+		img(alt="background" id="bg")
 		button(class='counter')
 			span Click me
 		- const appScript = assetPath("app.js")
 		- const vendorScript = assetPath("vendor.js")
-		if assetPath('app.js') 
+		if appScript
 			script(src=appScript)
-		if assetPath('vendor.js') 
+		if vendorScript
 			script(src=vendorScript)
