@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path from 'path';
 import express from 'express';
 import compression from 'compression';
@@ -25,7 +26,7 @@ app.use(
   })
 );
 
-const publicPath = path.join(__dirname, 'public');
+const publicPath = path.resolve(fs.realpathSync(process.cwd()), 'dist/public');
 
 app.use(express.static(publicPath, { maxAge: 31557600000 }));
 
