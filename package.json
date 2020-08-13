@@ -28,7 +28,6 @@
     "@types/autoprefixer": "^9.7.2",
     "@types/babel__core": "^7.1.9",
     "@types/babel__preset-env": "^7.9.0",
-    "@types/compression": "^1.7.0",
     "@types/concurrently": "^5.2.1",
     "@types/copy-webpack-plugin": "^6.0.0",
     "@types/cssnano": "^4.0.0",
@@ -89,7 +88,6 @@
     "webpack-merge": "^5.1.1"
   },
   "dependencies": {
-    "compression": "^1.7.4",
     "express": "^4.17.1",
     "helmet": "^4.0.0",
     "morgan": "^1.10.0",

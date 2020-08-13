@@ -11,4 +11,5 @@ export const paths = {
   static: resolveApp('web/static'),
   build: resolveApp('dist/public'),
   views: resolveApp('web/views'),
+  manifest: resolveApp('dist/public/manifest.json'),
 };

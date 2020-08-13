@@ -9,7 +9,7 @@ import getWebpackConfig from '../../config/webpack/webpack.config';
 const PORT = 3000;
 const HOST = 'http://localhost';
 
-export const clientDevServer = async (app: Express) => {
+export const webpackDevServer = async (app: Express) => {
   const webpackConfig = await getWebpackConfig({ env: 'dev' });
 
   webpackConfig.entry = {
@@ -33,6 +33,7 @@ export const clientDevServer = async (app: Express) => {
     webpackDevMiddleware(webpackCompiler, {
       publicPath: paths.build,
       writeToDisk: true,
+      stats: webpackConfig.stats,
     })
   );
 

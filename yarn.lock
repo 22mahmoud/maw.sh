@@ -967,13 +967,6 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
-"@types/compression@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@types/compression/-/compression-1.7.0.tgz#8dc2a56604873cf0dd4e746d9ae4d31ae77b2390"
-  integrity sha512-3LzWUM+3k3XdWOUk/RO+uSjv7YWOatYq2QADJntK1pjkk4DfVP0KrIEPDnXRJxAAGKe0VpIPRmlINLDuCedZWw==
-  dependencies:
-    "@types/express" "*"
-
 "@types/concurrently@^5.2.1":
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/@types/concurrently/-/concurrently-5.2.1.tgz#de20f99f4db3e8ea5176c82033b79d1f343f307f"

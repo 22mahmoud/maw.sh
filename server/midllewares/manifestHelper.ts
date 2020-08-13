@@ -11,8 +11,6 @@ interface Manifet {
 let manifest: Manifet;
 
 function loadManifest(path: string): Manifet {
-  // if (manifest) return manifest;
-
   try {
     const file = fs.readFileSync(path, 'utf8');
     return JSON.parse(file);
