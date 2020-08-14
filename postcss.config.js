@@ -1,22 +1,15 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable global-require */
+const postcssImport = require('postcss-import');
+const autoprefixer = require('autoprefixer');
 const { paths } = require('./config/paths');
-
-const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
   plugins: [
-    require('postcss-import')({
+    postcssImport({
       path: [paths.src, `${__dirname}/node_modules`],
     }),
 
-    require('autoprefixer')(),
-
-    production &&
-      require('cssnano')({
-        preset: ['default', { discardComments: { removeAll: true } }],
-      }),
-  ].filter(Boolean),
+    autoprefixer(),
+  ],
 
   sourceMap: true,
 };
