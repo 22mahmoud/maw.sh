@@ -45,8 +45,8 @@ export const middlewares = async (app: Express) => {
     const styles = [assetPath('app.css')];
     const scripts = [assetPath('app.js'), assetPath('vendor.js')];
 
-    res.locals.styles = styles;
-    res.locals.scripts = scripts;
+    res.locals.styles = styles.filter(Boolean);
+    res.locals.scripts = scripts.filter(Boolean);
 
     res.locals.cookies = req.cookies;
 

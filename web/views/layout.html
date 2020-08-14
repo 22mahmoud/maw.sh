@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content=
+      {% if description %} "{{ description }}"
+      {% else %} "{{ meta.defaultDescription }}" {% endif %}/>
+    <title>
+      {% if title %} Mahmoud Ashraf - {{ title }}
+      {% else %} {{ meta.defaultTitle }} {% endif %}
+    </title>
+
+    {% for style in styles %}
+    <link rel="stylesheet" href="{{ style }}" />
+    {% endfor %}
+  </head>
+  <body class={% if cookies.theme === 'dark' %} 'dark-theme' {% endif %}>
+    <button class="theme-toggle">Toggle Theme</button>
+    {% block content %} {% endblock %}
+
+    {% for script in scripts %}
+    <script src="{{ script }}"></script>
+    {% endfor %}
+  </body>
+</html>
