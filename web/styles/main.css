@@ -1,8 +1,7 @@
+@import 'normalize.css';
 @import './fonts.css';
 
 body {
-  margin: 0;
-  padding: 0;
   background-color: yellow;
   font-family: 'Merriweather Sans', sans-serif;
 }
