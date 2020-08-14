@@ -1,3 +1,6 @@
 import '../styles/main.css';
+import { handleThemeMode } from './handleThemeMode';
 
-document.addEventListener('DOMContentLoaded', () => {});
+document.addEventListener('DOMContentLoaded', () => {
+  handleThemeMode();
+});

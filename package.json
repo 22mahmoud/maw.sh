@@ -30,6 +30,7 @@
     "@types/babel__core": "^7.1.9",
     "@types/babel__preset-env": "^7.9.0",
     "@types/concurrently": "^5.2.1",
+    "@types/cookie-parser": "^1.4.2",
     "@types/copy-webpack-plugin": "^6.0.0",
     "@types/cssnano": "^4.0.0",
     "@types/eslint": "^7.2.0",
@@ -89,6 +90,7 @@
     "webpack-merge": "^5.1.1"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "helmet": "^4.0.0",
     "morgan": "^1.10.0",

@@ -2,6 +2,17 @@
 @import './fonts.css';
 
 body {
-  background-color: yellow;
+  --bg-color: #fff;
+  --text-color: #000;
+}
+
+body.dark-theme {
+  --bg-color: #000;
+  --text-color: #efefef;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: 'Merriweather Sans', sans-serif;
 }

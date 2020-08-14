@@ -14,7 +14,8 @@ html(lang='en')
 		for style in styles 
 			link(rel='stylesheet', href=style)
 
-	body
+	body(class=cookies.theme === 'dark' ? 'dark-theme' : '')
+		button.theme-toggle Toggle Theme 
 		block content
 
 		for script in scripts

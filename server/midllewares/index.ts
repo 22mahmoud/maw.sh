@@ -1,6 +1,7 @@
 import express, { Express } from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 
 import { manifestHelper } from './manifestHelper';
 import { paths } from '../../config/paths';
@@ -23,6 +24,8 @@ export const middlewares = async (app: Express) => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
+  app.use(cookieParser());
+
   // handle static files via nginx server.
   if (isDev) {
     app.use(express.static(paths.build));
@@ -31,7 +34,7 @@ export const middlewares = async (app: Express) => {
   // help to read and parse manifest file to get assets paths.
   app.use(manifestHelper(paths.manifest));
 
-  app.use((_req, res, next) => {
+  app.use((req, res, next) => {
     res.locals.meta = {
       defaultTitle: 'Mahmoud Ashraf',
       defaultDescription: "Mahmoud Ashraf's sapce on the internet.",
@@ -44,6 +47,8 @@ export const middlewares = async (app: Express) => {
 
     res.locals.styles = styles;
     res.locals.scripts = scripts;
+
+    res.locals.cookies = req.cookies;
 
     next();
   });
