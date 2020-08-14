@@ -7,7 +7,7 @@ const production = process.env.NODE_ENV === 'production';
 module.exports = {
   plugins: [
     require('postcss-import')({
-      paths: [paths.src, `${__dirname}/node_modules`],
+      path: [paths.src, `${__dirname}/node_modules`],
     }),
 
     require('autoprefixer')(),
