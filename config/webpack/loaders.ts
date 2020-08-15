@@ -46,7 +46,7 @@ const cssLoaderServer: RuleSetRule = {
 };
 
 const urlLoaderClient: RuleSetRule = {
-  test: /\.(png|jpe?g|gif|svg)$/,
+  test: /\.(png|jpe?g|gif|svg|webp)$/,
   loader: 'url-loader',
   options: {
     limit: 2048,
@@ -57,13 +57,17 @@ const urlLoaderClient: RuleSetRule = {
 };
 
 const urlLoaderServer: RuleSetRule = {
-  test: /\.(png|jpe?g|gif|svg)$/,
+  test: /\.(png|jpe?g|gif|svg|webp)$/,
   loader: 'url-loader',
   options: {
     limit: 2048,
     name: '[name].[hash:8].[ext]',
     publicPath: 'assets/',
     outputPath: 'public/assets/',
+    fallback: 'responsive-loader',
+    // eslint-disable-next-line
+    adapter: require('responsive-loader/sharp'),
+    sizes: [320, 640, 960, 1200, 1800, 2400],
   },
 };
 

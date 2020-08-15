@@ -32,6 +32,18 @@ export const startServer = async () => {
     res.render('home', {
       title: 'Home',
       name: 'Mahmoud!',
+      /* eslint-disable global-require */
+      images: [
+        {
+          webp: require('../web/assets/images/0i3pbs8fx2351.jpg?format=webp'),
+          image: require('../web/assets/images/0i3pbs8fx2351.jpg'),
+        },
+        {
+          webp: require('../web/assets/images/mt._fuji_very_cool_top.jpg?format=webp'),
+          image: require('../web/assets/images/mt._fuji_very_cool_top.jpg'),
+        },
+      ],
+      /* eslint-enable */
     });
   });
 

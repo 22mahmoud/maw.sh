@@ -2,8 +2,16 @@ extends layout.pug
 
 block content
 	h1 Hello #{name}
-	- const { default: image } = require('../assets/images/linus.gif');
-	img(src=image, width=200, height=200)
+	for image in images
+		picture
+			source(srcSet=image.webp.srcSet, type='image/webp')
+			img(
+				src=image.image.src,
+				srcSet=image.image.srcSet,
+				width=image.image.width,
+				height=image.image.height,
+				alt="sky"
+			)
 	ul
 		li one!
 		li two
