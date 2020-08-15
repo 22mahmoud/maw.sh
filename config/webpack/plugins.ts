@@ -22,13 +22,7 @@ const shared = [
 
 const client = [new ManifestPlugin({ fileName: 'manifest.json' })] as Plugin[];
 
-const server = [
-  // new HtmlWebpackPlugin({
-  //   template: `${paths.views}/home.pug`,
-  //   filename: 'index.html',
-  //   scriptLoading: 'defer',
-  // }),
-] as Plugin[];
+const server = [] as Plugin[];
 
 export const plugins = {
   shared: shared.filter(Boolean),

@@ -1,7 +1,5 @@
-// import path from 'path';
+import path from 'path';
 import express from 'express';
-// @ts-ignore
-import homePage from '../web/views/home.pug';
 
 import { middlewares } from './midllewares';
 import { paths } from '../config/paths';
@@ -14,15 +12,27 @@ export const startServer = async () => {
   app.set('views', paths.views);
   app.set('view engine', 'pug');
 
+  app.engine('pug', async (pugPath, options, done) => {
+    try {
+      const filepath = path.relative(paths.views, pugPath);
+
+      const { default: template } = await import(`../web/views/${filepath}`);
+
+      const html = template(options);
+
+      done(null, html);
+    } catch (error) {
+      done(error);
+    }
+  });
+
   await middlewares(app);
 
   app.get('/', async (_req, res) => {
-    const html = homePage({
+    res.render('home', {
       title: 'Home',
-      name: 'Mahmoud',
-      ...res.locals,
+      name: 'Mahmoud!',
     });
-    res.send(html);
   });
 
   app.listen(port, () => {
