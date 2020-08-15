@@ -1,0 +1,22 @@
+doctype html
+html(lang='en')
+	head
+		title=title ? `Mahmoud Ashraf - ${title}` : meta.defaultTitle
+		meta(name="description", content=description || meta.defaultDescription)
+		meta(charSet="utf-8")
+		meta(httpEquiv="x-ua-compatible", content="ie=edge")
+		meta(
+			name="viewport",
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		)
+
+
+		for style in styles 
+			link(rel='stylesheet', href=style)
+
+	body(class=cookies.theme === 'dark' ? 'dark-theme' : '')
+		button.theme-toggle Toggle Theme 
+		block content
+
+		for script in scripts
+			script(src=script)

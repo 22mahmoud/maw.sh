@@ -9,15 +9,18 @@ import { resolvers } from './resolvers';
 import { plugins } from './plugins';
 
 const clientCommonConfig: Configuration = {
+  name: 'client',
+
   target: 'web',
 
   entry: {
-    app: [path.join(paths.src, 'js/app.ts')],
+    app: [path.join(paths.srcWeb, 'js/app.ts')],
   },
 
   output: {
-    path: paths.build,
-    // chunkFilename: '[name].[chunkhash:4].js',
+    path: paths.buildWeb,
+    chunkFilename: '[name].[chunkhash:4].js',
+    publicPath: '/',
   },
 
   optimization: {
@@ -67,10 +70,10 @@ const clientCommonConfig: Configuration = {
   },
 
   module: {
-    rules: [...loaders],
+    rules: [...loaders.client],
   },
 
-  plugins: [...plugins],
+  plugins: [...plugins.shared, ...plugins.client],
 
   stats: {
     cached: false,

@@ -7,9 +7,11 @@ const resolveApp = (relativePath: string): string =>
   path.resolve(appDirectory, relativePath);
 
 export const paths = {
-  src: resolveApp('web'),
-  static: resolveApp('web/static'),
-  build: resolveApp('dist/public'),
-  views: resolveApp('web/views'),
+  srcWeb: resolveApp('web/'),
+  srcServer: resolveApp('server/'),
+  buildWeb: resolveApp('dist/public/'),
+  buildServer: resolveApp('dist/'),
+  static: resolveApp('web/static/'),
+  views: resolveApp('web/views/'),
   manifest: resolveApp('dist/public/manifest.json'),
 };

@@ -5,6 +5,15 @@ const clientDevConfig: Configuration = {
 
   devtool: 'cheap-module-source-map',
 
+  devServer: {
+    proxy: {
+      '/__webpack_hmr': {
+        target: 'http://localhost:3000',
+        pathRewrite: { '^/__webpack_hmr': '' },
+      },
+    },
+  },
+
   output: {
     filename: '[name].[hash:4].js',
     crossOriginLoading: 'anonymous',

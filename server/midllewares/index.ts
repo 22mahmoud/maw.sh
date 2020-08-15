@@ -5,17 +5,25 @@ import cookieParser from 'cookie-parser';
 
 import { manifestHelper } from './manifestHelper';
 import { paths } from '../../config/paths';
-import { webpackDevServer } from './webpackDevServer';
+// import { webpackDevServer } from './webpackDevServer';
 
 const isDev = process.env.NODE_ENV === 'development';
 
 export const middlewares = async (app: Express) => {
-  if (isDev) {
-    webpackDevServer(app);
-  }
-
   // add secured http headers
-  app.use(helmet());
+  if (isDev) {
+    app.use(
+      helmet({
+        contentSecurityPolicy: {
+          directives: {
+            'default-src': ["'self'", 'localhost:8051'],
+          },
+        },
+      })
+    );
+  } else {
+    app.use(helmet());
+  }
 
   // log requests basic info
   app.use(morgan('dev'));
@@ -28,7 +36,7 @@ export const middlewares = async (app: Express) => {
 
   // handle static files via nginx server.
   if (isDev) {
-    app.use(express.static(paths.build));
+    app.use(express.static(paths.buildWeb));
   }
 
   // help to read and parse manifest file to get assets paths.

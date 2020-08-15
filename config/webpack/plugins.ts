@@ -2,26 +2,36 @@ import webpack, { Plugin } from 'webpack';
 import ManifestPlugin from 'webpack-manifest-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+
 import { paths } from '../paths';
 
 const isDev = () => process.env.NODE_ENV === 'development';
 
-export const plugins: Plugin[] = [
+const shared = [
   new MiniCssExtractPlugin({
     filename: isDev() ? '[name].css' : '[name].[contenthash].css',
     chunkFilename: isDev() ? '[id].css' : '[id].[contenthash].css',
   }),
 
-  new ManifestPlugin({ fileName: 'manifest.json' }),
-
   new CopyPlugin({
-    patterns: [{ from: paths.static, to: paths.build }],
-  }),
-
-  new webpack.DefinePlugin({
-    __SERVER__: 'false',
-    __BROWSER__: 'true',
+    patterns: [{ from: paths.static, to: paths.buildWeb }],
   }),
 
   isDev() && new webpack.HotModuleReplacementPlugin(),
-].filter(Boolean) as Plugin[];
+] as Plugin[];
+
+const client = [new ManifestPlugin({ fileName: 'manifest.json' })] as Plugin[];
+
+const server = [
+  // new HtmlWebpackPlugin({
+  //   template: `${paths.views}/home.pug`,
+  //   filename: 'index.html',
+  //   scriptLoading: 'defer',
+  // }),
+] as Plugin[];
+
+export const plugins = {
+  shared: shared.filter(Boolean),
+  client: client.filter(Boolean),
+  server: server.filter(Boolean),
+};

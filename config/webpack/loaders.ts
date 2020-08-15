@@ -17,7 +17,7 @@ const babelLoader: RuleSetRule = {
   },
 };
 
-const cssLoader: RuleSetRule = {
+const cssLoaderClient: RuleSetRule = {
   test: cssRegex,
   exclude: /node_modules/,
   use: [
@@ -39,29 +39,90 @@ const cssLoader: RuleSetRule = {
   ],
 };
 
-const urlLoader: RuleSetRule = {
+const cssLoaderServer: RuleSetRule = {
+  test: cssRegex,
+  exclude: /node_modules/,
+  use: [MiniCssExtractPlugin.loader, 'css-loader'],
+};
+
+const urlLoaderClient: RuleSetRule = {
   test: /\.(png|jpe?g|gif|svg)$/,
   loader: 'url-loader',
   options: {
     limit: 2048,
-    name: 'assets/[name].[hash:8].[ext]',
+    name: '[name].[hash:8].[ext]',
+    publicPath: 'assets/',
+    outputPath: 'assets/',
   },
 };
 
-const fileLoader: RuleSetRule = {
-  exclude: [/\.(js|jsx|ts|tsx|css|mjs|html|ejs|json)$/],
+const urlLoaderServer: RuleSetRule = {
+  test: /\.(png|jpe?g|gif|svg)$/,
+  loader: 'url-loader',
+  options: {
+    limit: 2048,
+    name: '[name].[hash:8].[ext]',
+    publicPath: 'assets/',
+    outputPath: 'public/assets/',
+  },
+};
+
+const fileLoaderClient: RuleSetRule = {
+  exclude: [/\.(js|jsx|ts|tsx|css|mjs|html|ejs|json|pug)$/],
   use: [
     {
       loader: 'file-loader',
       options: {
-        name: 'assets/[name].[hash:8].[ext]',
+        name: '[name].[hash:8].[ext]',
+        publicPath: 'assets/',
+        outputPath: 'assets/',
       },
     },
   ],
 };
 
-export const loaders: RuleSetRule[] = [
+const fileLoaderServer: RuleSetRule = {
+  exclude: [/\.(js|jsx|ts|tsx|css|mjs|html|ejs|json|pug)$/],
+  use: [
+    {
+      loader: 'file-loader',
+      options: {
+        name: '[name].[hash:8].[ext]',
+        publicPath: 'assets/',
+        outputPath: 'public/assets/',
+      },
+    },
+  ],
+};
+
+const pugLoader: RuleSetRule = {
+  test: /\.pug$/,
+  loader: 'pug-loader',
+  exclude: /node_modules/,
+};
+
+const client: RuleSetRule[] = [
   {
-    oneOf: [babelLoader, cssLoader, urlLoader, fileLoader],
+    oneOf: [
+      babelLoader,
+      cssLoaderClient,
+      pugLoader,
+      urlLoaderClient,
+      fileLoaderClient,
+    ],
   },
 ];
+
+const server: RuleSetRule[] = [
+  {
+    oneOf: [
+      babelLoader,
+      cssLoaderServer,
+      pugLoader,
+      urlLoaderServer,
+      fileLoaderServer,
+    ],
+  },
+];
+
+export const loaders = { server, client };

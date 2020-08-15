@@ -3,21 +3,19 @@ const purgecss = require('@fullhuman/postcss-purgecss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 
-const { paths } = require('./config/paths');
-
 const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
   plugins: [
     postcssImport({
-      path: [paths.src, `node_modules`],
+      path: [`${__dirname}/web`, `node_modules`],
     }),
 
     autoprefixer(),
 
     production &&
       purgecss({
-        content: [`${paths.src}/**/*.{ts,pug}`],
+        content: [`${__dirname}/web/**/*.{ts,html}`],
       }),
 
     production &&

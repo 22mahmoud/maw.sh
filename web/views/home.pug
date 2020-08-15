@@ -1,0 +1,9 @@
+extends layout.pug
+
+block content
+	h1 Hello #{name}
+	- const { default: image } = require('../assets/images/linus.gif');
+	img(src=image, width=200, height=200)
+	ul
+		li one
+		li two
