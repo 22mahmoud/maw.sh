@@ -40,7 +40,7 @@ export const middlewares = async (app: Express) => {
   }
 
   // help to read and parse manifest file to get assets paths.
-  app.use(manifestHelper(`${paths.buildWeb}/manifest-app.json`));
+  app.use(manifestHelper(paths.manifest));
 
   app.use((req, res, next) => {
     res.locals.meta = {
