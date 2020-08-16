@@ -1,7 +1,8 @@
 import express, { Express } from 'express';
-import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import lightTheme from '../../node_modules/highlight.js/styles/atom-one-light.css';
+import darkTheme from '../../node_modules/highlight.js/styles/atom-one-dark.css';
 
 import { manifestHelper } from './manifestHelper';
 import { paths } from '../../config/paths';
@@ -10,21 +11,6 @@ import { paths } from '../../config/paths';
 const isDev = process.env.NODE_ENV === 'development';
 
 export const middlewares = async (app: Express) => {
-  // add secured http headers
-  if (isDev) {
-    app.use(
-      helmet({
-        contentSecurityPolicy: {
-          directives: {
-            'default-src': ["'self'", 'localhost:8051'],
-          },
-        },
-      })
-    );
-  } else {
-    app.use(helmet());
-  }
-
   // log requests basic info
   app.use(morgan('dev'));
 
@@ -50,11 +36,17 @@ export const middlewares = async (app: Express) => {
 
     const { assetPath } = res.locals;
 
-    const styles = [assetPath('app.css')];
+    const codeTheme = [
+      { href: `/${darkTheme}`, name: 'dark-theme' },
+      { href: `/${lightTheme}`, name: 'light-theme' },
+    ];
+
+    const styles = [{ href: assetPath('app.css'), name: 'app' }];
     const scripts = [assetPath('app.js'), assetPath('vendor.js')];
 
     res.locals.styles = styles.filter(Boolean);
     res.locals.scripts = scripts.filter(Boolean);
+    res.locals.codeTheme = codeTheme.filter(Boolean);
 
     res.locals.cookies = req.cookies;
 

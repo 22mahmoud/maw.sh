@@ -10,13 +10,16 @@ html(lang='en')
 			content="width=device-width, initial-scale=1, shrink-to-fit=no"
 		)
 
-
 		for style in styles 
-			link(rel='stylesheet', href=style)
+			link(rel='preload', as="style", href=style.href, onload="this.onload=null;this.rel='stylesheet'")
+			noscript
+				link(rel='stylesheet', href=style.href)
 
-	body(class=cookies.theme === 'dark' ? 'dark-theme' : '')
+		block links
+
+	body(class=cookies.theme === 'light' ? '' : 'dark-theme')
 		button.theme-toggle Toggle Theme 
 		block content
 
 		for script in scripts
-			script(src=script)
+			script(src=script defer)

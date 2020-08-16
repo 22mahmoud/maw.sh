@@ -63,7 +63,7 @@ const start = async () => {
   app.listen(PORT);
 
   serverCompiler.watch(watchOptions, (error, stats) => {
-    if (!error && !stats.hasErrors()) {
+    if (!error && !stats?.hasErrors()) {
       console.log(stats.toString(serverConfig.stats));
       return;
     }
@@ -72,7 +72,7 @@ const start = async () => {
       logMessage(error, 'error');
     }
 
-    if (stats.hasErrors()) {
+    if (stats?.hasErrors()) {
       const info = stats.toJson();
       const errors = info.errors[0].split('\n');
       logMessage(errors[0], 'error');

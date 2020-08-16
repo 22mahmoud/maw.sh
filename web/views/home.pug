@@ -3,6 +3,7 @@ extends layout.pug
 block content
 	h1 Hello #{name}
 	for image in images
+		- console.log(image)
 		picture
 			source(srcSet=image.webp.srcSet, type='image/webp')
 			img(
@@ -15,3 +16,5 @@ block content
 	ul
 		li one!
 		li two
+
+

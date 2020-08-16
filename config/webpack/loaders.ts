@@ -1,5 +1,9 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { RuleSetRule } from 'webpack';
+import RemarkFrontmatter from 'remark-frontmatter';
+import RemarkHTML from 'remark-html';
+import RemarkHighlightjs from 'remark-highlight.js';
+import RemarkOEmbed from '@agentofuser/remark-oembed';
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = process.env.NODE_ENV === 'development';
@@ -64,15 +68,16 @@ const urlLoaderServer: RuleSetRule = {
     name: '[name].[hash:8].[ext]',
     publicPath: 'assets/',
     outputPath: 'public/assets/',
-    fallback: 'responsive-loader',
+    fallback: require.resolve('responsive-loader'),
     // eslint-disable-next-line
     adapter: require('responsive-loader/sharp'),
+    placeholder: true,
     sizes: [320, 640, 960, 1200, 1800, 2400],
   },
 };
 
 const fileLoaderClient: RuleSetRule = {
-  exclude: [/\.(js|jsx|ts|tsx|css|mjs|html|ejs|json|pug)$/],
+  exclude: [/\.(js|jsx|ts|tsx|css|mjs|html|ejs|json|pug|md)$/],
   use: [
     {
       loader: 'file-loader',
@@ -86,7 +91,7 @@ const fileLoaderClient: RuleSetRule = {
 };
 
 const fileLoaderServer: RuleSetRule = {
-  exclude: [/\.(js|jsx|ts|tsx|css|mjs|html|ejs|json|pug)$/],
+  exclude: [/\.(js|jsx|ts|tsx|mjs|html|ejs|json|pug|md)$/],
   use: [
     {
       loader: 'file-loader',
@@ -101,8 +106,12 @@ const fileLoaderServer: RuleSetRule = {
 
 const pugLoader: RuleSetRule = {
   test: /\.pug$/,
-  loader: 'pug-loader',
   exclude: /node_modules/,
+  use: [
+    {
+      loader: 'pug-loader',
+    },
+  ],
 };
 
 const client: RuleSetRule[] = [
@@ -122,6 +131,49 @@ const server: RuleSetRule[] = [
     oneOf: [
       babelLoader,
       cssLoaderServer,
+      {
+        test: /\.md$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              // preprocessor: (content, loaderContext) => {
+              //   console.log({ content, loaderContext });
+              // },
+
+              attributes: {
+                list: [
+                  {
+                    tag: 'img',
+                    attribute: 'src',
+                    type: 'src',
+                  },
+                  {
+                    tag: 'img',
+                    attribute: 'srcset',
+                    type: 'srcset',
+                  },
+                ],
+              },
+            },
+          },
+          {
+            loader: 'remark-loader',
+            options: {
+              removeFrontMatter: false,
+              remarkOptions: {
+                plugins: [
+                  RemarkOEmbed,
+                  RemarkFrontmatter,
+                  RemarkHighlightjs,
+                  RemarkHTML,
+                ],
+                settings: {},
+              },
+            },
+          },
+        ],
+      },
       pugLoader,
       urlLoaderServer,
       fileLoaderServer,

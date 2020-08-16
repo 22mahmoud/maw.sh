@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path from 'path';
 import express from 'express';
 
@@ -28,7 +29,8 @@ export const startServer = async () => {
 
   await middlewares(app);
 
-  app.get('/', async (_req, res) => {
+  // Home Page
+  app.get('/', (_req, res) => {
     res.render('home', {
       title: 'Home',
       name: 'Mahmoud!',
@@ -47,6 +49,20 @@ export const startServer = async () => {
     });
   });
 
+  // blog posts
+  const dirs = fs.readdirSync(path.join(paths.views, 'blog'));
+  dirs.forEach((dir) => {
+    // eslint-disable-next-line
+    let md: string = require(`../web/views/blog/${dir}/index.md`);
+    md = md.replace(/src="assets/g, 'src="/assets');
+    md = md.replace(/src=assets/g, 'src=/assets');
+
+    app.get(`/blog/${dir}`, (_req, res) => {
+      res.render(`templates/blog`, { md });
+    });
+  });
+
+  // start the server
   app.listen(port, () => {
     // eslint-disable-next-line no-console
     console.log(`App is running at http://localhost:${port}`);
