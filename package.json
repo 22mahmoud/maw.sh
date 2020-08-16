@@ -45,6 +45,7 @@
     "@types/postcss-import": "^12.0.0",
     "@types/prettier": "^2.0.2",
     "@types/pug": "^2.0.4",
+    "@types/request": "^2.48.5",
     "@types/rimraf": "^3.0.0",
     "@types/sharp": "^0.25.1",
     "@types/terser-webpack-plugin": "^4.1.0",
@@ -89,6 +90,7 @@
     "responsive-loader": "^2.0.2",
     "rimraf": "^3.0.2",
     "sharp": "^0.25.4",
+    "tailwindcss": "^1.6.2",
     "terser-webpack-plugin": "^4.1.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7",
@@ -106,9 +108,11 @@
   "dependencies": {
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
+    "gray-matter": "^4.0.2",
     "jstransformer": "^1.0.0",
     "morgan": "^1.10.0",
     "normalize.css": "^8.0.1",
-    "pug": "^3.0.0"
+    "pug": "^3.0.0",
+    "request": "^2.88.2"
   }
 }

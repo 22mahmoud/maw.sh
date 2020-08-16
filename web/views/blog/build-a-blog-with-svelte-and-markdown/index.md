@@ -13,8 +13,6 @@ keywords:
   - 'sapper'
 ---
 
-https://www.youtube.com/watch?v=GN0xHSk2P8Q
-
 In this post, we will build a website with a blog using svelte, and sapper.
 
 ### What is Svelte?

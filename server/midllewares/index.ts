@@ -49,6 +49,8 @@ export const middlewares = async (app: Express) => {
     res.locals.scripts = scripts.filter(Boolean);
     res.locals.codeTheme = codeTheme.filter(Boolean);
 
+    res.locals.url = req.url;
+
     res.locals.cookies = req.cookies;
 
     next();

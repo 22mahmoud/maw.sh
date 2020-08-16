@@ -17,12 +17,14 @@ export const handleThemeMode = () => {
       ? 'dark'
       : 'light';
 
-    if (theme === 'dark') {
-      lightTheme.disabled = true;
-      darkTheme.disabled = false;
-    } else if (theme === 'light') {
-      lightTheme.disabled = false;
-      darkTheme.disabled = true;
+    if (darkTheme && lightTheme) {
+      if (theme === 'dark') {
+        lightTheme.disabled = true;
+        darkTheme.disabled = false;
+      } else if (theme === 'light') {
+        lightTheme.disabled = false;
+        darkTheme.disabled = true;
+      }
     }
 
     document.cookie = `theme=${theme}`;

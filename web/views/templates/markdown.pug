@@ -1,5 +1,6 @@
 extends ../layout.pug
 
+	
 block links
 	for theme in codeTheme
 		if theme.name === 'light-theme' && cookies.theme === 'light'
@@ -17,4 +18,7 @@ block links
 		
 
 block content
-	#{md}
+	- const content = 
+	.content
+		h1=meta.title
+		| !{md}

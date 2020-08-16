@@ -1,19 +1,10 @@
 extends layout.pug
 
 block content
-	h1 Hello #{name}
-	for image in images
-		picture
-			source(srcSet=image.webp.srcSet, type='image/webp')
-			img(
-				src=image.image.src,
-				srcSet=image.image.srcSet,
-				width=image.image.width,
-				height=image.image.height,
-				alt="sky"
-			)
-	ul
-		li one!
-		li two
+	.flex.flex-col.content-center.justify-center.h-full
+		div
+			p(class="text-4xl font-display md:text-6xl")
+				| Hi there 👋,  Mahmoud Ashraf a front-end developer
+			p(class="mt-5 text-xl font-light") - 🌍 🌊  Alexandria, Egypt
 
 
