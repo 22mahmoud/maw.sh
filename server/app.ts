@@ -29,7 +29,7 @@ export const startServer = async () => {
 
   await middlewares(app);
 
-  // Home Page
+  // Home Pahe
   app.get('/', (_req, res) => {
     res.render('home', {
       title: 'Home',

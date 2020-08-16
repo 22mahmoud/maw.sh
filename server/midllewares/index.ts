@@ -1,8 +1,9 @@
 import express, { Express } from 'express';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
-import lightTheme from '../../node_modules/highlight.js/styles/atom-one-light.css';
-import darkTheme from '../../node_modules/highlight.js/styles/atom-one-dark.css';
+
+import lightTheme from 'highlight.js/styles/atom-one-light.css';
+import darkTheme from 'highlight.js/styles/atom-one-dark.css';
 
 import { manifestHelper } from './manifestHelper';
 import { paths } from '../../config/paths';
