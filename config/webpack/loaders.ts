@@ -3,7 +3,6 @@ import { RuleSetRule } from 'webpack';
 import RemarkFrontmatter from 'remark-frontmatter';
 import RemarkHTML from 'remark-html';
 import RemarkHighlightjs from 'remark-highlight.js';
-import RemarkOEmbed from '@agentofuser/remark-oembed';
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = process.env.NODE_ENV === 'development';
@@ -162,12 +161,7 @@ const server: RuleSetRule[] = [
             options: {
               removeFrontMatter: false,
               remarkOptions: {
-                plugins: [
-                  RemarkOEmbed,
-                  RemarkFrontmatter,
-                  RemarkHighlightjs,
-                  RemarkHTML,
-                ],
+                plugins: [RemarkFrontmatter, RemarkHighlightjs, RemarkHTML],
                 settings: {},
               },
             },
