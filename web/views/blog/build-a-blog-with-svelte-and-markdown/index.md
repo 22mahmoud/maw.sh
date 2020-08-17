@@ -44,7 +44,7 @@ After installing the dependencies, you should be good to go and start your serve
 
 Voila, 🎉 the application now up and running.
 
-![sapper template home page](./bg1.png?size=960)
+<img src="./bg1.png?size=600" loading="lazy" alt="screenshot of the home page for sapper boilerplate">
 
 Let's open the project in your favorite editor. and go to the `blog` folder
 inside the `src/routes`.
@@ -170,7 +170,7 @@ the markdown.
 
 If you navigate to `/blog` route you should have a page similar to this:
 
-![blog page](./bg2.png?size=960)
+<img src="./bg2.png?size=600" loading="lazy" alt="screenshot of blogs pages">
 
 
 Now we need to handle the post route. open `src/routes/blog/[slug].json.js`
@@ -246,7 +246,7 @@ In `src/client.js` we import Github styles for highlight.js.
   // ...
 ```
 
-![blog post](./bg3.png?size=960)
+<img src="./bg3.png?size=600" loading="lazy" alt="screenshot of the final result showing a sample blog post">
 
 ### conclusion 
 

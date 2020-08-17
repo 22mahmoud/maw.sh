@@ -84,7 +84,7 @@ const fileLoaderClient: RuleSetRule = {
 };
 
 const fileLoaderServer: RuleSetRule = {
-  exclude: [/\.(js|jsx|ts|tsx|mjs|html|ejs|json|pug|md)$/],
+  exclude: [/\.(js|jsx|ts|tsx|mjs|html|ejs|json|pug)$/],
   use: [
     {
       loader: 'file-loader',
