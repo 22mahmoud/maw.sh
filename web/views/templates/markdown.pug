@@ -7,6 +7,8 @@ block links
 			link(rel='stylesheet', title=theme.name, href=theme.href)
 		else if theme.name === 'dark-theme' && cookies.theme === 'dark'
 			link(rel='stylesheet', title=theme.name, href=theme.href)
+		else if !cookies.theme && theme.name === 'dark-theme'
+			link(rel='stylesheet', title=theme.name, href=theme.href)
 		else 
 			link(rel='stylesheet', title=theme.name, href=theme.href, disabled)
 		
