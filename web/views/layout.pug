@@ -22,6 +22,7 @@ html(lang='en')
 			{ href: '/about', value: 'About' },
 			{ href: '/blog', value: 'Blog' },
 		];
+
 		const socials = [
 			{
 				href: 'https://github.com/22mahmoud/',
@@ -78,3 +79,6 @@ html(lang='en')
 
 		for script in scripts
 			script(src=script defer)
+		script(data-goatcounter="https://stats.mahmoudashraf.dev/count",
+			async, src="//stats.mahmoudashraf.dev/count.js")
+
