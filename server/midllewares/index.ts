@@ -3,11 +3,10 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 
 import lightTheme from 'highlight.js/styles/atom-one-light.css';
-import darkTheme from 'highlight.js/styles/atom-one-dark.css';
+import darkTheme from '../../node_modules/highlight.js/styles/dracula.css';
 
 import { manifestHelper } from './manifestHelper';
 import { paths } from '../../config/paths';
-// import { webpackDevServer } from './webpackDevServer';
 
 const isDev = process.env.NODE_ENV === 'development';
 
