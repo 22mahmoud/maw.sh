@@ -20,7 +20,7 @@ const babelLoader: RuleSetRule = {
   },
 };
 
-const cssLoaderClient: RuleSetRule = {
+const cssLoader: RuleSetRule = {
   test: cssRegex,
   exclude: /node_modules/,
   use: [
@@ -40,12 +40,6 @@ const cssLoaderClient: RuleSetRule = {
       },
     },
   ],
-};
-
-const cssLoaderServer: RuleSetRule = {
-  test: cssRegex,
-  exclude: /node_modules/,
-  use: [MiniCssExtractPlugin.loader, 'css-loader'],
 };
 
 const urlLoaderClient: RuleSetRule = {
@@ -113,11 +107,46 @@ const pugLoader: RuleSetRule = {
   ],
 };
 
+const remarkLoader: RuleSetRule = {
+  test: /\.md$/,
+  use: [
+    {
+      loader: 'html-loader',
+      options: {
+        attributes: {
+          list: [
+            {
+              tag: 'img',
+              attribute: 'src',
+              type: 'src',
+            },
+            {
+              tag: 'img',
+              attribute: 'srcset',
+              type: 'srcset',
+            },
+          ],
+        },
+      },
+    },
+    {
+      loader: 'remark-loader',
+      options: {
+        removeFrontMatter: false,
+        remarkOptions: {
+          plugins: [RemarkFrontmatter, RemarkHighlightjs, RemarkHTML],
+          settings: {},
+        },
+      },
+    },
+  ],
+};
+
 const client: RuleSetRule[] = [
   {
     oneOf: [
       babelLoader,
-      cssLoaderClient,
+      cssLoader,
       pugLoader,
       urlLoaderClient,
       fileLoaderClient,
@@ -129,45 +158,8 @@ const server: RuleSetRule[] = [
   {
     oneOf: [
       babelLoader,
-      cssLoaderServer,
-      {
-        test: /\.md$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: {
-              // preprocessor: (content, loaderContext) => {
-              //   console.log({ content, loaderContext });
-              // },
-
-              attributes: {
-                list: [
-                  {
-                    tag: 'img',
-                    attribute: 'src',
-                    type: 'src',
-                  },
-                  {
-                    tag: 'img',
-                    attribute: 'srcset',
-                    type: 'srcset',
-                  },
-                ],
-              },
-            },
-          },
-          {
-            loader: 'remark-loader',
-            options: {
-              removeFrontMatter: false,
-              remarkOptions: {
-                plugins: [RemarkFrontmatter, RemarkHighlightjs, RemarkHTML],
-                settings: {},
-              },
-            },
-          },
-        ],
-      },
+      cssLoader,
+      remarkLoader,
       pugLoader,
       urlLoaderServer,
       fileLoaderServer,
