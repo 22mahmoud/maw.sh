@@ -3,15 +3,10 @@ extends ../layout.pug
 	
 block links
 	for theme in codeTheme
-		if theme.name === 'light-theme' && cookies.theme === 'light'
-			link(rel='stylesheet', title=theme.name, href=theme.href)
-		else if theme.name === 'dark-theme' && cookies.theme === 'dark'
-			link(rel='stylesheet', title=theme.name, href=theme.href)
-		else if !cookies.theme && theme.name === 'dark-theme'
-			link(rel='stylesheet', title=theme.name, href=theme.href)
-		else 
-			link(rel='stylesheet', title=theme.name, href=theme.href, disabled)
-		
+		if theme.name === 'dark-theme'
+			link(rel='preload', as="style", title=theme.name, href=theme.href, onload="this.onload=null;this.rel='stylesheet'")
+			noscript
+				link(rel='stylesheet', title=theme.name, href=theme.href)
 
 block content
 	- const content = 
