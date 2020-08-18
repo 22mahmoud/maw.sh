@@ -45,10 +45,10 @@ After installing the dependencies, you should be good to go and start your serve
 Voila, 🎉 the application now up and running.
 
 <img 
-  src="./bg1.png?size=600" 
+  src="./bg1.jpg?size=600" 
   sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./bg1.png?size=320 320w, ./bg1.png?size=640 640w, 
-    ./bg1.png?size=960 960w, ./bg1.png?size=1200 1200w, ./bg1.png?size=1800 1800w, ./bg1.png?size=2400 2400w"  
+  srcSet="./bg1.jpg?size=320 320w, ./bg1.jpg?size=640 640w, 
+    ./bg1.jpg?size=960 960w, ./bg1.jpg?size=1200 1200w, ./bg1.jpg?size=1800 1800w, ./bg1.jpg?size=2400 2400w"  
   loading="lazy" 
   alt="screenshot of the home page for sapper boilerplate">
 
@@ -177,10 +177,10 @@ the markdown.
 If you navigate to `/blog` route you should have a page similar to this:
 
 <img 
-  src="./bg2.png" 
+  src="./bg2.jpg" 
   sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./bg2.png?size=320 320w, ./bg2.png?size=640 640w, 
-    ./bg2.png?size=960 960w, ./bg2.png?size=1200 1200w, ./bg2.png?size=1800 1800w, ./bg2.png?size=2400 2400w"  
+  srcSet="./bg2.jpg?size=320 320w, ./bg2.jpg?size=640 640w, 
+    ./bg2.jpg?size=960 960w, ./bg2.jpg?size=1200 1200w, ./bg2.jpg?size=1800 1800w, ./bg2.jpg?size=2400 2400w"  
   loading="lazy" alt="screenshot of blogs pages">
 
 
@@ -258,10 +258,10 @@ In `src/client.js` we import Github styles for highlight.js.
 ```
 
 <img 
-  src="./bg3.png" 
+  src="./bg3.jpg" 
   sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./bg3.png?size=320 320w, ./bg3.png?size=640 640w, 
-    ./bg3.png?size=960 960w, ./bg3.png?size=1200 1200w, ./bg3.png?size=1800 1800w, ./bg3.png?size=2400 2400w"  
+  srcSet="./bg3.jpg?size=320 320w, ./bg3.jpg?size=640 640w, 
+    ./bg3.jpg?size=960 960w, ./bg3.jpg?size=1200 1200w, ./bg3.jpg?size=1800 1800w, ./bg3.jpg?size=2400 2400w"  
   loading="lazy" 
   alt="screenshot of the final result showing a sample blog post">
 
