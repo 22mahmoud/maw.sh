@@ -14,8 +14,8 @@ const handleMarkDown = async (mdPath: string) => {
   let { default: md }: { default: string } = await import(
     `../web/views/${filepath}`
   );
-  md = md.replace(/src="assets/g, 'src="/assets');
-  md = md.replace(/src=assets/g, 'src=/assets');
+
+  md = md.replace(/assets/g, '/assets');
 
   const rawMd = fs.readFileSync(mdPath);
   const { data: meta } = grayMatter(rawMd);
