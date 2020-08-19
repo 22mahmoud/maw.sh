@@ -16,7 +16,7 @@ rss(version='2.0' xmlns:atom='https://www.w3.org/2005/Atom')
 					h2=post.title
 					small
 						| [
-						a(href='https://mahmoudashraf.dev/blog/#{post.slug}') link
+						a(href=`https://mahmoudashraf.dev/blog/${post.slug}`) link
 						| !{post.content}
 						| ]
 					|]]>

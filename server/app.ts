@@ -55,6 +55,7 @@ export const startServer = async () => {
     });
   });
 
+  app.get('/rss', (_req, res) => res.redirect('/rss.xml'));
   app.get('/rss.xml', async (_req, res) => {
     res.type('xml');
     const promises: Promise<any>[] = [];
