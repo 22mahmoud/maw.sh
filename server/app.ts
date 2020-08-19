@@ -55,6 +55,22 @@ export const startServer = async () => {
     });
   });
 
+  app.get('/rss.xml', async (_req, res) => {
+    res.type('xml');
+    const promises: Promise<any>[] = [];
+
+    fs.readdirSync('web/views/blog').forEach((dir) => {
+      promises.push(handleMarkDown(`web/views/blog/${dir}/index.md`));
+    });
+
+    let posts = await Promise.all(promises);
+    posts = posts.map((post) => ({ ...post.meta, content: post.md }));
+
+    res.render('rss', {
+      posts,
+    });
+  });
+
   // Home Pahe
   app.get('/blog', (_req, res) => {
     const blogs = fs.readdirSync('web/views/blog').map((dir) => {
