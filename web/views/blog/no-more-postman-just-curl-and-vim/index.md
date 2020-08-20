@@ -1,9 +1,9 @@
 ---
 slug: 'no-more-postman-just-curl-and-vim'
-title: 'No More postman just use cUrl + vim = ❤'
+title: 'No More postman just use cURL + vim = ❤'
 date: '2020-08-20'
 author: 'Mahmoud Ashraf'
-description: 'Well documented api and easy to use and share with your team with simple tools cUrl + vim + git (optional)'
+description: 'Well documented api and easy to use and share with your team with simple tools cURL + vim + git (optional)'
 categories:
   - 'api'
   - 'tooling'
@@ -16,16 +16,16 @@ categories:
   sizes='(min-width: 1024px) 1024px, 100vw'
   srcSet="./bg.jpg?size=320 320w, ./bg.jpg?size=640 640w, 
     ./bg.jpg?size=960 960w, ./bg.jpg?size=1200 1200w, ./bg.jpg?size=1800 1800w, ./bg.jpg?size=2400 2400w"  
-  alt="big brain with vim and cUrl logos">
+  alt="big brain with vim and cURL logos">
 
 Postman one of the most popular API client tool, for send and view the response
 in the development environment. But since Postman is proprietary software and 
 there is a free + open sourced alternative so I'll go for something 
 like insomnia, or postwoman. 
 
-But also I'll go for CLI if exists and cUrl is one of 
+But also I'll go for CLI if exists and cURL is one of 
 the easy to use and fully featured tool and in this article I'll show you how
-to setup a well-documented api with cUrl + vim + git.
+to setup a well-documented api with cURL + vim + git.
 
 ### How to execute CLI inside your vim editor? 
 
@@ -63,7 +63,7 @@ The percent `%` will take whatever inside current buffer and execute it in a pag
     ./screen1.jpg?size=960 960w, ./screen1.jpg?size=1200 1200w, ./screen1.jpg?size=1800 1800w, ./screen1.jpg?size=2400 2400w"  
   loading="lazy" alt="screenshot :!sh command inside vim">
 
-### Test our first cUrl command
+### Test our first cURL command
 
 for demonstrating we will gonna use [jsonplaceholder](https://jsonplaceholder.typicode.com/) as our API to test
 
@@ -140,7 +140,7 @@ now you have vim buffer you can easily search and do whatever you do. and to clo
 command ``:bd!`` or the keyboard shortcut `shift + z + q`.
 
 
-### Is cUrl limited?
+### Is cURL limited?
 
 The answer is **NO**.
 let's see couple of example
@@ -168,7 +168,7 @@ curl -s -X GET -G \
 
 you can still use query params with `-d` but add an additional `-G, --get` to pass it as query params
 
-since this is not a cUrl tutorial that's will be enough and you 
+since this is not a cURL tutorial that's will be enough and you 
 can learn more about advanced stuff like set header, cookie and more from the internet.
 
 ### Using git?
@@ -180,6 +180,6 @@ Of course, on our created directory run `git init` and push for example to githu
 ### Conclusion
 
 You can now write a well-documented api and share it with your friends via git
-all that done with simple and open-sourced tools and that's not limited to cUrl
-you can write you own scripts and run it inside vim, or pipe cUrl command for anther 
+all that done with simple and open-sourced tools and that's not limited to cURL
+you can write you own scripts and run it inside vim, or pipe cURL command for anther 
 tools to manipulate the output for example `jq` so you can filter your output.
