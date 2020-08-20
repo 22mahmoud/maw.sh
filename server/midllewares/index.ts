@@ -10,7 +10,7 @@ import { paths } from '../../config/paths';
 
 const isDev = process.env.NODE_ENV === 'development';
 
-export const middlewares = async (app: Express) => {
+const middlewares = async (app: Express): Promise<void> => {
   // log requests basic info
   app.use(morgan('dev'));
 
@@ -55,3 +55,5 @@ export const middlewares = async (app: Express) => {
     next();
   });
 };
+
+export { middlewares };
