@@ -15,10 +15,8 @@ rss(version='2.0' xmlns:atom='https://www.w3.org/2005/Atom')
 					|<![CDATA[
 					h2=post.title
 					small
-						| [
 						a(href=`https://mahmoudashraf.dev/blog/${post.slug}`) link
 						| !{post.content}
-						| ]
 					|]]>
 				pubDate= new Date(post.date).toUTCString()
 				guid(isPermaLink='false') <a href="https://mahmoudashraf.dev/blog/#{post.slug}" rel="nofollow">https://mahmoudashraf.dev/blog/#{post.slug}</a>

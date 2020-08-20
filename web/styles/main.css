@@ -23,6 +23,10 @@ body {
   font-family: 'Merriweather Sans', sans-serif;
 }
 
+.content {
+  font-size: 0.9rem;
+}
+
 .content img {
   width: 100%;
   max-width: 100%;
