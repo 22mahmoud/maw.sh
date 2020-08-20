@@ -54,7 +54,10 @@ in pager.
 open an empty file inside your vim and write inside it `echo Hello, World!` and save it,
 and then write `:!sh %`. 
 
-The percent `%` will take whatever inside current buffer and execute it in a pager.
+The percent `%` is refer to the filename so if we run it with normal bang `:! %` 
+it will not work because it's trying run the file as executable file not the content inside. 
+
+so we pass `sh` before the `%` to run the content inside the file via shell.
 
 <img 
   src="./screen1.jpg" 
