@@ -2,8 +2,10 @@ import webpack, { Plugin } from 'webpack';
 import ManifestPlugin from 'webpack-manifest-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import SitemapPlugin from 'sitemap-webpack-plugin';
 
 import { paths } from '../paths';
+import { generateSitePaths } from '../utils';
 
 const isDev = () => process.env.NODE_ENV === 'development';
 
@@ -20,7 +22,10 @@ const shared = [
   isDev() && new webpack.HotModuleReplacementPlugin(),
 ] as Plugin[];
 
-const client = [new ManifestPlugin({ fileName: 'manifest.json' })] as Plugin[];
+const client = [
+  new ManifestPlugin({ fileName: 'manifest.json' }),
+  new SitemapPlugin('https://mahmoudashraf.dev', generateSitePaths()),
+] as Plugin[];
 
 const server = [] as Plugin[];
 

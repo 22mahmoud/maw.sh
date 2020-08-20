@@ -112,22 +112,6 @@ const remarkLoader: RuleSetRule = {
   use: [
     {
       loader: 'html-loader',
-      options: {
-        attributes: {
-          list: [
-            {
-              tag: 'img',
-              attribute: 'src',
-              type: 'src',
-            },
-            {
-              tag: 'img',
-              attribute: 'srcset',
-              type: 'srcset',
-            },
-          ],
-        },
-      },
     },
     {
       loader: 'remark-loader',
