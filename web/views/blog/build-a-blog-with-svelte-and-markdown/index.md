@@ -122,7 +122,8 @@ Create a `content` directory on the root of your project.
 inside this directory, we going to create a file called `sample-post.md` file.
 
 ```markdown
-// sample-post.md
+// sample-blog.md
+// remove comments in case you copy and paste this file for test to make it work
 
 ---
 slug: 'sample-blog'
@@ -133,6 +134,7 @@ title: 'Sample blog.'
 
 this is a sample blog post.
 
+// add extra \` to make it work(this blog use same method so tripple \` would be shown as a code here)
 ``javascript
   console.log("test code highlight")
 ``
