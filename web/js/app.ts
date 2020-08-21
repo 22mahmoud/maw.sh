@@ -2,5 +2,12 @@ import '../styles/main.css';
 // import { handleThemeMode } from './handleThemeMode';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // handleThemeMode();
+  document.querySelector('#rss').addEventListener('click', () => {
+    // @ts-ignore
+    window.goatcounter.count({
+      path: 'click-rss',
+      title: 'rss hits',
+      event: true,
+    });
+  });
 });
