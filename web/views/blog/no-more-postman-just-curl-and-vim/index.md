@@ -70,7 +70,7 @@ so we pass `sh` before the `%` to run the content inside the file via shell.
 
 for demonstrating we will gonna use [jsonplaceholder](https://jsonplaceholder.typicode.com/) as our API to test
 
-and create a folder structure like below:
+Now create a folder structure like below:
 
 ```sh
 └── api
@@ -182,7 +182,7 @@ Of course, on our created directory run `git init` and push for example to githu
 
 ### Conclusion
 
-You can now write a well-documented api and share it with your friends via git
+You can now write a well-documented api and share it with your team via git
 all that done with simple and open-sourced tools and that's not limited to cURL
-you can write you own scripts and run it inside vim, or pipe cURL command for anther 
+you can write your own scripts and run it inside vim, or pipe your cURL command for other 
 tools to manipulate the output for example `jq` so you can filter your output.
