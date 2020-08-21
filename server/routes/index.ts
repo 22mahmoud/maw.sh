@@ -25,18 +25,18 @@ const dirs = fs.readdirSync(path.join(paths.views, 'blog'));
 dirs.forEach(async (dir) => {
   // eslint-disable-next-line
   let { md, meta } = await handleMarkDown(`web/views/blog/${dir}/index.md`);
-  let cover: string = '';
+  const cover: string = '';
 
-  if (meta.cover) {
-    const coverPath = path.resolve(
-      path.relative(`${paths.views}/blog/${dir}`, meta.cover)
-    );
+  //   if (meta.cover) {
+  //     const coverPath = path.resolve(
+  //       path.relative(`${paths.views}/blog/${dir}`, meta.cover)
+  //     );
 
-    cover = await import(`../../web/views/blog/${dir}${coverPath}`);
-    // @ts-ignore
-    const srcSet = cover.srcSet?.split(',');
-    [cover] = srcSet[srcSet.length - 1].split(' ');
-  }
+  //     cover = await import(`../../web/views/blog/${dir}${coverPath}`);
+  //     // @ts-ignore
+  //     const srcSet = cover.srcSet?.split(',');
+  //     [cover] = srcSet[srcSet.length - 1].split(' ');
+  //   }
 
   meta = { ...meta, cover };
 
