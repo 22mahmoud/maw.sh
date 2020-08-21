@@ -12,7 +12,7 @@ export const getBlogs = async (_req: Request, res: Response) => {
 
   res.render('blog', {
     title: 'Blog',
-    blogs,
+    blogs: blogs.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1)),
   });
 };
 

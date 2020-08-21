@@ -23,7 +23,23 @@ router.get('/blog', getBlogs);
 // retrive all blogs and dynamiclly import it
 const dirs = fs.readdirSync(path.join(paths.views, 'blog'));
 dirs.forEach(async (dir) => {
-  const { md, meta } = await handleMarkDown(`web/views/blog/${dir}/index.md`);
+  // eslint-disable-next-line
+  let { md, meta } = await handleMarkDown(`web/views/blog/${dir}/index.md`);
+  let cover: string = '';
+
+  if (meta.cover) {
+    const coverPath = path.resolve(
+      path.relative(`${paths.views}/blog/${dir}`, meta.cover)
+    );
+
+    cover = await import(`../../web/views/blog/${dir}${coverPath}?width=1200`);
+    // @ts-ignore
+    const srcSet = cover.srcSet?.split(',');
+    [cover] = srcSet[srcSet.length - 1].split(' ');
+  }
+
+  meta = { ...meta, cover };
+
   router.get(`/blog/${dir}`, getBlog(md, meta));
 });
 

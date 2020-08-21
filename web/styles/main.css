@@ -66,12 +66,14 @@ body {
 .content h4 {
   @apply text-lg;
 }
-.content p code {
+.content p code,
+.content li code {
   @apply bg-gray-700;
   @apply text-gray-400;
   @apply p-1;
   @apply rounded;
 }
+
 .content blockquote {
   @apply border-l-4 border-teal-200;
   @apply pl-5 my-6;
