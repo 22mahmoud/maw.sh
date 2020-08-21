@@ -32,7 +32,7 @@ dirs.forEach(async (dir) => {
       path.relative(`${paths.views}/blog/${dir}`, meta.cover)
     );
 
-    cover = await import(`../../web/views/blog/${dir}${coverPath}?width=1200`);
+    cover = await import(`../../web/views/blog/${dir}${coverPath}`);
     // @ts-ignore
     const srcSet = cover.srcSet?.split(',');
     [cover] = srcSet[srcSet.length - 1].split(' ');
