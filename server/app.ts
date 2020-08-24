@@ -1,9 +1,9 @@
 import express from 'express';
 
-import { middlewares } from './midllewares/index';
+import { middlewares } from './midllewares';
 import { paths } from '../config/paths';
 import { handleTemplateEngine } from './utils/handleTemplateEgnine';
-import { router } from './routes/index';
+import { router } from './routes';
 
 const app = express();
 
