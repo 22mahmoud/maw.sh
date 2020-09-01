@@ -54,7 +54,7 @@ const urlLoaderClient: RuleSetRule = {
 };
 
 const urlLoaderServer: RuleSetRule = {
-  test: /\.(png|jpe?g|gif|svg|webp)$/,
+  test: /\.(png|jpe?g|svg|webp)$/,
   loader: 'url-loader',
   options: {
     limit: 2048,
@@ -66,6 +66,17 @@ const urlLoaderServer: RuleSetRule = {
     adapter: require('responsive-loader/sharp'),
     placeholder: true,
     sizes: [320, 640, 960, 1200, 1800, 2400],
+  },
+};
+
+const gifLoader: RuleSetRule = {
+  test: /\.(gif)$/,
+  loader: 'url-loader',
+  options: {
+    limit: 2048,
+    name: '[name].[hash:8].[ext]',
+    publicPath: 'assets/',
+    outputPath: 'public/assets/',
   },
 };
 
@@ -132,6 +143,7 @@ const client: RuleSetRule[] = [
       babelLoader,
       cssLoader,
       pugLoader,
+      gifLoader,
       urlLoaderClient,
       fileLoaderClient,
     ],
@@ -145,6 +157,7 @@ const server: RuleSetRule[] = [
       cssLoader,
       remarkLoader,
       pugLoader,
+      gifLoader,
       urlLoaderServer,
       fileLoaderServer,
     ],
