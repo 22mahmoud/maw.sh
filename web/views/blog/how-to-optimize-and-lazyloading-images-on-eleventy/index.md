@@ -1,17 +1,18 @@
 ---
-slug: 'how-to-optimize-and-lazyload-images-on-eleventy'
-title: 'How to optimize and lazyload images on eleventy (11ty)'
+slug: 'how-to-optimize-and-lazyloading-images-on-eleventy'
+title: 'How to optimize and lazy-loading images on eleventy (11ty)'
 date: '2020-08-31'
 author: 'Mahmoud Ashraf'
 description: 'Learn How to automate your images using eleventy-img plugin and sharpjs'
 categories:
-  - 'rust'
-  - 'cli'
+  - 'tutorial'
+  - 'javascript'
 keywords:
-  - 'rust'
-  - 'cli'
-  - 'linux'
-  - 'terminal'
+  - 'javascript'
+  - 'eleventy'
+  - '11ty'
+  - 'optimization'
+  - 'image'
 ---
 
 Building a site that has images requires to optimize them 
