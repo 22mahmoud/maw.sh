@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import webpack, { WatchOptions } from 'webpack';
+import webpack, { ICompiler } from 'webpack';
 import rimraf from 'rimraf';
 import nodemon from 'nodemon';
 import express from 'express';
@@ -42,7 +42,7 @@ const start = async () => {
   const clientPromise = compilerPromise(clientCompiler);
   const serverPromise = compilerPromise(serverCompiler);
 
-  const watchOptions: WatchOptions = {
+  const watchOptions: ICompiler.WatchOptions = {
     ignored: /node_modules/,
   };
 

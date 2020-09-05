@@ -1,5 +1,8 @@
 module.exports = {
-  purge: false,
+  purge: {
+    layers: ['utilities', 'components'],
+    content: ['web/views/**/**.pug', 'web/js/**/*.ts'],
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -10,6 +13,10 @@ module.exports = {
         '1/2': '50%',
       },
     },
+  },
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
   },
   variants: {},
   plugins: [],
