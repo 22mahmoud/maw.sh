@@ -1,5 +1,7 @@
 import '../styles/main.css';
-// import { handleThemeMode } from './handleThemeMode';
+import Turbolinks from 'turbolinks';
+
+Turbolinks.start();
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('#rss').addEventListener('click', () => {

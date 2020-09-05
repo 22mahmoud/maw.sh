@@ -49,6 +49,7 @@
     "@types/rimraf": "^3.0.0",
     "@types/sharp": "^0.25.1",
     "@types/terser-webpack-plugin": "^4.1.0",
+    "@types/turbolinks": "^5.2.0",
     "@types/webpack": "^4.41.21",
     "@types/webpack-dev-middleware": "^3.7.1",
     "@types/webpack-dev-server": "^3.11.0",
@@ -114,6 +115,7 @@
     "morgan": "^1.10.0",
     "normalize.css": "^8.0.1",
     "pug": "^3.0.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "turbolinks": "^5.2.0"
   }
 }
