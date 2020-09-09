@@ -11,32 +11,31 @@ h6 {
   margin: 0;
   line-height: 1.2;
   margin-bottom: rfs(0.5rem);
-  font-style: null;
   font-weight: 500;
   font-family: var(--font-family-display);
   text-rendering: optimizeLegibility;
 }
 
 h1 {
-  font-size: rfs(2.5rem);
+  font-size: var(--h1-font-size);
 }
 
 h2 {
-  font-size: rfs(2rem);
+  font-size: var(--h2-font-size);
 }
 
 h3 {
-  font-size: rfs(1.75rem);
+  font-size: var(--h3-font-size);
 }
 
 h4 {
-  font-size: rfs(1.5rem);
+  font-size: var(--h4-font-size);
 }
 
 h5 {
-  font-size: rfs(1.25rem);
+  font-size: var(--h5-font-size);
 }
 
 h6 {
-  font-size: rfs(1);
+  font-size: var(--h6-font-size);
 }
