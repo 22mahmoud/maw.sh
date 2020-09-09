@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }}</title>
     <link rel="stylesheet" href="/styles/main.css" />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/fonts/roboto-v20-latin-regular.woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/fonts/roboto-v20-latin-700.woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/fonts/abril-fatface-v12-latin-regular.woff2"
+      crossorigin
+    />
   </head>
   <body>
     {{ content | safe }}

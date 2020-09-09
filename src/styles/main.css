@@ -3,3 +3,33 @@
 @import "./base/typography.css";
 
 @import "./utils/variables.css";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hero {
+  flex: 0.4;
+  padding: 0 rfs(1rem);
+}
+
+.latest {
+  flex: 0.5;
+  padding: 0 rfs(1rem);
+}
+
+.social {
+  flex: 0.1;
+  display: flex;
+  flex-direction: column;
+
+  & a {
+    display: flex;
+    margin-bottom: rfs(0.5rem);
+    & svg {
+      width: rfs(1.5rem);
+      margin-right: rfs(0.4rem);
+    }
+  }
+}
