@@ -1,7 +1,5 @@
 @import "./base/normalize.css";
 @import "./base/fonts.css";
+@import "./base/typography.css";
 
-h1 {
-  font-family: "Lobster", cursive;
-  font-size: 50px;
-}
+@import "./utils/variables.css";
