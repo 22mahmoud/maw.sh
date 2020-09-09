@@ -3,11 +3,17 @@ body {
 }
 
 h1,
+.display-1,
 h2,
+.display-2,
 h3,
+.display-3,
 h4,
+.display-4,
 h5,
-h6 {
+.display-5,
+h6,
+.display-6 {
   margin: 0;
   line-height: 1.2;
   margin-bottom: rfs(0.5rem);
@@ -38,4 +44,27 @@ h5 {
 
 h6 {
   font-size: var(--h6-font-size);
+}
+
+.display-1 {
+  font-size: var(--display-1-font-size);
+}
+
+.display-2 {
+  font-size: var(--display-2-font-size);
+}
+.display-3 {
+  font-size: var(--display-3-font-size);
+}
+
+.display-4 {
+  font-size: var(--display-4-font-size);
+}
+
+.display-5 {
+  font-size: var(--display-5-font-size);
+}
+
+.display-6 {
+  font-size: var(--display-6-font-size);
 }

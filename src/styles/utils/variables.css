@@ -9,4 +9,11 @@
   --h4-font-size: rfs(1.5rem);
   --h5-font-size: rfs(1.25rem);
   --h6-font-size: rfs(1rem);
+
+  --display-1-font-size: rfs(5rem);
+  --display-2-font-size: rfs(4.5rem);
+  --display-3-font-size: rfs(4rem);
+  --display-4-font-size: rfs(3.5rem);
+  --display-5-font-size: rfs(3rem);
+  --display-6-font-size: rfs(2.5rem);
 }
