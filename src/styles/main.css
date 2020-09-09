@@ -1,8 +1,8 @@
-@import "./base/normalize.css";
-@import "./base/fonts.css";
-@import "./base/typography.css";
+@import './base/normalize.css';
+@import './base/fonts.css';
+@import './base/typography.css';
 
-@import "./utils/variables.css";
+@import './utils/variables.css';
 
 .container {
   display: flex;
@@ -20,16 +20,16 @@
 }
 
 .social {
-  flex: 0.1;
   display: flex;
+  flex: 0.1;
   flex-direction: column;
 
   & a {
     display: flex;
     margin-bottom: rfs(0.5rem);
     & svg {
-      width: rfs(1.5rem);
       margin-right: rfs(0.4rem);
+      width: rfs(1.5rem);
     }
   }
 }

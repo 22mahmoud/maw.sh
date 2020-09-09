@@ -1,25 +1,24 @@
-const postcssPresetEnv = require("postcss-preset-env");
-const cssnano = require("cssnano");
-const postcssImport = require("postcss-import");
-const postcssPurgecss = require("@fullhuman/postcss-purgecss");
-const rfs = require("rfs/postcss");
+const postcssPresetEnv = require('postcss-preset-env');
+const cssnano = require('cssnano');
+const postcssPurgecss = require('@fullhuman/postcss-purgecss');
+const rfs = require('rfs/postcss');
 
-const isProd = process.env.NODE_ENV === "production";
+const isProd = process.env.NODE_ENV === 'production';
 
 const plugins = [
   postcssPresetEnv({
     stage: 3,
     features: {
-      "nesting-rules": true,
+      'nesting-rules': true,
     },
   }),
 
   rfs({
     twoDimensional: false,
     baseValue: 20,
-    unit: "rem",
+    unit: 'rem',
     breakpoint: 1200,
-    breakpointUnit: "px",
+    breakpointUnit: 'px',
     factor: 10,
     class: false,
     unitPrecision: 6,
@@ -29,8 +28,8 @@ const plugins = [
 
   isProd &&
     postcssPurgecss({
-      content: ["./site/**/*.html"],
-      css: ["./src/styles/**/*.css"],
+      content: ['./site/**/*.html'],
+      css: ['./src/styles/**/*.css'],
     }),
 
   isProd && cssnano(),

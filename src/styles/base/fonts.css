@@ -1,32 +1,32 @@
 /* abril-fatface-regular - latin */
 @font-face {
-  font-family: "Abril Fatface";
+  font-display: swap;
+  font-family: 'Abril Fatface';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
-  src: local("Abril Fatface"), local("AbrilFatface-Regular"),
-    url("/assets/fonts/abril-fatface-v12-latin-regular.woff2") format("woff2"),
-    url("/assets/fonts/abril-fatface-v12-latin-regular.woff") format("woff");
+  src: local('Abril Fatface'), local('AbrilFatface-Regular'),
+    url('/assets/fonts/abril-fatface-v12-latin-regular.woff2') format('woff2'),
+    url('/assets/fonts/abril-fatface-v12-latin-regular.woff') format('woff');
 }
 
 /* roboto-regular - latin */
 @font-face {
-  font-family: "Roboto";
+  font-display: swap;
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
-  src: local("Roboto"), local("Roboto-Regular"),
-    url("/assets/fonts/roboto-v20-latin-regular.woff2") format("woff2"),
-    url("/assets/fonts/roboto-v20-latin-regular.woff") format("woff");
+  src: local('Roboto'), local('Roboto-Regular'),
+    url('/assets/fonts/roboto-v20-latin-regular.woff2') format('woff2'),
+    url('/assets/fonts/roboto-v20-latin-regular.woff') format('woff');
 }
 
 /* roboto-700 - latin */
 @font-face {
-  font-family: "Roboto";
+  font-display: swap;
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
-  src: local("Roboto Bold"), local("Roboto-Bold"),
-    url("/assets/fonts/roboto-v20-latin-700.woff2") format("woff2"),
-    url("/assets/fonts/roboto-v20-latin-700.woff") format("woff");
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+    url('/assets/fonts/roboto-v20-latin-700.woff2') format('woff2'),
+    url('/assets/fonts/roboto-v20-latin-700.woff') format('woff');
 }

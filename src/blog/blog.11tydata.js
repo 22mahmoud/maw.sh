@@ -1,4 +1,4 @@
 module.exports = {
-  layout: "base.njk",
-  tags: ["posts"],
+  layout: 'base.njk',
+  tags: ['posts'],
 };
