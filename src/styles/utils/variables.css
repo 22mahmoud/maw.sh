@@ -1,5 +1,6 @@
 :root {
-  --font-family-display: "Lobster", cursive;
+  --font-family-display: "Abril Fatface", cursive;
+  --font-family: "Roboto", sans-serif;
 
   --font-size-base: rfs(1rem);
 

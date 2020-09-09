@@ -3,5 +3,12 @@ title: "Mahmoud Ashraf"
 layout: "base.njk"
 ---
 
-<h1 class="display-1">Mahmoud Ashraf</h1>
-<p>This is a test</p>
+<p>Hey 👋, Mahmoud Ashraf is here</p>
+<h1>A Software Engineer Who Builds stuff on the internet</h1>
+
+{% for post in collections.latestPosts -%}
+<div>
+  <a href="{{ post.url }}">{{ post.data.title }}</a>
+  <p>{{ post.data.description }}</p>
+</div>
+{%- endfor %}
