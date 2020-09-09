@@ -1,0 +1,4 @@
+# Ignore dist files
+site
+build
+node_module
