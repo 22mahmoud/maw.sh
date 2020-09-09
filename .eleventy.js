@@ -1,4 +1,6 @@
 module.exports = (cfg) => {
+  cfg.addPassthroughCopy("src/assets/fonts");
+
   return {
     dir: {
       input: "src",
