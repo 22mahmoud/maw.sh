@@ -29,7 +29,7 @@ const plugins = [
 
   isProd &&
     postcssPurgecss({
-      content: ["./site/**/*.html"],
+      content: ["./src/**/*.njk", "./src/**/*.md"],
       css: ["./src/styles/**/*.css"],
     }),
 
