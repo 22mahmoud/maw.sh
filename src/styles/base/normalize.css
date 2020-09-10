@@ -208,6 +208,7 @@ th {
 
 time {
   display: block;
+  margin-bottom: rfs(0.5rem);
 }
 
 p {

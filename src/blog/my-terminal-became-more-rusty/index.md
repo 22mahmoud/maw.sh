@@ -73,7 +73,7 @@ exa is an implementation of `ls` command but with colors and icons and it render
 
 I'm using exa as replacer for ls command by making an alias.
 
-```sh
+```bash
 if [ "$(command -v exa)" ]; then
     unalias -m 'll'
     unalias -m 'l'
@@ -96,7 +96,7 @@ Bat is an implementation for `cat` command but with syntax highlighted.
 
 Also I make an alias for this command with nord theme.
 
-```sh
+```bash
 if [ "$(command -v bat)" ]; then
   unalias -m 'cat'
   alias cat='bat -pp --theme="Nord"'
@@ -129,7 +129,7 @@ to make delta works in your `.gitconfig` file add:
 we set `delta` as the default pager for git commands output and enable side-by-side 
 feature and set a theme for Nord, You can choose your preferred theme  run and choose one.
 
-```sh
+```bash
 delta --list-syntax-themes
 ```
 
@@ -144,20 +144,20 @@ I don't use any file explorer, I just use `cd` command to navigate between the f
 I have a `projects` directory on my home folder if I wanna navigate to a project of those projects.
 I will write
 
-```sh
+```bash
 cd ~/projects/mahmoudashraf.dev
 ```
 
 instead I will write 
 
-```sh
+```bash
 z ~/projects/mahmoudashraf.dev
 ```
 
 just to the first time and if I wanna navigate again to this directory from anywhere
 just write 
 
-```sh
+```bash
 z mah
 ```
 
@@ -172,7 +172,7 @@ I recommend you read this article [ripgrep is faster than {grep, ag, git grep, u
 
 some commands that i'm using
 
-```sh
+```bash
 # search on javascript files for specific regex
 rg tjs "import React"
 
@@ -194,13 +194,13 @@ It's by default ignore `.gitignore` file
 
 in this tutorial I have some screenshots in `png` format to convert them all to `jpg`:
 
-```sh
+```bash
 fd -e png -x convert {} {.}.jpg
 ```
 
 To delete files
 
-```sh
+```bash
 fd -H '^\.DS_Store$' -tf -X rm
 ```
 

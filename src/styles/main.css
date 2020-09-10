@@ -1,3 +1,5 @@
+@import './vendor/prismjs.css';
+
 @import './base/normalize.css';
 @import './base/fonts.css';
 @import './base/typography.css';
@@ -7,3 +9,5 @@
 @import './components/hero.css';
 @import './components/header.css';
 @import './components/container.css';
+@import './components/markdown.css';
+@import './components/blogs.css';

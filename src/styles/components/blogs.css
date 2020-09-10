@@ -1,0 +1,11 @@
+.blogs {
+  margin: rfs(2rem) 0;
+}
+
+.blogs article {
+  margin-bottom: rfs(2rem);
+
+  & h1 {
+    font-weight: 700;
+  }
+}

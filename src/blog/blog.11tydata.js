@@ -1,4 +1,4 @@
 module.exports = {
-  layout: 'base.njk',
+  layout: 'markdown.njk',
   tags: ['posts'],
 };
