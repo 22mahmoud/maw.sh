@@ -11,6 +11,8 @@ html {
 }
 
 body {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
   margin: 0;
 }
 
@@ -50,6 +52,12 @@ template {
 
 a {
   background-color: transparent;
+  color: var(--accent-color);
+  text-decoration: none;
+
+  &:hover {
+    color: darken(#9ae6b4, 0.2);
+  }
 }
 
 b,
@@ -194,4 +202,13 @@ table {
 td,
 th {
   padding: 0;
+}
+
+time {
+  display: block;
+}
+
+p {
+  margin-bottom: var(--paragraph-margin-bottom);
+  margin-top: 0;
 }

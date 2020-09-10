@@ -5,31 +5,78 @@
 @import './utils/variables.css';
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: rfs(50rem);
+  padding: rfs(1.5rem) 0;
+}
+
+.container main {
+  column-gap: rfs(1.2rem);
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr;
+  justify-items: center;
+  padding: rfs(3rem) 0;
 }
 
 .hero {
-  flex: 0.4;
-  padding: 0 rfs(1rem);
+  justify-self: start;
+  & img {
+    filter: brightness(0.8) contrast(1.2);
+    height: auto;
+    object-fit: cotain;
+    transform: rotate(6deg) scale(0.8);
+    width: 100%;
+    z-index: 1;
+  }
 }
 
 .latest {
-  flex: 0.5;
-  padding: 0 rfs(1rem);
+  display: flex;
+  flex-direction: column;
+  & .seemore {
+    margin: rfs(1.2rem) 0;
+    margin-left: auto;
+  }
+
+  & time {
+    color: #c5c5c5;
+  }
 }
 
 .social {
   display: flex;
-  flex: 0.1;
   flex-direction: column;
+  justify-self: end;
 
   & a {
     display: flex;
     margin-bottom: rfs(0.5rem);
     & svg {
+      fill: #fff;
       margin-right: rfs(0.4rem);
       width: rfs(1.5rem);
     }
+  }
+}
+
+header {
+  align-items: center;
+  display: flex;
+}
+
+.nav ul {
+  display: flex;
+  justify-self: end;
+  list-style: none;
+  margin-left: auto;
+  padding: 0;
+
+  & li:not(:last-child) {
+    margin-right: rfs(1rem);
+  }
+
+  & li a {
+    border-bottom: 2px solid var(--accent-color);
+    color: var(--primary-color);
   }
 }

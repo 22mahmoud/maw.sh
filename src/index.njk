@@ -1,36 +1,62 @@
 ---
-title: "Mahmoud Ashraf"
-layout: "base.njk"
+title: 'Mahmoud Ashraf'
+layout: 'base.njk'
 ---
 
 <div class="container">
-  <div class="hero">
-    <p>Hey 👋, Mahmoud Ashraf is here</p>
-    <h1>A Software Engineer Who Builds stuff on the internet</h1>
-    <p>
-      I’m a Software Engineer. I was born in 1997 and grew up in a beautiful
-      blue city called Alexandria 🌊. living with my parents and sister 👨‍👩‍👧‍👦 I've
-      got a bachelor's degree in computer science from Alexandria, University
-      👨‍🎓.
-    </p>
-  </div>
-
-  <div class="latest">
-    {% for post in collections.latestPosts -%}
-    <div>
-      <a href="{{ post.url }}">{{ post.data.title }}</a>
-      <p>{{ post.data.description }}</p>
+  <header>
+    <nav class="nav">
+      <ul>
+        <li>
+          <a href="#"> Home </a>
+        </li>
+        <li>
+          <a href="#"> About </a>
+        </li>
+        <li>
+          <a href="#"> Blog </a>
+        </li>
+        <li>
+          <a href="#"> Thoughts </a>
+        </li>
+        <li>
+          <a href="#"> Projects </a>
+        </li>
+        <li>
+          <a href="#"> Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="hero">
+      <p class="text-xl name">HEY 👋, MY NAME IS MAHMOUD ASHRAF.</p>
+      <img src="./me.jpg" alt="Me talking a selfi" />
+      <h2>A Software Engineer Who Builds stuff on the internet.</h2>
     </div>
-    {%- endfor %}
-    <a href="/posts"> See all posts </a>
-  </div>
 
-  <div class="social">
-    {%- for account in social -%}
-    <a href="{{ account.href }}">
-      {{ account.icon | safe }}
-      {{ account.name }}
-    </a>
-    {%- endfor -%}
-  </div>
+    <div class="latest">
+      <p class="text-xl">LATEST BLOG POSTS.</p>
+      {%- for post in collections.latestPosts -%}
+      <div>
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+        <time datetime="{{ post.data.date }}" class="text-sm">
+          {{ post.data.date | date }}
+        </time>
+        <p>{{ post.data.description }}</p>
+      </div>
+      {%- endfor -%}
+      <a href="/posts" class="seemore"> See all posts → </a>
+    </div>
+
+    <div class="social">
+      <p class="text-xl">FIND ME</p>
+      {%- for account in social -%}
+      <a href="{{ account.href }}">
+        {{ account.icon | safe }}
+        {{ account.name }}
+      </a>
+      {%- endfor -%}
+    </div>
+  </main>
 </div>

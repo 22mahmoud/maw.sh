@@ -69,3 +69,43 @@ h6 {
 .display-6 {
   font-size: var(--display-6-font-size);
 }
+
+.text-xs {
+  font-size: var(--text-xs-font-size);
+}
+
+.text-sm {
+  font-size: var(--text-sm-font-size);
+}
+
+.text-base {
+  font-size: var(--text-base-font-size);
+}
+
+.text-lg {
+  font-size: var(--text-lg-font-size);
+}
+
+.text-xl {
+  font-size: var(--text-xl-font-size);
+}
+
+.text-2xl {
+  font-size: var(--text-2xl-font-size);
+}
+
+.text-3xl {
+  font-size: var(--text-3xl-font-size);
+}
+
+.text-4xl {
+  font-size: var(--text-4xl-font-size);
+}
+
+.text-5xl {
+  font-size: var(--text-5xl-font-size);
+}
+
+.text-6xl {
+  font-size: var(--text-6xl-font-size);
+}
