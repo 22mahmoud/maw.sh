@@ -1,5 +1,7 @@
 const { format, parseISO } = require('date-fns');
+const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const pluginRss = require('@11ty/eleventy-plugin-rss');
 const Image = require('./eleventy/image');
 const collections = require('./eleventy/collections');
 
@@ -23,6 +25,8 @@ module.exports = (cfg) => {
   cfg.addNunjucksAsyncShortcode('Image', Image);
 
   cfg.addPlugin(syntaxHighlight);
+  cfg.addPlugin(pluginRss);
+  cfg.addPlugin(eleventyNavigationPlugin);
 
   return {
     templateFormats: ['md', 'njk', 'html'],

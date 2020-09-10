@@ -16,7 +16,10 @@ header {
   }
 
   & li a {
-    border-bottom: 2px solid var(--accent-color);
     color: var(--primary-color);
+  }
+
+  & .nav__active {
+    border-bottom: 2px solid var(--accent-color);
   }
 }

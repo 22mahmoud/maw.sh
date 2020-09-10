@@ -10,10 +10,6 @@
     margin-bottom: rfs(1.6rem);
   }
 
-  & a {
-    transition: all 200ms ease-in-out;
-  }
-
   & h1,
   & h2,
   & h3,
