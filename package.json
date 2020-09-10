@@ -62,6 +62,7 @@
     "tailwindcss": "^1.8.5"
   },
   "dependencies": {
+    "turbolinks": "^5.2.0",
     "vanilla-lazyload": "^17.1.2"
   },
   "husky": {

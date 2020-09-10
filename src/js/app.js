@@ -13,9 +13,16 @@ import '../styles/components/markdown.css';
 import '../styles/components/container.css';
 
 import Lazyload from 'vanilla-lazyload';
+import turbolinks from 'turbolinks';
 
 const lazyload = new Lazyload();
 
+turbolinks.start();
+
 document.addEventListener('DOMContentLoaded', () => {
+  lazyload.update();
+});
+
+document.addEventListener('turbolinks:load', () => {
   lazyload.update();
 });

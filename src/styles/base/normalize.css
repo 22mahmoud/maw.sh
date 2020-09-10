@@ -215,3 +215,9 @@ p {
   margin-bottom: var(--paragraph-margin-bottom);
   margin-top: 0;
 }
+
+/* purgecss start ignore */
+.turbolinks-progress-bar {
+  background-color: var(--accent-color) !important;
+}
+/* purgecss end ignore */
