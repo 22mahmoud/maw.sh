@@ -21,11 +21,16 @@
     />
 
     <script src="/js/app.js" async type="module"></script>
+    <script
+      data-goatcounter="https://stats.mahmoudashraf.dev/count"
+      async
+      src="//stats.mahmoudashraf.dev/count.js"
+    ></script>
   </head>
   <body>
     <div class="container">
       <header>
-        {% set navPages = collections.all | eleventyNavigation %}
+       {% set navPages = collections.all | eleventyNavigation %}
         <nav class="nav">
           <ul>
             {%- for entry in navPages %}
