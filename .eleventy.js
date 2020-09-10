@@ -1,3 +1,6 @@
+const markdownIt = require('markdown-it');
+const markdownItAnchor = require('markdown-it-anchor');
+
 const collections = require('./eleventy/collections');
 const filters = require('./eleventy/filters');
 const shortcodes = require('./eleventy/shortcodes');
@@ -5,6 +8,16 @@ const plugins = require('./eleventy/plugins');
 const transformers = require('./eleventy/transformers');
 
 const isDev = process.env.NODE_ENV === 'development';
+
+const anchorSlugify = (s) =>
+  encodeURIComponent(
+    'h-' +
+      String(s)
+        .trim()
+        .toLowerCase()
+        .replace(/[.,\/#!$%\^&\*;:{}=_`~()]/g, '')
+        .replace(/\s+/g, '-')
+  );
 
 module.exports = (cfg) => {
   cfg.addPassthroughCopy('src/assets');
@@ -26,6 +39,23 @@ module.exports = (cfg) => {
   plugins(cfg);
 
   transformers(cfg);
+
+  // Markdown Parsing
+  cfg.setLibrary(
+    'md',
+    markdownIt({
+      html: true,
+      breaks: true,
+      typographer: true,
+    }).use(markdownItAnchor, {
+      permalink: true,
+      permalinkSymbol: '🔗',
+      permalinkClass: 'heading-anchor',
+      permalinkBefore: true,
+      level: 2,
+      slugify: anchorSlugify,
+    })
+  );
 
   return {
     templateFormats: ['md', 'njk', 'html'],

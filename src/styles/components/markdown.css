@@ -20,6 +20,11 @@
     margin-top: rfs(3rem);
   }
 
+  & .heading-anchor {
+    border-bottom: 3px solid var(--accent-color);
+    font-size: rfs(1.4rem);
+  }
+
   & :not(pre) > code {
     background: var(--accent-color);
     border-radius: 3px;
