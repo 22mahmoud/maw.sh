@@ -8,7 +8,8 @@
   "scripts": {
     "clean": "rimraf site build",
     "dev": "yarn clean && snowpack dev",
-    "build": "yarn clean && snowpack build && rimraf site",
+    "sw": "workbox generateSW",
+    "build": "yarn clean && snowpack build && rimraf site && yarn sw",
     "lint:fix": "run-p lint:*:fix -l",
     "lint:css": "stylelint src/styles/**/*.css",
     "lint:css:fix": "yarn lint:css --fix",
@@ -59,7 +60,8 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-order": "^4.1.0",
-    "tailwindcss": "^1.8.5"
+    "tailwindcss": "^1.8.5",
+    "workbox-cli": "^5.1.4"
   },
   "dependencies": {
     "turbolinks": "^5.2.0",
