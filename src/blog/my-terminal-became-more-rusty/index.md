@@ -23,7 +23,6 @@ I need for that a fast terminal with  fast tools to speed up my productivity.
 The tools written in rust help me to achieve that. let's see in this article
 those tools.
 
-[//]: # "/* cspell:disable */"
 > ### tl;dr
 > - [alacritty](https://github.com/alacritty/alacritty)  A cross-platform, GPU-accelerated terminal emulator
 > - [starship](https://github.com/starship/starship) 🌌 The minimal, blazing-fast, and infinitely customizable prompt for any shell!
@@ -37,7 +36,6 @@ those tools.
 > - [tldr](https://github.com/tldr-pages/tldr) 📚 Collaborative cheatsheets for console commands
 > - [spotify-tui](https://github.com/rigellute/spotify-tui) Spotify for the terminal written in Rust 🚀
 > - [gitui](https://github.com/extrawurst/gitui) Blazing 💥 fast terminal-ui for git written in rust 🦀
-[//]: # "/* cspell:enable */"
 
 ### Alacritty
 

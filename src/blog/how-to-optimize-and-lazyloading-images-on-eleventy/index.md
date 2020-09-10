@@ -157,7 +157,6 @@ yarn add -D @11ty/eleventy-img
 
 open `.eleventy.js` file and remove the line that we wrote before, then add the code below:
 
-[//]: # "/* cspell:disable */"
 ```js
 // .eleventy.js
 
@@ -204,7 +203,6 @@ module.exports = (cfg) => {
   });
 }
 ```
-[//]: # "/* cspell:enable */"
 
 Let's break down the code and understand how it works
 
