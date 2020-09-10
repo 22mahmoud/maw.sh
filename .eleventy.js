@@ -2,6 +2,7 @@ const collections = require('./eleventy/collections');
 const filters = require('./eleventy/filters');
 const shortcodes = require('./eleventy/shortcodes');
 const plugins = require('./eleventy/plugins');
+const transformers = require('./eleventy/transformers');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -23,6 +24,8 @@ module.exports = (cfg) => {
   shortcodes(cfg);
 
   plugins(cfg);
+
+  transformers(cfg);
 
   return {
     templateFormats: ['md', 'njk', 'html'],
