@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0",
+    "@11ty/eleventy-img": "^0.3.0",
     "@fullhuman/postcss-purgecss": "^2.3.0",
     "@snowpack/plugin-build-script": "^2.0.6",
     "@snowpack/plugin-postcss": "^1.0.3",
@@ -42,6 +43,7 @@
     "prettier": "^2.1.1",
     "rfs": "^9.0.3",
     "rimraf": "^3.0.2",
+    "sharp": "^0.26.0",
     "snowpack": "^2.10.3",
     "stylelint": "^13.7.0",
     "stylelint-config-prettier": "^8.0.2",
@@ -49,7 +51,9 @@
     "stylelint-order": "^4.1.0",
     "tailwindcss": "^1.8.5"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vanilla-lazyload": "^17.1.2"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

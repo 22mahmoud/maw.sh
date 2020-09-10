@@ -1,7 +1,9 @@
 module.exports = {
+  install: ['vanilla-lazyload'],
   mount: {
     site: '/',
     'src/styles': '/styles',
+    'src/js': '/js',
   },
 
   plugins: [
