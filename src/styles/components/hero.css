@@ -1,0 +1,47 @@
+.hero-section {
+  column-gap: rfs(1.2rem);
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr;
+  justify-items: center;
+}
+
+.intro {
+  justify-self: start;
+
+  & img {
+    filter: brightness(0.8) contrast(1.2);
+    object-fit: cover;
+    transform: rotate(6deg) scale(0.8);
+  }
+}
+
+.recent-blogs {
+  display: flex;
+  flex-direction: column;
+
+  & .recent-blogs__seemore {
+    margin: rfs(1.2rem) 0;
+    margin-left: auto;
+  }
+
+  & time {
+    color: #c5c5c5;
+  }
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  justify-self: end;
+
+  & a {
+    display: flex;
+    margin-bottom: rfs(0.5rem);
+
+    & svg {
+      fill: #fff;
+      margin-right: rfs(0.4rem);
+      width: rfs(1.5rem);
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/fonts/roboto-v20-latin-regular.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/fonts/abril-fatface-v12-latin-regular.woff2"
+      crossorigin
+    />
+
+    <script src="/js/app.js" async type="module"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        {% set navPages = collections.all | eleventyNavigation %}
+        <nav class="nav">
+          <ul>
+            {%- for entry in navPages %}
+              <li{% if entry.url == page.url %} class="nav__active"{% endif %}>
+                <a href="{{ entry.url | url }}">{{ entry.title }}</a>
+              </li>
+            {%- endfor %}
+          </ul>
+        </nav>
+      </header>
+      <main>
+        {{ content | safe }}
+      </main>
+    </div>
+  </body>
+</html>

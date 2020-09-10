@@ -1,49 +1,30 @@
 module.exports = {
   root: true,
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  extends: [
+    'eslint:recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:prettier/recommended',
+  ],
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
-    warnOnUnsupportedTypeScriptVersion: true,
-    project: [
-      './tsconfig.json',
-      './tsconfig.tooling.json',
-      './tsconfig.web.json',
-    ],
-  },
-  settings: {
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
+    allowImportExportEverywhere: true,
+    ecmaFeatures: {
+      impliedStrict: true,
     },
   },
   env: {
     browser: true,
-    commonjs: true,
-    es6: true,
-    jest: true,
     node: true,
   },
-  extends: [
-    'airbnb-typescript/base',
-    'prettier/@typescript-eslint',
-    'plugin:prettier/recommended',
-  ],
-  rules: {
-    'import/prefer-default-export': 'off',
-    'import/no-default-export': 'error',
-    '@typescript-eslint/no-empty-interface': 'off',
-    'import/no-extraneous-dependencies': [
-      'off',
-      {
-        devDependencies: false,
-        packageDir: ['./config/'],
+  plugins: ['html'],
+  settings: {
+    'import/resolver': {
+      node: {
+        moduleDirectory: ['web_modules'],
       },
-    ],
+    },
   },
 };

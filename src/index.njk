@@ -1,0 +1,44 @@
+---
+title: 'Mahmoud Ashraf'
+layout: 'base.njk'
+eleventyNavigation:
+  key: Home
+---
+
+<div class="hero-section">
+  <div class="intro">
+    <p class="text-xl" class="intro__subtitle">
+      HEY 👋, MY NAME IS MAHMOUD ASHRAF.
+    </p>
+    {% Image "src/me.jpg", "Me talking a selfi" %}
+    <h2 class="intro__title">
+      A Software Engineer Who Builds stuff on the internet.
+    </h2>
+  </div>
+
+  <div class="recent-blogs">
+    <p class="text-xl">LATEST BLOG POSTS.</p>
+    {%- for post in collections.latestPosts -%}
+    <article>
+      <h1 class="text-base">
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+      </h1>
+      <time datetime="{{ post.data.date }}" class="text-sm">
+        {{ post.data.date | date }}
+      </time>
+      <p>{{ post.data.description }}</p>
+    </article>
+    {%- endfor -%}
+    <a href="/posts" class="recent-blogs__seemore"> See all posts → </a>
+  </div>
+
+  <div class="social">
+    <p class="text-xl">FIND ME</p>
+    {%- for account in social -%}
+    <a href="{{ account.href }}">
+      {{ account.icon | safe }}
+      {{ account.name }}
+    </a>
+    {%- endfor -%}
+  </div>
+</div>

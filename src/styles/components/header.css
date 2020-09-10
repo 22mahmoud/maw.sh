@@ -1,0 +1,25 @@
+header {
+  align-items: center;
+  display: flex;
+  margin-bottom: rfs(3rem);
+}
+
+.nav ul {
+  display: flex;
+  justify-self: end;
+  list-style: none;
+  margin-left: auto;
+  padding: 0;
+
+  & li:not(:last-child) {
+    margin-right: rfs(1rem);
+  }
+
+  & li a {
+    color: var(--primary-color);
+  }
+
+  & .nav__active {
+    border-bottom: 2px solid var(--accent-color);
+  }
+}
