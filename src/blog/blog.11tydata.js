@@ -1,5 +1,5 @@
 module.exports = {
-  layout: 'markdown.njk',
+  layout: 'post.njk',
   tags: ['posts'],
   eleventyNavigation: {
     parent: 'Blog',

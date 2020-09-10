@@ -1,14 +1,13 @@
-const { format, parseISO } = require('date-fns');
-const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const pluginRss = require('@11ty/eleventy-plugin-rss');
-const Image = require('./eleventy/image');
 const collections = require('./eleventy/collections');
+const filters = require('./eleventy/filters');
+const shortcodes = require('./eleventy/shortcodes');
+const plugins = require('./eleventy/plugins');
 
 const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = (cfg) => {
-  cfg.addPassthroughCopy('src/assets/fonts');
+  cfg.addPassthroughCopy('src/assets');
+  cfg.addPassthroughCopy('src/**/*.gif');
 
   if (isDev) {
     cfg.addPassthroughCopy('src/**/*.jpeg');
@@ -16,17 +15,13 @@ module.exports = (cfg) => {
     cfg.addPassthroughCopy('src/**/*.png');
   }
 
-  cfg.addPassthroughCopy('src/**/*.gif');
-
   collections(cfg);
 
-  cfg.addFilter('date', (date) => format(parseISO(date), 'd MMMM, yyyy'));
+  filters(cfg);
 
-  cfg.addNunjucksAsyncShortcode('Image', Image);
+  shortcodes(cfg);
 
-  cfg.addPlugin(syntaxHighlight);
-  cfg.addPlugin(pluginRss);
-  cfg.addPlugin(eleventyNavigationPlugin);
+  plugins(cfg);
 
   return {
     templateFormats: ['md', 'njk', 'html'],

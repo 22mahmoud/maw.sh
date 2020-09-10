@@ -1,0 +1,52 @@
+{%- set absolutePageUrl -%}
+{{ page.url | url | absoluteUrl(site.url) }}
+{%- endset -%}
+
+<!-- vars -->
+{%- set isPost = layout == 'post.njk' -%}
+
+<!-- Page-Specific -->
+<meta name="description" content="{{ description | getDescription }}" />
+<meta property="og:title" content="{{ title | getTitle }}" />
+<meta property="og:description" content="{{ description | getDescription }}" />
+<meta property="og:url" content="{{ absolutePageUrl }}" />
+<!--
+<meta
+  property="og:image"
+  content="{%- if image -%}{{ image | media(page) | url | absoluteUrl(site.url) }}{%- else -%}{{ author.avatar | url | absoluteUrl(site.url) }}{%- endif -%}"
+/>
+-->
+<meta
+  name="twitter:card"
+  content="{% if isPost -%}summary_large_image{% else %}summary{% endif %}"
+/>
+
+<!-- Posts Get additional meta tags -->
+{%- if isPost -%}
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="{{ page.date | iso }}" />
+{%- endif -%}
+
+<!-- General -->
+<meta name="author" content="{{ author.name }}" />
+<meta property="og:site_name" content="{{ site.title }}" />
+<meta property="og:locale" content="{{ site.locale }}" />
+<link rel="canonical" href="{{ absolutePageUrl }}" />
+
+<!-- JSON LD -->
+<script type="application/ld+json">
+  {
+    "name": "{{ site.author.name }}",
+    "description": "{{ site.description }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ site.author.name }}"
+    },
+    "@type": "WebSite",
+    "url": "{{ site.url }}",
+    "image": "{{ site.url }}/assets/images/site-logo.jpg",
+    "headline": "{{ site.author.name }}",
+    "sameAs": ["{{ site.author.social.github }}"],
+    "@context": "http://schema.org"
+  }
+</script>

@@ -1,13 +1,10 @@
 .hero-section {
-  column-gap: rfs(1.2rem);
-  display: grid;
-  grid-template-columns: 2fr 3fr 1fr;
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .intro {
-  justify-self: start;
-
+  flex: 0.5;
   & img {
     filter: brightness(0.8) contrast(1.2);
     object-fit: cover;
@@ -17,8 +14,9 @@
 
 .recent-blogs {
   display: flex;
+  flex: 0.5;
   flex-direction: column;
-
+  margin: 0 rfs(1.4rem);
   & .recent-blogs__seemore {
     margin: rfs(1.2rem) 0;
     margin-left: auto;
@@ -32,7 +30,6 @@
 .social {
   display: flex;
   flex-direction: column;
-  justify-self: end;
 
   & a {
     display: flex;
