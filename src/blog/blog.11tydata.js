@@ -3,5 +3,6 @@ module.exports = {
   tags: ['posts'],
   eleventyNavigation: {
     parent: 'Blog',
+    order: 1,
   },
 };
