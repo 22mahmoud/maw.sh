@@ -10,12 +10,10 @@
 <meta property="og:title" content="{{ title | getTitle }}" />
 <meta property="og:description" content="{{ description | getDescription }}" />
 <meta property="og:url" content="{{ absolutePageUrl }}" />
-<!--
 <meta
   property="og:image"
-  content="{%- if image -%}{{ image | media(page) | url | absoluteUrl(site.url) }}{%- else -%}{{ author.avatar | url | absoluteUrl(site.url) }}{%- endif -%}"
+  content="{{ site.logo | url | absoluteUrl(site.url) }}"
 />
--->
 <meta
   name="twitter:card"
   content="{% if isPost -%}summary_large_image{% else %}summary{% endif %}"
@@ -44,7 +42,7 @@
     },
     "@type": "WebSite",
     "url": "{{ site.url }}",
-    "image": "{{ site.url }}/assets/images/site-logo.jpg",
+    "image": "{{ site.url }}/assets/images/site-logo.png",
     "headline": "{{ site.author.name }}",
     "sameAs": ["{{ site.author.social.github }}"],
     "@context": "http://schema.org"

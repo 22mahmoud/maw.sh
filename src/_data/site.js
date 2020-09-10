@@ -7,6 +7,7 @@ module.exports = {
   domain: 'mahmoudashraf.dev',
   url: 'https://mahmoudashraf.dev',
   repo: 'https://github.com/22mahmoud/mahmoudashraf.dev',
+  logo: '/assets/images/site-logo.png',
   author: {
     name: 'Mahmoud Ashraf',
     social: {
