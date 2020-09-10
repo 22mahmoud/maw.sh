@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Mahmoud Ashraf',
   description:
-    'Mahmoud Ashraf is a Fron-end developer based in Alexandria, Egypt.',
+    'Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt.',
   lang: 'en',
   locale: 'en_US',
   domain: 'mahmoudashraf.dev',
