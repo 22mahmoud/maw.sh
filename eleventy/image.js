@@ -3,6 +3,8 @@ const sharp = require('sharp');
 
 const { paths } = require('./config');
 
+const isDev = process.env.NODE_ENV === 'development';
+
 async function getPlaceHolder(outputPath) {
   const placeholder = await sharp(outputPath)
     .resize({ fit: sharp.fit.inside })
@@ -28,6 +30,10 @@ function generateSrcset(stats) {
 module.exports = async (src, alt) => {
   if (!alt) {
     throw new Error(`Missing \`alt\` on myImage from: ${src}`);
+  }
+
+  if (isDev) {
+    return `<img src="${src.slice(3)}" alt="${alt}" />`;
   }
 
   let stats = await Image(src, {
