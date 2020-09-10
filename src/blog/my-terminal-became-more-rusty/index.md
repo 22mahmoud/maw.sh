@@ -4,7 +4,7 @@ title: 'My terminal became more Rusty 🦀'
 date: '2020-08-21'
 author: 'Mahmoud Ashraf'
 description: 'CLI tools written in rust make my terminal fast and productive'
-cover: './cover.jpg'
+cover: './cover.jpeg'
 categories:
   - 'rust'
   - 'cli'
@@ -15,7 +15,7 @@ keywords:
   - 'terminal'
 ---
 
-{% Image "src/blog/my-terminal-became-more-rusty/cover.jpg", "big crap attack the city" %}
+{% Image "src/blog/my-terminal-became-more-rusty/cover.jpeg", "big crap attack the city" %}
 
 As a Software-Engineer I spent most of the time inside my terminal, So
 I need for that a fast terminal with  fast tools to speed up my productivity.
@@ -48,7 +48,7 @@ Alacritty doesn't come with ligature support but you can use
 this [fork](https://github.com/zenixls2/alacritty/tree/ligature). or if 
 you are using Arch you can install it from [aur](https://aur.archlinux.org/packages/alacritty-ligatures/)
 
-{% Image "src/blog/my-terminal-became-more-rusty/alacritty.jpg", "screenshot of the terminal showing alacritty ligatures" %}
+{% Image "src/blog/my-terminal-became-more-rusty/alacritty.jpeg", "screenshot of the terminal showing alacritty ligatures" %}
 
 ---
 
@@ -61,7 +61,7 @@ You can use it with any shell bash, zsh, fish and even powerShell.
 
 The screenshot below showing the result of my customized configuration.
 
-{% Image "src/blog/my-terminal-became-more-rusty/starship.jpg", "screenshot of starship prompt" %}
+{% Image "src/blog/my-terminal-became-more-rusty/starship.jpeg", "screenshot of starship prompt" %}
 
 ---
 
@@ -84,7 +84,7 @@ fi
 
 the result of my `ls` and `ll` commands.
 
-{% Image "src/blog/my-terminal-became-more-rusty/exa.jpg", "screenshot of exa" %}
+{% Image "src/blog/my-terminal-became-more-rusty/exa.jpeg", "screenshot of exa" %}
 
 ---
 
@@ -101,7 +101,7 @@ if [ "$(command -v bat)" ]; then
 fi
 ```
 
-{% Image "src/blog/my-terminal-became-more-rusty/bat.jpg", "screenshot of bat" %}
+{% Image "src/blog/my-terminal-became-more-rusty/bat.jpeg", "screenshot of bat" %}
 
 ---
 
@@ -131,7 +131,7 @@ feature and set a theme for Nord, You can choose your preferred theme  run and c
 delta --list-syntax-themes
 ```
 
-{% Image "src/blog/my-terminal-became-more-rusty/delta.jpg", "screenshot of delta" %}
+{% Image "src/blog/my-terminal-became-more-rusty/delta.jpeg", "screenshot of delta" %}
 
 ---
 
@@ -180,7 +180,7 @@ rg "\.content" -g "*.pug"
 rg fast README.md --replace FAST
 ```
 
-{% Image "src/blog/my-terminal-became-more-rusty/ripgrep.jpg", "screenshot of ripgrep" %}
+{% Image "src/blog/my-terminal-became-more-rusty/ripgrep.jpeg", "screenshot of ripgrep" %}
 
 ---
 
@@ -190,10 +190,10 @@ the friendly version of `find` command, and faster.
 
 It's by default ignore `.gitignore` file
 
-in this tutorial I have some screenshots in `png` format to convert them all to `jpg`:
+in this tutorial I have some screenshots in `png` format to convert them all to `jpeg`:
 
 ```bash
-fd -e png -x convert {} {.}.jpg
+fd -e png -x convert {} {.}.jpeg
 ```
 
 To delete files
@@ -210,7 +210,7 @@ In this time not `top` 😀 it is `bottom`
 
 it's a cross-platform system monitor. 
 
-{% Image "src/blog/my-terminal-became-more-rusty/bottom.jpg", "screenshot of bottom" %}
+{% Image "src/blog/my-terminal-became-more-rusty/bottom.jpeg", "screenshot of bottom" %}
 
 ---
 
@@ -219,7 +219,7 @@ it's a cross-platform system monitor.
 
 tldr is a cheatsheets for CLIs, instead of read the whole `man`.
 
-{% Image "src/blog/my-terminal-became-more-rusty/tldr.jpg", "screenshot of tldr" %}
+{% Image "src/blog/my-terminal-became-more-rusty/tldr.jpeg", "screenshot of tldr" %}
 
 ---
 

@@ -77,7 +77,7 @@ yarn dev
 now open `localhost:8080` on your browser and
 it should work without any customized eleventy configuration.
 
-{% Image "src/blog/how-to-optimize-and-lazyloading-images-on-eleventy/setup-screen.jpg", "screenshot of application inside the browser" %}
+{% Image "src/blog/how-to-optimize-and-lazyloading-images-on-eleventy/setup-screen.jpeg", "screenshot of application inside the browser" %}
 
 ### Display some images
 
@@ -88,22 +88,22 @@ and inside `index.njk` try to display theme.
 ```bash
 ls images/
 
-518k   0001.jpg
-2.6M   0002.jpg
-1.7M   0003.jpg
-368k   0004.jpg
-679k   0005.jpg
-556k   0006.jpg
-602k   0007.jpg
-1.6M   0008.jpg
-1.4M   0009.jpg
+518k   0001.jpeg
+2.6M   0002.jpeg
+1.7M   0003.jpeg
+368k   0004.jpeg
+679k   0005.jpeg
+556k   0006.jpeg
+602k   0007.jpeg
+1.6M   0008.jpeg
+1.4M   0009.jpeg
 ```
 
 ```html
 <!-- index.njk -->
 <body>
-  <img src="/images/0001.jpg" alt="image no 01" />
-  <img src="/images/0002.jpg" alt="image no 02" />
+  <img src="/images/0001.jpeg" alt="image no 01" />
+  <img src="/images/0002.jpeg" alt="image no 02" />
   <!-- ... -->
 </body>
 ```
@@ -126,7 +126,7 @@ will be copied to the build directory.
 Restart your server and go back to your browser
 and it should everything work.
 
-{% Image "src/blog/how-to-optimize-and-lazyloading-images-on-eleventy/images-screen.jpg", "screenshot of application inside the browser" %}
+{% Image "src/blog/how-to-optimize-and-lazyloading-images-on-eleventy/images-screen.jpeg", "screenshot of application inside the browser" %}
 
 
 ### Test images performance without optimization
@@ -215,7 +215,7 @@ in our case we will have a new shortcode we can use inside our templates by
 writing:
 
 ```html
-{\% Image "/images/00.jpg", "this is an alt description" \%}
+{\% Image "/images/00.jpeg", "this is an alt description" \%}
 ```
 
 - `stats = new Image(...)` 
@@ -255,7 +255,7 @@ srcset = {
 
 - `const source = ...` and `const img = ...`
 
-Use `webp` format for `source` as main image type and `jpg` as fallback fro `img` tag.
+Use `webp` format for `source` as main image type and `jpeg` as fallback fro `img` tag.
 
 Now we are good to go by return the whole `picture`.
 
@@ -268,10 +268,10 @@ open `index.njk` and replace all `img` tags with
 <!-- index.njk -->
 
 <!-- ... -->
-{\% Image "images/0001.jpg", "image no 01" \%}
-{\% Image "images/0002.jpg", "image no 02" \%}
-{\% Image "images/0003.jpg", "image no 03" \%}
-{\% Image "images/0004.jpg", "image no 04" \%}
+{\% Image "images/0001.jpeg", "image no 01" \%}
+{\% Image "images/0002.jpeg", "image no 02" \%}
+{\% Image "images/0003.jpeg", "image no 03" \%}
+{\% Image "images/0004.jpeg", "image no 04" \%}
 <!-- ... -->
 ```
 > **PS:** you have to write image paths include the full path from the root of the project to make it works.

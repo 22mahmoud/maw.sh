@@ -11,7 +11,7 @@ categories:
   - 'vim'
 ---
 
-{% Image "src/blog/no-more-postman-just-curl-and-vim/bg.jpg", "big brain with vim and cURL logos" %}
+{% Image "src/blog/no-more-postman-just-curl-and-vim/bg.jpeg", "big brain with vim and cURL logos" %}
 
 Postman one of the most popular API client tool, for send and view the response
 in the development environment. But since Postman is proprietary software and 
@@ -36,7 +36,7 @@ for example:
 will execute the `ls` command line and show the content 
 in pager.
 
-{% Image "src/blog/no-more-postman-just-curl-and-vim/screen.jpg", "screenshot for ls command inside vim" %}
+{% Image "src/blog/no-more-postman-just-curl-and-vim/screen.jpeg", "screenshot for ls command inside vim" %}
 
 ### Execute the content of the current file as CLI.
 
@@ -48,7 +48,7 @@ it will not work because it's trying run the file as executable file not the con
 
 so we pass `sh` before the `%` to run the content inside the file via shell.
 
-{% Image "src/blog/no-more-postman-just-curl-and-vim/screen1.jpg", "screenshot :!sh command inside vim" %}
+{% Image "src/blog/no-more-postman-just-curl-and-vim/screen1.jpeg", "screenshot :!sh command inside vim" %}
 
 ### Test our first cURL command
 
@@ -85,7 +85,7 @@ curl -s -X GET \
 ```
 then as we done before run `:!sh %`
 
-{% Image "src/blog/no-more-postman-just-curl-and-vim/screen2.jpg", "screenshot of :!sh % result inside vim" %}
+{% Image "src/blog/no-more-postman-just-curl-and-vim/screen2.jpeg", "screenshot of :!sh % result inside vim" %}
 
 # Make the result More Handy.
 
@@ -109,7 +109,7 @@ command Exec set splitbelow | new | set filetype=sh | read !sh #
 open again `api/posts/get/todos.sh` and  in command mode write `:Exec`
 that will execute the command inside the file and open split view with the result.
   
-{% Image "src/blog/no-more-postman-just-curl-and-vim/screen3.jpg", "screenshot of before vim command" %}
+{% Image "src/blog/no-more-postman-just-curl-and-vim/screen3.jpeg", "screenshot of before vim command" %}
 
 now you have vim buffer you can easily search and do whatever you do. and to close the buffer you can use
 command ``:bd!`` or the keyboard shortcut `shift + z + q`.
