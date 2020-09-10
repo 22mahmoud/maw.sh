@@ -96,6 +96,8 @@ sub {
 
 img {
   border: 0;
+  height: auto;
+  width: 100%;
 }
 
 svg:not(:root) {

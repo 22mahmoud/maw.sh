@@ -15,9 +15,7 @@ keywords:
   - 'terminal'
 ---
 
-<img 
-  src="./cover.jpg" 
-  alt="big crap attack the city">
+{% Image "src/blog/my-terminal-became-more-rusty/cover.jpg", "big crap attack the city" %}
 
 As a Software-Engineer I spent most of the time inside my terminal, So
 I need for that a fast terminal with  fast tools to speed up my productivity.
@@ -52,13 +50,7 @@ Alacritty doesn't come with ligature support but you can use
 this [fork](https://github.com/zenixls2/alacritty/tree/ligature). or if 
 you are using Arch you can install it from [aur](https://aur.archlinux.org/packages/alacritty-ligatures/)
 
-<img 
-  src="./alacritty.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./alacritty.jpg?size=320 320w, ./alacritty.jpg?size=640 640w, 
-    ./alacritty.jpg?size=960 960w, ./alacritty.jpg?size=1200 1200w, ./alacritty.jpg?size=1800 1800w, ./alacritty.jpg?size=2400 2400w"  
-  loading="lazy"
-  alt="screenshot of the terminal showing alacritty ligatures">
+{% Image "src/blog/my-terminal-became-more-rusty/alacritty.jpg", "screenshot of the terminal showing alacritty ligatures" %}
 
 ---
 
@@ -71,13 +63,7 @@ You can use it with any shell bash, zsh, fish and even powerShell.
 
 The screenshot below showing the result of my customized configuration.
 
-<img 
-  src="./starship.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./starship.jpg?size=320 320w, ./starship.jpg?size=640 640w, 
-    ./starship.jpg?size=960 960w, ./starship.jpg?size=1200 1200w, ./starship.jpg?size=1800 1800w, ./starship.jpg?size=2400 2400w"  
-  loading="lazy"
-  alt="screenshot of starship prompt">
+{% Image "src/blog/my-terminal-became-more-rusty/starship.jpg", "screenshot of starship prompt" %}
 
 ---
 
@@ -100,13 +86,7 @@ fi
 
 the result of my `ls` and `ll` commands.
 
-<img 
-  src="./exa.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./exa.jpg?size=320 320w, ./exa.jpg?size=640 640w, 
-    ./exa.jpg?size=960 960w, ./exa.jpg?size=1200 1200w, ./exa.jpg?size=1800 1800w, ./exa.jpg?size=2400 2400w"  
-  loading="lazy"
-  alt="screenshot of exa result">
+{% Image "src/blog/my-terminal-became-more-rusty/exa.jpg", "screenshot of exa" %}
 
 ---
 
@@ -123,13 +103,7 @@ if [ "$(command -v bat)" ]; then
 fi
 ```
 
-<img 
-  src="./bat.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./bat.jpg?size=320 320w, ./bat.jpg?size=640 640w, 
-    ./bat.jpg?size=960 960w, ./bat.jpg?size=1200 1200w, ./bat.jpg?size=1800 1800w, ./bat.jpg?size=2400 2400w"  
-  loading="lazy"
-  alt="screenshot of bat">
+{% Image "src/blog/my-terminal-became-more-rusty/bat.jpg", "screenshot of bat" %}
 
 ---
 
@@ -159,13 +133,7 @@ feature and set a theme for Nord, You can choose your preferred theme  run and c
 delta --list-syntax-themes
 ```
 
-<img 
-  src="./delta.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./delta.jpg?size=320 320w, ./delta.jpg?size=640 640w, 
-    ./delta.jpg?size=960 960w, ./delta.jpg?size=1200 1200w, ./delta.jpg?size=1800 1800w, ./delta.jpg?size=2400 2400w"  
-  loading="lazy"
-  alt="screenshot of delta">
+{% Image "src/blog/my-terminal-became-more-rusty/delta.jpg", "screenshot of delta" %}
 
 ---
 
@@ -213,13 +181,8 @@ rg "\.content" -g "*.pug"
 # you can also search and replace with regex as sed command
 rg fast README.md --replace FAST
 ```
-<img 
-  src="./ripgrep.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./ripgrep.jpg?size=320 320w, ./ripgrep.jpg?size=640 640w, 
-    ./ripgrep.jpg?size=960 960w, ./ripgrep.jpg?size=1200 1200w, ./ripgrep.jpg?size=1800 1800w, ./ripgrep.jpg?size=2400 2400w"  
-  loading="lazy"
-  alt="screenshot of ripgrep">
+
+{% Image "src/blog/my-terminal-became-more-rusty/ripgrep.jpg", "screenshot of ripgrep" %}
 
 ---
 
@@ -249,13 +212,7 @@ In this time not `top` 😀 it is `bottom`
 
 it's a cross-platform system monitor. 
 
-<img 
-  src="./bottom.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./bottom.jpg?size=320 320w, ./bottom.jpg?size=640 640w, 
-    ./bottom.jpg?size=960 960w, ./bottom.jpg?size=1200 1200w, ./bottom.jpg?size=1800 1800w, ./bottom.jpg?size=2400 2400w"  
-  loading="lazy"
-  alt="screenshot of bottom">
+{% Image "src/blog/my-terminal-became-more-rusty/bottom.jpg", "screenshot of bottom" %}
 
 ---
 
@@ -264,19 +221,13 @@ it's a cross-platform system monitor.
 
 tldr is a cheatsheets for CLIs, instead of read the whole `man`.
 
-<img 
-  src="./tldr.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./tldr.jpg?size=320 320w, ./tldr.jpg?size=640 640w, 
-    ./tldr.jpg?size=960 960w, ./tldr.jpg?size=1200 1200w, ./tldr.jpg?size=1800 1800w, ./tldr.jpg?size=2400 2400w"  
-  loading="lazy"
-  alt="screenshot of tldr">
+{% Image "src/blog/my-terminal-became-more-rusty/tldr.jpg", "screenshot of tldr" %}
 
 ---
 
 ### More Tools?
 
-- for who want lightweight alternative for github client you can use `spotify-tui`.
+- for who want lightweight alternative for spotify client you can use `spotify-tui`.
 - also if you prefer an UI interface  for git check `gitui`.
 
 and there is a ton of CLIs and tools written in rust you can check 

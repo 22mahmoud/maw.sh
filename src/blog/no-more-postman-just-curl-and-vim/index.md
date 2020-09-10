@@ -11,12 +11,7 @@ categories:
   - 'vim'
 ---
 
-<img 
-  src="./bg.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./bg.jpg?size=320 320w, ./bg.jpg?size=640 640w, 
-    ./bg.jpg?size=960 960w, ./bg.jpg?size=1200 1200w, ./bg.jpg?size=1800 1800w, ./bg.jpg?size=2400 2400w"  
-  alt="big brain with vim and cURL logos">
+{% Image "src/blog/no-more-postman-just-curl-and-vim/bg.jpg", "big brain with vim and cURL logos" %}
 
 Postman one of the most popular API client tool, for send and view the response
 in the development environment. But since Postman is proprietary software and 
@@ -41,13 +36,7 @@ for example:
 will execute the `ls` command line and show the content 
 in pager.
 
-<img 
-  src="./screen.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./screen.jpg?size=320 320w, ./screen.jpg?size=640 640w, 
-    ./screen.jpg?size=960 960w, ./screen.jpg?size=1200 1200w, ./screen.jpg?size=1800 1800w, ./screen.jpg?size=2400 2400w"  
-  loading="lazy" alt="screenshot for ls command inside vim">
-
+{% Image "src/blog/no-more-postman-just-curl-and-vim/screen.jpg", "screenshot for ls command inside vim" %}
 
 ### Execute the content of the current file as CLI.
 
@@ -59,12 +48,7 @@ it will not work because it's trying run the file as executable file not the con
 
 so we pass `sh` before the `%` to run the content inside the file via shell.
 
-<img 
-  src="./screen1.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./screen1.jpg?size=320 320w, ./screen1.jpg?size=640 640w, 
-    ./screen1.jpg?size=960 960w, ./screen1.jpg?size=1200 1200w, ./screen1.jpg?size=1800 1800w, ./screen1.jpg?size=2400 2400w"  
-  loading="lazy" alt="screenshot :!sh command inside vim">
+{% Image "src/blog/no-more-postman-just-curl-and-vim/screen1.jpg", "screenshot :!sh command inside vim" %}
 
 ### Test our first cURL command
 
@@ -101,13 +85,7 @@ curl -s -X GET \
 ```
 then as we done before run `:!sh %`
 
-<img 
-  src="./screen2.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./screen2.jpg?size=320 320w, ./screen2.jpg?size=640 640w, 
-    ./screen2.jpg?size=960 960w, ./screen2.jpg?size=1200 1200w, ./screen2.jpg?size=1800 1800w, ./screen2.jpg?size=2400 2400w"  
-  loading="lazy"
-  alt="screenshot of :!sh % result inside vim">
+{% Image "src/blog/no-more-postman-just-curl-and-vim/screen2.jpg", "screenshot of :!sh % result inside vim" %}
 
 # Make the result More Handy.
 
@@ -130,14 +108,8 @@ command Exec set splitbelow | new | set filetype=sh | read !sh #
 
 open again `api/posts/get/todos.sh` and  in command mode write `:Exec`
 that will execute the command inside the file and open split view with the result.
-
-<img 
-  src="./screen3.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./screen3.jpg?size=320 320w, ./screen3.jpg?size=640 640w, 
-    ./screen3.jpg?size=960 960w, ./screen3.jpg?size=1200 1200w, ./screen3.jpg?size=1800 1800w, ./screen3.jpg?size=2400 2400w"  
-  loading="lazy"
-  alt="screenshot of before vim command">
+  
+{% Image "src/blog/no-more-postman-just-curl-and-vim/screen3.jpg", "screenshot of before vim command" %}
 
 now you have vim buffer you can easily search and do whatever you do. and to close the buffer you can use
 command ``:bd!`` or the keyboard shortcut `shift + z + q`.

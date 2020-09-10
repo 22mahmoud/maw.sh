@@ -6,7 +6,7 @@
 
 .container {
   margin: 0 auto;
-  max-width: rfs(50rem);
+  max-width: rfs(45rem);
   padding: rfs(1.5rem) 0;
 }
 
@@ -22,11 +22,8 @@
   justify-self: start;
   & img {
     filter: brightness(0.8) contrast(1.2);
-    height: auto;
     object-fit: cover;
     transform: rotate(6deg) scale(0.8);
-    width: 100%;
-    z-index: 1;
   }
 }
 

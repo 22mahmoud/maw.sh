@@ -44,13 +44,7 @@ After installing the dependencies, you should be good to go and start your serve
 
 Voila, 🎉 the application now up and running.
 
-<img 
-  src="./bg1.jpg?size=600" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./bg1.jpg?size=320 320w, ./bg1.jpg?size=640 640w, 
-    ./bg1.jpg?size=960 960w, ./bg1.jpg?size=1200 1200w, ./bg1.jpg?size=1800 1800w, ./bg1.jpg?size=2400 2400w"  
-  loading="lazy" 
-  alt="screenshot of the home page for sapper boilerplate">
+{% Image "src/blog/build-a-blog-with-svelte-and-markdown/bg1.jpg", "screenshot of the home page for sapper boilerplate" %}
 
 Let's open the project in your favorite editor. and go to the `blog` folder
 inside the `src/routes`.
@@ -178,13 +172,7 @@ the markdown.
 
 If you navigate to `/blog` route you should have a page similar to this:
 
-<img 
-  src="./bg2.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./bg2.jpg?size=320 320w, ./bg2.jpg?size=640 640w, 
-    ./bg2.jpg?size=960 960w, ./bg2.jpg?size=1200 1200w, ./bg2.jpg?size=1800 1800w, ./bg2.jpg?size=2400 2400w"  
-  loading="lazy" alt="screenshot of blogs pages">
-
+{% Image "src/blog/build-a-blog-with-svelte-and-markdown/bg2.jpg", "screenshot of blogs pages" %}
 
 Now we need to handle the post route. open `src/routes/blog/[slug].json.js`
 
@@ -259,13 +247,7 @@ In `src/client.js` we import Github styles for highlight.js.
   // ...
 ```
 
-<img 
-  src="./bg3.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./bg3.jpg?size=320 320w, ./bg3.jpg?size=640 640w, 
-    ./bg3.jpg?size=960 960w, ./bg3.jpg?size=1200 1200w, ./bg3.jpg?size=1800 1800w, ./bg3.jpg?size=2400 2400w"  
-  loading="lazy" 
-  alt="screenshot of the final result showing a sample blog post">
+{% Image "src/blog/build-a-blog-with-svelte-and-markdown/bg3.jpg", "screenshot of the final result showing a sample blog post" %}
 
 ### conclusion 
 

@@ -77,14 +77,7 @@ yarn dev
 now open `localhost:8080` on your browser and
 it should work without any customized eleventy configuration.
 
-<img 
-  loading="lazy"
-  src="./setup-screen.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./setup-screen.jpg?size=320 320w, ./setup-screen.jpg?size=640 640w, 
-    ./setup-screen.jpg?size=960 960w, ./setup-screen.jpg?size=1200 1200w, ./setup-screen.jpg?size=1800 1800w, ./setup-screen.jpg?size=2400 2400w"  
-  alt="screenshot of application inside the browser">
-
+{% Image "src/blog/how-to-optimize-and-lazyloading-images-on-eleventy/setup-screen.jpg", "screenshot of application inside the browser" %}
 
 ### Display some images
 
@@ -133,13 +126,7 @@ will be copied to the build directory.
 Restart your server and go back to your browser
 and it should everything work.
 
-<img 
-  loading="lazy"
-  src="./images-screen.jpg" 
-  sizes='(min-width: 1024px) 1024px, 100vw'
-  srcSet="./images-screen.jpg?size=320 320w, ./images-screen.jpg?size=640 640w, 
-    ./images-screen.jpg?size=960 960w, ./images-screen.jpg?size=1200 1200w, ./images-screen.jpg?size=1800 1800w, ./images-screen.jpg?size=2400 2400w"  
-  alt="screenshot of application inside the browser">
+{% Image "src/blog/how-to-optimize-and-lazyloading-images-on-eleventy/images-screen.jpg", "screenshot of application inside the browser" %}
 
 
 ### Test images performance without optimization
