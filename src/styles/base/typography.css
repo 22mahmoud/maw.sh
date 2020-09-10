@@ -74,6 +74,19 @@ h6 {
   font-size: var(--text-xs-font-size);
 }
 
+.text-xs,
+.text-sm,
+.text-base,
+.text-lg,
+.text-xl,
+.text-2xl,
+.text-3xl,
+.text-4xl,
+.text-5xl,
+.text-6xl {
+  font-family: var(--font-family);
+}
+
 .text-sm {
   font-size: var(--text-sm-font-size);
 }

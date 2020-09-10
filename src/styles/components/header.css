@@ -1,0 +1,21 @@
+header {
+  align-items: center;
+  display: flex;
+}
+
+.nav ul {
+  display: flex;
+  justify-self: end;
+  list-style: none;
+  margin-left: auto;
+  padding: 0;
+
+  & li:not(:last-child) {
+    margin-right: rfs(1rem);
+  }
+
+  & li a {
+    border-bottom: 2px solid var(--accent-color);
+    color: var(--primary-color);
+  }
+}

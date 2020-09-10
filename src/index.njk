@@ -3,49 +3,31 @@ title: 'Mahmoud Ashraf'
 layout: 'base.njk'
 ---
 
-<header>
-  <nav class="nav">
-    <ul>
-      <li>
-        <a href="#"> Home </a>
-      </li>
-      <li>
-        <a href="#"> About </a>
-      </li>
-      <li>
-        <a href="#"> Blog </a>
-      </li>
-      <li>
-        <a href="#"> Thoughts </a>
-      </li>
-      <li>
-        <a href="#"> Projects </a>
-      </li>
-      <li>
-        <a href="#"> Contact</a>
-      </li>
-    </ul>
-  </nav>
-</header>
-<main>
-  <div class="hero">
-    <p class="text-xl name">HEY 👋, MY NAME IS MAHMOUD ASHRAF.</p>
+<div class="hero-section">
+  <div class="intro">
+    <p class="text-xl" class="intro__subtitle">
+      HEY 👋, MY NAME IS MAHMOUD ASHRAF.
+    </p>
     {% Image "src/me.jpg", "Me talking a selfi" %}
-    <h2>A Software Engineer Who Builds stuff on the internet.</h2>
+    <h2 class="intro__title">
+      A Software Engineer Who Builds stuff on the internet.
+    </h2>
   </div>
 
-  <div class="latest">
+  <div class="recent-blogs">
     <p class="text-xl">LATEST BLOG POSTS.</p>
     {%- for post in collections.latestPosts -%}
-    <div>
-      <a href="{{ post.url }}">{{ post.data.title }}</a>
+    <article>
+      <h1 class="text-base">
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+      </h1>
       <time datetime="{{ post.data.date }}" class="text-sm">
         {{ post.data.date | date }}
       </time>
       <p>{{ post.data.description }}</p>
-    </div>
+    </article>
     {%- endfor -%}
-    <a href="/posts" class="seemore"> See all posts → </a>
+    <a href="/posts" class="recent-blogs__seemore"> See all posts → </a>
   </div>
 
   <div class="social">
@@ -57,4 +39,4 @@ layout: 'base.njk'
     </a>
     {%- endfor -%}
   </div>
-</main>
+</div>

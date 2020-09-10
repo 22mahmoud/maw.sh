@@ -1,0 +1,5 @@
+.container {
+  margin: 0 auto;
+  max-width: rfs(45rem);
+  padding: rfs(1.5rem) 0;
+}
