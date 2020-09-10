@@ -35,7 +35,7 @@ eleventyNavigation:
   <div class="social">
     <p class="text-xl">FIND ME</p>
     {%- for account in social -%}
-    <a href="{{ account.href }}">
+    <a rel="me" href="{{ account.href }}">
       {{ account.icon | safe }}
       {{ account.name }}
     </a>
