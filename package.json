@@ -23,6 +23,7 @@
     "@11ty/eleventy-plugin-rss": "^1.0.9",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
     "@fullhuman/postcss-purgecss": "^2.3.0",
+    "@quasibit/eleventy-plugin-sitemap": "^2.0.1",
     "@snowpack/plugin-build-script": "^2.0.6",
     "@snowpack/plugin-postcss": "^1.0.3",
     "@snowpack/plugin-run-script": "^2.1.1",

@@ -8,6 +8,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = (cfg) => {
   cfg.addPassthroughCopy('src/assets');
   cfg.addPassthroughCopy('src/**/*.gif');
+  cfg.addPassthroughCopy('src/robots.txt');
 
   if (isDev) {
     cfg.addPassthroughCopy('src/**/*.jpeg');
