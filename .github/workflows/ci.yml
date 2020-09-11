@@ -15,4 +15,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: echo "Hello, Wrold"
+          script: cd ${{ secrets.BUILD_PATH }} && gpl && y && yarn build

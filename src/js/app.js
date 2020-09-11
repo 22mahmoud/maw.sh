@@ -17,6 +17,8 @@ import turbolinks from 'turbolinks';
 
 const lazyload = new Lazyload();
 
+console.log('WORKING CI');
+
 turbolinks.start();
 
 document.addEventListener('DOMContentLoaded', () => {
