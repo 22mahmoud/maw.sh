@@ -3,6 +3,36 @@ layout: 'base.njk'
 ---
 
 <div class="markdown">
-  <h1>{{ title }}</h1>
-  {{ content | safe }}
+  <article class="h-entry">
+    <header>
+      <h1 class="p-name" id="{{ title | slug }}-title">{{ title }}</h1>
+
+      <div>
+        <time class="dt-published" datetime="{{ date | iso }}">
+          {{ date | date }}
+        </time>
+        {% if categories %} &sdot;
+        <span class="p-category">{{ categories | join(', ') }}</span>
+        {% endif %}
+      </div>
+    </header>
+    <div class="e-content" itemprop="articleBody">
+      {{ content | safe }}
+    </div>
+
+    <div hidden>
+      <a class="u-url" href="{{ page.url | url | absoluteUrl(site.url) }}">{{
+        title
+      }}</a>
+      <p class="h-card p-author">
+        <a class="p-name u-url" rel="author" href="{{ site.url }}">{{
+          author.name
+        }}</a>
+        <img
+          class="u-photo"
+          src="{{ site.logo | url | absoluteUrl(site.url) }}"
+        />
+      </p>
+    </div>
+  </article>
 </div>

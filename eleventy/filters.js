@@ -6,7 +6,7 @@ module.exports = (cfg) => {
   cfg.addFilter('date', (date) => format(parseISO(date), 'd MMMM, yyyy'));
 
   cfg.addFilter('iso', (date) => {
-    return formatISO(date);
+    return formatISO(new Date(date));
   });
 
   cfg.addFilter('getTitle', (title) =>
