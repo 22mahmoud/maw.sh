@@ -8,7 +8,6 @@ module.exports = {
 
   plugins: [
     '@snowpack/plugin-postcss',
-    ['@snowpack/plugin-webpack', {}],
     ['@snowpack/plugin-run-script', { cmd: 'eleventy', watch: '$1 --watch' }],
   ],
 
