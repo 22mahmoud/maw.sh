@@ -20,11 +20,5 @@ module.exports = {
     node: true,
   },
   plugins: ['html'],
-  settings: {
-    'import/resolver': {
-      node: {
-        moduleDirectory: ['web_modules'],
-      },
-    },
-  },
+  settings: {},
 };

@@ -1,11 +1,13 @@
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 
-const collections = require('./eleventy/collections');
-const filters = require('./eleventy/filters');
-const shortcodes = require('./eleventy/shortcodes');
-const plugins = require('./eleventy/plugins');
-const transformers = require('./eleventy/transformers');
+const collections = require('./config/eleventy/collections');
+const filters = require('./config/eleventy/filters');
+const shortcodes = require('./config/eleventy/shortcodes');
+const plugins = require('./config/eleventy/plugins');
+const transformers = require('./config/eleventy/transformers');
+
+const manifest = require('./dist/assets/js/manifest.json');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -20,7 +22,10 @@ const anchorSlugify = (s) =>
   );
 
 module.exports = (cfg) => {
-  cfg.addPassthroughCopy('src/assets');
+  cfg.addPassthroughCopy('src/assets/fonts');
+  cfg.addPassthroughCopy('src/assets/images');
+  cfg.addPassthroughCopy('src/assets/favicon.ico');
+  cfg.addPassthroughCopy('src/assets/manifest.json');
   cfg.addPassthroughCopy('src/**/*.gif');
   cfg.addPassthroughCopy('src/robots.txt');
 
@@ -33,6 +38,11 @@ module.exports = (cfg) => {
   collections(cfg);
 
   filters(cfg);
+
+  /* Filters */
+  cfg.addFilter('jsAsset', (name) => {
+    return manifest[name];
+  });
 
   shortcodes(cfg);
 
@@ -58,16 +68,19 @@ module.exports = (cfg) => {
   );
 
   return {
+    // use nunjucks as the main template engine.
     templateFormats: ['md', 'njk', 'html'],
     markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     dataTemplateEngine: 'njk',
 
+    // change default inputs and output directories.
     dir: {
       input: 'src',
-      output: 'site',
-      includes: '_includes',
-      layouts: '_layouts',
+      output: 'dist',
+      includes: 'includes',
+      layouts: 'layouts',
+      data: 'data',
     },
   };
 };
