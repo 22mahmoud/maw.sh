@@ -1,6 +1,6 @@
 const { format, parseISO, formatISO } = require('date-fns');
 
-const site = require('../src/_data/site');
+const site = require('../../src/data/site');
 
 module.exports = (cfg) => {
   cfg.addFilter('date', (date) => format(parseISO(date), 'd MMMM, yyyy'));
