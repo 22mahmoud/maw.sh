@@ -22,6 +22,8 @@ module.exports = {
 
   dest,
 
+  imagesDest: resolveDist('images'),
+
   eleventy: {
     watch: [resolveSrc('**/*.{njk,md,json,js}'), resolveApp('.eleventy.js')],
   },

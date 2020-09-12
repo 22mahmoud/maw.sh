@@ -1,7 +1,7 @@
 const Image = require('@11ty/eleventy-img');
 const sharp = require('sharp');
 
-const { paths } = require('./config');
+const paths = require('../paths');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -40,7 +40,7 @@ module.exports = async (src, alt) => {
     widths: [25, 320, 640, 960, 1200, 1800, 2400],
     formats: ['jpeg', 'webp'],
     urlPath: '/images/',
-    outputDir: paths.images,
+    outputDir: paths.imagesDest,
   });
 
   let lowestSrc = stats['jpeg'][0];
