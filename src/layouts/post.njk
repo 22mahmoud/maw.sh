@@ -5,14 +5,15 @@ layout: 'base.njk'
 <div class="markdown">
   <article class="h-entry">
     <header>
-      <h1 class="p-name" id="{{ title | slug }}-title">{{ title }}</h1>
-
+      <h1 class="display-4 p-name" id="{{ title | slug }}-title">
+        {{ title }}
+      </h1>
       <div>
         <time class="dt-published" datetime="{{ date | iso }}">
           {{ date | date }}
         </time>
-        {% if categories %} &sdot;
-        <span class="p-category">{{ categories | join(', ') }}</span>
+        {% if categories %}
+        <span hidden class="p-category">{{ categories | join(', ') }}</span>
         {% endif %}
       </div>
     </header>

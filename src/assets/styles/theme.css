@@ -1,0 +1,17 @@
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+}
+
+a {
+  color: var(--text-color);
+  position: relative;
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+  width: 100%;
+}

@@ -1,11 +1,22 @@
 .blogs {
-  margin: rfs(2rem) 0;
+  margin: 0 auto;
+  max-width: 38rem;
+}
+
+.blogs__title {
+  margin: rfs(6rem) 0;
+  text-align: center;
 }
 
 .blogs article {
-  margin-bottom: rfs(2rem);
+  margin-bottom: rfs(5rem);
 
-  & h1 {
-    font-weight: 700;
+  & h2 {
+    margin-bottom: 0;
+  }
+
+  & time {
+    display: block;
+    margin: rfs(0.6rem) 0;
   }
 }
