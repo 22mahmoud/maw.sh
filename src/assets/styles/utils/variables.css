@@ -31,7 +31,15 @@
 
   --paragraph-margin-bottom: rfs(1rem);
 
-  --accent-color: #9ae6b4;
-  --primary-color: #fff;
-  --bg-color: #000;
+  --bg-color: #080808;
+  --bg-color-offset: #303032;
+  --text-color: #f1f2f2;
+  --primary-color: #e3e8ff;
+
+  --border-radius-none: o;
+  --border-radius-sm: 0.125rem;
+  --border-radius-base: 0.25rem;
+  --border-radius-md: 0.375rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-full: 9999px;
 }

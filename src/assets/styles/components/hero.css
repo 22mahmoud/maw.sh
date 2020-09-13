@@ -1,44 +1,41 @@
-.hero-section {
-  display: flex;
-  flex-wrap: wrap;
+.hero {
+  margin: rfs(4rem) 0;
 }
 
 .intro {
-  flex: 0.5;
-  & img {
-    filter: brightness(0.8) contrast(1.2);
-    object-fit: cover;
-    transform: rotate(6deg) scale(0.8);
-  }
-}
-
-.recent-blogs {
-  display: flex;
-  flex: 0.5;
-  flex-direction: column;
-  margin: 0 rfs(1.4rem);
-  & .recent-blogs__seemore {
-    margin: rfs(1.2rem) 0;
-    margin-left: auto;
-  }
-
-  & time {
-    color: #c5c5c5;
-  }
-}
-
-.social {
   display: flex;
   flex-direction: column;
 
-  & a {
-    display: flex;
-    margin-bottom: rfs(0.5rem);
+  & .intro__pretitle {
+    text-transform: uppercase;
+  }
+}
 
-    & svg {
-      fill: #fff;
-      margin-right: rfs(0.4rem);
-      width: rfs(1.5rem);
+.latest {
+  margin: rfs(4rem) 0;
+  & .latest__title {
+    text-transform: uppercase;
+  }
+}
+
+.latest article {
+  margin: rfs(1rem) 0;
+
+  & .article__description {
+    margin: 0;
+  }
+
+  & .article__title {
+    position: relative;
+    & ::after {
+      background-color: var(--text-color);
+      bottom: 0;
+      content: '';
+      height: 10%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      width: auto;
     }
   }
 }

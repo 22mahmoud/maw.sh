@@ -1,6 +1,8 @@
 /* purgecss start ignore */
 .markdown {
   font-size: rfs(1.125rem);
+  margin: 0 auto;
+  max-width: 42rem;
 
   & p {
     line-height: 1.7;
@@ -21,21 +23,26 @@
     margin-top: rfs(3rem);
   }
 
-  & .heading-anchor {
-    border-bottom: 3px solid var(--accent-color);
+  & a {
+    text-decoration: underline;
+  }
+
+  & a.heading-anchor {
+    border-bottom: 3px solid var(--text-color);
     font-size: rfs(1.4rem);
+    text-decoration: none;
   }
 
   & :not(pre) > code {
-    background: var(--accent-color);
+    background: var(--text-color);
     border-radius: 3px;
-    color: #000;
+    color: var(--bg-color);
     line-height: rfs(1.55rem);
     padding: 2px 4px;
   }
 
   & blockquote {
-    border-left: 5px solid var(--accent-color);
+    border-left: 5px solid var(--text-color);
     font-style: italic;
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -57,7 +64,7 @@
 .markdown article header {
   display: flex;
   flex-direction: column;
-  padding-bottom: rfs(1rem);
+  padding-bottom: rfs(4rem);
   & div {
     display: flex;
     text-transform: uppercase;

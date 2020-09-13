@@ -16,10 +16,10 @@ header {
   }
 
   & li a {
-    color: var(--primary-color);
+    padding-bottom: rfs(0.4rem);
   }
 
   & .nav__active {
-    border-bottom: 2px solid var(--accent-color);
+    border-bottom: 4px solid var(--text-color);
   }
 }
