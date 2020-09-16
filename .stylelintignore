@@ -1,3 +1,4 @@
-site
+dist
 build
+out
 node_modules

@@ -1,4 +1,5 @@
 # Ignore dist files
-site
-build
+dist/**
+build/**
+out/**
 node_module

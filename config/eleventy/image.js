@@ -1,9 +1,8 @@
+const path = require('path');
 const Image = require('@11ty/eleventy-img');
 const sharp = require('sharp');
 
 const paths = require('../paths');
-
-const isDev = process.env.NODE_ENV === 'development';
 
 async function getPlaceHolder(outputPath) {
   const placeholder = await sharp(outputPath)
@@ -11,7 +10,7 @@ async function getPlaceHolder(outputPath) {
     .blur()
     .toBuffer();
 
-  return `data:image/png;base64,${placeholder.toString('base64')}`;
+  return `data:image/webp;base64,${placeholder.toString('base64')}`;
 }
 
 function generateSrcset(stats) {
@@ -27,59 +26,59 @@ function generateSrcset(stats) {
   );
 }
 
-module.exports = async (src, alt) => {
-  if (!alt) {
-    throw new Error(`Missing \`alt\` on myImage from: ${src}`);
+function getSrc(relativeSrc, outputPath) {
+  let src = relativeSrc;
+
+  if (!relativeSrc.startsWith('https://')) {
+    src = path.relative(
+      paths.root,
+      path.resolve(outputPath.split('/').slice(0, -1).join('/'), relativeSrc)
+    );
   }
 
-  if (isDev) {
-    return `<img src="${src.slice(3)}" alt="${alt}" />`;
+  return src;
+}
+
+async function handleImage({ src: relativeSrc, alt, class: className }) {
+  if (process.env.NODE_ENV === 'development') {
+    return `<div class='image-wrapper'>
+      <img src=${relativeSrc} alt=${alt} ${
+      className ? `class= ${className}` : ''
+    } />
+    </div>`;
   }
+
+  if (!alt) throw new Error(`Missing \`alt\` on myImage from: ${src}`);
+
+  const src = getSrc(relativeSrc, this.page.inputPath);
 
   let stats = await Image(src, {
-    widths: [25, 320, 640, 960, 1200, 1800, 2400],
+    widths: [24, 320, 640, 960, 1200, 1800, 2400],
     formats: ['jpeg', 'webp'],
     urlPath: '/images/',
     outputDir: paths.imagesDest,
   });
 
-  let lowestSrc = stats['jpeg'][0];
+  const originalSrc = stats['jpeg'][stats['jpeg'].length - 1];
 
-  const base64Placeholder = await getPlaceHolder(lowestSrc.outputPath);
+  const base64Placeholder = await getPlaceHolder(stats['webp'][0].outputPath);
 
   const srcset = generateSrcset(stats);
 
-  const source = `<source type="image/webp" data-srcset="${srcset['webp']}">`;
-
-  const sourceNoScript = `<source type="image/webp" srcset="${srcset['webp']}">`;
+  const sourceWebp = `<source type="image/webp" sizes="(min-width: 1024px) 1024px, 100vw" srcset="${srcset['webp']}">`;
+  const sourceJpeg = `<source type="image/jpeg" sizes="(min-width: 1024px) 1024px, 100vw" srcset="${srcset['jpeg']}">`;
 
   const img = `<img
-      class="lazy"
       loading="lazy"
+      ${className ? `class='${className}'` : ''}
       alt="${alt}"
-      src="${base64Placeholder}"
-      data-src="${lowestSrc.url}"
-      data-sizes='(min-width: 1024px) 1024px, 100vw'
-      data-srcset="${srcset['jpeg']}"
-      width="${lowestSrc.width}"
-      height="${lowestSrc.height}">`;
+      src="${originalSrc.url}"
+      decoding="async"
+      style="background-size:cover;background-image:url('${base64Placeholder}');"
+      width="${originalSrc.width}"
+      height="${originalSrc.height}">`;
 
-  const imgNoScript = `<img
-      loading="lazy"
-      alt="${alt}"
-      src="${base64Placeholder}"
-      sizes='(min-width: 1024px) 1024px, 100vw'
-      srcset="${srcset['jpeg']}"
-      width="${lowestSrc.width}"
-      height="${lowestSrc.height}">`;
+  return `<div class="image-wrapper"> <picture> ${sourceWebp} ${sourceJpeg} ${img} </picture> </div>`;
+}
 
-  return `<picture> ${source} ${img} </picture>
-      <noscript>
-        <style>
-          img.lazy {
-            display: none;
-          }
-        </style>
-        <picture> ${sourceNoScript} ${imgNoScript} </picture>
-      </noscript>`;
-};
+module.exports = { handleImage };

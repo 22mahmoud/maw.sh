@@ -1,4 +1,5 @@
 const fs = require('fs');
+const fg = require('fast-glob');
 const path = require('path');
 
 const appDirectory = fs.realpathSync(process.cwd());
@@ -22,30 +23,41 @@ module.exports = {
 
   dest,
 
+  root: appDirectory,
+
   imagesDest: resolveDist('images'),
 
   eleventy: {
-    watch: [resolveSrc('**/*.{njk,md,json,js}'), resolveApp('.eleventy.js')],
+    watch: [
+      resolveSrc('**/*.{njk,md,json,js}'),
+      resolveApp('.eleventy.js'),
+      `!${resolveAssets('js')}`,
+    ],
   },
 
   html: {
     src: resolveDist('**/*.html'),
     dest,
+    htmlGlob: fg.sync(resolveDist('**/*.html'), { dot: false }),
   },
 
   css: {
     src: resolveAssets('styles'),
-    dest: resolveDist('assets/styles'),
+    dest: resolveDist('styles'),
 
     mainSrc: resolveAssets('styles/main.css'),
-    mainDest: resolveDist('assets/styles/main.css'),
+    mainDest: resolveDist('styles/main.css'),
 
     watch: resolveAssets('styles/**/*.css'),
   },
 
   js: {
     src: resolveAssets('js/app.js'),
-    dest: resolveDist('assets/js'),
+    dest: resolveDist('js'),
     watch: resolveAssets('js/**/*.js'),
+  },
+
+  images: {
+    src: fg.sync(resolveSrc('**/*.{jpg,jpeg,png}'), { dot: false }),
   },
 };
