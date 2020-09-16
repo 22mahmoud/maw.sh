@@ -4,7 +4,6 @@ const SriPlugin = require('webpack-subresource-integrity');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminWebp = require('imagemin-webp');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const webpack = require('webpack');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
@@ -20,24 +19,27 @@ const paths = require('./config/paths');
 
 const cssRegex = /\.css$/;
 
-const htmls = fg.sync('build/**/*.html', { dot: false }).map(
-  (template) =>
-    new HtmlWebpackPlugin({
-      name: template.split('/').slice(1).join('/'),
-      template,
-      inject: 'head',
-      minify: {
-        removeAttributeQuotes: true,
-        collapseBooleanAttributes: true,
-        collapseWhitespace: true,
-        removeComments: true,
-        sortClassName: true,
-        sortAttributes: true,
-        html5: true,
-        decodeEntities: true,
-      },
-    })
-);
+const htmls = paths.html.htmlGlob.map((htmlPath) => {
+  const template = path.relative(__dirname, htmlPath);
+  const filename = template.split('/').slice(1).join('/');
+
+  return new HtmlWebpackPlugin({
+    filename,
+    template,
+    inject: 'head',
+    minify: true,
+    // minify: {
+    //   removeAttributeQuotes: true,
+    //   collapseBooleanAttributes: true,
+    //   collapseWhitespace: true,
+    //   removeComments: true,
+    //   sortClassName: true,
+    //   sortAttributes: true,
+    //   html5: true,
+    //   decodeEntities: true,
+    // },
+  });
+});
 
 const babelLoader = {
   test: /\.m?js$/,
@@ -111,7 +113,7 @@ module.exports = {
   ],
 
   output: {
-    path: path.resolve(__dirname, 'out'),
+    path: path.resolve(__dirname, 'build'),
     chunkFilename: '[name].[chunkhash:4].js',
     filename: '[name].[chunkhash:8].js',
   },
@@ -130,15 +132,6 @@ module.exports = {
       paths: fg.sync(paths.html.src, { dot: true }),
     }),
 
-    new CopyPlugin({
-      patterns: [
-        {
-          from: 'build/images',
-          to: 'images',
-        },
-      ],
-    }),
-
     ...htmls,
 
     new FaviconsWebpackPlugin({
@@ -146,17 +139,17 @@ module.exports = {
       cache: '.wwp-cache',
       inject: true,
       favicons: {
-        name: 'Yet another eleventy(11ty) starter',
-        short_name: 'YAES',
+        name: 'Mahmoud Ashraf',
+        short_name: 'Mahmoud Ashraf',
         description:
-          'starter kit for your next eleventy(11ty) project using postcss, es6, gulp',
-        dir: 'auto',
+          'Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt.',
+        dir: 'ltr',
         lang: 'en-US',
         display: 'standalone',
         orientation: 'any',
         start_url: '/',
-        background_color: '#222',
-        theme_color: '#222',
+        background_color: '#000',
+        theme_color: '#000',
       },
     }),
 

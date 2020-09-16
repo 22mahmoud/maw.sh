@@ -1,10 +1,10 @@
 {
-  "name": "11ty-starter",
+  "name": "mahmoud-ashraf",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "clean": "rimraf out dist build",
+    "clean": "rimraf dist build",
     "dev": "yarn clean && snowpack dev",
     "sw": "workbox generateSW",
     "build": "yarn clean && snowpack build && webpack && yarn sw",

@@ -1,4 +1,6 @@
-console.log('Hey');
+import turbolinks from 'turbolinks';
+
+turbolinks.start();
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

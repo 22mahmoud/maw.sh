@@ -39,12 +39,10 @@ function getSrc(relativeSrc, outputPath) {
   return src;
 }
 
-async function handleImage({ src: relativeSrc, alt, class: className }) {
+async function handleImage({ src: relativeSrc, alt }) {
   if (process.env.NODE_ENV === 'development') {
     return `<div class='image-wrapper'>
-      <img src=${relativeSrc} alt=${alt} ${
-      className ? `class= ${className}` : ''
-    } />
+      <img src=${relativeSrc} alt=${alt} />
     </div>`;
   }
 
@@ -69,14 +67,13 @@ async function handleImage({ src: relativeSrc, alt, class: className }) {
   const sourceJpeg = `<source type="image/jpeg" sizes="(min-width: 1024px) 1024px, 100vw" srcset="${srcset['jpeg']}">`;
 
   const img = `<img
-      loading="lazy"
-      ${className ? `class='${className}'` : ''}
-      alt="${alt}"
-      src="${originalSrc.url}"
-      decoding="async"
-      style="background-size:cover;background-image:url('${base64Placeholder}');"
-      width="${originalSrc.width}"
-      height="${originalSrc.height}">`;
+    loading="lazy"
+    alt=${alt}
+    src=${originalSrc.url}
+    decoding=async
+    style=background-size:cover;background-image:url('${base64Placeholder}');
+    width=${originalSrc.width}
+    height=${originalSrc.height}>`;
 
   return `<div class="image-wrapper"> <picture> ${sourceWebp} ${sourceJpeg} ${img} </picture> </div>`;
 }
