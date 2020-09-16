@@ -77,7 +77,7 @@ yarn dev
 now open `localhost:8080` on your browser and
 it should work without any customized eleventy configuration.
 
-{% Image "src/blog/how-to-optimize-and-lazyloading-images-on-eleventy/setup-screen.jpeg", "screenshot of application inside the browser" %}
+{% Image src="./setup-screen.jpeg", alt="screenshot of application inside the browser" %}
 
 ### Display some images
 
@@ -126,7 +126,7 @@ will be copied to the build directory.
 Restart your server and go back to your browser
 and it should everything work.
 
-{% Image "src/blog/how-to-optimize-and-lazyloading-images-on-eleventy/images-screen.jpeg", "screenshot of application inside the browser" %}
+{% Image src="./images-screen.jpeg", alt="screenshot of application inside the browser" %}
 
 
 ### Test images performance without optimization

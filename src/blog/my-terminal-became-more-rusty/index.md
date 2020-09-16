@@ -15,7 +15,7 @@ keywords:
   - 'terminal'
 ---
 
-{% Image "src/blog/my-terminal-became-more-rusty/cover.jpeg", "big crap attack the city" %}
+{% Image src="./cover.jpeg", alt="big crap attack the city" %}
 
 As a Software-Engineer I spent most of the time inside my terminal, So
 I need for that a fast terminal with  fast tools to speed up my productivity.
@@ -48,7 +48,7 @@ Alacritty doesn't come with ligature support but you can use
 this [fork](https://github.com/zenixls2/alacritty/tree/ligature). or if 
 you are using Arch you can install it from [aur](https://aur.archlinux.org/packages/alacritty-ligatures/)
 
-{% Image "src/blog/my-terminal-became-more-rusty/alacritty.jpeg", "screenshot of the terminal showing alacritty ligatures" %}
+{% Image src="./alacritty.jpeg", alt="screenshot of the terminal showing alacritty ligatures" %}
 
 ---
 
@@ -61,7 +61,7 @@ You can use it with any shell bash, zsh, fish and even powerShell.
 
 The screenshot below showing the result of my customized configuration.
 
-{% Image "src/blog/my-terminal-became-more-rusty/starship.jpeg", "screenshot of starship prompt" %}
+{% Image src="./starship.jpeg", alt="screenshot of starship prompt" %}
 
 ---
 
@@ -84,7 +84,7 @@ fi
 
 the result of my `ls` and `ll` commands.
 
-{% Image "src/blog/my-terminal-became-more-rusty/exa.jpeg", "screenshot of exa" %}
+{% Image src="./exa.jpeg", alt="screenshot of exa" %}
 
 ---
 
@@ -101,7 +101,7 @@ if [ "$(command -v bat)" ]; then
 fi
 ```
 
-{% Image "src/blog/my-terminal-became-more-rusty/bat.jpeg", "screenshot of bat" %}
+{% Image src="./bat.jpeg", alt="screenshot of bat" %}
 
 ---
 
@@ -131,7 +131,7 @@ feature and set a theme for Nord, You can choose your preferred theme  run and c
 delta --list-syntax-themes
 ```
 
-{% Image "src/blog/my-terminal-became-more-rusty/delta.jpeg", "screenshot of delta" %}
+{% Image src="./delta.jpeg", alt="screenshot of delta" %}
 
 ---
 
@@ -180,7 +180,7 @@ rg "\.content" -g "*.pug"
 rg fast README.md --replace FAST
 ```
 
-{% Image "src/blog/my-terminal-became-more-rusty/ripgrep.jpeg", "screenshot of ripgrep" %}
+{% Image src="./ripgrep.jpeg", alt="screenshot of ripgrep" %}
 
 ---
 
@@ -210,7 +210,7 @@ In this time not `top` 😀 it is `bottom`
 
 it's a cross-platform system monitor. 
 
-{% Image "src/blog/my-terminal-became-more-rusty/bottom.jpeg", "screenshot of bottom" %}
+{% Image src="./bottom.jpeg", alt="screenshot of bottom" %}
 
 ---
 
@@ -219,7 +219,7 @@ it's a cross-platform system monitor.
 
 tldr is a cheatsheets for CLIs, instead of read the whole `man`.
 
-{% Image "src/blog/my-terminal-became-more-rusty/tldr.jpeg", "screenshot of tldr" %}
+{% Image src="./tldr.jpeg", alt="screenshot of tldr" %}
 
 ---
 

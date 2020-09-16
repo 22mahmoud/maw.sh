@@ -7,10 +7,6 @@ const shortcodes = require('./config/eleventy/shortcodes');
 const plugins = require('./config/eleventy/plugins');
 const transformers = require('./config/eleventy/transformers');
 
-const manifest = require('./dist/assets/js/manifest.json');
-
-const isDev = process.env.NODE_ENV === 'development';
-
 const anchorSlugify = (s) =>
   encodeURIComponent(
     'h-' +
@@ -22,27 +18,16 @@ const anchorSlugify = (s) =>
   );
 
 module.exports = (cfg) => {
-  cfg.addPassthroughCopy('src/assets/fonts');
-  cfg.addPassthroughCopy('src/assets/images');
-  cfg.addPassthroughCopy('src/assets/favicon.ico');
-  cfg.addPassthroughCopy('src/assets/manifest.json');
-  cfg.addPassthroughCopy('src/**/*.gif');
-  cfg.addPassthroughCopy('src/robots.txt');
+  cfg.addPassthroughCopy({ 'src/assets/fonts': 'fonts' });
+  cfg.addPassthroughCopy('src/**/*.{gif,svg}');
 
-  if (isDev) {
-    cfg.addPassthroughCopy('src/**/*.jpeg');
-    cfg.addPassthroughCopy('src/**/*.jpg');
-    cfg.addPassthroughCopy('src/**/*.png');
+  if (process.env.NODE_ENV === 'development') {
+    cfg.addPassthroughCopy('src/**/*.{jpg,jpeg,png,webp}');
   }
 
   collections(cfg);
 
   filters(cfg);
-
-  /* Filters */
-  cfg.addFilter('jsAsset', (name) => {
-    return manifest[name];
-  });
 
   shortcodes(cfg);
 

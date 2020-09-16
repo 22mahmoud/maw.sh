@@ -1,2 +1,7 @@
-dist
 node_modules
+web_modules
+dist
+build
+.cache
+.wwp-cache
+yarn-error.log

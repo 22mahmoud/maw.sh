@@ -1,0 +1,16 @@
+<head>
+  <title>{{ title }}</title>
+
+  {% if env.dev %}
+  <link rel="stylesheet" href="/styles/main.css" />
+  {% endif %}
+
+  <script
+    data-goatcounter="https://stats.mahmoudashraf.dev/count"
+    async
+    src="//stats.mahmoudashraf.dev/count.js"
+  ></script>
+
+  <!-- import meta tags -->
+  {% include "meta.njk" %}
+</head>

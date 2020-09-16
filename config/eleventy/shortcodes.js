@@ -1,5 +1,5 @@
-const Image = require('./image');
+const { handleImage } = require('./image');
 
 module.exports = (cfg) => {
-  cfg.addNunjucksAsyncShortcode('Image', Image);
+  cfg.addNunjucksAsyncShortcode('Image', handleImage);
 };
