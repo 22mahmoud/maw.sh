@@ -2,6 +2,7 @@ const path = require('path');
 const SriPlugin = require('webpack-subresource-integrity');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminWebp = require('imagemin-webp');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const webpack = require('webpack');
@@ -111,7 +112,7 @@ module.exports = {
   ],
 
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'public'),
     chunkFilename: '[name].[chunkhash:4].js',
     filename: '[name].[chunkhash:8].js',
     publicPath: '/',
@@ -129,6 +130,35 @@ module.exports = {
 
     new PurgecssPlugin({
       paths: fg.sync(paths.html.src, { dot: true }),
+    }),
+
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'build/assets',
+          to: 'assets',
+        },
+        {
+          from: 'build/images',
+          to: 'images',
+        },
+        {
+          from: 'build/robots.txt',
+          to: 'robots.txt',
+        },
+        {
+          from: 'build/sitemap.xml',
+          to: 'sitemap.xml',
+        },
+        {
+          from: 'build/rss.xml',
+          to: 'sitemap.xml',
+        },
+        {
+          from: '**/*.gif',
+          context: 'build/',
+        },
+      ],
     }),
 
     ...htmls,

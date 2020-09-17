@@ -2,6 +2,7 @@ node_modules
 web_modules
 dist
 build
+public
 .cache
 .wwp-cache
 yarn-error.log
