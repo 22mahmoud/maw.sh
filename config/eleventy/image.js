@@ -10,7 +10,7 @@ async function getPlaceHolder(outputPath) {
     .blur()
     .toBuffer();
 
-  return `data:image/webp;base64,${placeholder.toString('base64')}`;
+  return placeholder;
 }
 
 function generateSrcset(stats) {
@@ -71,7 +71,9 @@ async function handleImage({ src: relativeSrc, alt }) {
     alt=${alt}
     src=${originalSrc.url}
     decoding=async
-    style=background-size:cover;background-image:url('${base64Placeholder}');
+    style="background-size:cover;background-image:url(data:image/webp;base64,${base64Placeholder.toString(
+      'base64'
+    )})";
     width=${originalSrc.width}
     height=${originalSrc.height}>`;
 

@@ -1,5 +1,4 @@
 const path = require('path');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const SriPlugin = require('webpack-subresource-integrity');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminWebp = require('imagemin-webp');
@@ -27,17 +26,16 @@ const htmls = paths.html.htmlGlob.map((htmlPath) => {
     filename,
     template,
     inject: 'head',
-    minify: true,
-    // minify: {
-    //   removeAttributeQuotes: true,
-    //   collapseBooleanAttributes: true,
-    //   collapseWhitespace: true,
-    //   removeComments: true,
-    //   sortClassName: true,
-    //   sortAttributes: true,
-    //   html5: true,
-    //   decodeEntities: true,
-    // },
+    minify: {
+      removeAttributeQuotes: false,
+      collapseBooleanAttributes: true,
+      collapseWhitespace: true,
+      removeComments: true,
+      sortClassName: true,
+      sortAttributes: true,
+      html5: true,
+      decodeEntities: true,
+    },
   });
 });
 
@@ -116,6 +114,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     chunkFilename: '[name].[chunkhash:4].js',
     filename: '[name].[chunkhash:8].js',
+    publicPath: '/',
   },
 
   module: {
@@ -133,25 +132,6 @@ module.exports = {
     }),
 
     ...htmls,
-
-    new FaviconsWebpackPlugin({
-      logo: path.resolve(__dirname, 'src/logo.png'),
-      cache: '.wwp-cache',
-      inject: true,
-      favicons: {
-        name: 'Mahmoud Ashraf',
-        short_name: 'Mahmoud Ashraf',
-        description:
-          'Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt.',
-        dir: 'ltr',
-        lang: 'en-US',
-        display: 'standalone',
-        orientation: 'any',
-        start_url: '/',
-        background_color: '#000',
-        theme_color: '#000',
-      },
-    }),
 
     new SriPlugin({
       hashFuncNames: ['sha256', 'sha384'],
