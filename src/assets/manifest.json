@@ -1,0 +1,24 @@
+{
+  "name": "Mahmoud Ashraf",
+  "short_name": "Mahmoud Ashraf",
+  "description": "Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt.",
+  "dir": "ltr",
+  "lang": "en-US",
+  "display": "standalone",
+  "orientation": "any",
+  "start_url": "/",
+  "background_color": "#000",
+  "theme_color": "#000",
+  "icons": [
+    {
+      "src": "/assets/images/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
