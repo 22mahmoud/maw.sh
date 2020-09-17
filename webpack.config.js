@@ -27,7 +27,7 @@ const htmls = paths.html.htmlGlob.map((htmlPath) => {
     template,
     inject: 'head',
     minify: {
-      removeAttributeQuotes: false,
+      removeAttributeQuotes: true,
       collapseBooleanAttributes: true,
       collapseWhitespace: true,
       removeComments: true,
