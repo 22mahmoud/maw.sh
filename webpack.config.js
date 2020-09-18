@@ -200,6 +200,8 @@ module.exports = {
       chunkFilename: '[id].[contenthash].css',
     }),
 
+    ...criticalCssFiles(),
+
     new PreloadWebpackPlugin({
       rel: 'preload',
       as(entry) {
