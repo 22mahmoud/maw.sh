@@ -2,6 +2,7 @@ const path = require('path');
 const SriPlugin = require('webpack-subresource-integrity');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminWebp = require('imagemin-webp');
+const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
@@ -19,26 +20,50 @@ const paths = require('./config/paths');
 
 const cssRegex = /\.css$/;
 
-const htmls = paths.html.htmlGlob.map((htmlPath) => {
-  const template = path.relative(__dirname, htmlPath);
-  const filename = template.split('/').slice(1).join('/');
+const htmls = () =>
+  paths.html.htmlGlob.map((htmlPath) => {
+    const template = path.relative(__dirname, htmlPath);
+    const filename = template.split('/').slice(1).join('/');
 
-  return new HtmlWebpackPlugin({
-    filename,
-    template,
-    inject: 'head',
-    minify: {
-      removeAttributeQuotes: true,
-      collapseBooleanAttributes: true,
-      collapseWhitespace: true,
-      removeComments: true,
-      sortClassName: true,
-      sortAttributes: true,
-      html5: true,
-      decodeEntities: true,
-    },
+    return new HtmlWebpackPlugin({
+      filename,
+      template,
+      inject: 'head',
+      minify: {
+        removeAttributeQuotes: true,
+        collapseBooleanAttributes: true,
+        collapseWhitespace: true,
+        removeComments: true,
+        sortClassName: true,
+        sortAttributes: true,
+        html5: true,
+        decodeEntities: true,
+      },
+    });
   });
-});
+
+const criticalCssFiles = () =>
+  paths.html.htmlGlob.map((htmlPath) => {
+    const src = path
+      .relative(__dirname, htmlPath)
+      .split('/')
+      .slice(1)
+      .join('/');
+
+    return new HtmlCriticalWebpackPlugin({
+      base: path.resolve(__dirname, 'public'),
+      src,
+      dest: src,
+      inline: true,
+      minify: true,
+      extract: true,
+      width: 375,
+      height: 565,
+      penthouse: {
+        blockJSRequests: false,
+      },
+    });
+  });
 
 const babelLoader = {
   test: /\.m?js$/,
@@ -123,10 +148,6 @@ module.exports = {
   },
   plugins: [
     envConfig,
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-      chunkFilename: '[id].[contenthash].css',
-    }),
 
     new PurgecssPlugin({
       paths: fg.sync(paths.html.src, { dot: true }),
@@ -161,12 +182,26 @@ module.exports = {
       ],
     }),
 
-    ...htmls,
+    ...htmls(),
 
-    new SriPlugin({
-      hashFuncNames: ['sha256', 'sha384'],
-      enabled: true,
+    new ImageminPlugin({
+      test: /\.(jpe?g|png|gif|svg|webp)$/i,
+      plugins: [
+        imageminMozjpeg({
+          quality: '70',
+        }),
+        imageminWebp({
+          quality: 50,
+        }),
+      ],
     }),
+
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css',
+    }),
+
+    ...criticalCssFiles(),
 
     new PreloadWebpackPlugin({
       rel: 'preload',
@@ -183,16 +218,9 @@ module.exports = {
       defaultAttribute: 'defer',
     }),
 
-    new ImageminPlugin({
-      test: /\.(jpe?g|png|gif|svg|webp)$/i,
-      plugins: [
-        imageminMozjpeg({
-          quality: '70',
-        }),
-        imageminWebp({
-          quality: 50,
-        }),
-      ],
+    new SriPlugin({
+      hashFuncNames: ['sha256', 'sha384'],
+      enabled: true,
     }),
   ],
 
