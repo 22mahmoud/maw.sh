@@ -44,6 +44,7 @@
     "fast-glob": "^3.2.4",
     "favicons-webpack-plugin": "^4.2.0",
     "file-loader": "^6.1.0",
+    "html-critical-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^4.4.1",
     "husky": "^4.3.0",
     "imagemin-mozjpeg": "^9.0.0",
