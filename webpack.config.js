@@ -1,5 +1,4 @@
 const path = require('path');
-const SriPlugin = require('webpack-subresource-integrity');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminWebp = require('imagemin-webp');
 const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin');
@@ -214,16 +213,12 @@ module.exports = {
       include: 'allAssets',
     }),
 
+    ...criticalCssFiles(),
+
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer',
     }),
-
-    new SriPlugin({
-      hashFuncNames: ['sha256', 'sha384'],
-      enabled: true,
-    }),
   ],
-
   optimization: {
     minimizer: [
       new TerserPlugin({
