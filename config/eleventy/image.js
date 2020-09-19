@@ -41,9 +41,12 @@ function getSrc(relativeSrc, outputPath) {
 
 async function handleImage({ src: relativeSrc, alt }) {
   if (process.env.NODE_ENV === 'development') {
-    return `<div class='image-wrapper'>
-      <img src=${relativeSrc} alt=${alt} />
-    </div>`;
+    const src = path.join(
+      '/' + this.page.inputPath.split('/').slice(2, -1).join('/'),
+      relativeSrc
+    );
+
+    return `<div class='image-wrapper'> <img src=${src} alt=${alt} /> </div>`;
   }
 
   if (!alt) throw new Error(`Missing \`alt\` on myImage from: ${src}`);
