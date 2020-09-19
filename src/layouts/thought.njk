@@ -2,18 +2,12 @@
 layout: 'markdown.njk'
 ---
 
-<article class="h-entry post">
+<article class="h-entry thought">
   <header>
-    <h1 class="display-4 p-name" id="{{ title | slug }}-title">
-      {{ title }}
-    </h1>
     <div>
       <time class="dt-published" datetime="{{ date | iso }}">
         {{ date | date }}
       </time>
-      {% if categories %}
-      <span hidden class="p-category">{{ categories | join(', ') }}</span>
-      {% endif %}
     </div>
   </header>
   <div class="e-content" itemprop="articleBody">

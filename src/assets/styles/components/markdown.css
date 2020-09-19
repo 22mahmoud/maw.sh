@@ -60,22 +60,4 @@
     padding: 0;
   }
 }
-
-.markdown article header {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: rfs(4rem);
-  & div {
-    display: flex;
-    text-transform: uppercase;
-    & span {
-      margin-left: 5px;
-    }
-    & time {
-      font-size: rfs(1, 5rem);
-      margin-right: 5px;
-    }
-  }
-}
-
 /* purgecss end ignore */

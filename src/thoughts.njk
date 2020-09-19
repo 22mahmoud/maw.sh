@@ -1,0 +1,26 @@
+---
+title: 'Thoughts'
+layout: 'base.njk'
+eleventyNavigation:
+  key: Thoughts
+  order: 3
+---
+
+<h1 class="display-1 thoughts__title">Thoughts</h1>
+<div class="thoughts">
+  {%- for thought in collections.thoughts -%}
+  <article class="{%- if thought.data.dir === 'rtl' -%} rtl {%- endif -%}">
+    <a href="{{ thought.url }}">
+      <time
+        class="dt-published text-md"
+        datetime="{{- thought.data.date | iso -}}"
+      >
+        {{- thought.data.date | date -}} &nbsp; - &nbsp;
+        {{- thought.data.date | time -}}
+      </time>
+    </a>
+
+    <p>{{- thought.templateContent | safe -}}</p>
+  </article>
+  {%- endfor -%}
+</div>

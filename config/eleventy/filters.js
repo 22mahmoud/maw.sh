@@ -9,6 +9,10 @@ module.exports = (cfg) => {
     return formatISO(new Date(date));
   });
 
+  cfg.addFilter('time', (date) => {
+    return format(parseISO(date), 'h:mm aaa');
+  });
+
   cfg.addFilter('getTitle', (title) =>
     title ? `${title} - ${site.title}` : site.title
   );

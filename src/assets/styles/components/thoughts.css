@@ -1,0 +1,34 @@
+.thoughts {
+  margin: 0 auto;
+  max-width: 38rem;
+}
+
+.thoughts__title {
+  margin: rfs(6rem) 0;
+  text-align: center;
+}
+
+.thoughts article {
+  border: 1px solid var(--bg-color-offset);
+  margin-bottom: rfs(2rem);
+  padding: rfs(1rem);
+
+  & h2 {
+    margin: 0;
+  }
+
+  & :not(time) > a {
+    text-decoration: underline;
+  }
+
+  & time {
+    color: var(--primary-color);
+    font-size: rfs(0.8rem);
+  }
+}
+
+.thoughts article.rtl {
+  & p {
+    text-align: end;
+  }
+}
