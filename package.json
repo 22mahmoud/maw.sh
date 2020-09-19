@@ -14,7 +14,8 @@
     "lint:css:fix": "yarn lint:css --fix",
     "lint:js": "eslint './**/*.js' --quiet",
     "lint:js:fix": "yarn lint:js --fix",
-    "format:js": "prettier './**/*.js' --write"
+    "format:js": "prettier './**/*.js' --write",
+    "new:thought": "mkdir src/thoughts/$(date +%s) && echo \"---\ndate: $(date -I'minutes')\n---\n\" > src/thoughts/$(date +%s)/index.md"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0",
