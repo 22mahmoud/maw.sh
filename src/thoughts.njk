@@ -8,7 +8,7 @@ eleventyNavigation:
 
 <h1 class="display-1 thoughts__title">Thoughts</h1>
 <div class="thoughts">
-  {%- for thought in collections.thoughts -%}
+  {%- for thought in collections.thoughts | reverse -%}
   <article class="{%- if thought.data.dir === 'rtl' -%} rtl {%- endif -%}">
     <a href="{{ thought.url }}">
       <time
