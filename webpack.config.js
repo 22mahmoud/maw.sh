@@ -172,7 +172,7 @@ module.exports = {
         },
         {
           from: 'build/rss.xml',
-          to: 'sitemap.xml',
+          to: 'rss.xml',
         },
         {
           from: '**/*.gif',

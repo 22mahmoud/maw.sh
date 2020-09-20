@@ -8,7 +8,7 @@
     "postbuild": "rimraf dist build",
     "dev": "yarn clean && snowpack dev",
     "sw": "workbox generateSW",
-    "build": "yarn clean && snowpack build && webpack && yarn sw && yarn postbuild",
+    "build": "snowpack build && webpack && yarn sw",
     "lint:fix": "run-p lint:*:fix -l",
     "lint:css": "stylelint src/assets/styles/**/*.css",
     "lint:css:fix": "yarn lint:css --fix",
