@@ -1,12 +1,10 @@
-<footer class="footer">
-  <ul class="social">
-    {%- for site in social %}
-    <li>
-      <a href="{{ site.href }}" rel="{{ site.rel }}">
-        {{ site.icon | safe }}
-        <span> {{ site.name }} </span>
-      </a>
-    </li>
-    {%- endfor %}
-  </ul>
-</footer>
+<ul class="social">
+  {%- for site in social %}
+  <li>
+    <a href="{{ site.href }}" rel="{{ site.rel }}">
+      {{ site.icon | safe }}
+      <span> {{ site.name }} </span>
+    </a>
+  </li>
+  {%- endfor %}
+</ul>
