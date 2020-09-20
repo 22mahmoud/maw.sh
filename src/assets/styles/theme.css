@@ -3,6 +3,7 @@ body {
   color: var(--text-color);
   font-family: var(--font-family);
   font-size: var(--font-size-base);
+  height: 100vh;
 }
 
 a {

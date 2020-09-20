@@ -3,18 +3,7 @@
   {% include "head.njk" %}
   <body>
     <div class="container">
-      <header>
-       {% set navPages = collections.all | eleventyNavigation %}
-        <nav class="nav">
-          <ul>
-            {%- for entry in navPages %}
-              <li{% if entry.url == page.url %} class="nav__active"{% endif %}>
-                <a href="{{ entry.url | url }}">{{ entry.title }}</a>
-              </li>
-            {%- endfor %}
-          </ul>
-        </nav>
-      </header>
+      {% include "header.njk" %}
       <main>
         {{ content | safe }}
       </main>
