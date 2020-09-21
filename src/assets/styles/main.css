@@ -7,7 +7,7 @@
 
 @import './vendor/prismjs.css';
 
-@import './components/hero.css';
+@import './components/home.css';
 @import './components/blogs.css';
 @import './components/header.css';
 @import './components/markdown.css';

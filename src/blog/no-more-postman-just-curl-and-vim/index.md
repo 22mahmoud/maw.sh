@@ -3,6 +3,7 @@ slug: 'no-more-postman-just-curl-and-vim'
 title: 'No More postman just use cURL + vim = ❤'
 date: '2020-08-20'
 author: 'Mahmoud Ashraf'
+cover: "https://images.pexels.com/photos/3824771/pexels-photo-3824771.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
 description: 'Well documented api and easy to use and share with your team with simple tools cURL + vim + git (optional)'
 categories:
   - 'api'

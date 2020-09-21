@@ -3,6 +3,7 @@ slug: 'build-a-blog-with-svelte-and-markdown'
 title: 'Building a blog with Svelte, Sapper, and Markdown'
 date: '2020-03-02'
 author: 'Mahmoud Ashraf'
+cover: "https://images.pexels.com/photos/952594/pexels-photo-952594.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=4620&w=640"
 description: 'In this article I will show how you can start bloging with svelte and sapper using markdown files'
 categories:
   - 'svelte'

@@ -4,6 +4,7 @@ title: 'How to optimize and lazy-loading images on eleventy (11ty)'
 date: '2020-08-31'
 author: 'Mahmoud Ashraf'
 description: 'Learn How to automate your images using eleventy-img plugin and sharpjs'
+cover: "https://images.pexels.com/photos/1226721/pexels-photo-1226721.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
 categories:
   - 'tutorial'
   - 'javascript'

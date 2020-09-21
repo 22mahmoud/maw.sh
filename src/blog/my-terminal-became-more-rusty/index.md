@@ -2,9 +2,9 @@
 slug: 'my-terminal-became-more-rusty'
 title: 'My terminal became more Rusty 🦀'
 date: '2020-08-21'
+cover: "https://images.pexels.com/photos/76966/crab-red-klippenkrabbe-grapsus-grapsus-shellfish-76966.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=425&w=640"
 author: 'Mahmoud Ashraf'
 description: 'CLI tools written in rust make my terminal fast and productive'
-cover: './cover.jpeg'
 categories:
   - 'rust'
   - 'cli'
