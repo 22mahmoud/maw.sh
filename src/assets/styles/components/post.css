@@ -14,3 +14,31 @@
     }
   }
 }
+
+.post .devto {
+  border: 1px solid var(--bg-color-offset);
+  margin: rfs(4rem) 0;
+  padding: rfs(1rem);
+
+  & .devto__title {
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: rfs(1rem);
+  }
+
+  & .devto__reactions {
+    display: flex;
+
+    & p {
+      display: flex;
+      margin: 0;
+      margin-right: rfs(1.4rem);
+    }
+
+    & svg {
+      fill: var(--text-color);
+      margin-right: rfs(0.4rem);
+      width: rfs(1.5rem);
+    }
+  }
+}
