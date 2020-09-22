@@ -1,6 +1,5 @@
 const path = require('path');
 const imageminMozjpeg = require('imagemin-mozjpeg');
-const { GenerateSW } = require('workbox-webpack-plugin');
 const imageminWebp = require('imagemin-webp');
 const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -201,8 +200,6 @@ module.exports = {
       chunkFilename: '[id].[contenthash].css',
     }),
 
-    ...criticalCssFiles(),
-
     new PreloadWebpackPlugin({
       rel: 'preload',
       as(entry) {
@@ -219,8 +216,6 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer',
     }),
-
-    new GenerateSW({ swDest: 'sw.js', clientsClaim: true, skipWaiting: true }),
   ],
   optimization: {
     minimizer: [
