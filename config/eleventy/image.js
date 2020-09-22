@@ -52,7 +52,7 @@ async function handleImage({ src: relativeSrc, alt }) {
   const src = getSrc(relativeSrc, this.page.inputPath);
 
   if (process.env.NODE_ENV === 'development') {
-    return `<img src=${src} alt=${alt} />`;
+    return `<div class='image-wrapper'> <img src=${src} alt=${alt} /> </div>`;
   }
 
   let stats = await Image(src, {
@@ -82,7 +82,7 @@ async function handleImage({ src: relativeSrc, alt }) {
     width=${originalSrc.width}
     height=${originalSrc.height}>`;
 
-  return `<picture> ${sourceWebp} ${sourceJpeg} ${img} </picture>`;
+  return `<div class="image-wrapper"> <picture> ${sourceWebp} ${sourceJpeg} ${img} </picture> </div>`;
 }
 
 module.exports = { handleImage };
