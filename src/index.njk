@@ -31,3 +31,11 @@ eleventyNavigation:
 
   {% endfor %}
 </section>
+
+<h1 class="section-title">Worked with</h1>
+
+<section class="works">
+  {%- for work in works -%}
+  <a href="{{ work.href }}"> {% Image src=work.logo, alt=work.alt %} </a>
+  {%- endfor -%}
+</section>

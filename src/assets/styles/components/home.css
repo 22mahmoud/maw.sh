@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  max-width: rfs(45rem);
 
   & a {
     text-decoration: underline;
@@ -18,13 +17,13 @@
 }
 
 .section-title {
-  margin-top: rfs(5rem);
+  margin-top: rfs(8rem);
 }
 
 .latest {
   display: grid;
   grid-gap: rfs(1rem);
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   margin: rfs(2rem) 0;
 
   & article {
@@ -45,5 +44,18 @@
       color: var(--primary-color);
       font-weight: 700;
     }
+  }
+}
+
+.works {
+  display: grid;
+  grid-gap: rfs(1rem);
+  grid-template-columns: repeat(3, 1fr);
+  margin: rfs(2rem) 0;
+  text-align: center;
+
+  & img {
+    border-radius: 9999px;
+    width: rfs(8rem);
   }
 }
