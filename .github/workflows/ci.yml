@@ -15,4 +15,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: echo 'hello, world' # cd ${{ secrets.BUILD_PATH }} && git pull origin master && yarn install && yarn build
+          script: cd ${{ secrets.BUILD_PATH }} && make update

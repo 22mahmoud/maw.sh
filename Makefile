@@ -9,7 +9,7 @@ gen:
 	./ssg5/ssg5 $(SRC) $(DIST) $(NAME) $(URL)
 
 watch:
-	find . -type f ! -path 'src/.*' | entr -d $(MAKE) gen
+	find . -type f ! -path '${SRC}/.*' | entr -d $(MAKE) gen
 
 server:
 	python3 -m http.server -d $(DIST)
@@ -20,4 +20,10 @@ dev:
 clean:
 	rm -rf dist
 
-.PHONY : gen clean watch server dev
+update:
+	git pull origin master
+	git submodule foreach git pull origin master
+	$(MAKE) clean gen
+
+
+.PHONY : gen clean watch server dev update
