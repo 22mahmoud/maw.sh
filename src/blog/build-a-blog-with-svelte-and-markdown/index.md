@@ -1,32 +1,18 @@
----
-slug: 'build-a-blog-with-svelte-and-markdown'
-title: 'Building a blog with Svelte, Sapper, and Markdown'
-date: '2020-03-02'
-author: 'Mahmoud Ashraf'
-cover: "https://images.pexels.com/photos/952594/pexels-photo-952594.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=4620&w=640"
-description: 'In this article I will show how you can start bloging with svelte and sapper using markdown files'
-categories:
-  - 'svelte'
-  - 'sapper'
-keywords:
-  - 'javascript'
-  - 'svelte'
-  - 'sapper'
----
+# Building a blog with Svelte, Sapper, and Markdown
 
 In this post, we will build a website with a blog using svelte, and sapper.
 
-### What is Svelte?
+## What is Svelte?
 
 Svelte is a new javascript framework come on the table,
 Svelte has a philosophy that helps you manipulate the DOM without using any additional techniques like virtual DOM,
 Svelte compile your code on the build time, and you can update your app easily using reactivity.
 
-### What is Sapper?
+## What is Sapper?
 
 Sapper is a Server Side framework on top of Svelte helps you create PWA apps with a good SEO and file system based routing.
 
-### How to init the project?
+## How to init the project?
 
 We are going to use the starter template provided by the Sapper team,
 open your favorite terminal and write the following command:
@@ -45,7 +31,7 @@ After installing the dependencies, you should be good to go and start your serve
 
 Voila, 🎉 the application now up and running.
 
-{% Image src="./bg1.jpeg", alt="screenshot of the home page for sapper boilerplate" %}
+![screenshot of the home page for sapper boilerplate](./bg1.jpeg)
 
 Let's open the project in your favorite editor. and go to the `blog` folder
 inside the `src/routes`.
@@ -63,17 +49,17 @@ We have several files there:
         - _posts.js
 ```
 
-### How routing works in sapper?
+## How routing works in sapper?
 
 we have two types the pages, and server routes.
 
-#### Pages
+### Pages
 
 The filename detrmine the route. For example: `src/routes/blog/index.svelte` refer to the route `/blog`.
 
 For Dynamin routing. we going to use `[slug]`. For example `ser/routes/blog/[slug].svelte` refer to route `/blog/the-whatever-blog-name`
 
-#### Server
+### Server
 
 Server routes are modules written in `.js` files that export HTTP functions.
 For example `get` endpoint to retrieve the blog details:
@@ -173,7 +159,7 @@ the markdown.
 
 If you navigate to `/blog` route you should have a page similar to this:
 
-{% Image src="./bg2.jpeg", alt="screenshot of blogs pages" %}
+![screenshot of blogs pages](./bg2.jpeg)
 
 Now we need to handle the post route. open `src/routes/blog/[slug].json.js`
 
@@ -248,9 +234,9 @@ In `src/client.js` we import Github styles for highlight.js.
   // ...
 ```
 
-{% Image src="./bg3.jpeg", alt="screenshot of the final result showing a sample blog post" %}
+![screenshot of the final result showing a sample blog post](./bg3.jpeg)
 
-### conclusion 
+## conclusion 
 
 You now ready to go and add more styles for your website and customize the blog elements styles.
 to go live using [Netlify](http://netlify.com/), [Github Page](https://pages.github.com/) or any service.

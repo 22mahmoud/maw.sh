@@ -1,18 +1,4 @@
----
-slug: 'no-more-postman-just-curl-and-vim'
-title: 'No More postman just use cURL + vim = ❤'
-date: '2020-08-20'
-author: 'Mahmoud Ashraf'
-cover: "https://images.pexels.com/photos/3824771/pexels-photo-3824771.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-description: 'Well documented api and easy to use and share with your team with simple tools cURL + vim + git (optional)'
-categories:
-  - 'api'
-  - 'tooling'
-  - 'curl'
-  - 'vim'
----
-
-{% Image src="./bg.jpeg", alt="big brain with vim and cURL logos" %}
+# No More postman just use cURL + vim = ❤
 
 Postman one of the most popular API client tool, for send and view the response
 in the development environment. But since Postman is proprietary software and 
@@ -23,7 +9,7 @@ But also I'll go for CLI if exists and cURL is one of
 the easy to use and fully featured tool and in this article I'll show you how
 to setup a well-documented api with cURL + vim + git.
 
-### How to execute CLI inside your vim editor? 
+## How to execute CLI inside your vim editor? 
 
 vim is very powerful editor and you can execute an command line
 inside it. go to command mode and insert `:! <command>` and hit enter.
@@ -37,9 +23,9 @@ for example:
 will execute the `ls` command line and show the content 
 in pager.
 
-{% Image src="./screen.jpeg", alt="screenshot for ls command inside vim" %}
+![screenshot for ls command inside vim](./screen.jpeg)
 
-### Execute the content of the current file as CLI.
+## Execute the content of the current file as CLI.
 
 open an empty file inside your vim and write inside it `echo Hello, World!` and save it,
 and then write `:!sh %`. 
@@ -49,9 +35,9 @@ it will not work because it's trying run the file as executable file not the con
 
 so we pass `sh` before the `%` to run the content inside the file via shell.
 
-{% Image src="./screen1.jpeg", alt="screenshot :!sh command inside vim" %}
+![screenshot :!sh command inside vim](./screen1.jpeg)
 
-### Test our first cURL command
+## Test our first cURL command
 
 for demonstrating we will gonna use [jsonplaceholder](https://jsonplaceholder.typicode.com/) as our API to test
 
@@ -61,15 +47,15 @@ Now create a folder structure like below:
 └── api
     └── todos
         ├── delete
-        │   └── todo.zsh
+        │   └── todo.zsh
         ├── get
-        │   ├── todo-by-user.sh
-        │   ├── todo.sh
-        │   └── todos.sh
+        │   ├── todo-by-user.sh
+        │   ├── todo.sh
+        │   └── todos.sh
         ├── patch
-        │   └── todo.sh
+        │   └── todo.sh
         ├── post
-        │   └── todo.sh
+        │   └── todo.sh
         └── put
             └── todo.sh
 ```
@@ -86,7 +72,7 @@ curl -s -X GET \
 ```
 then as we done before run `:!sh %`
 
-{% Image src="./screen2.jpeg", alt="screenshot of :!sh % result inside vim" %}
+![screenshot of :!sh % result inside vim](./screen2.jpeg)
 
 # Make the result More Handy.
 
@@ -110,13 +96,13 @@ command Exec set splitbelow | new | set filetype=sh | read !sh #
 open again `api/posts/get/todos.sh` and  in command mode write `:Exec`
 that will execute the command inside the file and open split view with the result.
   
-{% Image src="./screen3.jpeg", alt="screenshot of before vim command" %}
+![screenshot of before vim command](./screen3.jpeg)
 
 now you have vim buffer you can easily search and do whatever you do. and to close the buffer you can use
 command ``:bd!`` or the keyboard shortcut `shift + z + q`.
 
 
-### Is cURL limited?
+## Is cURL limited?
 
 The answer is **NO**.
 let's see couple of example
@@ -147,13 +133,13 @@ you can still use query params with `-d` but add an additional `-G, --get` to pa
 since this is not a cURL tutorial that's will be enough and you 
 can learn more about advanced stuff like set header, cookie and more from the internet.
 
-### Using git?
+## Using git?
 
 Of course, on our created directory run `git init` and push for example to github.
 
 [see this example on github](https://github.com/22mahmoud/vim-curl-demo)
 
-### Conclusion
+## Conclusion
 
 You can now write a well-documented api and share it with your team via git
 all that done with simple and open-sourced tools and that's not limited to cURL

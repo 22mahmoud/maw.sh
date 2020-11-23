@@ -1,21 +1,6 @@
----
-slug: 'my-terminal-became-more-rusty'
-title: 'My terminal became more Rusty 🦀'
-date: '2020-08-21'
-cover: "https://images.pexels.com/photos/76966/crab-red-klippenkrabbe-grapsus-grapsus-shellfish-76966.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=425&w=640"
-author: 'Mahmoud Ashraf'
-description: 'CLI tools written in rust make my terminal fast and productive'
-categories:
-  - 'rust'
-  - 'cli'
-keywords:
-  - 'rust'
-  - 'cli'
-  - 'linux'
-  - 'terminal'
----
+# My terminal became more Rusty 🦀
 
-{% Image src="./cover.jpeg", alt="big crap attack the city" %}
+![big crap attack the city](./cover.jpeg)
 
 As a Software-Engineer I spent most of the time inside my terminal, So
 I need for that a fast terminal with  fast tools to speed up my productivity.
@@ -23,7 +8,7 @@ I need for that a fast terminal with  fast tools to speed up my productivity.
 The tools written in rust help me to achieve that. let's see in this article
 those tools.
 
-> ### tl;dr
+> ## tl;dr
 > - [alacritty](https://github.com/alacritty/alacritty)  A cross-platform, GPU-accelerated terminal emulator
 > - [starship](https://github.com/starship/starship) 🌌 The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 > - [exa](https://github.com/ogham/exa) A modern version of ‘ls’.
@@ -37,7 +22,7 @@ those tools.
 > - [spotify-tui](https://github.com/rigellute/spotify-tui) Spotify for the terminal written in Rust 🚀
 > - [gitui](https://github.com/extrawurst/gitui) Blazing 💥 fast terminal-ui for git written in rust 🦀
 
-### Alacritty
+## Alacritty
 
 Let's start our list with alacritty terminal is one of the fastest terminals 
 because of using GPU for rendering, and it is a cross-platform terminal.
@@ -48,11 +33,11 @@ Alacritty doesn't come with ligature support but you can use
 this [fork](https://github.com/zenixls2/alacritty/tree/ligature). or if 
 you are using Arch you can install it from [aur](https://aur.archlinux.org/packages/alacritty-ligatures/)
 
-{% Image src="./alacritty.jpeg", alt="screenshot of the terminal showing alacritty ligatures" %}
+![screenshot of the terminal showing alacritty ligatures](./alacritty.jpeg)
 
 ---
 
-### Starship
+## Starship
 
 I used to use zsh + powerlevel9k as my prompt and even when I migrate to powerlevel10k, I still
 notice a delay when open new shell. But with starship it's start instantly.
@@ -61,11 +46,11 @@ You can use it with any shell bash, zsh, fish and even powerShell.
 
 The screenshot below showing the result of my customized configuration.
 
-{% Image src="./starship.jpeg", alt="screenshot of starship prompt" %}
+![screenshot of starship prompt](./starship.jpeg)
 
 ---
 
-### Exa
+## Exa
 
 exa is an implementation of `ls` command but with colors and icons and it renders very fast.
 
@@ -84,11 +69,11 @@ fi
 
 the result of my `ls` and `ll` commands.
 
-{% Image src="./exa.jpeg", alt="screenshot of exa" %}
+![screenshot of exa](./exa.jpeg)
 
 ---
 
-### Bat
+## Bat
 
 Bat is an implementation for `cat` command but with syntax highlighted.
 
@@ -101,11 +86,11 @@ if [ "$(command -v bat)" ]; then
 fi
 ```
 
-{% Image src="./bat.jpeg", alt="screenshot of bat" %}
+![screenshot of bat](./bat.jpeg)
 
 ---
 
-### Delta
+## Delta
 
 delta enhance your git diff output by adding some cool features like syntax highlighting,
 line numbering, and side-by-side view.
@@ -131,11 +116,11 @@ feature and set a theme for Nord, You can choose your preferred theme  run and c
 delta --list-syntax-themes
 ```
 
-{% Image src="./delta.jpeg", alt="screenshot of delta" %}
+![screenshot of delta](./delta.jpeg)
 
 ---
 
-### Zoxide
+## Zoxide
 
 I don't use any file explorer, I just use `cd` command to navigate between the files and `ls` commands.
 
@@ -161,7 +146,7 @@ z mah
 
 ---
 
-### Ripgrep
+## Ripgrep
 
 It is a  cross-platform command line searches your directory for a regex pattern. 
 
@@ -180,11 +165,11 @@ rg "\.content" -g "*.pug"
 rg fast README.md --replace FAST
 ```
 
-{% Image src="./ripgrep.jpeg", alt="screenshot of ripgrep" %}
+![screenshot of ripgrep](./ripgrep.jpeg)
 
 ---
 
-### Fd
+## Fd
 
 the friendly version of `find` command, and faster.
 
@@ -204,26 +189,26 @@ fd -H '^\.DS_Store$' -tf -X rm
 
 ---
 
-### bottom
+## bottom
 
 In this time not `top` 😀 it is `bottom`
 
 it's a cross-platform system monitor. 
 
-{% Image src="./bottom.jpeg", alt="screenshot of bottom" %}
+![screenshot of bottom](./botton.jpeg)
 
 ---
 
 
-### Tldr
+## Tldr
 
 tldr is a cheatsheets for CLIs, instead of read the whole `man`.
 
-{% Image src="./tldr.jpeg", alt="screenshot of tldr" %}
+![screenshot of tldr](./tldr.jpeg)
 
 ---
 
-### More Tools?
+## More Tools?
 
 - for who want lightweight alternative for spotify client you can use `spotify-tui`.
 - also if you prefer an UI interface  for git check `gitui`.

@@ -1,20 +1,12 @@
----
-slug: 'how-to-optimize-and-lazyloading-images-on-eleventy'
-title: 'How to optimize and lazy-loading images on eleventy (11ty)'
-date: '2020-08-31'
-author: 'Mahmoud Ashraf'
-description: 'Learn How to automate your images using eleventy-img plugin and sharpjs'
-cover: "https://images.pexels.com/photos/1226721/pexels-photo-1226721.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-categories:
-  - 'tutorial'
-  - 'javascript'
-keywords:
-  - 'javascript'
-  - 'eleventy'
-  - '11ty'
-  - 'optimization'
-  - 'image'
----
+Title:    A Sample MultiMarkdown Document  
+Author:   Fletcher T. Penney  
+Date:     February 9, 2011  
+Comment:  This is a comment intended to demonstrate  
+          metadata that spans multiple lines, yet  
+          is treated as a single value.  
+CSS:      http://example.com/standard.css
+
+# How to optimize and lazy-loading images on eleventy (11ty)
 
 Building a site that has images requires to optimize them 
 to avoid any content shifting and deliver a good user experience.
@@ -24,7 +16,7 @@ To achieve that you have to compress, resize, and convert formats for your image
 In this article we will take a look for how to automate your images in eleventy 
 static site generated website using [eleventy-img](https://github.com/11ty/eleventy-img/), and [sharp](https://github.com/lovell/sharp).
 
-### Create a basic project to start
+## Create a basic project to start
 
 create a new directory and name it `11ty-img-example` or whatever you want,
 then run 
@@ -68,7 +60,7 @@ open your `package.json` file and add dev and build scripts:
 }
 ```
 
-### run the project on your browser
+## run the project on your browser
 
 open your favorite terminal and run 
 
@@ -78,9 +70,9 @@ yarn dev
 now open `localhost:8080` on your browser and
 it should work without any customized eleventy configuration.
 
-{% Image src="./setup-screen.jpeg", alt="screenshot of application inside the browser" %}
+![screenshot of application inside the browser](./setup-screen.jpeg)
 
-### Display some images
+## Display some images
 
 let's try get some images and place them in `images` directory.
 and inside `index.njk` try to display theme.
@@ -127,10 +119,9 @@ will be copied to the build directory.
 Restart your server and go back to your browser
 and it should everything work.
 
-{% Image src="./images-screen.jpeg", alt="screenshot of application inside the browser" %}
+![screenshot of application inside the browser](./images-screen.jpeg)
 
-
-### Test images performance without optimization
+## Test images performance without optimization
 
 Let's see how images doing before any optimization.
 
@@ -140,12 +131,9 @@ in my case it took `50s` to render all images, and some of these
 images have size more than `2mb`. so we need to find a way 
 to make it faster.
 
-<img 
-  loading='lazy'
-  src="./network-vid.gif" 
-  alt="gif showing how slow the image rendering">
+![gif showing how slow the image rendering](./network-vid.gif)
 
-### Add `eleventy-img` plugin
+## Add `eleventy-img` plugin
 
 it's the time to use the `eleventy-img`, this plugin from 
 eleventy team you can find the repo from [here](https://github.com/11ty/eleventy-img/).
@@ -216,7 +204,7 @@ in our case we will have a new shortcode we can use inside our templates by
 writing:
 
 ```html
-{\% Image "/images/00.jpeg", "this is an alt description" \%}
+{% Image "/images/00.jpeg", "this is an alt description" %}
 ```
 
 - `stats = new Image(...)` 
@@ -261,7 +249,7 @@ Use `webp` format for `source` as main image type and `jpeg` as fallback fro `im
 Now we are good to go by return the whole `picture`.
 
 
-### Test Images after using `eleventy-img`
+## Test Images after using `eleventy-img`
 
 open `index.njk` and replace all `img` tags with
 
@@ -269,10 +257,10 @@ open `index.njk` and replace all `img` tags with
 <!-- index.njk -->
 
 <!-- ... -->
-{\% Image "images/0001.jpeg", "image no 01" \%}
-{\% Image "images/0002.jpeg", "image no 02" \%}
-{\% Image "images/0003.jpeg", "image no 03" \%}
-{\% Image "images/0004.jpeg", "image no 04" \%}
+{% Image "images/0001.jpeg", "image no 01" %}
+{% Image "images/0002.jpeg", "image no 02" %}
+{% Image "images/0003.jpeg", "image no 03" %}
+{% Image "images/0004.jpeg", "image no 04" %}
 <!-- ... -->
 ```
 > **PS:** you have to write image paths include the full path from the root of the project to make it works.
@@ -282,12 +270,9 @@ Restart your server and go to the browser. and again open network tab.
 and Boom 💥 in this time all images loaded on `5s` and no image
 has size more than `120kb`.
 
-<img 
-  loading='lazy'
-  src="./network2-vid.gif" 
-  alt="gif showing how the result after using eleventy-img plugin">
+![gif showing how the result after using eleventy-img plugin](./network2-vid.gif)
 
-### Add lazy-loading and the blurry effect
+## Add lazy-loading and the blurry effect
 
 this is an extra step to avoid content shifting by using
 inline `base64` image as placeholder for images and use
@@ -366,22 +351,17 @@ img {
 </style>
 ```
 
-### Test images after lazyloading
+## Test images after lazyloading
 
 Voilà 🎉, now we have a nice looking and fast images on your site.
 
-<img 
-  loading='lazy'
-  src="./network3-vid.gif" 
-  alt="gif showing how the result after using vanilla-lazyload and blurry base64">
+![gif showing how the result after using vanilla-lazyload and blurry base64](./network3-vid.gif)
 
 
-### Conclusion
+## Conclusion
 
 Now You know how to integrate `eleventy-img` plugin and `vanilla-lazyload` package
 with your eleventy site if you need to learn more about image optimization, I recommend
 check this [blog](https://www.andreaverlicchi.eu/lazy-load-responsive-images-in-2020-srcset-sizes-picture-webp/) by the author of `vanilla-lazyload`.
 
 You can find the complete example in this [github repo](https://github.com/22mahmoud/elventy-image-example)
-
-
