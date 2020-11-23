@@ -1,5 +1,6 @@
 dist
 
+# to make nvim lsp works
 package.json
 node_modules
 yarn*
