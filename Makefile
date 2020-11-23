@@ -9,7 +9,7 @@ gen:
 	./ssg5/ssg5 $(SRC) $(DIST) $(NAME) $(URL)
 
 watch:
-	ls -d $(SRC)/* | entr -d $(MAKE) gen
+	find . -type f ! -path 'src/.*' | entr -d $(MAKE) gen
 
 server:
 	python3 -m http.server -d $(DIST)
