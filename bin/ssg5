@@ -70,14 +70,8 @@ main() {
 				echo "$fs" | grep '\.md$' |
 				render_md_files_lowdown "$src" "$dst" "$title"
 			else
-				if test -x "$(which Markdown.pl 2> /dev/null)"
-				then
-					echo "$fs" | grep '\.md$' |
-					render_md_files_Markdown_pl "$src" "$dst" "$title"
-				else
-					echo "couldn't find lowdown nor Markdown.pl"
-					exit 3
-				fi
+        echo "couldn't find lowdown"
+        exit 3
 			fi
 		fi
 
@@ -196,17 +190,6 @@ render_md_files_lowdown() {
 		> "$2/${f%\.md}.html"
 	done
 }
-
-
-render_md_files_Markdown_pl() {
-	while read -r f
-	do
-		Markdown.pl < "$1/$f" |
-		render_html_file "$3" \
-		> "$2/${f%\.md}.html"
-	done
-}
-
 
 render_html_file() {
 	# h/t Devin Teske
