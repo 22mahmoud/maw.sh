@@ -178,22 +178,27 @@ render_html_files() {
 	done
 }
 
-
 render_md_files_lowdown() {
 	while read -r f
 	do
+    description=$(lowdown -X description "$1/$f" 2>/dev/null || true)
+    keywords=$(lowdown -X keywords "$1/$f" 2>/dev/null || true)
+    date=$(lowdown -X date "$1/$f" 2>/dev/null || true)
 		lowdown \
 		-D html-skiphtml \
-		-d metadata \
-		-d autolink < "$1/$f" |
-		render_html_file "$3" \
+		"$1/$f" |
+		render_html_file \
+      "$3" \
+      "${description:="Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt."}" \
+      "${keywords:="blog,front-ent,javascript,linux"}" \
+      "$date" \
 		> "$2/${f%\.md}.html"
 	done
 }
 
 render_html_file() {
 	# h/t Devin Teske
-	awk -v title="$1" '
+	awk -v title="$1" -v description="$2" -v keywords="$3" -v date="$4" '
 	{ body = body "\n" $0 }
 	END {
 		body = substr(body, 2)
@@ -201,21 +206,32 @@ render_html_file() {
 			print body
 			exit
 		}
+
 		if (match(body, /<[[:space:]]*[Hh]1(>|[[:space:]][^>]*>)/)) {
-			t = substr(body, RSTART + RLENGTH)
-			sub("<[[:space:]]*/[[:space:]]*[Hh]1.*", "", t)
 			gsub(/^[[:space:]]*|[[:space:]]$/, "", t)
 			if (t) title = t " &mdash; " title
 		}
+
 		n = split(ENVIRON["HEADER"], header, /\n/)
+    head = substr(header[i], 1, RSTART - 1)
+    tail = substr(header[i], RSTART + RLENGTH)
+
 		for (i = 1; i <= n; i++) {
 			if (match(tolower(header[i]), "<title></title>")) {
-				head = substr(header[i], 1, RSTART - 1)
-				tail = substr(header[i], RSTART + RLENGTH)
 				print head "<title>" title "</title>" tail
-			} else print header[i]
+      } else if (match(tolower(header[i]), "<meta name=\"description\" />")) {
+        print head "<meta name=\"description\" content=\"" description "\" />" tail
+      } else if (match(tolower(header[i]), "<meta name=\"keywords\" />")) {
+        print head "<meta name=\"keywords\" content=\"" keywords "\" />" tail
+      } else print header[i]
 		}
+
+    if (date) {
+      print "<time datetime=\"" date "\" >" date "</time>"
+    }
+
 		print body
+
 		print ENVIRON["FOOTER"]
 	}'
 }

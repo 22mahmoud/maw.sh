@@ -54,6 +54,13 @@ video {
   margin-bottom: 1rem;
 }
 
+hr {
+	/* Reset the border of the <hr> separator, then set a better line */
+	border: 0;
+	border-bottom: 1px solid var(--c5);
+	margin: 1rem auto;
+}
+
 body {
   margin: 0 auto;
   padding: 1em;
@@ -173,6 +180,10 @@ ol ol {
 
 .site-title a {
   color: var(--c2);
+}
+
+.nav {
+  margin-bottom: 1em;
 }
 
 .nav ul {

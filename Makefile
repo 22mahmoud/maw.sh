@@ -10,7 +10,7 @@ gen:
 	$(ssg5) $(SRC) $(DIST) $(NAME) $(URL)
 
 watch:
-	find . -type f ! -path '$(SRC)/.*' | entr -d $(MAKE) gen
+	find . -type f ! -path '*/.*' | entr -d $(MAKE) gen
 
 server:
 	python3 -m http.server -d $(DIST)

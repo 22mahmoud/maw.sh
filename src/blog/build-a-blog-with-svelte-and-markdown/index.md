@@ -1,3 +1,10 @@
+Slug: 'build-a-blog-with-svelte-and-markdown'
+Title:        Building a blog with Svelte, Sapper, and Markdown  
+Date:         Mar 03,2020  
+Author:       Mahmoud Ashraf  
+Description:  In this article I will show how you can start bloging with svelte and sapper using markdown files  
+Keywords:     javascript, svelte, sapper  
+
 # Building a blog with Svelte, Sapper, and Markdown
 
 In this post, we will build a website with a blog using svelte, and sapper.

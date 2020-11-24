@@ -1,3 +1,9 @@
+Title:        My terminal became more Rusty 🦀  
+Date:         Aug 21, 2020  
+Author:       Mahmoud Ashraf  
+Description:  CLI tools written in rust make my terminal fast and productive  
+Keywords:     rust, cli, linux, terminal  
+
 # My terminal became more Rusty 🦀
 
 ![big crap attack the city](./cover.jpeg)

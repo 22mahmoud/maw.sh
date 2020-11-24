@@ -1,3 +1,10 @@
+Title:        How to optimize and lazy-loading images on eleventy (11ty)  
+Date:         Aug 08, 2020 
+Author:       Mahmoud Ashraf  
+Description:  Learn How to automate your images using eleventy-img plugin and sharpjs  
+categories:   tutorial, javascript  
+keywords:     javascript, eleventy, 11ty, optimization, image  
+
 # How to optimize and lazy-loading images on eleventy (11ty)
 
 Building a site that has images requires to optimize them 
