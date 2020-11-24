@@ -3,13 +3,14 @@ SRC 	:= src
 DIST 	:= dist
 NAME 	:= 'Mahmoud Ashraf'
 URL 	:= 'https://mahmoudashraf.dev'
+ssg5	:= ./bin/ssg5
 
 gen:
 	[ -d $(DIST) ] || mkdir $(DIST)
-	./ssg5/ssg5 $(SRC) $(DIST) $(NAME) $(URL)
+	$(ssg5) $(SRC) $(DIST) $(NAME) $(URL)
 
 watch:
-	find . -type f ! -path '${SRC}/.*' | entr -d $(MAKE) gen
+	find . -type f ! -path '$(SRC)/.*' | entr -d $(MAKE) gen
 
 server:
 	python3 -m http.server -d $(DIST)
