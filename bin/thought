@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+dirname=$(date +%s)
+d=$(date -I'minutes')
+
+mkdir src/thoughts/$dirname 
+
+echo "Date:  $d" \
+  > src/thoughts/$dirname/index.md  \
+  && echo "new thought created with name $dirname"
+

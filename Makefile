@@ -26,4 +26,7 @@ update:
 	git submodule foreach git pull origin master
 	$(MAKE) clean gen
 
-.PHONY : gen clean watch server dev update
+thought:
+	./bin/thought
+
+.PHONY : gen clean watch server dev update thought
