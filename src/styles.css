@@ -189,10 +189,13 @@ ol ol {
 .nav ul {
   display: flex;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .nav ul li {
   list-style-type: none;
+  margin-bottom: .3em;
 }
 
 .nav ul li:not(:last-child) {
