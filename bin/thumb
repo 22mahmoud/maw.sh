@@ -4,7 +4,7 @@ DIR='./src/photos/'
 
 for FILE in "$DIR"*.jpg
 do
-  convert -define jpeg:size=500x500 $FILE  -thumbnail 500x500^ \
+  [ ! -f "./src/photos/thumbs/$(basename "$FILE")" ] && convert -define jpeg:size=500x500 $FILE  -thumbnail 500x500^ \
     -gravity center -extent 500x500  "./src/photos/thumbs/$(basename "$FILE")"
 done
 
