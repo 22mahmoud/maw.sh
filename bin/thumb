@@ -1,10 +1,18 @@
 #!/bin/sh -e
 
-DIR='./src/photos/'
+dir="./src/photos"
+images='./src/photos/*.jpg'
+thumbs='./src/photos/thumbs'
 
-for FILE in "$DIR"*.jpg
+for i in $images
 do
-  [ ! -f "./src/photos/thumbs/$(basename "$FILE")" ] && convert -define jpeg:size=500x500 $FILE  -thumbnail 500x500^ \
-    -gravity center -extent 500x500  "./src/photos/thumbs/$(basename "$FILE")"
+  image_name=$(basename ${i})
+
+  # only convert the image if the thumbs not exist
+  if [ ! -f "./src/photos/thumbs/${image_name}" ] 
+  then
+    convert -define jpeg:size=500x500 ${i}  -thumbnail 500x500^ \
+    -gravity center -extent 500x500  "./src/photos/thumbs/${image_name}"
+  fi
 done
 
