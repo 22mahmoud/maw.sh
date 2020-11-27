@@ -29,7 +29,7 @@
 
 [![](./thumbs/me_2.jpg)](./me_2.jpg)
 [![](./thumbs/me_3.jpg)](./me_3.jpg)
-[![](./thumbs/me_4.jpg)](./me_4.jpg)]
+[![](./thumbs/me_4.jpg)](./me_4.jpg)
 
 ---
 > A delicious mocha coffee from '[the Brazilian coffee store](https://www.openstreetmap.org/node/5784657562#map=19/31.19960/29.89960)'
