@@ -201,3 +201,14 @@ ol ol {
 .nav ul li:not(:last-child) {
   margin-right: .8em;
 }
+
+.theme-toggle a {
+  color: var(--c2);
+  background-color: var(--c5);
+  padding: .25em .5em;
+  border-radius: 99999999px;
+}
+
+.theme-toggle > a:hover {
+  text-decoration: none;
+}

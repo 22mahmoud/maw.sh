@@ -1,0 +1,23 @@
+@-moz-document url-prefix("https://mahmoudashraf.dev"), url-prefix("http://mahmoudashraf.dev"), url-prefix("mahmoudashraf.dev") {
+/* light mode */
+:root {
+  /* background */
+  --c1: #f1f2f2;
+  /* forground */
+  --c2: #080808;
+  /* link      */
+  --c3: #185488;
+  /* code tag forground */
+  --c4: #3c3836;
+  /* code tag background */
+  --c5: #fbf1c7;
+}
+
+hr {
+  border-color: var(--c4);
+}
+
+blockquote {
+  border-color: var(--c4);
+}
+}
