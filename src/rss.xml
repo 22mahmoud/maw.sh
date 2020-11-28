@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<atom:link href="https://mahmoudashraf.dev/rss.xml" rel="self" type="application/rss+xml" />
+<title>Mahmoud Ashraf</title>
+<description>Subscribe via RSS</description>
+<link>https://mahmoudashraf.dev/</link>
+
+<item>
+<guid>https://mahmoudashraf.dev/blog/how-to-optimize-and-lazyloading-images-on-eleventy/index.html</guid>
+<link>https://mahmoudashraf.dev/blog/how-to-optimize-and-lazyloading-images-on-eleventy/index.html</link>
+<pubDate>Sat, 08 Aug 2020 00:00:00 +0200</pubDate>
+<title>How to optimize and lazy-loading images on eleventy (11ty)</title>
+<description><![CDATA[
+
+<time datetime="Aug 08, 2020" >Aug 08, 2020</time>
+<h1 id="How%20to%20optimize%20and%20lazy-loading%20images%20on%20eleventy%20(11ty)">How to optimize and lazy-loading images on eleventy (11ty)</h1>
+
+<p>Building a site that has images requires to optimize them 
+to avoid any content shifting and deliver a good user experience.</p>
+
+<p>To achieve that you have to compress, resize, and convert formats for your images. </p>
+
+<p>In this article we will take a look for how to automate your images in eleventy 
+static site generated website using <a href="https://github.com/11ty/eleventy-img/">eleventy-img</a>, and <a href="https://github.com/lovell/sharp">sharp</a>.</p>
+
+<h2 id="Create%20a%20basic%20project%20to%20start">Create a basic project to start</h2>
+
+<p>create a new directory and name it <code>11ty-img-example</code> or whatever you want,
+then run </p>
+
+<pre><code class="language-bash">yarn init -y
+</code></pre>
+
+<p>you can use <code>npm</code> if you prefer. </p>
+
+<p>now install <code>eleventy</code>, and create index.njk
+on the root with basic <code>html</code> markup.</p>
+
+<pre><code class="language-bash">yarn add -D @11ty&#47;eleventy
+touch index.njk
+</code></pre>
+
+<pre><code class="language-html">&#60;!-- index.njk --&#62;
+
+&#60;!DOCTYPE html&#62;
+&#60;html lang="en"&#62;
+  &#60;head&#62;
+    &#60;meta charset="UTF-8" &#47;&#62;
+    &#60;meta name="viewport" content="width=device-width, initial-scale=1.0" &#47;&#62;
+    &#60;title&#62;11ty img example&#60;&#47;title&#62;
+  &#60;&#47;head&#62;
+  &#60;body&#62;
+    Hello, World!
+  &#60;&#47;body&#62;
+&#60;&#47;html&#62;
+</code></pre>
+
+<p>open your <code>package.json</code> file and add dev and build scripts:</p>
+
+<pre><code class="language-json">&#47;&#47; package.json
+
+"scripts": {
+  "dev": "eleventy --serve",
+  "build": "eleventy"
+}
+</code></pre>
+
+<h2 id="run%20the%20project%20on%20your%20browser">run the project on your browser</h2>
+
+<p>open your favorite terminal and run </p>
+
+<pre><code class="language-bash">yarn dev
+</code></pre>
+
+<p>now open <code>localhost:8080</code> on your browser and
+it should work without any customized eleventy configuration.</p>
+
+<p><img src="./setup-screen.jpeg" alt="screenshot of application inside the browser" /></p>
+
+<h2 id="Display%20some%20images">Display some images</h2>
+
+<p>let&#39;s try get some images and place them in <code>images</code> directory.
+and inside <code>index.njk</code> try to display theme.</p>
+
+<pre><code class="language-bash">ls images&#47;
+
+518k   0001.jpeg
+2.6M   0002.jpeg
+1.7M   0003.jpeg
+368k   0004.jpeg
+679k   0005.jpeg
+556k   0006.jpeg
+602k   0007.jpeg
+1.6M   0008.jpeg
+1.4M   0009.jpeg
+</code></pre>
+
+<pre><code class="language-html">&#60;!-- index.njk --&#62;
+&#60;body&#62;
+  &#60;img src="https://mahmoudashraf.dev/&#47;images&#47;0001.jpeg" alt="image no 01" &#47;&#62;
+  &#60;img src="https://mahmoudashraf.dev/&#47;images&#47;0002.jpeg" alt="image no 02" &#47;&#62;
+  &#60;!-- ... --&#62;
+&#60;&#47;body&#62;
+</code></pre>
+
+<p>open your browser and it shouldn&#39;t render any image.
+yeah that&#39;s right 😀 because <code>eleventy</code> doesn&#39;t handle 
+assets like css, js, or images so we need to configure that
+by ourself.</p>
+
+<p>create a <code>.eleventy.js</code> file on the root directory,
+then write: </p>
+
+<pre><code class="language-js">module.exports = (cfg) =&#62; {
+  cfg.addPassthroughCopy("images");
+}
+</code></pre>
+
+<p>now everything inside <code>images</code> directory 
+will be copied to the build directory.</p>
+
+<p>Restart your server and go back to your browser
+and it should everything work.</p>
+
+<p><img src="./images-screen.jpeg" alt="screenshot of application inside the browser" /></p>
+
+<h2 id="Test%20images%20performance%20without%20optimization">Test images performance without optimization</h2>
+
+<p>Let&#39;s see how images doing before any optimization.</p>
+
+<p>Open network tab  inside the devtool and set <code>fast 3G</code> as network simulation.</p>
+
+<p>in my case it took <code>50s</code> to render all images, and some of these 
+images have size more than <code>2mb</code>. so we need to find a way 
+to make it faster.</p>
+
+<p><img src="./network-vid.gif" alt="gif showing how slow the image rendering" /></p>
+
+<h2 id="Add%20%3Ccode%3Eeleventy-img%3C/code%3E%20plugin">Add <code>eleventy-img</code> plugin</h2>
+
+<p>it&#39;s the time to use the <code>eleventy-img</code>, this plugin from 
+eleventy team you can find the repo from <a href="https://github.com/11ty/eleventy-img/">here</a>.</p>
+
+<p>Install it in our project.</p>
+
+<pre><code class="language-bash">yarn add -D @11ty&#47;eleventy-img
+</code></pre>
+
+<p>open <code>.eleventy.js</code> file and remove the line that we wrote before, then add the code below:</p>
+
+<pre><code class="language-js">&#47;&#47; .eleventy.js
+
+const Image = require("@11ty&#47;eleventy-img");
+
+module.exports = (cfg) =&#62; {
+  cfg.addNunjucksAsyncShortcode("Image", async (src, alt) =&#62; {
+    if (!alt) {
+      throw new Error(`Missing \`alt\` on myImage from: ${src}`);
+    }
+
+    let stats = await Image(src, {
+      widths: [25, 320, 640, 960, 1200, 1800, 2400],
+      formats: ["jpeg", "webp"],
+      urlPath: "&#47;images&#47;",
+      outputDir: ".&#47;_site&#47;images&#47;",
+    });
+
+    let lowestSrc = stats["jpeg"][0];
+
+    const srcset = Object.keys(stats).reduce(
+      (acc, format) =&#62; ({
+        ...acc,
+        [format]: stats[format].reduce(
+          (_acc, curr) =&#62; `${_acc} ${curr.srcset} ,`,
+          ""
+        ),
+      }),
+      {}
+    );
+
+    const source = `&#60;source type="image&#47;webp" srcset="${srcset["webp"]}" &#62;`;
+
+    const img = `&#60;img
+      loading="lazy"
+      alt="${alt}"
+      src="https://mahmoudashraf.dev/${lowestSrc.url}"
+      sizes=&#39;(min-width: 1024px) 1024px, 100vw&#39;
+      srcset="${srcset["jpeg"]}"
+      width="${lowestSrc.width}"
+      height="${lowestSrc.height}"&#62;`;
+
+    return `&#60;div class="image-wrapper"&#62;&#60;picture&#62; ${source} ${img} &#60;&#47;picture&#62;&#60;&#47;div&#62;`;
+  });
+}
+</code></pre>
+
+<p>Let&#39;s break down the code and understand how it works</p>
+
+<ul>
+<li><code>addNunjucksAsyncShortcode</code></li>
+</ul>
+
+<p>eleventy has feature called <code>shortcodes</code> let 
+you extend your template engine by writing custom functions.</p>
+
+<p>in our case we will have a new shortcode we can use inside our templates by 
+writing:</p>
+
+<pre><code class="language-html">{% Image "&#47;images&#47;00.jpeg", "this is an alt description" %}
+</code></pre>
+
+<ul>
+<li><code>stats = new Image(...)</code> </li>
+</ul>
+
+<p>we pass the src url, formats, and various widths to the image plugin. </p>
+
+<p>So we well have multiple sizes, and formats for each image.</p>
+
+<ul>
+<li><code>const srcset = ...</code></li>
+</ul>
+
+<p>the <code>stats</code> result look like that
+<code>js
+stats = {
+  jpeg: [
+    {
+      url: &#39;...&#39;,
+      src: &#39;...&#39;,
+      srcset: &#39;...&#39;
+    }
+  ],
+  webp: [
+    ...
+  ]
+}
+</code></p>
+
+<p>We need to covert every size srcset to only one srcset string by using <code>reduce</code> function, So
+we can inject it in our code.</p>
+
+<p>so the result of variable <code>srcset</code>
+<code>js
+srcset = {
+  jpeg: &#39;&#60;srcset&#62;&#39;
+  webp: &#39;&#60;srcset&#62;&#39;
+}
+</code></p>
+
+<ul>
+<li><code>const source = ...</code> and <code>const img = ...</code></li>
+</ul>
+
+<p>Use <code>webp</code> format for <code>source</code> as main image type and <code>jpeg</code> as fallback fro <code>img</code> tag.</p>
+
+<p>Now we are good to go by return the whole <code>picture</code>.</p>
+
+<h2 id="Test%20Images%20after%20using%20%3Ccode%3Eeleventy-img%3C/code%3E">Test Images after using <code>eleventy-img</code></h2>
+
+<p>open <code>index.njk</code> and replace all <code>img</code> tags with</p>
+
+<pre><code class="language-html">&#60;!-- index.njk --&#62;
+
+&#60;!-- ... --&#62;
+{% Image "images&#47;0001.jpeg", "image no 01" %}
+{% Image "images&#47;0002.jpeg", "image no 02" %}
+{% Image "images&#47;0003.jpeg", "image no 03" %}
+{% Image "images&#47;0004.jpeg", "image no 04" %}
+&#60;!-- ... --&#62;
+</code></pre>
+
+<blockquote>
+<p><strong>PS:</strong> you have to write image paths include the full path from the root of the project to make it works.</p>
+</blockquote>
+
+<p>Restart your server and go to the browser. and again open network tab.</p>
+
+<p>and Boom 💥 in this time all images loaded on <code>5s</code> and no image
+has size more than <code>120kb</code>.</p>
+
+<p><img src="./network2-vid.gif" alt="gif showing how the result after using eleventy-img plugin" /></p>
+
+<h2 id="Add%20lazy-loading%20and%20the%20blurry%20effect">Add lazy-loading and the blurry effect</h2>
+
+<p>this is an extra step to avoid content shifting by using
+inline <code>base64</code> image as placeholder for images and use
+javascript as fallback for browser that not supported yet
+the native lazyloading with <a href="https://github.com/verlok/vanilla-lazyload">vanilla-lazyload</a>.</p>
+
+<p>install sharp package to get the blurry inline base64 image </p>
+
+<pre><code class="language-bash">yarn add -D sharp
+</code></pre>
+
+<p>on <code>.eleventy.js</code> import sharp package and add this code below:</p>
+
+<pre><code class="language-js">&#47;&#47; .eleventy.js
+
+const sharp = require(&#39;sharp&#39;);
+
+&#47;&#47; ...
+
+const placeholder = await sharp(lowestSrc.outputPath)
+  .resize({ fit: sharp.fit.inside })
+  .blur()
+  .toBuffer();
+
+const base64Placeholder = `data:image&#47;png;base64,${placeholder.toString(
+  "base64"
+)}`;
+
+&#47;&#47; ...
+</code></pre>
+
+<p>And then replace <code>src</code>, <code>srcset</code>, and <code>resize</code>, to <code>data-src</code>, <code>data-srcset</code>, and <code>data-resize</code>.</p>
+
+<p>And also add <code>src</code> attribute in <code>&#60;img&#62;</code> tag to <code>src="https://mahmoudashraf.dev/${base64Placeholder}"</code>.</p>
+
+<p>The final code after changes:</p>
+
+<pre><code class="language-js">const source = `&#60;source type="image&#47;webp" data-srcset="${srcset["webp"]}" &#62;`;
+
+const img = `&#60;img
+  class="lazy"
+  alt="${alt}"
+  src="https://mahmoudashraf.dev/${base64Placeholder}"
+  data-src="https://mahmoudashraf.dev/${lowestSrc.url}"
+  data-sizes=&#39;(min-width: 1024px) 1024px, 100vw&#39;
+  data-srcset="${srcset["jpeg"]}"
+  width="${lowestSrc.width}"
+  height="${lowestSrc.height}"&#62;`;
+</code></pre>
+
+<p>And as mentioned before in this article that eleventy only handles html 
+template engines, So we will use <code>script</code> tag of <code>type="module"</code> to use <code>vanilla-lazyload</code> package.</p>
+
+<p>on <code>index.njk</code> before the end of body tag <code>&#60;&#47;body&#62;</code> add this script.</p>
+
+<pre><code class="language-html">&#60;script type="module" async&#62;
+  import Lazyload from "https:&#47;&#47;cdn.skypack.dev&#47;vanilla-lazyload";
+  const lazyload = new Lazyload();
+&#60;&#47;script&#62;
+</code></pre>
+
+<p>Add this styles for img tags</p>
+
+<pre><code class="language-html">&#60;style&#62;
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+&#60;&#47;style&#62;
+</code></pre>
+
+<h2 id="Test%20images%20after%20lazyloading">Test images after lazyloading</h2>
+
+<p>Voilà 🎉, now we have a nice looking and fast images on your site.</p>
+
+<p><img src="./network3-vid.gif" alt="gif showing how the result after using vanilla-lazyload and blurry base64" /></p>
+
+<h2 id="Conclusion">Conclusion</h2>
+
+<p>Now You know how to integrate <code>eleventy-img</code> plugin and <code>vanilla-lazyload</code> package
+with your eleventy site if you need to learn more about image optimization, I recommend
+check this <a href="https://www.andreaverlicchi.eu/lazy-load-responsive-images-in-2020-srcset-sizes-picture-webp/">blog</a> by the author of <code>vanilla-lazyload</code>.</p>
+
+<p>You can find the complete example in this <a href="https://github.com/22mahmoud/elventy-image-example">github repo</a></p>
+
+]]></description>
+</item>
+
+<item>
+<guid>https://mahmoudashraf.dev/blog/my-terminal-became-more-rusty/index.html</guid>
+<link>https://mahmoudashraf.dev/blog/my-terminal-became-more-rusty/index.html</link>
+<pubDate>Sat, 08 Aug 2020 00:00:00 +0200</pubDate>
+<title>My terminal became more Rusty 🦀</title>
+<description><![CDATA[
+
+<time datetime="Aug 21, 2020" >Aug 21, 2020</time>
+<h1 id="My%20terminal%20became%20more%20Rusty%20%F0%9F%A6%80">My terminal became more Rusty 🦀</h1>
+
+<p><img src="./cover.jpeg" alt="big crap attack the city" /></p>
+
+<p>As a Software-Engineer I spent most of the time inside my terminal, So
+I need for that a fast terminal with  fast tools to speed up my productivity.</p>
+
+<p>The tools written in rust help me to achieve that. let&#39;s see in this article
+those tools.</p>
+
+<blockquote>
+<h2 id="tl;dr">tl;dr</h2>
+
+<ul>
+<li><a href="https://github.com/alacritty/alacritty">alacritty</a>  A cross-platform, GPU-accelerated terminal emulator</li>
+<li><a href="https://github.com/starship/starship">starship</a> 🌌 The minimal, blazing-fast, and infinitely customizable prompt for any shell!</li>
+<li><a href="https://github.com/ogham/exa">exa</a> A modern version of ‘ls’.</li>
+<li><a href="https://github.com/sharkdp/bat">bat</a> A cat(1) clone with wings.</li>
+<li><a href="https://github.com/dandavison/delta">delta</a> A viewer for git and diff output</li>
+<li><a href="https://github.com/ajeetdsouza/zoxide">zoxide</a> A faster way to navigate your filesystem</li>
+<li><a href="https://github.com/burntsushi/ripgrep">ripgrep</a> ripgrep recursively searches directories for a regex pattern</li>
+<li><a href="https://github.com/sharkdp/fd">fd</a> A simple, fast and user-friendly alternative to &#8216;find&#8217;</li>
+<li><a href="https://github.com/clementtsang/bottom">bottom</a> Yet another cross-platform graphical process&#47;system monitor.</li>
+<li><a href="https://github.com/tldr-pages/tldr">tldr</a> 📚 Collaborative cheatsheets for console commands</li>
+<li><a href="https://github.com/rigellute/spotify-tui">spotify-tui</a> Spotify for the terminal written in Rust 🚀</li>
+<li><a href="https://github.com/extrawurst/gitui">gitui</a> Blazing 💥 fast terminal-ui for git written in rust 🦀</li>
+</ul>
+</blockquote>
+
+<h2 id="Alacritty">Alacritty</h2>
+
+<p>Let&#39;s start our list with alacritty terminal is one of the fastest terminals 
+because of using GPU for rendering, and it is a cross-platform terminal.</p>
+
+<p>You can customize your own configuration like color scheme, fonts, opacity, and key mapping.</p>
+
+<p>Alacritty doesn&#39;t come with ligature support but you can use 
+this <a href="https://github.com/zenixls2/alacritty/tree/ligature">fork</a>. or if 
+you are using Arch you can install it from <a href="https://aur.archlinux.org/packages/alacritty-ligatures/">aur</a></p>
+
+<p><img src="./alacritty.jpeg" alt="screenshot of the terminal showing alacritty ligatures" /></p>
+
+<hr/>
+
+<h2 id="Starship">Starship</h2>
+
+<p>I used to use zsh + powerlevel9k as my prompt and even when I migrate to powerlevel10k, I still
+notice a delay when open new shell. But with starship it&#39;s start instantly.</p>
+
+<p>You can use it with any shell bash, zsh, fish and even powerShell.</p>
+
+<p>The screenshot below showing the result of my customized configuration.</p>
+
+<p><img src="./starship.jpeg" alt="screenshot of starship prompt" /></p>
+
+<hr/>
+
+<h2 id="Exa">Exa</h2>
+
+<p>exa is an implementation of <code>ls</code> command but with colors and icons and it renders very fast.</p>
+
+<p>I&#39;m using exa as replacer for ls command by making an alias.</p>
+
+<pre><code class="language-bash">if [ "$(command -v exa)" ]; then
+    unalias -m &#39;ll&#39;
+    unalias -m &#39;l&#39;
+    unalias -m &#39;la&#39;
+    unalias -m &#39;ls&#39;
+    alias ls=&#39;exa -G  --color auto --icons -a -s type&#39;
+    alias ll=&#39;exa -l --color always --icons -a -s type&#39;
+fi
+</code></pre>
+
+<p>the result of my <code>ls</code> and <code>ll</code> commands.</p>
+
+<p><img src="./exa.jpeg" alt="screenshot of exa" /></p>
+
+<hr/>
+
+<h2 id="Bat">Bat</h2>
+
+<p>Bat is an implementation for <code>cat</code> command but with syntax highlighted.</p>
+
+<p>Also I make an alias for this command with nord theme.</p>
+
+<pre><code class="language-bash">if [ "$(command -v bat)" ]; then
+  unalias -m &#39;cat&#39;
+  alias cat=&#39;bat -pp --theme="Nord"&#39;
+fi
+</code></pre>
+
+<p><img src="./bat.jpeg" alt="screenshot of bat" /></p>
+
+<hr/>
+
+<h2 id="Delta">Delta</h2>
+
+<p>delta enhance your git diff output by adding some cool features like syntax highlighting,
+line numbering, and side-by-side view.</p>
+
+<p>to make delta works in your <code>.gitconfig</code> file add:</p>
+
+<pre><code class="language-yaml">[core]
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  side-by-side = true
+  line-numbers-left-format = ""
+  line-numbers-right-format = "│ "
+  syntax-theme = Nord
+</code></pre>
+
+<p>we set <code>delta</code> as the default pager for git commands output and enable side-by-side 
+feature and set a theme for Nord, You can choose your preferred theme  run and choose one.</p>
+
+<pre><code class="language-bash">delta --list-syntax-themes
+</code></pre>
+
+<p><img src="./delta.jpeg" alt="screenshot of delta" /></p>
+
+<hr/>
+
+<h2 id="Zoxide">Zoxide</h2>
+
+<p>I don&#39;t use any file explorer, I just use <code>cd</code> command to navigate between the files and <code>ls</code> commands.</p>
+
+<p>I have a <code>projects</code> directory on my home folder if I wanna navigate to a project of those projects.
+I will write</p>
+
+<pre><code class="language-bash">cd ~&#47;projects&#47;mahmoudashraf.dev
+</code></pre>
+
+<p>instead I will write </p>
+
+<pre><code class="language-bash">z ~&#47;projects&#47;mahmoudashraf.dev
+</code></pre>
+
+<p>just to the first time and if I wanna navigate again to this directory from anywhere
+just write </p>
+
+<pre><code class="language-bash">z mah
+</code></pre>
+
+<hr/>
+
+<h2 id="Ripgrep">Ripgrep</h2>
+
+<p>It is a  cross-platform command line searches your directory for a regex pattern. </p>
+
+<p>I recommend you read this article <a href="https://blog.burntsushi.net/ripgrep/">ripgrep is faster than {grep, ag, git grep, ucg, pt, sift}
+</a>.</p>
+
+<p>some commands that i&#39;m using</p>
+
+<pre><code class="language-bash"># search on javascript files for specific regex
+rg tjs "import React"
+
+rg "\.content" -g "*.pug"
+
+# you can also search and replace with regex as sed command
+rg fast README.md --replace FAST
+</code></pre>
+
+<p><img src="./ripgrep.jpeg" alt="screenshot of ripgrep" /></p>
+
+<hr/>
+
+<h2 id="Fd">Fd</h2>
+
+<p>the friendly version of <code>find</code> command, and faster.</p>
+
+<p>It&#39;s by default ignore <code>.gitignore</code> file</p>
+
+<p>in this tutorial I have some screenshots in <code>png</code> format to convert them all to <code>jpeg</code>:</p>
+
+<pre><code class="language-bash">fd -e png -x convert {} {.}.jpeg
+</code></pre>
+
+<p>To delete files</p>
+
+<pre><code class="language-bash">fd -H &#39;^\.DS_Store$&#39; -tf -X rm
+</code></pre>
+
+<hr/>
+
+<h2 id="bottom">bottom</h2>
+
+<p>In this time not <code>top</code> 😀 it is <code>bottom</code></p>
+
+<p>it&#39;s a cross-platform system monitor. </p>
+
+<p><img src="./botton.jpeg" alt="screenshot of bottom" /></p>
+
+<hr/>
+
+<h2 id="Tldr">Tldr</h2>
+
+<p>tldr is a cheatsheets for CLIs, instead of read the whole <code>man</code>.</p>
+
+<p><img src="./tldr.jpeg" alt="screenshot of tldr" /></p>
+
+<hr/>
+
+<h2 id="More%20Tools?">More Tools?</h2>
+
+<ul>
+<li>for who want lightweight alternative for spotify client you can use <code>spotify-tui</code>.</li>
+<li>also if you prefer an UI interface  for git check <code>gitui</code>.</li>
+</ul>
+
+<p>and there is a ton of CLIs and tools written in rust you can check 
+<a href="https://lib.rs/command-line-utilities">lib.rs&#47;command-line-utilities</a></p>
+
+]]></description>
+</item>
+
+<item>
+<guid>https://mahmoudashraf.dev/blog/no-more-postman-just-curl-and-vim/index.html</guid>
+<link>https://mahmoudashraf.dev/blog/no-more-postman-just-curl-and-vim/index.html</link>
+<pubDate>Sat, 08 Aug 2020 00:00:00 +0200</pubDate>
+<title>No More postman just use cURL + vim = ❤</title>
+<description><![CDATA[
+
+<time datetime="Aug 20, 2020" >Aug 20, 2020</time>
+<h1 id="No%20More%20postman%20just%20use%20cURL%20+%20vim%20=%20%E2%9D%A4">No More postman just use cURL + vim = ❤</h1>
+
+<p>Postman one of the most popular API client tool, for send and view the response
+in the development environment. But since Postman is proprietary software and 
+there is a free + open sourced alternative so I&#39;ll go for something 
+like insomnia, or postwoman. </p>
+
+<p>But also I&#39;ll go for CLI if exists and cURL is one of 
+the easy to use and fully featured tool and in this article I&#39;ll show you how
+to setup a well-documented api with cURL + vim + git.</p>
+
+<h2 id="How%20to%20execute%20CLI%20inside%20your%20vim%20editor?">How to execute CLI inside your vim editor?</h2>
+
+<p>vim is very powerful editor and you can execute an command line
+inside it. go to command mode and insert <code>:! &#60;command&#62;</code> and hit enter.</p>
+
+<p>for example: </p>
+
+<pre><code class="language-vim">  :! ls
+</code></pre>
+
+<p>will execute the <code>ls</code> command line and show the content 
+in pager.</p>
+
+<p><img src="./screen.jpeg" alt="screenshot for ls command inside vim" /></p>
+
+<h2 id="Execute%20the%20content%20of%20the%20current%20file%20as%20CLI.">Execute the content of the current file as CLI.</h2>
+
+<p>open an empty file inside your vim and write inside it <code>echo Hello, World!</code> and save it,
+and then write <code>:!sh %</code>. </p>
+
+<p>The percent <code>%</code> is refer to the filename so if we run it with normal bang <code>:! %</code> 
+it will not work because it&#39;s trying run the file as executable file not the content inside. </p>
+
+<p>so we pass <code>sh</code> before the <code>%</code> to run the content inside the file via shell.</p>
+
+<p><img src="./screen1.jpeg" alt="screenshot :!sh command inside vim" /></p>
+
+<h2 id="Test%20our%20first%20cURL%20command">Test our first cURL command</h2>
+
+<p>for demonstrating we will gonna use <a href="https://jsonplaceholder.typicode.com/">jsonplaceholder</a> as our API to test</p>
+
+<p>Now create a folder structure like below:</p>
+
+<pre><code class="language-bash">└── api
+    └── todos
+        ├── delete
+        │   └── todo.zsh
+        ├── get
+        │   ├── todo-by-user.sh
+        │   ├── todo.sh
+        │   └── todos.sh
+        ├── patch
+        │   └── todo.sh
+        ├── post
+        │   └── todo.sh
+        └── put
+            └── todo.sh
+</code></pre>
+
+<p><code>.sh</code>  to get file highlighted.</p>
+
+<p>let&#39;s start with first and simple one <code>api&#47;posts&#47;get&#47;todos.sh</code>.</p>
+
+<p>write in the file  and save.</p>
+
+<pre><code class="language-bash">curl -s -X GET \
+    &#39;https:&#47;&#47;jsonplaceholder.typicode.com&#47;todos&#39;
+</code></pre>
+
+<p>then as we done before run <code>:!sh %</code></p>
+
+<p><img src="./screen2.jpeg" alt="screenshot of :!sh % result inside vim" /></p>
+
+<h1 id="Make%20the%20result%20More%20Handy.">Make the result More Handy.</h1>
+
+<p>In most tools you will get a split view for the request itself 
+and the result.</p>
+
+<p>open you vim config file and add</p>
+
+<pre><code class="language-vim">command Exec set splitright | vnew | set filetype=sh | read !sh #
+</code></pre>
+
+<p>the command before will open the result in a new buffer in vertical view.</p>
+
+<p>if you prefer horizontal view you can change the command to </p>
+
+<pre><code class="language-vim">command Exec set splitbelow | new | set filetype=sh | read !sh #
+</code></pre>
+
+<p>open again <code>api&#47;posts&#47;get&#47;todos.sh</code> and  in command mode write <code>:Exec</code>
+that will execute the command inside the file and open split view with the result.</p>
+
+<p><img src="./screen3.jpeg" alt="screenshot of before vim command" /></p>
+
+<p>now you have vim buffer you can easily search and do whatever you do. and to close the buffer you can use
+command <code>:bd!</code> or the keyboard shortcut <code>shift + z + q</code>.</p>
+
+<h2 id="Is%20cURL%20limited?">Is cURL limited?</h2>
+
+<p>The answer is <strong>NO</strong>.
+let&#39;s see couple of example</p>
+
+<ul>
+<li>POST Request:</li>
+</ul>
+
+<pre><code class="language-bash">curl -s -X POST \
+    &#39;https:&#47;&#47;jsonplaceholder.typicode.com&#47;posts&#39; \
+    -H &#39;Content-Type: application&#47;json&#39; \
+    -d &#39;{ "title": "fooBatch", "completed": false, "userId": 1 }&#39; \
+</code></pre>
+
+<p>you can make post, get, put, .. or any http request by using <code>-X &#60;REQUEST_TYPE&#62;</code> option.</p>
+
+<p>To pass the body data use <code>-d, --data {json format&#62;}</code> , and if the data is large 
+ you can write it in <code>json</code> file and pass it as <code>-d @todo.json</code></p>
+
+<ul>
+<li>GET Request with query params:</li>
+</ul>
+
+<pre><code class="language-bash">curl -s -X GET -G \
+    &#39;https:&#47;&#47;jsonplaceholder.typicode.com&#47;todos&#39; \
+    -d &#39;userId=1&#39;
+</code></pre>
+
+<p>you can still use query params with <code>-d</code> but add an additional <code>-G, --get</code> to pass it as query params</p>
+
+<p>since this is not a cURL tutorial that&#39;s will be enough and you 
+can learn more about advanced stuff like set header, cookie and more from the internet.</p>
+
+<h2 id="Using%20git?">Using git?</h2>
+
+<p>Of course, on our created directory run <code>git init</code> and push for example to github.</p>
+
+<p><a href="https://github.com/22mahmoud/vim-curl-demo">see this example on github</a></p>
+
+<h2 id="Conclusion">Conclusion</h2>
+
+<p>You can now write a well-documented api and share it with your team via git
+all that done with simple and open-sourced tools and that&#39;s not limited to cURL
+you can write your own scripts and run it inside vim, or pipe your cURL command for other 
+tools to manipulate the output for example <code>jq</code> so you can filter your output.</p>
+
+]]></description>
+</item>
+
+<item>
+<guid>https://mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown/index.html</guid>
+<link>https://mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown/index.html</link>
+<pubDate>Sat, 08 Aug 2020 00:00:00 +0200</pubDate>
+<title>Building a blog with Svelte, Sapper, and Markdown</title>
+<description><![CDATA[
+
+<time datetime="Mar 03,2020" >Mar 03,2020</time>
+<h1 id="Building%20a%20blog%20with%20Svelte,%20Sapper,%20and%20Markdown">Building a blog with Svelte, Sapper, and Markdown</h1>
+
+<p>In this post, we will build a website with a blog using svelte, and sapper.</p>
+
+<h2 id="What%20is%20Svelte?">What is Svelte?</h2>
+
+<p>Svelte is a new javascript framework come on the table,
+Svelte has a philosophy that helps you manipulate the DOM without using any additional techniques like virtual DOM,
+Svelte compile your code on the build time, and you can update your app easily using reactivity.</p>
+
+<h2 id="What%20is%20Sapper?">What is Sapper?</h2>
+
+<p>Sapper is a Server Side framework on top of Svelte helps you create PWA apps with a good SEO and file system based routing.</p>
+
+<h2 id="How%20to%20init%20the%20project?">How to init the project?</h2>
+
+<p>We are going to use the starter template provided by the Sapper team,
+open your favorite terminal and write the following command:</p>
+
+<pre><code class="language-bash">  npx degit "sveltejs&#47;sapper-template#rollup" cool-blog
+  cd &#47;cool-blog
+  npm install
+</code></pre>
+
+<p>After installing the dependencies, you should be good to go and start your server.</p>
+
+<pre><code class="language-bash">  npm run dev
+</code></pre>
+
+<p>Voila, 🎉 the application now up and running.</p>
+
+<p><img src="./bg1.jpeg" alt="screenshot of the home page for sapper boilerplate" /></p>
+
+<p>Let&#39;s open the project in your favorite editor. and go to the <code>blog</code> folder
+inside the <code>src&#47;routes</code>.</p>
+
+<p>We have several files there:</p>
+
+<pre><code class="language-bash">  | src
+    | routes
+      | blog
+        - index.svelte,
+        - index.json.js
+        - [slug].svelte
+        - [slug].json.js
+        - _posts.js
+</code></pre>
+
+<h2 id="How%20routing%20works%20in%20sapper?">How routing works in sapper?</h2>
+
+<p>we have two types the pages, and server routes.</p>
+
+<h3 id="Pages">Pages</h3>
+
+<p>The filename detrmine the route. For example: <code>src&#47;routes&#47;blog&#47;index.svelte</code> refer to the route <code>&#47;blog</code>.</p>
+
+<p>For Dynamin routing. we going to use <code>[slug]</code>. For example <code>ser&#47;routes&#47;blog&#47;[slug].svelte</code> refer to route <code>&#47;blog&#47;the-whatever-blog-name</code></p>
+
+<h3 id="Server">Server</h3>
+
+<p>Server routes are modules written in <code>.js</code> files that export HTTP functions.
+For example <code>get</code> endpoint to retrieve the blog details:</p>
+
+<pre><code class="language-javascript">  &#47;&#47; [slug].json.js
+
+  import posts from &#39;.&#47;_posts.js&#39;;
+  const lookup = new Map();
+
+  posts.forEach(post =&#62; {
+    lookup.set(post.slug, JSON.stringify(post));
+  });
+
+  export function get(req, res, next) {
+    &#47;&#47; the `slug` parameter is available because
+    &#47;&#47; this file is called [slug].json.js
+    const { slug } = req.params;
+
+    if (lookup.has(slug)) {
+      res.writeHead(200, {
+        &#39;Content-Type&#39;: &#39;application&#47;json&#39;,
+      });
+
+      res.end(lookup.get(slug));
+    } else {
+      res.writeHead(404, {
+        &#39;Content-Type&#39;: &#39;application&#47;json&#39;,
+      });
+
+      res.end(
+        JSON.stringify({
+          message: `Not found`,
+        })
+      );
+    }
+  }
+</code></pre>
+
+<p>Create a <code>content</code> directory on the root of your project.
+inside this directory, we going to create a file called <code>sample-post.md</code> file.</p>
+
+<pre><code class="language-markdown">&#47;&#47; sample-blog.md
+&#47;&#47; remove comments in case you copy and paste this file for test to make it work
+
+---
+slug: &#39;sample-blog&#39;
+title: &#39;Sample blog.&#39;
+---
+
+# Sample title
+
+this is a sample blog post.
+
+&#47;&#47; add extra \` to make it work(this blog use same method so tripple \` would be shown as a code here)
+``javascript
+  console.log("test code highlight")
+``
+
+</code></pre>
+
+<p><code>slug</code> has to be the same as the file name, So we can easily read the file with the slug.
+You can add more than <code>title</code>, and <code>slug</code>, For Example, Date, keywords or whatever you need to add.</p>
+
+<p>To list all blogs on <code>&#47;blog</code> route open <code>src&#47;routes&#47;blog&#47;index.json.js</code></p>
+
+<pre><code class="language-javascript">  &#47;&#47; src&#47;routes&#47;blog&#47;index.json.js
+
+  import fs from "fs";
+  import path from "path";
+  import grayMatter from "gray-matter";
+
+  const getAllPosts = () =&#62;
+    fs.readdirSync("content").map(fileName =&#62; {
+      const post = fs.readFileSync(path.resolve("content", fileName), "utf-8");
+      return grayMatter(post).data;
+    });
+
+  export function get(req, res) {
+    res.writeHead(200, {
+      "Content-Type": "application&#47;json"
+    });
+    const posts = getAllPosts();
+    res.end(JSON.stringify(posts));
+  }
+</code></pre>
+
+<p>You need to install an extra package called <code>gray-matter</code> that helps you parse the front matter data <code>title</code>, and <code>slug</code> from
+the markdown.</p>
+
+<pre><code class="language-bash">  npm install gray-matter
+</code></pre>
+
+<p>If you navigate to <code>&#47;blog</code> route you should have a page similar to this:</p>
+
+<p><img src="./bg2.jpeg" alt="screenshot of blogs pages" /></p>
+
+<p>Now we need to handle the post route. open <code>src&#47;routes&#47;blog&#47;[slug].json.js</code></p>
+
+<pre><code class="language-javascript">  &#47;&#47; src&#47;routes&#47;blog&#47;[slug].json.js
+
+  import path from "path";
+  import fs from "fs";
+  import grayMatter from "gray-matter";
+  import marked from "marked";
+  import hljs from "highlight.js";
+
+  const getPost = fileName =&#62;
+    fs.readFileSync(path.resolve("content", `${fileName}.md`), "utf-8");
+
+  export function get(req, res, next) {
+    const { slug } = req.params;
+
+    &#47;&#47; get the markdown text
+    const post = getPost(slug);
+
+    &#47;&#47; function that expose helpful callbacks
+    &#47;&#47; to manipulate the data before convert it into html
+    const renderer = new marked.Renderer();
+.&#47;
+    &#47;&#47; use hljs to highlight our blocks codes
+    renderer.code = (source, lang) =&#62; {
+      const { value: highlighted } = hljs.highlight(lang, source);
+      return `&#60;pre class=&#39;language-javascriptreact&#39;&#62;&#60;code&#62;${highlighted}&#60;&#47;code&#62;&#60;&#47;pre&#62;`;
+    };
+
+    &#47;&#47; parse the md to get front matter
+    &#47;&#47; and the content without escaping characters
+    const { data, content } = grayMatter(post);
+
+    const html = marked(content, { renderer });
+
+    if (html) {
+      res.writeHead(200, {
+        "Content-Type": "application&#47;json"
+      });
+
+      res.end(JSON.stringify({ html, ...data }));
+    } else {
+      res.writeHead(404, {
+        "Content-Type": "application&#47;json"
+      });
+
+      res.end(
+        JSON.stringify({
+          message: `Not found`
+        })
+      );
+    }
+  }
+</code></pre>
+
+<p>Two new packages we need to install
+- marked: help us to convert the markdown file into HTML.
+- highlight.js: add highlights to the code blocks.</p>
+
+<pre><code class="language-bash">  npm install highlight.js marked
+</code></pre>
+
+<p>In <code>src&#47;client.js</code> we import Github styles for highlight.js.</p>
+
+<pre><code class="language-javascript">  &#47;&#47; src&#47;client.js
+  &#47;&#47; ...
+  import "highlight.js&#47;styles&#47;github.css";
+  &#47;&#47; ...
+</code></pre>
+
+<p><img src="./bg3.jpeg" alt="screenshot of the final result showing a sample blog post" /></p>
+
+<h2 id="conclusion">conclusion</h2>
+
+<p>You now ready to go and add more styles for your website and customize the blog elements styles.
+to go live using <a href="http://netlify.com/">Netlify</a>, <a href="https://pages.github.com/">Github Page</a> or any service.</p>
+
+]]></description>
+</item>
+</channel></rss>
