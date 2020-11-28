@@ -64,12 +64,12 @@ hr {
 body {
   margin: 0 auto;
   padding: 1em;
+  font: var(--sans);
+  font-weight: 400;
   line-height: 1.5;
   background: var(--c1);
   color: var(--c2);
   max-width: 40em;
-  font: var(--sans);
-  font-weight: 400;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -178,6 +178,11 @@ ol ol {
   margin-bottom: 0;
 }
 
+footer {
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+}
+
 .site-title a {
   color: var(--c2);
 }
@@ -212,3 +217,5 @@ ol ol {
 .theme-toggle > a:hover {
   text-decoration: none;
 }
+
+
