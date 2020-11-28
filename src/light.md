@@ -8,6 +8,12 @@ You can inject you custom css by changing the `css variables`
 It depends on you browser if you are using firefox, or chromium based browser,
 install [Stylus](https://github.com/openstyles/stylus/).
 
+### Why Not?
+
+- because I love the dark theme.
+- and I don't want load javascript in my site.
+- I don't use css solution `prefers-color=scheme`.
+
 ### Example:
 
 ```css
