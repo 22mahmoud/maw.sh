@@ -9,11 +9,11 @@
 <item>
 <guid>https://mahmoudashraf.dev/blog/how-to-optimize-and-lazyloading-images-on-eleventy/index.html</guid>
 <link>https://mahmoudashraf.dev/blog/how-to-optimize-and-lazyloading-images-on-eleventy/index.html</link>
-<pubDate>Sat, 08 Aug 2020 00:00:00 +0200</pubDate>
+<pubDate>Tue, 01 Sep 2020 00:00:00 +0200</pubDate>
 <title>How to optimize and lazy-loading images on eleventy (11ty)</title>
 <description><![CDATA[
 
-<time datetime="Aug 08, 2020" >Aug 08, 2020</time>
+<time datetime="Sep 01, 2020" >Sep 01, 2020</time>
 <h1 id="How%20to%20optimize%20and%20lazy-loading%20images%20on%20eleventy%20(11ty)">How to optimize and lazy-loading images on eleventy (11ty)</h1>
 
 <p>Building a site that has images requires to optimize them 
@@ -376,7 +376,7 @@ check this <a href="https://www.andreaverlicchi.eu/lazy-load-responsive-images-i
 <item>
 <guid>https://mahmoudashraf.dev/blog/my-terminal-became-more-rusty/index.html</guid>
 <link>https://mahmoudashraf.dev/blog/my-terminal-became-more-rusty/index.html</link>
-<pubDate>Sat, 08 Aug 2020 00:00:00 +0200</pubDate>
+<pubDate>Fri, 21 Aug 2020 00:00:00 +0200</pubDate>
 <title>My terminal became more Rusty 🦀</title>
 <description><![CDATA[
 
@@ -601,7 +601,7 @@ rg fast README.md --replace FAST
 <item>
 <guid>https://mahmoudashraf.dev/blog/no-more-postman-just-curl-and-vim/index.html</guid>
 <link>https://mahmoudashraf.dev/blog/no-more-postman-just-curl-and-vim/index.html</link>
-<pubDate>Sat, 08 Aug 2020 00:00:00 +0200</pubDate>
+<pubDate>Thu, 20 Aug 2020 00:00:00 +0200</pubDate>
 <title>No More postman just use cURL + vim = ❤</title>
 <description><![CDATA[
 
@@ -758,7 +758,7 @@ tools to manipulate the output for example <code>jq</code> so you can filter you
 <item>
 <guid>https://mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown/index.html</guid>
 <link>https://mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown/index.html</link>
-<pubDate>Sat, 08 Aug 2020 00:00:00 +0200</pubDate>
+<pubDate>Mon, 02 Mar 2020 00:00:00 +0200</pubDate>
 <title>Building a blog with Svelte, Sapper, and Markdown</title>
 <description><![CDATA[
 
