@@ -6,8 +6,7 @@ If you prefer the light mode or any color scheme,
 You can inject you custom css by changing the `css variables`
 
 It depends on you browser if you are using firefox, or chromium based browser,
-install [Stylus](https://github.com/openstyles/stylus/) plugin and 
-install this styles [user.css](/user.css).
+install [Stylus](https://github.com/openstyles/stylus/).
 
 ### Example:
 
