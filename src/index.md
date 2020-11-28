@@ -1,7 +1,8 @@
 Hey 👋, My name is Mahmoud Ashraf.
 I Make websites.
 
-I'm Working 👨‍🏭 as Front-End developer, Writing ✍ articles , sharing 📎 my thoughts , and build 🪚 stuff on the internet.
+I'm Working 👨‍🏭 as Front-End developer, Writing ✍ articles ,
+sharing 📎 my thoughts , and build 🪚 stuff on the internet.
 
 ## recent blogs
 

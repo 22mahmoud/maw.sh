@@ -6,7 +6,7 @@ You can run this command to automatically download my GPG key and add it to your
 curl -L https://mahmoudashraf.dev/gpg-key.gpg | gpg --import
 ```
 
-or copy the public key blow
+Or copy the public key below:
 
 ```ascci
 -----BEGIN PGP PUBLIC KEY BLOCK-----
