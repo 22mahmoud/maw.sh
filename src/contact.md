@@ -3,14 +3,14 @@
 ### Email
 
 Send an email to [hello@mahmoudashraf.dev](mailto:hello@mahmoudashraf.dev)
-and you can use my [public GPG key](./gpg-key.html) if you want.
+and you can use my [public GPG key](/gpg-key.html) if you want.
 
 ### Social Media
 
 I closed most of my social media accounts but you can still reach me on
 
-- [linkedin](linkedin.com/in/22mahmoud)
-- [github](github.com/22mahmoud/)
+- [linkedin](https://linkedin.com/in/22mahmoud)
+- [github](https://github.com/22mahmoud/)
 
 Recently I've started using [fediverse](https://en.wikipedia.org/wiki/Fediverse):
 
