@@ -201,7 +201,7 @@ In this time not `top` 😀 it is `bottom`
 
 it's a cross-platform system monitor. 
 
-![screenshot of bottom](./botton.jpeg)
+![screenshot of bottom](./bottom.jpeg)
 
 ---
 
