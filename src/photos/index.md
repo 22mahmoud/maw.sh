@@ -12,7 +12,7 @@
 >
 > 📅 date: 2020
 
-[![](./thumbs/sunset_2.jpg)](./sunset_3.jpg)
+[![](./thumbs/sunset_2.jpg)](./sunset_2.jpg)
 [![](./thumbs/kornish_hdr.jpg)](./kornish_hdr.jpg)
 
 ---
