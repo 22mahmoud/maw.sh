@@ -10,7 +10,7 @@
 - **terminal**: St
 - **shell**: zsh with [starship](https://github.com/starship/starship) prompt
 - **editor**: neovim [my nvim config](https://github.com/22mahmoud/neovim)
-- **browser**: firefox with custom user.js based on 
+- **browser**: qutebrowser, firefox with custom user.js based on 
   [arkenfox/user.js](https://github.com/arkenfox/user.js), brave
 - **pdf**: zauthra
 - **images**: sxiv
