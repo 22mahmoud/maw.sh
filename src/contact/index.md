@@ -3,7 +3,7 @@
 ### Email
 
 Send an email to [hello@mahmoudashraf.dev](mailto:hello@mahmoudashraf.dev)
-and you can use my [public GPG key](/gpg-key.html) if you want.
+and you can use my [public GPG key](/gpg-key/) if you want.
 
 ### Social Media
 
