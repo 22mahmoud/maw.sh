@@ -48,6 +48,15 @@
  - Assign pages for the contributors  
  
  SKILLS
- Javascript - React -  Redux - Typescript - GatsbyJS 
- Apollo Client - Svelte - React Native - GraphQL 
- NodeJS (ExpressJS) - MongoDB  -  SQL - vim - linux.
+ - javascript
+ - react
+ - redux
+ - nextjs
+ - webpack
+ - svelte
+ - vim
+ - docker
+ - react native
+ - graphql
+ - nodejs
+ - linux
