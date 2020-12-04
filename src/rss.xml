@@ -10,20 +10,20 @@
 <guid>https://mahmoudashraf.dev/blog/adevnt-of-code-2020/index.html</guid>
 <link>https://mahmoudashraf.dev/blog/adevnt-of-code-2020/index.html</link>
 <pubDate>Fri, 04 Dec 2020 00:00:00 +0200</pubDate>
-<title></title>
+<title>Advent of Code 2020</title>
 <description><![CDATA[
 
 <time datetime="Dec 04, 2020" >Dec 04, 2020</time>
-<h2 id="Advent%20of%20Code">Advent of Code</h2>
+<h1 id="Advent%20of%20Code%202020">Advent of Code 2020</h1>
 
 <p>This blog will be updated every day to show you my solutions 
 for <a href="https://adventofcode.com/">aoc-2020</a>.</p>
 
-<h3 id="2020">2020</h3>
+<h2 id="2020">2020</h2>
 
-<h4 id="Day%2001">Day 01</h4>
+<h3 id="Day%2001">Day 01</h3>
 
-<h5 id="part%2001%20%E2%AD%90">part 01 ⭐</h5>
+<h4 id="part%2001%20%E2%AD%90">part 01 ⭐</h4>
 
 <p>The first part of day one is a two-sum problem needs to get the 
 multiply of two entries that sum to <code>2020</code></p>
@@ -58,7 +58,7 @@ the two numbers sum to <code>2020</code> break the loop and return the value.</p
 <p>this solution will take <code>O(n)</code> time complexity by traverse the list containing 
 <code>n</code> element only once.</p>
 
-<h5 id="part%2002%20%E2%AD%90">part 02 ⭐</h5>
+<h4 id="part%2002%20%E2%AD%90">part 02 ⭐</h4>
 
 <p>The difference in the part two that we need to get the multiply for 
 <code>three</code> numbers that sum to <code>2020</code></p>

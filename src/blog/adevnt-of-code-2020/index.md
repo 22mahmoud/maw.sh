@@ -4,16 +4,16 @@ Author:       Mahmoud Ashraf
 Description:  advent of code solutions by @22mahmoud
 Keywords:     aoc, programming
 
-## Advent of Code
+# Advent of Code 2020
 
 This blog will be updated every day to show you my solutions 
 for [aoc-2020](https://adventofcode.com/).
 
-### 2020
+## 2020
 
-#### Day 01
+### Day 01
 
-##### part 01 ⭐
+#### part 01 ⭐
 
 The first part of day one is a two-sum problem needs to get the 
 multiply of two entries that sum to `2020`
@@ -50,7 +50,7 @@ function p1(input) {
 this solution will take `O(n)` time complexity by traverse the list containing 
 `n` element only once.
 
-##### part 02 ⭐
+#### part 02 ⭐
 
 The difference in the part two that we need to get the multiply for 
 `three` numbers that sum to `2020`
