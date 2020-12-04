@@ -9,7 +9,7 @@
 <item>
 <guid>https://mahmoudashraf.dev/blog/adevnt-of-code-2020/index.html</guid>
 <link>https://mahmoudashraf.dev/blog/adevnt-of-code-2020/index.html</link>
-<pubDate>Fri, 04 Dec 2020 00:00:00 +0200</pubDate>
+<pubDate>Sat, 05 Dec 2020 00:00:00 +0200</pubDate>
 <title>Advent of Code 2020</title>
 <description><![CDATA[
 
@@ -19,11 +19,43 @@
 <p>This blog will be updated every day to show you my solutions 
 for <a href="https://adventofcode.com/">aoc-2020</a>.</p>
 
-<h2 id="2020">2020</h2>
+<h2 id="TOC">TOC</h2>
 
-<h3 id="Day%2001">Day 01</h3>
+<ul>
+<li><a href="https://mahmoudashraf.dev/#Day%2001">day 01</a> <em>⭐⭐</em></li>
+<li><a href="https://mahmoudashraf.dev/#Day%2002">day 02</a> <em>⭐⭐</em></li>
+<li>day 03</li>
+<li>day 04</li>
+<li>day 05</li>
+<li>day 06</li>
+<li>day 07</li>
+<li>day 08</li>
+<li>day 09</li>
+<li>day 10</li>
+<li>day 11</li>
+<li>day 12</li>
+<li>day 13</li>
+<li>day 14</li>
+<li>day 15</li>
+<li>day 16</li>
+<li>day 17</li>
+<li>day 18</li>
+<li>day 19</li>
+<li>day 20</li>
+<li>day 21</li>
+<li>day 22</li>
+<li>day 23</li>
+<li>day 24</li>
+<li>day 25</li>
+</ul>
 
-<h4 id="part%2001%20%E2%AD%90">part 01 ⭐</h4>
+<hr/>
+
+<h2 id="Day%2001">Day 01</h2>
+
+<p>[<a href="https://mahmoudashraf.dev/#part%2001%20%E2%AD%90">part 01</a> - <a href="https://mahmoudashraf.dev/#part%2002%20%E2%AD%90">part 02</a>]</p>
+
+<h3 id="part%2001%20%E2%AD%90">part 01 ⭐</h3>
 
 <p>The first part of day one is a two-sum problem needs to get the 
 multiply of two entries that sum to <code>2020</code></p>
@@ -58,7 +90,7 @@ the two numbers sum to <code>2020</code> break the loop and return the value.</p
 <p>this solution will take <code>O(n)</code> time complexity by traverse the list containing 
 <code>n</code> element only once.</p>
 
-<h4 id="part%2002%20%E2%AD%90">part 02 ⭐</h4>
+<h3 id="part%2002%20%E2%AD%90">part 02 ⭐</h3>
 
 <p>The difference in the part two that we need to get the multiply for 
 <code>three</code> numbers that sum to <code>2020</code></p>
@@ -73,6 +105,67 @@ the two numbers sum to <code>2020</code> break the loop and return the value.</p
           return input[i] * input[j] * input[k];
 }
 </code></pre>
+
+<hr/>
+
+<h2 id="Day%2002">Day 02</h2>
+
+<p>[<a href="https://mahmoudashraf.dev/#part%2001%20%E2%AD%90-2">part 01</a> - <a href="https://mahmoudashraf.dev/#part%2002%20%E2%AD%90-2">part 02</a>]</p>
+
+<h3 id="part%2001%20%E2%AD%90-2">part 01 ⭐</h3>
+
+<p>We have a list of passwords with validation rules, 
+So we should validate each password and submit the 
+total number of valid passwords.</p>
+
+<pre><code>1-3 a: abcde
+1-3 b: cdefg
+2-9 c: ccccccccc
+</code></pre>
+
+<p>First, let&#39;s create an parser to extract information from each line.</p>
+
+<pre><code class="language-javascript">const getPasswordsList = () =&#62;
+  readFileSync(path.resolve(__dirname, &#39;input.txt&#39;), &#39;utf8&#39;)
+    .split(&#39;\n&#39;)
+    .filter(Boolean)
+    .map((i) =&#62; i.split(&#47;[-,:,\s]+&#47;));
+</code></pre>
+
+<p>We read the <code>input.txt</code> file and convert it into an array by split each line using 
+<code>.split(\n)</code> then we will use regex to extract min, max, target, and password 
+on each line by using multi separator: <code>-</code>, <code>:</code>, and <code>\s</code> for space.</p>
+
+<p>If you interred to learn more about split with regex I highly recommend to watch
+<a href="https://www.youtube.com/watch?v=fdyqutmcI2Q">Regular Expressions: split() - Programming with Text</a> video.</p>
+
+<p>Now we are ready to write the validator function:</p>
+
+<pre><code class="language-javascript">function getValidPasswordsP1(passwords) {
+  return passwords.reduce((ans, [min, max, letter, password]) =&#62; {
+    const count = password.match(new RegExp(letter, &#39;g&#39;))?.length;
+    return count &#62;= +min &#38;&#38; count &#60;= +max ? ++ans : ans;
+  }, 0);
+}
+</code></pre>
+
+<h3 id="part%2002%20%E2%AD%90-2">part 02 ⭐</h3>
+
+<p>Actually the part two is a lot easier than the part one it assume the first two numbers
+are the positions for the target letter to only occurs in one of them.</p>
+
+<pre><code class="language-javascript">function getValidPasswordsP2(passwords) {
+  return passwords.reduce((ans, [pos1, pos2, letter, password]) =&#62; {
+    return (password.charAt(+pos1 - 1) === letter) ^
+      (password.charAt(+pos2 - 1) === letter)
+      ? ++ans
+      : ans;
+  }, 0);
+}
+</code></pre>
+
+<p>Use the bitwise <code>XOR</code> to make sure it only occurs in only exact one position.
+you can check the MDN <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_XOR">reference</a>.</p>
 
 ]]></description>
 </item>
