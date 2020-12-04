@@ -7,6 +7,77 @@
 <link>https://mahmoudashraf.dev/</link>
 
 <item>
+<guid>https://mahmoudashraf.dev/blog/adevnt-of-code-2020/index.html</guid>
+<link>https://mahmoudashraf.dev/blog/adevnt-of-code-2020/index.html</link>
+<pubDate>Fri, 04 Dec 2020 00:00:00 +0200</pubDate>
+<title></title>
+<description><![CDATA[
+
+<time datetime="Dec 04, 2020" >Dec 04, 2020</time>
+<h2 id="Advent%20of%20Code">Advent of Code</h2>
+
+<p>This blog will be updated every day to show you my solutions 
+for <a href="https://adventofcode.com/">aoc-2020</a>.</p>
+
+<h3 id="2020">2020</h3>
+
+<h4 id="Day%2001">Day 01</h4>
+
+<h5 id="part%2001%20%E2%AD%90">part 01 ⭐</h5>
+
+<p>The first part of day one is a two-sum problem needs to get the 
+multiply of two entries that sum to <code>2020</code></p>
+
+<p>The naive solution you can do two loops and make a condition whenever 
+the two numbers sum to <code>2020</code> break the loop and return the value.</p>
+
+<pre><code class="language-javascript">function p1(input) {
+  for (let i = 0; i &#60; input.length; i++)
+    for (let j = 0; j &#60; input.length; j++)
+      if (input[i] + input[j] === 2020) 
+        return input[i] * input[j];
+}
+</code></pre>
+
+<p>This solution will take <code>O(n^2)</code> time complexity for each element.</p>
+
+<p>We can enhance our solution by using <code>Map</code> data structure and only one loop</p>
+
+<pre><code class="language-javascript">function p1(input) {
+  const map = new Map();
+  for (let i = 0; i &#60; input.length; i++) {
+    const complement = 2020 - input[i];
+    if (map.has(complement))
+      return input[map.get(complement)] * input[i]
+
+    map.set(input[i], i);
+  }
+}
+</code></pre>
+
+<p>this solution will take <code>O(n)</code> time complexity by traverse the list containing 
+<code>n</code> element only once.</p>
+
+<h5 id="part%2002%20%E2%AD%90">part 02 ⭐</h5>
+
+<p>The difference in the part two that we need to get the multiply for 
+<code>three</code> numbers that sum to <code>2020</code></p>
+
+<p>We can use the same naive solution by using brute force with three loops.</p>
+
+<pre><code class="language-javascript">function p2(input) {
+  for (let i = 0; i &#60; input.length; i++)
+    for (let j = 0; j &#60; input.length; j++)
+      for (let k = 0; k &#60; input.length; k++)
+        if (input[i] + input[j] + input[k] === 2020)
+          return input[i] * input[j] * input[k];
+}
+</code></pre>
+
+]]></description>
+</item>
+
+<item>
 <guid>https://mahmoudashraf.dev/blog/how-to-optimize-and-lazyloading-images-on-eleventy/index.html</guid>
 <link>https://mahmoudashraf.dev/blog/how-to-optimize-and-lazyloading-images-on-eleventy/index.html</link>
 <pubDate>Tue, 01 Sep 2020 00:00:00 +0200</pubDate>
@@ -573,7 +644,7 @@ rg fast README.md --replace FAST
 
 <p>it&#39;s a cross-platform system monitor. </p>
 
-<p><img src="./botton.jpeg" alt="screenshot of bottom" /></p>
+<p><img src="./bottom.jpeg" alt="screenshot of bottom" /></p>
 
 <hr/>
 
