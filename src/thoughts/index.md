@@ -1,6 +1,11 @@
 ## Thoughts
 
 ---
+- [[2020-12-06T18:36+02:00](/thoughts/1607272609)]
+My blog now become more privacy friendly I removed the analytics and just
+write in the void.
+
+---
 - [[2020-10-27T17:48+02:00](/thoughts/1603813689)]
 using [suckless](https://suckless.org) programmes gives you a nice opportunity
 to learn `c` programming language.
