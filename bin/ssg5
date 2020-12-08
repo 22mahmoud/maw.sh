@@ -185,7 +185,7 @@ render_md_files_lowdown() {
     keywords=$(lowdown -X keywords "$1/$f" 2>/dev/null || true)
     date=$(lowdown -X date "$1/$f" 2>/dev/null || true)
 		lowdown \
-		-D html-skiphtml \
+    -Thtml --html-no-skiphtml --html-no-escapehtml \
 		"$1/$f" |
 		render_html_file \
       "$3" \
