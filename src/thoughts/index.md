@@ -1,6 +1,14 @@
 ## Thoughts
 
 ---
+- [[2020-12-08T20:06+02:00](/thoughts/1607450816)]
+After 7 years since this [Issue](https://github.com/isaacs/github/issues/66) 
+created, now github has a dark mode ❤.
+<video>
+  <source src="1607450816/github-dark.mp4" type="video/mp4">
+</video>
+
+---
 - [[2020-12-06T18:36+02:00](/thoughts/1607272609)]
 My blog now become more privacy friendly I removed the analytics and just
 write in the void.
