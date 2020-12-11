@@ -1,5 +1,12 @@
 ## Thoughts
 
+
+---
+- [[2020-12-11T17:50+02:00](/thoughts/1607701838)]
+"There are only two industries that call their customers ‘users’: 
+illegal drugs and software"  
+\- Edward Tufte
+
 ---
 - [[2020-12-08T20:06+02:00](/thoughts/1607450816)]
 After 7 years since this [Issue](https://github.com/isaacs/github/issues/66) 
