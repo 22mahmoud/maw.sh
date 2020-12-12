@@ -1,3 +1,5 @@
+# GPG
+
 ## gpg public key:
 
 You can run this command to automatically download my GPG key and add it to your keyring:

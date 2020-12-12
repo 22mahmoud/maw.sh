@@ -1,6 +1,6 @@
-## Uses
+# Uses
 
-### Software
+## Software
 
 - **os**: Arch as my daily driver, ubuntu for servers
 - **wm**: DWM
@@ -27,7 +27,7 @@
   my [blog post](/blog/no-more-postman-just-curl-and-vim/index.html) 
   about how to use cURL
 
-### Hardware
+## Hardware
 
 - **laptop**: thinkpad t440p
   - **cpu**: Intel i7-4700MQ (8) @ 3.4GHz

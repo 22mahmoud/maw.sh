@@ -207,10 +207,12 @@ render_html_file() {
 			exit
 		}
 
-		if (match(body, /<[[:space:]]*[Hh]1(>|[[:space:]][^>]*>)/)) {
-			gsub(/^[[:space:]]*|[[:space:]]$/, "", t)
-			if (t) title = t " &mdash; " title
-		}
+    if (match(body, /<[[:space:]]*[Hh]1(>|[[:space:]][^>]*>)/)) {
+      t = substr(body, RSTART + RLENGTH)
+      sub("<[[:space:]]*/[[:space:]]*[Hh]1.*", "", t)
+      gsub(/^[[:space:]]*|[[:space:]]$/, "", t)
+      if (t) title = t " &mdash; " title
+    }
 
 		n = split(ENVIRON["HEADER"], header, /\n/)
     head = substr(header[i], 1, RSTART - 1)

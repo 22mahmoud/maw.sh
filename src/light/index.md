@@ -1,4 +1,4 @@
-## Light Mode
+# Light Mode
 
 This site is only available in dark color scheme. 
 
@@ -8,14 +8,14 @@ You can inject your custom css by changing the `css variables`
 It depends on you browser if you are using firefox, or chromium based browser,
 install [Stylus](https://github.com/openstyles/stylus/).
 
-### Why Not?
+## Why Not?
 
 - because I love the dark theme.
 - and I don't want load javascript in my site.
-- I don't want use css solution `prefers-color=scheme` without toggle
+- I don't want use css solution `prefers-color-scheme` without toggle
 functionality which depends on javascript.
 
-### Example:
+## Example:
 
 ```css
 /* custom-style.css */
