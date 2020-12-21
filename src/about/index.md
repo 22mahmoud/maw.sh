@@ -24,7 +24,7 @@ At middle school, my Social Studies teacher (yes non-tech teacher 🤷) asked me
 
 ## Available to get hired?
 
-**I'm now available for a full-time job** 👷‍♂️ 
+**I'm now available for a part-time/freelance job** 👷‍♂️ 
 if you are interested in working together send an email to [hello@mahmoudashraf.dev](mailto:hello@mahmoudashraf.dev).
 
 ### Tech stack:
