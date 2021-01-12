@@ -1,5 +1,13 @@
 # Thoughts
 
+
+---
+- [[2021-01-12T23:46+02:00](/thoughts/1610488005)]
+I got a new mechanical keyboard today, yaaay 🎊🎊
+
+Redragon k530
+![redragon k530 keyboard](./1610488005/mech.jpg)
+
 ---
 - [[2020-12-14T23:19+02:00](/thoughts/1607980789)]
 It's the perfect time to start get google away from your life. #degoogle
