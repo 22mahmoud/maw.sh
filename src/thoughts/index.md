@@ -1,6 +1,11 @@
 # Thoughts
 
 ---
+- [[2021-03-20T16:38+02:00](/thoughts/1616251095)]
+Best Recipes site with no ads, no javascript 
+[Based cooking](https://based.cooking/)
+
+---
 - [[2021-02-17T03:20+02:00](/thoughts/1613524846)]
 Finally, received my gift from [dev.to](https://dev.to)
 Thanks [@ThePracticalDev](https://twitter.com/ThePracticalDev)
