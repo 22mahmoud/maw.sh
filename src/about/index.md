@@ -22,7 +22,7 @@ At middle school, my Social Studies teacher (yes non-tech teacher 🤷) asked me
 - [tarteel.ai](https://tarteel.ai/)
 - [bookr.co](https://bookr.co/)
 - [Rubikal](https://rubikal.com)
-- [Roadtripnation](https://roadtripnation.co)
+- [Roadtripnation](https://roadtripnation.com)
 
 ## Available to get hired?
 
