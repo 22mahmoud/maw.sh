@@ -18,9 +18,11 @@ At middle school, my Social Studies teacher (yes non-tech teacher 🤷) asked me
 **I've written code for** 
 
 - [lynks](https://lynks.com)
-- [tarteel.io](https://tarteel.io/)
-- [worcbox](https://worcbox.com/en)
+- [exohub](https://exohub.com)
+- [tarteel.ai](https://tarteel.ai/)
 - [bookr.co](https://bookr.co/)
+- [Rubikal](https://rubikal.com)
+- [Roadtripnation](https://roadtripnation.co)
 
 ## Available to get hired?
 
