@@ -1,6 +1,11 @@
 # Thoughts
 
 ---
+- [[2021-05-16T05:20+02:00](/thoughts/1621135238)]
+Monad, Functor, Semigroup, and Task ... new vocab for me while learning
+functional programming.
+
+---
 - [[2021-03-20T16:38+02:00](/thoughts/1616251095)]
 Best Recipes site with no ads, no javascript 
 [Based cooking](https://based.cooking/)
