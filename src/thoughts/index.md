@@ -1,6 +1,14 @@
 # Thoughts
 
 ---
+- [[2021-07-18T20:23+02:00](/thoughts/1626632598)]
+Let's take some great photos!! 📷
+
+My first DSLR camera Nikon D3500
+
+[![Nikon D3500 with lens](./1626632598/thumbs/d3500.jpg)](./1626632598/d3500.jpg)
+
+---
 - [[2021-05-16T05:20+02:00](/thoughts/1621135238)]
 Monad, Functor, Semigroup, and Task ... new vocab for me while learning
 functional programming.
