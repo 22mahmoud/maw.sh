@@ -9,13 +9,12 @@ and you can use my [public GPG key](/gpg-key/) if you want.
 
 I closed most of my social media accounts but you can still reach me on
 
-- [linkedin](https://linkedin.com/in/22mahmoud)
 - [github](https://github.com/22mahmoud/)
 
 Recently I've started using [fediverse](https://en.wikipedia.org/wiki/Fediverse):
 
 - [mastodon](https://fosstodon.org/web/accounts/247603)
-- [pixfed](https://pixfed.com/mahmoud22)
+- [pixfed](https://pixelfed.social/mahmoud22)
 
 ## Messaging
 

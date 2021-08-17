@@ -1,6 +1,10 @@
 # Thoughts
 
 ---
+- [[2021-08-17T13:50+02:00](/thoughts/1629201049)]
+update: I closed my linkedin account
+
+---
 - [[2021-07-18T20:23+02:00](/thoughts/1626632598)]
 Let's take some great photos!! 📷
 
