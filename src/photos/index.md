@@ -1,5 +1,65 @@
+<style>
+  .gallary {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gallary li {
+    list-style: none;
+    height: 20vh;
+    flex-grow: 1;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+  .gallary li:last-child {
+    flex-grow: 10;
+  }
+
+  .gallary img {
+    max-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+  }
+
+  @media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+    .gallary {
+      flex-direction: row;
+    }
+
+    .gallary li {
+      height: auto;
+      width: 100%;
+    }
+
+    .gallary img {
+      width: 100%;
+      max-height: 75vh;
+      min-width: 0;
+    }
+  }
+</style>
+
 # Photos
 
+---
+> 📌 location: Matrouh, Egypt
+> 
+> 📅 date: July, 2021
+
+<p>
+  <ul class="gallary">
+    <li><a href="DSC_1633.jpg"><img src="thumbs/DSC_1633.jpg" /></a></li>
+    <li><a href="DSC_0682.jpg"><img src="thumbs/DSC_0682.jpg" /></a></li>
+    <li><a href="DSC_0761_01.jpg"><img src="thumbs/DSC_0761_01.jpg" /></a></li>
+    <li><a href="DSC_0966.jpg"><img src="thumbs/DSC_0966.jpg" /></a></li>
+    <li><a href="DSC_1032.jpg"><img src="thumbs/DSC_1032.jpg" /></a></li>
+    <li><a href="DSC_1312.jpg"><img src="thumbs/DSC_1312.jpg" /></a></li>
+  </ul>
+</p>
 ---
 > 📌 location: Alexandria, Egypt
 > 
