@@ -16,24 +16,35 @@
  Alexandria, Egypt
  Computer Science/Statistics
  2016 - 2019
- 
+
  EXPERIENCE
  Full Stack developer 
  Rubikal
  Alexandria, Egypt
  Dec 2020 - present
- - **soon**
- 
+ - working as full-stack developer for rroadtripn nation client.
+
+ Full Stack developer
+ Roadtrip Nation
+ Alexandria, Egypt
+ Dec 2020 - present
+- Tech: NodeJs, Express, React, NextJS, scss, microservices, mongo
+- working closely with design team to build new react component/pages.
+- generate reports to help product team by using mongo aggregation.
+- build/document new admin custom cms features.
+- using mongo charts to visualize our api gateway logs.
+- writing script to update the database from other third parties.
+
  Front-End developer 
  Tarteel
  Alexandria, Egypt
- July 2019 - FEB 2020
+ JULY 2019 - FEB 2020
  - Tech: React, Typescript, Redux, Styled-components.  
  - Implement a Transcribe feature that makes 
    Tarteel weekly active user count jumped 300%.  
  - Dealing with real-time socket connections.  
  - Re-factor a class that handles how audio streaming will be 
- 
+
  Front-End developer 
  Lynks
  Alexandria, Egypt
@@ -46,23 +57,25 @@
    by using  only functional components, a brand new hooks, 
    and a new context API to manage the global state.  
  - Build a dashboard for admins to monitor statistics.  
- 
+
  React Arabic translation maintainer 
  React community
  FEB 2019 - JULY 2019
  - Code review/ Merge pull requests.
  - Assign pages for the contributors  
- 
+
  SKILLS
  - javascript
  - react
  - redux
  - nextjs
+ - nodejs
+ - express
+ - mongo
  - webpack
  - svelte
  - vim
  - docker
  - react native
  - graphql
- - nodejs
  - linux
