@@ -1,8 +1,13 @@
-Hey 👋, My name is Mahmoud Ashraf.
-I Make websites.
+Welecome to my space on the internet.
 
-I'm Working 👨‍🏭 as Front-End developer, Writing ✍ articles ,
-sharing 📎 my thoughts , and build 🪚 stuff on the internet.
+- Mahmoud Ashraf
+- Alexandria, Egypt.
+- Full-stack developer
+- Bachelor's degree in computer science.
+- Writing about Tech, Linux, privacy, Front-end..
+- sharing posts/photos instead of using social media.
+- [more?](/about)
+
 
 ## recent blogs
 

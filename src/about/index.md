@@ -2,7 +2,7 @@
 
 ## Hey! I'm Mahmoud 👋
 
-I’m a Software Engineer. 
+I’m a Software Engineer.
 I was born in 1997 and grew up in a beautiful city called Alexandria 🌊. 
 living with my parents and sister 👨‍👩‍👧‍👦
 I've got a bachelor's degree in computer science from Alexandria, University 👨‍🎓.
@@ -31,12 +31,16 @@ if you are interested in working together send an email to [hello@mahmoudashraf.
 
 ### Tech stack:
 
-I usually work as a front end developer, but I'm also enjoying writing backend stuff.
+As a full stack developer I'm working with those tools.
 
 - React
 - Typescript
 - Styled-Components
 - Redux
 - React Apollo
-- Svelte
+- mongodb
 - Node
+- Express
+- NextJs
+- css/scss/postcss
+- microservices
