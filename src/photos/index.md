@@ -52,6 +52,28 @@
 
 <p>
   <ul class="gallary">
+    <li><a href="DSC_1585_01.jpg"><img src="thumbs/DSC_1585_01.jpg" /></a></li>
+    <li><a href="DSC_0843.jpg"><img src="thumbs/DSC_0843.jpg" /></a></li>
+    <li><a href="DSC_0863.jpg"><img src="thumbs/DSC_0863.jpg" /></a></li>
+    <li><a href="DSC_0926.jpg"><img src="thumbs/DSC_0926.jpg" /></a></li>
+    <li><a href="DSC_1231.jpg"><img src="thumbs/DSC_1231.jpg" /></a></li>
+    <li><a href="DSC_1383.jpg"><img src="thumbs/DSC_1383.jpg" /></a></li>
+    <li><a href="DSC_1578.jpg"><img src="thumbs/DSC_1578.jpg" /></a></li>
+    <li><a href="DSC_1580.jpg"><img src="thumbs/DSC_1580.jpg" /></a></li>
+    <li><a href="DSC_1727.jpg"><img src="thumbs/DSC_1727.jpg" /></a></li>
+    <li><a href="DSC_1764.jpg"><img src="thumbs/DSC_1764.jpg" /></a></li>
+    <li><a href="DSC_1805.jpg"><img src="thumbs/DSC_1805.jpg" /></a></li>
+  </ul>
+</p>
+
+---
+
+> 📌 location: Matrouh, Egypt
+> 
+> 📅 date: July, 2021
+
+<p>
+  <ul class="gallary">
     <li><a href="DSC_1633.jpg"><img src="thumbs/DSC_1633.jpg" /></a></li>
     <li><a href="DSC_0682.jpg"><img src="thumbs/DSC_0682.jpg" /></a></li>
     <li><a href="DSC_0761_01.jpg"><img src="thumbs/DSC_0761_01.jpg" /></a></li>
