@@ -4,15 +4,12 @@ dir="$1"
 images="$dir/*.jpg"
 thumbs="$dir/thumbs"
 
-for i in $images
-do
-  image_name=$(basename "$i")
+for i in $images; do
+  image_name=$(basename -s .jpg "$i")
 
   # only convert the image if the thumbs not exist
-  if [ ! -f "$thumbs/${image_name}" ] 
-  then
-    convert -define jpeg:size=500x500 "$i"  -thumbnail 500x500^ \
-    -gravity center -extent 500x500  "$thumbs/${image_name}"
+  if [ ! -f "$thumbs/${image_name}.webp" ]; then
+    convert -quality 50 -define webp:lossless=true "$i" -thumbnail 350x350^ \
+      -gravity center -extent 350x350 "$thumbs/${image_name}.webp"
   fi
 done
-
