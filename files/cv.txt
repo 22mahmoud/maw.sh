@@ -29,11 +29,11 @@
  Alexandria, Egypt
  Dec 2020 - present
 - Tech: NodeJs, Express, React, NextJS, scss, microservices, mongo
-- working closely with design team to build new react component/pages.
+- working closely with design team to build new react components/pages.
 - generate reports to help product team by using mongo aggregation.
 - build/document new admin custom cms features.
 - using mongo charts to visualize our api gateway logs.
-- writing script to update the database from other third parties.
+- writing scripts to update the database from other third parties.
 
  Front-End developer 
  Tarteel
@@ -48,7 +48,7 @@
  Front-End developer 
  Lynks
  Alexandria, Egypt
- JAN 2019 - JULY 2020
+ JAN 2019 - JULY 2019
  - Tech: React, GraphQL, Apollo, Styled-components.
  - Upgrade Wepback & Babel configurations to be compatible  with React.  
  - Dealing with GraphQL by using Apollo client and styling 
