@@ -18,8 +18,7 @@
 - **email**: neomutt
 - **file manager**: nnn
 - **rss reader**: newsboat
-- **search engine**: searx using lukesmith 
-  [instance](https://searx.lukesmith.xyz/)
+- **search engine**: searx using my [instance](https://searx.mahmoudashraf.dev)
 - **password manager**: self-hosted bitwarden 
   using [bitwarden-rs](https://github.com/dani-garcia/bitwarden_rs)
 - **messaging**: element, telegram
