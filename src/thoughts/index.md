@@ -1,6 +1,13 @@
 # Thoughts
 
 ---
+- [[2021-08-17T13:50+02:00](/thoughts/1634330500)]
+
+<a href="./1634330500/f938c755fc3bd836.jpg">
+  <img loading=lazy src="./1634330500/thumbs/f938c755fc3bd836.webp" />
+</a>
+
+---
 - [[2021-08-17T13:50+02:00](/thoughts/1629201049)]
 update: I closed my linkedin account
 
