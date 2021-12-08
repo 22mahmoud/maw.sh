@@ -3,6 +3,7 @@
 ## Software
 
 - **os**: Arch as my daily driver, ubuntu for servers
+- **Mobile OS**: Lineageos(Android)
 - **wm**: DWM
 - **menu**: dmenu
 - **status bar**: slstatus
@@ -13,7 +14,7 @@
 - **browser**: qutebrowser, firefox with custom user.js based on 
   [arkenfox/user.js](https://github.com/arkenfox/user.js), brave
 - **pdf**: zauthra
-- **images**: sxiv
+- **images**: nsxiv
 - **video**: mpv
 - **email**: neomutt
 - **file manager**: nnn
@@ -32,8 +33,7 @@
   - **cpu**: Intel i7-4700MQ (8) @ 3.4GHz
   - **gpu**: Intel 4th Gen Core Processor
   - **ram**: 8GB
-- **phone**: realme 2 pro (hard bricked),
-  So i'm using my old nokia 2700 classic right now
+- **phone**: realme 2 pro
 
 
 
