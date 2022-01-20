@@ -24,6 +24,7 @@ At middle school, my Social Studies teacher (yes non-tech teacher 🤷) asked me
 - [Rubikal](https://rubikal.com)
 - [Roadtripnation](https://roadtripnation.com)
 - [Swvl](https://swvl.com)
+- [lynks shop](https://shop.lynks.com)
 
 ## Available to get hired?
 

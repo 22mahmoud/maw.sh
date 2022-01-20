@@ -18,11 +18,20 @@
  2016 - 2019
 
  EXPERIENCE
- Front-End developer 
+ Front-End developer
+ Lynks
+ Alexandria, Egypt
+ Jan 2022 - present
+ - **soon**
+
+ Front-End developer
  Swvl
  Alexandria, Egypt
- Nov 2021 - present
- - **soon**
+ Nov 2021 - Jan 2022
+ - Tech: typescript, next.js, tailwindcss, react-query
+ - work closely across multiple teams (backend, product, and design) to craft
+   & release seat selection feature for travels.
+ - contribute in swvl UI design system
 
  Full Stack developer 
  Rubikal
@@ -34,7 +43,7 @@
  Roadtrip Nation
  Alexandria, Egypt
  Dec 2020 - Nov 2021
-- Tech: NodeJs, Express, React, NextJS, scss, microservices, mongo
+- Tech: NodeJs, Express, React, next.js, scss, microservices, mongo
 - working closely with design team to build new react components/pages.
 - generate reports to help product team by using mongo aggregation.
 - build/document new admin custom cms features.
@@ -51,6 +60,12 @@
  - Dealing with real-time socket connections.  
  - Re-factor a class that handles how audio streaming will be 
 
+ React Arabic translation maintainer 
+ React community
+ FEB 2019 - JULY 2019
+ - Code review/ Merge pull requests.
+ - Assign pages for the contributors  
+
  Front-End developer 
  Lynks
  Alexandria, Egypt
@@ -64,17 +79,11 @@
    and a new context API to manage the global state.  
  - Build a dashboard for admins to monitor statistics.  
 
- React Arabic translation maintainer 
- React community
- FEB 2019 - JULY 2019
- - Code review/ Merge pull requests.
- - Assign pages for the contributors  
-
  SKILLS
  - javascript
  - react
  - redux
- - nextjs
+ - next.js
  - nodejs
  - express
  - mongo
