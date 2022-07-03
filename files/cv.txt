@@ -22,7 +22,10 @@
  Lynks
  Alexandria, Egypt
  Jan 2022 - present
- - **soon**
+ - Tech: typescript, next.js, tailwindcss, apollo graphql
+ - build a custom ecommerce website for shop.lynks.com
+ - writing unit/integration-tests with jest & testing-library
+ - writing e2e testing using playwright
 
  Front-End developer
  Swvl
