@@ -11,6 +11,7 @@ Welecome to my space on the internet.
 
 ## recent blogs
 
+- [Uninstall all neovim plugins](/blog/uninstall-all-neovim-plugins)
 - [Adevnt of Code 2020](/blog/adevnt-of-code-2020)
 - [How to optimize and lazy-loading images on eleventy (11ty)](/blog/how-to-optimize-and-lazyloading-images-on-eleventy)
 - [My terminal became more Rusty 🦀](/blog/my-terminal-became-more-rusty)

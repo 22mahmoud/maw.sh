@@ -2,6 +2,12 @@
 
 _Subscribe via [RSS](https://mahmoudashraf.dev/rss.xml)_
 
+## 2022
+- [Uninstall all neovim plugins](/blog/uninstall-all-neovim-plugins "2020-09-14")
+
+## 2021
+:( No Posts
+
 ## 2020
 - [Adevnt of Code 2020](/blog/adevnt-of-code-2020 "2020-12-04")
 - [How to optimize and lazy-loading images on eleventy (11ty)](/blog/how-to-optimize-and-lazyloading-images-on-eleventy "2020-09-01")
