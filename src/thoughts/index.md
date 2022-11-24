@@ -1,4 +1,19 @@
+<style>
+img {
+    object-fit: contain;
+    }
+</style>
+
 # Thoughts
+
+---
+- [[2022-11-24T21:16+02:00](/thoughts/1669317382)]
+
+في الطريق
+
+<a href="./1669317382/screenshot_lynks.jpg">
+  <img alt="screenshot from lynks.com tracking orders to at2020 microphone" loading=lazy src="./1669317382/thumbs/screenshot_lynks.webp" />
+</a>
 
 ---
 - [[2021-08-17T13:50+02:00](/thoughts/1634330500)]
