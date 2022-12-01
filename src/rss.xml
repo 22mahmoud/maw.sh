@@ -3,23 +3,61 @@
 <channel>
 <atom:link href="https://mahmoudashraf.dev/rss.xml" rel="self" type="application/rss+xml" />
 <title>Mahmoud Ashraf</title>
-<description>Subscribe via RSS</description>
+<description> > Mahmoud Ashraf </description>
 <link>https://mahmoudashraf.dev/</link>
+
+<item>
+<guid>https://mahmoudashraf.dev/blog/uninstall-all-neovim-plugins/index.html</guid>
+<link>https://mahmoudashraf.dev/blog/uninstall-all-neovim-plugins/index.html</link>
+<pubDate>Mon, 14 Sep 2020 00:00:00 +0200</pubDate>
+<title>[Draft] Uninstall all neovim plugins</title>
+<description><![CDATA[
+
+<p>Slug:         uninstall-all-neovim-plugins
+Title:        Uninstall all neovim plugins
+Date:         Sep 19,2022
+Author:       Mahmoud Ashraf<br/>
+Description:  This Article about using neovim on a Unix way.
+Keywords:     linux, neovim, vim</p>
+
+<h1 id="draft-uninstall-all-neovim-plugins">[Draft] Uninstall all neovim plugins</h1>
+
+<hr/>
+
+<p><strong>draft</strong></p>
+
+<ul>
+<li>why we choose something like neovim&#47;emacs and not a vscode,sublime</li>
+<li>the noovim plugins ecosystem is not mature enough</li>
+<li>do you need all that features on your code editor?</li>
+<li>only pick a plugin with a good documentation and well-written to avoid
+reconfigure your lua config.</li>
+</ul>
+
+<hr/>
+
+]]></description>
+</item>
 
 <item>
 <guid>https://mahmoudashraf.dev/blog/adevnt-of-code-2020/index.html</guid>
 <link>https://mahmoudashraf.dev/blog/adevnt-of-code-2020/index.html</link>
-<pubDate>Sat, 05 Dec 2020 00:00:00 +0200</pubDate>
+<pubDate>Fri, 04 Dec 2020 00:00:00 +0200</pubDate>
 <title>Advent of Code 2020</title>
 <description><![CDATA[
 
-<time datetime="Dec 04, 2020" >Dec 04, 2020</time>
-<h1 id="Advent%20of%20Code%202020">Advent of Code 2020</h1>
+<p>Title:        Adevnt of Code 2020
+Date:         Dec 04, 2020<br/>
+Author:       Mahmoud Ashraf<br/>
+Description:  advent of code solutions by @22mahmoud
+Keywords:     aoc, programming</p>
+
+<h1 id="advent-of-code-2020">Advent of Code 2020</h1>
 
 <p>This blog will be updated every day to show you my solutions 
 for <a href="https://adventofcode.com/">aoc-2020</a>.</p>
 
-<h2 id="TOC">TOC</h2>
+<h2 id="toc">TOC</h2>
 
 <ul>
 <li><a href="https://mahmoudashraf.dev/#Day%2001">day 01</a> <em>⭐⭐</em></li>
@@ -51,11 +89,11 @@ for <a href="https://adventofcode.com/">aoc-2020</a>.</p>
 
 <hr/>
 
-<h2 id="Day%2001">Day 01</h2>
+<h2 id="day-01">Day 01</h2>
 
 <p>[<a href="https://mahmoudashraf.dev/#part%2001%20%E2%AD%90">part 01</a> - <a href="https://mahmoudashraf.dev/#part%2002%20%E2%AD%90">part 02</a>]</p>
 
-<h3 id="part%2001%20%E2%AD%90">part 01 ⭐</h3>
+<h3 id="part-01-">part 01 ⭐</h3>
 
 <p>The first part of day one is a two-sum problem needs to get the 
 multiply of two entries that sum to <code>2020</code></p>
@@ -90,7 +128,7 @@ the two numbers sum to <code>2020</code> break the loop and return the value.</p
 <p>this solution will take <code>O(n)</code> time complexity by traverse the list containing 
 <code>n</code> element only once.</p>
 
-<h3 id="part%2002%20%E2%AD%90">part 02 ⭐</h3>
+<h3 id="part-02-">part 02 ⭐</h3>
 
 <p>The difference in the part two that we need to get the multiply for 
 <code>three</code> numbers that sum to <code>2020</code></p>
@@ -108,11 +146,11 @@ the two numbers sum to <code>2020</code> break the loop and return the value.</p
 
 <hr/>
 
-<h2 id="Day%2002">Day 02</h2>
+<h2 id="day-02">Day 02</h2>
 
 <p>[<a href="https://mahmoudashraf.dev/#part%2001%20%E2%AD%90-2">part 01</a> - <a href="https://mahmoudashraf.dev/#part%2002%20%E2%AD%90-2">part 02</a>]</p>
 
-<h3 id="part%2001%20%E2%AD%90-2">part 01 ⭐</h3>
+<h3 id="part-01--1">part 01 ⭐</h3>
 
 <p>We have a list of passwords with validation rules, 
 So we should validate each password and submit the 
@@ -123,7 +161,7 @@ total number of valid passwords.</p>
 2-9 c: ccccccccc
 </code></pre>
 
-<p>First, let&#39;s create an parser to extract information from each line.</p>
+<p>First, let&#8217;s create an parser to extract information from each line.</p>
 
 <pre><code class="language-javascript">const getPasswordsList = () =&#62;
   readFileSync(path.resolve(__dirname, &#39;input.txt&#39;), &#39;utf8&#39;)
@@ -149,7 +187,7 @@ on each line by using multi separator: <code>-</code>, <code>:</code>, and <code
 }
 </code></pre>
 
-<h3 id="part%2002%20%E2%AD%90-2">part 02 ⭐</h3>
+<h3 id="part-02--1">part 02 ⭐</h3>
 
 <p>Actually the part two is a lot easier than the part one it assume the first two numbers
 are the positions for the target letter to only occurs in one of them.</p>
@@ -177,8 +215,14 @@ you can check the MDN <a href="https://developer.mozilla.org/en-US/docs/Web/Java
 <title>How to optimize and lazy-loading images on eleventy (11ty)</title>
 <description><![CDATA[
 
-<time datetime="Sep 01, 2020" >Sep 01, 2020</time>
-<h1 id="How%20to%20optimize%20and%20lazy-loading%20images%20on%20eleventy%20(11ty)">How to optimize and lazy-loading images on eleventy (11ty)</h1>
+<p>Title:        How to optimize and lazy-loading images on eleventy (11ty)<br/>
+Date:         Sep 01, 2020 
+Author:       Mahmoud Ashraf<br/>
+Description:  Learn How to automate your images using eleventy-img plugin and sharpjs<br/>
+categories:   tutorial, javascript<br/>
+keywords:     javascript, eleventy, 11ty, optimization, image  </p>
+
+<h1 id="how-to-optimize-and-lazy-loading-images-on-eleventy-11ty">How to optimize and lazy-loading images on eleventy (11ty)</h1>
 
 <p>Building a site that has images requires to optimize them 
 to avoid any content shifting and deliver a good user experience.</p>
@@ -188,7 +232,7 @@ to avoid any content shifting and deliver a good user experience.</p>
 <p>In this article we will take a look for how to automate your images in eleventy 
 static site generated website using <a href="https://github.com/11ty/eleventy-img/">eleventy-img</a>, and <a href="https://github.com/lovell/sharp">sharp</a>.</p>
 
-<h2 id="Create%20a%20basic%20project%20to%20start">Create a basic project to start</h2>
+<h2 id="create-a-basic-project-to-start">Create a basic project to start</h2>
 
 <p>create a new directory and name it <code>11ty-img-example</code> or whatever you want,
 then run </p>
@@ -230,7 +274,7 @@ touch index.njk
 }
 </code></pre>
 
-<h2 id="run%20the%20project%20on%20your%20browser">run the project on your browser</h2>
+<h2 id="run-the-project-on-your-browser">run the project on your browser</h2>
 
 <p>open your favorite terminal and run </p>
 
@@ -242,9 +286,9 @@ it should work without any customized eleventy configuration.</p>
 
 <p><img src="./setup-screen.jpeg" alt="screenshot of application inside the browser" /></p>
 
-<h2 id="Display%20some%20images">Display some images</h2>
+<h2 id="display-some-images">Display some images</h2>
 
-<p>let&#39;s try get some images and place them in <code>images</code> directory.
+<p>let&#8217;s try get some images and place them in <code>images</code> directory.
 and inside <code>index.njk</code> try to display theme.</p>
 
 <pre><code class="language-bash">ls images&#47;
@@ -268,8 +312,8 @@ and inside <code>index.njk</code> try to display theme.</p>
 &#60;&#47;body&#62;
 </code></pre>
 
-<p>open your browser and it shouldn&#39;t render any image.
-yeah that&#39;s right 😀 because <code>eleventy</code> doesn&#39;t handle 
+<p>open your browser and it shouldn&#8217;t render any image.
+yeah that&#8217;s right 😀 because <code>eleventy</code> doesn&#8217;t handle 
 assets like css, js, or images so we need to configure that
 by ourself.</p>
 
@@ -289,9 +333,9 @@ and it should everything work.</p>
 
 <p><img src="./images-screen.jpeg" alt="screenshot of application inside the browser" /></p>
 
-<h2 id="Test%20images%20performance%20without%20optimization">Test images performance without optimization</h2>
+<h2 id="test-images-performance-without-optimization">Test images performance without optimization</h2>
 
-<p>Let&#39;s see how images doing before any optimization.</p>
+<p>Let&#8217;s see how images doing before any optimization.</p>
 
 <p>Open network tab  inside the devtool and set <code>fast 3G</code> as network simulation.</p>
 
@@ -301,9 +345,9 @@ to make it faster.</p>
 
 <p><img src="./network-vid.gif" alt="gif showing how slow the image rendering" /></p>
 
-<h2 id="Add%20%3Ccode%3Eeleventy-img%3C/code%3E%20plugin">Add <code>eleventy-img</code> plugin</h2>
+<h2 id="add-plugin">Add <code>eleventy-img</code> plugin</h2>
 
-<p>it&#39;s the time to use the <code>eleventy-img</code>, this plugin from 
+<p>it&#8217;s the time to use the <code>eleventy-img</code>, this plugin from 
 eleventy team you can find the repo from <a href="https://github.com/11ty/eleventy-img/">here</a>.</p>
 
 <p>Install it in our project.</p>
@@ -359,7 +403,7 @@ module.exports = (cfg) =&#62; {
 }
 </code></pre>
 
-<p>Let&#39;s break down the code and understand how it works</p>
+<p>Let&#8217;s break down the code and understand how it works</p>
 
 <ul>
 <li><code>addNunjucksAsyncShortcode</code></li>
@@ -421,7 +465,7 @@ srcset = {
 
 <p>Now we are good to go by return the whole <code>picture</code>.</p>
 
-<h2 id="Test%20Images%20after%20using%20%3Ccode%3Eeleventy-img%3C/code%3E">Test Images after using <code>eleventy-img</code></h2>
+<h2 id="test-images-after-using-">Test Images after using <code>eleventy-img</code></h2>
 
 <p>open <code>index.njk</code> and replace all <code>img</code> tags with</p>
 
@@ -446,7 +490,7 @@ has size more than <code>120kb</code>.</p>
 
 <p><img src="./network2-vid.gif" alt="gif showing how the result after using eleventy-img plugin" /></p>
 
-<h2 id="Add%20lazy-loading%20and%20the%20blurry%20effect">Add lazy-loading and the blurry effect</h2>
+<h2 id="add-lazy-loading-and-the-blurry-effect">Add lazy-loading and the blurry effect</h2>
 
 <p>this is an extra step to avoid content shifting by using
 inline <code>base64</code> image as placeholder for images and use
@@ -520,13 +564,13 @@ img {
 &#60;&#47;style&#62;
 </code></pre>
 
-<h2 id="Test%20images%20after%20lazyloading">Test images after lazyloading</h2>
+<h2 id="test-images-after-lazyloading">Test images after lazyloading</h2>
 
 <p>Voilà 🎉, now we have a nice looking and fast images on your site.</p>
 
 <p><img src="./network3-vid.gif" alt="gif showing how the result after using vanilla-lazyload and blurry base64" /></p>
 
-<h2 id="Conclusion">Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 
 <p>Now You know how to integrate <code>eleventy-img</code> plugin and <code>vanilla-lazyload</code> package
 with your eleventy site if you need to learn more about image optimization, I recommend
@@ -544,19 +588,24 @@ check this <a href="https://www.andreaverlicchi.eu/lazy-load-responsive-images-i
 <title>My terminal became more Rusty 🦀</title>
 <description><![CDATA[
 
-<time datetime="Aug 21, 2020" >Aug 21, 2020</time>
-<h1 id="My%20terminal%20became%20more%20Rusty%20%F0%9F%A6%80">My terminal became more Rusty 🦀</h1>
+<p>Title:        My terminal became more Rusty 🦀<br/>
+Date:         Aug 21, 2020<br/>
+Author:       Mahmoud Ashraf<br/>
+Description:  CLI tools written in rust make my terminal fast and productive<br/>
+Keywords:     rust, cli, linux, terminal  </p>
+
+<h1 id="my-terminal-became-more-rusty-">My terminal became more Rusty 🦀</h1>
 
 <p><img src="./cover.jpeg" alt="big crap attack the city" /></p>
 
 <p>As a Software-Engineer I spent most of the time inside my terminal, So
 I need for that a fast terminal with  fast tools to speed up my productivity.</p>
 
-<p>The tools written in rust help me to achieve that. let&#39;s see in this article
+<p>The tools written in rust help me to achieve that. let&#8217;s see in this article
 those tools.</p>
 
 <blockquote>
-<h2 id="tl;dr">tl;dr</h2>
+<h2 id="tldr">tl;dr</h2>
 
 <ul>
 <li><a href="https://github.com/alacritty/alacritty">alacritty</a>  A cross-platform, GPU-accelerated terminal emulator</li>
@@ -574,14 +623,14 @@ those tools.</p>
 </ul>
 </blockquote>
 
-<h2 id="Alacritty">Alacritty</h2>
+<h2 id="alacritty">Alacritty</h2>
 
-<p>Let&#39;s start our list with alacritty terminal is one of the fastest terminals 
+<p>Let&#8217;s start our list with alacritty terminal is one of the fastest terminals 
 because of using GPU for rendering, and it is a cross-platform terminal.</p>
 
 <p>You can customize your own configuration like color scheme, fonts, opacity, and key mapping.</p>
 
-<p>Alacritty doesn&#39;t come with ligature support but you can use 
+<p>Alacritty doesn&#8217;t come with ligature support but you can use 
 this <a href="https://github.com/zenixls2/alacritty/tree/ligature">fork</a>. or if 
 you are using Arch you can install it from <a href="https://aur.archlinux.org/packages/alacritty-ligatures/">aur</a></p>
 
@@ -589,10 +638,10 @@ you are using Arch you can install it from <a href="https://aur.archlinux.org/pa
 
 <hr/>
 
-<h2 id="Starship">Starship</h2>
+<h2 id="starship">Starship</h2>
 
 <p>I used to use zsh + powerlevel9k as my prompt and even when I migrate to powerlevel10k, I still
-notice a delay when open new shell. But with starship it&#39;s start instantly.</p>
+notice a delay when open new shell. But with starship it&#8217;s start instantly.</p>
 
 <p>You can use it with any shell bash, zsh, fish and even powerShell.</p>
 
@@ -602,11 +651,11 @@ notice a delay when open new shell. But with starship it&#39;s start instantly.<
 
 <hr/>
 
-<h2 id="Exa">Exa</h2>
+<h2 id="exa">Exa</h2>
 
 <p>exa is an implementation of <code>ls</code> command but with colors and icons and it renders very fast.</p>
 
-<p>I&#39;m using exa as replacer for ls command by making an alias.</p>
+<p>I&#8217;m using exa as replacer for ls command by making an alias.</p>
 
 <pre><code class="language-bash">if [ "$(command -v exa)" ]; then
     unalias -m &#39;ll&#39;
@@ -624,7 +673,7 @@ fi
 
 <hr/>
 
-<h2 id="Bat">Bat</h2>
+<h2 id="bat">Bat</h2>
 
 <p>Bat is an implementation for <code>cat</code> command but with syntax highlighted.</p>
 
@@ -640,7 +689,7 @@ fi
 
 <hr/>
 
-<h2 id="Delta">Delta</h2>
+<h2 id="delta">Delta</h2>
 
 <p>delta enhance your git diff output by adding some cool features like syntax highlighting,
 line numbering, and side-by-side view.</p>
@@ -668,9 +717,9 @@ feature and set a theme for Nord, You can choose your preferred theme  run and c
 
 <hr/>
 
-<h2 id="Zoxide">Zoxide</h2>
+<h2 id="zoxide">Zoxide</h2>
 
-<p>I don&#39;t use any file explorer, I just use <code>cd</code> command to navigate between the files and <code>ls</code> commands.</p>
+<p>I don&#8217;t use any file explorer, I just use <code>cd</code> command to navigate between the files and <code>ls</code> commands.</p>
 
 <p>I have a <code>projects</code> directory on my home folder if I wanna navigate to a project of those projects.
 I will write</p>
@@ -691,14 +740,14 @@ just write </p>
 
 <hr/>
 
-<h2 id="Ripgrep">Ripgrep</h2>
+<h2 id="ripgrep">Ripgrep</h2>
 
 <p>It is a  cross-platform command line searches your directory for a regex pattern. </p>
 
 <p>I recommend you read this article <a href="https://blog.burntsushi.net/ripgrep/">ripgrep is faster than {grep, ag, git grep, ucg, pt, sift}
 </a>.</p>
 
-<p>some commands that i&#39;m using</p>
+<p>some commands that i&#8217;m using</p>
 
 <pre><code class="language-bash"># search on javascript files for specific regex
 rg tjs "import React"
@@ -713,11 +762,11 @@ rg fast README.md --replace FAST
 
 <hr/>
 
-<h2 id="Fd">Fd</h2>
+<h2 id="fd">Fd</h2>
 
 <p>the friendly version of <code>find</code> command, and faster.</p>
 
-<p>It&#39;s by default ignore <code>.gitignore</code> file</p>
+<p>It&#8217;s by default ignore <code>.gitignore</code> file</p>
 
 <p>in this tutorial I have some screenshots in <code>png</code> format to convert them all to <code>jpeg</code>:</p>
 
@@ -735,13 +784,13 @@ rg fast README.md --replace FAST
 
 <p>In this time not <code>top</code> 😀 it is <code>bottom</code></p>
 
-<p>it&#39;s a cross-platform system monitor. </p>
+<p>it&#8217;s a cross-platform system monitor. </p>
 
 <p><img src="./bottom.jpeg" alt="screenshot of bottom" /></p>
 
 <hr/>
 
-<h2 id="Tldr">Tldr</h2>
+<h2 id="tldr-1">Tldr</h2>
 
 <p>tldr is a cheatsheets for CLIs, instead of read the whole <code>man</code>.</p>
 
@@ -749,7 +798,7 @@ rg fast README.md --replace FAST
 
 <hr/>
 
-<h2 id="More%20Tools?">More Tools?</h2>
+<h2 id="more-tools">More Tools?</h2>
 
 <ul>
 <li>for who want lightweight alternative for spotify client you can use <code>spotify-tui</code>.</li>
@@ -769,19 +818,24 @@ rg fast README.md --replace FAST
 <title>No More postman just use cURL + vim = ❤</title>
 <description><![CDATA[
 
-<time datetime="Aug 20, 2020" >Aug 20, 2020</time>
-<h1 id="No%20More%20postman%20just%20use%20cURL%20+%20vim%20=%20%E2%9D%A4">No More postman just use cURL + vim = ❤</h1>
+<p>Title:        No More postman just use cURL + vim = ❤
+Date:         Aug 20, 2020<br/>
+Author:       Mahmoud Ashraf<br/>
+Description:  Well documented api and easy to use and share with your team with simple tools cURL + vim + git (optional)<br/>
+Keywords:     api, tooling, curl, vim  </p>
+
+<h1 id="no-more-postman-just-use-curl-vim-">No More postman just use cURL + vim = ❤</h1>
 
 <p>Postman one of the most popular API client tool, for send and view the response
 in the development environment. But since Postman is proprietary software and 
-there is a free + open sourced alternative so I&#39;ll go for something 
+there is a free + open sourced alternative so I&#8217;ll go for something 
 like insomnia, or postwoman. </p>
 
-<p>But also I&#39;ll go for CLI if exists and cURL is one of 
-the easy to use and fully featured tool and in this article I&#39;ll show you how
+<p>But also I&#8217;ll go for CLI if exists and cURL is one of 
+the easy to use and fully featured tool and in this article I&#8217;ll show you how
 to setup a well-documented api with cURL + vim + git.</p>
 
-<h2 id="How%20to%20execute%20CLI%20inside%20your%20vim%20editor?">How to execute CLI inside your vim editor?</h2>
+<h2 id="how-to-execute-cli-inside-your-vim-editor">How to execute CLI inside your vim editor?</h2>
 
 <p>vim is very powerful editor and you can execute an command line
 inside it. go to command mode and insert <code>:! &#60;command&#62;</code> and hit enter.</p>
@@ -796,19 +850,19 @@ in pager.</p>
 
 <p><img src="./screen.jpeg" alt="screenshot for ls command inside vim" /></p>
 
-<h2 id="Execute%20the%20content%20of%20the%20current%20file%20as%20CLI.">Execute the content of the current file as CLI.</h2>
+<h2 id="execute-the-content-of-the-current-file-as-cli.">Execute the content of the current file as CLI.</h2>
 
 <p>open an empty file inside your vim and write inside it <code>echo Hello, World!</code> and save it,
 and then write <code>:!sh %</code>. </p>
 
 <p>The percent <code>%</code> is refer to the filename so if we run it with normal bang <code>:! %</code> 
-it will not work because it&#39;s trying run the file as executable file not the content inside. </p>
+it will not work because it&#8217;s trying run the file as executable file not the content inside. </p>
 
 <p>so we pass <code>sh</code> before the <code>%</code> to run the content inside the file via shell.</p>
 
 <p><img src="./screen1.jpeg" alt="screenshot :!sh command inside vim" /></p>
 
-<h2 id="Test%20our%20first%20cURL%20command">Test our first cURL command</h2>
+<h2 id="test-our-first-curl-command">Test our first cURL command</h2>
 
 <p>for demonstrating we will gonna use <a href="https://jsonplaceholder.typicode.com/">jsonplaceholder</a> as our API to test</p>
 
@@ -832,7 +886,7 @@ it will not work because it&#39;s trying run the file as executable file not the
 
 <p><code>.sh</code>  to get file highlighted.</p>
 
-<p>let&#39;s start with first and simple one <code>api&#47;posts&#47;get&#47;todos.sh</code>.</p>
+<p>let&#8217;s start with first and simple one <code>api&#47;posts&#47;get&#47;todos.sh</code>.</p>
 
 <p>write in the file  and save.</p>
 
@@ -844,7 +898,7 @@ it will not work because it&#39;s trying run the file as executable file not the
 
 <p><img src="./screen2.jpeg" alt="screenshot of :!sh % result inside vim" /></p>
 
-<h1 id="Make%20the%20result%20More%20Handy.">Make the result More Handy.</h1>
+<h1 id="make-the-result-more-handy.">Make the result More Handy.</h1>
 
 <p>In most tools you will get a split view for the request itself 
 and the result.</p>
@@ -869,10 +923,10 @@ that will execute the command inside the file and open split view with the resul
 <p>now you have vim buffer you can easily search and do whatever you do. and to close the buffer you can use
 command <code>:bd!</code> or the keyboard shortcut <code>shift + z + q</code>.</p>
 
-<h2 id="Is%20cURL%20limited?">Is cURL limited?</h2>
+<h2 id="is-curl-limited">Is cURL limited?</h2>
 
 <p>The answer is <strong>NO</strong>.
-let&#39;s see couple of example</p>
+let&#8217;s see couple of example</p>
 
 <ul>
 <li>POST Request:</li>
@@ -900,19 +954,19 @@ let&#39;s see couple of example</p>
 
 <p>you can still use query params with <code>-d</code> but add an additional <code>-G, --get</code> to pass it as query params</p>
 
-<p>since this is not a cURL tutorial that&#39;s will be enough and you 
+<p>since this is not a cURL tutorial that&#8217;s will be enough and you 
 can learn more about advanced stuff like set header, cookie and more from the internet.</p>
 
-<h2 id="Using%20git?">Using git?</h2>
+<h2 id="using-git">Using git?</h2>
 
 <p>Of course, on our created directory run <code>git init</code> and push for example to github.</p>
 
 <p><a href="https://github.com/22mahmoud/vim-curl-demo">see this example on github</a></p>
 
-<h2 id="Conclusion">Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 
 <p>You can now write a well-documented api and share it with your team via git
-all that done with simple and open-sourced tools and that&#39;s not limited to cURL
+all that done with simple and open-sourced tools and that&#8217;s not limited to cURL
 you can write your own scripts and run it inside vim, or pipe your cURL command for other 
 tools to manipulate the output for example <code>jq</code> so you can filter your output.</p>
 
@@ -926,22 +980,28 @@ tools to manipulate the output for example <code>jq</code> so you can filter you
 <title>Building a blog with Svelte, Sapper, and Markdown</title>
 <description><![CDATA[
 
-<time datetime="Mar 03,2020" >Mar 03,2020</time>
-<h1 id="Building%20a%20blog%20with%20Svelte,%20Sapper,%20and%20Markdown">Building a blog with Svelte, Sapper, and Markdown</h1>
+<p>Slug: &#8216;build-a-blog-with-svelte-and-markdown&#8217;
+Title:        Building a blog with Svelte, Sapper, and Markdown<br/>
+Date:         Mar 03,2020<br/>
+Author:       Mahmoud Ashraf<br/>
+Description:  In this article I will show how you can start bloging with svelte and sapper using markdown files<br/>
+Keywords:     javascript, svelte, sapper  </p>
+
+<h1 id="building-a-blog-with-svelte-sapper-and-markdown">Building a blog with Svelte, Sapper, and Markdown</h1>
 
 <p>In this post, we will build a website with a blog using svelte, and sapper.</p>
 
-<h2 id="What%20is%20Svelte?">What is Svelte?</h2>
+<h2 id="what-is-svelte">What is Svelte?</h2>
 
 <p>Svelte is a new javascript framework come on the table,
 Svelte has a philosophy that helps you manipulate the DOM without using any additional techniques like virtual DOM,
 Svelte compile your code on the build time, and you can update your app easily using reactivity.</p>
 
-<h2 id="What%20is%20Sapper?">What is Sapper?</h2>
+<h2 id="what-is-sapper">What is Sapper?</h2>
 
 <p>Sapper is a Server Side framework on top of Svelte helps you create PWA apps with a good SEO and file system based routing.</p>
 
-<h2 id="How%20to%20init%20the%20project?">How to init the project?</h2>
+<h2 id="how-to-init-the-project">How to init the project?</h2>
 
 <p>We are going to use the starter template provided by the Sapper team,
 open your favorite terminal and write the following command:</p>
@@ -960,7 +1020,7 @@ open your favorite terminal and write the following command:</p>
 
 <p><img src="./bg1.jpeg" alt="screenshot of the home page for sapper boilerplate" /></p>
 
-<p>Let&#39;s open the project in your favorite editor. and go to the <code>blog</code> folder
+<p>Let&#8217;s open the project in your favorite editor. and go to the <code>blog</code> folder
 inside the <code>src&#47;routes</code>.</p>
 
 <p>We have several files there:</p>
@@ -975,17 +1035,17 @@ inside the <code>src&#47;routes</code>.</p>
         - _posts.js
 </code></pre>
 
-<h2 id="How%20routing%20works%20in%20sapper?">How routing works in sapper?</h2>
+<h2 id="how-routing-works-in-sapper">How routing works in sapper?</h2>
 
 <p>we have two types the pages, and server routes.</p>
 
-<h3 id="Pages">Pages</h3>
+<h3 id="pages">Pages</h3>
 
 <p>The filename detrmine the route. For example: <code>src&#47;routes&#47;blog&#47;index.svelte</code> refer to the route <code>&#47;blog</code>.</p>
 
 <p>For Dynamin routing. we going to use <code>[slug]</code>. For example <code>ser&#47;routes&#47;blog&#47;[slug].svelte</code> refer to route <code>&#47;blog&#47;the-whatever-blog-name</code></p>
 
-<h3 id="Server">Server</h3>
+<h3 id="server">Server</h3>
 
 <p>Server routes are modules written in <code>.js</code> files that export HTTP functions.
 For example <code>get</code> endpoint to retrieve the blog details:</p>
