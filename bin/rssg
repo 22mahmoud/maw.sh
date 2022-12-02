@@ -64,7 +64,6 @@ md_to_html() {
   lowdown \
     --html-no-escapehtml \
     --html-no-skiphtml \
-    --parse-no-metadata \
     --parse-no-autolink "$1"
 }
 

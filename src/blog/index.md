@@ -3,7 +3,7 @@
 _Subscribe via [RSS](https://mahmoudashraf.dev/rss.xml)_
 
 ## 2022
-- [Uninstall all neovim plugins](/blog/uninstall-all-neovim-plugins "2020-09-14")
+- [Uninstall all neovim plugins](/blog/uninstall-all-neovim-plugins "2022-12-02")
 
 ## 2021
 :( No Posts
