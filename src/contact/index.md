@@ -13,7 +13,7 @@ I closed most of my social media accounts but you can still reach me on
 
 Recently I've started using [fediverse](https://en.wikipedia.org/wiki/Fediverse):
 
-- [mastodon](https://fosstodon.org/web/accounts/247603)
+- [mastodon](https://fosstodon.org/@22mahmoud)
 - [pixfed](https://pixelfed.social/mahmoud22)
 
 ## Messaging
