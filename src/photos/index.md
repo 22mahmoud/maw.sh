@@ -53,17 +53,17 @@ ___
 
 <p>
   <ul class="gallary">
-    <li><a href="DSC_1585_01.jpg"><img loading=lazy src="thumbs/DSC_1585_01.webp" /></a></li>
-    <li><a href="DSC_0843.jpg"><img loading=lazy src="thumbs/DSC_0843.webp" /></a></li>
-    <li><a href="DSC_0863.jpg"><img loading=lazy src="thumbs/DSC_0863.webp" /></a></li>
-    <li><a href="DSC_0926.jpg"><img loading=lazy src="thumbs/DSC_0926.webp" /></a></li>
-    <li><a href="DSC_1231.jpg"><img loading=lazy src="thumbs/DSC_1231.webp" /></a></li>
-    <li><a href="DSC_1383.jpg"><img loading=lazy src="thumbs/DSC_1383.webp" /></a></li>
-    <li><a href="DSC_1578.jpg"><img loading=lazy src="thumbs/DSC_1578.webp" /></a></li>
-    <li><a href="DSC_1580.jpg"><img loading=lazy src="thumbs/DSC_1580.webp" /></a></li>
-    <li><a href="DSC_1727.jpg"><img loading=lazy src="thumbs/DSC_1727.webp" /></a></li>
-    <li><a href="DSC_1764.jpg"><img loading=lazy src="thumbs/DSC_1764.webp" /></a></li>
-    <li><a href="DSC_1805.jpg"><img loading=lazy src="thumbs/DSC_1805.webp" /></a></li>
+    <li><img loading=lazy src="DSC_1585_01.jpg" /></li>
+    <li><img loading=lazy src="DSC_0843.jpg" /></li>
+    <li><img loading=lazy src="DSC_0863.jpg" /></li>
+    <li><img loading=lazy src="DSC_0926.jpg" /></li>
+    <li><img loading=lazy src="DSC_1231.jpg" /></li>
+    <li><img loading=lazy src="DSC_1383.jpg" /></li>
+    <li><img loading=lazy src="DSC_1578.jpg" /></li>
+    <li><img loading=lazy src="DSC_1580.jpg" /></li>
+    <li><img loading=lazy src="DSC_1727.jpg" /></li>
+    <li><img loading=lazy src="DSC_1764.jpg" /></li>
+    <li><img loading=lazy src="DSC_1805.jpg" /></li>
   </ul>
 </p>
 
@@ -76,12 +76,12 @@ ___
 
 <p>
   <ul class="gallary">
-    <li><a href="DSC_1633.jpg"><img loading=lazy src="thumbs/DSC_1633.webp" /></a></li>
-    <li><a href="DSC_0682.jpg"><img loading=lazy src="thumbs/DSC_0682.webp" /></a></li>
-    <li><a href="DSC_0761_01.jpg"><img loading=lazy src="thumbs/DSC_0761_01.webp" /></a></li>
-    <li><a href="DSC_0966.jpg"><img loading=lazy src="thumbs/DSC_0966.webp" /></a></li>
-    <li><a href="DSC_1032.jpg"><img loading=lazy src="thumbs/DSC_1032.webp" /></a></li>
-    <li><a href="DSC_1312.jpg"><img loading=lazy src="thumbs/DSC_1312.webp" /></a></li>
+    <li><img loading=lazy src="DSC_1633.jpg" /></li>
+    <li><img loading=lazy src="DSC_0682.jpg" /></li>
+    <li><img loading=lazy src="DSC_0761_01.jpg" /></li>
+    <li><img loading=lazy src="DSC_0966.jpg" /></li>
+    <li><img loading=lazy src="DSC_1032.jpg" /></li>
+    <li><img loading=lazy src="DSC_1312.jpg" /></li>
   </ul>
 </p>
 ___
@@ -90,7 +90,7 @@ ___
 > 
 > 📅 date: May 23, 2021
 
-<a href="me_2021.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/me_2021.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="me_2021.jpg" />
 
 ___
 
@@ -98,7 +98,7 @@ ___
 > 
 > 📅 date: 2020
 
-<a href="sunset_3.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/sunset_3.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="sunset_3.jpg" />
 
 ___
 
@@ -106,8 +106,8 @@ ___
 >
 > 📅 date: 2020
 
-<a href="sunset_2.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/sunset_2.webp" /></a>
-<a href="kornish_hdr.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/kornish_hdr.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="sunset_2.jpg" />
+<img width="350px" height="350px" loading=lazy src="kornish_hdr.jpg" />
 
 ___
 
@@ -115,7 +115,7 @@ ___
 >
 > 📅 date: 2020
 
-<a href="cafea_2.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/cafea_2.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="cafea_2.jpg" />
 
 ___
 
@@ -123,9 +123,9 @@ ___
 >
 > 📅 date: 2020
 
-<a href="me_2.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/me_2.webp" /></a>
-<a href="me_3.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/me_3.webp" /></a>
-<a href="me_4.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/me_4.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="me_2.jpg" />
+<img width="350px" height="350px" loading=lazy src="me_3.jpg" />
+<img width="350px" height="350px" loading=lazy src="me_4.jpg" />
 
 ___
 
@@ -135,7 +135,7 @@ ___
 > 
 > 📅 date: 2019
 
-<a href="cafea_1.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/cafea_1.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="cafea_1.jpg" />
 
 ___
 
@@ -145,7 +145,7 @@ ___
 > 
 > 📅 date: 2019
 
-<a href="sunset_1.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/sunset_1.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="sunset_1.jpg" />
 
 ___
 
@@ -153,7 +153,7 @@ ___
 > 
 > 📅 date: 2019
 
-<a href="me_1.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/me_1.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="me_1.jpg" />
 
 ___
 
@@ -163,7 +163,7 @@ ___
 > 
 > 📅 date: 2019
 
-<a href="grd_proj_team.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/grd_proj_team.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="grd_proj_team.jpg" />
 
 ___
 
@@ -173,7 +173,7 @@ ___
 > 
 > 📅 date: 2019
 
-<a href="war2_3enb.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/war2_3enb.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="war2_3enb.jpg" />
 
 ___
 
@@ -181,7 +181,7 @@ ___
 > 
 > 📅 date: 2019
 
-<a href="clouds_1.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/clouds_1.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="clouds_1.jpg" />
 
 ___
 
@@ -191,7 +191,7 @@ ___
 >
 > 📅 date: 2018
 
-<a href="table_number.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/table_number.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="table_number.jpg" />
 
 ___
 
@@ -199,4 +199,4 @@ ___
 > 
 > 📅 date: 2018
 
-<a href="eajiba_1.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/eajiba_1.webp" /></a>
+<img width="350px" height="350px" loading=lazy src="eajiba_1.jpg" />

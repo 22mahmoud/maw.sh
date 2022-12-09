@@ -4,8 +4,6 @@ Let's take some great photos!! 📷
 
 My first DSLR camera Nikon D3500
 
-[![Nikon D3500 with lens](./thumbs/d3500.jpg)](./d3500.jpg)
-
-
+![Nikon D3500 with lens](./d3500.jpg)
 
 

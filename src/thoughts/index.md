@@ -7,20 +7,14 @@ img {
 # Thoughts
 
 - [[2022-11-24T21:16+02:00](/thoughts/1669317382)]
-
 في الطريق
+<img alt="screenshot from lynks.com tracking orders to at2020 microphone" loading=lazy src="./1669317382/screenshot_lynks.jpg" />
 
-<a href="./1669317382/screenshot_lynks.jpg">
-  <img alt="screenshot from lynks.com tracking orders to at2020 microphone" loading=lazy src="./1669317382/thumbs/screenshot_lynks.webp" />
-</a>
 
 ___
 
 - [[2021-08-17T13:50+02:00](/thoughts/1634330500)]
-
-<a href="./1634330500/f938c755fc3bd836.jpg">
-  <img loading=lazy src="./1634330500/thumbs/f938c755fc3bd836.webp" />
-</a>
+<img loading=lazy src="./1634330500/f938c755fc3bd836.jpg" />
 
 ___
 
@@ -31,10 +25,8 @@ ___
 
 - [[2021-07-18T20:23+02:00](/thoughts/1626632598)]
 Let's take some great photos!! 📷
-
 My first DSLR camera Nikon D3500
-
-[![Nikon D3500 with lens](./1626632598/thumbs/d3500.jpg)](./1626632598/d3500.jpg)
+![Nikon D3500 with lens](./1626632598/d3500.jpg)
 
 ___
 
@@ -53,14 +45,12 @@ ___
 - [[2021-02-17T03:20+02:00](/thoughts/1613524846)]
 Finally, received my gift from [dev.to](https://dev.to)
 Thanks [@ThePracticalDev](https://twitter.com/ThePracticalDev)
-
 ![dev.to stickers and thank you card](./1613524846/dev-gift.jpg)
 
 ___
 
 - [[2021-01-12T23:46+02:00](/thoughts/1610488005)]
 I got a new mechanical keyboard today, yaaay 🎊🎊
-
 Redragon k530
 ![redragon k530 keyboard](./1610488005/mech.jpg)
 
