@@ -1,32 +1,19 @@
-# config
-SRC 	:= src
-DIST 	:= dist
-NAME 	:= 'Mahmoud Ashraf'
-URL 	:= 'https://mahmoudashraf.dev'
-ssg5	:= ./bin/ssg5
+SOURCE_DIR = src
+DEST_DIR = dist
+BIN_DIR = bin
+MD_FILES := $(shell find $(SOURCE_DIR) -name "*.md")
+HTML_FILES := $(patsubst $(SOURCE_DIR)/%.md,$(DEST_DIR)/%.html,$(MD_FILES))
+MD_TO_HTML := $(BIN_DIR)/md_to_html
 
-gen:
-	[ -d $(DIST) ] || mkdir $(DIST)
-	$(ssg5) $(SRC) $(DIST) $(NAME) $(URL)
+all: html static
 
-watch:
-	find . -type f ! -path '*/.*' | entr -d $(MAKE) gen
+html: $(HTML_FILES)
 
-server:
-	python3 -m http.server -d $(DIST)
+dist/%.html: src/%.md templates/*
+	@$(MD_TO_HTML) "$<" "$@"
 
-dev:
-	$(MAKE) clean -j2 watch server
+static:
+	cd $(SOURCE_DIR) && find . -type f ! -name "*.md" -print0 | cpio -pdvm0 ../$(DEST_DIR)
 
-clean:
-	rm -rf dist
-
-update:
-	git pull origin master
-	git submodule foreach git pull origin master
-	$(MAKE) clean gen
-
-thought:
-	./bin/thought
-
-.PHONY : gen clean watch server dev update thought
+clean: 
+	rm -rf $(DEST_DIR)

@@ -45,7 +45,8 @@
 
 # Photos
 
----
+___
+
 > 📌 location: Matrouh, Egypt
 > 
 > 📅 date: July, 2021
@@ -66,7 +67,8 @@
   </ul>
 </p>
 
----
+___
+
 
 > 📌 location: Matrouh, Egypt
 > 
@@ -82,21 +84,24 @@
     <li><a href="DSC_1312.jpg"><img loading=lazy src="thumbs/DSC_1312.webp" /></a></li>
   </ul>
 </p>
----
+___
+
 > 📌 location: Alexandria, Egypt
 > 
 > 📅 date: May 23, 2021
 
 <a href="me_2021.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/me_2021.webp" /></a>
 
----
+___
+
 > 📌 location: Alexandria, Egypt
 > 
 > 📅 date: 2020
 
 <a href="sunset_3.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/sunset_3.webp" /></a>
 
----
+___
+
 > 📌 location: Alexandria, Egypt
 >
 > 📅 date: 2020
@@ -104,14 +109,16 @@
 <a href="sunset_2.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/sunset_2.webp" /></a>
 <a href="kornish_hdr.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/kornish_hdr.webp" /></a>
 
----
+___
+
 > Drinking a coffee with my best friend.
 >
 > 📅 date: 2020
 
 <a href="cafea_2.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/cafea_2.webp" /></a>
 
----
+___
+
 > I posted my photos in [/r/redditgetsdrawn](https://old.reddit.com/r/redditgetsdrawn/comments/el4ayg/this_is_me/)
 >
 > 📅 date: 2020
@@ -120,7 +127,8 @@
 <a href="me_3.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/me_3.webp" /></a>
 <a href="me_4.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/me_4.webp" /></a>
 
----
+___
+
 > A delicious mocha coffee from '[the Brazilian coffee store](https://www.openstreetmap.org/node/5784657562#map=19/31.19960/29.89960)'
 >
 > 📌 location: Alexandria, Egypt
@@ -129,7 +137,8 @@
 
 <a href="cafea_1.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/cafea_1.webp" /></a>
 
----
+___
+
 > Sunset view from my window.
 >
 > 📌 location: Alexandria, Egypt
@@ -138,14 +147,16 @@
 
 <a href="sunset_1.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/sunset_1.webp" /></a>
 
----
+___
+
 > 📌 location: Matruh, Egypt
 > 
 > 📅 date: 2019
 
 <a href="me_1.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/me_1.webp" /></a>
 
----
+___
+
 > Graduation's project team
 >
 > 📌 location: Alexandria, Egypt
@@ -154,7 +165,8 @@
 
 <a href="grd_proj_team.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/grd_proj_team.webp" /></a>
 
----
+___
+
 > yummy 😍
 > 
 > 📌 location: Alexandria, Egypt
@@ -163,14 +175,16 @@
 
 <a href="war2_3enb.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/war2_3enb.webp" /></a>
 
----
+___
+
 > 📌 location: Alexandria, Egypt
 > 
 > 📅 date: 2019
 
 <a href="clouds_1.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/clouds_1.webp" /></a>
 
----
+___
+
 > My favourite number.
 
 > 📌 location: Alexandria, Egypt
@@ -179,7 +193,8 @@
 
 <a href="table_number.jpg"><img width="350px" height="350px" loading=lazy src="thumbs/table_number.webp" /></a>
 
----
+___
+
 > 📌 location: Matruh, Egypt
 > 
 > 📅 date: 2018

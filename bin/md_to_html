@@ -1,0 +1,31 @@
+#!/bin/sh
+
+main() {
+  input="$1"
+  output="$2"
+
+  dirname "$@" | xargs mkdir -p
+
+  title=$(grep -E "^title: (.*)" "$input" | sed -E "s/^title: (.*)/\1/")
+  title=${title:-"Mahmoud Ashraf"}
+  description=$(grep -E "^description: (.*)" "$input" | sed -E "s/^description: (.*)/\1/")
+  author=$(grep -E "^author: (.*)" "$input" | sed -E "s/^author: (.*)/\1/")
+  keywords=$(grep -E "^keywords: (.*)" "$input" | sed -E "s/^keywords: (.*)/\1/")
+
+  pandoc \
+    --standalone \
+    --template default.html \
+    --from markdown \
+    --to html5 \
+    --data-dir . \
+    --metadata title="${title:-"Mahmoud Ashraf"}" \
+    --metadata description="${description:-"Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt."}" \
+    --metadata keywords="${keywords:-"blog,front-ent,javascript,linux"}" \
+    --metadata author="${author:-"Mahmoud Ashraf"}" \
+    --output "$output" \
+    "$input"
+
+  echo "[html generated]: $output"
+}
+
+main "$@"

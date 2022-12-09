@@ -1,12 +1,12 @@
-Slug:         uninstall-all-neovim-plugins
-Title:        Uninstall all neovim plugins
-Date:         Dec 02,2022
-Author:       Mahmoud Ashraf  
-Description:  This Article about using neovim on a Unix way.
-Keywords:     linux, neovim, vim
+---
+slug:         uninstall-all-neovim-plugins
+title-prefix: Uninstall all neovim plugins
+date:         Dec 02,2022
+description:  This Article about using neovim on a Unix way.
+keywords:     linux, neovim, vim
+---
 
 # Uninstall all neovim plugins
-
 
 [![the matrix movie scene](./thumbs/matrix.webp)](./matrix.jpg)
 

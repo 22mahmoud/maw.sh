@@ -1,8 +1,10 @@
-Title:        Adevnt of Code 2020
-Date:         Dec 04, 2020  
-Author:       Mahmoud Ashraf  
-Description:  advent of code solutions by @22mahmoud
-Keywords:     aoc, programming
+---
+title-prefix: Adevnt of Code 2020
+date:         Dec 04, 2020  
+author:       Mahmoud Ashraf  
+description:  advent of code solutions by @22mahmoud
+keywords:     aoc, programming
+---
 
 # Advent of Code 2020
 

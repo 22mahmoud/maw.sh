@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html$if(lang)$ lang="$lang$" $endif$$if(dir)$ dir="$dir$" $endif$>
+
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <meta name="author" content="Mahmoud Ashraf" />
-    <title></title>
-    <meta name="description" />
-    <meta name="keywords" />
     <link rel="alternate" type="application/atom+xml" href="/rss.xml" />
     <link href="/favicon.ico" rel="shortcut icon" />
     <link rel="authorization_endpoint" href="https://indieauth.com/auth">
@@ -19,6 +18,19 @@
     <link rel="me" href="https://fosstodon.org/web/@22mahmoud" />
     <link rel="me" href="https://reddit.com/user/22mahmoud_" />
     <link rel="me" href="https://pixelfed.social/i/web/profile/201636586306277376" />
+
+    <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+
+    $if(description)$
+    <meta name="description" content="$description$" />
+    $endif$
+    $if(keywords)$
+    <meta name="keywords" content="$keywords$" />
+    $endif$
+    $if(author)$
+    <meta name="author" content="$author$" />
+    $endif$
+
     <style>
       /* variables */
       :root {
@@ -102,7 +114,8 @@
         flex: 1;
       }
 
-      img, video {
+      img,
+      video {
         height: auto;
         max-width: 100%;
       }
@@ -238,32 +251,47 @@
         border-radius: 99999999px;
       }
 
-      .theme-toggle > a:hover {
+      .theme-toggle>a:hover {
         text-decoration: none;
       }
     </style>
+
+    $for(header-includes)$
+    $header-includes$
+    $endfor$
   </head>
 
-  <header>
-    <p class="site-title"><a href="/"> > Mahmoud Ashraf </a></p>
-    <nav class="nav">
-      <ul>
-        <li><a href="/about/"> /About </a></li>
-        <!-- <li><a href="/now">  /Now </a></li> -->
-        <!-- <li><a href="/uses">  /Uses </a></li> -->
-        <li><a href="/blog/"> /Blog </a></li>
-        <li><a href="/thoughts/"> /Thoughts </a></li>
-        <li><a href="/photos/"> /Photos </a></li>
-        <li><a href="/uses/"> /Uses </a></li>
-        <li><a href="/contact/"> /Contact </a></li>
-        <li><a href="/cv.txt"> /cv </a></li>
+  <body>
+    <header>
+      <p class="site-title"><a href="/"> > Mahmoud Ashraf </a></p>
+      <nav class="nav">
+        <ul>
+          <li><a href="/about/"> /About </a></li>
+          <!-- <li><a href="/now">  /Now </a></li> -->
+          <!-- <li><a href="/uses">  /Uses </a></li> -->
+          <li><a href="/blog/"> /Blog </a></li>
+          <li><a href="/thoughts/"> /Thoughts </a></li>
+          <li><a href="/photos/"> /Photos </a></li>
+          <li><a href="/uses/"> /Uses </a></li>
+          <li><a href="/contact/"> /Contact </a></li>
+          <li><a href="/cv.txt"> /cv </a></li>
 
-        <li><a href="/rss.xml"> /rss </a></li>
+          <li><a href="/rss.xml"> /rss </a></li>
 
-        <li class="theme-toggle"><a href="/light/"> ☀ light mode </a></li>
-      </ul>
-    </nav>
-  </header>
+          <li class="theme-toggle"><a href="/light/"> ☀ light mode </a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- layout -->
-  <main>
+    $for(include-before)$
+    $include-before$
+    $endfor$
+
+    <main>$body$</main>
+
+    <footer>
+      © <a href="/"> Mahmoud Ashraf </a>
+    </footer>
+  </body>
+
+  </html>

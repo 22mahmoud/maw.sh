@@ -41,7 +41,8 @@ you are using Arch you can install it from [aur](https://aur.archlinux.org/packa
 
 ![screenshot of the terminal showing alacritty ligatures](./alacritty.jpeg)
 
----
+___
+
 
 ## Starship
 
@@ -54,7 +55,8 @@ The screenshot below showing the result of my customized configuration.
 
 ![screenshot of starship prompt](./starship.jpeg)
 
----
+___
+
 
 ## Exa
 
@@ -77,7 +79,8 @@ the result of my `ls` and `ll` commands.
 
 ![screenshot of exa](./exa.jpeg)
 
----
+___
+
 
 ## Bat
 
@@ -94,7 +97,8 @@ fi
 
 ![screenshot of bat](./bat.jpeg)
 
----
+___
+
 
 ## Delta
 
@@ -124,7 +128,8 @@ delta --list-syntax-themes
 
 ![screenshot of delta](./delta.jpeg)
 
----
+___
+
 
 ## Zoxide
 
@@ -150,7 +155,8 @@ just write
 z mah
 ```
 
----
+___
+
 
 ## Ripgrep
 
@@ -173,7 +179,8 @@ rg fast README.md --replace FAST
 
 ![screenshot of ripgrep](./ripgrep.jpeg)
 
----
+___
+
 
 ## Fd
 
@@ -193,7 +200,8 @@ To delete files
 fd -H '^\.DS_Store$' -tf -X rm
 ```
 
----
+___
+
 
 ## bottom
 
@@ -203,7 +211,8 @@ it's a cross-platform system monitor.
 
 ![screenshot of bottom](./bottom.jpeg)
 
----
+___
+
 
 
 ## Tldr
@@ -212,7 +221,8 @@ tldr is a cheatsheets for CLIs, instead of read the whole `man`.
 
 ![screenshot of tldr](./tldr.jpeg)
 
----
+___
+
 
 ## More Tools?
 
