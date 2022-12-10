@@ -1,8 +1,10 @@
-Title:        No More postman just use cURL + vim = ❤
-Date:         Aug 20, 2020  
-Author:       Mahmoud Ashraf  
-Description:  Well documented api and easy to use and share with your team with simple tools cURL + vim + git (optional)  
-Keywords:     api, tooling, curl, vim  
+---
+title-prefix:        No More postman just use cURL + vim = ❤
+date:         Aug 20, 2020  
+author:       Mahmoud Ashraf  
+description:  Well documented api and easy to use and share with your team with simple tools cURL + vim + git (optional)  
+keywords:     api, tooling, curl, vim  
+---
 
 # No More postman just use cURL + vim = ❤
 

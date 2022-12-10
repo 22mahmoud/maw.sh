@@ -3,6 +3,11 @@ local path = require("pandoc.path")
 function Image(img)
 	local src = img.src
 
+	local _, ext = path.split_extension(src)
+	if ext == ".gif" then
+		return img
+	end
+
 	-- Add the 'thumbs/' prefix to the image filename
 	img.src = string.gsub(img.src, "([^/]*%.%w+)$", "thumbs/%1")
 
@@ -17,12 +22,4 @@ function Image(img)
 
 	-- Return the modified image
 	return link
-end
-
-function RawInline(raw)
-	if raw.format == "html" and raw.text:match("^<img") then
-		print(raw.t)
-	end
-
-	return raw
 end
