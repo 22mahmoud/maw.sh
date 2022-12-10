@@ -1,12 +1,16 @@
+---
+title-prefix: Photos
+---
+
 <style>
-  .gallary {
+  .gallary > ul {
     display: flex;
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
   }
 
-  .gallary li {
+  .gallary > ul > li {
     list-style: none;
     height: 20vh;
     flex-grow: 1;
@@ -14,8 +18,14 @@
     margin-right: 10px;
   }
 
-  .gallary li:last-child {
+  .gallary > ul > li:last-child {
     flex-grow: 10;
+  }
+
+  .gallary li p,
+  .gallary li a {
+      width: 100%;
+      height: 100%;
   }
 
   .gallary img {
@@ -26,11 +36,11 @@
   }
 
   @media (max-aspect-ratio: 1/1) and (max-width: 480px) {
-    .gallary {
+    .gallary > ul {
       flex-direction: row;
     }
 
-    .gallary li {
+    .gallary > ul > li {
       height: auto;
       width: 100%;
     }
@@ -45,52 +55,46 @@
 
 # Photos
 
+<div class="gallary">
+
+> 📌 location: Matrouh, Egypt
+> 
+> 📅 date: July, 2021
+
+- ![image](./DSC_0843.jpg)
+- ![image](./DSC_1585_01.jpg)
+- ![image](./DSC_0863.jpg)
+- ![image](./DSC_0926.jpg)
+- ![image](./DSC_1231.jpg)
+- ![image](./DSC_1383.jpg)
+- ![image](./DSC_1578.jpg)
+- ![image](./DSC_1580.jpg)
+- ![image](./DSC_1727.jpg)
+- ![image](./DSC_1764.jpg)
+- ![image](./DSC_1805.jpg)
+
+<br />
+
 ___
 
 > 📌 location: Matrouh, Egypt
 > 
 > 📅 date: July, 2021
 
-<p>
-  <ul class="gallary">
-    <li><img loading=lazy src="DSC_1585_01.jpg" /></li>
-    <li><img loading=lazy src="DSC_0843.jpg" /></li>
-    <li><img loading=lazy src="DSC_0863.jpg" /></li>
-    <li><img loading=lazy src="DSC_0926.jpg" /></li>
-    <li><img loading=lazy src="DSC_1231.jpg" /></li>
-    <li><img loading=lazy src="DSC_1383.jpg" /></li>
-    <li><img loading=lazy src="DSC_1578.jpg" /></li>
-    <li><img loading=lazy src="DSC_1580.jpg" /></li>
-    <li><img loading=lazy src="DSC_1727.jpg" /></li>
-    <li><img loading=lazy src="DSC_1764.jpg" /></li>
-    <li><img loading=lazy src="DSC_1805.jpg" /></li>
-  </ul>
-</p>
+- ![image](DSC_0682.jpg)
+- ![image](DSC_0761_01.jpg)
+- ![image](DSC_0966.jpg)
+- ![image](DSC_1032.jpg)
+- ![image](DSC_1312.jpg)
+
+<br />
 
 ___
-
-
-> 📌 location: Matrouh, Egypt
-> 
-> 📅 date: July, 2021
-
-<p>
-  <ul class="gallary">
-    <li><img loading=lazy src="DSC_1633.jpg" /></li>
-    <li><img loading=lazy src="DSC_0682.jpg" /></li>
-    <li><img loading=lazy src="DSC_0761_01.jpg" /></li>
-    <li><img loading=lazy src="DSC_0966.jpg" /></li>
-    <li><img loading=lazy src="DSC_1032.jpg" /></li>
-    <li><img loading=lazy src="DSC_1312.jpg" /></li>
-  </ul>
-</p>
-___
-
 > 📌 location: Alexandria, Egypt
 > 
 > 📅 date: May 23, 2021
 
-<img width="350px" height="350px" loading=lazy src="me_2021.jpg" />
+![image](me_2021.jpg)
 
 ___
 
@@ -98,7 +102,7 @@ ___
 > 
 > 📅 date: 2020
 
-<img width="350px" height="350px" loading=lazy src="sunset_3.jpg" />
+![image](sunset_3.jpg)
 
 ___
 
@@ -106,16 +110,16 @@ ___
 >
 > 📅 date: 2020
 
-<img width="350px" height="350px" loading=lazy src="sunset_2.jpg" />
-<img width="350px" height="350px" loading=lazy src="kornish_hdr.jpg" />
+- ![image](sunset_2.jpg)
+- ![image](kornish_hdr.jpg)
 
 ___
 
-> Drinking a coffee with my best friend.
+> Drinking a coffee with my friend.
 >
 > 📅 date: 2020
 
-<img width="350px" height="350px" loading=lazy src="cafea_2.jpg" />
+![image](cafea_2.jpg)
 
 ___
 
@@ -123,19 +127,20 @@ ___
 >
 > 📅 date: 2020
 
-<img width="350px" height="350px" loading=lazy src="me_2.jpg" />
-<img width="350px" height="350px" loading=lazy src="me_3.jpg" />
-<img width="350px" height="350px" loading=lazy src="me_4.jpg" />
+- ![image](me_2.jpg)
+- ![image](me_3.jpg)
+- ![image](me_4.jpg)
+
+<br />
 
 ___
-
 > A delicious mocha coffee from '[the Brazilian coffee store](https://www.openstreetmap.org/node/5784657562#map=19/31.19960/29.89960)'
 >
 > 📌 location: Alexandria, Egypt
 > 
 > 📅 date: 2019
 
-<img width="350px" height="350px" loading=lazy src="cafea_1.jpg" />
+![image](cafea_1.jpg)
 
 ___
 
@@ -145,7 +150,7 @@ ___
 > 
 > 📅 date: 2019
 
-<img width="350px" height="350px" loading=lazy src="sunset_1.jpg" />
+![image](sunset_1.jpg)
 
 ___
 
@@ -153,7 +158,7 @@ ___
 > 
 > 📅 date: 2019
 
-<img width="350px" height="350px" loading=lazy src="me_1.jpg" />
+![image](me_1.jpg)
 
 ___
 
@@ -163,7 +168,7 @@ ___
 > 
 > 📅 date: 2019
 
-<img width="350px" height="350px" loading=lazy src="grd_proj_team.jpg" />
+![image](grd_proj_team.jpg)
 
 ___
 
@@ -173,7 +178,7 @@ ___
 > 
 > 📅 date: 2019
 
-<img width="350px" height="350px" loading=lazy src="war2_3enb.jpg" />
+![image](war2_3enb.jpg)
 
 ___
 
@@ -181,7 +186,7 @@ ___
 > 
 > 📅 date: 2019
 
-<img width="350px" height="350px" loading=lazy src="clouds_1.jpg" />
+![image](clouds_1.jpg)
 
 ___
 
@@ -191,7 +196,7 @@ ___
 >
 > 📅 date: 2018
 
-<img width="350px" height="350px" loading=lazy src="table_number.jpg" />
+![image](table_number.jpg)
 
 ___
 
@@ -199,4 +204,5 @@ ___
 > 
 > 📅 date: 2018
 
-<img width="350px" height="350px" loading=lazy src="eajiba_1.jpg" />
+![image](eajiba_1.jpg)
+</div>

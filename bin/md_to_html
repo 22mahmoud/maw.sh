@@ -18,6 +18,7 @@ main() {
     --from markdown \
     --to html5 \
     --data-dir . \
+    --lua-filter img_filter.lua \
     --metadata title="${title:-"Mahmoud Ashraf"}" \
     --metadata description="${description:-"Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt."}" \
     --metadata keywords="${keywords:-"blog,front-ent,javascript,linux"}" \

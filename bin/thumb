@@ -1,15 +1,17 @@
-#!/bin/sh -e
+#!/bin/bash
 
-dir="$1"
-images="$dir/*.jpg"
-thumbs="$dir/thumbs"
+DEST_DIR="dist"
 
-for i in $images; do
-  image_name=$(basename -s .jpg "$i")
+find $DEST_DIR -type f \( -iname \*.jpg -o -iname \*.png -o -iname \*.jpeg \) -print0 \
+  | while IFS= read -r -d '' file; do
+    dir="$(dirname "$file")"
+    file_name="$(basename "$file")"
+    file_output="$(echo "$file_name" | sed 's/\.[^.]*$/.webp/')"
 
-  # only convert the image if the thumbs not exist
-  if [ ! -f "$thumbs/${image_name}.webp" ]; then
-    convert -quality 50 -define webp:extent=50kb "$i" -thumbnail 350x350^ \
-      -gravity center -extent 350x350 "$thumbs/${image_name}.webp"
-  fi
-done
+    if [ ! -f "$dir/thumbs/$file_output" ]; then
+      mkdir -p "$dir"/thumbs
+      printf "start\n"
+      cwebp -resize 640 0 -q 50 "$file" -o "$dir/thumbs/$file_output"
+      printf "end\n"
+    fi
+  done
