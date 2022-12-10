@@ -1,0 +1,44 @@
+#!/bin/sh
+
+SRC_DIR="src"
+
+main() {
+  echo "<?xml version='1.0' encoding='UTF-8' ?>"
+  echo "<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom' xmlns:content='http://purl.org/rss/1.0/modules/content/'>"
+  echo "<channel>"
+  echo '<atom:link href="https://mahmoudashraf.dev/rss.xml" rel="self" type="application/rss+xml" />'
+  echo '<title>Mahmoud Ashraf</title>'
+  echo '<description>Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt.</description>'
+  echo '<link>https://mahmoudashraf.dev/</link>'
+
+  find "$SRC_DIR"/blog -type f -name index.md ! -path "$SRC_DIR/blog/index.md" -print \
+    | while read -r file; do
+      slug="$(basename "$(dirname "$file")")"
+      title="$(grep -E "^title-prefix: (.*)" "$file" | sed -E "s/^title-prefix: (.*)/\1/" | awk '{$1=$1};1')"
+      description="$(grep -E "^description: (.*)" "$file" | sed -E "s/^description: (.*)/\1/" | awk '{$1=$1};1')"
+      date="$(grep -E "^date: (.*)" "$file" | sed -E "s/^date: (.*)/\1/" | awk '{$1=$1};1')"
+      date="$(date -d "$date" '+%a, %d %b %Y %H:%M:%S %z')"
+      html_content="$(pandoc -f markdown -t html "$file")"
+
+      # echo "Title: $title"
+      # echo "Description: $description"
+      # echo "Date: $date"
+      # echo "-------------"
+
+      echo "<item>"
+      echo "<title>$title</title>"
+      echo "<guid>https://mahmoudashraf.dev/blog/$slug</guid>"
+      echo "<link>https://mahmoudashraf.dev/blog/$slug</link>"
+      echo "<pubDate>$date</pubDate>"
+      echo "<description>$description</description>"
+      echo "<content:encoded><![CDATA["
+      echo "$html_content"
+      echo "]]></content:encoded>"
+      echo "</item>"
+    done
+
+  echo '</channel>'
+  echo '</rss>'
+}
+
+main > "$SRC_DIR/rss.xml"
