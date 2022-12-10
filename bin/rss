@@ -20,11 +20,6 @@ main() {
       date="$(date -d "$date" '+%a, %d %b %Y %H:%M:%S %z')"
       html_content="$(pandoc -f markdown -t html "$file")"
 
-      # echo "Title: $title"
-      # echo "Description: $description"
-      # echo "Date: $date"
-      # echo "-------------"
-
       echo "<item>"
       echo "<title>$title</title>"
       echo "<guid>https://mahmoudashraf.dev/blog/$slug</guid>"
