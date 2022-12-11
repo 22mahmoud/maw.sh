@@ -5,16 +5,28 @@ MD_FILES := $(shell find $(SOURCE_DIR) -name "*.md")
 HTML_FILES := $(patsubst $(SOURCE_DIR)/%.md,$(DEST_DIR)/%.html,$(MD_FILES))
 MD_TO_HTML := $(BIN_DIR)/md_to_html
 THUMB := $(BIN_DIR)/thumb
+RSS := $(BIN_DIR)/rss
+RSS := $(BIN_DIR)/sitemap
 
-all: html static image
+all: html static image rss sitemap
 
 html: $(HTML_FILES)
+
+rss: $(MD_FILES)
+
+sitemap: $(MD_FILES)
 
 dist/%.html: src/%.md templates/*
 	@$(MD_TO_HTML) "$<" "$@"
 
 static:
 	cd $(SOURCE_DIR) && find . -type f ! -name "*.md" -print0 | cpio -pdvm0 ../$(DEST_DIR)
+
+$(DEST_DIR)/rss.xml: $(MD_FILES)
+	$(RSS)
+
+$(DEST_DIR)/sitemap.xml: $(MD_FILES)
+	$(SITEMAP)
 
 image:
 	@$(THUMB)

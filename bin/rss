@@ -1,6 +1,8 @@
 #!/bin/sh
 
 SRC_DIR="src"
+DEST_DIR=dist
+RSS="$DEST_DIR"/rss.xml
 
 main() {
   echo "<?xml version='1.0' encoding='UTF-8' ?>"
@@ -36,4 +38,4 @@ main() {
   echo '</rss>'
 }
 
-main > "$SRC_DIR/rss.xml"
+main > "$RSS"
