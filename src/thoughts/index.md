@@ -1,3 +1,8 @@
+---
+title-prefix: Thoughts
+description: Mahmoud Ashraf's microblog space on the internet
+---
+
 <style>
 img {
     object-fit: contain;

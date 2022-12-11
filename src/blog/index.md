@@ -1,3 +1,7 @@
+---
+title-prefix: Blog
+---
+
 # Blog
 
 _Subscribe via [RSS](https://mahmoudashraf.dev/rss.xml)_

@@ -1,3 +1,7 @@
+---
+title-prefix: Light
+---
+
 # Light Mode
 
 This site is only available in dark color scheme. 

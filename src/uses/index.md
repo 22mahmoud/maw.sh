@@ -1,3 +1,8 @@
+---
+title-prefix: Uses
+description: Mahmoud Ashraf's list of software/hardware for daily using
+---
+
 # Uses
 
 ## Software

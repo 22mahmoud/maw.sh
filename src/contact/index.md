@@ -1,3 +1,7 @@
+---
+title-prefix: Contact
+---
+
 # Contact
 
 ## Email
