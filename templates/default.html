@@ -1,33 +1,41 @@
 <!DOCTYPE html>
-<html$if(lang)$ lang="$lang$" $endif$$if(dir)$ dir="$dir$" $endif$>
-
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+    />
     <meta name="author" content="Mahmoud Ashraf" />
     <link rel="alternate" type="application/atom+xml" href="/rss.xml" />
     <link href="/favicon.ico" rel="shortcut icon" />
-    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
-    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
 
-    <link rel="webmention" href="https://webmention.io/mahmoudashraf.dev/webmention" />
-    <link rel="pingback" href="https://webmention.io/mahmoudashraf.dev/xmlrpc" />
+    <link
+      rel="webmention"
+      href="https://webmention.io/mahmoudashraf.dev/webmention"
+    />
+    <link
+      rel="pingback"
+      href="https://webmention.io/mahmoudashraf.dev/xmlrpc"
+    />
 
     <link rel="me" href="https://github.com/22mahmoud" />
     <link rel="me" href="https://fosstodon.org/web/@22mahmoud" />
     <link rel="me" href="https://reddit.com/user/22mahmoud_" />
-    <link rel="me" href="https://pixelfed.social/i/web/profile/201636586306277376" />
+    <link
+      rel="me"
+      href="https://pixelfed.social/i/web/profile/201636586306277376"
+    />
 
     <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
 
     $if(description)$
     <meta name="description" content="$description$" />
-    $endif$
-    $if(keywords)$
+    $endif$ $if(keywords)$
     <meta name="keywords" content="$keywords$" />
-    $endif$
-    $if(author)$
+    $endif$ $if(author)$
     <meta name="author" content="$author$" />
     $endif$
 
@@ -38,8 +46,8 @@
         --sans: 1em/1.6 system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
           Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue,
           Fira Sans, sans-serif;
-        --mono: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier,
-          'Courier New', monospace;
+        --mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier,
+          "Courier New", monospace;
 
         /* colors */
         --c1: #080808;
@@ -261,14 +269,12 @@
         border-radius: 99999999px;
       }
 
-      .theme-toggle>a:hover {
+      .theme-toggle > a:hover {
         text-decoration: none;
       }
     </style>
 
-    $for(header-includes)$
-    $header-includes$
-    $endfor$
+    $for(header-includes)$ $header-includes$ $endfor$
   </head>
 
   <body>
@@ -293,18 +299,16 @@
       </nav>
     </header>
 
-    $for(include-before)$
-    $include-before$
-    $endfor$
+    $for(include-before)$ $include-before$ $endfor$
 
     <main>$body$</main>
 
-    <footer>
-      © <a href="/"> Mahmoud Ashraf </a>
-    </footer>
+    <footer>© <a href="/"> Mahmoud Ashraf </a></footer>
 
-    <script data-goatcounter="https://stats.mahmoudashraf.dev/count" async
-      src="//stats.mahmoudashraf.dev/count.js"></script>
+    <script
+      data-goatcounter="https://stats.mahmoudashraf.dev/count"
+      async
+      src="//stats.mahmoudashraf.dev/count.js"
+    ></script>
   </body>
-
-  </html>
+</html>
