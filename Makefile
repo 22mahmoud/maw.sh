@@ -6,15 +6,15 @@ HTML_FILES := $(patsubst $(SOURCE_DIR)/%.md,$(DEST_DIR)/%.html,$(MD_FILES))
 MD_TO_HTML := $(BIN_DIR)/md_to_html
 THUMB := $(BIN_DIR)/thumb
 RSS := $(BIN_DIR)/rss
-RSS := $(BIN_DIR)/sitemap
+SITEMAP := $(BIN_DIR)/sitemap
 
 all: html static image rss sitemap
 
 html: $(HTML_FILES)
 
-rss: $(MD_FILES)
+rss: $(DEST_DIR)/rss.xml
 
-sitemap: $(MD_FILES)
+sitemap: $(DEST_DIR)/sitemap.xml
 
 dist/%.html: src/%.md templates/*
 	@$(MD_TO_HTML) "$<" "$@"
