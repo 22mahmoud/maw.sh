@@ -16,16 +16,16 @@ rss: $(DEST_DIR)/rss.xml
 
 sitemap: $(DEST_DIR)/sitemap.xml
 
-dist/%.html: src/%.md templates/*
+dist/%.html: src/%.md templates/* $(MD_TO_HTML)
 	@$(MD_TO_HTML) "$<" "$@"
 
 static:
 	cd $(SOURCE_DIR) && find . -type f ! -name "*.md" -print0 | cpio -pdvm0 ../$(DEST_DIR)
 
-$(DEST_DIR)/rss.xml: $(MD_FILES)
+$(DEST_DIR)/rss.xml: $(MD_FILES) $(RSS)
 	$(RSS)
 
-$(DEST_DIR)/sitemap.xml: $(MD_FILES)
+$(DEST_DIR)/sitemap.xml: $(MD_FILES) $(SITEMAP)
 	$(SITEMAP)
 
 image:
