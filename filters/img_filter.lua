@@ -2,6 +2,7 @@ local path = require("pandoc.path")
 
 function Image(img)
 	local src = img.src
+	img.attributes.loading = "lazy"
 
 	local _, ext = path.split_extension(src)
 	if ext == ".gif" then
