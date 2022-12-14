@@ -6,10 +6,10 @@ main() {
 
   dirname "$@" | xargs mkdir -p
 
-  title=$(grep -E "^title: (.*)" "$input" | sed -E "s/^title: (.*)/\1/")
-  description=$(grep -E "^description: (.*)" "$input" | sed -E "s/^description: (.*)/\1/")
-  author=$(grep -E "^author: (.*)" "$input" | sed -E "s/^author: (.*)/\1/")
-  keywords=$(grep -E "^keywords: (.*)" "$input" | sed -E "s/^keywords: (.*)/\1/")
+  title="$(grep -E "^title: (.*)" "$input" | sed -E "s/^title: (.*)/\1/")"
+  description="$(grep -E "^description: (.*)" "$input" | sed -E "s/^description: (.*)/\1/")"
+  author="$(grep -E "^author: (.*)" "$input" | sed -E "s/^author: (.*)/\1/")"
+  keywords="$(grep -E "^keywords: (.*)" "$input" | sed -E "s/^keywords: (.*)/\1/")"
 
   pandoc \
     --standalone \
