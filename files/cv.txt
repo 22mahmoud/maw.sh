@@ -23,9 +23,16 @@
  Alexandria, Egypt
  Jan 2022 - present
  - Tech: typescript, next.js, tailwindcss, apollo graphql
- - build a custom ecommerce website for shop.lynks.com
  - writing unit/integration-tests with jest & testing-library
  - writing e2e testing using playwright
+ - build a custom e-commerce website for shop.lynks.com
+ - increase website performance by 30%, by auditing the application and eliminate
+   the huge packages, and replace them with more light weight alternatives, and
+   eliminate CLS, reduce the bundle size by using dynamic imports, and on
+   interactive imports to only fetch javascript on demand.
+ - build an architecture for most web apps using monorepo, so we get benefits of
+   using same custom UI, share typescript types, and utils. 
+ - with help of turborepo we managed to go with faster CI/CD using caching.
 
  Front-End developer
  Swvl
