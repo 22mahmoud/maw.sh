@@ -1,35 +1,37 @@
-SOURCE_DIR = src
-DEST_DIR = dist
-BIN_DIR = bin
-MD_FILES := $(shell find $(SOURCE_DIR) -name "*.md")
-HTML_FILES := $(patsubst $(SOURCE_DIR)/%.md,$(DEST_DIR)/%.html,$(MD_FILES))
-MD_TO_HTML := $(BIN_DIR)/md_to_html
-THUMB := $(BIN_DIR)/thumb
-RSS := $(BIN_DIR)/rss
-SITEMAP := $(BIN_DIR)/sitemap
+source = src
+output = dist
+bin = bin
 
-all: html static image rss sitemap
+md_files := $(shell find $(source) -name "*.md")
+html_files := $(patsubst $(source)/%.md,$(output)/%.html,$(md_files))
 
-html: $(HTML_FILES)
+thumb := $(bin)/thumb
+rss := $(bin)/rss
+sitemap := $(bin)/sitemap
 
-rss: $(DEST_DIR)/rss.xml
+all: html static image dist/sitemap.xml dist/rss.xml
 
-sitemap: $(DEST_DIR)/sitemap.xml
+html: $(html_files)
+
+dist/rss.xml: $(md_files) $(rss)
+	@$(rss)
+
+dist/sitemap.xml: $(md_files) $(sitemap)
+	@$(sitemap)
 
 dist/%.html: src/%.md templates/* $(MD_TO_HTML)
-	@$(MD_TO_HTML) "$<" "$@"
+	@mkdir -p $(@D)
+	@pandoc -d pandoc.yaml $< -o $@
+	@echo "[html generated]:" $@
 
 static:
-	cd $(SOURCE_DIR) && find . -type f ! -name "*.md" -print0 | cpio -pdvm0 ../$(DEST_DIR)
-
-$(DEST_DIR)/rss.xml: $(MD_FILES) $(RSS)
-	$(RSS)
-
-$(DEST_DIR)/sitemap.xml: $(MD_FILES) $(SITEMAP)
-	$(SITEMAP)
+	cd $(source) && find . -type f ! -name "*.md" -print0 | cpio -pdvm0 ../$(output)
 
 image:
-	@$(THUMB)
+	@$(thumb)
 
 clean: 
-	rm -rf $(DEST_DIR)
+	@rm -vrf $(output)
+
+
+.PHONY: all html static image clean
