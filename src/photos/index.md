@@ -58,7 +58,7 @@ title-prefix: Photos
 <div class="gallary">
 
 > 📌 location: Matrouh, Egypt
-> 
+>
 > 📅 date: July, 2021
 
 - ![image](./DSC_0843.jpg)
@@ -75,10 +75,10 @@ title-prefix: Photos
 
 <br />
 
-___
+---
 
 > 📌 location: Matrouh, Egypt
-> 
+>
 > 📅 date: July, 2021
 
 - ![image](DSC_0682.jpg)
@@ -89,22 +89,23 @@ ___
 
 <br />
 
-___
+---
+
 > 📌 location: Alexandria, Egypt
-> 
+>
 > 📅 date: May 23, 2021
 
 ![image](me_2021.jpg)
 
-___
+---
 
 > 📌 location: Alexandria, Egypt
-> 
+>
 > 📅 date: 2020
 
 ![image](sunset_3.jpg)
 
-___
+---
 
 > 📌 location: Alexandria, Egypt
 >
@@ -113,7 +114,7 @@ ___
 - ![image](sunset_2.jpg)
 - ![image](kornish_hdr.jpg)
 
-___
+---
 
 > Drinking a coffee with my friend.
 >
@@ -121,7 +122,7 @@ ___
 
 ![image](cafea_2.jpg)
 
-___
+---
 
 > I posted my photos in [/r/redditgetsdrawn](https://old.reddit.com/r/redditgetsdrawn/comments/el4ayg/this_is_me/)
 >
@@ -133,62 +134,63 @@ ___
 
 <br />
 
-___
+---
+
 > A delicious mocha coffee from '[the Brazilian coffee store](https://www.openstreetmap.org/node/5784657562#map=19/31.19960/29.89960)'
 >
 > 📌 location: Alexandria, Egypt
-> 
+>
 > 📅 date: 2019
 
 ![image](cafea_1.jpg)
 
-___
+---
 
 > Sunset view from my window.
 >
 > 📌 location: Alexandria, Egypt
-> 
+>
 > 📅 date: 2019
 
 ![image](sunset_1.jpg)
 
-___
+---
 
 > 📌 location: Matruh, Egypt
-> 
+>
 > 📅 date: 2019
 
 ![image](me_1.jpg)
 
-___
+---
 
 > Graduation's project team
 >
 > 📌 location: Alexandria, Egypt
-> 
+>
 > 📅 date: 2019
 
 ![image](grd_proj_team.jpg)
 
-___
+---
 
 > yummy 😍
-> 
+>
 > 📌 location: Alexandria, Egypt
-> 
+>
 > 📅 date: 2019
 
 ![image](war2_3enb.jpg)
 
-___
+---
 
 > 📌 location: Alexandria, Egypt
-> 
+>
 > 📅 date: 2019
 
 ![image](clouds_1.jpg)
 
-___
+---
 
 > My favourite number.
 
@@ -198,11 +200,12 @@ ___
 
 ![image](table_number.jpg)
 
-___
+---
 
 > 📌 location: Matruh, Egypt
-> 
+>
 > 📅 date: 2018
 
 ![image](eajiba_1.jpg)
+
 </div>

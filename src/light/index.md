@@ -4,7 +4,7 @@ title-prefix: Light
 
 # Light Mode
 
-This site is only available in dark color scheme. 
+This site is only available in dark color scheme.
 
 If you prefer the light mode or any color scheme,
 You can inject your custom css by changing the `css variables`
@@ -17,7 +17,7 @@ install [Stylus](https://github.com/openstyles/stylus/).
 - because I love the dark theme.
 - and I don't want load javascript in my site.
 - I don't want use css solution `prefers-color-scheme` without toggle
-functionality which depends on javascript.
+  functionality which depends on javascript.
 
 ## Example:
 
@@ -30,7 +30,7 @@ functionality which depends on javascript.
   --c2: #080808; /* forground */
   --c3: #185488; /* link      */
   --c4: #3c3836; /* code tag forground */
-  --c5: #fbf1c7; /* code tag background */ 
+  --c5: #fbf1c7; /* code tag background */
 }
 
 hr {
@@ -40,5 +40,4 @@ hr {
 blockquote {
   border-color: var(--c4);
 }
-
 ```

@@ -1,17 +1,18 @@
 ---
 title-prefix: Adevnt of Code 2020
-date:         Dec 04, 2020  
-author:       Mahmoud Ashraf  
-description:  advent of code solutions by @22mahmoud
-keywords:     aoc, programming
+date: Dec 04, 2020
+author: Mahmoud Ashraf
+description: advent of code solutions by @22mahmoud
+keywords: aoc, programming
 ---
 
 # Advent of Code 2020
 
-This blog will be updated every day to show you my solutions 
+This blog will be updated every day to show you my solutions
 for [aoc-2020](https://adventofcode.com/).
 
 ## TOC
+
 - [day 01](#Day 01) _⭐⭐_
 - [day 02](#Day 02) _⭐⭐_
 - day 03
@@ -41,22 +42,22 @@ for [aoc-2020](https://adventofcode.com/).
 ---
 
 ## Day 01
+
 [[part 01](#part 01 ⭐) - [part 02](#part 02 ⭐)]
 
 ### part 01 ⭐
 
-The first part of day one is a two-sum problem needs to get the 
+The first part of day one is a two-sum problem needs to get the
 multiply of two entries that sum to `2020`
 
-The naive solution you can do two loops and make a condition whenever 
+The naive solution you can do two loops and make a condition whenever
 the two numbers sum to `2020` break the loop and return the value.
 
 ```javascript
 function p1(input) {
   for (let i = 0; i < input.length; i++)
     for (let j = 0; j < input.length; j++)
-      if (input[i] + input[j] === 2020) 
-        return input[i] * input[j];
+      if (input[i] + input[j] === 2020) return input[i] * input[j];
 }
 ```
 
@@ -69,20 +70,19 @@ function p1(input) {
   const map = new Map();
   for (let i = 0; i < input.length; i++) {
     const complement = 2020 - input[i];
-    if (map.has(complement))
-      return input[map.get(complement)] * input[i]
+    if (map.has(complement)) return input[map.get(complement)] * input[i];
 
     map.set(input[i], i);
   }
 }
 ```
 
-this solution will take `O(n)` time complexity by traverse the list containing 
+this solution will take `O(n)` time complexity by traverse the list containing
 `n` element only once.
 
 ### part 02 ⭐
 
-The difference in the part two that we need to get the multiply for 
+The difference in the part two that we need to get the multiply for
 `three` numbers that sum to `2020`
 
 We can use the same naive solution by using brute force with three loops.
@@ -100,12 +100,13 @@ function p2(input) {
 ---
 
 ## Day 02
+
 [[part 01](#part 01 ⭐-2) - [part 02](#part 02 ⭐-2)]
 
 ### part 01 ⭐
 
-We have a list of passwords with validation rules, 
-So we should validate each password and submit the 
+We have a list of passwords with validation rules,
+So we should validate each password and submit the
 total number of valid passwords.
 
 ```
@@ -124,8 +125,8 @@ const getPasswordsList = () =>
     .map((i) => i.split(/[-,:,\s]+/));
 ```
 
-We read the `input.txt` file and convert it into an array by split each line using 
-`.split(\n)` then we will use regex to extract min, max, target, and password 
+We read the `input.txt` file and convert it into an array by split each line using
+`.split(\n)` then we will use regex to extract min, max, target, and password
 on each line by using multi separator: `-`, `:`, and `\s` for space.
 
 If you interred to learn more about split with regex I highly recommend to watch

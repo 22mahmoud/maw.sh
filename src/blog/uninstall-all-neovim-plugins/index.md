@@ -1,9 +1,9 @@
 ---
-slug:         uninstall-all-neovim-plugins
+slug: uninstall-all-neovim-plugins
 title-prefix: Uninstall all neovim plugins
-date:         Dec 02, 2022
-description:  This Article about using neovim on a Unix way.
-keywords:     linux, neovim, vim
+date: Dec 02, 2022
+description: This Article about using neovim on a Unix way.
+keywords: linux, neovim, vim
 ---
 
 # Uninstall all neovim plugins
@@ -56,7 +56,7 @@ copy-paste code into my neovim config and start tweaking it.
 
 #### - search/browse files:
 
-for the codebase navigation I'll use the vim `find`, `buffers` commands but 
+for the codebase navigation I'll use the vim `find`, `buffers` commands but
 instead of using `vim.opt.path:append "*"` which leads to hang the command on
 projects that's have for example `node_module` I will use the local `.nvimrc` on
 each project to extend my config
@@ -92,6 +92,7 @@ if vim.fn.executable 'rg' == 1 then
   o.grepformat = { '%f:%l:%c:%m' }
 end
 ```
+
 and the nice about grep that the result now on your quickfix, so you can easily
 navigate between them, and do any operation that you want.
 
@@ -129,7 +130,7 @@ category.
 ### - statusline/winbar
 
 For this one I need it very simple so I write it by myself after I submit this
-[post](https://old.reddit.com/r/neovim/comments/q3jur8/please_share_your_statusline_config_lua_no/) 
+[post](https://old.reddit.com/r/neovim/comments/q3jur8/please_share_your_statusline_config_lua_no/)
 on `/r/neovim` sub-reddit and get a lot of inspiration.
 
 ### - Git
@@ -162,12 +163,13 @@ git submodule init
 mkdir site/pack/plugins/opt/
 git submodule add --depth 1 https://github.com/neovim/nvim-lspconfig site/pack/plugins/opt/nvim-lspconfig
 ```
+
 and I wrote a wrapper on `lua` to make the process easy and similar to the
 package managers [check it out](https://github.com/22mahmoud/nvim/blob/master/lua/ma/plugins.lua)
 
 ### - Theming
 
-I just use [nvim-base16](https://github.com/RRethy/nvim-base16) plugin to fit 
+I just use [nvim-base16](https://github.com/RRethy/nvim-base16) plugin to fit
 my base16 theme system.
 
 ## conclusion

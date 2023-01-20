@@ -8,7 +8,6 @@ Welecome to my space on the internet.
 - sharing posts/photos instead of using social media.
 - [more?](/about)
 
-
 ## recent blogs
 
 - [Uninstall all neovim plugins](/blog/uninstall-all-neovim-plugins)

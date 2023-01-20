@@ -6,7 +6,6 @@
       name="viewport"
       content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
     />
-    <meta name="author" content="Mahmoud Ashraf" />
     <link rel="alternate" type="application/atom+xml" href="/rss.xml" />
     <link href="/favicon.ico" rel="shortcut icon" />
     <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
@@ -29,15 +28,28 @@
       href="https://pixelfed.social/i/web/profile/201636586306277376"
     />
 
+    $for(author-meta)$
+      <meta name="author" content="$author-meta$" />
+    $endfor$ 
+
+    $if(date-meta)$
+      <meta name="dcterms.date" content="$date-meta$" />
+    $endif$ 
+
+    $if(keywords)$
+      <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+    $endif$ 
+
+    $if(description-meta)$
+      <meta name="description" content="$description-meta$" />
+    $endif$
+
     <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
 
-    $if(description)$
-    <meta name="description" content="$description$" />
-    $endif$ $if(keywords)$
-    <meta name="keywords" content="$keywords$" />
-    $endif$ $if(author)$
-    <meta name="author" content="$author$" />
-    $endif$
+    $for(css)$
+      <link rel="stylesheet" href="$css$" />
+    $endfor$ 
+
 
     <style>
       /* variables */
@@ -283,25 +295,29 @@
       <nav class="nav">
         <ul>
           <li><a href="/about/"> /About </a></li>
-          <!-- <li><a href="/now">  /Now </a></li> -->
-          <!-- <li><a href="/uses">  /Uses </a></li> -->
           <li><a href="/blog/"> /Blog </a></li>
           <li><a href="/thoughts/"> /Thoughts </a></li>
           <li><a href="/photos/"> /Photos </a></li>
           <li><a href="/uses/"> /Uses </a></li>
           <li><a href="/contact/"> /Contact </a></li>
           <li><a href="/cv.txt"> /cv </a></li>
-
           <li><a href="/rss.xml"> /rss </a></li>
-
           <li class="theme-toggle"><a href="/light/"> ☀ light mode </a></li>
         </ul>
       </nav>
     </header>
 
-    $for(include-before)$ $include-before$ $endfor$
+    <main>
+      $for(include-before)$ $include-before$ $endfor$
 
-    <main>$body$</main>
+      $if(date)$ 
+        <time datetime="$date$">$date$</time>
+      $endif$
+
+      $body$ 
+
+      $for(include-after)$ $include-after$ $endfor$
+    </main>
 
     <footer>© <a href="/"> Mahmoud Ashraf </a></footer>
 

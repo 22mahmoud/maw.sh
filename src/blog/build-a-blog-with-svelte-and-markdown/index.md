@@ -1,10 +1,10 @@
 ---
 slug: 'build-a-blog-with-svelte-and-markdown'
-title-prefix: Building a blog with Svelte, Sapper, and Markdown  
-date:         Mar 03, 2020  
-author:       Mahmoud Ashraf  
-description:  In this article I will show how you can start bloging with svelte and sapper using markdown files  
-keywords:     javascript, svelte, sapper  
+title-prefix: Building a blog with Svelte, Sapper, and Markdown
+date: Mar 03, 2020
+author: Mahmoud Ashraf
+description: In this article I will show how you can start bloging with svelte and sapper using markdown files
+keywords: javascript, svelte, sapper
 ---
 
 # Building a blog with Svelte, Sapper, and Markdown
@@ -74,38 +74,38 @@ Server routes are modules written in `.js` files that export HTTP functions.
 For example `get` endpoint to retrieve the blog details:
 
 ```javascript
-  // [slug].json.js
+// [slug].json.js
 
-  import posts from './_posts.js';
-  const lookup = new Map();
+import posts from './_posts.js';
+const lookup = new Map();
 
-  posts.forEach(post => {
-    lookup.set(post.slug, JSON.stringify(post));
-  });
+posts.forEach((post) => {
+  lookup.set(post.slug, JSON.stringify(post));
+});
 
-  export function get(req, res, next) {
-    // the `slug` parameter is available because
-    // this file is called [slug].json.js
-    const { slug } = req.params;
+export function get(req, res, next) {
+  // the `slug` parameter is available because
+  // this file is called [slug].json.js
+  const { slug } = req.params;
 
-    if (lookup.has(slug)) {
-      res.writeHead(200, {
-        'Content-Type': 'application/json',
-      });
+  if (lookup.has(slug)) {
+    res.writeHead(200, {
+      'Content-Type': 'application/json',
+    });
 
-      res.end(lookup.get(slug));
-    } else {
-      res.writeHead(404, {
-        'Content-Type': 'application/json',
-      });
+    res.end(lookup.get(slug));
+  } else {
+    res.writeHead(404, {
+      'Content-Type': 'application/json',
+    });
 
-      res.end(
-        JSON.stringify({
-          message: `Not found`,
-        })
-      );
-    }
+    res.end(
+      JSON.stringify({
+        message: `Not found`,
+      }),
+    );
   }
+}
 ```
 
 Create a `content` directory on the root of your project.
@@ -116,8 +116,10 @@ inside this directory, we going to create a file called `sample-post.md` file.
 // remove comments in case you copy and paste this file for test to make it work
 
 ---
+
 slug: 'sample-blog'
 title: 'Sample blog.'
+
 ---
 
 # Sample title
@@ -125,38 +127,36 @@ title: 'Sample blog.'
 this is a sample blog post.
 
 // add extra \` to make it work(this blog use same method so tripple \` would be shown as a code here)
-``javascript
+`javascript
   console.log("test code highlight")
-``
-
+`
 ```
 
 `slug` has to be the same as the file name, So we can easily read the file with the slug.
 You can add more than `title`, and `slug`, For Example, Date, keywords or whatever you need to add.
 
-
 To list all blogs on `/blog` route open `src/routes/blog/index.json.js`
 
 ```javascript
-  // src/routes/blog/index.json.js
+// src/routes/blog/index.json.js
 
-  import fs from "fs";
-  import path from "path";
-  import grayMatter from "gray-matter";
+import fs from 'fs';
+import path from 'path';
+import grayMatter from 'gray-matter';
 
-  const getAllPosts = () =>
-    fs.readdirSync("content").map(fileName => {
-      const post = fs.readFileSync(path.resolve("content", fileName), "utf-8");
-      return grayMatter(post).data;
-    });
+const getAllPosts = () =>
+  fs.readdirSync('content').map((fileName) => {
+    const post = fs.readFileSync(path.resolve('content', fileName), 'utf-8');
+    return grayMatter(post).data;
+  });
 
-  export function get(req, res) {
-    res.writeHead(200, {
-      "Content-Type": "application/json"
-    });
-    const posts = getAllPosts();
-    res.end(JSON.stringify(posts));
-  }
+export function get(req, res) {
+  res.writeHead(200, {
+    'Content-Type': 'application/json',
+  });
+  const posts = getAllPosts();
+  res.end(JSON.stringify(posts));
+}
 ```
 
 You need to install an extra package called `gray-matter` that helps you parse the front matter data `title`, and `slug` from
@@ -227,6 +227,7 @@ Now we need to handle the post route. open `src/routes/blog/[slug].json.js`
 ```
 
 Two new packages we need to install
+
 - marked: help us to convert the markdown file into HTML.
 - highlight.js: add highlights to the code blocks.
 
@@ -237,19 +238,15 @@ Two new packages we need to install
 In `src/client.js` we import Github styles for highlight.js.
 
 ```javascript
-  // src/client.js
-  // ...
-  import "highlight.js/styles/github.css";
-  // ...
+// src/client.js
+// ...
+import 'highlight.js/styles/github.css';
+// ...
 ```
 
 ![screenshot of the final result showing a sample blog post](./bg3.jpeg)
 
-## conclusion 
+## conclusion
 
 You now ready to go and add more styles for your website and customize the blog elements styles.
 to go live using [Netlify](http://netlify.com/), [Github Page](https://pages.github.com/) or any service.
-
-
-
-

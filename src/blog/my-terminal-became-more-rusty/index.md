@@ -1,9 +1,9 @@
 ---
-title-prefix:        My terminal became more Rusty 🦀  
-date:         Aug 21, 2020  
-author:       Mahmoud Ashraf  
-description:  CLI tools written in rust make my terminal fast and productive  
-keywords:     rust, cli, linux, terminal  
+title-prefix: My terminal became more Rusty 🦀
+date: Aug 21, 2020
+author: Mahmoud Ashraf
+description: CLI tools written in rust make my terminal fast and productive
+keywords: rust, cli, linux, terminal
 ---
 
 # My terminal became more Rusty 🦀
@@ -11,13 +11,14 @@ keywords:     rust, cli, linux, terminal
 ![big crap attack the city](./cover.jpeg)
 
 As a Software-Engineer I spent most of the time inside my terminal, So
-I need for that a fast terminal with  fast tools to speed up my productivity.
+I need for that a fast terminal with fast tools to speed up my productivity.
 
 The tools written in rust help me to achieve that. let's see in this article
 those tools.
 
 > ## tl;dr
-> - [alacritty](https://github.com/alacritty/alacritty)  A cross-platform, GPU-accelerated terminal emulator
+>
+> - [alacritty](https://github.com/alacritty/alacritty) A cross-platform, GPU-accelerated terminal emulator
 > - [starship](https://github.com/starship/starship) 🌌 The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 > - [exa](https://github.com/ogham/exa) A modern version of ‘ls’.
 > - [bat](https://github.com/sharkdp/bat) A cat(1) clone with wings.
@@ -32,19 +33,18 @@ those tools.
 
 ## Alacritty
 
-Let's start our list with alacritty terminal is one of the fastest terminals 
+Let's start our list with alacritty terminal is one of the fastest terminals
 because of using GPU for rendering, and it is a cross-platform terminal.
 
 You can customize your own configuration like color scheme, fonts, opacity, and key mapping.
 
-Alacritty doesn't come with ligature support but you can use 
-this [fork](https://github.com/zenixls2/alacritty/tree/ligature). or if 
+Alacritty doesn't come with ligature support but you can use
+this [fork](https://github.com/zenixls2/alacritty/tree/ligature). or if
 you are using Arch you can install it from [aur](https://aur.archlinux.org/packages/alacritty-ligatures/)
 
 ![screenshot of the terminal showing alacritty ligatures](./alacritty.jpeg)
 
-___
-
+---
 
 ## Starship
 
@@ -57,8 +57,7 @@ The screenshot below showing the result of my customized configuration.
 
 ![screenshot of starship prompt](./starship.jpeg)
 
-___
-
+---
 
 ## Exa
 
@@ -81,8 +80,7 @@ the result of my `ls` and `ll` commands.
 
 ![screenshot of exa](./exa.jpeg)
 
-___
-
+---
 
 ## Bat
 
@@ -99,8 +97,7 @@ fi
 
 ![screenshot of bat](./bat.jpeg)
 
-___
-
+---
 
 ## Delta
 
@@ -121,8 +118,8 @@ to make delta works in your `.gitconfig` file add:
   syntax-theme = Nord
 ```
 
-we set `delta` as the default pager for git commands output and enable side-by-side 
-feature and set a theme for Nord, You can choose your preferred theme  run and choose one.
+we set `delta` as the default pager for git commands output and enable side-by-side
+feature and set a theme for Nord, You can choose your preferred theme run and choose one.
 
 ```bash
 delta --list-syntax-themes
@@ -130,8 +127,7 @@ delta --list-syntax-themes
 
 ![screenshot of delta](./delta.jpeg)
 
-___
-
+---
 
 ## Zoxide
 
@@ -144,25 +140,24 @@ I will write
 cd ~/projects/mahmoudashraf.dev
 ```
 
-instead I will write 
+instead I will write
 
 ```bash
 z ~/projects/mahmoudashraf.dev
 ```
 
 just to the first time and if I wanna navigate again to this directory from anywhere
-just write 
+just write
 
 ```bash
 z mah
 ```
 
-___
-
+---
 
 ## Ripgrep
 
-It is a  cross-platform command line searches your directory for a regex pattern. 
+It is a cross-platform command line searches your directory for a regex pattern.
 
 I recommend you read this article [ripgrep is faster than {grep, ag, git grep, ucg, pt, sift}
 ](https://blog.burntsushi.net/ripgrep/).
@@ -181,8 +176,7 @@ rg fast README.md --replace FAST
 
 ![screenshot of ripgrep](./ripgrep.jpeg)
 
-___
-
+---
 
 ## Fd
 
@@ -202,20 +196,17 @@ To delete files
 fd -H '^\.DS_Store$' -tf -X rm
 ```
 
-___
-
+---
 
 ## bottom
 
 In this time not `top` 😀 it is `bottom`
 
-it's a cross-platform system monitor. 
+it's a cross-platform system monitor.
 
 ![screenshot of bottom](./bottom.jpeg)
 
-___
-
-
+---
 
 ## Tldr
 
@@ -223,17 +214,12 @@ tldr is a cheatsheets for CLIs, instead of read the whole `man`.
 
 ![screenshot of tldr](./tldr.jpeg)
 
-___
-
+---
 
 ## More Tools?
 
 - for who want lightweight alternative for spotify client you can use `spotify-tui`.
-- also if you prefer an UI interface  for git check `gitui`.
+- also if you prefer an UI interface for git check `gitui`.
 
-and there is a ton of CLIs and tools written in rust you can check 
+and there is a ton of CLIs and tools written in rust you can check
 [lib.rs/command-line-utilities](https://lib.rs/command-line-utilities)
-
-
-
-
