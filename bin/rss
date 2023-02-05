@@ -17,6 +17,10 @@ main() {
     | while read -r file; do
       slug="$(basename "$(dirname "$file")")"
       title="$(grep -E "^title-prefix: (.*)" "$file" | sed -E "s/^title-prefix: (.*)/\1/" | awk '{$1=$1};1')"
+      if [ "$(echo "$title" | awk '{print $1}')" = "(draft)" ]; then
+        continue
+      fi
+
       description="$(grep -E "^description: (.*)" "$file" | sed -E "s/^description: (.*)/\1/" | awk '{$1=$1};1')"
       date="$(grep -E "^date: (.*)" "$file" | sed -E "s/^date: (.*)/\1/" | awk '{$1=$1};1')"
       date="$(date -d "$date" '+%a, %d %b %Y %H:%M:%S %z')"
@@ -38,4 +42,4 @@ main() {
   echo '</rss>'
 }
 
-main > "$RSS"
+main >"$RSS"

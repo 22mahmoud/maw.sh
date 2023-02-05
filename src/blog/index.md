@@ -6,6 +6,10 @@ title-prefix: Blog
 
 _Subscribe via [RSS](https://mahmoudashraf.dev/rss.xml)_
 
+## 2023
+
+- [(draft) No More postman just use cURL + (neo)vim + [jq + graphql] feat. = ❤](/blog/no-more-postman-just-curl-and-neovim-graphql-feat '2022-12-02')
+
 ## 2022
 
 - [Uninstall all neovim plugins](/blog/uninstall-all-neovim-plugins '2022-12-02')
