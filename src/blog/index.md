@@ -4,7 +4,7 @@ title-prefix: Blog
 
 # Blog
 
-_Subscribe via [RSS](https://mahmoudashraf.dev/rss.xml)_
+_Subscribe via [RSS](https://maw.sh/rss.xml)_
 
 ## 2023
 

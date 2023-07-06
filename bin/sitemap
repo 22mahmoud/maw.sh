@@ -5,7 +5,7 @@ DEST_DIR=dist
 SITEMAP_XML="$DEST_DIR"/sitemap.xml
 
 generate_sitemap() {
-  base_url="https://mahmoudashraf.dev"
+  base_url="https://maw.sh"
 
   echo '<?xml version="1.0" encoding="UTF-8"?>'
   echo '<urlset'

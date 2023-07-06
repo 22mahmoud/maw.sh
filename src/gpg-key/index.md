@@ -5,7 +5,7 @@
 You can run this command to automatically download my GPG key and add it to your keyring:
 
 ```
-curl -L https://mahmoudashraf.dev/gpg-key.gpg | gpg --import
+curl -L https://maw.sh/gpg-key.gpg | gpg --import
 ```
 
 Or copy the public key below:
