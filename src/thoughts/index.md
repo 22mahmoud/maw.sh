@@ -19,16 +19,16 @@ img {
 <div class="thoughts">
 - [[2022-11-24T21:16+02:00](/thoughts/1669317382)]  
 في الطريق  
-![screenshot from lynks.com tracking orders to at2020 microphone](./1669317382/screenshot_lynks.jpg)
+![screenshot from lynks.com tracking orders to at2020 microphone](1669317382/screenshot_lynks.jpg)
 
 - [[2021-08-17T13:50+02:00](/thoughts/1634330500)]  
-  ![mem about windows limition](./1634330500/f938c755fc3bd836.jpg)
+  ![mem about windows limition](1634330500/f938c755fc3bd836.jpg)
 
 - [[2021-08-17T13:50+02:00](/thoughts/1629201049)] update: I closed my linkedin
   account
 
 - [[2021-07-18T20:23+02:00](/thoughts/1626632598)] Let's take some great
-  photos!! 📷 My first DSLR camera Nikon D3500 ![Nikon D3500 with lens](./1626632598/d3500.jpg)
+  photos!! 📷 My first DSLR camera Nikon D3500 ![Nikon D3500 with lens](1626632598/d3500.jpg)
 
 - [[2021-05-16T05:20+02:00](/thoughts/1621135238)]
   Monad, Functor, Semigroup, and Task ... new vocab for me while learning
@@ -41,12 +41,12 @@ img {
 - [[2021-02-17T03:20+02:00](/thoughts/1613524846)]
   Finally, received my gift from [dev.to](https://dev.to)
   Thanks [@ThePracticalDev](https://twitter.com/ThePracticalDev)
-  ![dev.to stickers and thank you card](./1613524846/dev-gift.jpg)
+  ![dev.to stickers and thank you card](1613524846/dev-gift.jpg)
 
 - [[2021-01-12T23:46+02:00](/thoughts/1610488005)]
   I got a new mechanical keyboard today, yaaay 🎊🎊
   Redragon k530
-  ![redragon k530 keyboard](./1610488005/mech.jpg)
+  ![redragon k530 keyboard](1610488005/mech.jpg)
 
 - [[2020-12-14T23:19+02:00](/thoughts/1607980789)]
   It's the perfect time to start get google away from your life. #degoogle
@@ -90,7 +90,7 @@ created, now github has a dark mode ❤.
 
 - [[2020-09-19T13:29+02:00](/thoughts/1600514947)]
   I just got my free ticket to #nextjsconf!
-  ![nextjsconf](./1600514947/ticket.png)
+  ![nextjsconf](1600514947/ticket.png)
 
 - [[2020-09-19T11:09+02:00](/thoughts/1600506588)]
   انك يبقي عندك المدونة بتاعتك اللي تقدر تحط عليها افكارك و وتدويناتك بيخليك تكون المالك الحصري للمحتوي بتاعك احسن بكتير لما يكون افكارك متوزعة علي مواقع التواصل الاجتامعي اللي ممكن فى اي لحظة تقفل ومتقدرش توصل لمحتواك.

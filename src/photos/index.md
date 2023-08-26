@@ -61,17 +61,17 @@ title-prefix: Photos
 >
 > 📅 date: July, 2021
 
-- ![image](./DSC_0843.jpg)
-- ![image](./DSC_1585_01.jpg)
-- ![image](./DSC_0863.jpg)
-- ![image](./DSC_0926.jpg)
-- ![image](./DSC_1231.jpg)
-- ![image](./DSC_1383.jpg)
-- ![image](./DSC_1578.jpg)
-- ![image](./DSC_1580.jpg)
-- ![image](./DSC_1727.jpg)
-- ![image](./DSC_1764.jpg)
-- ![image](./DSC_1805.jpg)
+- ![image](DSC_0843.jpg)
+- ![image](DSC_1585_01.jpg)
+- ![image](DSC_0863.jpg)
+- ![image](DSC_0926.jpg)
+- ![image](DSC_1231.jpg)
+- ![image](DSC_1383.jpg)
+- ![image](DSC_1578.jpg)
+- ![image](DSC_1580.jpg)
+- ![image](DSC_1727.jpg)
+- ![image](DSC_1764.jpg)
+- ![image](DSC_1805.jpg)
 
 <br />
 

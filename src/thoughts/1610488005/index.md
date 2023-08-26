@@ -6,4 +6,4 @@ I got a new mechanical keyboard today, yaaay 🎊🎊
 
 Redragon k530
 
-![redragon k530 keyboard](./mech.jpg)
+![redragon k530 keyboard](mech.jpg)
