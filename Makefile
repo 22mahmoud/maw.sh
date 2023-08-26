@@ -9,7 +9,7 @@ thumb := $(bin)/thumb
 rss := $(bin)/rss
 sitemap := $(bin)/sitemap
 
-all: html static image dist/sitemap.xml dist/rss.xml
+install: html static image dist/sitemap.xml dist/rss.xml
 
 html: $(html_files)
 
@@ -34,4 +34,4 @@ clean:
 	@rm -vrf $(output)
 
 
-.PHONY: all html static image clean
+.PHONY: install html static image clean
