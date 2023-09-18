@@ -27,6 +27,7 @@ local is_gif = function(file)
 	local ext = get_file_extension(file)
 	return ext == ".gif"
 end
+
 local function get_thumb_path(file)
 	-- add thumbs/ to the path
 	local thumb = string.gsub(file, "([^/]*%.%w+)$", "thumbs/%1")
@@ -51,10 +52,46 @@ local set_image_size = function(img, path)
 	end
 end
 
+local function file_exists(name)
+	local f = io.open(name, "r")
+	if f ~= nil then
+		io.close(f)
+		return true
+	else
+		return false
+	end
+end
+
 local src = "src"
 local dist = "dist"
 
+local function get_the_img(input_file, output_file, output_path)
+	-- 1. check if the output file existes on dist folder, if so, return
+	if file_exists(output_file) then
+		return
+	end
+
+  -- 2. check if the output file existes on .tmp/images folder, if so, copy it to dist folder and return
+
+  -- replace / and . with _
+	local tmp_file = string.gsub(output_file, "/", "_")
+	tmp_file = string.gsub(tmp_file, "%.", "_")
+	tmp_file = ".tmp/images/" .. tmp_file
+
+	if file_exists(tmp_file) then
+		os.execute("mkdir -p " .. output_path)
+		os.execute("cp " .. tmp_file .. " " .. output_file)
+		return
+	end
+
+	-- 3. if not, generate the output file and copy it to dist folder and .tmp/images folder
+	os.execute("mkdir -p " .. output_path)
+	os.execute("cwebp -resize 640 0 -q 80 " .. input_file .. " -o " .. output_file)
+	os.execute("cp " .. output_file .. " " .. tmp_file)
+end
+
 function Image(img)
+	os.execute("mkdir -p .tmp/images")
 	img.attributes.loading = "lazy"
 
 	local absolute_path = remove_src_prefix(get_file_absolute_path(img.src))
@@ -70,8 +107,7 @@ function Image(img)
 		return img
 	end
 
-	os.execute("mkdir -p " .. output_path)
-	os.execute("cwebp -resize 640 0 -q 80 " .. input_file .. " -o " .. output_file)
+	get_the_img(input_file, output_file, output_path)
 
 	img.src = thumb
 

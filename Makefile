@@ -11,6 +11,9 @@ sitemap := $(bin)/sitemap
 
 install: html static dist/sitemap.xml dist/rss.xml
 
+dev:
+	find src filters templates -type f | entr make install
+
 html: $(html_files)
 
 dist/rss.xml: $(md_files) $(rss)
@@ -26,6 +29,7 @@ dist/%.html: src/%.md templates/* $(MD_TO_HTML)
 
 static:
 	cd $(source) && find . -type f ! -name "*.md" -print0 | cpio -pdvm0 ../$(output)
+	cp -r public/* $(output)
 
 clean: 
 	@rm -vrf $(output)

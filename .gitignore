@@ -1,4 +1,5 @@
 dist
+.tmp
 .luarc.json
 
 # to get nvim lsp works
