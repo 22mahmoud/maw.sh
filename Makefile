@@ -1,6 +1,8 @@
 source = src
 output = dist
 bin = bin
+tmp = .tmp
+tmp_images = $(tmp)/images
 
 md_files := $(shell find $(source) -name "*.md")
 html_files := $(patsubst $(source)/%.md,$(output)/%.html,$(md_files))
@@ -9,7 +11,7 @@ thumb := $(bin)/thumb
 rss := $(bin)/rss
 sitemap := $(bin)/sitemap
 
-install: html static dist/sitemap.xml dist/rss.xml
+install: prepare html static dist/sitemap.xml dist/rss.xml
 
 dev:
 	find src filters templates -type f | entr make install
@@ -34,4 +36,9 @@ static:
 clean: 
 	@rm -vrf $(output)
 
-.PHONY: install html static clean
+prepare:
+	@mkdir -p $(output)
+	@mkdir -p $(tmp_images)
+	@touch $(tmp_images)/.nomedia
+
+.PHONY: install html static clean dev

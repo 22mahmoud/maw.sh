@@ -71,12 +71,12 @@ local function get_the_img(input_file, output_file, output_path)
 		return
 	end
 
-  -- 2. check if the output file existes on .tmp/images folder, if so, copy it to dist folder and return
+	-- 2. check if the output file existes on .tmp/images folder, if so, copy it to dist folder and return
 
-  -- replace / and . with _
+	-- replace / and . with _
 	local tmp_file = string.gsub(output_file, "/", "_")
 	tmp_file = string.gsub(tmp_file, "%.", "_")
-	tmp_file = ".tmp/images/" .. tmp_file
+	tmp_file = ".tmp/images/" .. "." .. tmp_file
 
 	if file_exists(tmp_file) then
 		os.execute("mkdir -p " .. output_path)
@@ -91,7 +91,6 @@ local function get_the_img(input_file, output_file, output_path)
 end
 
 function Image(img)
-	os.execute("mkdir -p .tmp/images")
 	img.attributes.loading = "lazy"
 
 	local absolute_path = remove_src_prefix(get_file_absolute_path(img.src))
