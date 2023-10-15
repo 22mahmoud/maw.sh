@@ -311,9 +311,10 @@
     </header>
 
     <main>
-      <iframe scrolling="no" frameborder="0" id="standswithpalestine" width="100%"
-        src="https://standwithpalestine.vercel.app/banner.html"></iframe>
-      <script src="https://standwithpalestine.vercel.app/banner.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.7/iframeResizer.min.js"></script>
+      <iframe frameborder="0" id="standwithpalestine" width="100%" src="https://standwithpalestine.vercel.app/banner.html"></iframe>
+      <script>iFrameResize({ log: true, checkOrigin: false }, '#standwithpalestine')</script>
+
 
       $for(include-before)$ $include-before$ $endfor$
 
