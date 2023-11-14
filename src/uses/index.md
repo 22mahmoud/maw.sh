@@ -48,4 +48,4 @@ description: Mahmoud Ashraf's list of software/hardware for daily using
   - **Power supply**: Seasonic Focus Gold GM-750 750W 80Plus Gold-Semi-Modular
   - **Mouse**: CoolerMater MM720 Gaming Mouse
   - **Keyboard**: Redragon K530 Draconic RGB Gaming Mechanical Keyboard 60% Brown Switches
-- **phone**: Realme 2 pro
+- **phone**: Google Pixel 7 pro
