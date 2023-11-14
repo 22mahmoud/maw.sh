@@ -261,6 +261,14 @@
         padding-bottom: 1em;
       }
 
+      noscript {
+        background: #f9c642;
+        color: black;
+        padding: 10px;
+        border-radius: 8px;
+        display: block;
+      }
+
       .site-title a {
         color: var(--c2);
         font-weight: bold;
@@ -340,6 +348,8 @@
       $for(include-after)$ $include-after$ $endfor$
 
       $if(date)$ 
+        <h3>Comments</h3>
+        <noscript>you have to enable javascript to load comments module</noscript>
         <div id="remark42"></div>
       $endif$
     </main>
