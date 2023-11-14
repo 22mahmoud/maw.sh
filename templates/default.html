@@ -327,7 +327,10 @@
       $for(include-before)$ $include-before$ $endfor$
 
       $if(date)$ 
-        <time datetime="$date$">$date$</time>
+        <div>
+          <time datetime="$date$">$date$</time>
+          <a href="#remark42" style="display: block">leave a comment</a>
+        </div>
       $endif$
 
       $body$ 
