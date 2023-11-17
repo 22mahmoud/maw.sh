@@ -17,6 +17,10 @@ img {
 # Thoughts
 
 <div class="thoughts">
+- [[2023-11-17T21:08+02:00](/thoughts/1700248111)]  
+Now you can leave a comment into my thoughts and blog posts 🎊 using
+[remark42](https://remark42.com)
+
 - [[2022-11-24T21:16+02:00](/thoughts/1669317382)]  
 في الطريق  
 ![screenshot from lynks.com tracking orders to at2020 microphone](1669317382/screenshot_lynks.jpg)
