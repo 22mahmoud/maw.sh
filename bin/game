@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# Check if game ID is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <game_id>"
+  exit 1
+fi
+
+GAME_ID=$1
+
+# Fetch game info from RAWG API
+response=$(curl -s "https://api.rawg.io/api/games/$GAME_ID?key=$API_KEY")
+
+# Extract game details using jq
+title=$(echo "$response" | jq -r '.name')
+original_url=$(echo "$response" | jq -r '.website')
+description_raw=$(echo "$response" | jq -r '.description_raw' | sed 's/^/  /')  # Fix indentation
+description=$(echo "$description_raw" | sed 's/\\/\\\\/g; s/"/\\"/g')
+release_date=$(echo "$response" | jq -r '.released')
+slug=$(echo "$response" | jq -r '.slug')
+cover_image=$(echo "$response" | jq -r '.background_image')
+state="wanted"
+
+mkdir -p "src/games/$slug"
+
+curl -s "$cover_image" -o "src/games/$slug/cover.jpg"
+cwebp -resize 480 0 -q 80 "src/games/$slug/cover.jpg" -o "src/games/$slug/cover.webp"
+rm "src/games/$slug/cover.jpg"
+
+cat <<EOF > "src/games/$slug/index.md"
+---
+title: $title
+release_date: $release_date
+date: $(date -I'minutes')
+description: $description
+state: $state
+cover_image: "./cover.webp"
+original_url: "$original_url"
+game: true
+---
+EOF
+
+echo "Markdown file for '$title' created successfully at $slug/index.md."
