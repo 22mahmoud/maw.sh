@@ -18,11 +18,16 @@
  Computer Science/Statistics
  2016 - 2019
 
+ Full Stack developer 
+ Rubikal
+ Alexandria, Egypt
+ May 2023 - Present
+
  EXPERIENCE
  Front-End developer
  Lynks
  Alexandria, Egypt
- Jan 2022 - present
+ Jan 2022 - May 2023
  - Tech: typescript, next.js, tailwindcss, apollo graphql
  - writing unit/integration-tests with jest & testing-library
  - writing e2e testing using playwright
