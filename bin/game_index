@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# Initialize arrays to store game entries
 active_games=""
 wanted_games=""
 completed_games=""
@@ -11,9 +10,11 @@ for dir in src/games/*; do
   md_file="${dir}/index.md"
   [ ! -f "$md_file" ] && continue
 
-  # Extract game information from each index.md file
-  title=$(grep -m 1 '^title:' "$md_file" | sed 's/title: //')
-  state=$(grep -m 1 '^state:' "$md_file" | sed 's/state: //')
+  title=$(yq --front-matter=extract '.title' "$md_file")
+  state=$(yq --front-matter=extract '.state' "$md_file")
+
+  [ -z "$title" ] && continue
+  [ -z "$state" ] && state="wanted"
 
   # Create a hyperlink entry for the game
   link="- [$title](/games/$(basename "$dir"))"
@@ -27,16 +28,14 @@ for dir in src/games/*; do
       wanted_games=$(printf "%s\n%s" "$wanted_games" "$link")
       ;;
     completed)
-      completed_games=$(printf "%s\n%s" "$active_games" "$link")
+      completed_games=$(printf "%s\n%s" "$completed_games" "$link")
       ;;
     *)
-      # Default case: categorize as wanted if state is not specified
       wanted_games=$(printf "%s\n%s" "$wanted_games" "$link")
       ;;
   esac
 done
 
-# Create or overwrite the index.md file
 cat <<EOF >src/games/index.md
 ---
 title-prefix: Games

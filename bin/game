@@ -30,12 +30,12 @@ create_or_update_markdown() {
     cat <<EOF >"$1/index.md"
 ---
 date: $(date -I'minutes')
-state: $2
+state: wanted
 cover_image: "./cover.webp"
 game: true
 ---
 EOF
-    echo "Game file for '$3' created successfully at $1."
+    echo "Game file for '$2' created successfully at $1."
   fi
 }
 
@@ -69,12 +69,11 @@ main() {
   release_date=$(val "$response" '.released')
   slug=$(val "$response" '.slug')
   cover_image=$(val "$response" '.background_image')
-  state="wanted"
 
   dir_name=src/games/"$slug"
   path_name="$dir_name"/index.md
 
-  create_or_update_markdown "$dir_name" "$state" "$title"
+  create_or_update_markdown "$dir_name" "$title"
   download_cover_image "$dir_name" "$cover_image"
 
   update_metadata "$path_name" "title" "$title"
