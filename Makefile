@@ -10,13 +10,18 @@ html_files := $(patsubst $(source)/%.md,$(output)/%.html,$(md_files))
 thumb := $(bin)/thumb
 rss := $(bin)/rss
 sitemap := $(bin)/sitemap
+game_index := $(bin)/game_index
+new_game := $(bin)/game
 
-install: prepare html static dist/sitemap.xml dist/rss.xml
+install: prepare game_index html static dist/sitemap.xml dist/rss.xml
 
 dev:
 	find src filters templates -type f | entr make install
 
 html: $(html_files)
+
+game_index:
+	@$(game_index)
 
 dist/rss.xml: $(md_files) $(rss)
 	@$(rss)
@@ -41,4 +46,4 @@ prepare:
 	@mkdir -p $(tmp_images)
 	@touch $(tmp_images)/.nomedia
 
-.PHONY: install html static clean dev
+.PHONY: install html static clean dev game_index

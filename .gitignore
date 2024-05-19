@@ -7,3 +7,5 @@ package.json
 yarn.*
 node_modules
 
+# auto-generated pages
+src/games/index.md
