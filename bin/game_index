@@ -21,35 +21,35 @@ for dir in src/games/*; do
   # Categorize the game based on its state
   case "$state" in
     active)
-      active_games="$active_games\n$link"
+      active_games=$(printf "%s\n%s" "$active_games" "$link")
       ;;
     wanted)
-      wanted_games="$wanted_games\n$link"
+      wanted_games=$(printf "%s\n%s" "$wanted_games" "$link")
       ;;
     completed)
-      completed_games="$completed_games\n$link"
+      completed_games=$(printf "%s\n%s" "$active_games" "$link")
       ;;
     *)
       # Default case: categorize as wanted if state is not specified
-      wanted_games="$wanted_games\n$link"
+      wanted_games=$(printf "%s\n%s" "$wanted_games" "$link")
       ;;
   esac
 done
 
 # Create or overwrite the index.md file
-cat <<EOF > src/games/index.md
+cat <<EOF >src/games/index.md
 ---
 title-prefix: Games
 ---
 
 ## Playing
-$(echo -e "$active_games")
+$(printf "%s" "$active_games")
 
 ## Wanted
-$(echo -e "$wanted_games")
+$(printf "%s" "$wanted_games")
 
 ## Completed
-$(echo -e "$completed_games")
+$(printf "%s" "$completed_games")
 EOF
 
 echo "index.md file generated successfully."
