@@ -1,43 +1,89 @@
 #!/bin/sh
 
-# Check if game ID is provided
-if [ -z "$1" ]; then
-  echo "Usage: $0 <game_id>"
-  exit 1
-fi
+check_variable() {
+  variable="$1"
+  message="$2"
 
-GAME_ID=$1
+  if [ -z "${variable}" ]; then
+    echo "$message"
+    exit 1
+  fi
+}
 
-# Fetch game info from RAWG API
-response=$(curl -s "https://api.rawg.io/api/games/$GAME_ID?key=$API_KEY")
+fetch_game_data() {
+  game_id="$1"
+  api_key="$2"
 
-# Extract game details using jq
-title=$(echo "$response" | jq -r '.name')
-original_url=$(echo "$response" | jq -r '.website')
-description_raw=$(echo "$response" | jq -r '.description_raw' | sed 's/^/  /')  # Fix indentation
-description=$(echo "$description_raw" | sed 's/\\/\\\\/g; s/"/\\"/g')
-release_date=$(echo "$response" | jq -r '.released')
-slug=$(echo "$response" | jq -r '.slug')
-cover_image=$(echo "$response" | jq -r '.background_image')
-state="wanted"
+  response=$(curl -s "https://api.rawg.io/api/games/$game_id?key=$api_key")
 
-mkdir -p "src/games/$slug"
+  echo "$response"
+}
 
-curl -s "$cover_image" -o "src/games/$slug/cover.jpg"
-cwebp -resize 480 0 -q 80 "src/games/$slug/cover.jpg" -o "src/games/$slug/cover.webp"
-rm "src/games/$slug/cover.jpg"
+val() {
+  echo "$1" | yq -r "$2"
+}
 
-cat <<EOF > "src/games/$slug/index.md"
+create_or_update_markdown() {
+  mkdir -p "$1"
+
+  if [ ! -f "$1/index.md" ]; then
+    cat <<EOF >"$1/index.md"
 ---
-title: $title
-release_date: $release_date
 date: $(date -I'minutes')
-description: $description
-state: $state
+state: $2
 cover_image: "./cover.webp"
-original_url: "$original_url"
 game: true
 ---
 EOF
+    echo "Game file for '$3' created successfully at $1."
+  fi
+}
 
-echo "Markdown file for '$title' created successfully at $slug/index.md."
+download_cover_image() {
+  curl -s "$2" -o "$1/cover.jpg"
+  cwebp -resize 480 0 -q 80 "$1/cover.jpg" -o "$1/cover.webp"
+  rm "$1/cover.jpg"
+}
+
+update_metadata() {
+  yq --front-matter="process" -i ".$2 = \"$3\"" "$1"
+}
+
+main() {
+  game_id="$1"
+  api_key="$API_KEY"
+
+  check_variable "$game_id" "Usage: $0 <game_id>"
+  check_variable "$api_key" "Error: API_KEY environment variable is not set."
+
+  response=$(fetch_game_data "$game_id" "$api_key")
+
+  if [ "$(echo "$response" | yq -r '.detail')" = "Not found." ]; then
+    echo "Error: Game ID '$game_id' not found."
+    exit 1
+  fi
+
+  title=$(val "$response" '.name')
+  original_url=$(val "$response" '.website')
+  description=$(val "$response" '.description_raw')
+  release_date=$(val "$response" '.released')
+  slug=$(val "$response" '.slug')
+  cover_image=$(val "$response" '.background_image')
+  state="wanted"
+
+  dir_name=src/games/"$slug"
+  path_name="$dir_name"/index.md
+
+  create_or_update_markdown "$dir_name" "$state" "$title"
+  download_cover_image "$dir_name" "$cover_image"
+
+  update_metadata "$path_name" "title" "$title"
+  update_metadata "$path_name" "release_date" "$release_date"
+  update_metadata "$path_name" "description" "$description"
+  update_metadata "$path_name" "cover_image" "./cover.webp"
+  update_metadata "$path_name" "original_url" "$original_url"
+
+  echo "Game file for '$title' updated successfully at $path_name."
+}
+
+main "$@"
