@@ -20,19 +20,51 @@ cat <<EOF >src/thoughts/index.md
 ---
 title-prefix: Thoughts
 description: Mahmoud Ashraf's microblog space on the internet
-header-inculdes: |-
+header-includes: |-
   <style>
     img {
       object-fit: contain;
+      margin: 10px 0;
     }
 
-    #thoughts > ul > li {
-      display: flex;
-      border-bottom: 2px solid var(--c5);
+    #thoughts ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #thoughts li {
+      background-color: var(--c1);
+      border: 1px solid var(--c5);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-family: var(--sans);
+      color: var(--c2);
+    }
+
+    #thoughts li p:first-of-type {
+      margin-bottom: 10px;
+    }
+
+    #thoughts li a {
+      color: var(--c3);
+    }
+
+    #thoughts li a:hover {
+      color: var(--c4);
+    }
+
+    #thoughts li p {
+      margin: 0;
+      line-height: 1.6;
     }
   </style>
 ---
 
-<div id="thoughts">$(printf "%s" "$final_conent")</div>
+<div id="thoughts">
+
+$(printf "%s" "$final_conent")
+
+</div>
 EOF
 
