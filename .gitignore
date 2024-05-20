@@ -9,3 +9,4 @@ node_modules
 
 # auto-generated pages
 src/games/index.md
+src/thoughts/index.md

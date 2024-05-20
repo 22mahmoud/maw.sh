@@ -2,7 +2,7 @@ local path = require("pandoc.path")
 
 local function get_file_absolute_path(file)
 	local current_file = string.gsub(PANDOC_STATE.input_files[1], "([^/]*%.%w+)$", "")
-	return "/" .. path.join({ current_file, file })
+	return ("/" .. path.join({ current_file, file })):gsub("^/+", "/")
 end
 
 local remove_file_name = function(file)

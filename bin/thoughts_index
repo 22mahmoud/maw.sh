@@ -1,0 +1,38 @@
+#!/bin/bash
+
+base_dir="src/thoughts"
+final_conent=""
+
+# Iterate over each timestamp directory
+for filename in $(ls -1 "$base_dir" | sort -n); do
+  if [ -d "$base_dir/$filename" ]; then
+    date=$(yq --front-matter=extract '.date' "$base_dir/$filename/index.md")
+
+    url="/thoughts/$filename"
+
+    content=$(sed '/^---$/,/^---$/d' "$base_dir/$filename/index.md" | sed 's/^/  /')
+
+    final_conent=$(printf "%s\n%s\n\n%s" "- [[$date]($url)]  " "$content" "$final_conent")
+  fi
+done
+
+cat <<EOF >src/thoughts/index.md
+---
+title-prefix: Thoughts
+description: Mahmoud Ashraf's microblog space on the internet
+header-inculdes: |-
+  <style>
+    img {
+      object-fit: contain;
+    }
+
+    #thoughts > ul > li {
+      display: flex;
+      border-bottom: 2px solid var(--c5);
+    }
+  </style>
+---
+
+<div id="thoughts">$(printf "%s" "$final_conent")</div>
+EOF
+
