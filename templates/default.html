@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    $if(date)$ 
-      <script>
-        var remark_config = {
-          host: 'https://remark42.maw.sh',
-          site_id: 'maw',
-          theme: 'dark',
-          no_footer: true,
-          simple_view: true,
-          components: ['counter', 'embed'],
-        }
-      </script>
-      <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
-    $endif$
-
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -65,315 +51,319 @@
     $endfor$ 
 
 
+    
     <style>
-    /* variables */
-    :root {
-      /* fonts */
-      --sans: 1em/1.6 system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
-        Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue,
-        Fira Sans, sans-serif;
-      --mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier,
-        "Courier New", monospace;
+      /* variables */
+      :root {
+        /* fonts */
+        --sans: 1em/1.6 system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+          Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue,
+          Fira Sans, sans-serif;
+        --mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier,
+          "Courier New", monospace;
 
-      /* colors */
-      --c1: #080808;
-      --c2: #f1f2f2;
-      --c3: #2d9dff;
-      --c4: #ebdbb2;
-      --c5: #1d2021;
+        /* colors */
+        --c1: #080808;
+        --c2: #f1f2f2;
+        --c3: #2d9dff;
+        --c4: #ebdbb2;
+        --c5: #1d2021;
 
-      --status-active: #28a745;
-      --status-wanted: #ffc107;
-      --status-completed: #17a2b8;
-    }
+        --status-active: #28a745;
+        --status-wanted: #ffc107;
+        --status-completed: #17a2b8;
+      }
 
-    *,
-    :after,
-    :before {
-      box-sizing: border-box;
-    }
+      *,
+      :after,
+      :before {
+        box-sizing: border-box;
+      }
 
-    address,
-    area,
-    article,
-    aside,
-    audio,
-    blockquote,
-    datalist,
-    details,
-    dl,
-    fieldset,
-    figure,
-    form,
-    input,
-    iframe,
-    img,
-    meter,
-    nav,
-    ol,
-    optgroup,
-    option,
-    output,
-    p,
-    pre,
-    progress,
-    ruby,
-    section,
-    table,
-    textarea,
-    ul,
-    video {
-      /* Margins for most elements */
-      margin-bottom: 1rem;
-    }
+      address,
+      area,
+      article,
+      aside,
+      audio,
+      blockquote,
+      datalist,
+      details,
+      dl,
+      fieldset,
+      figure,
+      form,
+      input,
+      iframe,
+      img,
+      meter,
+      nav,
+      ol,
+      optgroup,
+      option,
+      output,
+      p,
+      pre,
+      progress,
+      ruby,
+      section,
+      table,
+      textarea,
+      ul,
+      video {
+        /* Margins for most elements */
+        margin-bottom: 1rem;
+      }
 
-    hr {
-      /* Reset the border of the <hr> separator, then set a better line */
-      border: 0;
-      border-bottom: 1px solid var(--c5);
-      margin: 1rem auto;
-    }
+      hr {
+        /* Reset the border of the <hr> separator, then set a better line */
+        border: 0;
+        border-bottom: 1px solid var(--c5);
+        margin: 1rem auto;
+      }
 
-    body {
-      margin: 0 auto;
-      padding: 1em;
-      font: var(--sans);
-      font-weight: 400;
-      line-height: 1.5;
-      background: var(--c1);
-      color: var(--c2);
-      max-width: 40em;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
+      body {
+        margin: 0 auto;
+        padding: 1em;
+        font: var(--sans);
+        font-weight: 400;
+        line-height: 1.5;
+        background: var(--c1);
+        color: var(--c2);
+        max-width: 40em;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
 
-    main {
-      flex: 1;
-    }
+      main {
+        flex: 1;
+      }
 
-    figure {
-      max-width: 98%;
-      margin: 0 auto;
-    }
+      figure {
+        max-width: 98%;
+        margin: 0 auto;
+      }
 
-    figcaption,
-    figure.fullwidth figcaption {
-      margin-right: 0%;
-      max-width: none;
-    }
+      figcaption,
+      figure.fullwidth figcaption {
+        margin-right: 0%;
+        max-width: none;
+      }
 
-    img,
-    video {
-      height: auto;
-      max-width: 100%;
-    }
+      img,
+      video {
+        height: auto;
+        max-width: 100%;
+      }
 
-    a {
-      color: var(--c3);
-      text-decoration: none;
-    }
+      a {
+        color: var(--c3);
+        text-decoration: none;
+      }
 
-    a:hover {
-      text-decoration: underline;
-    }
+      a:hover {
+        text-decoration: underline;
+      }
 
-    pre {
-      font: 1em/1.6 var(--mono);
-      background: var(--c5);
-      color: var(--c4);
-      padding: 1em;
-      overflow: auto;
-    }
+      pre {
+        font: 1em/1.6 var(--mono);
+        background: var(--c5);
+        color: var(--c4);
+        padding: 1em;
+        overflow: auto;
+      }
 
-    code {
-      font: 1em/1.6 var(--mono);
-      color: var(--c4);
-    }
+      code {
+        font: 1em/1.6 var(--mono);
+        color: var(--c4);
+      }
 
-    blockquote {
-      border-left: 5px solid var(--c5);
-      color: var(--c4);
-      padding: 1em 1.5em;
-      margin: 0;
-    }
+      blockquote {
+        border-left: 5px solid var(--c5);
+        color: var(--c4);
+        padding: 1em 1.5em;
+        margin: 0;
+      }
 
-    /* Headlines */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      line-height: 1;
-      padding-top: 0.875rem;
-    }
+      /* Headlines */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1;
+        padding-top: 0.875rem;
+      }
 
-    h1,
-    h2,
-    h3 {
-      padding-bottom: 2px;
-      margin-bottom: 8px;
-    }
+      h1,
+      h2,
+      h3 {
+        padding-bottom: 2px;
+        margin-bottom: 8px;
+      }
 
-    h4,
-    h5,
-    h6 {
-      margin-bottom: 0.3rem;
-    }
+      h4,
+      h5,
+      h6 {
+        margin-bottom: 0.3rem;
+      }
 
-    h1 {
-      font-size: 2.25rem;
-    }
+      h1 {
+        font-size: 2.25rem;
+      }
 
-    h2 {
-      font-size: 1.85rem;
-    }
+      h2 {
+        font-size: 1.85rem;
+      }
 
-    h3 {
-      font-size: 1.55rem;
-    }
+      h3 {
+        font-size: 1.55rem;
+      }
 
-    h4 {
-      font-size: 1.25rem;
-    }
+      h4 {
+        font-size: 1.25rem;
+      }
 
-    h5 {
-      font-size: 1rem;
-    }
+      h5 {
+        font-size: 1rem;
+      }
 
-    h6 {
-      font-size: 0.875rem;
-    }
+      h6 {
+        font-size: 0.875rem;
+      }
 
-    ol,
-    ul {
-      /* Replace the browser default padding */
-      padding-left: 2rem;
-    }
+      ol,
+      ul {
+        /* Replace the browser default padding */
+        padding-left: 2rem;
+      }
 
-    li {
-      margin-top: 0.4rem;
-    }
+      li {
+        margin-top: 0.4rem;
+      }
 
-    ul ul,
-    ol ul,
-    ul ol,
-    ol ol {
-      margin-bottom: 0;
-    }
+      ul ul,
+      ol ul,
+      ul ol,
+      ol ol {
+        margin-bottom: 0;
+      }
 
-    footer {
-      padding-top: 1.5em;
-      padding-bottom: 1em;
-    }
+      footer {
+        padding-top: 1.5em;
+        padding-bottom: 1em;
+      }
 
-    noscript {
-      background: #f9c642;
-      color: black;
-      padding: 10px;
-      border-radius: 8px;
-      display: block;
-    }
+      noscript {
+        background: #f9c642;
+        color: black;
+        padding: 10px;
+        border-radius: 8px;
+        display: block;
+      }
 
-    .site-title a {
-      color: var(--c2);
-      font-weight: bold;
-    }
+      .site-title a {
+        color: var(--c2);
+        font-weight: bold;
+      }
 
-    .nav {
-      margin-bottom: 1em;
-    }
+      .nav {
+        margin-bottom: 1em;
+      }
 
-    .nav ul {
-      display: flex;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-    }
+      .nav ul {
+        display: flex;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+      }
 
-    .nav ul li {
-      list-style-type: none;
-      margin-bottom: 0.3em;
-    }
+      .nav ul li {
+        list-style-type: none;
+        margin-bottom: 0.3em;
+      }
 
-    .nav ul li:not(:last-child) {
-      margin-right: 0.8em;
-    }
+      .nav ul li:not(:last-child) {
+        margin-right: 0.8em;
+      }
 
-    .theme-toggle a {
-      color: var(--c2);
-      background-color: var(--c5);
-      padding: 0.25em 0.5em;
-      border-radius: 99999999px;
-    }
+      .theme-toggle a {
+        color: var(--c2);
+        background-color: var(--c5);
+        padding: 0.25em 0.5em;
+        border-radius: 99999999px;
+      }
 
-    .theme-toggle>a:hover {
-      text-decoration: none;
-    }
+      .theme-toggle>a:hover {
+        text-decoration: none;
+      }
 
-    .card {
-      background-color: var(--c5);
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
-      margin-top: 20px;
-      overflow: hidden;
-      display: flex;
-      position: relative;
-    }
+      $if(game)$ .card {
+        background-color: var(--c5);
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin-top: 20px;
+        overflow: hidden;
+        display: flex;
+        position: relative;
+      }
 
-    .card img {
-      width: 40%;
-      height: auto;
-      object-fit: cover;
-      margin: 0;
-    }
+      .card img {
+        width: 40%;
+        height: auto;
+        object-fit: cover;
+        margin: 0;
+      }
 
-    .card-content {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 60%;
-    }
+      .card-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 60%;
+      }
 
-    .card-content h2 {
-      margin: 0 0 10px;
-    }
+      .card-content h2 {
+        margin: 0 0 10px;
+      }
 
-    .card-content p {
-      color: var(--c4);
-      font-size: 14px;
-      margin: 0;
-    }
+      .card-content p {
+        color: var(--c4);
+        font-size: 14px;
+        margin: 0;
+      }
 
-    .card-content .description {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+      .card-content .description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
 
-    .status-indicator {
-      height: 5px;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
+      .status-indicator {
+        height: 5px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
 
-    .status-active .status-indicator {
-      background-color: var(--status-active);
-    }
+      .status-active .status-indicator {
+        background-color: var(--status-active);
+      }
 
-    .status-wanted .status-indicator {
-      background-color: var(--status-wanted);
-    }
+      .status-wanted .status-indicator {
+        background-color: var(--status-wanted);
+      }
 
-    .status-completed .status-indicator {
-      background-color: var(--status-completed);
-    }
+      .status-completed .status-indicator {
+        background-color: var(--status-completed);
+      }
+
+      $endif$
     </style>
+
 
     $for(header-includes)$ $header-includes$ $endfor$
   </head>
@@ -404,15 +394,6 @@
       <a href="https://techforpalestine.org/learn-more"><img width="800px" height="130px" src="/ps-banner.webp"></a>
 
       $for(include-before)$ $include-before$ $endfor$
-
-      $if(date)$ 
-        <div>
-          <time datetime="$date$">$date$</time>
-          <a href="#remark42" style="display: block">leave a comment (<span
-            class="remark42__counter"
-          ></span>) </a>
-        </div>
-      $endif$
 
       $if(game)$ ${game.html()} $endif$ 
 
