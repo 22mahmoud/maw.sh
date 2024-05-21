@@ -14,3 +14,17 @@ description: |-
 original_url: ""
 platform: ps5
 ---
+
+This is my first ps5 game, that I play recently after I bought the new ps5 slim.
+
+I enjoyed this game so much, it use all the new ps5 controller features and so
+stratifying, it also fast based and good story line and nostalgic for me since I
+played this franchise on ps2.
+
+But also the game has downsides, the characters not well developed and not
+remarkable like the old games.
+
+and also the there is no variety in enemies and boss fights.
+
+
+**my rating**: 8/10
