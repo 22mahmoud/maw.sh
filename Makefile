@@ -38,7 +38,7 @@ dist/%.html: src/%.md templates/* $(MD_TO_HTML)
 	@echo "[html generated]:" $@
 
 static:
-	find $(source) -type f \( $(extensions) \)  -print0 | cpio -pdvm0 $(output)
+	cd $(source) && find . -type f \( $(extensions) \)  -print0 | cpio -pdvm0 ../$(output)
 	cp -r public/* $(output)
 
 clean: 
