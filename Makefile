@@ -3,6 +3,8 @@ output = dist
 bin = bin
 tmp = .tmp
 tmp_images = $(tmp)/images
+extensions := -iname "*.jpeg" -o -iname "*.jpg" -o  -iname "*.mp4" -o  -iname "*.gif" -o \
+							-iname "*.png" -o  -iname "*.txt" -o  -iname "*.webp" -o  -iname "*.avif"
 
 md_files := $(shell find $(source) -name "*.md")
 html_files := $(patsubst $(source)/%.md,$(output)/%.html,$(md_files))
@@ -36,7 +38,7 @@ dist/%.html: src/%.md templates/* $(MD_TO_HTML)
 	@echo "[html generated]:" $@
 
 static:
-	cd $(source) && find . -type f ! -name "*.md" -print0 | cpio -pdvm0 ../$(output)
+	find $(source) -type f \( $(extensions) \)  -print0 | cpio -pdvm0 $(output)
 	cp -r public/* $(output)
 
 clean: 
