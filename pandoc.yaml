@@ -6,3 +6,4 @@ template: default.html
 metadata-file: metadata.yaml
 filters:
   - img_filter.lua
+  - include-code-files.lua
