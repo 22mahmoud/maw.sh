@@ -52,4 +52,4 @@ prepare:
 	@mkdir -p $(tmp_images)
 	@touch $(tmp_images)/.nomedia
 
-.PHONY: install html static clean dev game_index thoughts_index
+.PHONY: install html static clean dev game_index thoughts_index preinstall
