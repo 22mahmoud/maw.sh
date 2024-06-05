@@ -7,13 +7,15 @@ extensions := -iname "*.jpeg" -o -iname "*.jpg" -o  -iname "*.mp4" -o  -iname "*
 							-iname "*.png" -o  -iname "*.txt" -o  -iname "*.webp" -o  -iname "*.avif"
 
 md_files := $(shell find $(source) -name "*.md")
+thoughts_md_files := $(shell find $(source)/thougts -name "*.md" ! -wholename $(source)/thoughts/index.md)
+games_md_files := $(shell find $(source)/games -name "*.md" ! -wholename $(source)/games/index.md)
 html_files := $(patsubst $(source)/%.md,$(output)/%.html,$(md_files))
 
 thumb := $(bin)/thumb
 rss := $(bin)/rss
 sitemap := $(bin)/sitemap
 
-install: preinstall prepare thoughts_index game_index html static dist/sitemap.xml dist/rss.xml
+install: preinstall prepare html static dist/sitemap.xml dist/rss.xml
 
 dev:
 	find src filters templates -type f | entr make install
@@ -23,10 +25,10 @@ preinstall:
 
 html: $(html_files)
 
-game_index:
+src/games/index.md: $(games_md_files)
 	@$(bin)/game_index
 
-thoughts_index:
+src/thoughts/index.md: $(thoughts_md_files)
 	@$(bin)/thoughts_index
 
 dist/rss.xml: $(md_files) $(rss)
@@ -41,7 +43,7 @@ dist/%.html: src/%.md templates/* filters/*
 	@echo "[html generated]:" $@
 
 static:
-	cd $(source) && find . -type f \( $(extensions) \)  -print0 | cpio -pdvm0 ../$(output)
+	cd $(source) && find . -type f \( $(extensions) \)  -print0 | cpio -pdmu0 ../$(output)
 	cp -r public/* $(output)
 
 clean: 
@@ -52,4 +54,4 @@ prepare:
 	@mkdir -p $(tmp_images)
 	@touch $(tmp_images)/.nomedia
 
-.PHONY: install html static clean dev game_index thoughts_index preinstall
+.PHONY: install html static clean dev preinstall
