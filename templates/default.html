@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -28,17 +28,17 @@
       href="https://pixelfed.social/i/web/profile/201636586306277376"
     />
 
-    $for(author-meta)$
+    $for(author-meta)$ 
       <meta name="author" content="$author-meta$" />
-    $endfor$ 
+    $endfor$
 
     $if(date-meta)$
-      <meta name="dcterms.date" content="$date-meta$" />
+      <meta name="dcterms.date" content="$date-meta$" /> 
     $endif$ 
 
     $if(keywords)$
       <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
-    $endif$ 
+    $endif$
 
     $if(description-meta)$
       <meta name="description" content="$description-meta$" />
@@ -48,8 +48,7 @@
 
     $for(css)$
       <link rel="stylesheet" href="$css$" />
-    $endfor$ 
-
+    $endfor$
 
     
     <style>
@@ -129,7 +128,7 @@
         line-height: 1.5;
         background: var(--c1);
         color: var(--c2);
-        max-width: 40em;
+        max-width: 768px;
         display: flex;
         flex-direction: column;
         height: 100vh;
@@ -140,14 +139,26 @@
       }
 
       figure {
-        max-width: 98%;
+        margin: 0;
+        margin-bottom: 1rem;
+        padding: 0.625em;
+        border: 1px solid var(--c1);
+        text-align: center;
+        background-color: var(--c5);
+        font-family: var(--sans);
+      }
+
+      figure img {
+        max-width: 100%;
+        height: auto;
+        display: block;
         margin: 0 auto;
       }
 
-      figcaption,
-      figure.fullwidth figcaption {
-        margin-right: 0%;
-        max-width: none;
+      figcaption {
+        margin-top: 0.625em;
+        font-size: 0.9em;
+        color: var(--c4);
       }
 
       img,
@@ -299,78 +310,78 @@
         text-decoration: none;
       }
 
-      $if(game)$ .card {
-        background-color: var(--c5);
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        max-width: 600px;
-        margin-top: 20px;
-        overflow: hidden;
-        display: flex;
-        position: relative;
-      }
+      $if(game)$ 
+        .card {
+          background-color: var(--c5);
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          max-width: 600px;
+          margin-top: 20px;
+          overflow: hidden;
+          display: flex;
+          position: relative;
+        }
 
-      .card img {
-        width: 40%;
-        height: auto;
-        object-fit: cover;
-        margin: 0;
-      }
+        .card img {
+          width: 40%;
+          height: auto;
+          object-fit: cover;
+          margin: 0;
+        }
 
-      .card-content {
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 60%;
-      }
+        .card-content {
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 60%;
+        }
 
-      .card-content h2 {
-        margin: 0 0 10px;
-      }
+        .card-content h2 {
+          margin: 0 0 10px;
+        }
 
-      .card-content p {
-        color: var(--c4);
-        font-size: 14px;
-        margin: 0;
-      }
+        .card-content p {
+          color: var(--c4);
+          font-size: 14px;
+          margin: 0;
+        }
 
-      .card-content .description {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
+        .card-content .description {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
 
-      .status-indicator {
-        height: 5px;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
+        .status-indicator {
+          height: 5px;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
 
-      .status-active .status-indicator {
-        background-color: var(--status-active);
-      }
+        .status-active .status-indicator {
+          background-color: var(--status-active);
+        }
 
-      .status-wanted .status-indicator {
-        background-color: var(--status-wanted);
-      }
+        .status-wanted .status-indicator {
+          background-color: var(--status-wanted);
+        }
 
-      .status-completed .status-indicator {
-        background-color: var(--status-completed);
-      }
-
+        .status-completed .status-indicator {
+          background-color: var(--status-completed);
+        }
       $endif$
     </style>
-
 
     $for(header-includes)$ $header-includes$ $endfor$
   </head>
 
   <body>
     <header>
-      <p class="site-title"><a href="/"> maw.sh </a>
+      <p class="site-title">
+        <a href="/"> maw.sh </a>
         <span>> Mahmoud Ashraf Website </span>
       </p>
       <nav class="nav">
@@ -389,11 +400,12 @@
       </nav>
     </header>
 
-
     <main>
-      <a href="https://techforpalestine.org/learn-more"><img width="800px" height="130px" src="/ps-banner.webp"></a>
+      <a href="https://techforpalestine.org/learn-more">
+        <img width="800px" height="130px" src="/ps-banner.webp" ></img>
+      </a>
 
-      $for(include-before)$ $include-before$ $endfor$
+      $for(include-before)$ $include-before$ $endfor$ 
 
       $if(game)$ ${game.html()} $endif$ 
 
@@ -403,13 +415,42 @@
     </main>
 
     <footer>
-
       <div>
-        <a href="https://www.vultr.com/?ref=9553782-8H"><svg style="width:150px" xmlns="http://www.w3.org/2000/svg" id="logo__on-dark" viewBox="0 0 217.5 52"><defs><style>.cls-1{fill:#fff}</style></defs><g id="text"><path class="cls-1" d="m217.3 37.75-5.47-9.43A8.5 8.5 0 0 0 208.5 12h-12a1.5 1.5 0 0 0-1.5 1.5v25a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5V29h8.74l5.95 10.25A1.49 1.49 0 0 0 215 40h1a1.5 1.5 0 0 0 1.5-1.5 1.48 1.48 0 0 0-.2-.75ZM199 16h9.5a4.5 4.5 0 0 1 0 9H199ZM186.5 12h-21a1.5 1.5 0 0 0-1.5 1.5v1a1.5 1.5 0 0 0 1.5 1.5h8.5v22.5a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5V16h8.5a1.5 1.5 0 0 0 1.5-1.5v-1a1.5 1.5 0 0 0-1.5-1.5ZM164.5 36H151V13.5a1.5 1.5 0 0 0-1.5-1.5h-1a1.5 1.5 0 0 0-1.5 1.5v25a1.5 1.5 0 0 0 1.5 1.5h16a1.5 1.5 0 0 0 1.5-1.5v-1a1.5 1.5 0 0 0-1.5-1.5ZM139 13.5a1.5 1.5 0 0 0-1.5-1.5h-1a1.5 1.5 0 0 0-1.5 1.5V29a7.5 7.5 0 0 1-15 0V13.5a1.5 1.5 0 0 0-1.5-1.5h-1a1.5 1.5 0 0 0-1.5 1.5V29a11.5 11.5 0 0 0 23 0ZM108.5 12h-1a1.5 1.5 0 0 0-1.39.94L97.5 34.59l-8.66-21.65a1.5 1.5 0 0 0-1.39-.94h-1A1.5 1.5 0 0 0 85 13.5a1.55 1.55 0 0 0 .11.56l10 25a1.49 1.49 0 0 0 1.39.94h2a1.49 1.49 0 0 0 1.39-.94l10-25a1.55 1.55 0 0 0 .11-.56 1.5 1.5 0 0 0-1.5-1.5Z"/></g><g id="sygnet"><path d="M20.9 1.4A3 3 0 0 0 18.37 0H3A3 3 0 0 0 .46 4.6l3.15 5 20.45-3.2Z" style="fill:#007bfc"/><path d="M24.06 6.4A3 3 0 0 0 21.52 5H6.15a3 3 0 0 0-2.54 4.6l4.39 7 20.44-3.2Z" style="fill:#51b9ff"/><path class="cls-1" d="M8 16.6a2.91 2.91 0 0 1-.43-1.6 3 3 0 0 1 3-3h15.36a3 3 0 0 1 2.54 1.4l13.75 21.81a3 3 0 0 1 0 3.2L34.54 50.6a3 3 0 0 1-5.08 0ZM46.78 23.13a3 3 0 0 0 5.07 0l2.65-4.19 5-8a3 3 0 0 0 0-3.21l-4-6.34A3 3 0 0 0 53 0H37.63a3 3 0 0 0-2.54 4.6Z"/></g></svg></a>
+        <a href="https://www.vultr.com/?ref=9553782-8H">
+          <svg style="width: 150px" xmlns="http://www.w3.org/2000/svg" id="logo__on-dark" viewBox="0 0 217.5 52" >
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: #fff;
+                }
+              </style>
+            </defs>
+            <g id="text">
+              <path
+                class="cls-1"
+                d="m217.3 37.75-5.47-9.43A8.5 8.5 0 0 0 208.5 12h-12a1.5 1.5 0 0 0-1.5 1.5v25a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5V29h8.74l5.95 10.25A1.49 1.49 0 0 0 215 40h1a1.5 1.5 0 0 0 1.5-1.5 1.48 1.48 0 0 0-.2-.75ZM199 16h9.5a4.5 4.5 0 0 1 0 9H199ZM186.5 12h-21a1.5 1.5 0 0 0-1.5 1.5v1a1.5 1.5 0 0 0 1.5 1.5h8.5v22.5a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5V16h8.5a1.5 1.5 0 0 0 1.5-1.5v-1a1.5 1.5 0 0 0-1.5-1.5ZM164.5 36H151V13.5a1.5 1.5 0 0 0-1.5-1.5h-1a1.5 1.5 0 0 0-1.5 1.5v25a1.5 1.5 0 0 0 1.5 1.5h16a1.5 1.5 0 0 0 1.5-1.5v-1a1.5 1.5 0 0 0-1.5-1.5ZM139 13.5a1.5 1.5 0 0 0-1.5-1.5h-1a1.5 1.5 0 0 0-1.5 1.5V29a7.5 7.5 0 0 1-15 0V13.5a1.5 1.5 0 0 0-1.5-1.5h-1a1.5 1.5 0 0 0-1.5 1.5V29a11.5 11.5 0 0 0 23 0ZM108.5 12h-1a1.5 1.5 0 0 0-1.39.94L97.5 34.59l-8.66-21.65a1.5 1.5 0 0 0-1.39-.94h-1A1.5 1.5 0 0 0 85 13.5a1.55 1.55 0 0 0 .11.56l10 25a1.49 1.49 0 0 0 1.39.94h2a1.49 1.49 0 0 0 1.39-.94l10-25a1.55 1.55 0 0 0 .11-.56 1.5 1.5 0 0 0-1.5-1.5Z"
+              />
+            </g>
+            <g id="sygnet">
+              <path
+                d="M20.9 1.4A3 3 0 0 0 18.37 0H3A3 3 0 0 0 .46 4.6l3.15 5 20.45-3.2Z"
+                style="fill: #007bfc"
+              />
+              <path
+                d="M24.06 6.4A3 3 0 0 0 21.52 5H6.15a3 3 0 0 0-2.54 4.6l4.39 7 20.44-3.2Z"
+                style="fill: #51b9ff"
+              />
+              <path
+                class="cls-1"
+                d="M8 16.6a2.91 2.91 0 0 1-.43-1.6 3 3 0 0 1 3-3h15.36a3 3 0 0 1 2.54 1.4l13.75 21.81a3 3 0 0 1 0 3.2L34.54 50.6a3 3 0 0 1-5.08 0ZM46.78 23.13a3 3 0 0 0 5.07 0l2.65-4.19 5-8a3 3 0 0 0 0-3.21l-4-6.34A3 3 0 0 0 53 0H37.63a3 3 0 0 0-2.54 4.6Z"
+              />
+            </g>
+          </svg> 
+        </a>
       </div>
 
-      © <a href="/"> Mahmoud Ashraf </a></footer>
-
+      © <a href="/"> Mahmoud Ashraf </a>
+    </footer>
 
     <script
       data-goatcounter="https://stats.maw.sh/count"

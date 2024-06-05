@@ -76,7 +76,7 @@ local function get_the_img(input_file, output_file, output_path)
 
   -- 3. if not, generate the output file and copy it to dist folder and .tmp/images folder
   os.execute('mkdir -p ' .. output_path)
-  os.execute('cwebp -resize 640 0 -q 80 ' .. input_file .. ' -o ' .. output_file)
+  os.execute('cwebp -resize 768 0 -q 90 ' .. input_file .. ' -o ' .. output_file)
   os.execute('cp ' .. output_file .. ' ' .. tmp_file)
 end
 

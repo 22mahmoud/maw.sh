@@ -4,12 +4,12 @@
 
 You can run this command to automatically download my GPG key and add it to your keyring:
 
-```
+```sh
 curl -L https://maw.sh/gpg-key.gpg | gpg --import
 ```
 Or copy the public key below:
 
-```ascci
+```plain
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBGY6XO4BEACpfpKS+doFc9ra7/rreobRpUKyX1l3b9ll/80b7csdCmN23cxm

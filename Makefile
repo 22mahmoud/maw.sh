@@ -13,10 +13,13 @@ thumb := $(bin)/thumb
 rss := $(bin)/rss
 sitemap := $(bin)/sitemap
 
-install: prepare thoughts_index game_index html static dist/sitemap.xml dist/rss.xml
+install: preinstall prepare thoughts_index game_index html static dist/sitemap.xml dist/rss.xml
 
 dev:
 	find src filters templates -type f | entr make install
+
+preinstall:
+	rm -rf node_modules && npm install
 
 html: $(html_files)
 
@@ -42,7 +45,7 @@ static:
 	cp -r public/* $(output)
 
 clean: 
-	@rm -vrf $(output)
+	@rm -vrf $(output) $(tmp)
 
 prepare:
 	@mkdir -p $(output)

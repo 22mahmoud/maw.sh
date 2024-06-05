@@ -2,9 +2,6 @@ dist
 .tmp
 .luarc.json
 
-# to get nvim lsp works
-package.json
-yarn.*
 node_modules
 
 # auto-generated pages
