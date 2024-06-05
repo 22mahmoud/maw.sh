@@ -51,4 +51,4 @@ $(printf "%s" "$wanted_games")
 $(printf "%s" "$completed_games")
 EOF
 
-echo "index.md file generated successfully."
+echo "games/index.md file generated successfully."

@@ -68,3 +68,4 @@ $(printf "%s" "$final_conent")
 </div>
 EOF
 
+echo "thoughts/index.md file generated successfully."

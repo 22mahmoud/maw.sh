@@ -6,30 +6,33 @@ tmp_images = $(tmp)/images
 extensions := -iname "*.jpeg" -o -iname "*.jpg" -o  -iname "*.mp4" -o  -iname "*.gif" -o \
 							-iname "*.png" -o  -iname "*.txt" -o  -iname "*.webp" -o  -iname "*.avif"
 
-md_files := $(shell find $(source) -name "*.md")
-thoughts_md_files := $(shell find $(source)/thougts -name "*.md" ! -wholename $(source)/thoughts/index.md)
-games_md_files := $(shell find $(source)/games -name "*.md" ! -wholename $(source)/games/index.md)
+thoughts_index := $(source)/thoughts/index.md
+games_index := $(source)/games/index.md
+
+md_files := $(shell find $(source) -name "*.md") $(thoughts_index) $(games_index)
 html_files := $(patsubst $(source)/%.md,$(output)/%.html,$(md_files))
+thoughts_md_files := $(shell find $(source)/thoughts -name "*.md" ! -wholename $(thoughts_index))
+games_md_files := $(shell find $(source)/games -name "*.md" ! -wholename $(games_index))
 
 thumb := $(bin)/thumb
 rss := $(bin)/rss
 sitemap := $(bin)/sitemap
 
-install: preinstall prepare html static dist/sitemap.xml dist/rss.xml
+install: preinstall $(games_index) $(thoughts_index) prepare html static dist/sitemap.xml dist/rss.xml
 
 dev:
 	find src filters templates -type f | entr make install
 
 preinstall:
-	rm -rf node_modules && npm install
+	npm install
 
-html: $(html_files)
-
-src/games/index.md: $(games_md_files)
+$(games_index): $(games_md_files)
 	@$(bin)/game_index
 
-src/thoughts/index.md: $(thoughts_md_files)
+$(thoughts_index): $(thoughts_md_files)
 	@$(bin)/thoughts_index
+
+html: $(html_files)
 
 dist/rss.xml: $(md_files) $(rss)
 	@$(rss)
@@ -47,7 +50,7 @@ static:
 	cp -r public/* $(output)
 
 clean: 
-	@rm -vrf $(output) $(tmp)
+	@rm -vrf $(output) $(tmp) $(games_index) $(thoughts_index)
 
 prepare:
 	@mkdir -p $(output)
