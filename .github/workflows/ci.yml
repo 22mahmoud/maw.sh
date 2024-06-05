@@ -15,11 +15,6 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-           echo "HOST=${{ secrets.HOST }}" > /secrets
-           echo "USERNAME=${{ secrets.USERNAME }}" >> /secrets
-           echo "KEY=${{ secrets.KEY }}" >> /secrets
-           echo "PORT=${{ secrets.PORT }}" >> /secrets
-           echo "BUILD_PATH=${{ secrets.BUILD_PATH }}" >> /secrets
            cd ${{ secrets.BUILD_PATH }} 
            git pull --recurse-submodules origin master 
            make clean install
