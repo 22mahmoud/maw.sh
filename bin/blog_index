@@ -1,0 +1,37 @@
+#!/bin/bash
+
+base_dir="src/blog"
+final_content=""
+temp_file=$(mktemp)
+sorted_file=$(mktemp)
+
+for filename in $(ls "$base_dir" | sort -n); do
+  if [ -d "$base_dir/$filename" ]; then
+    title=$(yq --front-matter=extract '.title-prefix' "$base_dir/$filename/index.md")
+    formated_date=$(yq --front-matter=extract '.date' "$base_dir/$filename/index.md")
+    date=$(date -d "$formated_date" +%s)
+
+    echo "$date|$formated_date|$title|$filename" >>"$temp_file"
+  fi
+done
+
+sort "$temp_file" >"$sorted_file"
+
+while IFS="|" read -r id date title filename; do
+  final_content=$(printf "%s\n%s" "- $date: [$title]($filename)  " "$final_content")
+done <"$sorted_file"
+
+cat <<EOF >src/blog/index.md
+---
+title-prefix: Blog
+---
+
+# Blog
+
+_Subscribe via [RSS](https://maw.sh/rss.xml)_
+
+
+$(printf "%s" "$final_content")
+EOF
+
+echo "blog/index.md file generated successfully."
