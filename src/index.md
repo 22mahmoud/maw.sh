@@ -8,8 +8,9 @@ Welecome to my space on the internet.
 - sharing posts/photos instead of using social media.
 - [more?](/about)
 
-## recent blogs
+## Recent Blogs
 
+- [week #01 of leetcode grinding](/blog/week-1-leetcode)
 - [Uninstall all neovim plugins](/blog/uninstall-all-neovim-plugins)
 - [Adevnt of Code 2020](/blog/adevnt-of-code-2020)
 - [How to optimize and lazy-loading images on eleventy (11ty)](/blog/how-to-optimize-and-lazyloading-images-on-eleventy)
