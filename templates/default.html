@@ -196,6 +196,33 @@
         margin: 0;
       }
 
+      summary {
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      details[open] {
+        padding-bottom: .75rem;
+      }
+
+      details {
+        background: var(--c5);
+        padding: 1rem;
+      }
+
+      details pre {
+        background: var(--c1);
+        white-space: pre-line;
+      }
+
+      details[open] summary {
+        margin-bottom: 6px;
+      }
+
+      details[open]>*:last-child {
+        margin-bottom: 0;
+      }
+
       /* Headlines */
       h1,
       h2,
@@ -406,6 +433,18 @@
       </a>
 
       $for(include-before)$ $include-before$ $endfor$ 
+
+      $if(submission)$
+  <div style="border: 3px solid var(--c5); padding: 0.8rem;">
+      <h2 style="margin: 0 0 10px;">$id$. $title-prefix$ <a href="$submission$" target="_blank" style="font-size: 1rem;">🔗</a></h2>
+    <p><strong>Date:</strong> $date$</p>
+    <p><strong>Tags:</strong> $for(tags)$$tags$$sep$, $endfor$</p>
+    <details>
+      <summary>Description</summary>
+      $description$
+    </details>
+  </div>
+      $endif$
 
       $if(game)$ ${game.html()} $endif$ 
 
