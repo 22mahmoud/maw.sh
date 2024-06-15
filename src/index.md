@@ -10,6 +10,7 @@ Welecome to my space on the internet.
 
 ## Recent Blogs
 
+- [week #02 of leetcode grinding](/blog/week-2-leetcode)
 - [week #01 of leetcode grinding](/blog/week-1-leetcode)
 - [Uninstall all neovim plugins](/blog/uninstall-all-neovim-plugins)
 - [Adevnt of Code 2020](/blog/adevnt-of-code-2020)
