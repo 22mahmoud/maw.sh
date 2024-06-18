@@ -1,6 +1,6 @@
 ---
 date: 2024-06-18T04:38+03:00
-state: wanted
+state: active
 cover_image: "./cover.webp"
 game: true
 title: God of War (2018)
