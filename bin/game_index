@@ -1,13 +1,14 @@
 #!/bin/sh
 
+base_dir="src/games"
 active_games=""
 wanted_games=""
 completed_games=""
 
-for dir in src/games/*; do
-  [ ! -d "$dir" ] && continue
+for dir_name in "$base_dir"/*/; do
+  [ ! -d "$dir_name" ] && continue
 
-  md_file="${dir}/index.md"
+  md_file="${dir_name}/index.md"
   [ ! -f "$md_file" ] && continue
 
   title=$(yq --front-matter=extract '.title' "$md_file")
@@ -17,7 +18,7 @@ for dir in src/games/*; do
   [ -z "$state" ] && state="wanted"
 
   # Create a hyperlink entry for the game
-  link="- [$title](/games/$(basename "$dir"))"
+  link="- [$title](/games/$(basename "$dir_name"))"
 
   # Categorize the game based on its state
   case "$state" in
