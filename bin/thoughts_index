@@ -3,14 +3,13 @@
 base_dir="src/thoughts"
 final_conent=""
 
-# Iterate over each timestamp directory
-for filename in $(ls -1 "$base_dir" | sort -n); do
-  if [ -d "$base_dir/$filename" ]; then
-    date=$(yq --front-matter=extract '.date' "$base_dir/$filename/index.md")
+for dir_name in "$base_dir"/*/; do
+  if [ -d "$dir_name" ]; then
+    date=$(yq --front-matter=extract '.date' "$dir_name/index.md")
 
-    url="/thoughts/$filename"
+    url="/thoughts/$dir_name"
 
-    content=$(sed '/^---$/,/^---$/d' "$base_dir/$filename/index.md" | sed 's/^/  /')
+    content=$(sed '/^---$/,/^---$/d' "$dir_name/index.md" | sed 's/^/  /')
 
     final_conent=$(printf "%s\n%s\n\n%s" "- [[$date]($url)]  " "$content" "$final_conent")
   fi
