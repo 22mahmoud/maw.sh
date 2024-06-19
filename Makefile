@@ -31,8 +31,7 @@ $(output)/%.html: $(src)/%.md templates/* filters/*
 	@pandoc -d pandoc.yaml $< -o $@
 	@echo "[html generated]:" $@
 
-ext_args := $(shell echo $(extensions) \
-            | sed 's/\(\w\+\)/"*.\1"/g' | sed 's/ / -o -iname /g' | sed 's/^/-iname /')
+ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/"*.\1"/g' | sed 's/ / -o -iname /g' | sed 's/^/-iname /')
 static:
 	find $(src) -type f $(ext_args) -print0 | cpio -pdmu0 $(output)
 	cp -r public/* $(output)
