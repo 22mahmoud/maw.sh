@@ -11,23 +11,16 @@ check_variable() {
 }
 
 fetch_game_data() {
-  game_id="$1"
-  api_key="$2"
-
-  response=$(curl -s "https://api.rawg.io/api/games/$game_id?key=$api_key")
-
-  echo "$response"
+  curl -s "https://api.rawg.io/api/games/$game_id?key=$api_key"
 }
 
 val() {
-  echo "$1" | yq -r "$2"
+  echo "$response" | yq -r "$1"
 }
 
 create_or_update_markdown() {
-  mkdir -p "$1"
-
-  if [ ! -f "$1/index.md" ]; then
-    cat <<EOF >"$1/index.md"
+  if [ ! -f "$path_name" ]; then
+    cat <<EOF >"$path_name"
 ---
 date: $(date -I'minutes')
 state: wanted
@@ -35,18 +28,18 @@ cover_image: "./cover.webp"
 game: true
 ---
 EOF
-    echo "Game file for '$2' created successfully at $1."
+    echo "Game file for '$title' created successfully at $dir_name."
   fi
 }
 
 download_cover_image() {
-  curl -s "$2" -o "$1/cover.jpg"
-  cwebp -resize 480 0 -q 80 "$1/cover.jpg" -o "$1/cover.webp"
-  rm "$1/cover.jpg"
+  curl -s "$cover_image" -o "$dir_name/cover.jpg"
+  cwebp -resize 480 0 -q 80 "$dir_name/cover.jpg" -o "$dir_name/cover.webp"
+  rm "$dir_name/cover.jpg"
 }
 
 update_metadata() {
-  yq --front-matter="process" -i ".$2 = \"$3\"" "$1"
+  yq --front-matter="process" -i ".$1 = \"$2\"" "$path_name"
 }
 
 main() {
@@ -56,31 +49,33 @@ main() {
   check_variable "$game_id" "Usage: $0 <game_id>"
   check_variable "$api_key" "Error: API_KEY environment variable is not set."
 
-  response=$(fetch_game_data "$game_id" "$api_key")
+  response=$(fetch_game_data)
 
   if [ "$(echo "$response" | yq -r '.detail')" = "Not found." ]; then
     echo "Error: Game ID '$game_id' not found."
     exit 1
   fi
 
-  title=$(val "$response" '.name')
-  original_url=$(val "$response" '.website')
-  description=$(val "$response" '.description_raw')
-  release_date=$(val "$response" '.released')
-  slug=$(val "$response" '.slug')
-  cover_image=$(val "$response" '.background_image')
+  title=$(val '.name')
+  original_url=$(val '.website')
+  description=$(val '.description_raw')
+  release_date=$(val '.released')
+  slug=$(val '.slug')
+  cover_image=$(val '.background_image')
 
   dir_name=src/games/"$slug"
   path_name="$dir_name"/index.md
 
-  create_or_update_markdown "$dir_name" "$title"
-  download_cover_image "$dir_name" "$cover_image"
+  mkdir -p "$dir_name"
 
-  update_metadata "$path_name" "title" "$title"
-  update_metadata "$path_name" "release_date" "$release_date"
-  update_metadata "$path_name" "description" "$description"
-  update_metadata "$path_name" "cover_image" "./cover.webp"
-  update_metadata "$path_name" "original_url" "$original_url"
+  create_or_update_markdown
+  download_cover_image
+
+  update_metadata "title" "$title"
+  update_metadata "release_date" "$release_date"
+  update_metadata "description" "$description"
+  update_metadata "cover_image" "./cover.webp"
+  update_metadata "original_url" "$original_url"
 
   echo "Game file for '$title' updated successfully at $path_name."
 }

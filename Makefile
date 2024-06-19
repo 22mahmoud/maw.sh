@@ -1,56 +1,49 @@
-source = src
-output = dist
-pages = pages
-bin = bin
-tmp = .tmp
-extensions := -iname "*.jpeg" -o -iname "*.jpg" -o  -iname "*.mp4" -o  -iname "*.gif" -o \
-							-iname "*.png" -o  -iname "*.txt" -o  -iname "*.webp" -o  -iname "*.avif"
+src 				:= src
+output 			:= dist
+pages 			:= pages
+bin 				:= bin
+tmp 				:= .tmp
+extensions	:= jpeg jpg mp4 gif png txt webp avif
+md_pages		:= $(shell find $(pages) -type f | sed 's|$(pages)|$(src)|g' | sed 's|$$|/index.md|')
+md_files  	:= $(shell find $(src) -name "*.md") $(md_pages)
+html_files 	:= $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 
-index_files := $(shell find $(source) -maxdepth 1 -type d ! -path $(source) -exec basename {} \;)
-
-md_files := $(shell find $(source) -name "*.md")
-html_files := $(patsubst $(source)/%.md,$(output)/%.html,$(md_files))
-
-thumb := $(bin)/thumb
-rss := $(bin)/rss
-sitemap := $(bin)/sitemap
-
-install: preinstall prepare pages_index html static dist/sitemap.xml dist/rss.xml
+build: prepare pages_index html static $(output)/sitemap.xml $(output)/rss.xml
 
 dev:
-	find src filters templates -type f | entr make install
+	find $(src) filters templates -type f | entr make build
 
-preinstall:
-	npm install
+pages_index: $(md_pages)
 
-pages_index: $(index_files)
-
-$(index_files):
-	@if [ -f $(pages)/$(@) ]; then $(pages)/$(@); fi
+$(src)/%/index.md: $(src)/%/**/*.md
+	@$(pages)/$(shell echo $(@) | sed 's/\/index.md//' | xargs basename)
 
 html: $(html_files)
 
-dist/rss.xml: $(md_files) $(rss)
-	@$(rss)
+$(output)/rss.xml: $(md_files) $(bin)/rss
+	@$(bin)/rss
 
-dist/sitemap.xml: $(md_files) $(sitemap)
-	@$(sitemap)
+$(output)/sitemap.xml: $(md_files) $(bin)/sitemap
+	@$(bin)/sitemap
 
-dist/%.html: src/%.md templates/* filters/*
+$(output)/%.html: $(src)/%.md templates/* filters/*
 	@mkdir -p $(@D)
 	@pandoc -d pandoc.yaml $< -o $@
 	@echo "[html generated]:" $@
 
+ext_args	:= $(shell echo $(extensions) \
+						 | sed 's/\(\w\+\)/"*.\1"/g' | sed 's/ / -o -iname /g' | sed 's/^/-iname /')
 static:
-	cd $(source) && find . -type f \( $(extensions) \)  -print0 | cpio -pdmu0 ../$(output)
+	find $(src) -type f $(ext_args) -print0 | cpio -pdmu0 $(output)
 	cp -r public/* $(output)
 
-clean: 
-	@rm -vrf $(output) $(tmp) $(games_index) $(thoughts_index) $(blog_index)
+clean:
+	@rm -vrf $(output) $(tmp) $(md_pages)
 
 prepare:
-	@mkdir -p $(output)
-	@mkdir -p $(tmp)/images
-	@touch $(tmp)/images/.nomedia
+	mkdir -p $(output)
+	mkdir -p $(tmp)/images
+	touch $(tmp)/images/.nomedia
+	npm install
 
-.PHONY: install html static clean dev preinstall pages_index $(index_files)
+.PHONY: build html static clean dev pages_index
