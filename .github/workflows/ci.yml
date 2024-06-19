@@ -17,4 +17,4 @@ jobs:
           script: |
            cd ${{ secrets.BUILD_PATH }} 
            git pull --recurse-submodules origin master 
-           make install
+           make build
