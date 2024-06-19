@@ -14,7 +14,7 @@ md_files := $(shell find $(source) -name "*.md") $(thoughts_index) $(games_index
 html_files := $(patsubst $(source)/%.md,$(output)/%.html,$(md_files))
 thoughts_md_files := $(shell find $(source)/thoughts -name "*.md" ! -wholename $(thoughts_index))
 games_md_files := $(shell find $(source)/games -name "*.md" ! -wholename $(games_index))
-blog_md_files := $(shell find $(source)/games -name "*.md" ! -wholename $(blog_index))
+blog_md_files := $(shell find $(source)/blog -name "*.md" ! -wholename $(blog_index))
 
 thumb := $(bin)/thumb
 rss := $(bin)/rss
