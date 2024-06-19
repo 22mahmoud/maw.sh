@@ -1,12 +1,12 @@
-src 				:= src
-output 			:= dist
-pages 			:= pages
-bin 				:= bin
-tmp 				:= .tmp
-extensions	:= jpeg jpg mp4 gif png txt webp avif
-md_pages		:= $(shell find $(pages) -type f | sed 's|$(pages)|$(src)|g' | sed 's|$$|/index.md|')
-md_files  	:= $(shell find $(src) -name "*.md") $(md_pages)
-html_files 	:= $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
+src        := src
+output     := dist
+pages      := pages
+bin        := bin
+tmp        := .tmp
+extensions := jpeg jpg mp4 gif png txt webp avif
+md_pages   := $(shell find $(pages) -type f | sed 's|$(pages)|$(src)|g' | sed 's|$$|/index.md|')
+md_files   := $(shell find $(src) -name "*.md") $(md_pages)
+html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 
 build: prepare pages_index html static $(output)/sitemap.xml $(output)/rss.xml
 
@@ -31,8 +31,8 @@ $(output)/%.html: $(src)/%.md templates/* filters/*
 	@pandoc -d pandoc.yaml $< -o $@
 	@echo "[html generated]:" $@
 
-ext_args	:= $(shell echo $(extensions) \
-						 | sed 's/\(\w\+\)/"*.\1"/g' | sed 's/ / -o -iname /g' | sed 's/^/-iname /')
+ext_args := $(shell echo $(extensions) \
+            | sed 's/\(\w\+\)/"*.\1"/g' | sed 's/ / -o -iname /g' | sed 's/^/-iname /')
 static:
 	find $(src) -type f $(ext_args) -print0 | cpio -pdmu0 $(output)
 	cp -r public/* $(output)
