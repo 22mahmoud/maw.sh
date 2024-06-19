@@ -16,5 +16,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
            cd ${{ secrets.BUILD_PATH }} 
-           git pull --recurse-submodules origin master 
+           git fetch --all
+           git reset --hard origin/master
            make build
