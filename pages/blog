@@ -11,6 +11,8 @@ for dir_name in "$base_dir"/*/; do
     formated_date=$(yq --front-matter=extract '.date' "$dir_name/index.md")
     date=$(date -d "$formated_date" +%s)
 
+		dir_name=${dir_name//src/}
+
     echo "$date|$formated_date|$title|$dir_name" >>"$temp_file"
   fi
 done
