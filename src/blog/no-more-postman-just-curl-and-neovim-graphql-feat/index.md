@@ -9,5 +9,6 @@ keywords:
   - curl
   - jq
   - postman
+category: vim
 blog: true
 ---

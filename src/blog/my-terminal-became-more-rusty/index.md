@@ -4,6 +4,7 @@ date: 2020-08-21T00:00+02:00
 author: Mahmoud Ashraf
 description: CLI tools written in rust make my terminal fast and productive
 keywords: rust, cli, linux, terminal
+category: terminal
 blog: true
 ---
 

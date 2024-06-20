@@ -8,6 +8,7 @@ keywords:
   - problem sovling
   - backtracking
   - Linkedlist
+category: leetcode
 blog: true
 ---
 

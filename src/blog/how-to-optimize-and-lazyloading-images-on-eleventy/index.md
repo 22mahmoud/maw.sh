@@ -5,6 +5,7 @@ author: Mahmoud Ashraf
 description: Learn How to automate your images using eleventy-img plugin and sharpjs
 categories: tutorial, javascript
 keywords: javascript, eleventy, 11ty, optimization, image
+category: front-end
 blog: true
 ---
 
