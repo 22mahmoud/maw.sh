@@ -4,9 +4,8 @@ date: Aug 21, 2020
 author: Mahmoud Ashraf
 description: CLI tools written in rust make my terminal fast and productive
 keywords: rust, cli, linux, terminal
+blog: true
 ---
-
-# My terminal became more Rusty 🦀
 
 ![big crap attack the city](cover.jpeg)
 

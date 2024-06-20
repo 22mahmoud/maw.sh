@@ -4,9 +4,8 @@ title-prefix: Uninstall all neovim plugins
 date: Dec 02, 2022
 description: This Article about using neovim on a Unix way.
 keywords: linux, neovim, vim
+blog: true
 ---
-
-# Uninstall all neovim plugins
 
 ![the matrix movie scene](matrix.jpg)
 

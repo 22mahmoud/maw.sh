@@ -5,9 +5,8 @@ author: Mahmoud Ashraf
 description: Learn How to automate your images using eleventy-img plugin and sharpjs
 categories: tutorial, javascript
 keywords: javascript, eleventy, 11ty, optimization, image
+blog: true
 ---
-
-# How to optimize and lazy-loading images on eleventy (11ty)
 
 Building a site that has images requires to optimize them
 to avoid any content shifting and deliver a good user experience.

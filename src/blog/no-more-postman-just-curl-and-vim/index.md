@@ -4,9 +4,8 @@ date: Aug 20, 2020
 author: Mahmoud Ashraf
 description: Well documented api and easy to use and share with your team with simple tools cURL + vim + git (optional)
 keywords: api, tooling, curl, vim
+blog: true
 ---
-
-# No More postman just use cURL + vim = ❤
 
 Postman one of the most popular API client tool, for send and view the response
 in the development environment. But since Postman is proprietary software and

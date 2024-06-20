@@ -8,9 +8,8 @@ keywords:
   - problem sovling
   - hash-map
   - two-pointer
+blog: true
 ---
-
-# Week #01 of Leetcode (Jun 08, 2024)
 
 So this is my first week of my [LeetCode](/leetcode) grinding journey, and I want
 to share my notes and the techniques I've learned and the problems I've solved 

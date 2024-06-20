@@ -8,3 +8,4 @@ filters:
   - img_filter.lua
   - include-code-files.lua
   - shiki.js
+  - date-format.lua

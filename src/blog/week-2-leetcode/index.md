@@ -8,9 +8,8 @@ keywords:
   - problem sovling
   - backtracking
   - Linkedlist
+blog: true
 ---
-
-# Week #02 of Leetcode (Jun 16, 2024)
 
 - This week I've built a [shell script](https://github.com/22mahmoud/leetcode/blob/main/bin/new) to generate a boilerplate for the problem
   from `leetcode` graphql api

@@ -439,9 +439,13 @@
   </div>
       $endif$
 
-      $if(game)$ ${game.html()} $endif$ 
-
-      $body$ 
+      $if(blog)$ 
+        ${blog.html()}
+      $elseif(game)$
+        ${game.html()} 
+      $else$ 
+        $body$ 
+      $endif$
 
       $for(include-after)$ $include-after$ $endfor$
     </main>

@@ -4,9 +4,8 @@ date: Dec 04, 2020
 author: Mahmoud Ashraf
 description: advent of code solutions by @22mahmoud
 keywords: aoc, programming
+blog: true
 ---
-
-# Advent of Code 2020
 
 This blog will be updated every day to show you my solutions
 for [aoc-2020](https://adventofcode.com/).
