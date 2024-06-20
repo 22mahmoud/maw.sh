@@ -1,6 +1,6 @@
 ---
 title-prefix: Adevnt of Code 2020
-date: Dec 04, 2020
+date: 2020-12-04T00:00+02:00
 author: Mahmoud Ashraf
 description: advent of code solutions by @22mahmoud
 keywords: aoc, programming

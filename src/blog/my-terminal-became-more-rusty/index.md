@@ -1,6 +1,6 @@
 ---
-title-prefix: My terminal became more Rusty 🦀
-date: Aug 21, 2020
+title-prefix: "My terminal became more Rusty \U0001F980"
+date: 2020-08-21T00:00+02:00
 author: Mahmoud Ashraf
 description: CLI tools written in rust make my terminal fast and productive
 keywords: rust, cli, linux, terminal

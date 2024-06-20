@@ -1,5 +1,16 @@
 <div class="h-entry">
-  <h1 class="p-name"> $title-prefix$ </h1>
-  <time class="dt-published" datetime="$isodate$">$date$</time>
-  $body$
+  <h1 class="p-name">$title-prefix$</h1>
+  <time class="dt-published" datetime="$date$">$formatted_date$</time>
+
+  <div class="e-content">
+    $body$
+  </div>
+
+  <div hidden>
+    <a href="$base_url$/$path$" class="u-url">$title-prefix$</a>
+    <p class="h-card p-author">
+      <a href="$base_url$" class="p-name u-url" rel="author">Mahmoud Ashraf</a>
+      <img class="u-photo" src="$base_url$/avatar.png" />
+    </p>
+  </div>
 </div>

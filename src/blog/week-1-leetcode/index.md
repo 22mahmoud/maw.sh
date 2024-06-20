@@ -1,7 +1,7 @@
 ---
 slug: week-1-leetcode
 title-prefix: Week \#01 of Leetcode
-date: Jun 08, 2024
+date: 2024-06-08T00:00+03:00
 description: week \#01 of leetcode grinding
 keywords:
   - leetcode

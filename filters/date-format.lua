@@ -14,7 +14,8 @@ function Meta(m)
 
   local date = pandoc.utils.stringify(m.date)
 
-  local cmd = string.format('TZ=Africa/Cairo date -d "%s" -Iseconds', date)
-  m.isodate = os.capture(cmd)
+  -- local cmd = string.format("date -d \"%s\"  '+%b %d, %Y'", date)
+  local cmd = 'date -d ' .. string.format('"%s"', date) .. " '+%b %d, %Y'"
+  m.formatted_date = os.capture(cmd)
   return m
 end

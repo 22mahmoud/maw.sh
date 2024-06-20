@@ -28,7 +28,10 @@ $(output)/sitemap.xml: $(md_files) $(bin)/sitemap
 
 $(output)/%.html: $(src)/%.md templates/* filters/*
 	@mkdir -p $(@D)
-	@pandoc -d pandoc.yaml $< -o $@
+	@pandoc \
+		-d pandoc.yaml \
+		--variable path=$(shell echo $< | sed 's|/index.md$$||' | sed 's|^src/||') \
+		$< -o $@
 	@echo "[html generated]:" $@
 
 ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/"*.\1"/g' | sed 's/ / -o -iname /g' | sed 's/^/-iname /')
