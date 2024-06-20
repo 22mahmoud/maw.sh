@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "name": "Mahmoud Ashraf",
+  "description": "Mahmoud Ashraf's personal website",
+  "icons": {
+    "60": "./favicon-60x60.png",
+    "128": "./favicon-128x128.png",
+    "512": "./favicon-512x512.png"
+  },
+  "developer": {
+    "name": "Mahmoud Ashraf",
+    "url": "https://maw.sh"
+  }
+}
