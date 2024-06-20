@@ -3,7 +3,7 @@
   "api_version": 1,
   "layout": {
     "logo": "./favicon-50x50.png",
-    "color": "#fff",
+    "color": "#080808",
     "show_title": true
   }
 }
