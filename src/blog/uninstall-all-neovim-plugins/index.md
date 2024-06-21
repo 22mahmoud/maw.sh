@@ -177,3 +177,14 @@ my base16 theme system.
 After adding all my needs I find out that there was many plugins on my config
 that does not help me or not fit on my workflow. e.g: I do not use snippets,
 file explorer, fuzzy finders.
+
+## Comments (4)
+
+<div class="webmentions">
+
+- ![Redbeardt](https://webmention.io/avatar/styles.redditmedia.com/c19f778262c7fc99bdd3db2cd08faedfe0d9ef22c6bb0f3de8363a8d751bd782.png) Redbeardt [responded 2022-12-02](https://reddit.com/r/neovim/comments/za6uod/uninstall_all_neovim_plugins/iylid4g/): <p>Someone wants me to uninstall all my plugins and thinks they're unnecessary? *rubs hands together* Sounds like someone's about to reveal some decent nvim tips'n'tricks. I'll take your tips, and keep my plugins too! Wa ha ha!</p> 
+- ![rainning0513](https://webmention.io/avatar/styles.redditmedia.com/08221199e9d672aad3705646fe01222b8250edb05ad15aa786d943b954f751c7.png) rainning0513 [responded 2022-12-02](https://reddit.com/r/neovim/comments/za6uod/uninstall_all_neovim_plugins/iykjm58/): <p>Regarding doing terminal stuff inside neovim, try my plugin: <a href="https://github.com/nyngwang/NeoTerm.lua">nyngwang/NeoTerm.lua</a>, which is definitely better than creating tmux split, since you can attach a terminal for each window you want to run something instead of creating many many many tmux splits that split you life apart.</p> <p>And, since I know nowadays people are really really lazy to take a look at README.md here is the link to the <a href="https://github.com/nyngwang/NeoTerm.lua#demo">DEMO</a> of it.</p> 
+- ![cameronm1024](https://webmention.io/avatar/styles.redditmedia.com/a665b39f747bb4bf55cdd2c3fed957087152ba8ee0b04b6994e3c4ee3f24fc1d.png) cameronm1024 [responded 2022-12-02](https://reddit.com/r/neovim/comments/za6uod/uninstall_all_neovim_plugins/iylmuaq/): <p>I feel like this whole post can be summed up with "ok cool, you don't like them, don't use them ????"</p> 
+- ![YodaLoL](https://webmention.io/avatar/styles.redditmedia.com/186bfc30aec5fdc562d3298414f668871d745631c4ca8a675260f58a568d5acc.png) YodaLoL [responded 2022-12-02](https://reddit.com/r/neovim/comments/za6uod/uninstall_all_neovim_plugins/iykkxqz/): <p>After all the bashing on plugins the article ends with you installing nvim-lspconfig, one of the actually optional plugins (it adds nearly nothing in terms of features). :facepalm:</p>
+
+</div>

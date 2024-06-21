@@ -11,7 +11,7 @@ html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 build: prepare pages_index html static $(output)/sitemap.xml $(output)/rss.xml
 
 dev:
-	find $(src) filters templates -type f | entr make build
+	find $(src) filters templates -type f | entr make dist/blog/uninstall-all-neovim-plugins/index.html
 
 pages_index: $(md_pages)
 

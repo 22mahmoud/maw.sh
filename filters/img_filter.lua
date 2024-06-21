@@ -1,5 +1,9 @@
 local path = require 'pandoc.path'
 
+local function starts_with(str, prefix)
+  return str:sub(1, #prefix) == prefix
+end
+
 local function get_file_absolute_path(file)
   local current_file = string.gsub(PANDOC_STATE.input_files[1], '([^/]*%.%w+)$', '')
   return ('/' .. path.join { current_file, file }):gsub('^/+', '/')
@@ -82,6 +86,10 @@ end
 
 function Image(img)
   img.attributes.loading = 'lazy'
+
+  if starts_with(img.src, "https://") or starts_with(img.src, "http://") then
+    return img
+  end
 
   local absolute_path = remove_src_prefix(get_file_absolute_path(img.src))
   local thumb = get_thumb_path(absolute_path)

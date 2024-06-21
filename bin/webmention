@@ -1,0 +1,11 @@
+#!/bin/sh
+
+result=$(curl "https://webmention.io/api/mentions.jf2?target=https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/&token=P22qlR3APX6ygerkK9JOKQ" \
+  | jq ".children")
+
+
+markdown_content=$(echo "$result" | jq -r '.[] | "- ![\(.author.name)](\(.author.photo)) \(.author.name)\n  [responded \(.published | sub("T.*"; ""))](\(.url)):\n  \(.content.html)"')
+
+echo $markdown_content
+
+# sed -i "src/<!-- webmentions -->/$markdown_content/" "src/blog/uninstall-all-neovim-plugins/index.md"

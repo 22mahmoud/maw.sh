@@ -396,6 +396,66 @@
           background-color: var(--status-completed);
         }
       $endif$
+
+.webmentions {
+  font-family: var(--sans);
+  color: var(--c4);
+  background-color: var(--c5);
+  padding: 1em;
+  border-radius: 8px;
+  margin: 1em 0;
+}
+
+.webmentions ul {
+        padding: 0;
+}
+
+.webmentions li {
+  list-style-type: none;
+  margin-bottom: 2rem;
+}
+
+.webmentions img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.webmentions a {
+  color: var(--c3);
+  text-decoration: none;
+}
+
+.webmentions a:hover {
+  text-decoration: underline;
+}
+
+.webmentions p {
+  margin: 0.5em 0;
+}
+
+.webmentions div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.webmentions div:last-child {
+  margin-bottom: 0;
+}
+
+.webmentions span {
+  font-weight: bold;
+  margin-right: 10px;
+  color: var(--c1);
+}
+
+.webmentions span a {
+  color: var(--c3);
+  font-weight: normal;
+}
     </style>
 
     $for(header-includes)$ $header-includes$ $endfor$
