@@ -5,12 +5,12 @@
 
 import pandoc from "pandoc-filter";
 import { getHighlighter } from "shiki";
-import fs from "node:fs";
 
-function logToFile(message) {
-  fs.appendFileSync("debug.log", message + "\n", "utf8");
-}
-
+/**
+ * @param {string} code
+ * @param {string} lang
+ * @returns {Promise<string>}
+ */
 async function highlightCodeBlock(code, lang) {
   const highlighter = await getHighlighter({
     themes: ["vitesse-dark"],

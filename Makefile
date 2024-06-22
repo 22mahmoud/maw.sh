@@ -4,6 +4,7 @@ pages      := pages
 bin        := bin
 tmp        := .tmp
 extensions := jpeg jpg mp4 gif png txt webp avif
+
 md_pages   := $(shell find $(pages) -type f | sed 's|$(pages)|$(src)|g' | sed 's|$$|/index.md|')
 md_files   := $(shell find $(src) -name "*.md") $(md_pages)
 html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
@@ -44,6 +45,7 @@ clean:
 
 prepare:
 	mkdir -p $(output)
+	mkdir -p $(output)/remote_images
 	mkdir -p $(tmp)/images
 	touch $(tmp)/images/.nomedia
 	npm install
