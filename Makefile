@@ -34,10 +34,10 @@ $(output)/%.html: $(src)/%.md templates/* filters/*
 		$< -o $@
 	@echo "[html generated]:" $@
 
-ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/"*.\1"/g' | sed 's/ / -o -iname /g' | sed 's/^/-iname /')
+ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/--include="*.\1"/g')
 static:
-	find $(src) -type f $(ext_args) -print0 | cpio -pdmu0 $(output)
-	cp -r public/* $(output)
+	@rsync -av --ignore-existing --include="*/" $(ext_args) --exclude="*" $(src)/ $(output)/
+	@rsync -av --ignore-existing --include="*" public/ $(output)/
 
 clean:
 	@rm -vrf $(output) $(tmp) $(md_pages)
