@@ -398,6 +398,7 @@
         }
       $endif$
 
+
 .webmentions {
   font-family: var(--sans);
   color: var(--c4);
@@ -407,8 +408,10 @@
   margin: 1em 0;
 }
 
+.webmentions br {display: none;}
+
 .webmentions ul {
-        padding: 0;
+  padding: 0;
 }
 
 .webmentions li {
@@ -457,6 +460,28 @@
   color: var(--c3);
   font-weight: normal;
 }
+
+      .wm-bookmakrs ul { 
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+      }
+
+      .wm-bookmakrs li {
+        margin-left: -8px;
+
+      }
+
+      .wm-bookmakrs img {
+        border-radius: 50%;
+        object-fit: cover;
+        width: 48px;
+        height: 48px;
+        margin: 0;
+        vertical-align: middle;
+        border: 3px solid var(--status-completed);
+      }
     </style>
 
     $for(header-includes)$ $header-includes$ $endfor$

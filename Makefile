@@ -12,7 +12,7 @@ html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 build: prepare pages_index html static $(output)/sitemap.xml $(output)/rss.xml
 
 dev:
-	find $(src) filters templates -type f | entr make dist/blog/uninstall-all-neovim-plugins/index.html
+	@find $(src) filters templates -type f | entr $(MAKE) dist/blog/build-a-blog-with-svelte-and-markdown/index.html
 
 pages_index: $(md_pages)
 
@@ -27,13 +27,13 @@ $(output)/rss.xml: $(md_files) $(bin)/rss
 $(output)/sitemap.xml: $(md_files) $(bin)/sitemap
 	@$(bin)/sitemap
 
-$(output)/%.html: $(src)/%.md templates/* filters/*
-	@mkdir -p $(@D)
-	@pandoc \
-		-d pandoc.yaml \
-		--variable path=$(shell echo $< | sed 's|/index.md$$||' | sed 's|^src/||') \
-		$< -o $@
-	@echo "[html generated]:" $@
+default_deps := $(src)/%/index.md  templates/* filters/* bin/generate
+
+$(output)/%/index.html: $(default_deps) $(src)/%/comments.yaml
+	@bin/generate $< $@
+
+$(output)/%/index.html: $(default_deps) $(src)/%/index.md
+	@bin/generate $< $@
 
 ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/--include="*.\1"/g')
 static:

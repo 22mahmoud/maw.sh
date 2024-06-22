@@ -1,0 +1,36 @@
+<h1>Webmentions</h1>
+
+$if(bookmark-of)$
+<h3>Bookmarkes <span>($bookmark-of/length$)</h3>
+<div class="wm-bookmakrs">
+  <ul>
+    $for(bookmark-of)$
+    <li class="h-entry">
+      <a href="$bookmark-of.url$" class="u-bookmark-of">
+        <img alt="" src="$bookmark-of.author.photo$" />
+      </a>
+    </li>
+    $endfor$
+  </ul>
+</div>
+$endif$
+
+<!-- -->
+
+<h3>Comments</h3>
+<div class="webmentions">
+  $if(in-reply-of)$
+  <ul>
+    $for(in-reply-to)$
+    <li class="p-comment h-entry">
+      <img alt="" src="$in-reply-to.author.photo$" />
+      <strong>
+        <a class="p-name u-url" href="$in-reply-to.author.url$">$in-reply-to.author.name$</a>
+      </strong>
+      said:
+      <p class="e-content">$in-reply-to.content.html$</p>
+    </li>
+    $endfor$
+  </ul>
+  $else$ No Comments yet! $endif$
+</div>

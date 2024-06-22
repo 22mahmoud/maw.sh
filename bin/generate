@@ -1,0 +1,25 @@
+#!/bin/sh
+
+input="$1"
+input_dir=$(dirname "$input")
+
+output="$2"
+output_dir=$(dirname "$output")
+
+path=$(echo "$input_dir" | sed 's|^src/||')
+
+mkdir -p "$output_dir"
+
+comments_file="$input_dir"/comments.yaml
+
+pandoc_args="--variable path=$path"
+
+if [ -f "$comments_file" ]; then
+	pandoc_args="$pandoc_args --metadata-file=$comments_file"
+fi
+
+eval pandoc -d pandoc.yaml \
+  "${pandoc_args}" \
+  "$input" -o "$output"
+
+echo "[html generated]:" "$output"
