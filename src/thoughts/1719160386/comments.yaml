@@ -15,3 +15,23 @@ like-of:
     like-of: https://maw.sh/thoughts/1719160386/
     wm-property: like-of
     wm-private: false
+in-reply-to:
+  - type: entry
+    author:
+      type: card
+      name: Mahmoud Ashraf
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/04db3bece77ea18a0f19e63e24748d0e0e56a8b53d3039df997e6448dec49400.png
+      url: https://fosstodon.org/\@22mahmoud
+    url: https://fosstodon.org/\@22mahmoud/112667066904889850
+    published: "2024-06-23T17:16:48+00:00"
+    wm-received: "2024-06-23T17:17:04Z"
+    wm-id: 1835899
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112666916863089581/112667066904889850
+    wm-target: thoughts/1719160386
+    wm-protocol: webmention
+    content:
+      html: <p>test pong ????</p>
+      text: test pong ????
+    in-reply-to: https://maw.sh/thoughts/1719160386/
+    wm-property: in-reply-to
+    wm-private: false
