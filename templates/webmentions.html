@@ -9,6 +9,7 @@
       <li class="bookmark-item h-entry">
         <a href="$bookmark-of.url$" class="bookmark-link u-bookmark-of">
           <img
+            loading="lazy"
             alt="$bookmark-of.author.name$'s photo"
             src="$bookmark-of.author.photo$"
             class="bookmark-author-photo"
@@ -31,6 +32,7 @@
       $for(in-reply-to)$
       <li class="comment-item p-comment h-entry">
         <img
+          loading="lazy"
           alt="$in-reply-to.author.name$'s photo"
           src="$in-reply-to.author.photo$"
           class="comment-author-photo"
