@@ -6,7 +6,9 @@ input_dir=$(dirname "$input")
 output="$2"
 output_dir=$(dirname "$output")
 
-path=$(echo "$input_dir" | sed 's|^src/||; s|^src$||')
+echo "$input_dir"
+path=$(echo "$input_dir" | sed -E 's|^src/?||')
+echo "$path"
 
 mkdir -p "$output_dir"
 
