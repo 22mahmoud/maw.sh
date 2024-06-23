@@ -4,15 +4,15 @@ base_dir="src/thoughts"
 final_conent=""
 
 for dir_name in "$base_dir"/*/; do
-  if [ -d "$dir_name" ]; then
-    date=$(yq --front-matter=extract '.date' "$dir_name/index.md")
+	if [ -d "$dir_name" ]; then
+		date=$(yq --front-matter=extract '.date' "$dir_name/index.md")
 
 		url=${dir_name//src/}
 
-    content=$(sed '/^---$/,/^---$/d' "$dir_name/index.md" | sed 's/^/  /')
+		content=$(sed '/^---$/,/^---$/d' "$dir_name/index.md" | sed 's/^/  /')
 
-    final_conent=$(printf "%s\n%s\n\n%s" "- [[$date]($url)]  " "$content" "$final_conent")
-  fi
+		final_conent=$(printf "%s\n%s\n\n%s" "- [[$date]($url)]  " "$content" "$final_conent")
+	fi
 done
 
 cat <<EOF >src/thoughts/index.md

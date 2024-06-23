@@ -19,7 +19,7 @@ if [ -f "$comments_file" ]; then
 fi
 
 eval pandoc -d pandoc.yaml \
-  "${pandoc_args}" \
-  "$input" -o "$output"
+	"${pandoc_args}" \
+	"$input" -o "$output"
 
 echo "[html generated]:" "$output"

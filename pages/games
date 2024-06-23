@@ -6,35 +6,35 @@ wanted_games=""
 completed_games=""
 
 for dir_name in "$base_dir"/*/; do
-  [ ! -d "$dir_name" ] && continue
+	[ ! -d "$dir_name" ] && continue
 
-  md_file="${dir_name}/index.md"
-  [ ! -f "$md_file" ] && continue
+	md_file="${dir_name}/index.md"
+	[ ! -f "$md_file" ] && continue
 
-  title=$(yq --front-matter=extract '.title' "$md_file")
-  state=$(yq --front-matter=extract '.state' "$md_file")
+	title=$(yq --front-matter=extract '.title' "$md_file")
+	state=$(yq --front-matter=extract '.state' "$md_file")
 
-  [ -z "$title" ] && continue
-  [ -z "$state" ] && state="wanted"
+	[ -z "$title" ] && continue
+	[ -z "$state" ] && state="wanted"
 
-  # Create a hyperlink entry for the game
-  link="- [$title](/games/$(basename "$dir_name"))"
+	# Create a hyperlink entry for the game
+	link="- [$title](/games/$(basename "$dir_name"))"
 
-  # Categorize the game based on its state
-  case "$state" in
-    active)
-      active_games=$(printf "%s\n%s" "$active_games" "$link")
-      ;;
-    wanted)
-      wanted_games=$(printf "%s\n%s" "$wanted_games" "$link")
-      ;;
-    completed)
-      completed_games=$(printf "%s\n%s" "$completed_games" "$link")
-      ;;
-    *)
-      wanted_games=$(printf "%s\n%s" "$wanted_games" "$link")
-      ;;
-  esac
+	# Categorize the game based on its state
+	case "$state" in
+	active)
+		active_games=$(printf "%s\n%s" "$active_games" "$link")
+		;;
+	wanted)
+		wanted_games=$(printf "%s\n%s" "$wanted_games" "$link")
+		;;
+	completed)
+		completed_games=$(printf "%s\n%s" "$completed_games" "$link")
+		;;
+	*)
+		wanted_games=$(printf "%s\n%s" "$wanted_games" "$link")
+		;;
+	esac
 done
 
 cat <<EOF >src/games/index.md
