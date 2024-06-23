@@ -1,36 +1,67 @@
-<h1>Webmentions</h1>
+<div class="webmentions-wrapper">
+  <h2>Webmentions</h2>
 
-$if(bookmark-of)$
-<h3>Bookmarkes <span>($bookmark-of/length$)</h3>
-<div class="wm-bookmakrs">
-  <ul>
-    $for(bookmark-of)$
-    <li class="h-entry">
-      <a href="$bookmark-of.url$" class="u-bookmark-of">
-        <img alt="" src="$bookmark-of.author.photo$" />
-      </a>
-    </li>
-    $endfor$
-  </ul>
-</div>
-$endif$
+  $if(bookmark-of)$
+  <div class="webmentions-bookmarks">
+    <h3>Bookmarks <span>($bookmark-of/length$)</span></h3>
+    <ul>
+      $for(bookmark-of)$
+      <li class="bookmark-item h-entry">
+        <a href="$bookmark-of.url$" class="bookmark-link u-bookmark-of">
+          <img
+            alt="$bookmark-of.author.name$'s photo"
+            src="$bookmark-of.author.photo$"
+            class="bookmark-author-photo"
+          />
+        </a>
+      </li>
+      $endfor$
+    </ul>
+  </div>
+  $endif$
 
-<!-- -->
+  <!-- -->
 
-<h3>Comments</h3>
-<div class="webmentions">
-  $if(in-reply-to)$
-  <ul>
-    $for(in-reply-to)$
-    <li class="p-comment h-entry">
-      <img alt="" src="$in-reply-to.author.photo$" />
-      <strong>
-        <a class="p-name u-url" href="$in-reply-to.author.url$">$in-reply-to.author.name$</a>
-      </strong>
-      said:
-      <p class="e-content">$in-reply-to.content.html$</p>
-    </li>
-    $endfor$
-  </ul>
-  $else$ No Comments yet! $endif$
+  <div class="webmentions-comments">
+    <h3>
+      Comments $if(in-reply-to)$<span>($in-reply-to/length$)</span>$endif$
+    </h3>
+    $if(in-reply-to)$
+    <ul>
+      $for(in-reply-to)$
+      <li class="comment-item p-comment h-entry">
+        <img
+          alt="$in-reply-to.author.name$'s photo"
+          src="$in-reply-to.author.photo$"
+          class="comment-author-photo"
+        />
+        <div class="comment-content">
+          <div class="comment-header">
+            <strong>
+              <a
+                class="comment-author-name p-name u-url"
+                href="$in-reply-to.author.url$"
+              >
+                $in-reply-to.author.name$</a
+              >
+            </strong>
+            <time
+              class="comment-published-at dt-published"
+              datetime="$in-reply-to.published$"
+            >
+              <a href="$in-reply-to.url$" class="comment-source-url">
+                $in-reply-to.published$
+              </a>
+            </time>
+          </div>
+          <p class="comment-text e-content">$in-reply-to.content.html$</p>
+        </div>
+      </li>
+      $endfor$
+    </ul>
+
+    $else$
+    <p class="no-comments">No Comments yet!</p>
+    $endif$
+  </div>
 </div>

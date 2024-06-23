@@ -101,3 +101,86 @@ bookmark-of:
     bookmark-of: https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/
     wm-property: bookmark-of
     wm-private: false
+in-reply-to:
+  - type: entry
+    author:
+      type: card
+      name: Ooyyggeenn
+      photo: https://webmention.io/avatar/styles.redditmedia.com/54e20068c22981fc5792aaf136c1707a0c1f2c889168a94e4da78866e2e7fd2c.png
+      url: https://reddit.com/user/Ooyyggeenn/
+    url: https://reddit.com/r/webdev/comments/fcdd6c/building_a_blog_with_svelte_sapper_and_markdown/fjagtb6/
+    published: "2020-03-02T18:20:03+00:00"
+    wm-received: "2024-06-22T23:53:03Z"
+    wm-id: 1835829
+    wm-source: https://brid.gy/comment/reddit/22mahmoud_/fcdd6c/fjagtb6
+    wm-target: blog/build-a-blog-with-svelte-and-markdown
+    wm-protocol: webmention
+    content:
+      html: <p>Is it server or client side rendered?</p>
+      text: Is it server or client side rendered?
+    in-reply-to: https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Iaarsh
+      photo: https://webmention.io/avatar/www.redditstatic.com/93663ee9dcf899166de2f3cf9bb2e5e75fe02eb89124ed5e6009980491da953e.png
+      url: https://reddit.com/user/Iaarsh/
+    url: https://reddit.com/r/sveltejs/comments/fcdcmd/building_a_blog_with_svelte_sapper_and_markdown/fjby48w/
+    published: "2020-03-03T02:53:14+00:00"
+    wm-received: "2024-06-22T23:53:14Z"
+    wm-id: 1835830
+    wm-source: https://brid.gy/comment/reddit/22mahmoud_/fcdcmd/fjby48w
+    wm-target: blog/build-a-blog-with-svelte-and-markdown
+    wm-protocol: webmention
+    content:
+      html: |-
+        <p>Good post! I really like Sapper + svelte for this sort of setup. It's actually basically how I built my own blog site last year - <a href="https://www.lookoutitsa.ninja/blog/howthiswasmade">https://www.lookoutitsa.ninja/blog/howthiswasmade</a></p>
+
+        <p>The main difference is that I leverage GitHub pages + CircleCi to rebuild and export the site when I push a new markdown post to the GitHub repo.</p>
+      text: |-
+        Good post! I really like Sapper + svelte for this sort of setup. It's actually basically how I built my own blog site last year - https://www.lookoutitsa.ninja/blog/howthiswasmade
+
+        The main difference is that I leverage GitHub pages + CircleCi to rebuild and export the site when I push a new markdown post to the GitHub repo.
+    in-reply-to: https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: nglasers12
+      photo: https://webmention.io/avatar/styles.redditmedia.com/f008996d27a1ba0b5a70f1e116abb048a936b3ef64af02cc69004390d830f42a.png
+      url: https://reddit.com/user/nglasers12/
+    url: https://reddit.com/r/sveltejs/comments/fcdcmd/building_a_blog_with_svelte_sapper_and_markdown/fjdvytk/
+    published: "2020-03-03T18:31:55+00:00"
+    wm-received: "2024-06-22T23:53:15Z"
+    wm-id: 1835831
+    wm-source: https://brid.gy/comment/reddit/22mahmoud_/fcdcmd/fjdvytk
+    wm-target: blog/build-a-blog-with-svelte-and-markdown
+    wm-protocol: webmention
+    content:
+      html: <p>This is good!!!  I am going to look into this for sure.  Thank you for sharing.</p>
+      text: This is good!!!  I am going to look into this for sure.  Thank you for sharing.
+    in-reply-to: https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: FoldLeft
+      photo: https://webmention.io/avatar/styles.redditmedia.com/b842bdd4ea440532377e9db47dc9fdcb0cdfe2095cf22d9208e3e6c2789475e6.jpg
+      url: https://reddit.com/user/FoldLeft/
+    url: https://reddit.com/r/javascript/comments/fcddkv/building_a_blog_with_svelte_sapper_and_markdown/fjfq0z4/
+    published: "2020-03-04T04:47:40+00:00"
+    wm-received: "2024-06-22T23:53:26Z"
+    wm-id: 1835832
+    wm-source: https://brid.gy/comment/reddit/22mahmoud_/fcddkv/fjfq0z4
+    wm-target: blog/build-a-blog-with-svelte-and-markdown
+    wm-protocol: webmention
+    content:
+      html: <p>Does Sapper support the latest version of Svelte yet?</p>
+      text: Does Sapper support the latest version of Svelte yet?
+    in-reply-to: https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/
+    wm-property: in-reply-to
+    wm-private: false

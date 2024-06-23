@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 base_url="https://webmention.io/api/mentions.jf2"
 domain="maw.sh"
 token="P22qlR3APX6ygerkK9JOKQ"
 
 # uncomment after first run
-# since=$(cat ./since 2>/dev/null)
+since=$(yq ".last_webmention_sync" metadata.yaml)
 
 format_output() {
 	jq '.children
@@ -38,9 +38,12 @@ save_into_file() {
 	for idx in $(seq 0 $(("$len" - 1))); do
 		property=$(echo "$properties" | jq ".[$idx]")
 		property_name=$(echo "$property" | jq -r ".property")
-		entries=$(echo "$property" | jq '.entries' | yq '.' -)
+		new_entries=$(echo "$property" | jq '.entries')
 
-		yq -i ".$property_name = $entries" "$path"
+		existing_entries=$(yq -o=json e ".$property_name // []" "$path")
+		merged_entries=$(jq -s '.[0] + .[1] | unique_by(.["wm-id"])' <(echo "$existing_entries") <(echo "$new_entries"))
+
+		yq -i ".$property_name = $merged_entries" "$path"
 	done
 }
 
@@ -50,7 +53,8 @@ main() {
 	done
 
 	# finally update the since
-	date -u +"%Y-%m-%dT%H:%M:%SZ" >./since
+	new_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+	yq -i ".last_webmention_sync = \"$new_date\"" metadata.yaml
 }
 
 main
