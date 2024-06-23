@@ -14,6 +14,7 @@
     --c3: #2d9dff;
     --c4: #ebdbb2;
     --c5: #1d2021;
+    --c6: #b0b0b0;;
 
     --status-active: #28a745;
     --status-wanted: #ffc107;
@@ -289,4 +290,39 @@
   .theme-toggle > a:hover {
     text-decoration: none;
   }
+/* Article Styling */
+article.h-entry {
+    padding: 1em;
+    border: 1px solid var(--c5);
+    /* background-color: var(--c5); */
+    margin-bottom: 1.5em;
+    border-radius: 8px;
+}
+
+/* Header Styling */
+article.h-entry header {
+    margin-bottom: 1em;
+}
+
+article.h-entry time.dt-published {
+    display: block;
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* Content Styling */
+article.h-entry section.e-content {
+    font-size: 1em;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+/* Footer Styling */
+article.h-entry footer {
+    margin-top: 1em;
+    font-size: 0.8em;
+    color: var(--color-secondary);
+}
+
 </style>

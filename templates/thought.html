@@ -1,0 +1,22 @@
+<article class="h-entry">
+  <header>
+    <time class="dt-published" datetime="$datetime$">$formatted_date$</time>
+  </header>
+  <section class="e-content">
+    <p>$body$</p>
+  </section>
+  <footer>
+    <div hidden>
+      <span hidden class="p-category">thought</span>
+      <a href="$base_url$/$path$" class="u-url">$title-prefix$</a>
+      <p class="h-card p-author">
+        <a href="$base_url$" class="p-name u-url" rel="author"
+          >Mahmoud Ashraf</a
+        >
+        <img loading="lazy" class="u-photo" src="$base_url$/avatar.png" />
+      </p>
+    </div>
+
+    ${webmentions.html()}
+  </footer>
+</article>

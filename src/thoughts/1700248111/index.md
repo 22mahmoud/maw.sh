@@ -1,5 +1,6 @@
 ---
-date:  2023-11-17T21:08+02:00
+date: 2023-11-17T21:08+02:00
+thought: true
 ---
 
 Now you can leave a comment into my thoughts and blog posts 🎊 using

@@ -1,5 +1,6 @@
 ---
 date: 2021-02-17t03:20+02:00
+thought: true
 ---
 
 Finally, received my gift from [dev.to](https://dev.to)

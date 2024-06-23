@@ -1,6 +1,6 @@
 .webmentions-wrapper {
   padding: 1rem 1.5rem;
-  background-color: var(--color-background);
+  background-color: var(--c2);
 }
 
 .webmentions-wrapper h2 {
@@ -23,7 +23,7 @@
 
 .bookmark-link {
   text-decoration: none;
-  color: var(--color-primary);
+  color: var(--c2);
 }
 
 .bookmark-author-photo {
@@ -43,7 +43,7 @@
 
 .comment-published-at a {
   font-size: 0.9em;
-  color: var(--color-secondary);
+  color: var(--c6);
 }
 
 br {
@@ -75,17 +75,17 @@ br {
 
 .comment-author-name {
   font-weight: bold;
-  color: var(--color-primary);
+  color: var(--c2);
   text-decoration: none;
 }
 
 .comment-text {
   margin-top: 0.5rem;
   max-width: 400px;
-  color: var(--color-primary);
+  color: var(--c2);
 }
 
 .no-comments {
   font-style: italic;
-  color: var(--color-secondary);
+  color: var(--c6);
 }

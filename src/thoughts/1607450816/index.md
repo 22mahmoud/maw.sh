@@ -1,5 +1,6 @@
 ---
 date: 2020-12-08t20:06+02:00
+thought: true
 ---
 
 After 7 years since this [Issue](https://github.com/isaacs/github/issues/66)

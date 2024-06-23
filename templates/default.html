@@ -49,7 +49,12 @@
       $game-styles.html()$
     $endif$
 
-    $if(blog)$
+    $if(blog)$ 
+      <link rel="preload" href="/webmentions.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+      <noscript><link rel="stylesheet" href="/webmentions.css"></noscript>
+    $endif$
+
+    $if(thought)$
       <link rel="preload" href="/webmentions.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
       <noscript><link rel="stylesheet" href="/webmentions.css"></noscript>
     $endif$
@@ -104,6 +109,8 @@
 
       $if(blog)$ 
         ${blog.html()}
+      $elseif(thought)$ 
+        ${thought.html()}
       $elseif(game)$
         ${game.html()} 
       $else$ 
