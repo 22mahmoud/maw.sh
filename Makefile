@@ -40,8 +40,8 @@ $(output)/%/index.html: $(default_deps)
 
 ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/--include="*.\1"/g')
 static:
-	@rsync -av --ignore-existing --include="*/" $(ext_args) --exclude="*" $(src)/ $(output)/
-	@rsync -av --ignore-existing --include="*" public/ $(output)/
+	@rsync -av --update --delete --include="*/" $(ext_args) --exclude="*" $(src)/ $(output)/
+	@rsync -av --update --delete --include="*" public/ $(output)/
 
 clean:
 	@rm -vrf $(output) $(tmp) $(md_pages)
