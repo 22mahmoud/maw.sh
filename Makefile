@@ -16,7 +16,7 @@ dev:
 
 pages_index: $(md_pages)
 
-$(src)/%/index.md: $(src)/%/**/*.md
+$(src)/%/index.md: $(src)/%/**/*.md pages/%
 	@$(pages)/$(shell echo $(@) | sed 's/\/index.md//' | xargs basename)
 
 html: $(html_files)
@@ -27,12 +27,15 @@ $(output)/rss.xml: $(md_files) $(bin)/rss
 $(output)/sitemap.xml: $(md_files) $(bin)/sitemap
 	@$(bin)/sitemap
 
-default_deps := $(src)/%/index.md  templates/* filters/* bin/generate
+default_deps := $(src)/%/index.md templates/* filters/* bin/generate
 
 $(output)/%/index.html: $(default_deps) $(src)/%/comments.yaml
 	@bin/generate $< $@
 
-$(output)/%/index.html: $(default_deps) $(src)/%/index.md
+$(output)/index.html: $(src)/index.md templates/* filters/* bin/generate
+	@bin/generate $< $@
+
+$(output)/%/index.html: $(default_deps)
 	@bin/generate $< $@
 
 ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/--include="*.\1"/g')

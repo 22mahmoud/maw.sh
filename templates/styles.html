@@ -1,0 +1,292 @@
+<style>
+  /* variables */
+  :root {
+    /* fonts */
+    --sans: 1em/1.6 system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue, Fira Sans,
+      sans-serif;
+    --mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier,
+      "Courier New", monospace;
+
+    /* colors */
+    --c1: #080808;
+    --c2: #f1f2f2;
+    --c3: #2d9dff;
+    --c4: #ebdbb2;
+    --c5: #1d2021;
+
+    --status-active: #28a745;
+    --status-wanted: #ffc107;
+    --status-completed: #17a2b8;
+
+    --color-primary: #f1f2f2;
+    --color-secondary: #b0b0b0;
+    --color-accent: #2d9dff;
+    --color-background: #1d2021;
+    --color-text: #f1f2f2;
+  }
+
+  *,
+  :after,
+  :before {
+    box-sizing: border-box;
+  }
+
+  address,
+  area,
+  article,
+  aside,
+  audio,
+  blockquote,
+  datalist,
+  details,
+  dl,
+  fieldset,
+  figure,
+  form,
+  input,
+  iframe,
+  img,
+  meter,
+  nav,
+  ol,
+  optgroup,
+  option,
+  output,
+  p,
+  pre,
+  progress,
+  ruby,
+  section,
+  table,
+  textarea,
+  ul,
+  video {
+    /* Margins for most elements */
+    margin-bottom: 1rem;
+  }
+
+  hr {
+    /* Reset the border of the <hr> separator, then set a better line */
+    border: 0;
+    border-bottom: 1px solid var(--c5);
+    margin: 1rem auto;
+  }
+
+  body {
+    margin: 0 auto;
+    padding: 1em;
+    font: var(--sans);
+    font-weight: 400;
+    line-height: 1.5;
+    background: var(--c1);
+    color: var(--c2);
+    max-width: 768px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  main {
+    flex: 1;
+  }
+
+  figure {
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 0.625em;
+    border: 1px solid var(--c1);
+    text-align: center;
+    background-color: var(--c5);
+    font-family: var(--sans);
+  }
+
+  figure img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  figcaption {
+    margin-top: 0.625em;
+    font-size: 0.9em;
+    color: var(--c4);
+  }
+
+  img,
+  video {
+    height: auto;
+    max-width: 100%;
+  }
+
+  a {
+    color: var(--c3);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  pre {
+    font: 1em/1.6 var(--mono);
+    background: var(--c5);
+    color: var(--c4);
+    padding: 1em;
+    overflow: auto;
+  }
+
+  code {
+    font: 1em/1.6 var(--mono);
+    color: var(--c4);
+  }
+
+  blockquote {
+    border-left: 5px solid var(--c5);
+    color: var(--c4);
+    padding: 1em 1.5em;
+    margin: 0;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  details[open] {
+    padding-bottom: 0.75rem;
+  }
+
+  details {
+    background: var(--c5);
+    padding: 1rem;
+  }
+
+  details pre {
+    background: var(--c1);
+    white-space: pre-line;
+  }
+
+  details[open] summary {
+    margin-bottom: 6px;
+  }
+
+  details[open] > *:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Headlines */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1;
+    padding-top: 0.875rem;
+  }
+
+  h1,
+  h2,
+  h3 {
+    padding-bottom: 2px;
+    margin-bottom: 8px;
+  }
+
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0.3rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.85rem;
+  }
+
+  h3 {
+    font-size: 1.55rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+  h6 {
+    font-size: 0.875rem;
+  }
+
+  ol,
+  ul {
+    /* Replace the browser default padding */
+    padding-left: 2rem;
+  }
+
+  li {
+    margin-top: 0.4rem;
+  }
+
+  ul ul,
+  ol ul,
+  ul ol,
+  ol ol {
+    margin-bottom: 0;
+  }
+
+  footer {
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+  }
+
+  noscript {
+    background: #f9c642;
+    color: black;
+    padding: 10px;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .site-title a {
+    color: var(--c2);
+    font-weight: bold;
+  }
+
+  .nav {
+    margin-bottom: 1em;
+  }
+
+  .nav ul {
+    display: flex;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .nav ul li {
+    list-style-type: none;
+    margin-bottom: 0.3em;
+  }
+
+  .nav ul li:not(:last-child) {
+    margin-right: 0.8em;
+  }
+
+  .theme-toggle a {
+    color: var(--c2);
+    background-color: var(--c5);
+    padding: 0.25em 0.5em;
+    border-radius: 99999999px;
+  }
+
+  .theme-toggle > a:hover {
+    text-decoration: none;
+  }
+</style>
