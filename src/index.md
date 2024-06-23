@@ -1,3 +1,7 @@
+---
+title-prefix: Home
+---
+
 Welecome to my space on the internet.
 
 - Mahmoud Ashraf
