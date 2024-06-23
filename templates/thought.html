@@ -2,12 +2,13 @@
   <header>
     <time class="dt-published" datetime="$datetime$">$formatted_date$</time>
   </header>
-  <section class="e-content">
-    <p>$body$</p>
-  </section>
+
+  <section class="e-content">$body$</section>
+
+  <a class="u-bridgy-fed" href="https://fed.brid.gy/" hidden="from-humans"></a>
+
   <footer>
     <span hidden class="p-category">thought</span>
-
     ${webmentions.html()}
     ${author.html()}
   </footer>
