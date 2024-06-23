@@ -2,19 +2,38 @@ in-reply-to:
   - type: entry
     author:
       type: card
-      name: Redbeardt
-      photo: https://webmention.io/avatar/styles.redditmedia.com/c19f778262c7fc99bdd3db2cd08faedfe0d9ef22c6bb0f3de8363a8d751bd782.png
-      url: https://reddit.com/user/Redbeardt/
-    url: https://reddit.com/r/neovim/comments/za6uod/uninstall_all_neovim_plugins/iylid4g/
-    published: "2022-12-02T07:27:17+00:00"
-    wm-received: "2024-06-21T00:35:45Z"
-    wm-id: 1835476
-    wm-source: https://brid.gy/comment/reddit/22mahmoud_/za6uod/iylid4g
+      name: YodaLoL
+      photo: https://webmention.io/avatar/styles.redditmedia.com/186bfc30aec5fdc562d3298414f668871d745631c4ca8a675260f58a568d5acc.png
+      url: https://reddit.com/user/YodaLoL/
+    url: https://reddit.com/r/neovim/comments/za6uod/uninstall_all_neovim_plugins/iykkxqz/
+    published: "2022-12-02T02:08:40+00:00"
+    wm-received: "2024-06-21T00:30:38Z"
+    wm-id: 1835472
+    wm-source: https://brid.gy/comment/reddit/22mahmoud_/za6uod/iykkxqz
     wm-target: blog/uninstall-all-neovim-plugins
     wm-protocol: webmention
     content:
-      html: <p>Someone wants me to uninstall all my plugins and thinks they're unnecessary? *rubs hands together* Sounds like someone's about to reveal some decent nvim tips'n'tricks. I'll take your tips, and keep my plugins too! Wa ha ha!</p>
-      text: Someone wants me to uninstall all my plugins and thinks they're unnecessary? *rubs hands together* Sounds like someone's about to reveal some decent nvim tips'n'tricks. I'll take your tips, and keep my plugins too! Wa ha ha!
+      html: <p>After all the bashing on plugins the article ends with you installing nvim-lspconfig, one of the actually optional plugins (it adds nearly nothing in terms of features). :facepalm:</p>
+      text: 'After all the bashing on plugins the article ends with you installing nvim-lspconfig, one of the actually optional plugins (it adds nearly nothing in terms of features). :facepalm:'
+    in-reply-to: https://maw.sh/blog/uninstall-all-neovim-plugins/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: cameronm1024
+      photo: https://webmention.io/avatar/styles.redditmedia.com/a665b39f747bb4bf55cdd2c3fed957087152ba8ee0b04b6994e3c4ee3f24fc1d.png
+      url: https://reddit.com/user/cameronm1024/
+    url: https://reddit.com/r/neovim/comments/za6uod/uninstall_all_neovim_plugins/iylmuaq/
+    published: "2022-12-02T08:28:49+00:00"
+    wm-received: "2024-06-21T00:30:45Z"
+    wm-id: 1835473
+    wm-source: https://brid.gy/comment/reddit/22mahmoud_/za6uod/iylmuaq
+    wm-target: blog/uninstall-all-neovim-plugins
+    wm-protocol: webmention
+    content:
+      html: <p>I feel like this whole post can be summed up with "ok cool, you don't like them, don't use them ????"</p>
+      text: I feel like this whole post can be summed up with "ok cool, you don't like them, don't use them ????"
     in-reply-to: https://maw.sh/blog/uninstall-all-neovim-plugins/
     wm-property: in-reply-to
     wm-private: false
@@ -46,38 +65,19 @@ in-reply-to:
   - type: entry
     author:
       type: card
-      name: cameronm1024
-      photo: https://webmention.io/avatar/styles.redditmedia.com/a665b39f747bb4bf55cdd2c3fed957087152ba8ee0b04b6994e3c4ee3f24fc1d.png
-      url: https://reddit.com/user/cameronm1024/
-    url: https://reddit.com/r/neovim/comments/za6uod/uninstall_all_neovim_plugins/iylmuaq/
-    published: "2022-12-02T08:28:49+00:00"
-    wm-received: "2024-06-21T00:30:45Z"
-    wm-id: 1835473
-    wm-source: https://brid.gy/comment/reddit/22mahmoud_/za6uod/iylmuaq
+      name: Redbeardt
+      photo: https://webmention.io/avatar/styles.redditmedia.com/c19f778262c7fc99bdd3db2cd08faedfe0d9ef22c6bb0f3de8363a8d751bd782.png
+      url: https://reddit.com/user/Redbeardt/
+    url: https://reddit.com/r/neovim/comments/za6uod/uninstall_all_neovim_plugins/iylid4g/
+    published: "2022-12-02T07:27:17+00:00"
+    wm-received: "2024-06-21T00:35:45Z"
+    wm-id: 1835476
+    wm-source: https://brid.gy/comment/reddit/22mahmoud_/za6uod/iylid4g
     wm-target: blog/uninstall-all-neovim-plugins
     wm-protocol: webmention
     content:
-      html: <p>I feel like this whole post can be summed up with "ok cool, you don't like them, don't use them ????"</p>
-      text: I feel like this whole post can be summed up with "ok cool, you don't like them, don't use them ????"
-    in-reply-to: https://maw.sh/blog/uninstall-all-neovim-plugins/
-    wm-property: in-reply-to
-    wm-private: false
-  - type: entry
-    author:
-      type: card
-      name: YodaLoL
-      photo: https://webmention.io/avatar/styles.redditmedia.com/186bfc30aec5fdc562d3298414f668871d745631c4ca8a675260f58a568d5acc.png
-      url: https://reddit.com/user/YodaLoL/
-    url: https://reddit.com/r/neovim/comments/za6uod/uninstall_all_neovim_plugins/iykkxqz/
-    published: "2022-12-02T02:08:40+00:00"
-    wm-received: "2024-06-21T00:30:38Z"
-    wm-id: 1835472
-    wm-source: https://brid.gy/comment/reddit/22mahmoud_/za6uod/iykkxqz
-    wm-target: blog/uninstall-all-neovim-plugins
-    wm-protocol: webmention
-    content:
-      html: <p>After all the bashing on plugins the article ends with you installing nvim-lspconfig, one of the actually optional plugins (it adds nearly nothing in terms of features). :facepalm:</p>
-      text: 'After all the bashing on plugins the article ends with you installing nvim-lspconfig, one of the actually optional plugins (it adds nearly nothing in terms of features). :facepalm:'
+      html: <p>Someone wants me to uninstall all my plugins and thinks they're unnecessary? *rubs hands together* Sounds like someone's about to reveal some decent nvim tips'n'tricks. I'll take your tips, and keep my plugins too! Wa ha ha!</p>
+      text: Someone wants me to uninstall all my plugins and thinks they're unnecessary? *rubs hands together* Sounds like someone's about to reveal some decent nvim tips'n'tricks. I'll take your tips, and keep my plugins too! Wa ha ha!
     in-reply-to: https://maw.sh/blog/uninstall-all-neovim-plugins/
     wm-property: in-reply-to
     wm-private: false

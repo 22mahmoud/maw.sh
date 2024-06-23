@@ -20,7 +20,7 @@ format_output() {
 
 fetch_webmentions() {
 	url="$base_url?domain=$domain&token=$token&per-page=999"
-	if [ "$since" ]; then url="$url&since=$since"; fi
+	if [ "$since" != "null" ]; then url="$url&since=$since"; fi
 
 	curl -s "$url"
 }

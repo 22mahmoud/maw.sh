@@ -2,52 +2,6 @@ bookmark-of:
   - type: entry
     author:
       type: card
-      name: ainu011
-      photo: https://webmention.io/avatar/styles.redditmedia.com/ebe85dcdbad253295308ba205947fbee98da21166a99a7ad32ffd5056038da21.png
-      url: https://reddit.com/user/ainu011/
-    url: https://reddit.com/r/JAMstack_dev/comments/fjja04/building_a_blog_with_svelte_sapper_and_markdown/
-    published: "2020-03-16T11:10:38+00:00"
-    wm-received: "2024-06-21T00:38:08Z"
-    wm-id: 1835478
-    wm-source: https://brid.gy/post/reddit/22mahmoud_/fjja04
-    wm-target: blog/build-a-blog-with-svelte-and-markdown
-    wm-protocol: webmention
-    name: Building a blog with Svelte, Sapper, and Markdown
-    content:
-      html: |-
-        Bookmark: <a title="mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown" class="u-bookmark-of" href="https://www.mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown">mahmoudashraf.dev/blog/build-a-b...</a>
-        <a class="u-mention" href="https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/"></a>
-        <a class="u-mention" href="https://www.mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown"></a>
-      text: 'Bookmark: mahmoudashraf.dev/blog/build-a-b...'
-    bookmark-of: https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/
-    wm-property: bookmark-of
-    wm-private: false
-  - type: entry
-    author:
-      type: card
-      name: WebJSBot
-      photo: https://webmention.io/avatar/www.redditstatic.com/b4be5d320718a5e62a32e756a628dbbae500c42f94fb47937b50c0adca151ed6.png
-      url: https://reddit.com/user/WebJSBot/
-    url: https://reddit.com/r/WebJS/comments/fd5qz6/building_a_blog_with_svelte_sapper_and_markdown/
-    published: "2020-03-04T02:02:42+00:00"
-    wm-received: "2024-06-21T00:38:05Z"
-    wm-id: 1835477
-    wm-source: https://brid.gy/post/reddit/22mahmoud_/fd5qz6
-    wm-target: blog/build-a-blog-with-svelte-and-markdown
-    wm-protocol: webmention
-    name: Building a blog with Svelte, Sapper, and Markdown
-    content:
-      html: |-
-        Bookmark: <a title="mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown" class="u-bookmark-of" href="https://www.mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown">mahmoudashraf.dev/blog/build-a-b...</a>
-        <a class="u-mention" href="https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/"></a>
-        <a class="u-mention" href="https://www.mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown"></a>
-      text: 'Bookmark: mahmoudashraf.dev/blog/build-a-b...'
-    bookmark-of: https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/
-    wm-property: bookmark-of
-    wm-private: false
-  - type: entry
-    author:
-      type: card
       name: ProfessorSexyTime
       photo: https://webmention.io/avatar/www.redditstatic.com/b4be5d320718a5e62a32e756a628dbbae500c42f94fb47937b50c0adca151ed6.png
       url: https://reddit.com/user/ProfessorSexyTime/
@@ -98,6 +52,52 @@ bookmark-of:
         https://mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown/
         https://remark.js.org/
         https://sapper.svelte.dev/
+    bookmark-of: https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/
+    wm-property: bookmark-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: WebJSBot
+      photo: https://webmention.io/avatar/www.redditstatic.com/b4be5d320718a5e62a32e756a628dbbae500c42f94fb47937b50c0adca151ed6.png
+      url: https://reddit.com/user/WebJSBot/
+    url: https://reddit.com/r/WebJS/comments/fd5qz6/building_a_blog_with_svelte_sapper_and_markdown/
+    published: "2020-03-04T02:02:42+00:00"
+    wm-received: "2024-06-21T00:38:05Z"
+    wm-id: 1835477
+    wm-source: https://brid.gy/post/reddit/22mahmoud_/fd5qz6
+    wm-target: blog/build-a-blog-with-svelte-and-markdown
+    wm-protocol: webmention
+    name: Building a blog with Svelte, Sapper, and Markdown
+    content:
+      html: |-
+        Bookmark: <a title="mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown" class="u-bookmark-of" href="https://www.mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown">mahmoudashraf.dev/blog/build-a-b...</a>
+        <a class="u-mention" href="https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/"></a>
+        <a class="u-mention" href="https://www.mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown"></a>
+      text: 'Bookmark: mahmoudashraf.dev/blog/build-a-b...'
+    bookmark-of: https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/
+    wm-property: bookmark-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: ainu011
+      photo: https://webmention.io/avatar/styles.redditmedia.com/ebe85dcdbad253295308ba205947fbee98da21166a99a7ad32ffd5056038da21.png
+      url: https://reddit.com/user/ainu011/
+    url: https://reddit.com/r/JAMstack_dev/comments/fjja04/building_a_blog_with_svelte_sapper_and_markdown/
+    published: "2020-03-16T11:10:38+00:00"
+    wm-received: "2024-06-21T00:38:08Z"
+    wm-id: 1835478
+    wm-source: https://brid.gy/post/reddit/22mahmoud_/fjja04
+    wm-target: blog/build-a-blog-with-svelte-and-markdown
+    wm-protocol: webmention
+    name: Building a blog with Svelte, Sapper, and Markdown
+    content:
+      html: |-
+        Bookmark: <a title="mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown" class="u-bookmark-of" href="https://www.mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown">mahmoudashraf.dev/blog/build-a-b...</a>
+        <a class="u-mention" href="https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/"></a>
+        <a class="u-mention" href="https://www.mahmoudashraf.dev/blog/build-a-blog-with-svelte-and-markdown"></a>
+      text: 'Bookmark: mahmoudashraf.dev/blog/build-a-b...'
     bookmark-of: https://maw.sh/blog/build-a-blog-with-svelte-and-markdown/
     wm-property: bookmark-of
     wm-private: false
