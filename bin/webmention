@@ -41,7 +41,9 @@ save_into_file() {
 		new_entries=$(echo "$property" | jq '.entries')
 
 		existing_entries=$(yq -o=json e ".$property_name // []" "$path")
-		merged_entries=$(jq -s '.[0] + .[1] | unique_by(.["wm-id"])' <(echo "$existing_entries") <(echo "$new_entries"))
+		merged_entries=$(jq -s '.[0] + .[1] | unique_by(.["wm-id"])' \
+			<(echo "$existing_entries") <(echo "$new_entries") |
+			sed 's/@/\\@/g')
 
 		yq -i ".$property_name = $merged_entries" "$path"
 	done

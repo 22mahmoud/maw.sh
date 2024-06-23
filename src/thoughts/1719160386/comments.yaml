@@ -1,0 +1,17 @@
+like-of:
+  - type: entry
+    author:
+      type: card
+      name: Mahmoud Ashraf
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/04db3bece77ea18a0f19e63e24748d0e0e56a8b53d3039df997e6448dec49400.png
+      url: https://fosstodon.org/\@22mahmoud
+    url: https://fosstodon.org/\@22mahmoud/112666916863089581#favorited-by-247603
+    published: null
+    wm-received: "2024-06-23T16:38:56Z"
+    wm-id: 1835893
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112666916863089581/247603
+    wm-target: thoughts/1719160386
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1719160386/
+    wm-property: like-of
+    wm-private: false
