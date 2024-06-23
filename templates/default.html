@@ -50,7 +50,8 @@
     $endif$
 
     $if(blog)$
-      <link rel="stylesheet" href="/webmentions.css" />
+      <link rel="preload" href="/webmentions.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+      <noscript><link rel="stylesheet" href="/webmentions.css"></noscript>
     $endif$
 
     $for(css)$
