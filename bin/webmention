@@ -4,6 +4,11 @@ base_url="https://webmention.io/api/mentions.jf2"
 domain="maw.sh"
 token="$WEBMENTION_TOKEN"
 
+if [ -z "${token}" ]; then
+	echo "Error: WEBMENTION_TOKEN environment variable is not set."
+	exit 1
+fi
+
 # uncomment after first run
 since=$(yq ".last_webmention_sync" metadata.yaml)
 
