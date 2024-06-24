@@ -9,58 +9,69 @@
     <link rel="alternate" type="application/atom+xml" href="/rss.xml" />
     <link rel="canonical" href="$base_url$/$path$" />
 
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link href="/favicon-180x180.png" rel="apple-touch-icon" sizes="180x180">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#080808">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link href="/favicon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#080808" />
 
     <link rel="me" href="https://github.com/22mahmoud" />
     <link rel="me" href="https://fosstodon.org/@22mahmoud" />
     <link rel="me" href="https://x.com/maw_sh" />
     <link rel="me" href="https://reddit.com/user/22mahmoud_" />
-    <link rel="me" href="https://pixelfed.social/i/web/profile/201636586306277376" />
-    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+    <link
+      rel="me"
+      href="https://pixelfed.social/i/web/profile/201636586306277376"
+    />
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
     <link rel="webmention" href="https://webmention.io/maw.sh/webmention" />
     <link rel="pingback" href="https://webmention.io/sia.codes/xmlrpc" />
 
-    $for(author-meta)$ 
-      <meta name="author" content="$author-meta$" />
+    $for(author-meta)$
+    <meta name="author" content="$author-meta$" />
     $endfor$
 
     $if(date-meta)$
-      <meta name="dcterms.date" content="$date-meta$" /> 
-    $endif$ 
+    <meta name="dcterms.date" content="$date-meta$" />
+    $endif$
 
     $if(keywords)$
-      <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+    <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
     $endif$
 
     $if(description-meta)$
-      <meta name="description" content="$description-meta$" />
+    <meta name="description" content="$description-meta$" />
     $endif$
 
     <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
-    
+
     $styles.html()$
 
-    $if(game)$
-      $game-styles.html()$
-    $endif$
+    $if(game)$ $game-styles.html()$ $endif$
 
-    $if(blog)$ 
-      <link rel="preload" href="/webmentions.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-      <noscript><link rel="stylesheet" href="/webmentions.css"></noscript>
+    $if(blog)$
+    <link
+      rel="preload"
+      href="/webmentions.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="/webmentions.css" /></noscript>
     $endif$
 
     $if(thought)$
-      <link rel="preload" href="/webmentions.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-      <noscript><link rel="stylesheet" href="/webmentions.css"></noscript>
+    <link
+      rel="preload"
+      href="/webmentions.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="/webmentions.css" /></noscript>
     $endif$
 
     $for(css)$
-      <link rel="stylesheet" href="$css$" />
+    <link rel="stylesheet" href="$css$" />
     $endfor$
 
     $for(header-includes)$ $header-includes$ $endfor$
@@ -90,31 +101,39 @@
 
     <main>
       <a href="https://techforpalestine.org/learn-more">
-        <img alt="SupportPalestine" width="801px" height="130px" src="/ps-banner.webp" ></img>
+        <img
+          alt="SupportPalestine"
+          width="801px"
+          height="130px"
+          src="/ps-banner.webp"
+        />
       </a>
 
-      $for(include-before)$ $include-before$ $endfor$ 
+      $for(include-before)$ $include-before$ $endfor$
 
       $if(submission)$
-  <div style="border: 3px solid var(--c5); padding: 0.8rem;">
-      <h2 style="margin: 0 0 10px;">$id$. $title-prefix$ <a href="$submission$" target="_blank" style="font-size: 1rem;">🔗</a></h2>
-    <p><strong>Date:</strong> $date$</p>
-    <p><strong>Tags:</strong> $for(tags)$$tags$$sep$, $endfor$</p>
-    <details>
-      <summary>Description</summary>
-      $description$
-    </details>
-  </div>
+      <div style="border: 3px solid var(--c5); padding: 0.8rem">
+        <h2 style="margin: 0 0 10px">
+          $id$. $title-prefix$
+          <a href="$submission$" target="_blank" style="font-size: 1rem">🔗</a>
+        </h2>
+        <p><strong>Date:</strong> $date$</p>
+        <p><strong>Tags:</strong> $for(tags)$$tags$$sep$, $endfor$</p>
+        <details>
+          <summary>Description</summary>
+          $description$
+        </details>
+      </div>
       $endif$
 
-      $if(blog)$ 
+      $if(blog)$
         ${blog.html()}
-      $elseif(thought)$ 
+      $elseif(thought)$
         ${thought.html()}
       $elseif(game)$
-        ${game.html()} 
-      $else$ 
-        $body$ 
+        ${game.html()}
+      $else$
+        $body$
         ${author.html()}
       $endif$
 
@@ -123,8 +142,16 @@
 
     <footer>
       <div>
-        <a aria-label="vultr vps referral link" href="https://www.vultr.com/?ref=9553782-8H">
-          <svg style="width: 150px" xmlns="http://www.w3.org/2000/svg" id="logo__on-dark" viewBox="0 0 217.5 52" >
+        <a
+          aria-label="vultr vps referral link"
+          href="https://www.vultr.com/?ref=9553782-8H"
+        >
+          <svg
+            style="width: 150px"
+            xmlns="http://www.w3.org/2000/svg"
+            id="logo__on-dark"
+            viewBox="0 0 217.5 52"
+          >
             <defs>
               <style>
                 .cls-1 {
@@ -152,17 +179,17 @@
                 d="M8 16.6a2.91 2.91 0 0 1-.43-1.6 3 3 0 0 1 3-3h15.36a3 3 0 0 1 2.54 1.4l13.75 21.81a3 3 0 0 1 0 3.2L34.54 50.6a3 3 0 0 1-5.08 0ZM46.78 23.13a3 3 0 0 0 5.07 0l2.65-4.19 5-8a3 3 0 0 0 0-3.21l-4-6.34A3 3 0 0 0 53 0H37.63a3 3 0 0 0-2.54 4.6Z"
               />
             </g>
-          </svg> 
+          </svg>
         </a>
       </div>
 
       <div>
-      <a href="https://xn--sr8hvo.ws/previous">←</a>
-      <a href="https://xn--sr8hvo.ws"> 🕸💍 </a>
-      <a href="https://xn--sr8hvo.ws/next">→</a>
+        <a href="https://xn--sr8hvo.ws/previous">←</a>
+        <a href="https://xn--sr8hvo.ws"> 🕸💍 </a>
+        <a href="https://xn--sr8hvo.ws/next">→</a>
       </div>
 
-      ©  <a href="https://maw.sh"> Mahmoud Ashraf </a>
+      © <a href="https://maw.sh"> Mahmoud Ashraf </a>
     </footer>
 
     <script

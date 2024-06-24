@@ -13,11 +13,11 @@ blog: true
 ---
 
 So this is my first week of my [LeetCode](/leetcode) grinding journey, and I want
-to share my notes and the techniques I've learned and the problems I've solved 
+to share my notes and the techniques I've learned and the problems I've solved
 each week.
 
 For solving the problems, I've created a new Git [repository](https://github.com/22mahmoud/leetcode)
-and keep track of my answers by creating a directory for each problem with the 
+and keep track of my answers by creating a directory for each problem with the
 following structure:
 
 ```bash
@@ -29,7 +29,7 @@ problems
 │   └── index.test.ts   # testing useing vitest
 ```
 
-### Techniques: 
+### Techniques:
 
 - **Two-Pointer/Sliding-window**
 
@@ -53,7 +53,7 @@ problems
 
   Absolutely we have to have a problems that the true hero to solve it,
   just use hash-map.
-    
+
   ![a hand push a blue button called HASHMAP "meme"](./hashmap-meme.jpg)
 
 - **kadane algorithm**
@@ -65,5 +65,5 @@ problems
   each iteration and take the max values
 
 
-  
-  
+
+

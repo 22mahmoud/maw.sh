@@ -22,16 +22,16 @@ blog: true
   which contains the function, and `index.test.ts` which contains a generic test
   case (TODO: will make it dynamic to get test cases from the api).
 
-- Also a new design for leetcode problem page with native html `details` tag for 
+- Also a new design for leetcode problem page with native html `details` tag for
   description
 
   ![a screenshot of word search leetcode problem from my website](./screenshot-240616-0251-35.png)
 
 - and a github [workflow](https://github.com/22mahmoud/leetcode/blob/main/.github/workflows/update_problems.yml) to generate the [/leetcode](/leetcode) page and commit
-the changes into the leetcode branch, and after that get finished will trigger 
+the changes into the leetcode branch, and after that get finished will trigger
 [another one](https://github.com/22mahmoud/leetcode/blob/main/.github/workflows/update_blog.yml) to build my main website to get the latest changes
 
-### Techniques: 
+### Techniques:
 
 - **Prefix-Sum**
 
@@ -43,9 +43,9 @@ the changes into the leetcode branch, and after that get finished will trigger
 
   [0017](/leetcode/problems/17_letter_combinations_of_a_phone_number/) - [0079](/leetcode/problems/79_word_search/) - [0078](/leetcode/problems/78_subsets/) - [0022](/leetcode/problems/22_generate_parentheses/)
 
-  I spend most of this week to get understand backtracking, it kinda challenging 
+  I spend most of this week to get understand backtracking, it kinda challenging
   at the beginning, but after you get the pattern, you will crush any backpacking
-  problem, and the main key for to get the constrains and base case by illustrate 
+  problem, and the main key for to get the constrains and base case by illustrate
   the problem and solution by hand in the paper first.
 
 - **Lined-List**

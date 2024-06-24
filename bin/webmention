@@ -17,8 +17,8 @@ format_output() {
   | map(.["wm-target"] |= sub("^https://maw\\.sh/"; "") | .["wm-target"] |= sub("/$"; ""))
   | map(select(.["wm-target"] != ""))
   | group_by(.["wm-target"])
-  | map({ 
-      target: .[0]["wm-target"], 
+  | map({
+      target: .[0]["wm-target"],
       properties: group_by(.["wm-property"]) | map({ property: .[0]["wm-property"], entries: .})
     })'
 }

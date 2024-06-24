@@ -18,7 +18,7 @@
  Computer Science/Statistics
  2016 - 2019
 
- Full Stack developer 
+ Full Stack developer
  Rubikal
  Alexandria, Egypt
  May 2023 - Present
@@ -37,7 +37,7 @@
    eliminate CLS, reduce the bundle size by using dynamic imports, and on
    interactive imports to only fetch javascript on demand.
  - build an architecture for most web apps using monorepo, so we get benefits of
-   using same custom UI, share typescript types, and utils. 
+   using same custom UI, share typescript types, and utils.
  - with help of turborepo we managed to go with faster CI/CD using caching.
 
  Front-End developer
@@ -49,7 +49,7 @@
    & release seat selection feature for travels.
  - contribute in swvl UI design system
 
- Full Stack developer 
+ Full Stack developer
  Rubikal
  Alexandria, Egypt
  Dec 2020 - Nov 2021
@@ -66,34 +66,34 @@
 - using mongo charts to visualize our api gateway logs.
 - writing scripts to update the database from other third parties.
 
- Front-End developer 
+ Front-End developer
  Tarteel
  Alexandria, Egypt
  JULY 2019 - FEB 2020
- - Tech: React, Typescript, Redux, Styled-components.  
- - Implement a Transcribe feature that makes 
-   Tarteel weekly active user count jumped 300%.  
- - Dealing with real-time socket connections.  
- - Re-factor a class that handles how audio streaming will be 
+ - Tech: React, Typescript, Redux, Styled-components.
+ - Implement a Transcribe feature that makes
+   Tarteel weekly active user count jumped 300%.
+ - Dealing with real-time socket connections.
+ - Re-factor a class that handles how audio streaming will be
 
- React Arabic translation maintainer 
+ React Arabic translation maintainer
  React community
  FEB 2019 - JULY 2019
  - Code review/ Merge pull requests.
- - Assign pages for the contributors  
+ - Assign pages for the contributors
 
- Front-End developer 
+ Front-End developer
  Lynks
  Alexandria, Egypt
  JAN 2019 - JULY 2019
  - Tech: React, GraphQL, Apollo, Styled-components.
- - Upgrade Wepback & Babel configurations to be compatible  with React.  
- - Dealing with GraphQL by using Apollo client and styling 
-   with Styled-components.  
- - Revamping warehouse application to React 16.8 
-   by using  only functional components, a brand new hooks, 
-   and a new context API to manage the global state.  
- - Build a dashboard for admins to monitor statistics.  
+ - Upgrade Wepback & Babel configurations to be compatible  with React.
+ - Dealing with GraphQL by using Apollo client and styling
+   with Styled-components.
+ - Revamping warehouse application to React 16.8
+   by using  only functional components, a brand new hooks,
+   and a new context API to manage the global state.
+ - Build a dashboard for admins to monitor statistics.
 
  SKILLS
  - javascript

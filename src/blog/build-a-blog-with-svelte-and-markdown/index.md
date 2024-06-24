@@ -27,15 +27,15 @@ We are going to use the starter template provided by the Sapper team,
 open your favorite terminal and write the following command:
 
 ```bash
-  npx degit "sveltejs/sapper-template#rollup" cool-blog
-  cd /cool-blog
-  npm install
+npx degit "sveltejs/sapper-template#rollup" cool-blog
+cd /cool-blog
+npm install
 ```
 
 After installing the dependencies, you should be good to go and start your server.
 
 ```bash
-  npm run dev
+npm run dev
 ```
 
 Voila, 🎉 the application now up and running.
@@ -48,14 +48,14 @@ inside the `src/routes`.
 We have several files there:
 
 ```bash
-  | src
-    | routes
-      | blog
-        - index.svelte,
-        - index.json.js
-        - [slug].svelte
-        - [slug].json.js
-        - _posts.js
+| src
+  | routes
+    | blog
+      - index.svelte,
+      - index.json.js
+      - [slug].svelte
+      - [slug].json.js
+      - _posts.js
 ```
 
 ## How routing works in sapper?
@@ -173,57 +173,57 @@ If you navigate to `/blog` route you should have a page similar to this:
 Now we need to handle the post route. open `src/routes/blog/[slug].json.js`
 
 ```javascript
-  // src/routes/blog/[slug].json.js
+// src/routes/blog/[slug].json.js
 
-  import path from "path";
-  import fs from "fs";
-  import grayMatter from "gray-matter";
-  import marked from "marked";
-  import hljs from "highlight.js";
+import path from "path";
+import fs from "fs";
+import grayMatter from "gray-matter";
+import marked from "marked";
+import hljs from "highlight.js";
 
-  const getPost = fileName =>
-    fs.readFileSync(path.resolve("content", `${fileName}.md`), "utf-8");
+const getPost = fileName =>
+  fs.readFileSync(path.resolve("content", `${fileName}.md`), "utf-8");
 
-  export function get(req, res, next) {
-    const { slug } = req.params;
+export function get(req, res, next) {
+  const { slug } = req.params;
 
-    // get the markdown text
-    const post = getPost(slug);
+  // get the markdown text
+  const post = getPost(slug);
 
-    // function that expose helpful callbacks
-    // to manipulate the data before convert it into html
-    const renderer = new marked.Renderer();
-./
-    // use hljs to highlight our blocks codes
-    renderer.code = (source, lang) => {
-      const { value: highlighted } = hljs.highlight(lang, source);
-      return `<pre class='language-javascriptreact'><code>${highlighted}</code></pre>`;
-    };
+  // function that expose helpful callbacks
+  // to manipulate the data before convert it into html
+  const renderer = new marked.Renderer();
 
-    // parse the md to get front matter
-    // and the content without escaping characters
-    const { data, content } = grayMatter(post);
+  // use hljs to highlight our blocks codes
+  renderer.code = (source, lang) => {
+    const { value: highlighted } = hljs.highlight(lang, source);
+    return `<pre class='language-javascriptreact'><code>${highlighted}</code></pre>`;
+  };
 
-    const html = marked(content, { renderer });
+  // parse the md to get front matter
+  // and the content without escaping characters
+  const { data, content } = grayMatter(post);
 
-    if (html) {
-      res.writeHead(200, {
-        "Content-Type": "application/json"
-      });
+  const html = marked(content, { renderer });
 
-      res.end(JSON.stringify({ html, ...data }));
-    } else {
-      res.writeHead(404, {
-        "Content-Type": "application/json"
-      });
+  if (html) {
+    res.writeHead(200, {
+      "Content-Type": "application/json"
+    });
 
-      res.end(
-        JSON.stringify({
-          message: `Not found`
-        })
-      );
-    }
+    res.end(JSON.stringify({ html, ...data }));
+  } else {
+    res.writeHead(404, {
+      "Content-Type": "application/json"
+    });
+
+    res.end(
+      JSON.stringify({
+        message: `Not found`
+      })
+    );
   }
+}
 ```
 
 Two new packages we need to install
@@ -232,7 +232,7 @@ Two new packages we need to install
 - highlight.js: add highlights to the code blocks.
 
 ```bash
-  npm install highlight.js marked
+npm install highlight.js marked
 ```
 
 In `src/client.js` we import Github styles for highlight.js.
