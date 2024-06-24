@@ -89,20 +89,26 @@ local function process_image(input_file, output_file, output_path)
   os.execute('cp ' .. output_file .. ' ' .. tmp_file)
 end
 
-function Image(img)
+local function handle_remote_image(img)
+  local slug = slugify_url(img.src)
+  local tmp_image = '.tmp/images/' .. slug .. get_file_extension(img.src)
+  local dist_image = remote_images .. slug .. get_file_extension(img.src)
+  local output_path = dist .. '/' .. remote_images
+
+  if not file_exists(tmp_image) then download_image(img.src, tmp_image) end
+
+  img.src = '/' .. dist_image
+  process_image(tmp_image, dist .. '/' .. dist_image, output_path)
+  set_image_size(img, dist .. '/' .. dist_image)
+
+  return img
+end
+
+local function get_image(img)
   img.attributes.loading = 'lazy'
 
   if starts_with(img.src, 'https://') or starts_with(img.src, 'http://') then
-    local slug = slugify_url(img.src)
-    local tmp_image = '.tmp/images/' .. slug .. get_file_extension(img.src)
-    local dist_image = remote_images .. slug .. get_file_extension(img.src)
-    local output_path = dist .. '/' .. remote_images
-
-    if not file_exists(tmp_image) then download_image(img.src, tmp_image) end
-
-    img.src = '/' .. dist_image
-    process_image(tmp_image, dist .. '/' .. dist_image, output_path)
-    set_image_size(img, dist .. '/' .. dist_image)
+    handle_remote_image(img)
 
     return pandoc.Link(img, img.src)
   end
@@ -125,3 +131,78 @@ function Image(img)
 
   return pandoc.Link(img, absolute_path)
 end
+
+local function get_image_meta(metadata, action)
+  if type(metadata) == 'table' then
+    for key, value in pairs(metadata) do
+      if key == 'photo' then
+        metadata[key] = action(value)
+      else
+        get_image_meta(value, action)
+      end
+    end
+  end
+end
+
+local function get_image_inline(el, action)
+  if el.format == 'html' then
+    -- Find and process <img> tags
+    local html_content = el.text
+    local match = html_content:gmatch '<img.*/>'
+
+    for img_tag in match do
+      local value = img_tag:match 'src="([^"]+)"'
+      el.text = action(value)
+    end
+
+    return el
+  end
+end
+
+return {
+  {
+    Image = get_image,
+  },
+  {
+    Meta = function(meta)
+      local function action(value)
+        local img = pandoc.Image({ pandoc.Str 'placeholder image' }, pandoc.utils.stringify(value))
+
+        handle_remote_image(img)
+
+        return {
+          url = img.src,
+          width = img.attributes.width,
+          height = img.attributes.height,
+        }
+      end
+
+      get_image_meta(meta, action)
+      return meta
+    end,
+  },
+  {
+    Inline = function(el)
+      local function action(value)
+        local img = pandoc.Image({ pandoc.Str 'placeholder image' }, value)
+
+        handle_remote_image(img)
+
+        local src = img.src
+        local attr = img.attributes
+
+        local img_tag = '<img loading="lazy" src="' .. src .. '"'
+
+        for k, v in pairs(attr) do
+          img_tag = img_tag .. ' ' .. k .. '="' .. v .. '"'
+        end
+
+        img_tag = img_tag .. ' />'
+
+        return img_tag
+      end
+
+      return get_image_inline(el, action)
+    end,
+  },
+}
