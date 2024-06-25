@@ -1,23 +1,43 @@
 ---
 title-prefix: Home
+home: true
+blogs:
+  - title: week #02 of leetcode grinding
+    url: /blog/week-2-leetcode/
+    date: Jun 15, 2024
+
+  - title: week #01 of leetcode grinding
+    url: /blog/week-1-leetcode/
+    date: Jun 07, 2024
+
+  - title: Uninstall all neovim plugins
+    date: Dec 01, 2022
+    url: /blog/uninstall-all-neovim-plugins/
+
+playing:
+  - title: Grim Dawn
+    date: May 18, 2024
+    url: /games/grim-dawn/
+
+completed:
+  - title: God of War (2018)
+    date: June 06, 2024
+    url: /games/god-of-war-2
+
+thoughts:
+  - date: Jun 25, 2024
+    url: /thoughts/1719274374/
+    content: |-
+      here is my todo list for my website, which is kinda complete, only missing two parts (taging, and
+      pa...
+  - date: Jun 24, 2024
+    url: /thoughts/1719224921/
+    content: |-
+      testing brid.gy auto publish with the webmention...
+  - date: Jun 23, 2024
+    url: /thoughts/1719160386/
+    content: |-
+      finally I did a setup for the webmention and this is a test post...
 ---
 
-Welecome to my space on the internet.
-
-- Mahmoud Ashraf
-- Alexandria, Egypt.
-- Full-stack developer
-- Bachelor's degree in computer science.
-- Writing about Tech, Linux, privacy, Front-end..
-- sharing posts/photos instead of using social media.
-- [more?](/about)
-
-## Recent Blogs
-
-- [week #02 of leetcode grinding](/blog/week-2-leetcode)
-- [week #01 of leetcode grinding](/blog/week-1-leetcode)
-- [Uninstall all neovim plugins](/blog/uninstall-all-neovim-plugins)
-- [Adevnt of Code 2020](/blog/adevnt-of-code-2020)
-- [How to optimize and lazy-loading images on eleventy (11ty)](/blog/how-to-optimize-and-lazyloading-images-on-eleventy)
-- [My terminal became more Rusty 🦀](/blog/my-terminal-became-more-rusty)
-- [No More postman just use cURL + vim = ❤](/blog/no-more-postman-just-curl-and-vim)
+# Latest Games
