@@ -52,7 +52,7 @@ br {
 
 .comment-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .comment-item {
@@ -83,6 +83,7 @@ br {
   margin-top: 0.5rem;
   max-width: 400px;
   color: var(--c2);
+  word-break: break-word;
 }
 
 .no-comments {
