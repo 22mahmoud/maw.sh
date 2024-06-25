@@ -14,4 +14,5 @@ pagination).
 - [ ] tags/categories links
 - [ ] pagination
 - [ ] custom admin ui, to easly use my website from the mobile (in the future)
+- [ ] redesign the site (in the future)
 ```
