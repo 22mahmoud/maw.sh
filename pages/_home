@@ -117,7 +117,7 @@ while IFS="|" read -r date url content; do
 	echo "  - date: $date" >>"$file_path"
 	echo "    url: /$url" >>"$file_path"
 	echo "    content: |-" >>"$file_path"
-  echo -e "$content" | sed 's/\\n/\n/g' | sed 's/^/   /' >>"$file_path"
+  echo -e "$content\n   " | sed 's/\\n/\n/g' | sed 's/^/   /' >>"$file_path"
 done <"$thoughts_temp_sorted"
 
 cat <<EOF >>"$file_path"

@@ -26,9 +26,12 @@ async function highlightCodeBlock(code, lang) {
 }
 
 pandoc.stdio(async ({ t: type, c: value }) => {
-  if (type === "CodeBlock") {
+  if (type === "CodeBlock" || type === "Code") {
     const [[_, [lang]], code] = value;
     const highlighted = await highlightCodeBlock(code, lang);
-    return pandoc.RawBlock("html", highlighted);
+
+    return type === "CodeBlock"
+      ? pandoc.RawBlock("html", highlighted)
+      : pandoc.RawInline("html", highlighted);
   }
 });
