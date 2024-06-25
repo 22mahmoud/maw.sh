@@ -9,13 +9,27 @@ function os.capture(cmd, raw)
   return s:gsub('^%s+', ''):gsub('%s+$', '')
 end
 
-function Meta(m)
-  if not m.date then return end
+local function find_date_metadata(metadata, action)
+  if type(metadata) == 'table' then
+    for key, value in pairs(metadata) do
+      if key == 'date' then
+        metadata['formatted_date'] = action(value)
+      else
+        find_date_metadata(value, action)
+      end
+    end
+  end
+end
 
-  local date = pandoc.utils.stringify(m.date)
+local function action(value)
+  local date = pandoc.utils.stringify(value)
 
   -- local cmd = string.format("date -d \"%s\"  '+%b %d, %Y'", date)
   local cmd = 'date -d ' .. string.format('"%s"', date) .. " '+%b %d, %Y'"
-  m.formatted_date = os.capture(cmd)
-  return m
+  return os.capture(cmd)
+end
+
+function Meta(metadata)
+  find_date_metadata(metadata, action)
+  return metadata
 end

@@ -1,71 +1,136 @@
 #!/bin/bash
 
 file_path="src/index.md"
+base_blog_dir="src/blog"
+base_games_dir="src/games"
+base_thoughts_dir="src/thoughts"
+base_leetcode_dir="src/leetcode/problems"
 
-
+# Temp files to store extracted data
 blog_temp=$(mktemp)
-games_temp=$(mktemp)
-thoughts_temp=$(mktemp)
-
 blog_temp_sorted=$(mktemp)
-games_temp_sorted=$(mktemp)
+playing_games_temp=$(mktemp)
+completed_games_temp=$(mktemp)
+completed_games_temp_sorted=$(mktemp)
+thoughts_temp=$(mktemp)
 thoughts_temp_sorted=$(mktemp)
+leetcode_temp=$(mktemp)
+leetcode_temp_sorted=$(mktemp)
 
+# Extract blog data
+for dir_name in "$base_blog_dir"/*/; do
+	if [ -d "$dir_name" ]; then
+		title=$(yq --front-matter=extract '.title-prefix' "$dir_name/index.md")
+		date=$(yq --front-matter=extract '.date' "$dir_name/index.md")
+		url=${dir_name#src/}
+
+		echo "$date|$title|$url" >>"$blog_temp"
+	fi
+done
+
+# Extract game data
+for dir_name in "$base_games_dir"/*/; do
+	if [ -d "$dir_name" ]; then
+		title=$(yq --front-matter=extract '.title' "$dir_name/index.md")
+		date=$(yq --front-matter=extract '.date' "$dir_name/index.md")
+		state=$(yq --front-matter=extract '.state' "$dir_name/index.md")
+		url=${dir_name#src/}
+
+		if [ "$state" = 'active' ]; then
+			echo "$date|$title|$state|$url" >>"$playing_games_temp"
+		fi
+
+		if [ "$state" = 'completed' ]; then
+			echo "$date|$title|$state|$url" >>"$completed_games_temp"
+		fi
+	fi
+done
+
+# Extract thoughts data
+for dir_name in "$base_thoughts_dir"/*/; do
+	if [ -d "$dir_name" ]; then
+		date=$(yq --front-matter=extract '.date' "$dir_name/index.md")
+		url=${dir_name#src/}
+		content=$(sed '/^---$/,/^---$/d; s/^/  /' "$dir_name/index.md" | sed ':a;N;$!ba;s/\n/\\n/g')
+
+		echo "$date|$url|$content" >>"$thoughts_temp"
+	fi
+done
+
+# Extract leetcode data
+for dir_name in "$base_leetcode_dir"/*/; do
+	if [ -d "$dir_name" ]; then
+		title=$(yq --front-matter=extract '.title-prefix' "$dir_name/index.md")
+		date=$(yq --front-matter=extract '.date' "$dir_name/index.md")
+		url=${dir_name#src/}
+
+		echo "$date|$title|$url" >>"$leetcode_temp"
+	fi
+done
+
+# Sort data
+sort -r "$blog_temp" | head -n 3 >"$blog_temp_sorted"
+sort -r "$playing_games_temp" -o "$playing_games_temp"
+sort -r "$completed_games_temp" | head -n 2 >"$completed_games_temp_sorted"
+sort -r "$thoughts_temp" | head -n 3 >"$thoughts_temp_sorted"
+sort -r "$leetcode_temp" | head -n 3 >"$leetcode_temp_sorted"
+
+# Generate front matter for index.md
 cat <<EOF >"$file_path"
 ---
 title-prefix: Home
 home: true
 blogs:
-  - title: week \#02 of leetcode grinding
-    url: /blog/week-2-leetcode/
-    date: Jun 15, 2024
+EOF
 
-  - title: week \#01 of leetcode grinding
-    url: /blog/week-1-leetcode/
-    date: Jun 07, 2024
+while IFS="|" read -r date title url; do
+	echo "  - title: $title" >>"$file_path"
+	echo "    url: /$url" >>"$file_path"
+	echo "    date: $date" >>"$file_path"
+done <"$blog_temp_sorted"
 
-  - title: Uninstall all neovim plugins
-    date: Dec 01, 2022
-    url: /blog/uninstall-all-neovim-plugins/
-
+cat <<EOF >>"$file_path"
 playing:
-  - title: Grim Dawn
-    date: May 18, 2024
-    url: /games/grim-dawn/
+EOF
 
+while IFS="|" read -r date title state url; do
+	echo "  - title: $title" >>"$file_path"
+	echo "    date: $date" >>"$file_path"
+	echo "    url: /$url" >>"$file_path"
+done <"$playing_games_temp"
+
+cat <<EOF >>"$file_path"
 completed:
-  - title: God of War (2018)
-    date: June 06, 2024
-    url: /games/god-of-war-2
+EOF
 
+while IFS="|" read -r date title state url; do
+	echo "  - title: $title" >>"$file_path"
+	echo "    date: $date" >>"$file_path"
+	echo "    url: /$url" >>"$file_path"
+done <"$completed_games_temp_sorted"
+
+cat <<EOF >>"$file_path"
 thoughts:
-  - date: Jun 25, 2024
-    url: /thoughts/1719274374/
-    content: |-
-      here is my todo list for my website, which is kinda complete, only missing two parts (taging, and
-      pa...
-  - date: Jun 24, 2024
-    url: /thoughts/1719224921/
-    content: |-
-      testing brid.gy auto publish with the webmention...
-  - date: Jun 23, 2024
-    url: /thoughts/1719160386/
-    content: |-
-      finally I did a setup for the webmention and this is a test post...
+EOF
 
+while IFS="|" read -r date url content; do
+	echo "  - date: $date" >>"$file_path"
+	echo "    url: /$url" >>"$file_path"
+	echo "    content: |-" >>"$file_path"
+  echo -e "$content" | sed 's/\\n/\n/g' | sed 's/^/   /' >>"$file_path"
+done <"$thoughts_temp_sorted"
+
+cat <<EOF >>"$file_path"
 leetcode:
-  - date: Jun 15, 2024
-    title: 0206. Reverse Linked List
-    url: /leetcode/problems/206_reverse_linked_list/
+EOF
 
-  - date: Jun 13, 2024
-    title: 0022. Generate Parentheses
-    url: /leetcode/problems/22_generate_parentheses/
+while IFS="|" read -r date title url; do
+	echo "  - date: $date" >>"$file_path"
+	echo "    title: $title" >>"$file_path"
+	echo "    url: /$url" >>"$file_path"
+done <"$leetcode_temp_sorted"
 
-  - date: Jun 12, 2024
-    title: 0078. Subsets
-    url: /leetcode/problems/78_subsets/
-
+cat <<EOF >>"$file_path"
 header-includes: |-
   <style>
     .section-header {
@@ -255,7 +320,9 @@ Instead of using social media, I share my **posts and photos** here.
 
 [Learn More About Me](/about)
 
-
 EOF
+
+# Cleanup temp files
+rm "$blog_temp" "$playing_games_temp" "$thoughts_temp" "$leetcode_temp"
 
 echo "src/index.md file generated successfully."
