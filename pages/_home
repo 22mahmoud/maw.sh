@@ -249,8 +249,9 @@ header-includes: |-
 
     .game img {
       width: 100%;
-      height: auto;
+      height: 90px;
       display: block;
+      object-fit: cover;
     }
 
     .game a {
