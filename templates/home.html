@@ -1,0 +1,99 @@
+$body$
+
+<div class="blogs">
+  <div class="section-header">
+    <h3>Recent Blogs</h3>
+    <a href="/blogs"> <span>See All Blogs</span> → </a>
+  </div>
+  $for(blogs)$
+  <div class="blog">
+    <a href="$url$">
+      <div class="blog-title">$blogs.title$</div>
+      <div class="blog-date">$blogs.date$</div>
+    </a>
+  </div>
+  $endfor$
+</div>
+
+<div class="thoughts">
+  <div class="section-header">
+    <h3>Recent Thoughts</h3>
+    <a href="/thoughts"> <span>See All Thoughts</span> → </a>
+  </div>
+  <ul>
+    $for(thoughts)$
+    <li class="thought">
+      <a href="$thoughts.url$">
+        <div class="thought-date">$thoughts.date$</div>
+      </a>
+      <div class="thought-content">$thoughts.content$</div>
+    </li>
+  </ul>
+  $endfor$
+</div>
+
+<div>
+  <div class="section-header">
+    <h3>Recent Games</h3>
+    <a href="/games"> <span>See All Games</span> → </a>
+  </div>
+
+  <div class="games">
+    $for(playing)$
+    <div class="game game-playing">
+      <img loading="lazy" src="$playing.url$/cover.webp" />
+      <a href="$playing.url$"></a>
+      <div class="game-info">
+        <span class="game-title">$playing.title$</span>
+        <div class="footer">
+          <span class="game-state">
+            <img loading="lazy" src="/play.svg" />
+            <span>Playing</span>
+          </span>
+          <span class="game-date">
+            <img loading="lazy" src="/cal.svg" />
+            <span>$playing.date$</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    $endfor$
+
+    <!-- -->
+
+    $for(completed)$
+    <div class="game game-completed">
+      <img loading="lazy" src="$completed.url$/cover.webp" />
+      <a href="$completed.url$"></a>
+      <div class="game-info">
+        <span class="game-title">$completed.title$</span>
+        <div class="footer">
+          <span class="game-state">
+            <img loading="lazy" src="/check.svg" />
+            <span>completed</span>
+          </span>
+          <span class="game-date">
+            <img loading="lazy" src="/cal.svg" />
+            <span>$completed.date$</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    $endfor$
+  </div>
+</div>
+
+<div>
+  <div class="section-header">
+    <h3>Recent Leetcode</h3>
+    <a href="/leetcode"> <span>See All leetcodes</span> → </a>
+  </div>
+
+  <ul>
+    $for(leetcode)$
+    <li>
+      $leetcode.date$: <a href="$leetcode.url$">$leetcode.title$</a>
+    </li>
+    $endfor$
+  </ul>
+</div>

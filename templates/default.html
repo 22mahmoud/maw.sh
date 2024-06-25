@@ -114,7 +114,9 @@
       </div>
       $endif$
 
-      $if(blog)$ ${blog.html()}
+      $if(home)$ ${home.html()}
+
+      $elseif(blog)$ ${blog.html()}
 
       $elseif(thought)$ ${thought.html()}
 

@@ -5,8 +5,9 @@ bin        := bin
 tmp        := .tmp
 extensions := jpeg jpg mp4 gif png txt webp avif
 
-md_pages   := $(shell find $(pages) -type f | sed 's|$(pages)|$(src)|g' | sed 's|$$|/index.md|')
-md_files   := $(shell find $(src) -name "*.md") $(md_pages)
+home_md    := $(src)/index.md
+md_pages   := $(shell find $(pages) -type f ! -name _home | sed 's|$(pages)|$(src)|g' | sed 's|$$|/index.md|')
+md_files   := $(shell find $(src) -name "*.md") $(md_pages) $(home_md)
 html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 
 build: prepare pages_index html static $(output)/sitemap.xml $(output)/rss.xml
@@ -14,7 +15,10 @@ build: prepare pages_index html static $(output)/sitemap.xml $(output)/rss.xml
 dev:
 	@find $(src) filters templates -type f | entr $(MAKE) dist/blog/build-a-blog-with-svelte-and-markdown/index.html
 
-pages_index: $(md_pages)
+pages_index: $(md_pages) $(home_md)
+
+$(src)/index.md: $(src)/**/* $(pages)/_home
+	@$(pages)/_home
 
 $(src)/%/index.md: $(src)/%/**/*.md pages/%
 	@$(pages)/$(shell echo $(@) | sed 's/\/index.md//' | xargs basename)
@@ -44,7 +48,7 @@ static:
 	@rsync -av --update --include="*" public/ $(output)/
 
 clean:
-	@rm -vrf $(output) $(tmp) $(md_pages)
+	@rm -vrf $(output) $(tmp) $(md_pages) $(home_md)
 
 prepare:
 	mkdir -p $(output)

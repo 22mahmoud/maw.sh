@@ -1,0 +1,261 @@
+#!/bin/bash
+
+file_path="src/index.md"
+
+
+blog_temp=$(mktemp)
+games_temp=$(mktemp)
+thoughts_temp=$(mktemp)
+
+blog_temp_sorted=$(mktemp)
+games_temp_sorted=$(mktemp)
+thoughts_temp_sorted=$(mktemp)
+
+cat <<EOF >"$file_path"
+---
+title-prefix: Home
+home: true
+blogs:
+  - title: week \#02 of leetcode grinding
+    url: /blog/week-2-leetcode/
+    date: Jun 15, 2024
+
+  - title: week \#01 of leetcode grinding
+    url: /blog/week-1-leetcode/
+    date: Jun 07, 2024
+
+  - title: Uninstall all neovim plugins
+    date: Dec 01, 2022
+    url: /blog/uninstall-all-neovim-plugins/
+
+playing:
+  - title: Grim Dawn
+    date: May 18, 2024
+    url: /games/grim-dawn/
+
+completed:
+  - title: God of War (2018)
+    date: June 06, 2024
+    url: /games/god-of-war-2
+
+thoughts:
+  - date: Jun 25, 2024
+    url: /thoughts/1719274374/
+    content: |-
+      here is my todo list for my website, which is kinda complete, only missing two parts (taging, and
+      pa...
+  - date: Jun 24, 2024
+    url: /thoughts/1719224921/
+    content: |-
+      testing brid.gy auto publish with the webmention...
+  - date: Jun 23, 2024
+    url: /thoughts/1719160386/
+    content: |-
+      finally I did a setup for the webmention and this is a test post...
+
+leetcode:
+  - date: Jun 15, 2024
+    title: 0206. Reverse Linked List
+    url: /leetcode/problems/206_reverse_linked_list/
+
+  - date: Jun 13, 2024
+    title: 0022. Generate Parentheses
+    url: /leetcode/problems/22_generate_parentheses/
+
+  - date: Jun 12, 2024
+    title: 0078. Subsets
+    url: /leetcode/problems/78_subsets/
+
+header-includes: |-
+  <style>
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.5em;
+    }
+
+    .section-header h3 {
+      margin: 0;
+    }
+
+    .section-header a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--c4);
+    }
+
+    .section-header a:hover {
+      text-decoration: underline;
+    }
+    .thoughts ul {
+      padding: 0;
+    }
+
+    .thoughts li {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .thoughts li {
+      background-color: var(--c1);
+      border: 1px solid var(--c5);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-family: var(--sans);
+      color: var(--c2);
+    }
+
+    .thoughts li div:first-of-type {
+      margin-bottom: 10px;
+    }
+
+    .thoughts li a {
+      color: var(--c3);
+    }
+
+    .thoughts li a:hover {
+      color: var(--c4);
+    }
+
+    .thoughts li div {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .blogs {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+      padding-left: 0;
+    }
+
+    .blog {
+      background-color: var(--c5);
+      border: 1px solid var(--c6);
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-title {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-date {
+      font-size: 0.9rem;
+      color: var(--c4);
+      margin-bottom: 0.5rem;
+    }
+
+    .blog a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .blog a:hover {
+      text-decoration: underline;
+    }
+
+    .games {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem;
+      padding-left: 0;
+    }
+
+    .game {
+      position: relative;
+      background-color: var(--c5);
+      border: 1px solid var(--c6);
+      overflow: hidden;
+      width: 150px;
+      height: 240px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .game img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .game a {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .game-info {
+      padding: 0.5rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .game-info span {
+      color: var(--c2);
+    }
+
+    .game-info img {
+      margin-right: 0.5rem;
+      width: 18px;
+      height: 18px;
+      filter: invert(1);
+      margin: 0;
+    }
+
+    .game-title {
+      font-weight: bold;
+      display: block;
+      flex: 1;
+    }
+
+    .footer {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .game-date, .game-state {
+      font-size: 0.9rem;
+      color: var(--c4);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .game-playing {
+      border-color: var(--status-active);
+    }
+
+    .game-completed {
+      border-color: var(--status-completed);
+    }
+  </style>
+---
+
+### Welcome to My Space on the Internet
+
+Hi, I'm **Mahmoud Ashraf** 👋.  
+Based in **Alexandria, Egypt**, I'm a **Software Engineer** who makes websites.
+I write about **Tech, Linux, Privacy, and Front-end Development**.  
+Instead of using social media, I share my **posts and photos** here.  
+
+[Learn More About Me](/about)
+
+
+EOF
+
+echo "src/index.md file generated successfully."
