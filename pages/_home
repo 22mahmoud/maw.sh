@@ -119,7 +119,7 @@ EOF
     url: /$url
     content: |-
 EOF
-		echo "$content\n\s" | sed 's/\\n/\n/g' | sed 's/^/\t\t/'
+		echo "$content\n " | sed 's/\\n/\n/g' | sed 's/^/      /'
 	done <"$thoughts_temp_sorted"
 
 	cat <<EOF
@@ -322,10 +322,10 @@ header-includes: |-
 
 ### Welcome to My Space on the Internet
 
-Hi, I'm **Mahmoud Ashraf** 👋.  
+Hi, I'm **Mahmoud Ashraf** 👋.
 Based in **Alexandria, Egypt**, I'm a **Software Engineer** who makes websites.
-I write about **Tech, Linux, Privacy, and Front-end Development**.  
-Instead of using social media, I share my **posts and photos** here.  
+I write about **Tech, Linux, Privacy, and Front-end Development**.
+Instead of using social media, I share my **posts and photos** here.
 
 [Learn More About Me](/about)
 EOF

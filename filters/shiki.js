@@ -26,7 +26,7 @@ async function highlightCodeBlock(code, lang) {
 }
 
 pandoc.stdio(async ({ t: type, c: value }) => {
-  if (type === "CodeBlock" || type === "Code") {
+  if (type === "CodeBlock") {
     const [[_, [lang]], code] = value;
     const highlighted = await highlightCodeBlock(code, lang);
 

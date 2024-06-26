@@ -45,6 +45,7 @@
     <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
 
     $styles.html()$
+
     $if(game)$ $game-styles.html()$ $endif$
 
     $if(blog)$
@@ -115,13 +116,9 @@
       $endif$
 
       $if(home)$ ${home.html()}
-
       $elseif(blog)$ ${blog.html()}
-
       $elseif(thought)$ ${thought.html()}
-
       $elseif(game)$ ${game.html()}
-
       $else$ $body$ ${author.html()} $endif$
 
       $for(include-after)$ $include-after$ $endfor$
@@ -139,23 +136,28 @@
           </div>
         </a>
 
-        <a
-          aria-label="maw.sh rss feed"
-          href="/rss.xml"
-        >
+        <a aria-label="maw.sh rss feed" href="/rss.xml">
           <div class="wb" style="outline-color: #f26522">
             <div><img loading="lazy" alt="rss logo" src="/rss.svg" /></div>
-            <div style="background-color: #f26522; color: #fff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RSS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div style="background-color: #f26522; color: #fff">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RSS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
           </div>
         </a>
 
-        <a
-          aria-label="pandoc website"
-          href="https://pandoc.org/"
-        >
+        <a aria-label="pandoc website" href="https://pandoc.org/">
           <div class="wb" style="outline-color: #000">
-            <div><img loading="lazy" alt="pandoc logo" src="/pandoc.svg" style="width: 18px; height: 18px;" /></div>
-            <div style="background-color: #000; color: #fff">&nbsp;&nbsp;&nbsp;Pandoc&nbsp;&nbsp;&nbsp;</div>
+            <div>
+              <img
+                loading="lazy"
+                alt="pandoc logo"
+                src="/pandoc.svg"
+                style="width: 18px; height: 18px"
+              />
+            </div>
+            <div style="background-color: #000; color: #fff">
+              &nbsp;&nbsp;&nbsp;Pandoc&nbsp;&nbsp;&nbsp;
+            </div>
           </div>
         </a>
 
@@ -175,7 +177,9 @@
           href="https://fosstodon.org/@22mahmoud"
         >
           <div class="wb" style="outline-color: #5437c7">
-            <div><img loading="lazy" alt="Mastodon logo" src="/mastodon.svg" /></div>
+            <div>
+              <img loading="lazy" alt="Mastodon logo" src="/mastodon.svg" />
+            </div>
             <div style="background-color: #5437c7">Mastodon</div>
           </div>
         </a>
@@ -186,8 +190,17 @@
           href="https://github.com/22mahmoud"
         >
           <div class="wb" style="outline-color: #000">
-            <div><img loading="lazy" alt="github logo" src="/gh.svg" style="width: 22px; height: 22px;" /></div>
-            <div style="background-color: #000; color: #fff">&nbsp;&nbsp;&nbsp;Github&nbsp;&nbsp;&nbsp;</div>
+            <div>
+              <img
+                loading="lazy"
+                alt="github logo"
+                src="/gh.svg"
+                style="width: 22px; height: 22px"
+              />
+            </div>
+            <div style="background-color: #000; color: #fff">
+              &nbsp;&nbsp;&nbsp;Github&nbsp;&nbsp;&nbsp;
+            </div>
           </div>
         </a>
 
@@ -197,21 +210,53 @@
           href="https://www.youtube.com/@22mahmoud"
         >
           <div class="wb" style="outline-color: #cd1508">
-            <div><img loading="lazy" alt="youtube logo" src="/yt.svg" style="width: 22px; height: 22px;" /></div>
-            <div style="background-color: #cd1508; color: #fff">&nbsp;&nbsp;Youtube&nbsp;&nbsp;</div>
+            <div>
+              <img
+                loading="lazy"
+                alt="youtube logo"
+                src="/yt.svg"
+                style="width: 22px; height: 22px"
+              />
+            </div>
+            <div style="background-color: #cd1508; color: #fff">
+              &nbsp;&nbsp;Youtube&nbsp;&nbsp;
+            </div>
           </div>
         </a>
       </div>
 
-      <div style="display: flex; justify-content: center; align-items: center; padding: 10px;  margin-top: 15px">
-        <div style="width: fit-content; display: flex; justify-content: center; align-items: center;" >
-          <a style="text-align: center; width: 32px; display: block;" href="https://xn--sr8hvo.ws/previous">←</a>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+          margin-top: 15px;
+        "
+      >
+        <div
+          style="
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <a
+            style="text-align: center; width: 32px; display: block"
+            href="https://xn--sr8hvo.ws/previous">
+            ←
+          </a>
           <a href="https://xn--sr8hvo.ws"> IndieWeb Webring 🕸💍 </a>
-          <a style="text-align: center; width: 32px; display: block;" href="https://xn--sr8hvo.ws/next">→</a>
+          <a
+            style="text-align: center; width: 32px; display: block"
+            href="https://xn--sr8hvo.ws/next">
+            →
+          </a>
         </div>
       </div>
 
-      <div style="margin-top: 15px; text-align: center;">
+      <div style="margin-top: 15px; text-align: center">
         © <a href="https://maw.sh"> Mahmoud Ashraf </a>
       </div>
     </footer>
