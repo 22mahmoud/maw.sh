@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 file_path="src/index.md"
 base_blog_dir="src/blog"
@@ -6,7 +6,6 @@ base_games_dir="src/games"
 base_thoughts_dir="src/thoughts"
 base_leetcode_dir="src/leetcode/problems"
 
-# Temp files to store extracted data
 blog_temp=$(mktemp)
 blog_temp_sorted=$(mktemp)
 playing_games_temp=$(mktemp)
@@ -17,7 +16,6 @@ thoughts_temp_sorted=$(mktemp)
 leetcode_temp=$(mktemp)
 leetcode_temp_sorted=$(mktemp)
 
-# Extract blog data
 for dir_name in "$base_blog_dir"/*/; do
 	if [ -d "$dir_name" ]; then
 		title=$(yq --front-matter=extract '.title-prefix' "$dir_name/index.md")
@@ -28,7 +26,6 @@ for dir_name in "$base_blog_dir"/*/; do
 	fi
 done
 
-# Extract game data
 for dir_name in "$base_games_dir"/*/; do
 	if [ -d "$dir_name" ]; then
 		title=$(yq --front-matter=extract '.title' "$dir_name/index.md")
@@ -36,28 +33,26 @@ for dir_name in "$base_games_dir"/*/; do
 		state=$(yq --front-matter=extract '.state' "$dir_name/index.md")
 		url=${dir_name#src/}
 
-		if [ "$state" = 'active' ]; then
+		if [ "$state" = "active" ]; then
 			echo "$date|$title|$state|$url" >>"$playing_games_temp"
 		fi
 
-		if [ "$state" = 'completed' ]; then
+		if [ "$state" = "completed" ]; then
 			echo "$date|$title|$state|$url" >>"$completed_games_temp"
 		fi
 	fi
 done
 
-# Extract thoughts data
 for dir_name in "$base_thoughts_dir"/*/; do
 	if [ -d "$dir_name" ]; then
 		date=$(yq --front-matter=extract '.date' "$dir_name/index.md")
 		url=${dir_name#src/}
-		content=$(sed '/^---$/,/^---$/d; s/^/  /' "$dir_name/index.md" | sed ':a;N;$!ba;s/\n/\\n/g')
+		content=$(sed '/^---$/,/^---$/d;' "$dir_name/index.md" | awk '{printf "%s\\n", $0}')
 
 		echo "$date|$url|$content" >>"$thoughts_temp"
 	fi
 done
 
-# Extract leetcode data
 for dir_name in "$base_leetcode_dir"/*/; do
 	if [ -d "$dir_name" ]; then
 		title=$(yq --front-matter=extract '.title-prefix' "$dir_name/index.md")
@@ -68,71 +63,84 @@ for dir_name in "$base_leetcode_dir"/*/; do
 	fi
 done
 
-# Sort data
 sort -r "$blog_temp" | head -n 3 >"$blog_temp_sorted"
 sort -r "$playing_games_temp" -o "$playing_games_temp"
 sort -r "$completed_games_temp" | head -n 2 >"$completed_games_temp_sorted"
 sort -r "$thoughts_temp" | head -n 3 >"$thoughts_temp_sorted"
 sort -r "$leetcode_temp" | head -n 3 >"$leetcode_temp_sorted"
 
-# Generate front matter for index.md
-cat <<EOF >"$file_path"
+{
+	cat <<EOF
 ---
 title-prefix: Home
 home: true
 blogs:
 EOF
 
-while IFS="|" read -r date title url; do
-	echo "  - title: $title" >>"$file_path"
-	echo "    url: /$url" >>"$file_path"
-	echo "    date: $date" >>"$file_path"
-done <"$blog_temp_sorted"
+	while IFS="|" read -r date title url; do
+		cat <<EOF
+  - title: $title
+    url: /$url
+    date: $date
+EOF
+	done <"$blog_temp_sorted"
 
-cat <<EOF >>"$file_path"
+	cat <<EOF
 playing:
 EOF
 
-while IFS="|" read -r date title state url; do
-	echo "  - title: $title" >>"$file_path"
-	echo "    date: $date" >>"$file_path"
-	echo "    url: /$url" >>"$file_path"
-done <"$playing_games_temp"
+	while IFS="|" read -r date title state url; do
+		cat <<EOF
+  - title: $title
+    date: $date
+    url: /$url
+EOF
+	done <"$playing_games_temp"
 
-cat <<EOF >>"$file_path"
+	cat <<EOF
 completed:
 EOF
 
-while IFS="|" read -r date title state url; do
-	echo "  - title: $title" >>"$file_path"
-	echo "    date: $date" >>"$file_path"
-	echo "    url: /$url" >>"$file_path"
-done <"$completed_games_temp_sorted"
+	while IFS="|" read -r date title state url; do
+		cat <<EOF
+  - title: $title
+    date: $date
+    url: /$url
+EOF
+	done <"$completed_games_temp_sorted"
 
-cat <<EOF >>"$file_path"
+	cat <<EOF
 thoughts:
 EOF
 
-while IFS="|" read -r date url content; do
-	echo "  - date: $date" >>"$file_path"
-	echo "    url: /$url" >>"$file_path"
-	echo "    content: |-" >>"$file_path"
-  echo -e "$content\n   " | sed 's/\\n/\n/g' | sed 's/^/   /' >>"$file_path"
-done <"$thoughts_temp_sorted"
+	while IFS="|" read -r date url content; do
+		cat <<EOF
+  - date: $date
+    url: /$url
+    content: |-
+EOF
+		echo "$content\n\s" | sed 's/\\n/\n/g' | sed 's/^/\t\t/'
+	done <"$thoughts_temp_sorted"
 
-cat <<EOF >>"$file_path"
+	cat <<EOF
 leetcode:
 EOF
 
-while IFS="|" read -r date title url; do
-	echo "  - date: $date" >>"$file_path"
-	echo "    title: $title" >>"$file_path"
-	echo "    url: /$url" >>"$file_path"
-done <"$leetcode_temp_sorted"
+	while IFS="|" read -r date title url; do
+		cat <<EOF
+  - date: $date
+    title: $title
+    url: /$url
+EOF
+	done <"$leetcode_temp_sorted"
 
-cat <<EOF >>"$file_path"
+	cat <<EOF
 header-includes: |-
   <style>
+    br {
+      display: none;
+    }
+
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -320,10 +328,9 @@ I write about **Tech, Linux, Privacy, and Front-end Development**.
 Instead of using social media, I share my **posts and photos** here.  
 
 [Learn More About Me](/about)
-
 EOF
+} >"$file_path"
 
-# Cleanup temp files
-rm "$blog_temp" "$playing_games_temp" "$thoughts_temp" "$leetcode_temp"
+rm "$blog_temp" "$blog_temp_sorted" "$playing_games_temp" "$completed_games_temp" "$completed_games_temp_sorted" "$thoughts_temp" "$thoughts_temp_sorted" "$leetcode_temp" "$leetcode_temp_sorted"
 
 echo "src/index.md file generated successfully."
