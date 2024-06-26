@@ -35,7 +35,7 @@ EOF
 download_cover_image() {
 	curl -s "$cover_image" -o "$dir_name/cover.jpg"
 	cwebp -resize 480 0 -q 80 "$dir_name/cover.jpg" -o "$dir_name/cover.webp"
-	rm "$dir_name/cover.jpg"
+	cwebp -resize 250 0 "$dir_name/cover.jpg" -o "$dir_name/cover-small.webp"
 }
 
 update_metadata() {
