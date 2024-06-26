@@ -1,9 +1,9 @@
 ---
+title-prefix: Hades
 date: 2024-05-21T10:06+03:00
 state: wanted
 cover_image: "./cover.webp"
 game: true
-title: Hades
 release_date: "2020-09-17"
 description: |-
   Hades is a rogue-like dungeon crawler that combines the best aspects of Supergiant's critically acclaimed titles, including the fast-paced action of Bastion, the rich atmosphere and depth of Transistor, and the character-driven storytelling of Pyre.

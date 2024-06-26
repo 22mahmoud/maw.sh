@@ -11,7 +11,7 @@ for dir_name in "$base_dir"/*/; do
 	md_file="${dir_name}/index.md"
 	[ ! -f "$md_file" ] && continue
 
-	title=$(yq --front-matter=extract '.title' "$md_file")
+	title=$(yq --front-matter=extract '.title-prefix' "$md_file")
 	state=$(yq --front-matter=extract '.state' "$md_file")
 
 	[ -z "$title" ] && continue

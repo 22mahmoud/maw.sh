@@ -71,7 +71,7 @@ main() {
 	create_or_update_markdown
 	download_cover_image
 
-	update_metadata "title" "$title"
+	update_metadata "title-prefix" "$title"
 	update_metadata "release_date" "$release_date"
 	update_metadata "description" "$description"
 	update_metadata "cover_image" "./cover.webp"

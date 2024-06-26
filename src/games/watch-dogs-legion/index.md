@@ -1,9 +1,9 @@
 ---
-date: 2024-06-18T05:02+03:00
+title-prefix: 'Watch Dogs: Legion'
+date: 2022-10-12T00:00+02:00
 state: completed
 cover_image: "./cover.webp"
 game: true
-title: 'Watch Dogs: Legion'
 release_date: "2020-10-29"
 description: |-
   In Watch Dogs Legion, you get to build a resistance from virtually anyone you see as you hack, infiltrate, and fight to take back a near-future London that is facing its downfall, courtesy of state surveillance, private military, and organized crime.

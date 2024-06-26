@@ -28,7 +28,7 @@ done
 
 for dir_name in "$base_games_dir"/*/; do
 	if [ -d "$dir_name" ]; then
-		title=$(yq --front-matter=extract '.title' "$dir_name/index.md")
+		title=$(yq --front-matter=extract '.title-prefix' "$dir_name/index.md")
 		date=$(yq --front-matter=extract '.date' "$dir_name/index.md")
 		state=$(yq --front-matter=extract '.state' "$dir_name/index.md")
 		url=${dir_name#src/}
@@ -79,7 +79,7 @@ EOF
 
 	while IFS="|" read -r date title url; do
 		cat <<EOF
-  - title: $title
+  - title: '$title'
     url: /$url
     date: $date
 EOF
@@ -91,7 +91,7 @@ EOF
 
 	while IFS="|" read -r date title state url; do
 		cat <<EOF
-  - title: $title
+  - title: '$title'
     date: $date
     url: /$url
 EOF
@@ -103,7 +103,7 @@ EOF
 
 	while IFS="|" read -r date title state url; do
 		cat <<EOF
-  - title: $title
+  - title: '$title'
     date: $date
     url: /$url
 EOF
@@ -129,7 +129,7 @@ EOF
 	while IFS="|" read -r date title url; do
 		cat <<EOF
   - date: $date
-    title: $title
+    title: '$title'
     url: /$url
 EOF
 	done <"$leetcode_temp_sorted"
