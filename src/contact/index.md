@@ -23,4 +23,3 @@ Recently I've started using [fediverse](https://en.wikipedia.org/wiki/Fediverse)
 ## Messaging
 
 - [telegram](https://t.me/mahmoudashraf22)
-- [matrix](https://matrix.to/#/@22mahmoud:matrix.org)
