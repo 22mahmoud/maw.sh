@@ -6,8 +6,10 @@ tmp        := .tmp
 extensions := jpeg jpg mp4 gif png txt webp avif
 
 home_md    := $(src)/index.md
-md_pages   := $(shell find $(pages) -type f ! -name _home | sed 's|$(pages)|$(src)|g' | sed 's|$$|/index.md|')
-md_files   := $(shell find $(src) -name "*.md") $(md_pages) $(home_md)
+thoughts_pagination_md := $(shell $(pages)/thoughts_pagination -p)
+md_pages   := $(shell find $(pages) -type f ! -name _home ! -name "*_pagination" \
+							| sed 's|$(pages)|$(src)|g' | sed 's|$$|/index.md|')
+md_files   := $(shell find $(src) -name "*.md") $(md_pages) $(home_md) $(thoughts_pagination_md)
 html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 
 build: prepare pages_index html static $(output)/sitemap.xml $(output)/rss.xml
@@ -46,15 +48,19 @@ ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/--include="*.\1"/g')
 static:
 	@rsync -av --update --include="*/" $(ext_args) --exclude="*" $(src)/ $(output)/
 	@rsync -av --update --include="*" public/ $(output)/
+	@rsync -av --update --include="*" dist/thoughts/.pagination/ dist/thoughts/
+	@rsync -av --update  dist/thoughts/1/index.html dist/thoughts/index.html
+	@rm -rf dist/thoughts/1 dist/thoughts/.pagination
 
 clean:
-	@rm -vrf $(output) $(tmp) $(md_pages) $(home_md)
+	@rm -vrf $(output) $(tmp) $(md_pages) $(home_md) $(thoughts_pagination_md)
 
 prepare:
 	mkdir -p $(output)
 	mkdir -p $(output)/remote_images
 	mkdir -p $(tmp)/images
 	touch $(tmp)/images/.nomedia
+	$(pages)/thoughts_pagination
 	npm install
 
 .PHONY: build html static clean dev pages_index

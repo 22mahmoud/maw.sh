@@ -5,6 +5,7 @@ dist
 node_modules
 
 # auto-generated pages
+src/thoughts/.pagination
 src/index.md
 src/games/index.md
 src/thoughts/index.md

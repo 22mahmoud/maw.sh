@@ -1,0 +1,27 @@
+<div class="thoughts">
+  <h1>Thoughts</h1>
+  <ul>
+    $for(thoughts)$
+    <li class="thought">
+      <a href="$thoughts.url$">
+        <div class="thought-date">$thoughts.formatted_date$</div>
+      </a>
+      <div class="thought-content">$thoughts.content$</div>
+    </li>
+  </ul>
+  $endfor$
+
+  <div class="navigation">
+    $if(has-prev)$
+    <a href="$if(is-second)$ /thoughts $else$ /thoughts/$prev-page$/ $endif$">
+      ← Prev
+    </a>
+    $endif$
+
+    <!-- -->
+
+    $if(has-next)$
+    <a href="/thoughts/$next-page$/">Next →</a>
+    $endif$
+  </div>
+</div>

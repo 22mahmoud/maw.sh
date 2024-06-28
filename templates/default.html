@@ -116,6 +116,7 @@
       $endif$
 
       $if(home)$ ${home.html()}
+      $elseif(thoughts)$ ${thoughts.html()}
       $elseif(blog)$ ${blog.html()}
       $elseif(thought)$ ${thought.html()}
       $elseif(game)$ ${game.html()}

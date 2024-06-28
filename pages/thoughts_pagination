@@ -1,0 +1,135 @@
+#!/bin/sh
+
+src_dir="src/thoughts"
+pagination_dir="$src_dir/.pagination"
+thoughts_per_page=10
+
+thought_files=$(find "$src_dir" -name 'index.md' ! -path "*/.*" | sort -nr)
+
+page_number=1
+thought_count=0
+total_thoughts=$(echo "$thought_files" | wc -l)
+total_pages=$(((total_thoughts + thoughts_per_page - 1) / thoughts_per_page))
+
+thoughts_array=""
+
+while getopts "p" opt; do
+	case $opt in
+	p)
+		for file in $(seq 1 "$total_pages"); do
+			echo "$pagination_dir/$file/index.md"
+		done
+
+		exit 1
+		;;
+	\?)
+		echo "Usage: $(basename "$0") [-p]" >&2
+		exit 1
+		;;
+	esac
+done
+
+mkdir -p "$pagination_dir"
+
+echo "$thought_files" | while IFS= read -r thought_file; do
+	date=$(yq --front-matter=extract '.date' "$thought_file")
+	content=$(sed '/^---$/,/^---$/d' "$thought_file")
+	url=$(dirname "$thought_file" | sed 's/src//')
+
+	thoughts_array="$(
+		printf "%s\n\n  - date: %s\n    url: %s\n    content: |-\n" \
+			"$thoughts_array" "$date" "$url"
+		printf "%s\n " "$content" | sed 's/^/      /'
+	)"
+
+	thought_count=$((thought_count + 1))
+
+	if [ "$page_number" -lt "$total_pages" ]; then
+		has_next=true
+	else
+		has_next=false
+	fi
+
+	if [ "$page_number" -gt 1 ]; then
+		has_prev=true
+	else
+		has_prev=false
+	fi
+
+	if [ "$page_number" -eq 2 ]; then
+		is_second=true
+	else
+		is_second=false
+	fi
+
+	if [ $((thought_count % thoughts_per_page)) -eq 0 ] || [ "$thought_count" -eq "$total_thoughts" ]; then
+		page_file="$pagination_dir/$page_number/index.md"
+		mkdir -p "$(dirname "$page_file")"
+
+		cat <<EOF >"$page_file"
+---
+page-number: $page_number
+total-pages: $total_pages
+total: $total_thoughts
+per: $thoughts_per_page
+is-second: $is_second
+has-next: $has_next
+next-page: $((page_number + 1))
+has-prev: $has_prev
+prev-page: $((page_number - 1))
+header-includes: |-
+  <style>
+    br {
+      display: none;
+    }
+
+    .thoughts ul {
+      padding: 0;
+    }
+
+    .thoughts li {
+      list-style-type: none;
+      background-color: var(--c1);
+      border: 1px solid var(--c5);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-family: var(--sans);
+      color: var(--c2);
+    }
+
+    .thoughts li div:first-of-type {
+      margin-bottom: 10px;
+    }
+
+    .thoughts li a {
+      color: var(--c3);
+    }
+
+    .thoughts li a:hover {
+      color: var(--c4);
+    }
+
+    .thoughts li div {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .thoughts .navigation {
+      text-align: right; /* Aligns navigation links to the right */
+      margin-top: 10px; /* Optional: Adjust margin as needed */
+    }
+
+    .thoughts .navigation a {
+      margin-left: 10px; /* Adds spacing between Prev and Next links */
+    }
+  </style>
+thoughts:
+  $thoughts_array
+---
+EOF
+
+		thoughts_array=""
+		page_number=$((page_number + 1))
+	fi
+done
