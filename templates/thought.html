@@ -4,7 +4,10 @@
   </header>
 
   <section class="e-content">
-    <img loading="lazy" hidden class="u-featured" src="$featured-image$" />
+    $if(featured-image)$
+      <img loading="lazy" hidden class="u-featured" src="$featured-image$" />
+    $endif$
+
     $body$
   </section>
 
