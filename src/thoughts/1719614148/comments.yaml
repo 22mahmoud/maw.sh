@@ -1,0 +1,17 @@
+like-of:
+  - type: entry
+    author:
+      type: card
+      name: jm
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/8c5bcc1dcc40eda0d15681316e7fe71f34eca19b2e7e9ad3751163766991d212.jpg
+      url: https://fosstodon.org/\@jm
+    url: https://fosstodon.org/\@22mahmoud/112696742328794392#favorited-by-125281
+    published: null
+    wm-received: "2024-06-28T23:14:30Z"
+    wm-id: 1836566
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112696742328794392/125281
+    wm-target: thoughts/1719614148
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1719614148/
+    wm-property: like-of
+    wm-private: false
