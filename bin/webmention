@@ -9,12 +9,11 @@ if [ -z "${token}" ]; then
 	exit 1
 fi
 
-# uncomment after first run
 since=$(yq ".last_webmention_sync" metadata.yaml)
 
 format_output() {
-	jq '.children
-  | map(.["wm-target"] |= sub("^https://maw\\.sh/"; "") | .["wm-target"] |= sub("/$"; ""))
+	jq --arg domain "$domain" '.children
+  | map(.["wm-target"] |= sub("^https://\($domain)/"; "") | .["wm-target"] |= sub("/$"; ""))
   | map(select(.["wm-target"] != ""))
   | group_by(.["wm-target"])
   | map({
@@ -30,25 +29,30 @@ fetch_webmentions() {
 	curl -s "$url"
 }
 
+merge_entries() {
+	existing_entries="$1"
+	new_entries="$2"
+
+	jq -s '.[0] + .[1] | unique_by(.["wm-id"])' \
+		<(echo "$existing_entries") <(echo "$new_entries") |
+		sed 's/\([^\\]\)@/\1\\@/g'
+}
+
 save_into_file() {
 	line="$1"
 
 	target=$(echo "$line" | jq -r '.target')
-	properties=$(echo "$line" | jq '.properties')
+	properties=$(echo "$line" | jq -c '.properties[]')
 	path="src/$target/comments.yaml"
 
 	touch "$path"
-	len=$(echo "$line" | jq -r '.properties | length')
 
-	for idx in $(seq 0 $(("$len" - 1))); do
-		property=$(echo "$properties" | jq ".[$idx]")
+	echo "$properties" | while IFS= read -r property; do
 		property_name=$(echo "$property" | jq -r ".property")
 		new_entries=$(echo "$property" | jq '.entries')
 
-		existing_entries=$(yq -o=json e ".$property_name // []" "$path")
-		merged_entries=$(jq -s '.[0] + .[1] | unique_by(.["wm-id"])' \
-			<(echo "$existing_entries") <(echo "$new_entries") |
-			sed 's/\([^\\]\)@/\1\\@/g')
+		existing_entries=$(yq -o=json ".$property_name // []" "$path")
+		merged_entries=$(merge_entries "$existing_entries" "$new_entries")
 
 		yq -i ".$property_name = $merged_entries" "$path"
 	done

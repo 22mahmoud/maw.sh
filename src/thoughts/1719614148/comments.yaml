@@ -1,3 +1,46 @@
+in-reply-to:
+  - type: entry
+    author:
+      type: card
+      name: Cauê
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/8034541e40e4af10482a408cc0108e086a1eb8442716b5275b770c58bf73d969.jpg
+      url: https://mastodon.social/\@EuCaue
+    url: https://mastodon.social/\@EuCaue/112697143732896551
+    published: "2024-06-29T00:45:44+00:00"
+    wm-received: "2024-06-29T00:54:07Z"
+    wm-id: 1836571
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112696742328794392/112697143758590644
+    wm-target: thoughts/1719614148
+    wm-protocol: webmention
+    content:
+      html: |-
+        <p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> After almost two years of using <a href="https://mastodon.social/tags/neovim">#<span>neovim</span></a>, I keep learning new things about it. :)</p>
+        <a class="p-category" href="https://fosstodon.org/tags/neovim">neovim</a>
+      text: |-
+        \@22mahmoud After almost two years of using #neovim, I keep learning new things about it. :)
+        neovim
+    in-reply-to: https://maw.sh/thoughts/1719614148/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: mid_kid
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/6e67339b6a611ebfc17f4f4f10890f9ebe348cc1069fddbe5c54fe438aabdcad.jpg
+      url: https://fosstodon.org/\@mid_kid
+    url: https://fosstodon.org/\@mid_kid/112697124932494546
+    published: "2024-06-29T00:40:57+00:00"
+    wm-received: "2024-06-29T00:54:07Z"
+    wm-id: 1836572
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112696742328794392/112697124932494546
+    wm-target: thoughts/1719614148
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> I use this *all* the time</p>
+      text: \@22mahmoud I use this *all* the time
+    in-reply-to: https://maw.sh/thoughts/1719614148/
+    wm-property: in-reply-to
+    wm-private: false
 like-of:
   - type: entry
     author:
@@ -46,47 +89,4 @@ like-of:
     wm-protocol: webmention
     like-of: https://maw.sh/thoughts/1719614148/
     wm-property: like-of
-    wm-private: false
-in-reply-to:
-  - type: entry
-    author:
-      type: card
-      name: Cauê
-      photo: https://webmention.io/avatar/cdn.fosstodon.org/8034541e40e4af10482a408cc0108e086a1eb8442716b5275b770c58bf73d969.jpg
-      url: https://mastodon.social/\@EuCaue
-    url: https://mastodon.social/\@EuCaue/112697143732896551
-    published: "2024-06-29T00:45:44+00:00"
-    wm-received: "2024-06-29T00:54:07Z"
-    wm-id: 1836571
-    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112696742328794392/112697143758590644
-    wm-target: thoughts/1719614148
-    wm-protocol: webmention
-    content:
-      html: |-
-        <p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> After almost two years of using <a href="https://mastodon.social/tags/neovim">#<span>neovim</span></a>, I keep learning new things about it. :)</p>
-        <a class="p-category" href="https://fosstodon.org/tags/neovim">neovim</a>
-      text: |-
-        \@22mahmoud After almost two years of using #neovim, I keep learning new things about it. :)
-        neovim
-    in-reply-to: https://maw.sh/thoughts/1719614148/
-    wm-property: in-reply-to
-    wm-private: false
-  - type: entry
-    author:
-      type: card
-      name: mid_kid
-      photo: https://webmention.io/avatar/cdn.fosstodon.org/6e67339b6a611ebfc17f4f4f10890f9ebe348cc1069fddbe5c54fe438aabdcad.jpg
-      url: https://fosstodon.org/\@mid_kid
-    url: https://fosstodon.org/\@mid_kid/112697124932494546
-    published: "2024-06-29T00:40:57+00:00"
-    wm-received: "2024-06-29T00:54:07Z"
-    wm-id: 1836572
-    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112696742328794392/112697124932494546
-    wm-target: thoughts/1719614148
-    wm-protocol: webmention
-    content:
-      html: <p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> I use this *all* the time</p>
-      text: \@22mahmoud I use this *all* the time
-    in-reply-to: https://maw.sh/thoughts/1719614148/
-    wm-property: in-reply-to
     wm-private: false
