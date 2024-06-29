@@ -1,2 +1,7 @@
-user-agent: *
-sitemap: https://maw.sh/sitemap.xml
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Disallow: /
+
+Sitemap: https://maw.sh/sitemap.xml
