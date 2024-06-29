@@ -8,6 +8,12 @@
       <img loading="lazy" hidden class="u-featured" src="$featured-image$" />
     $endif$
 
+    $if(featured-video)$
+      <video controls hidden>
+        <source src="$featured-video$" >
+      </video>
+    $endif$
+
     $body$
   </section>
 

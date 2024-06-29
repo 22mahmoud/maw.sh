@@ -23,7 +23,15 @@ local function get_file_name(file)
   return name
 end
 
-local function is_gif(file) return get_file_extension(file) == '.gif' end
+local function is_gif(file)
+  local ext = get_file_extension(file)
+  return ext == '.gif'
+end
+
+local function is_video(file)
+  local ext = get_file_extension(file)
+  return ext == '.mp4'
+end
 
 local function get_thumb_path(file)
   local thumb = string.gsub(file, '([^/]*%.%w+)$', 'thumbs/%1')
@@ -43,14 +51,19 @@ end
 local function download_image(url, dest) os.execute('curl -L -o ' .. dest .. ' ' .. url) end
 
 local function get_image_size(file)
-  local handle = io.popen('identify -format "%w %h" ' .. file .. ' | head -n1')
+  local handle = is_video(file)
+      and io.popen(
+        'ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=x '
+          .. file
+      )
+    or io.popen('identify -format "%w %h" ' .. file .. ' | head -n1')
 
   if not handle then return nil, nil end
 
   local result = handle:read '*a'
   handle:close()
 
-  local width, height = result:match '(%d+) (%d+)'
+  local width, height = result:match '(%d+)[%sx](%d+)'
 
   return tonumber(width), tonumber(height)
 end
@@ -122,7 +135,7 @@ local function get_image(img)
   local output_file = dist .. thumb
   local output_path = dist .. remove_file_name(thumb)
 
-  if is_gif(img.src) then
+  if is_gif(img.src) or is_video(img.src) then
     set_image_size(img, input_file)
     img.src = absolute_path
     return img
