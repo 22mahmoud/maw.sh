@@ -95,7 +95,7 @@ local function handle_remote_image(img)
   local input_file = remote_images .. slug .. get_file_extension(img.src)
   local thumb = get_thumb_path(input_file)
   local output_file = dist .. '/' .. thumb
-  local output_path = dist .. remove_file_name(thumb)
+  local output_path = dist .. '/' .. remove_file_name(thumb)
 
   if not file_exists(tmp_image) then download_image(img.src, tmp_image) end
 
