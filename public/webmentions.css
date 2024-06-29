@@ -30,6 +30,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  outline: 4px solid var(--c5);
 }
 
 .webmentions-comments ul {

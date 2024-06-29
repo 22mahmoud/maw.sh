@@ -92,14 +92,17 @@ end
 local function handle_remote_image(img)
   local slug = slugify_url(img.src)
   local tmp_image = '.tmp/images/' .. slug .. get_file_extension(img.src)
-  local dist_image = remote_images .. slug .. get_file_extension(img.src)
-  local output_path = dist .. '/' .. remote_images
+  local input_file = remote_images .. slug .. get_file_extension(img.src)
+  local thumb = get_thumb_path(input_file)
+  local output_file = dist .. '/' .. thumb
+  local output_path = dist .. remove_file_name(thumb)
 
   if not file_exists(tmp_image) then download_image(img.src, tmp_image) end
 
-  img.src = '/' .. dist_image
-  process_image(tmp_image, dist .. '/' .. dist_image, output_path)
-  set_image_size(img, dist .. '/' .. dist_image)
+  process_image(tmp_image, output_file, output_path)
+  img.attributes.original_src = '/' .. input_file
+  img.src = '/' .. thumb
+  set_image_size(img, output_file)
 
   return img
 end
@@ -171,7 +174,8 @@ return {
         handle_remote_image(img)
 
         return {
-          url = img.src,
+          url = img.attributes.original_src,
+          thumb = img.src,
           width = img.attributes.width,
           height = img.attributes.height,
         }
@@ -188,16 +192,17 @@ return {
 
         handle_remote_image(img)
 
-        local src = img.src
+        local src = img.attributes.original_src
+        local thumb = img.src
         local attr = img.attributes
 
-        local img_tag = '<img loading="lazy" src="' .. src .. '"'
+        local img_tag = '<a href="' .. src .. '"><img loading="lazy" src="' .. thumb .. '"'
 
         for k, v in pairs(attr) do
           img_tag = img_tag .. ' ' .. k .. '="' .. v .. '"'
         end
 
-        img_tag = img_tag .. ' />'
+        img_tag = img_tag .. ' /></a>'
 
         return img_tag
       end
