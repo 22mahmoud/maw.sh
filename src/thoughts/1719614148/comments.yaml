@@ -90,3 +90,19 @@ like-of:
     like-of: https://maw.sh/thoughts/1719614148/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Freeman Reschke
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/8163085e1eed7eea617321edf70bc30ec0dc574072ff8c93b02b5656084e198b.jpg
+      url: https://mastodon.social/\@brires
+    url: https://fosstodon.org/\@22mahmoud/112696742328794392#favorited-by-112091227520868710
+    published: null
+    wm-received: "2024-06-29T19:30:14Z"
+    wm-id: 1836712
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112696742328794392/112091227520868710
+    wm-target: thoughts/1719614148
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1719614148/
+    wm-property: like-of
+    wm-private: false
