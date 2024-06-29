@@ -1,8 +1,8 @@
 #!/bin/sh
 
-SRC_DIR="src"
-DEST_DIR=dist
-RSS="$DEST_DIR"/rss.xml
+src="src"
+dist=dist
+rss_file="$dist"/rss.xml
 
 main() {
 	echo "<?xml version='1.0' encoding='UTF-8' ?>"
@@ -13,33 +13,41 @@ main() {
 	echo '<description>Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt.</description>'
 	echo '<link>https://maw.sh/</link>'
 
-	find "$SRC_DIR"/blog -type f -name index.md ! -path "$SRC_DIR/blog/index.md" -print |
+	blogs=$(mktemp)
+	find "$src"/blog -type f -name index.md ! -path "$src/blog/index.md" -print |
 		while read -r file; do
 			slug="$(basename "$(dirname "$file")")"
-			title="$(grep -E "^title-prefix: (.*)" "$file" | sed -E "s/^title-prefix: (.*)/\1/" | awk '{$1=$1};1')"
+			title="$(yq --front-matter="extract" '.title-prefix' "$file")"
 			if [ "$(echo "$title" | awk '{print $1}')" = "(draft)" ]; then
 				continue
 			fi
 
-			description="$(grep -E "^description: (.*)" "$file" | sed -E "s/^description: (.*)/\1/" | awk '{$1=$1};1')"
-			date="$(grep -E "^date: (.*)" "$file" | sed -E "s/^date: (.*)/\1/" | awk '{$1=$1};1')"
-			date="$(date -d "$date" '+%a, %d %b %Y %H:%M:%S %z')"
-			html_content="$(pandoc -f markdown -t html "$file")"
+			description="$(yq --front-matter="extract" '.description' "$file")"
+			date="$(yq --front-matter="extract" '.date' "$file")"
 
-			echo "<item>"
-			echo "<title>$title</title>"
-			echo "<guid>https://maw.sh/blog/$slug</guid>"
-			echo "<link>https://maw.sh/blog/$slug</link>"
-			echo "<pubDate>$date</pubDate>"
-			echo "<description>$description</description>"
-			echo "<content:encoded><![CDATA["
-			echo "$html_content"
-			echo "]]></content:encoded>"
-			echo "</item>"
+			echo "$date|$title|$description|$slug|$file" >>"$blogs"
 		done
+
+	sort -t '|' -k1,1r "$blogs" | while IFS='|' read -r date title description slug file; do
+		formatted_date="$(date -d "$date" '+%a, %d %b %Y %H:%M:%S %z')"
+		html_content="$(pandoc -f markdown -t html "$file")"
+
+		echo "<item>"
+		echo "<title>$title</title>"
+		echo "<guid>https://maw.sh/blog/$slug</guid>"
+		echo "<link>https://maw.sh/blog/$slug</link>"
+		echo "<pubDate>$formatted_date</pubDate>"
+		echo "<description>$description</description>"
+		echo "<content:encoded><![CDATA["
+		echo "$html_content"
+		echo "]]></content:encoded>"
+		echo "</item>"
+	done
+
+	rm "$blogs"
 
 	echo '</channel>'
 	echo '</rss>'
 }
 
-main >"$RSS"
+main >"$rss_file"
