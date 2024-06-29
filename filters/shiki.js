@@ -4,25 +4,20 @@
 "use strict";
 
 import pandoc from "pandoc-filter";
-import { getHighlighter } from "shiki";
+import { codeToHtml } from "shiki";
+import { transformerNotationWordHighlight } from "@shikijs/transformers";
 
 /**
  * @param {string} code
  * @param {string} lang
  * @returns {Promise<string>}
  */
-async function highlightCodeBlock(code, lang) {
-  const highlighter = await getHighlighter({
-    themes: ["vitesse-dark"],
-    langs: [lang],
-  });
-
-  const html = highlighter.codeToHtml(code, {
+function highlightCodeBlock(code, lang) {
+  return codeToHtml(code, {
     lang,
-    theme: "vitesse-dark",
+    theme: "vitesse-black",
+    transformers: [transformerNotationWordHighlight()],
   });
-
-  return html;
 }
 
 pandoc.stdio(async ({ t: type, c: value }) => {
