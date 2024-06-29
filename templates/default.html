@@ -45,28 +45,9 @@
     <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
 
     $styles.html()$
-
     $if(game)$ $game-styles.html()$ $endif$
-
-    $if(blog)$
-    <link
-      rel="preload"
-      href="/webmentions.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript><link rel="stylesheet" href="/webmentions.css" /></noscript>
-    $endif$
-
-    $if(thought)$
-    <link
-      rel="preload"
-      href="/webmentions.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript><link rel="stylesheet" href="/webmentions.css" /></noscript>
-    $endif$
+    $if(blog)$ $webmentions-styles.html()$ $endif$
+    $if(thought)$ $webmention-styles.html()$ $endif$
 
     $for(css)$
     <link rel="stylesheet" href="$css$" />
