@@ -5,6 +5,7 @@ date: 2022-12-02T00:00+02:00
 description: This Article about using neovim on a Unix way.
 keywords: linux, neovim, vim
 category: vim
+featured-image: /blog/uninstall-all-neovim-plugins/matrix.jpg
 blog: true
 ---
 
