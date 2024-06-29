@@ -25,6 +25,30 @@
 
   <!-- -->
 
+  $if(repost-of)$
+  <div class="webmentions-bookmarks">
+    <h3> Reposts <span>($repost-of/length$)</span></h3>
+    <ul>
+      $for(repost-of)$
+      <li class="bookmark-item h-entry">
+        <a href="$repost-of.url$" class="bookmark-link u-repost-of">
+          <img
+            loading="lazy"
+            alt="$repost-of.author.name$'s photo"
+            width="$repost-of.author.photo.width$"
+            height="$repost-of.author.photo.height$"
+            src="$repost-of.author.photo.thumb$"
+            class="bookmark-author-photo"
+          />
+        </a>
+      </li>
+      $endfor$
+    </ul>
+  </div>
+  $endif$
+
+  <!-- -->
+
   $if(bookmark-of)$
   <div class="webmentions-bookmarks">
     <h3>Bookmarks <span>($bookmark-of/length$)</span></h3>
