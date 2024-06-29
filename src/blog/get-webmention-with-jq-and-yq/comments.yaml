@@ -1,0 +1,50 @@
+like-of:
+  - type: entry
+    author:
+      type: card
+      name: Mattias Wadman
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/8562b4b8ccf0963f2d45be76118a77fa13ed1278e88f95af17d38cd4048cd389.jpg
+      url: https://fosstodon.org/\@wader
+    url: https://fosstodon.org/\@22mahmoud/112701992545484918#favorited-by-109387760467335761
+    published: null
+    wm-received: "2024-06-29T22:06:52Z"
+    wm-id: 1836776
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112701992545484918/109387760467335761
+    wm-target: blog/get-webmention-with-jq-and-yq
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/get-webmention-with-jq-and-yq/
+    wm-property: like-of
+    wm-private: false
+repost-of:
+  - type: entry
+    author:
+      type: card
+      name: Tech Cyborg
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/a3dd6f27472182645c8322d9b06f2fce3ec3499db4ad0db84a5c320a5f977f7d.jpg
+      url: https://mastodon.social/\@CyborgHT
+    url: https://fosstodon.org/\@22mahmoud/112701992545484918#reblogged-by-112598948718075645
+    published: null
+    wm-received: "2024-06-29T21:33:48Z"
+    wm-id: 1836770
+    wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/112701992545484918/112598948718075645
+    wm-target: blog/get-webmention-with-jq-and-yq
+    wm-protocol: webmention
+    repost-of: https://maw.sh/blog/get-webmention-with-jq-and-yq/
+    wm-property: repost-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Ross M.
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/bc6e242b78a077c0fd6323cfb6c18f7476f09f7ea4f7ba8a83ee05f36f9a71b5.jpg
+      url: https://fosstodon.org/\@rossm
+    url: https://fosstodon.org/\@22mahmoud/112701992545484918#reblogged-by-109599823930559872
+    published: null
+    wm-received: "2024-06-29T22:06:52Z"
+    wm-id: 1836775
+    wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/112701992545484918/109599823930559872
+    wm-target: blog/get-webmention-with-jq-and-yq
+    wm-protocol: webmention
+    repost-of: https://maw.sh/blog/get-webmention-with-jq-and-yq/
+    wm-property: repost-of
+    wm-private: false
