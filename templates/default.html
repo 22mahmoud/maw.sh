@@ -36,6 +36,24 @@
       property="og:image"
       content="$if(og-image)$$og-image$elseif(featured-image)$$featured-image$else$/avatar.webp$endif$"
     />
+    <script type="application/ld+json">
+    {
+      "name":"$author$",
+      "description":"$description$",
+      "author": {
+        "@type":"Person",
+        "name":"$author$"
+      },
+      "@type":"WebSite",
+      "url":"{{ site.url }}",
+      "image":"$base_url$/avatar.webp",
+      "headline":"$title$",
+      "sameAs":[
+        "https://github.com/22mahmoud"
+      ],
+      "@context":"http://schema.org"
+    }
+    </script>
 
     $for(author-meta)$
     <meta name="author" content="$author-meta$" />
