@@ -30,12 +30,16 @@
       property="og:title"
       content="$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$"
     />
+    <meta property="og:description" content="$description-meta$">
     <meta property="og:type" content="$if(blog)$article$else$website$endif$" />
     <meta property="og:url" href="$base_url$/$path$" />
     <meta
       property="og:image"
-      content="$if(og-image)$$og-image$elseif(featured-image)$$featured-image$else$/avatar.webp$endif$"
+      content="$if(og-image)$ $base_url$$og-image$ $elseif(featured-image)$ $base_url$$featured-image$ $else$ $base_url$/avatar.webp $endif$"
     />
+    <meta property="og:site_name" content="$base_url$">
+    <meta property="og:locale" content="$locale$">
+    <meta name="twitter:card" content="$if(blog)$summary_large_image$else$summary$endif$">
     <script type="application/ld+json">
     {
       "name":"$author$",
@@ -45,7 +49,7 @@
         "name":"$author$"
       },
       "@type":"WebSite",
-      "url":"{{ site.url }}",
+      "url":"https://maw.sh",
       "image":"$base_url$/avatar.webp",
       "headline":"$title$",
       "sameAs":[
