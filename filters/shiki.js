@@ -15,7 +15,7 @@ import { transformerNotationWordHighlight } from "@shikijs/transformers";
 function highlightCodeBlock(code, lang) {
   return codeToHtml(code, {
     lang,
-    theme: "vitesse-black",
+    theme: "vitesse-dark",
     transformers: [transformerNotationWordHighlight()],
   });
 }
