@@ -13,13 +13,19 @@ end
 local function dirname(path) return path:match '^(.*)/' end
 
 local function get_files(dir)
-  local cmd = [[find %s -type f -name "index.md" ! -path "%s/index.md" | sort -nr]]
+  local cmd = [[find %s -type f -name "index.md" ! -path "%s/index.md"]]
   local files = shell(cmd:format(dir, dir)) .. ''
 
   local result = {}
   for line in string.gmatch(files, '(.-)\n') do
     table.insert(result, line)
   end
+
+  table.sort(result, function(file1, file2)
+    local date1 = pandoc.utils.stringify(pandoc.read(io.open(file1, 'r'):read '*a').meta.date)
+    local date2 = pandoc.utils.stringify(pandoc.read(io.open(file2, 'r'):read '*a').meta.date)
+    return date1 > date2
+  end)
 
   return result
 end
@@ -89,7 +95,6 @@ function Meta(_meta)
 
       for j = 1, page_size do
         local index = (i - 1) * page_size + j
-        local collection = 'thoughts'
         local file = files[index]
         if not file then goto continue end
         local parent = shell(('basename %s'):format(dirname(file)))
@@ -97,13 +102,15 @@ function Meta(_meta)
         local doc = pandoc.read(io.open(file, 'r'):read '*a')
 
         local meta = {
+          ['title-prefix'] = doc.meta['title-prefix'],
           ['like-to'] = doc.meta['like-to'],
           ['like-to-content'] = doc.meta['like-to-content'],
           date = doc.meta.date,
-          content = doc.blocks,
+          -- content = doc.blocks,
           url = '/' .. collection .. '/' .. parent,
         }
 
+        print(collection)
         page_meta[collection]:insert(meta)
 
         ::continue::

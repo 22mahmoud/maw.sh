@@ -132,7 +132,8 @@
 
       $if(home)$ ${home.html()}
       $elseif(thoughts)$ ${thoughts.html()}
-      $elseif(blog)$ ${blog.html()}
+      $elseif(blog)$ ${blogs.html()}
+      $elseif(post)$ ${blog.html()}
       $elseif(thought)$ ${thought.html()}
       $elseif(game)$ ${game.html()}
       $else$ $body$ ${author.html()} $endif$
