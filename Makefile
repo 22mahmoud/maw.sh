@@ -12,7 +12,13 @@ md_pages   := $(shell find $(pages) -type f ! -name _home ! -name "*_pagination"
 md_files   := $(shell find $(src) -name "*.md") $(md_pages) $(home_md) $(thoughts_pagination_md)
 html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 
-build: prepare pages_index html static $(output)/sitemap.xml $(output)/rss.xml
+build: 
+	$(MAKE) prepare
+	$(MAKE) pages_index
+	$(MAKE) html
+	$(MAKE) static
+	$(MAKE) $(output)/rss.xml
+	$(MAKE) $(output)/sitemap.xml
 
 dev:
 	@find $(src) filters templates -type f | entr $(MAKE) dist/blog/build-a-blog-with-svelte-and-markdown/index.html
@@ -63,4 +69,4 @@ prepare:
 	$(pages)/thoughts_pagination
 	npm install
 
-.PHONY: build html static clean dev pages_index
+.PHONY: build html static clean dev pages_index prepare
