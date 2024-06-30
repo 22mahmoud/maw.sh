@@ -12,7 +12,7 @@ md_pages   := $(shell find $(pages) -type f ! -name _home ! -name "*_pagination"
 md_files   := $(shell find $(src) -name "*.md") $(md_pages) $(home_md) $(thoughts_pagination_md)
 html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 
-build: 
+build:
 	$(MAKE) prepare
 	$(MAKE) pages_index
 	$(MAKE) html

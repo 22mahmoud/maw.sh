@@ -2,12 +2,16 @@
   <h1 class="p-name">$title-prefix$</h1>
   <time class="dt-published" datetime="$date$">$formatted_date$</time>
   · [[<span class="p-category">$category$</span>]] ·
-  <a href="#webmentions">Comments $if(in-reply-to)$ ($in-reply-to/length$) $endif$</a>
+  <a href="#webmentions">
+    Comments $if(in-reply-to)$ ($in-reply-to/length$) $endif$
+  </a>
 
   <div class="e-content" style="margin-top: 1.5rem">
     $if(featured-image)$
     <img loading="lazy" hidden class="u-featured" src="$featured-image$" />
-    $endif$ $body$
+    $endif$
+
+    <!-- -->$body$<!-- -->
   </div>
 
   ${webmentions.html()} ${author.html()}

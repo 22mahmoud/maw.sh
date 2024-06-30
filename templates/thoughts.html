@@ -6,7 +6,20 @@
       <a href="$thoughts.url$">
         <div class="thought-date">$thoughts.formatted_date$</div>
       </a>
-      <div class="thought-content">$thoughts.content$</div>
+      <div class="thought-content">
+        $if(thoughts.like-to)$ ╰ like: ♡
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          class="u-like-of"
+          href="$thouguts.like-to$"
+          >$thoughts.like-to$</a
+        >
+        <blockquote>$thoughts.like-to-content$</blockquote>
+        $endif$
+
+        <!-- -->$thoughts.content$<!-- -->
+      </div>
     </li>
     $endfor$
   </ul>

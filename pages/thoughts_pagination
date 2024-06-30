@@ -33,13 +33,20 @@ mkdir -p "$pagination_dir"
 
 echo "$thought_files" | while IFS= read -r thought_file; do
 	date=$(yq --front-matter=extract '.date' "$thought_file")
-	content=$(sed '/^---$/,/^---$/d' "$thought_file")
+	like_to=$(yq --front-matter=extract '.like-to' "$thought_file")
+	like_to_content=$(yq --front-matter=extract '.like-to-content' "$thought_file")
+	content=$(sed '/^---$/,/^---$/d' "$thought_file" | sed 's/^/      /')
 	url=$(dirname "$thought_file" | sed 's/src//')
 
 	thoughts_array="$(
-		printf "%s\n\n  - date: %s\n    url: %s\n    content: |-\n" \
-			"$thoughts_array" "$date" "$url"
-		printf "%s\n " "$content" | sed 's/^/      /'
+		echo "$thoughts_array"
+		echo "  - date: $date"
+		echo "    url: $url"
+		echo "    like-to: $like_to"
+		echo "    like-to-content: $like_to_content"
+		echo "    content: |-"
+		echo "$content"
+    echo "       "
 	)"
 
 	thought_count=$((thought_count + 1))

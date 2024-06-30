@@ -47,9 +47,11 @@ for dir_name in "$base_thoughts_dir"/*/; do
 	if [ -d "$dir_name" ]; then
 		date=$(yq --front-matter=extract '.date' "$dir_name/index.md")
 		url=${dir_name#src/}
+		like_to=$(yq --front-matter=extract '.like-to' "$dir_name/index.md")
+		like_to_content=$(yq --front-matter=extract '.like-to-content' "$dir_name/index.md")
 		content=$(sed '/^---$/,/^---$/d;' "$dir_name/index.md" | awk '{printf "%s\\n", $0}')
 
-		echo "$date|$url|$content" >>"$thoughts_temp"
+		echo "$date|$url|$content|$like_to|$like_to_content" >>"$thoughts_temp"
 	fi
 done
 
@@ -113,10 +115,12 @@ EOF
 thoughts:
 EOF
 
-	while IFS="|" read -r date url content; do
+	while IFS="|" read -r date url content like_to like_to_content; do
 		cat <<EOF
   - date: $date
     url: /$url
+    like-to: $like_to
+    like-to-content: $like_to_content
     content: |-
 EOF
 		echo "$content\n " | sed 's/\\n/\n/g' | sed 's/^/      /'

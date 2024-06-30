@@ -3,18 +3,37 @@
     <time class="dt-published" datetime="$datetime$">$formatted_date$</time>
   </header>
 
+  $if(like-to)$
+  <span>╰ like: ♡</span>
+  <a
+    target="_blank"
+    rel="noopener noreferrer"
+    class="u-like-of"
+    href="$like-to$"
+    >$like-to$</a
+  >
+  $endif$
+
   <section class="e-content">
     $if(featured-image)$
-      <img loading="lazy" hidden class="u-featured" src="$featured-image$" />
+    <img loading="lazy" hidden class="u-featured" src="$featured-image$" />
     $endif$
+
+    <!-- -->
 
     $if(featured-video)$
-      <video controls hidden>
-        <source src="$featured-video$" >
-      </video>
+    <video controls hidden>
+      <source src="$featured-video$" />
+    </video>
     $endif$
 
-    $body$
+    <!-- -->
+
+    $if(like-to-content)$
+    <blockquote class="e-content">$like-to-content$</blockquote>
+    $endif$
+
+    <!-- -->$body$<!-- -->
   </section>
 
   <footer>
