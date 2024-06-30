@@ -26,15 +26,13 @@
 
   <div class="navigation">
     $if(has-prev)$
-    <a href="$if(is-second)$ /thoughts $else$ /thoughts/$prev-page$/ $endif$">
-      ← Prev
-    </a>
+    <a href="$prev-url$"> ← Prev </a>
     $endif$
 
     <!-- -->
 
     $if(has-next)$
-    <a href="/thoughts/$next-page$/">Next →</a>
+    <a href="$next-url$">Next →</a>
     $endif$
   </div>
 </div>

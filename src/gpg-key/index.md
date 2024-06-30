@@ -1,3 +1,7 @@
+---
+title-prefix: GPG-KEY
+---
+
 # GPG
 
 ## gpg public key:
