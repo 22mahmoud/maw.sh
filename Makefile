@@ -40,6 +40,9 @@ $(output)/sitemap.xml: $(md_files) $(bin)/sitemap
 
 default_deps := $(src)/%/index.md templates/* filters/* bin/generate
 
+$(output)/thoughts/index.html: src/thoughts/index.md templates/* filters/* bin/generate  $(wildcard src/thoughts/**/*)
+	@bin/generate $< $@
+
 $(output)/%/index.html: $(default_deps) $(src)/%/comments.yaml
 	@bin/generate $< $@
 
