@@ -25,7 +25,7 @@ blog: true
 - Also a new design for leetcode problem page with native html `details` tag for
   description
 
-  ![a screenshot of word search leetcode problem from my website](./screenshot-240616-0251-35.png)
+  ![a screenshot of word search leetcode problem from my website](/blog/week-2-leetcode/screenshot-240616-0251-35.png)
 
 - and a github [workflow](https://github.com/22mahmoud/leetcode/blob/main/.github/workflows/update_problems.yml) to generate the [/leetcode](/leetcode) page and commit
 the changes into the leetcode branch, and after that get finished will trigger
