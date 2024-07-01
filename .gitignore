@@ -7,4 +7,3 @@ node_modules
 # auto-generated pages
 src/index.md
 src/games/index.md
-src/blog/index.md
