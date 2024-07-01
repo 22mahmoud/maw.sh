@@ -1,3 +1,4 @@
+local path = require 'pandoc.path'
 local u = require 'filters.utils'
 
 function Meta(meta)
@@ -27,7 +28,7 @@ function Meta(meta)
 
         if groupValue and not meta[groupValue] then meta[groupValue] = pandoc.MetaList {} end
 
-        doc.meta.url = u.dirname(file):sub(5)
+        doc.meta.url = path.join { '/', u.dirname(file):sub(5) }
         if has_content then doc.meta.content = doc.blocks end
 
         if groupValue then

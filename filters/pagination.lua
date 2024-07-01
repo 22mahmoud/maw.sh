@@ -50,11 +50,10 @@ function Meta(meta)
         local index = (i - 1) * page_size + j
         local file = files[index]
         if not file then goto continue end
-        local parent = u.basename(u.dirname(file))
 
         local doc = pandoc.read(u.read_file(file))
 
-        doc.meta.url = ('/%s/%s'):format(collection, parent)
+        doc.meta.url = path.join { '/', u.dirname(file):sub(5) }
         if has_content then doc.meta.content = doc.blocks end
 
         meta[collection]:insert(doc.meta)
