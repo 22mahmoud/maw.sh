@@ -9,7 +9,7 @@ featured-image: /blog/uninstall-all-neovim-plugins/matrix.jpg
 blog: true
 ---
 
-![the matrix movie scene](matrix.jpg)
+![the matrix movie scene](/blog/uninstall-all-neovim-plugins/matrix.jpg)
 
 As a developer, you need a robust environment that fits your needs to develop,
 compile, debug, build, and so on. So, you have now two pills to choose one of
@@ -97,7 +97,7 @@ end
 and the nice about grep that the result now on your quickfix, so you can easily
 navigate between them, and do any operation that you want.
 
-![a screenshot of neovim with quickfix opend](quickfix-vim-screenshot.jpg)
+![a screenshot of neovim with quickfix opend](/blog/uninstall-all-neovim-plugins/quickfix-vim-screenshot.jpg)
 
 And here is my mapping, it may be useful, and here is the [utils](https://github.com/22mahmoud/nvim/blob/master/lua/ma/utils.lua) used in the
 snippets below:
@@ -146,7 +146,7 @@ git add -p
 git reset -p
 ```
 
-![a screenshot of `git add -p` command](hunks-screenshot.jpg)
+![a screenshot of `git add -p` command](/blog/uninstall-all-neovim-plugins/hunks-screenshot.jpg)
 
 ### - Neovim goodies (lsp/treesitter)
 
