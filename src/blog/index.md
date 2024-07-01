@@ -2,7 +2,7 @@
 title-prefix: Blog
 pagination:
   collection: blog
-  page-size: 5
+  page-size: 30
   page-path: page
 header-includes: |-
   <style>
