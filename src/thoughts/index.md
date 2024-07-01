@@ -4,6 +4,7 @@ pagination:
   collection: thoughts
   page-size: 10
   page-path: page
+  content: true
 header-includes: |-
   <style>
     br {

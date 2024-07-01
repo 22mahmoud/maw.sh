@@ -73,6 +73,7 @@ end
 
 function Meta(meta)
   if meta.pagination then
+    local has_content = pandoc.MetaBool(meta.pagination['content'])
     local page_size = tonumber(pandoc.utils.stringify(meta.pagination['page-size'] or '10'))
     local page_path = pandoc.utils.stringify(meta.pagination['page-path'] or 'page')
     local collection = pandoc.utils.stringify(meta.pagination['collection'] or 'data')
@@ -114,12 +115,13 @@ function Meta(meta)
 
         local doc = pandoc.read(read_file(file))
 
-        local meta = {
-          content = doc.blocks,
+        local _meta = {
           url = '/' .. collection .. '/' .. parent,
         }
 
-        page_meta[collection]:insert(merge_meta(pandoc.Meta(doc.meta), meta))
+        if has_content then _meta.content = doc.blocks end
+
+        page_meta[collection]:insert(merge_meta(pandoc.Meta(doc.meta), _meta))
 
         ::continue::
       end
