@@ -15,3 +15,20 @@ repost-of:
     repost-of: https://maw.sh/thoughts/1719791324/
     wm-property: repost-of
     wm-private: false
+like-of:
+  - type: entry
+    author:
+      type: card
+      name: ale
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/535703a62e7cc2e0e3888c928ec7efe5b98868c78efa370a9313cf48885770e0.jpg
+      url: https://mastodon.manalejandro.com/\@ale
+    url: https://fosstodon.org/\@22mahmoud/112708336171642162#favorited-by-112040251688743341
+    published: null
+    wm-received: "2024-07-01T00:18:39Z"
+    wm-id: 1836917
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112708336171642162/112040251688743341
+    wm-target: thoughts/1719791324
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1719791324/
+    wm-property: like-of
+    wm-private: false
