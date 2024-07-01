@@ -1,10 +1,10 @@
 #!/bin/sh
 
-input="$1"
-input_dir=$(dirname "$input")
-
-output="$2"
+output="$1"
 output_dir=$(dirname "$output")
+
+input="$(echo "$1" | sed 's/^dist/src/' | sed 's/index.html$/index.md/')"
+input_dir=$(dirname "$input")
 
 path=$(echo "$input_dir" | sed -E 's|^src(/)?||')
 
