@@ -3,9 +3,8 @@ local path = require 'pandoc.path'
 local function starts_with(str, prefix) return str:sub(1, #prefix) == prefix end
 
 local function get_file_absolute_path(file)
-  local current_file = PANDOC_STATE.input_files[1]
-  local current_dir = path.directory(current_file)
-  return path.normalize(path.join { current_dir, file })
+  local current_file = string.gsub(PANDOC_STATE.input_files[1], '([^/]*%.%w+)$', '')
+  return ('/' .. path.join { current_file, file }):gsub('^/+', '/')
 end
 
 local function remove_file_name(file) return string.gsub(file, '([^/]*%.%w+)$', '') end

@@ -145,6 +145,11 @@ header-includes: |-
       display: none;
     }
 
+    img, video {
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+
     .section-header {
       display: flex;
       justify-content: space-between;

@@ -10,6 +10,11 @@ header-includes: |-
       display: none;
     }
 
+    img, video {
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+
     .blog .navigation {
       text-align: right;
       margin-top: 10px;

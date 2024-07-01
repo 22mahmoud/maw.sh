@@ -15,6 +15,11 @@ header-includes: |-
       padding: 0;
     }
 
+    img, video {
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+
     .thoughts li {
       list-style-type: none;
       background-color: var(--c1);
