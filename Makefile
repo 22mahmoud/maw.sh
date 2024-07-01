@@ -20,7 +20,6 @@ prepare:
 	mkdir -p $(output)/remote_images
 	mkdir -p $(tmp)/images
 	touch $(tmp)/images/.nomedia
-	npm install
 
 html: prepare $(html_files) $(output)/index.html
 
