@@ -4,10 +4,12 @@ standalone: true
 data-dir: .
 template: default.html
 metadata-file: metadata.yaml
+table-of-contents: true
 filters:
+  - pagination.lua
+  - collections.lua
   - img_filter.lua
   - include-code-files.lua
   - shiki.js
   - date-format.lua
   - interactions.lua
-  - pagination.lua

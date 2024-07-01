@@ -5,11 +5,11 @@ $body$
     <h3>Recent Blogs</h3>
     <a href="/blog"> <span>See All Blogs</span> → </a>
   </div>
-  $for(blogs)$
+  $for(blog)$
   <div class="blog">
-    <a href="$blogs.url$">
-      <div class="blog-title">$blogs.title$</div>
-      <div class="blog-date">$blogs.formatted_date$</div>
+    <a href="$blog.url$">
+      <div class="blog-title">$blog.title-prefix$</div>
+      <div class="blog-date">$blog.formatted_date$</div>
     </a>
   </div>
   $endfor$
@@ -55,10 +55,10 @@ $body$
   <div class="games">
     $for(playing)$
     <div class="game game-playing">
-      <img loading="lazy" src="$playing.url$cover-small.webp" />
+      <img loading="lazy" src="$playing.url$/cover-small.webp" />
       <a href="$playing.url$"></a>
       <div class="game-info">
-        <span class="game-title">$playing.title$</span>
+        <span class="game-title">$playing.title-prefix$</span>
         <div class="footer">
           <span class="game-state">
             <img loading="lazy" src="/play.svg" />
@@ -77,10 +77,10 @@ $body$
 
     $for(completed)$
     <div class="game game-completed">
-      <img loading="lazy" src="$completed.url$cover-small.webp" />
+      <img loading="lazy" src="$completed.url$/cover-small.webp" />
       <a href="$completed.url$"></a>
       <div class="game-info">
-        <span class="game-title">$completed.title$</span>
+        <span class="game-title">$completed.title-prefix$</span>
         <div class="footer">
           <span class="game-state">
             <img loading="lazy" src="/check.svg" />
@@ -106,7 +106,7 @@ $body$
   <ul>
     $for(leetcode)$
     <li>
-      $leetcode.formatted_date$: <a href="$leetcode.url$">$leetcode.title$</a>
+      $leetcode.formatted_date$: <a href="$leetcode.url$">$leetcode.title-prefix$</a>
     </li>
     $endfor$
   </ul>

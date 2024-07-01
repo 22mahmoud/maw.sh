@@ -21,7 +21,7 @@ function Meta(meta)
     local collection = pandoc.utils.stringify(meta.pagination['collection'] or 'data')
     local dir = u.dirname(PANDOC_STATE.input_files[1])
     local tmp = path.join { '.tmp', dir }
-    local files = u.get_collection_files(dir)
+    local files = u.get_collection_files(u.basename(dir))
     local total = #files
     local total_pages = math.ceil(total / page_size)
 
