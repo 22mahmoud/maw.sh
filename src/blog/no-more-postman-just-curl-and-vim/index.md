@@ -5,7 +5,7 @@ author: Mahmoud Ashraf
 description: Well documented api and easy to use and share with your team with simple tools cURL + vim + git (optional)
 keywords: api, tooling, curl, vim
 category: vim
-blog: true
+post: true
 ---
 
 Postman one of the most popular API client tool, for send and view the response

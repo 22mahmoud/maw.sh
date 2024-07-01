@@ -6,7 +6,7 @@ description: Learn How to automate your images using eleventy-img plugin and sha
 categories: tutorial, javascript
 keywords: javascript, eleventy, 11ty, optimization, image
 category: front-end
-blog: true
+post: true
 ---
 
 Building a site that has images requires to optimize them

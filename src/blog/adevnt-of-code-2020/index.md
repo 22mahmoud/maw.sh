@@ -5,7 +5,7 @@ author: Mahmoud Ashraf
 description: advent of code solutions by @22mahmoud
 keywords: aoc, programming
 category: aoc
-blog: true
+post: true
 ---
 
 This blog will be updated every day to show you my solutions

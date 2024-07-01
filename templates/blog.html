@@ -1,18 +1,26 @@
-<div class="h-entry">
-  <h1 class="p-name">$title-prefix$</h1>
-  <time class="dt-published" datetime="$date$">$formatted_date$</time>
-  · [[<span class="p-category">$category$</span>]] ·
-  <a href="#webmentions">
-    Comments $if(in-reply-to)$ ($in-reply-to/length$) $endif$
-  </a>
+<div class="blog">
+  <h1>Blogs</h1>
+  <p>
+    <em>Subscribe via <a href="https://maw.sh/rss.xml">RSS</a></em>
+  </p>
+  <ul>
+    $for(blog)$
+    <li>
+      $blog.formatted_date$:
+      <a href="$blog.url$">$blog.title-prefix$</a>
+    </li>
+    $endfor$
+  </ul>
 
-  <div class="e-content" style="margin-top: 1.5rem">
-    $if(featured-image)$
-    <img loading="lazy" hidden class="u-featured" src="$featured-image$" />
+  <div class="navigation">
+    $if(has-prev)$
+    <a href="$prev-url$"> ← Prev </a>
     $endif$
 
-    <!-- -->$body$<!-- -->
-  </div>
+    <!-- -->
 
-  ${webmentions.html()} ${author.html()}
+    $if(has-next)$
+    <a href="$next-url$">Next →</a>
+    $endif$
+  </div>
 </div>

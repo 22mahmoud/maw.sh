@@ -9,7 +9,7 @@ keywords:
   - hash-map
   - two-pointer
 category: leetcode
-blog: true
+post: true
 ---
 
 So this is my first week of my [LeetCode](/leetcode) grinding journey, and I want

@@ -9,7 +9,7 @@ keywords:
   - jq
   - yq
 category: shell
-blog: true
+post: true
 featured-image: /blog/get-webmention-with-jq-and-yq/hand-in-hand.jpg
 ---
 

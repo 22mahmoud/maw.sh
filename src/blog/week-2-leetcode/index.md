@@ -9,7 +9,7 @@ keywords:
   - backtracking
   - Linkedlist
 category: leetcode
-blog: true
+post: true
 ---
 
 - This week I've built a [shell script](https://github.com/22mahmoud/leetcode/blob/main/bin/new) to generate a boilerplate for the problem

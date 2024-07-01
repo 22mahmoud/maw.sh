@@ -10,5 +10,5 @@ keywords:
   - jq
   - postman
 category: vim
-blog: true
+post: true
 ---

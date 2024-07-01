@@ -6,7 +6,7 @@ description: This Article about using neovim on a Unix way.
 keywords: linux, neovim, vim
 category: vim
 featured-image: /blog/uninstall-all-neovim-plugins/matrix.jpg
-blog: true
+post: true
 ---
 
 ![the matrix movie scene](/blog/uninstall-all-neovim-plugins/matrix.jpg)
