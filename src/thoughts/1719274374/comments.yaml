@@ -18,3 +18,25 @@ in-reply-to:
     in-reply-to: https://maw.sh/thoughts/1719274374/
     wm-property: in-reply-to
     wm-private: false
+like-of:
+  - type: entry
+    author:
+      type: card
+      name: Mahmoud Ashraf
+      photo: https://maw.sh/avatar.webp
+      url: https://maw.sh/
+    url: https://maw.sh/thoughts/1719962313
+    published: 2024-07-02T00:00:00
+    wm-received: "2024-07-02T23:22:50Z"
+    wm-id: 1837304
+    wm-source: https://maw.sh/thoughts/1719962313/
+    wm-target: thoughts/1719274374
+    wm-protocol: webmention
+    content:
+      html: <p>test if i can reply</p>
+      text: test if i can reply
+    like-of: https://maw.sh/thoughts/1719274374/
+    wm-property: like-of
+    wm-private: false
+    rels:
+      canonical: https://maw.sh/thoughts/1719962313

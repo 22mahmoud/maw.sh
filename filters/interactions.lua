@@ -6,7 +6,7 @@ return {
       if meta['like-to'] or meta['reply-to'] then
         if meta['interaction-to-content'] then return meta end
 
-        local url = pandoc.utils.stringify(meta['like-to'])
+        local url = pandoc.utils.stringify(meta['like-to'] or meta['reply-to'])
         local cmd = string.format('curl -s %s | htmlq --text ".e-content"', url)
 
         local handle = io.popen(cmd)
