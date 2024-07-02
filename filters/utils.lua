@@ -81,16 +81,16 @@ function M.get_first(x)
   end
 end
 
-function M.get_collection_files(collection, opts)
+function M.get_collection_files(path, opts)
   opts = opts or {}
-  local cmd = 'find src/%s -type f -name "index.md" ! -path "src/%s/index.md"'
+  local cmd = [[find src/%s -type f -name "index.md" ! -path "src/%s/index.md"]]
 
   return M.pipe(
-    M.format(collection, collection),
+    M.format(path, path),
     M.shell,
     M.lines_to_table,
-    M.filter_by(opts.filter_by),
     M.sort_by_date,
+    M.filter_by(opts.filter_by),
     M.get_first(opts.get_first)
   )(cmd)
 end

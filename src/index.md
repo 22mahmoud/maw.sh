@@ -126,11 +126,10 @@ header-includes: |-
     }
 
     .games {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
-      padding: 1rem;
-      padding-left: 0;
+      padding: 1rem 0;    
     }
 
     .game {
@@ -138,11 +137,17 @@ header-includes: |-
       background-color: var(--c5);
       border: 1px solid var(--c6);
       overflow: hidden;
-      width: 150px;
+      width: 100%;
       height: 240px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
+    }
+
+    @media (width < 600px) {
+      .games {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     .game img {

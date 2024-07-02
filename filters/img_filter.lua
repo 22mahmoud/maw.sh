@@ -209,15 +209,14 @@ return {
         local thumb = img.src
         local attr = img.attributes
 
-        local img_tag = '<a href="' .. src .. '"><img loading="lazy" src="' .. thumb .. '"'
+        local img_tag = [[<a href="%s"><img loading="lazy" src="%s" %s /></a>]]
 
+        local attrs = ''
         for k, v in pairs(attr) do
-          img_tag = img_tag .. ' ' .. k .. '="' .. v .. '"'
+          attrs = ('%s %s="%s"'):format(attrs, k, v)
         end
 
-        img_tag = img_tag .. ' /></a>'
-
-        return img_tag
+        return img_tag:format(src, thumb, attrs)
       end
 
       return get_image_inline(el, action)
