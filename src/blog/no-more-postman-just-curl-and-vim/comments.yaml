@@ -655,6 +655,22 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Floating Point Error
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/a4ec3e76b1bd60f3ed9a9989dc284c76983965e87cf7d0fdec03afc6f509f345.jpg
+      url: https://kopimi.space/\@aartaka
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-112377970328171709
+    published: null
+    wm-received: "2024-07-02T19:09:42Z"
+    wm-id: 1837269
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112377970328171709
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
