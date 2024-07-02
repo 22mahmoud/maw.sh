@@ -687,6 +687,22 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: 'codeDude :archlinux: :neovim:'
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/9e97a2bb4100f264197d147105bcf080680f8a99c0d192f6c1a57263e0bd6b6d.png
+      url: https://fosstodon.org/\@codeDude
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-112645313336176091
+    published: null
+    wm-received: "2024-07-02T22:03:26Z"
+    wm-id: 1837298
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112645313336176091
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
@@ -1205,6 +1221,49 @@ in-reply-to:
     content:
       html: <p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> <br />You can also just do vim 'url goes here'.<br />It will send a get request, and open a buffer with the result.<br />You can :w to send a put</p>
       text: "\\@22mahmoud \nYou can also just do vim 'url goes here'.\nIt will send a get request, and open a buffer with the result.\nYou can :w to send a put"
+    in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Mahmoud Ashraf
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/04db3bece77ea18a0f19e63e24748d0e0e56a8b53d3039df997e6448dec49400.png
+      url: https://fosstodon.org/\@22mahmoud
+    url: https://fosstodon.org/\@22mahmoud/112718759531994280
+    published: "2024-07-02T20:22:55+00:00"
+    wm-received: "2024-07-02T22:03:25Z"
+    wm-id: 1837296
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112718759531994280
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://mas.to/\@bladtman" class="u-url">\@<span>bladtman</span></a></span> Wow This one is pretty cool!</p><p>I tried it right now, but it uses wget instead of curl.</p><p>I gave neovim a try (my main editor right now) but it seems did not get ported into neovim</p>
+      text: |-
+        \@bladtman Wow This one is pretty cool!
+
+        I tried it right now, but it uses wget instead of curl.
+
+        I gave neovim a try (my main editor right now) but it seems did not get ported into neovim
+    in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: 'codeDude :archlinux: :neovim:'
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/9e97a2bb4100f264197d147105bcf080680f8a99c0d192f6c1a57263e0bd6b6d.png
+      url: https://fosstodon.org/\@codeDude
+    url: https://fosstodon.org/\@codeDude/112719125108043782
+    published: "2024-07-02T21:55:53+00:00"
+    wm-received: "2024-07-02T22:03:25Z"
+    wm-id: 1837297
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112719125108043782
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> Woow it's like this simple ideas but actually so good, nice work creating your own file system of curl requests</p>
+      text: \@22mahmoud Woow it's like this simple ideas but actually so good, nice work creating your own file system of curl requests
     in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: in-reply-to
     wm-private: false
