@@ -11,14 +11,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@master
-
-      - name: install deps
-        run: |
-          yq --version
  
       - name: Fetch webmentions
         env:
-          WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKENG }}
+          WEBMENTION_TOKEN: ${{ secrets.WEBMENTION_TOKEN }}
         run: ./bin/webmention
  
       - name: Commit to repository
