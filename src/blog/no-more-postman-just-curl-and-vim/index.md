@@ -3,9 +3,14 @@ title-prefix: No More postman just use cURL + vim = ❤
 date: 2020-08-20T00:00+02:00
 author: Mahmoud Ashraf
 description: Well documented api and easy to use and share with your team with simple tools cURL + vim + git (optional)
-keywords: api, tooling, curl, vim
+keywords: 
+  - api
+  - tooling
+  - curl
+  - vim
 category: vim
 post: true
+featured-image: /blog/no-more-postman-just-curl-and-vim/cover.webp
 ---
 
 Postman one of the most popular API client tool, for send and view the response
