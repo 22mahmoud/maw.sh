@@ -671,8 +671,6 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
-<<<<<<< Updated upstream
-=======
   - type: entry
     author:
       type: card
@@ -689,7 +687,6 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
->>>>>>> Stashed changes
 repost-of:
   - type: entry
     author:
