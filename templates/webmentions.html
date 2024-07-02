@@ -7,7 +7,7 @@
     <ul>
       $for(like-of)$
       <li class="bookmark-item h-entry">
-        <a href="$like-of.url$" class="bookmark-link u-like-of">
+        <a href="$like-of.author.url$" class="bookmark-link u-like-of">
           <img
             loading="lazy"
             alt="$like-of.author.name$'s photo"
@@ -31,7 +31,7 @@
     <ul>
       $for(repost-of)$
       <li class="bookmark-item h-entry">
-        <a href="$repost-of.url$" class="bookmark-link u-repost-of">
+        <a href="$repost-of.author.url$" class="bookmark-link u-repost-of">
           <img
             loading="lazy"
             alt="$repost-of.author.name$'s photo"
@@ -55,7 +55,7 @@
     <ul>
       $for(bookmark-of)$
       <li class="bookmark-item h-entry">
-        <a href="$bookmark-of.url$" class="bookmark-link u-bookmark-of">
+        <a href="$bookmark-of.author.url$" class="bookmark-link u-bookmark-of">
           <img
             loading="lazy"
             alt="$bookmark-of.author.name$'s photo"
