@@ -575,6 +575,22 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: ‎
+      photo: https://webmention.io/avatar/cdn.bsky.app/00e0e7e5fb92568e4cdc1f9da2327d0282eff437e7b31683fe7a114222b7d7c7.jpg
+      url: https://bsky.app/profile/renoviana.dev
+    url: https://bsky.app/profile/22mahmoud.bsky.social/post/3kwcq4c24x32h#liked_by_did:plc:32ejvo3lggl47tlvhzn35td7
+    published: null
+    wm-received: "2024-07-02T16:18:36Z"
+    wm-id: 1837235
+    wm-source: https://brid.gy/like/bluesky/did:plc:tzalteqzxp24srzv5xc7f6j5/at%253A%252F%252Fdid%253Aplc%253Atzalteqzxp24srzv5xc7f6j5%252Fapp.bsky.feed.post%252F3kwcq4c24x32h/did%253Aplc%253A32ejvo3lggl47tlvhzn35td7
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
