@@ -1,7 +1,10 @@
 <div class="thoughts">
   <h1>Thoughts</h1>
   <p>
-    <em>Subscribe via <a href="https://maw.sh/rss-thoughts.xml">RSS (thoughts)</a></em>
+    <em
+      >Subscribe via
+      <a href="https://maw.sh/rss-thoughts.xml"> RSS (thoughts) </a>
+    </em>
   </p>
   <ul>
     $for(thoughts)$
@@ -10,15 +13,38 @@
         <div class="thought-date">$thoughts.formatted_date$</div>
       </a>
       <div class="thought-content">
-        $if(thoughts.like-to)$ ╰ like: ♡
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          class="u-like-of"
-          href="$thoughts.like-to$"
-          >$thoughts.like-to$</a
-        >
-        <blockquote>$thoughts.like-to-content$</blockquote>
+        $if(thoughts.like-to)$
+        <div>
+          <span>╰ like: ♡</span>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            class="u-like-of"
+            href="$thoughts.like-to$"
+            >$thoughts.like-to$</a
+          >
+        </div>
+        $endif$
+
+        <!-- -->
+
+        $if(thoughts.reply-to)$
+        <div>
+          <span>╰ reply: ↺</span>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            class="u-reply-of"
+            href="$thoughts.reply-to$"
+            >$thoughts.reply-to$</a
+          >
+        </div>
+        $endif$
+
+        <!-- -->
+
+        $if(thoughts.interaction-to-content)$
+        <blockquote>$thoughts.interaction-to-content$</blockquote>
         $endif$
 
         <!-- -->$thoughts.content$<!-- -->

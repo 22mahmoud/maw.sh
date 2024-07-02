@@ -6,14 +6,37 @@
   <a class="u-bridgy-fed" href="https://fed.brid.gy/" hidden="from-humans"></a>
 
   $if(like-to)$
-  <span>╰ like: ♡</span>
-  <a
-    target="_blank"
-    rel="noopener noreferrer"
-    class="u-like-of"
-    href="$like-to$"
-    >$like-to$</a
-  >
+  <div>
+    <span>╰ like: ♡</span>
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      class="u-like-of"
+      href="$like-to$"
+      >$like-to$</a
+    >
+  </div>
+  $endif$
+
+  <!-- -->
+
+  $if(reply-to)$
+  <div>
+    <span>╰ reply: ↺</span>
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      class="u-in-reply-to"
+      href="$reply-to$"
+      >$reply-to$</a
+    >
+  </div>
+  $endif$
+
+  <!-- -->
+
+  $if(interaction-to-content)$
+  <blockquote>$interaction-to-content$</blockquote>
   $endif$
 
   <section class="e-content">
@@ -27,12 +50,6 @@
     <video controls hidden>
       <source src="$featured-video$" />
     </video>
-    $endif$
-
-    <!-- -->
-
-    $if(like-to-content)$
-    <blockquote class="e-content">$like-to-content$</blockquote>
     $endif$
 
     <!-- -->$body$<!-- -->

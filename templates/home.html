@@ -28,15 +28,38 @@ $body$
       </a>
 
       <div class="thought-content">
-        $if(thoughts.like-to)$ ╰ like: ♡
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          class="u-like-of"
-          href="$thouguts.like-to$"
-          >$thoughts.like-to$</a
-        >
-        <blockquote>$thoughts.like-to-content$</blockquote>
+        $if(thoughts.like-to)$
+        <div>
+          <span>╰ like: ♡</span>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            class="u-like-of"
+            href="$thouguts.like-to$"
+            >$thoughts.like-to$</a
+          >
+        </div>
+        $endif$
+
+        <!-- -->
+
+        $if(thoughts.reply-to)$
+        <div>
+          <span>╰ reply: ↺</span>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            class="u-reply-of"
+            href="$thoughts.reply-to$"
+            >$thoughts.reply-to$</a
+          >
+        </div>
+        $endif$
+
+        <!-- -->
+
+        $if(thoughts.interaction-to-content)$
+        <blockquote>$thoughts.interaction-to-content$</blockquote>
         $endif$
 
         <!-- -->$thoughts.content$<!-- -->
@@ -106,7 +129,8 @@ $body$
   <ul>
     $for(leetcode)$
     <li>
-      $leetcode.formatted_date$: <a href="$leetcode.url$">$leetcode.title-prefix$</a>
+      $leetcode.formatted_date$:
+      <a href="$leetcode.url$">$leetcode.title-prefix$</a>
     </li>
     $endfor$
   </ul>
