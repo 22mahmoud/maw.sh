@@ -463,6 +463,54 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: piofthings
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/636abd78cf761851882e6344874e842c70ca3c4a3b06db2db70eb9be5efb8559.png
+      url: https://mastodon.social/\@piofthings
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-109248342471192915
+    published: null
+    wm-received: "2024-07-02T14:13:15Z"
+    wm-id: 1837195
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/109248342471192915
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: kregs
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/4c94b4fd1c6c3c5b99cc727b1ee1e0ce577aad6939cb46ec3ac3c36d3c4d9edd.png
+      url: https://mastodon.social/\@kregs
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-64355
+    published: null
+    wm-received: "2024-07-02T14:13:15Z"
+    wm-id: 1837196
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/64355
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: dr_Styki
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/3b24dd9ab0702817c76e90bd67f20e40b39533a552141df9ffb28716c45123a5.png
+      url: https://mamot.fr/\@dr_Styki
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-112169137752661563
+    published: null
+    wm-received: "2024-07-02T14:13:16Z"
+    wm-id: 1837197
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112169137752661563
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
