@@ -1,15 +1,15 @@
 ---
 title-prefix: Home
 home: true
-collections: 
+collections:
   - name: games
     key: playing
-    filter-by: 
+    filter-by:
       key: state
       value: active
   - name: games
     key: completed
-    filter-by: 
+    filter-by:
       key: state
       value: completed
     first: 3
@@ -129,7 +129,7 @@ header-includes: |-
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
-      padding: 1rem 0;    
+      padding: 1rem 0;
     }
 
     .game {

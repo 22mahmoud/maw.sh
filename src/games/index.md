@@ -1,7 +1,7 @@
 ---
 title-prefix: Games
 games: true
-collections: 
+collections:
   - name: games
     group-by: state
 ---

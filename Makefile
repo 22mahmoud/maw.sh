@@ -5,7 +5,7 @@ bin        := bin
 tmp        := .tmp
 extensions := jpeg jpg mp4 gif png txt webp avif
 
-md_files   := $(shell find $(src) -name "*.md" ! -path $(src)/index.md) 
+md_files   := $(shell find $(src) -name "*.md" ! -path $(src)/index.md)
 html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 
 build:

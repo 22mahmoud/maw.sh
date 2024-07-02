@@ -14,10 +14,10 @@ front matter metadata and it will populate all collection data to #pandoc filter
 ---
 title-prefix: Home
 home: true
-collections: 
+collections:
   - name: games
     key: completed
-    filter-by: 
+    filter-by:
       key: state
       value: completed
     first: 3
