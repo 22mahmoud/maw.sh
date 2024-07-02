@@ -17,18 +17,15 @@ main() {
 	find "$src"/thoughts -type f -name index.md ! -path "$src/thoughts/index.md" -print |
 		while read -r file; do
 			slug="$(basename "$(dirname "$file")")"
-			title="$(yq --front-matter="extract" '.title-prefix' "$file")"
-			if [ "$(echo "$title" | awk '{print $1}')" = "(draft)" ]; then
-				continue
-			fi
-
 			date="$(yq --front-matter="extract" '.date' "$file")"
+			formatted_date="$(date -d "$date" '+%a, %d %b %Y %H:%M:%S %z')"
 
-			echo "$date|$title|$slug|$file" >>"$thoughts"
+			title="$(printf "new thought - %s" "$formatted_date")"
+
+			echo "$date|$title|$slug|$formatted_date|$file" >>"$thoughts"
 		done
 
-	sort -t '|' -k1,1r "$thoughts" | while IFS='|' read -r date title slug file; do
-		formatted_date="$(date -d "$date" '+%a, %d %b %Y %H:%M:%S %z')"
+	sort -t '|' -k1,1r "$thoughts" | while IFS='|' read -r date title slug formatted_date file; do
 		html_content="$(pandoc -f markdown -t html "$file")"
 
 		echo "<item>"
