@@ -14,8 +14,9 @@ jobs:
 
       - name: install deps
         run: |
-          sudo snap install yq
-          sudo apt install jq curl
+          sudo apt install jq curl wget
+          wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq &&\
+              chmod +x /usr/bin/yq
  
       - name: Fetch webmentions
         env:
