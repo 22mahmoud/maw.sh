@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  push:
   workflow_run:
     workflows: ['update_webmentions']
     types:
