@@ -1,4 +1,4 @@
-name: Webmentions
+name: update_webmentions
  
 on:
   workflow_dispatch:
