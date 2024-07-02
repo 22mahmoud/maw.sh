@@ -1,0 +1,52 @@
+#!/bin/sh
+
+src="src"
+dist=dist
+rss_file="$dist"/rss-thoughts.xml
+
+main() {
+	echo "<?xml version='1.0' encoding='UTF-8' ?>"
+	echo "<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom' xmlns:content='http://purl.org/rss/1.0/modules/content/'>"
+	echo "<channel>"
+	echo '<atom:link href="https://maw.sh/rss.xml" rel="self" type="application/rss+xml" />'
+	echo '<title>Mahmoud Ashraf</title>'
+	echo '<description>Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt.</description>'
+	echo '<link>https://maw.sh/</link>'
+
+	thoughts=$(mktemp)
+	find "$src"/thoughts -type f -name index.md ! -path "$src/thoughts/index.md" -print |
+		while read -r file; do
+			slug="$(basename "$(dirname "$file")")"
+			title="$(yq --front-matter="extract" '.title-prefix' "$file")"
+			if [ "$(echo "$title" | awk '{print $1}')" = "(draft)" ]; then
+				continue
+			fi
+
+			date="$(yq --front-matter="extract" '.date' "$file")"
+
+			echo "$date|$title|$slug|$file" >>"$thoughts"
+		done
+
+	sort -t '|' -k1,1r "$thoughts" | while IFS='|' read -r date title slug file; do
+		formatted_date="$(date -d "$date" '+%a, %d %b %Y %H:%M:%S %z')"
+		html_content="$(pandoc -f markdown -t html "$file")"
+
+		echo "<item>"
+		echo "<title>$title</title>"
+		echo "<guid>https://maw.sh/thoughts/$slug</guid>"
+		echo "<link>https://maw.sh/thoughts/$slug</link>"
+		echo "<pubDate>$formatted_date</pubDate>"
+		# echo "<description>$description</description>"
+		echo "<content:encoded><![CDATA["
+		echo "$html_content"
+		echo "]]></content:encoded>"
+		echo "</item>"
+	done
+
+	rm "$thoughts"
+
+	echo '</channel>'
+	echo '</rss>'
+}
+
+main >"$rss_file"

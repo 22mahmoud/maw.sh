@@ -10,7 +10,7 @@ html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 
 build:
 	npm install
-	$(MAKE) static $(output)/rss.xml $(output)/sitemap.xml
+	$(MAKE) static $(output)/rss-thoughts.xml $(output)/rss.xml $(output)/sitemap.xml
 
 dev:
 	@find $(src) filters templates -type f | entr $(MAKE) dist/blog/build-a-blog-with-svelte-and-markdown/index.html
@@ -25,6 +25,9 @@ html: prepare $(html_files) $(output)/index.html
 
 $(output)/rss.xml: html $(md_files) $(bin)/rss
 	@$(bin)/rss
+
+$(output)/rss-thoughts.xml: html $(md_files) $(bin)/rss-thoughts
+	@$(bin)/rss-thoughts
 
 $(output)/sitemap.xml: html $(md_files) $(bin)/sitemap
 	@$(bin)/sitemap
