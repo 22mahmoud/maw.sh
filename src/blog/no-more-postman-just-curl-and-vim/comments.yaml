@@ -1,0 +1,34 @@
+like-of:
+  - type: entry
+    author:
+      type: card
+      name: tomasino
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/2dfefbea392f313f4bc54dfad1777ae5dccbb3d93af20f38024e07853a12046e.jpg
+      url: https://tilde.zone/\@tomasino
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-246855
+    published: null
+    wm-received: "2024-07-02T13:28:25Z"
+    wm-id: 1837134
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/246855
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
+repost-of:
+  - type: entry
+    author:
+      type: card
+      name: tomasino
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/2dfefbea392f313f4bc54dfad1777ae5dccbb3d93af20f38024e07853a12046e.jpg
+      url: https://tilde.zone/\@tomasino
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#reblogged-by-246855
+    published: null
+    wm-received: "2024-07-02T13:28:53Z"
+    wm-id: 1837135
+    wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/246855
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    repost-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: repost-of
+    wm-private: false
