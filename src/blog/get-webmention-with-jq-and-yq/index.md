@@ -1,6 +1,6 @@
 ---
 slug: get-webmention-with-jq-and-yq
-title-prefix: Get webmentions with shell script using jq & yq
+title-prefix: Get webmentions with shell script using jq &amp; yq
 date: 2024-06-29T00:00+03:00
 description: In this article I'll demonstrate how I fetch this websites webmentions just using shell script.
 keywords:
