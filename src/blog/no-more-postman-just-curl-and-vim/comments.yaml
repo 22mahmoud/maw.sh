@@ -591,6 +591,22 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Pär Björklund
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/185888228c02edc294569f7a39a278991f55d8b75f5b2cfa136a9261f22068d5.jpg
+      url: https://hachyderm.io/\@Paxxi
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-109375377325535649
+    published: null
+    wm-received: "2024-07-02T16:21:33Z"
+    wm-id: 1837237
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/109375377325535649
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
