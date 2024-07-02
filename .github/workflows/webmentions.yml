@@ -14,8 +14,8 @@ jobs:
 
       - name: install deps
         run: |
-          sudo install yq
-          snap install jq curl
+          sudo snap install yq
+          sudo apt install jq curl
  
       - name: Fetch webmentions
         env:
