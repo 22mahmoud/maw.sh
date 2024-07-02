@@ -623,6 +623,38 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Jörg Markert
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/09549f610d3c8ec7a31965c23a3cc6327be0cfc3c4fffcef403bcc24ae4f85fd.jpg
+      url: https://hachyderm.io/\@theonlyvenc
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-110556349256822190
+    published: null
+    wm-received: "2024-07-02T16:57:26Z"
+    wm-id: 1837247
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/110556349256822190
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Mark Kennedy
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/2bbe0a1cab4fbc55ae84c00af80a856f94e5968c30808a226ed9338fba555cd2.jpg
+      url: https://hostux.social/\@mrmonkington
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-109324671458400781
+    published: null
+    wm-received: "2024-07-02T16:57:28Z"
+    wm-id: 1837248
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/109324671458400781
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
@@ -1103,6 +1135,25 @@ in-reply-to:
     content:
       html: <p><span class="h-card"><a href="https://mastodon.social/\@bagder" class="u-url">\@<span>bagder</span></a></span> interesting I did not know about this option before</p>
       text: \@bagder interesting I did not know about this option before
+    in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Mark Kennedy
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/2bbe0a1cab4fbc55ae84c00af80a856f94e5968c30808a226ed9338fba555cd2.jpg
+      url: https://hostux.social/\@mrmonkington
+    url: https://hostux.social/\@mrmonkington/112717933164861541
+    published: "2024-07-02T16:52:45+00:00"
+    wm-received: "2024-07-02T16:57:26Z"
+    wm-id: 1837246
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112717933195164816
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    content:
+      html: '<p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> my favourite sort of devex tip: one that uses tools you already have!</p>'
+      text: '\@22mahmoud my favourite sort of devex tip: one that uses tools you already have!'
     in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: in-reply-to
     wm-private: false
