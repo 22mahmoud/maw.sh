@@ -671,6 +671,25 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+<<<<<<< Updated upstream
+=======
+  - type: entry
+    author:
+      type: card
+      name: Samuel Défago
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/ea8cf6850b2d5320269940ee802df5815b11a1aa14fda98786c85c0ef85331ef.png
+      url: https://mstdn.social/\@defagos
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-109951443263861240
+    published: null
+    wm-received: "2024-07-02T20:08:30Z"
+    wm-id: 1837275
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/109951443263861240
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
+>>>>>>> Stashed changes
 repost-of:
   - type: entry
     author:
@@ -1170,6 +1189,25 @@ in-reply-to:
     content:
       html: '<p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> my favourite sort of devex tip: one that uses tools you already have!</p>'
       text: '\@22mahmoud my favourite sort of devex tip: one that uses tools you already have!'
+    in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: bladtman
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/1f39b5a8ff55c6a7965e1fbde2985679f00c83821c9d49a6aab292caba0a4892.jpg
+      url: https://mas.to/\@bladtman
+    url: https://mas.to/\@bladtman/112718656412004914
+    published: "2024-07-02T19:56:41+00:00"
+    wm-received: "2024-07-02T20:08:30Z"
+    wm-id: 1837276
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112718656425232835
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> <br />You can also just do vim 'url goes here'.<br />It will send a get request, and open a buffer with the result.<br />You can :w to send a put</p>
+      text: "\\@22mahmoud \nYou can also just do vim 'url goes here'.\nIt will send a get request, and open a buffer with the result.\nYou can :w to send a put"
     in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: in-reply-to
     wm-private: false
