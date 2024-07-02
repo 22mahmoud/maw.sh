@@ -880,6 +880,22 @@ repost-of:
     repost-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: repost-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: hype
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/94fc9e65c903aa0b71623f8cd9c457a74c392a964d9524daf557554c68f8e5a4.png
+      url: https://mastodon.keks.club/\@hype
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#reblogged-by-111153789530923230
+    published: null
+    wm-received: "2024-07-02T15:38:38Z"
+    wm-id: 1837230
+    wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/111153789530923230
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    repost-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: repost-of
+    wm-private: false
 in-reply-to:
   - type: entry
     author:
