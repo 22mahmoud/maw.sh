@@ -79,6 +79,54 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: D. Moonfire
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/542b2dceea7531536acede0b1d7496d0b6f723baa6b76c9ce5f1533efc0b9e5a.png
+      url: https://octodon.social/\@dmoonfire
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-4179
+    published: null
+    wm-received: "2024-07-02T13:38:06Z"
+    wm-id: 1837144
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/4179
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Joshix
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/37a1556cbd6fb37e3de9a9b81bc5d642fecb8383d61745dbdd15c369951b1ec6.png
+      url: https://fosspri.de/\@joshix
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-109650282307161856
+    published: null
+    wm-received: "2024-07-02T13:39:14Z"
+    wm-id: 1837146
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/109650282307161856
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: 'binaryphile :clippy:'
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/5c07ee853708d9e7a98f87bd15918d80559be406b9195037e66c7a3f05eee15f.jpg
+      url: https://fosstodon.org/\@binaryphile
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-109496081086296092
+    published: null
+    wm-received: "2024-07-02T13:39:14Z"
+    wm-id: 1837147
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/109496081086296092
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
@@ -161,6 +209,25 @@ in-reply-to:
     content:
       html: <p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> you might also like curl's --json option...</p>
       text: \@22mahmoud you might also like curl's --json option...
+    in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: 'binaryphile :clippy:'
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/5c07ee853708d9e7a98f87bd15918d80559be406b9195037e66c7a3f05eee15f.jpg
+      url: https://fosstodon.org/\@binaryphile
+    url: https://fosstodon.org/\@binaryphile/112717167406245980
+    published: "2024-07-02T13:38:01+00:00"
+    wm-received: "2024-07-02T13:39:14Z"
+    wm-id: 1837145
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112717167406245980
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> httpie is nice too for ergonomics, but I do too much work on servers to rely on it being installed so I use curl exclusively to stay sharp.</p>
+      text: \@22mahmoud httpie is nice too for ergonomics, but I do too much work on servers to rely on it being installed so I use curl exclusively to stay sharp.
     in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: in-reply-to
     wm-private: false
