@@ -22,7 +22,7 @@ static site generated website using [eleventy-img](https://github.com/11ty/eleve
 create a new directory and name it `11ty-img-example` or whatever you want,
 then run
 
-```bash
+```sh
 yarn init -y
 ```
 
@@ -31,7 +31,7 @@ you can use `npm` if you prefer.
 now install `eleventy`, and create index.njk
 on the root with basic `html` markup.
 
-```bash
+```sh
 yarn add -D @11ty/eleventy
 touch index.njk
 ```
@@ -67,7 +67,7 @@ open your `package.json` file and add dev and build scripts:
 
 open your favorite terminal and run
 
-```bash
+```sh
 yarn dev
 ```
 
@@ -81,7 +81,7 @@ it should work without any customized eleventy configuration.
 let's try get some images and place them in `images` directory.
 and inside `index.njk` try to display theme.
 
-```bash
+```sh
 ls images/
 
 518k   0001.jpeg
@@ -145,7 +145,7 @@ eleventy team you can find the repo from [here](https://github.com/11ty/eleventy
 
 Install it in our project.
 
-```bash
+```sh
 yarn add -D @11ty/eleventy-img
 ```
 
@@ -287,7 +287,7 @@ the native lazyloading with [vanilla-lazyload](https://github.com/verlok/vanilla
 
 install sharp package to get the blurry inline base64 image
 
-```bash
+```sh
 yarn add -D sharp
 ```
 

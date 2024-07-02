@@ -26,7 +26,7 @@ Sapper is a Server Side framework on top of Svelte helps you create PWA apps wit
 We are going to use the starter template provided by the Sapper team,
 open your favorite terminal and write the following command:
 
-```bash
+```sh
 npx degit "sveltejs/sapper-template#rollup" cool-blog
 cd /cool-blog
 npm install
@@ -34,7 +34,7 @@ npm install
 
 After installing the dependencies, you should be good to go and start your server.
 
-```bash
+```sh
 npm run dev
 ```
 
@@ -47,7 +47,7 @@ inside the `src/routes`.
 
 We have several files there:
 
-```bash
+```sh
 | src
   | routes
     | blog
@@ -162,7 +162,7 @@ export function get(req, res) {
 You need to install an extra package called `gray-matter` that helps you parse the front matter data `title`, and `slug` from
 the markdown.
 
-```bash
+```sh
   npm install gray-matter
 ```
 
@@ -231,7 +231,7 @@ Two new packages we need to install
 - marked: help us to convert the markdown file into HTML.
 - highlight.js: add highlights to the code blocks.
 
-```bash
+```sh
 npm install highlight.js marked
 ```
 

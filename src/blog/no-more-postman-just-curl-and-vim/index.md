@@ -51,7 +51,7 @@ for demonstrating we will gonna use [jsonplaceholder](https://jsonplaceholder.ty
 
 Now create a folder structure like below:
 
-```bash
+```sh
 └── api
     └── todos
         ├── delete
@@ -74,7 +74,7 @@ let's start with first and simple one `api/posts/get/todos.sh`.
 
 write in the file and save.
 
-```bash
+```sh
 curl -s -X GET \
 	'https://jsonplaceholder.typicode.com/todos'
 ```
@@ -117,7 +117,7 @@ let's see couple of example
 
 - POST Request:
 
-```bash
+```sh
 curl -s -X POST \
 	'https://jsonplaceholder.typicode.com/posts' \
 	-H 'Content-Type: application/json' \
@@ -131,7 +131,7 @@ you can write it in `json` file and pass it as `-d @todo.json`
 
 - GET Request with query params:
 
-```bash
+```sh
 curl -s -X GET -G \
 	'https://jsonplaceholder.typicode.com/todos' \
 	-d 'userId=1'

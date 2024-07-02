@@ -140,7 +140,7 @@ Why should I integrate git inside neovim! I use git on my terminal inside tmux
 session using some helpful commands that fits on my workflow. and that is on of
 them:
 
-```shell
+```sh
 # `-p` will open interactive mode to add/reset based on the hunks
 git add -p
 git reset -p
@@ -157,7 +157,7 @@ there is a [vim packages](https://neovim.io/doc/user/repeat.html#packages) is a
 directory you can download your plugins inside it and just it nothing more to
 do.
 
-```shell
+```sh
 cd ~/.local/share/nvim
 git init .
 git submodule init

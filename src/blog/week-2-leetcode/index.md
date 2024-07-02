@@ -15,7 +15,7 @@ post: true
 - This week I've built a [shell script](https://github.com/22mahmoud/leetcode/blob/main/bin/new) to generate a boilerplate for the problem
   from `leetcode` graphql api
   just run:
-  ```shell
+  ```sh
   ./bin/new :slug:
   ```
   and this will generate `index.md` with all metadata for the problem, `index.ts`

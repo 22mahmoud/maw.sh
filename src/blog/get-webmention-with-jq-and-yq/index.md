@@ -35,7 +35,7 @@ Similarly, `yq` serves the same purpose but is designed for `YAML` files.
 Let's create a shell script named `webmention` and give it the executable
 permissions `chmod +x webmention`
 
-```shell
+```sh
 #!/bin/sh
 
 base_url="https://webmention.io/api/mentions.jf2"
@@ -55,7 +55,7 @@ I need to run the script periodically, So I want to avoid over fetching every
 time I fetch webmentions, and fortunately `webmentions.io` have a query-param
 called `since` which only return webmentions after this date.
 
-```shell
+```sh
 # [!code word:since=2024-06-29T15\:37\:22Z]
 
 fetch_webmentions() {
@@ -76,7 +76,7 @@ title: Mahmoud Ashraf
 last_webmention_sync: "2024-06-29T15:37:22Z"
 ```
 
-```shell
+```sh
 # [!code word:since=$since]
 since=$(yq ".last_webmention_sync" metadata.yaml)
 
@@ -90,7 +90,7 @@ Finally after finish the whole script which will be showen latter on this blog,
 we need to save the latest date to `yaml` file, so wen can use it the next run
 of `webmention` script.
 
-```shell
+```sh
 main() {
   # our script ...
 
@@ -149,7 +149,7 @@ So we need to process the `json` like that:
    and `properties` will contain array of e.g: `{"property": "likes-of", "entries": []}`
 
 
-```shell
+```sh
 format_output() {
 	jq --arg domain "$domain" '.children
   | map(.["wm-target"] |= sub("^https://\($domain)/"; "")
@@ -179,7 +179,7 @@ with pandoc as metadata to display the webmentions
 So with `-c,--compact-output`, jq will print each object into spreate line so we
 iterate with while loop for each entry and save the file
 
-```shell
+```sh
 main() {
   fetch_webmentions | format_output | jq -c '.[]' |
     while IFS= read -r line; do
@@ -194,7 +194,7 @@ For each file we will see if there existing data, we will need at first merge tw
 sure the merged data have only unique data, so we will compare with `wm-id` with `jq` using
 `unique_by(:property_name:)` function and plus `+` operator to merge two arrays
 
-```shell
+```sh
 merge_entries() {
   existing_entries="$1"
   new_entries="$2"
@@ -207,7 +207,7 @@ merge_entries() {
 
 And finally here the final look of the `save_into_file` function
 
-```shell
+```sh
 save_into_file() {
   line="$1"
 
@@ -234,14 +234,13 @@ save_into_file() {
 Now each [blog](/blog) or [thought](/thoughts) have a `comment.yaml` in the same directory,
 and i use it as `metadata` with `pandoc` and render it with pandoc template.
 
-```shell
+```sh
 # [!code word:--metadata-file=comments.yaml]
-
-get-webmention-with-jq-and-yq
-├── hand-in-hand.jpg
+# get-webmention-with-jq-and-yq
+# ├── hand-in-hand.jpg
 # [!code word:comments.yaml:1]
-├── comments.yaml
-└── index.md
+# ├── comments.yaml
+# └── index.md
 
 pandoc --metadata-file=comments.yaml index.md -o index.html
 ```

@@ -20,7 +20,7 @@ For solving the problems, I've created a new Git [repository](https://github.com
 and keep track of my answers by creating a directory for each problem with the
 following structure:
 
-```bash
+```sh
 problems
 ├── 1002_find_common_characters
 │   ├── index.md        # showing the solutin and notes
