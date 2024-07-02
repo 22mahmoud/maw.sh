@@ -511,6 +511,22 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Fredrik
+      photo: https://webmention.io/avatar/fosstodon.org/db1d635fb4356e493a52ae26f48c9f875d733a757cb82141ea43b0221d79f2d5.png
+      url: https://mas.to/\@ddv
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-109377063570177612
+    published: null
+    wm-received: "2024-07-02T14:38:43Z"
+    wm-id: 1837206
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/109377063570177612
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
