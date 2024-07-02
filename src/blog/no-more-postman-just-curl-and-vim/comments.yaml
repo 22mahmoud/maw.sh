@@ -559,6 +559,22 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: 'Ric :linux:'
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/d0f56520ef8bc83cfdabc13c30f70b556e85ba79d547b11682d05e99fa46e8cc.jpg
+      url: https://fosstodon.org/\@r1w1s1
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-112346945886146526
+    published: null
+    wm-received: "2024-07-02T15:33:50Z"
+    wm-id: 1837227
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112346945886146526
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
@@ -848,6 +864,22 @@ repost-of:
     repost-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: repost-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: 'Ric :linux:'
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/d0f56520ef8bc83cfdabc13c30f70b556e85ba79d547b11682d05e99fa46e8cc.jpg
+      url: https://fosstodon.org/\@r1w1s1
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#reblogged-by-112346945886146526
+    published: null
+    wm-received: "2024-07-02T15:34:21Z"
+    wm-id: 1837229
+    wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112346945886146526
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    repost-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: repost-of
+    wm-private: false
 in-reply-to:
   - type: entry
     author:
@@ -953,6 +985,44 @@ in-reply-to:
 
         It makes sense but I am looking at the `curl` `--config` https://everything.curl.dev/cmdline/configfile.html and it may bring me straight to VIM!
         Config file - everything curl
+    in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: 'Ric :linux:'
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/d0f56520ef8bc83cfdabc13c30f70b556e85ba79d547b11682d05e99fa46e8cc.jpg
+      url: https://fosstodon.org/\@r1w1s1
+    url: https://fosstodon.org/\@r1w1s1/112717611338818403
+    published: "2024-07-02T15:30:55+00:00"
+    wm-received: "2024-07-02T15:33:49Z"
+    wm-id: 1837226
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112717611338818403
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> its really nice! thank you for sharing.</p>
+      text: \@22mahmoud its really nice! thank you for sharing.
+    in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Mahmoud Ashraf
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/04db3bece77ea18a0f19e63e24748d0e0e56a8b53d3039df997e6448dec49400.png
+      url: https://fosstodon.org/\@22mahmoud
+    url: https://fosstodon.org/\@22mahmoud/112717600179342702
+    published: "2024-07-02T15:28:04+00:00"
+    wm-received: "2024-07-02T15:33:52Z"
+    wm-id: 1837228
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112717600179342702
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://mastodon.social/\@bagder" class="u-url">\@<span>bagder</span></a></span> interesting I did not know about this option before</p>
+      text: \@bagder interesting I did not know about this option before
     in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: in-reply-to
     wm-private: false
