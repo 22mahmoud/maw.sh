@@ -1,3 +1,5 @@
+local path = require 'pandoc.path'
+
 local M = {}
 
 function M.basename(s) return s:gsub('/$', ''):match '^.+/(.+)$' or '' end
@@ -120,6 +122,18 @@ function M.slice(tbl, first, last, step)
   end
 
   return sliced
+end
+
+function M.normalize_image_src(blocks, url)
+  return pandoc.walk_block(pandoc.Div(blocks), {
+    Image = function(image)
+      if not path.is_relative(image.src) then return end
+
+      image.src = path.normalize(path.join { url, image.src })
+
+      return image
+    end,
+  }).content
 end
 
 return M

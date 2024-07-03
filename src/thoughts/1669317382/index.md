@@ -5,4 +5,4 @@ thought: true
 
 في الطريق
 
-![screenshot from lynks.com tracking orders to at2020 microphone](/thoughts/1669317382/screenshot_lynks.jpg)
+![screenshot from lynks.com tracking orders to at2020 microphone](screenshot_lynks.jpg)

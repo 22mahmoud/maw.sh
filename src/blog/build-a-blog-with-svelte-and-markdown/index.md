@@ -43,7 +43,7 @@ npm run dev
 
 Voila, 🎉 the application now up and running.
 
-![screenshot of the home page for sapper boilerplate](/blog/build-a-blog-with-svelte-and-markdown/bg1.jpeg)
+![screenshot of the home page for sapper boilerplate](bg1.jpeg)
 
 Let's open the project in your favorite editor. and go to the `blog` folder
 inside the `src/routes`.
@@ -67,9 +67,9 @@ we have two types the pages, and server routes.
 
 ### Pages
 
-The filename detrmine the route. For example: `src/routes/blog/index.svelte` refer to the route `/blog`.
+The filename detrmine the route. For example: `src/routesblog`.
 
-For Dynamin routing. we going to use `[slug]`. For example `ser/routes/blog/[slug].svelte` refer to route `/blog/the-whatever-blog-name`
+For Dynamin routing. we going to use `[slug]`. For example `ser/routesthe-whatever-blog-name`
 
 ### Server
 
@@ -171,7 +171,7 @@ the markdown.
 
 If you navigate to `/blog` route you should have a page similar to this:
 
-![screenshot of blogs pages](/blog/build-a-blog-with-svelte-and-markdown/bg2.jpeg)
+![screenshot of blogs pages](bg2.jpeg)
 
 Now we need to handle the post route. open `src/routes/blog/[slug].json.js`
 
@@ -247,7 +247,7 @@ import 'highlight.js/styles/github.css';
 // ...
 ```
 
-![screenshot of the final result showing a sample blog post](/blog/build-a-blog-with-svelte-and-markdown/bg3.jpeg)
+![screenshot of the final result showing a sample blog post](bg3.jpeg)
 
 ## conclusion
 

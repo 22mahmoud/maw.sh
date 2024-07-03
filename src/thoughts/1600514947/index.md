@@ -5,4 +5,4 @@ thought: true
 
 I just got my free ticket to #nextjsconf!
 
-![nextjsconf](/thoughts/1600514947/ticket.png)
+![nextjsconf](ticket.png)

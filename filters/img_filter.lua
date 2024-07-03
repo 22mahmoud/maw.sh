@@ -177,9 +177,6 @@ end
 
 return {
   {
-    Image = get_image,
-  },
-  {
     Meta = function(meta)
       local function action(value)
         local img = pandoc.Image({ pandoc.Str 'placeholder image' }, pandoc.utils.stringify(value))
@@ -197,6 +194,9 @@ return {
       get_image_meta(meta, action)
       return meta
     end,
+  },
+  {
+    Image = get_image,
   },
   {
     Inline = function(el)

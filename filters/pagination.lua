@@ -5,9 +5,9 @@ local function get_output_path(i, dir, page_path)
   local output_dir = 'dist/' .. dir:sub(5)
 
   if i == 1 then
-    return output_dir .. '/index.html'
+    return path.join { output_dir, 'index.html' }
   else
-    local output = ([[%s/%s/%s/index.html]]):format(output_dir, page_path, i)
+    local output = path.join { output_dir, page_path, i, 'index.html' }
     os.execute('mkdir -p ' .. u.dirname(output))
     return output
   end
@@ -54,7 +54,8 @@ function Meta(meta)
         local doc = pandoc.read(u.read_file(file))
 
         doc.meta.url = path.join { '/', u.dirname(file):sub(5) }
-        if has_content then doc.meta.content = doc.blocks end
+
+        if has_content then doc.meta.content = u.normalize_image_src(doc.blocks, doc.meta.url) end
 
         meta[collection]:insert(doc.meta)
 
