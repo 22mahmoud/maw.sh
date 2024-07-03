@@ -719,6 +719,38 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: hastar
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/1ffe2dac0a4a0d4ba5d9e46814f69fbc75d6d6380e796bcf4c7b476b8d1c37dc.png
+      url: https://mastodon.nu/\@hastar
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-109309718356644742
+    published: null
+    wm-received: "2024-07-03T08:08:51Z"
+    wm-id: 1837384
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/109309718356644742
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Cauê
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/8034541e40e4af10482a408cc0108e086a1eb8442716b5275b770c58bf73d969.jpg
+      url: https://mastodon.social/\@EuCaue
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-109415840765754596
+    published: null
+    wm-received: "2024-07-03T11:09:13Z"
+    wm-id: 1837406
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/109415840765754596
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
