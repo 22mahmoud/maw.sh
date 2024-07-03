@@ -49,4 +49,4 @@ distclean:
 clean:
 	@rm -vrf $(output) $(tmp)
 
-.PHONY: build html static clean dev prepare distclean
+.PHONY: build html static clean dev prepare distclean last_update

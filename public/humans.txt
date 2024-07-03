@@ -1,0 +1,12 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+/* TEAM */
+Your title: Mahmoud Ashraf.
+Site: maw.sh
+Mastodon: https://fosstodon.org/@22mahmoud
+Location: Alexandria, Egypt.
+
+/* SITE */
+Standards: HTML5, CSS3, JS.
+Software: pandoc, Makefile, shell script, yq, jq.
