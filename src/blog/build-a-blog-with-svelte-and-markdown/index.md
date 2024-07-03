@@ -4,7 +4,10 @@ title-prefix: Building a blog with Svelte, Sapper, and Markdown
 date: 2020-03-03T00:00+02:00
 author: Mahmoud Ashraf
 description: In this article I will show how you can start bloging with svelte and sapper using markdown files
-keywords: javascript, svelte, sapper
+keywords:
+  - javascript
+  - svelte
+  - sapper
 category: front-end
 post: true
 ---

@@ -4,7 +4,11 @@ date: 2020-09-01T00:00+02:00
 author: Mahmoud Ashraf
 description: Learn How to automate your images using eleventy-img plugin and sharpjs
 categories: tutorial, javascript
-keywords: javascript, eleventy, 11ty, optimization, image
+keywords:
+  - javascript
+  - eleventy
+  - 11ty
+  - image optimization
 category: front-end
 post: true
 ---
