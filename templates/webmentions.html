@@ -119,3 +119,18 @@
     $endif$
   </div>
 </div>
+
+<script>
+  document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+      const getRandomColor = () =>
+        "#" + Math.floor(Math.random() * 16777215).toString(16) + 40;
+
+      document
+        .querySelectorAll(".bookmark-item img")
+        .forEach((x) => x.style.setProperty("--hover-color", getRandomColor()));
+    },
+    false,
+  );
+</script>
