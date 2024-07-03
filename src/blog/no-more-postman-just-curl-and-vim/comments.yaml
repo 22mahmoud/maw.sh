@@ -751,6 +751,22 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Jendys
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/43e7033d427110c53791e55d067a1c843c3d0d7553e21bd12f2e81707eb0bf92.png
+      url: https://witter.cz/\@jendys
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-109325066225863156
+    published: null
+    wm-received: "2024-07-03T14:20:00Z"
+    wm-id: 1837424
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/109325066225863156
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
@@ -1083,6 +1099,22 @@ repost-of:
     wm-received: "2024-07-02T16:35:19Z"
     wm-id: 1837239
     wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/111354710700546854
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    repost-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: repost-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Jendys
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/43e7033d427110c53791e55d067a1c843c3d0d7553e21bd12f2e81707eb0bf92.png
+      url: https://witter.cz/\@jendys
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#reblogged-by-109325066225863156
+    published: null
+    wm-received: "2024-07-03T14:20:01Z"
+    wm-id: 1837425
+    wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/109325066225863156
     wm-target: blog/no-more-postman-just-curl-and-vim
     wm-protocol: webmention
     repost-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
