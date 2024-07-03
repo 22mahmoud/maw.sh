@@ -1,17 +1,28 @@
+local u = require 'filters.utils'
 local path = require 'pandoc.path'
 
-local function starts_with(str, prefix) return str:sub(1, #prefix) == prefix end
+local src = 'src'
+local dist = 'dist'
+local tmp = '.tmp'
+local remote_images = 'remote_images'
+local images = 'images'
 
-local function get_file_absolute_path(file)
-  local current_file = string.gsub(PANDOC_STATE.input_files[1], '([^/]*%.%w+)$', '')
-  return ('/' .. path.join { current_file, file }):gsub('^/+', '/')
+local function is_remote_src(file)
+  return u.starts_with(file, 'https://') or u.starts_with(file, 'http://')
 end
 
-local function remove_file_name(file) return string.gsub(file, '([^/]*%.%w+)$', '') end
+local function get_file_absolute_path(file)
+  if not path.is_relative(file) or is_remote_src(file) then return file end
 
-local function remove_src_prefix(file) return string.gsub(file, 'src/', '') end
+  return path.normalize(
+    path.join { '/', u.dirname(PANDOC_STATE.input_files[1]):gsub('src/', ''), file }
+  )
+end
 
-local function slugify_url(url) return url:gsub('[^%w_]', '_') end
+local function slugify(url)
+  local slugified = url:gsub('[^%w_]', '_')
+  return slugified
+end
 
 local function get_file_extension(file)
   local _, ext = path.split_extension(file)
@@ -34,34 +45,24 @@ local function is_video(file)
 end
 
 local function get_thumb_path(file)
-  local thumb = string.gsub(file, '([^/]*%.%w+)$', 'thumbs/%1')
-  return get_file_name(thumb) .. '.webp'
+  return path.join {
+    u.dirname(file),
+    'thumbs',
+    string.format('%s.webp', get_file_name(u.basename(file))),
+  }
 end
 
-local function file_exists(name)
-  local f = io.open(name, 'r')
-  if f then
-    io.close(f)
-    return true
-  else
-    return false
-  end
+local function download_image(url, output)
+  os.execute(('mkdir -p %s'):format(u.dirname(output)))
+  os.execute(('curl -L -o %s %s'):format(output, url))
 end
-
-local function download_image(url, dest) os.execute('curl -L -o ' .. dest .. ' ' .. url) end
 
 local function get_image_size(file)
-  local handle = is_video(file)
-      and io.popen(
-        'ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=x '
-          .. file
-      )
-    or io.popen('identify -format "%w %h" ' .. file .. ' | head -n1')
+  local cmd = is_video(file)
+      and 'ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=x %s'
+    or 'identify -format "%%w %%h" %s | head -n1'
 
-  if not handle then return nil, nil end
-
-  local result = handle:read '*a'
-  handle:close()
+  local result = u.shell(cmd:format(file))
 
   local width, height = result:match '(%d+)[%sx](%d+)'
 
@@ -74,78 +75,67 @@ local function set_image_size(img, file)
   if height then img.attributes.height = height end
 end
 
-local src = 'src'
-local dist = 'dist'
-local remote_images = 'remote_images/'
+local function process_image(input, output)
+  if u.file_exists(output) then return end
 
-local function process_image(input_file, output_file, output_path)
-  if file_exists(output_file) then return end
+  local output_path = u.dirname(output)
+  local tmp_file = path.join { tmp, images, slugify(output) }
 
-  local tmp_file = string.gsub(output_file, '[/.]', '_')
-  tmp_file = '.tmp/images/.' .. tmp_file
+  os.execute(('mkdir -p %s'):format(output_path))
 
-  if file_exists(tmp_file) then
-    os.execute('mkdir -p ' .. output_path)
-    os.execute('cp ' .. tmp_file .. ' ' .. output_file)
+  if u.file_exists(tmp_file) then
+    os.execute(('cp %s %s'):format(tmp_file, output))
     return
   end
 
-  os.execute('mkdir -p ' .. output_path)
-  local width, _ = get_image_size(input_file)
+  local width, _ = get_image_size(input)
+  local resize_opts = width > 768 and '-resize 768 0' or ''
 
-  if width <= 768 then
-    os.execute('cwebp -q 90 ' .. input_file .. ' -o ' .. output_file)
-  else
-    os.execute('cwebp -resize 768 0 -q 90 ' .. input_file .. ' -o ' .. output_file)
-  end
-
-  os.execute('cp ' .. output_file .. ' ' .. tmp_file)
+  os.execute(('cwebp %s -q 90 %s -o %s'):format(resize_opts, input, output))
+  os.execute(('mkdir -p %s'):format(u.dirname(tmp_file)))
+  os.execute(('cp %s %s'):format(output, tmp_file))
 end
 
 local function handle_remote_image(img)
-  local slug = slugify_url(img.src)
-  local tmp_image = '.tmp/images/' .. slug .. get_file_extension(img.src)
-  local input_file = remote_images .. slug .. get_file_extension(img.src)
-  local thumb = get_thumb_path(input_file)
-  local output_file = dist .. '/' .. thumb
-  local output_path = dist .. '/' .. remove_file_name(thumb)
+  local slug = slugify(img.src)
+  local download_path = path.join { dist, remote_images, slug }
 
-  if not file_exists(tmp_image) then download_image(img.src, tmp_image) end
+  if not u.file_exists(download_path) then download_image(img.src, download_path) end
 
-  process_image(tmp_image, output_file, output_path)
-  img.attributes.original_src = '/' .. input_file
-  img.src = '/' .. thumb
-  set_image_size(img, output_file)
+  local absolute_url = path.join { '/', remote_images, slug }
+  local absolute_thumb = get_thumb_path(absolute_url)
 
-  return img
+  return absolute_url, absolute_thumb
 end
 
 local function get_image(img)
   img.attributes.loading = 'lazy'
 
-  if starts_with(img.src, 'https://') or starts_with(img.src, 'http://') then
-    handle_remote_image(img)
+  local absolute_url = nil
+  local absolute_thumb = nil
 
-    return pandoc.Link(img, img.src)
+  if is_remote_src(img.src) then
+    absolute_url, absolute_thumb = handle_remote_image(img)
+  else
+    absolute_url = get_file_absolute_path(img.src)
+    absolute_thumb = get_thumb_path(absolute_url)
   end
 
-  local absolute_path = remove_src_prefix(get_file_absolute_path(img.src))
-  local thumb = get_thumb_path(absolute_path)
-  local input_file = src .. absolute_path
-  local output_file = dist .. thumb
-  local output_path = dist .. remove_file_name(thumb)
+  local prefix = (not u.starts_with(absolute_url, '/remote_images') and src or dist)
+  local input_file = prefix .. absolute_url
+  local output_file = dist .. absolute_thumb
 
   if is_gif(img.src) or is_video(img.src) then
     set_image_size(img, input_file)
-    img.src = absolute_path
+    img.src = absolute_url
     return img
   end
 
-  process_image(input_file, output_file, output_path)
-  img.src = thumb
+  process_image(input_file, output_file)
   set_image_size(img, output_file)
+  img.src = absolute_thumb
 
-  return pandoc.Link(img, absolute_path)
+  return img, absolute_url, absolute_thumb
 end
 
 local function get_image_meta(metadata, action)
@@ -179,13 +169,13 @@ return {
   {
     Meta = function(meta)
       local function action(value)
-        local img = pandoc.Image({ pandoc.Str 'placeholder image' }, pandoc.utils.stringify(value))
+        local temp_img = pandoc.Image({}, pandoc.utils.stringify(value))
 
-        handle_remote_image(img)
+        local img, absolute_url, absolute_thumb, _ = get_image(temp_img)
 
         return {
-          url = img.attributes.original_src,
-          thumb = img.src,
+          url = absolute_url,
+          thumb = absolute_thumb,
           width = img.attributes.width,
           height = img.attributes.height,
         }
@@ -196,27 +186,29 @@ return {
     end,
   },
   {
-    Image = get_image,
+    Image = function(original_img)
+      local img, absolute_url, _ = get_image(original_img)
+
+      if is_gif(img.src) or is_video(img.src) then return img end
+
+      return pandoc.Link(img, absolute_url)
+    end,
   },
   {
     Inline = function(el)
       local function action(value)
-        local img = pandoc.Image({ pandoc.Str 'placeholder image' }, value)
+        local temp_img = pandoc.Image({}, value)
 
-        handle_remote_image(img)
-
-        local src = img.attributes.original_src
-        local thumb = img.src
-        local attr = img.attributes
-
-        local img_tag = [[<a href="%s"><img loading="lazy" src="%s" %s /></a>]]
+        local img, absolute_url, absolute_thumb, _ = get_image(temp_img)
 
         local attrs = ''
-        for k, v in pairs(attr) do
+        for k, v in pairs(img.attributes) do
           attrs = ('%s %s="%s"'):format(attrs, k, v)
         end
 
-        return img_tag:format(src, thumb, attrs)
+        local img_tag = [[<a href="%s"><img loading="lazy" src="%s" %s /></a>]]
+
+        return img_tag:format(absolute_url, absolute_thumb, attrs)
       end
 
       return get_image_inline(el, action)

@@ -2,11 +2,13 @@ local path = require 'pandoc.path'
 
 local M = {}
 
-function M.basename(s) return s:gsub('/$', ''):match '^.+/(.+)$' or '' end
+function M.basename(s) return path.filename(s) end
 
-function M.dirname(s) return s:match '(.*/)' or '' end
+function M.dirname(s) return path.directory(s) end
 
 function M.trim(s) return (s:gsub('^%s*(.-)%s*$', '%1')) end
+
+function M.starts_with(str, prefix) return str:sub(1, #prefix) == prefix end
 
 function M.shell(command)
   local pipe = io.popen(command, 'r')
@@ -134,6 +136,16 @@ function M.normalize_image_src(blocks, url)
       return image
     end,
   }).content
+end
+
+function M.file_exists(name)
+  local f = io.open(name, 'r')
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
+  end
 end
 
 return M
