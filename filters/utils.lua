@@ -67,7 +67,7 @@ function M.filter_by(by)
     local value = by.value
 
     for _, file in pairs(xs) do
-      local existing = pandoc.utils.stringify(pandoc.read(M.read_file(file)).meta[key])
+      local existing = pandoc.utils.stringify(pandoc.read(M.read_file(file)).meta[key] or 'false')
       if existing == value then table.insert(out, file) end
     end
 
@@ -92,6 +92,7 @@ function M.get_collection_files(path, opts)
     M.shell,
     M.lines_to_table,
     M.sort_by_date,
+    M.filter_by { key = 'draft', value = 'false' },
     M.filter_by(opts.filter_by),
     M.get_first(opts.get_first)
   )(cmd)

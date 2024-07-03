@@ -16,16 +16,24 @@ pandoc_args="--variable path=$path"
 pandoc_output="$output"
 
 if [ -f "$comments_file" ]; then
-	pandoc_args="$pandoc_args --metadata-file=$comments_file"
+  pandoc_args="$pandoc_args --metadata-file=$comments_file"
+fi
+
+is_draft="$(yq --front-matter="extract" '.draft' "$input")"
+
+if [ "$is_draft" = 'true' ]; then
+  rm -rf "$(dirname "$output")"
+  echo "[html skipped (a draft)]:" "$output"
+  exit 0
 fi
 
 pagination="$(yq --front-matter="extract" '.pagination' "$input")"
 if [ "$pagination" != "null" ]; then
-	pandoc_output=/dev/null
+  pandoc_output=/dev/null
 fi
 
 eval pandoc -d pandoc.yaml \
-	"${pandoc_args}" \
-	"$input" -o "$pandoc_output"
+  "${pandoc_args}" \
+  "$input" -o "$pandoc_output"
 
 echo "[html generated]:" "$output"
