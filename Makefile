@@ -32,7 +32,7 @@ $(output)/rss-thoughts.xml: html $(md_files) $(bin)/rss-thoughts
 $(output)/sitemap.xml: html $(md_files) $(bin)/sitemap
 	@$(bin)/sitemap
 
-$(output)/index.html: src/index.md $(md_files) templates/* filters/* bin/generate
+$(output)/index.html: $(src)/index.md $(md_files) templates/* filters/* bin/generate
 	@bin/generate $@
 
 $(output)/%/index.html: $(src)/%/* templates/* filters/* bin/generate
