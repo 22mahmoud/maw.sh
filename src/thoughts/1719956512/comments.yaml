@@ -1,0 +1,73 @@
+in-reply-to:
+  - type: entry
+    author:
+      type: card
+      name: Rye
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/60d7144c4fdc85e0a6c502f718df325f1ff46eab26c7f99cfda6e55e47c71a30.png
+      url: https://ioc.exchange/\@rye
+    url: https://ioc.exchange/\@rye/112719889387481216
+    published: "2024-07-03T01:10:15+00:00"
+    wm-received: "2024-07-03T01:34:25Z"
+    wm-id: 1837321
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112719093605992264/112719889527308533
+    wm-target: thoughts/1719956512
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> I’ve long pondered about an easy way to do this. But don’t have a simple solution.</p>
+      text: \@22mahmoud I’ve long pondered about an easy way to do this. But don’t have a simple solution.
+    in-reply-to: https://maw.sh/thoughts/1719956512/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Chris Murphy
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/a9dfc8b247f42ca8642f8a0ef72bc233cbfcd2e8b61fc7235f6eb5b32d65c0cb.jpg
+      url: https://mastodon.mit.edu/\@chris
+    url: https://mastodon.mit.edu/\@chris/112720097147738538
+    published: "2024-07-03T02:03:05+00:00"
+    wm-received: "2024-07-03T02:05:13Z"
+    wm-id: 1837323
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112719093605992264/112720097204156659
+    wm-target: thoughts/1719956512
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> Git client on the phone?  Or (in the case of GitHub at least) the web interface?  Haven’t tried it myself, given how infrequently I update my site.</p>
+      text: \@22mahmoud Git client on the phone?  Or (in the case of GitHub at least) the web interface?  Haven’t tried it myself, given how infrequently I update my site.
+    in-reply-to: https://maw.sh/thoughts/1719956512/
+    wm-property: in-reply-to
+    wm-private: false
+like-of:
+  - type: entry
+    author:
+      type: card
+      name: Rye
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/60d7144c4fdc85e0a6c502f718df325f1ff46eab26c7f99cfda6e55e47c71a30.png
+      url: https://ioc.exchange/\@rye
+    url: https://fosstodon.org/\@22mahmoud/112719093605992264#favorited-by-111033166582438883
+    published: null
+    wm-received: "2024-07-03T01:34:24Z"
+    wm-id: 1837320
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112719093605992264/111033166582438883
+    wm-target: thoughts/1719956512
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1719956512/
+    wm-property: like-of
+    wm-private: false
+repost-of:
+  - type: entry
+    author:
+      type: card
+      name: Lulu Powerful
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/84593b864d1f82314a9349c3f70a52a96170b241738704b06b9e5c73c8c110fa.jpg
+      url: https://fosstodon.org/\@lulu_powerful
+    url: https://fosstodon.org/\@22mahmoud/112719093605992264#reblogged-by-109548122212218270
+    published: null
+    wm-received: "2024-07-03T01:34:26Z"
+    wm-id: 1837322
+    wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/112719093605992264/109548122212218270
+    wm-target: thoughts/1719956512
+    wm-protocol: webmention
+    repost-of: https://maw.sh/thoughts/1719956512/
+    wm-property: repost-of
+    wm-private: false

@@ -703,6 +703,22 @@ like-of:
     like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Torstein Krause Johansen
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/0bc5ce31a92d80cd2efaf656daac61dd4c3648a3dff5749f98b8fde2d4cb7ddf.jpg
+      url: https://emacs.ch/\@skybert
+    url: https://fosstodon.org/\@22mahmoud/112717119416899615#favorited-by-109340972335548997
+    published: null
+    wm-received: "2024-07-03T04:06:08Z"
+    wm-id: 1837329
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/109340972335548997
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
