@@ -15,6 +15,7 @@ format_output() {
 	jq --arg domain "$domain" '.children
   | map(.["wm-target"] |= sub("^https://\($domain)/"; "") | .["wm-target"] |= sub("/$"; ""))
   | map(select(.["wm-target"] != ""))
+  | map(select(.["author"]["url"] != ""))
   | group_by(.["wm-target"])
   | map({
       target: .[0]["wm-target"],

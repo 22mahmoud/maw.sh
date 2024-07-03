@@ -4,6 +4,8 @@ function M.basename(s) return s:gsub('/$', ''):match '^.+/(.+)$' or '' end
 
 function M.dirname(s) return s:match '(.*/)' or '' end
 
+function M.trim(s) return (s:gsub('^%s*(.-)%s*$', '%1')) end
+
 function M.shell(command)
   local pipe = io.popen(command, 'r')
   if not pipe then return end

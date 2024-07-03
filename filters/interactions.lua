@@ -1,4 +1,4 @@
-local function trim(s) return (s:gsub('^%s*(.-)%s*$', '%1')) end
+local u = require 'filters.utils'
 
 return {
   {
@@ -7,16 +7,15 @@ return {
         if meta['interaction-to-content'] then return meta end
 
         local url = pandoc.utils.stringify(meta['like-to'] or meta['reply-to'])
-        local cmd = string.format('curl -s %s | htmlq --text ".e-content"', url)
+        local result = u.shell(("curl -s '%s'"):format(url))
 
-        local handle = io.popen(cmd)
+        local e_content = pandoc.pipe('xq', { '-q', '.h-entry > .e-content' }, result)
+        local u_author =
+          pandoc.pipe('xq', { '-q', '.h-card > .p-name, [rel=me] > .p-name' }, result)
+        local p_name =
+          pandoc.pipe('xq', { '-q', '.p-name:not(.u-url.p-name, .u-url > .p-name)' }, result)
 
-        if not handle then return nil, nil end
-
-        local result = handle:read '*a'
-        handle:close()
-
-        local content = trim(result):sub(1, 100) .. '...'
+        local content = u.trim(e_content):sub(1, 100) .. '...'
 
         os.execute(
           string.format(
@@ -26,7 +25,25 @@ return {
           )
         )
 
+        os.execute(
+          string.format(
+            [[yq -i --front-matter="process" ".interaction-to-title = \"%s\"" "%s"]],
+            p_name,
+            PANDOC_STATE.input_files[1]
+          )
+        )
+
+        os.execute(
+          string.format(
+            [[yq -i --front-matter="process" ".interaction-to-author = \"%s\"" "%s"]],
+            u_author,
+            PANDOC_STATE.input_files[1]
+          )
+        )
+
         meta['interaction-to-content'] = content
+        meta['interaction-to-title'] = p_name
+        meta['interaction-to-author'] = u_author
       end
 
       return meta
