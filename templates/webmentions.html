@@ -124,8 +124,13 @@
   document.addEventListener(
     "DOMContentLoaded",
     function () {
-      const getRandomColor = () =>
-        "#" + Math.floor(Math.random() * 16777215).toString(16) + 40;
+      function getRandomColor() {
+        const hue = Math.floor(Math.random() * 360);
+        const saturation = Math.floor(Math.random() * 50) + 50;
+        const lightness = 80;
+
+        return `hsla($${hue}, $${saturation}%, $${lightness}%, 0.4)`;
+      }
 
       document
         .querySelectorAll(".bookmark-item img")
