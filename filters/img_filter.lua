@@ -52,7 +52,7 @@ local function get_thumb_path(file)
 end
 
 local function download_image(url, output)
-  os.execute(('mkdir -p %s'):format(u.dirname(output)))
+  os.execute(('mkdir -pv %s'):format(u.dirname(output)))
   os.execute(('curl -L -o %s %s'):format(output, url))
 end
 
@@ -80,10 +80,10 @@ local function process_image(input, output)
   local output_path = u.dirname(output)
   local tmp_file = path.join { tmp, images, slugify(output) }
 
-  os.execute(('mkdir -p %s'):format(output_path))
+  os.execute(('mkdir -pv %s'):format(output_path))
 
   if u.file_exists(tmp_file) then
-    os.execute(('cp %s %s'):format(tmp_file, output))
+    os.execute(('cp -v %s %s'):format(tmp_file, output))
     return
   end
 
@@ -91,8 +91,8 @@ local function process_image(input, output)
   local resize_opts = width > 768 and '-resize 768 0' or ''
 
   os.execute(('cwebp %s -q 90 %s -o %s'):format(resize_opts, input, output))
-  os.execute(('mkdir -p %s'):format(u.dirname(tmp_file)))
-  os.execute(('cp %s %s'):format(output, tmp_file))
+  os.execute(('mkdir -pv %s'):format(u.dirname(tmp_file)))
+  os.execute(('cp -v %s %s'):format(output, tmp_file))
 end
 
 local function handle_remote_image(img)

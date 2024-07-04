@@ -66,7 +66,7 @@ main() {
 	dir_name=src/games/"$slug"
 	path_name="$dir_name"/index.md
 
-	mkdir -p "$dir_name"
+	mkdir -pv "$dir_name"
 
 	create_or_update_markdown
 	download_cover_image

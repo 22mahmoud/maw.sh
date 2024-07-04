@@ -8,7 +8,7 @@ local function get_output_path(i, dir, page_path)
     return path.join { output_dir, 'index.html' }
   else
     local output = path.join { output_dir, page_path, i, 'index.html' }
-    os.execute('mkdir -p ' .. u.dirname(output))
+    os.execute('mkdir -pv ' .. u.dirname(output))
     return output
   end
 end
@@ -68,6 +68,6 @@ function Meta(meta)
       u.create_html_from_doc(collection, doc, output_path)
     end
 
-    os.execute('mkdir -p ' .. tmp)
+    os.execute('mkdir -pv ' .. tmp)
   end
 end

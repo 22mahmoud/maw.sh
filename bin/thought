@@ -14,7 +14,7 @@ done
 
 dirname=$(date +%s)
 
-mkdir "src/thoughts/$dirname"
+mkdir -pv "src/thoughts/$dirname"
 
 path_name="src/thoughts/$dirname/index.md"
 

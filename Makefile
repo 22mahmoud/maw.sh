@@ -16,9 +16,9 @@ dev:
 	@find $(src) filters templates -type f | entr $(MAKE) dist/blog/build-a-blog-with-svelte-and-markdown/index.html
 
 prepare:
-	mkdir -p $(output)
-	mkdir -p $(output)/remote_images
-	mkdir -p $(tmp)/images
+	@mkdir -pv $(output)
+	@mkdir -pv $(output)/remote_images
+	@mkdir -pv $(tmp)/images
 	touch $(tmp)/images/.nomedia
 
 html: prepare $(html_files) $(output)/index.html
