@@ -89,7 +89,7 @@ then as we done before run `:!sh %`
 
 ![screenshot of :!sh % result inside vim](screen2.jpeg)
 
-# Make the result More Handy.
+## Make the result More Handy.
 
 In most tools you will get a split view for the request itself
 and the result.
