@@ -27,6 +27,42 @@ function M.read_file(file)
   return content
 end
 
+function M.file_exists(name)
+  local f = io.open(name, 'r')
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
+  end
+end
+
+function M.slice(tbl, first, last, step)
+  local sliced = {}
+
+  for i = first or 1, last or #tbl, step or 1 do
+    sliced[#sliced + 1] = tbl[i]
+  end
+
+  return sliced
+end
+
+function M.pipe(...)
+  local funcs = { ... }
+  return function(...)
+    local args = { ... }
+    for i = 1, #funcs do
+      args = { funcs[i](table.unpack(args)) }
+    end
+    return table.unpack(args)
+  end
+end
+
+function M.format(...)
+  local args = { ... }
+  return function(s) return string.format(s, table.unpack(args)) end
+end
+
 function M.sort_by_date(xs)
   table.sort(xs, function(file1, file2)
     local date1 = pandoc.utils.stringify(pandoc.read(M.read_file(file1)).meta.date) or ''
@@ -44,22 +80,6 @@ function M.lines_to_table(xs)
   end
 
   return result
-end
-
-function M.pipe(...)
-  local funcs = { ... }
-  return function(...)
-    local args = { ... }
-    for i = 1, #funcs do
-      args = { funcs[i](table.unpack(args)) }
-    end
-    return table.unpack(args)
-  end
-end
-
-function M.format(...)
-  local args = { ... }
-  return function(s) return string.format(s, table.unpack(args)) end
 end
 
 function M.filter_by(by)
@@ -116,17 +136,7 @@ function M.create_html_from_doc(temp, doc, out)
   end)
 end
 
-function M.slice(tbl, first, last, step)
-  local sliced = {}
-
-  for i = first or 1, last or #tbl, step or 1 do
-    sliced[#sliced + 1] = tbl[i]
-  end
-
-  return sliced
-end
-
-function M.normalize_image_src(blocks, url)
+function M.normalize_relative_paths(blocks, url)
   return pandoc.walk_block(pandoc.Div(blocks), {
     Image = function(image)
       if not path.is_relative(image.src) then return end
@@ -136,16 +146,6 @@ function M.normalize_image_src(blocks, url)
       return image
     end,
   }).content
-end
-
-function M.file_exists(name)
-  local f = io.open(name, 'r')
-  if f ~= nil then
-    io.close(f)
-    return true
-  else
-    return false
-  end
 end
 
 return M

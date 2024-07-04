@@ -6,6 +6,7 @@ local dist = 'dist'
 local tmp = '.tmp'
 local remote_images = 'remote_images'
 local images = 'images'
+local current_file = PANDOC_STATE.input_files[1]
 
 local function is_remote_src(file)
   return u.starts_with(file, 'https://') or u.starts_with(file, 'http://')
@@ -14,9 +15,7 @@ end
 local function get_file_absolute_path(file)
   if not path.is_relative(file) or is_remote_src(file) then return file end
 
-  return path.normalize(
-    path.join { '/', u.dirname(PANDOC_STATE.input_files[1]):gsub('src/', ''), file }
-  )
+  return path.normalize(path.join { '/', u.dirname(current_file):gsub('src/', ''), file })
 end
 
 local function slugify(url)
@@ -48,7 +47,7 @@ local function get_thumb_path(file)
   return path.join {
     u.dirname(file),
     'thumbs',
-    string.format('%s.webp', get_file_name(u.basename(file))),
+    ('%s.webp'):format(get_file_name(u.basename(file))),
   }
 end
 
@@ -62,7 +61,7 @@ local function get_image_size(file)
       and 'ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=x %s'
     or 'identify -format "%%w %%h" %s | head -n1'
 
-  local result = u.shell(cmd:format(file))
+  local result = u.shell(cmd:format(file)) or ''
 
   local width, height = result:match '(%d+)[%sx](%d+)'
 
@@ -98,11 +97,13 @@ end
 
 local function handle_remote_image(img)
   local slug = slugify(img.src)
-  local download_path = path.join { dist, remote_images, slug }
+  local ext = get_file_extension(img.src)
+
+  local download_path = path.join { dist, remote_images, slug .. ext }
 
   if not u.file_exists(download_path) then download_image(img.src, download_path) end
 
-  local absolute_url = path.join { '/', remote_images, slug }
+  local absolute_url = path.join { '/', remote_images, slug .. ext }
   local absolute_thumb = get_thumb_path(absolute_url)
 
   return absolute_url, absolute_thumb

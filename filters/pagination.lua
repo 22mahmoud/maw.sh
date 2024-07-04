@@ -55,7 +55,7 @@ function Meta(meta)
 
         doc.meta.url = path.join { '/', u.dirname(file):sub(5) }
 
-        if has_content then doc.meta.content = u.normalize_image_src(doc.blocks, doc.meta.url) end
+        if has_content then doc.meta.content = u.normalize_relative_path(doc.blocks, doc.meta.url) end
 
         meta[collection]:insert(doc.meta)
 
