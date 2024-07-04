@@ -4,13 +4,9 @@ local path = require 'pandoc.path'
 local function get_output_path(i, dir, page_path)
   local output_dir = 'dist/' .. dir:sub(5)
 
-  if i == 1 then
-    return path.join { output_dir, 'index.html' }
-  else
-    local output = path.join { output_dir, page_path, i, 'index.html' }
-    os.execute('mkdir -pv ' .. u.dirname(output))
-    return output
-  end
+  local output = path.join { output_dir, page_path, i, 'index.html' }
+  os.execute('mkdir -pv ' .. u.dirname(output))
+  return output
 end
 
 function Meta(meta)
@@ -55,7 +51,9 @@ function Meta(meta)
 
         doc.meta.url = path.join { '/', u.dirname(file):sub(5) }
 
-        if has_content then doc.meta.content = u.normalize_relative_path(doc.blocks, doc.meta.url) end
+        if has_content then
+          doc.meta.content = u.normalize_relative_paths(doc.blocks, doc.meta.url)
+        end
 
         meta[collection]:insert(doc.meta)
 
@@ -63,8 +61,12 @@ function Meta(meta)
       end
 
       local doc = pandoc.Pandoc({}, meta)
-      local output_path = get_output_path(i, dir, page_path)
 
+      if i == 1 then
+        u.create_html_from_doc(collection, doc, path.join { 'dist', dir:sub(5), 'index.html' })
+      end
+
+      local output_path = get_output_path(i, dir, page_path)
       u.create_html_from_doc(collection, doc, output_path)
     end
 
