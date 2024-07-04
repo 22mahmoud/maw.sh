@@ -14,8 +14,9 @@ featured-image:
   photo: hand-in-hand.jpg
 ---
 
+
 Recently, I discovered that I can track the likes, reposts, and comments on
-social media posts that include a links to any blog post or thought from my
+social media posts that include links to any blog post or thought from my
 website using webmentions. To learn more about webmentions, you can visit the
 [indieweb](https://indieweb.org/Webmention).
 
@@ -52,9 +53,9 @@ main
 
 ## How To fetch recent webmentions only
 
-I need to run the script periodically, So I want to avoid over fetching every
-time I fetch webmentions, and fortunately `webmentions.io` have a query-param
-called `since` which only return webmentions after this date.
+I need to run the script periodically, So I want to avoid over-fetching every
+time I fetch webmentions, and fortunately `webmentions.io` has a query-param
+called `since` which only returns webmentions after this date.
 
 ```sh
 # [!code word:since=2024-06-29T15\:37\:22Z]
@@ -67,7 +68,7 @@ fetch_webmentions() {
 ```
 
 So to keep track of the date, we need to save this data somewhere in the
-codebase, and since i have `metadata.yaml` file, So why not to save it there.
+codebase, and since I have `metadata.yaml` file, why not save it there?
 
 ```yaml
 # metadata.yaml
@@ -87,9 +88,9 @@ fetch_webmentions() {
 }
 ```
 
-Finally after finish the whole script which will be showen latter on this blog,
-we need to save the latest date to `yaml` file, so wen can use it the next run
-of `webmention` script.
+Finally, after finishing the whole script which will be shown later on this
+blog, we need to save the latest date to `yaml` file, so wen can use it in the
+next run of `webmention` script.
 
 ```sh
 main() {
@@ -100,10 +101,9 @@ main() {
 }
 ```
 
-
 ## How to format the `json` response
 
-we need to transform the actual response of the `webmention` api, from this
+we need to transform the actual response of the `webmention` API, from this
 format:
 
 ```jsonc
@@ -140,14 +140,14 @@ To this format:
 ]
 ```
 
-So we need to process the `json` like that:
+So we need to process the `json` like this:
 
 1. remove my domain from each `wm-target`, so we can get the actual path
 1. filter-out any webmentions for the home page "https://maw.sh/"
 1. group-by the `wm-target` so now have an array of arrays grouped by the same
    target
 1. after that map each to be an object with `target` and `properties`
-   and `properties` will contain array of e.g: `{"property": "likes-of", "entries": []}`
+   and `properties` will contain an array of e.g: `{"property": "likes-of", "entries": []}`
 
 
 ```sh
@@ -174,11 +174,11 @@ main () {
 ## Loop through each target and save the data
 
 Now We need to go through each target and save the data in `yaml` format, or in
-`json` but for me, I will go with `yaml` becuase i will use this file latter
+`json` but for me, I will go with `yaml` because I will use this file latter
 with pandoc as metadata to display the webmentions
 
-So with `-c,--compact-output`, jq will print each object into spreate line so we
-iterate with while loop for each entry and save the file
+So with `-c,--compact-output`, jq will print each object into separate lines so
+we iterate with a while loop for each entry and save the file
 
 ```sh
 main() {
@@ -191,9 +191,10 @@ main() {
 }
 ```
 
-For each file we will see if there existing data, we will need at first merge two of theme and make
-sure the merged data have only unique data, so we will compare with `wm-id` with `jq` using
-`unique_by(:property_name:)` function and plus `+` operator to merge two arrays
+For each file we will see if there existing data, we will need to first merge
+two of them and make sure the merged data have unique data, so we will compare
+with `wm-id` with `jq` using `unique_by(:property_name:)` function and plus `+`
+operator to merge two arrays
 
 ```sh
 merge_entries() {
@@ -206,7 +207,7 @@ merge_entries() {
 }
 ```
 
-And finally here the final look of the `save_into_file` function
+And finally here is the final look at the `save_into_file` function
 
 ```sh
 save_into_file() {
@@ -247,4 +248,4 @@ pandoc --metadata-file=comments.yaml index.md -o index.html
 ```
 Another enhancement we can write `github` workflow just to run [ths
 script](https://github.com/22mahmoud/maw.sh/blob/master/bin/webmention) every 12 hours instead to
-run it manaully from time time.
+run it manually from time to time.
