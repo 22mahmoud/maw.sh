@@ -1,6 +1,27 @@
 <div class="webmentions-wrapper">
   <h2 id="webmentions">Webmentions</h2>
 
+  <div class="webmentions-form">
+    <p>Have you written a <a href="https://indieweb.org/Webmention">response</a> to this? Let me know the URL:</p>
+    <form action="https://webmention.io/maw.sh/webmention" method="post">
+      <input
+        required=""
+        id="webmention-url"
+        type="url"
+        name="source"
+        value=""
+        placeholder="URL of your article"
+      />
+      <input
+        type="hidden"
+        name="target"
+        value="https://andrei.xyz/post/making-the-perfect-desk/"
+        value="$base_url$/$path$"
+      />
+      <input class="button" type="submit" name="submit" value="Send" />
+    </form>
+  </div>
+
   $if(like-of)$
   <div class="webmentions-bookmarks">
     <h3>likes <span>($like-of/length$)</span></h3>
