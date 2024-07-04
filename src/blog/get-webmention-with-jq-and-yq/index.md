@@ -246,6 +246,6 @@ and i use it as `metadata` with `pandoc` and render it with pandoc template.
 
 pandoc --metadata-file=comments.yaml index.md -o index.html
 ```
-Another enhancement we can write `github` workflow just to run [ths
+Another enhancement we can write `github` workflow just to run [this
 script](https://github.com/22mahmoud/maw.sh/blob/master/bin/webmention) every 12 hours instead to
 run it manually from time to time.
