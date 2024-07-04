@@ -10,7 +10,8 @@ keywords:
   - yq
 category: shell
 post: true
-featured-image: hand-in-hand.jpg
+featured-image:
+  photo: hand-in-hand.jpg
 ---
 
 Recently, I discovered that I can track the likes, reposts, and comments on

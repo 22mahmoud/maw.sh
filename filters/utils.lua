@@ -122,7 +122,7 @@ function M.get_collection_files(path, opts)
   )(cmd)
 end
 
-function M.create_html_from_doc(temp, doc, out)
+function M.create_html_from_doc(temp, doc, out, canonical)
   return pandoc.system.with_temporary_directory(temp, function(tmpdir)
     local src = ('%s/input.json'):format(tmpdir)
 
@@ -130,10 +130,25 @@ function M.create_html_from_doc(temp, doc, out)
     src_fh:write(pandoc.write(doc, 'json'))
     src_fh:close()
 
-    local pandoc_command = 'pandoc -d pandoc.yaml %s -f json -o %s'
-    os.execute(pandoc_command:format(src, out))
+    local path = M.dirname(out):gsub('^dist/', '')
+    local canonical_var = canonical and ('--variable canonical=%s'):format(canonical) or ''
+
+    local pandoc_command = 'pandoc %s --variable path=%s -d pandoc.yaml %s -f json -o %s'
+    os.execute(pandoc_command:format(canonical_var, path, src, out))
     print('[html page generated]: ' .. out)
   end)
+end
+
+local function get_image_meta(metadata, action)
+  if type(metadata) == 'table' then
+    for key, value in pairs(metadata) do
+      if key == 'photo' then
+        metadata[key] = action(value[1])
+      else
+        get_image_meta(value, action)
+      end
+    end
+  end
 end
 
 function M.normalize_relative_paths(blocks, url)
@@ -146,6 +161,20 @@ function M.normalize_relative_paths(blocks, url)
       return image
     end,
   }).content
+end
+
+function M.normalize_meta_relative_paths(meta, url)
+  local function action(value)
+    local src = pandoc.utils.stringify(value or '')
+
+    if not path.is_relative(src) then return end
+
+    return path.normalize(path.join { url, src })
+  end
+
+  get_image_meta(meta, action)
+
+  return meta
 end
 
 return M

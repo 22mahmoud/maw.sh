@@ -51,6 +51,8 @@ function Meta(meta)
 
         doc.meta.url = path.join { '/', u.dirname(file):sub(5) }
 
+        u.normalize_meta_relative_paths(doc.meta, doc.meta.url)
+
         if has_content then
           doc.meta.content = u.normalize_relative_paths(doc.blocks, doc.meta.url)
         end
@@ -62,12 +64,14 @@ function Meta(meta)
 
       local doc = pandoc.Pandoc({}, meta)
 
+      local output_path = get_output_path(i, dir, page_path)
+
       if i == 1 then
         u.create_html_from_doc(collection, doc, path.join { 'dist', dir:sub(5), 'index.html' })
+        u.create_html_from_doc(collection, doc, output_path, dir:gsub('^src/', ''))
+      else
+        u.create_html_from_doc(collection, doc, output_path)
       end
-
-      local output_path = get_output_path(i, dir, page_path)
-      u.create_html_from_doc(collection, doc, output_path)
     end
 
     os.execute('mkdir -pv ' .. tmp)

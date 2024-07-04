@@ -19,7 +19,7 @@
       title="Mahmoud Ashraf's thoughts feed"
     />
 
-    <link rel="canonical" href="$base_url$/$path$" />
+    <link rel="canonical" href="$base_url$/$if(canonical)$$canonical$$else$$path$$endif$" />
 
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -49,7 +49,7 @@
     <meta property="og:url" href="$base_url$/$path$" />
     <meta
       property="og:image"
-      content="$if(og-image)$ $base_url$$og-image$ $elseif(featured-image)$ $base_url$$featured-image$ $else$ $base_url$/avatar.webp $endif$"
+      content="$if(og-image)$ $base_url$$og-image$ $elseif(featured-image.photo)$ $base_url$$featured-image.photo.url$ $else$ $base_url$/avatar.webp $endif$"
     />
     <meta property="og:site_name" content="$base_url$">
     <meta property="og:locale" content="$locale$">

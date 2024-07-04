@@ -29,7 +29,12 @@ function Meta(meta)
         if groupValue and not meta[groupValue] then meta[groupValue] = pandoc.MetaList {} end
 
         doc.meta.url = path.join { '/', u.dirname(file):sub(5) }
-        if has_content then doc.meta.content = u.normalize_relative_paths(doc.blocks, doc.meta.url) end
+
+        u.normalize_meta_relative_paths(doc.meta, doc.meta.url)
+
+        if has_content then
+          doc.meta.content = u.normalize_relative_paths(doc.blocks, doc.meta.url)
+        end
 
         if groupValue then
           meta[groupValue]:insert(doc.meta)

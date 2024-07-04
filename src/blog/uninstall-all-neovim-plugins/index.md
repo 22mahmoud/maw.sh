@@ -8,7 +8,8 @@ keywords:
   - neovim
   - vim
 category: vim
-featured-image: matrix.jpg
+featured-image:
+  photo: matrix.jpg
 post: true
 ---
 

@@ -9,8 +9,13 @@
   </a>
 
   <div class="e-content" style="margin-top: 1.5rem">
-    $if(featured-image)$
-    <img loading="lazy" hidden class="u-featured" src="$featured-image$" />
+    $if(featured-image.photo)$
+    <img
+      loading="lazy"
+      hidden
+      class="u-featured"
+      src="$featured-image.photo.url$"
+    />
     $endif$
 
     <!-- -->$body$<!-- -->

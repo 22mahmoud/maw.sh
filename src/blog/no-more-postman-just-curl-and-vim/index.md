@@ -10,7 +10,8 @@ keywords:
   - vim
 category: vim
 post: true
-featured-image: cover.webp
+featured-image:
+  photo: cover.webp
 ---
 
 Postman one of the most popular API client tool, for send and view the response

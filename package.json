@@ -11,11 +11,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@shikijs/transformers": "^1.10.0",
-    "@types/node": "^20.14.2",
+    "@shikijs/transformers": "^1.10.1",
+    "@types/node": "^20.14.9",
     "pandoc-filter": "^2.2.0",
-    "shiki": "^1.10.0",
+    "shiki": "^1.10.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.3"
   }
 }

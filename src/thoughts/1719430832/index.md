@@ -1,7 +1,8 @@
 ---
 date: 2024-06-26T22:40+03:00
 thought: true
-featured-image: footer-screenshot.png
+featured-image:
+  photo: footer-screenshot.png
 ---
 
 I really like my new website web-buttons, they give me a nostalgic feeling
