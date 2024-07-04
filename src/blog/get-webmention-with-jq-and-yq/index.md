@@ -89,7 +89,7 @@ fetch_webmentions() {
 ```
 
 Finally, after finishing the whole script which will be shown later on this
-blog, we need to save the latest date to `yaml` file, so wen can use it in the
+blog, we need to save the latest date to `yaml` file, so We can use it in the
 next run of `webmention` script.
 
 ```sh
@@ -174,7 +174,7 @@ main () {
 ## Loop through each target and save the data
 
 Now We need to go through each target and save the data in `yaml` format, or in
-`json` but for me, I will go with `yaml` because I will use this file latter
+`json` but for me, I will go with `yaml` because I will use this file later
 with pandoc as metadata to display the webmentions
 
 So with `-c,--compact-output`, jq will print each object into separate lines so
@@ -233,7 +233,7 @@ save_into_file() {
 
 ## Conclusion
 
-Now each [blog](/blog) or [thought](/thoughts) have a `comment.yaml` in the same directory,
+Now each [blog](/blog) or [thought](/thoughts) has a `comment.yaml` in the same directory,
 and i use it as `metadata` with `pandoc` and render it with pandoc template.
 
 ```sh
