@@ -18,37 +18,18 @@ local function get_file_absolute_path(file)
   return path.normalize(path.join { '/', u.dirname(current_file):gsub('src/', ''), file })
 end
 
-local function slugify(url)
-  local slugified = url:gsub('[^%w_]', '_')
-  return slugified
-end
+local function slugify(url) return url:gsub('[^%w_]', '_') end
 
-local function get_file_extension(file)
-  local _, ext = path.split_extension(file)
-  return ext
-end
+local function get_file_extension(file) return select(2, path.split_extension(file)) end
 
-local function get_file_name(file)
-  local name, _ = path.split_extension(file)
-  return name
-end
+local function get_file_name(file) return select(1, path.split_extension(file)) end
 
-local function is_gif(file)
-  local ext = get_file_extension(file)
-  return ext == '.gif'
-end
+local function is_gif(file) return get_file_extension(file) == '.gif' end
 
-local function is_video(file)
-  local ext = get_file_extension(file)
-  return ext == '.mp4'
-end
+local function is_video(file) return get_file_extension(file) == '.mp4' end
 
 local function get_thumb_path(file)
-  return path.join {
-    u.dirname(file),
-    'thumbs',
-    ('%s.webp'):format(get_file_name(u.basename(file))),
-  }
+  return path.join { u.dirname(file), 'thumbs', ('%s.webp'):format(get_file_name(u.basename(file))) }
 end
 
 local function download_image(url, output)
@@ -62,7 +43,6 @@ local function get_image_size(file)
     or 'identify -format "%%w %%h" %s | head -n1'
 
   local result = u.shell(cmd:format(file)) or ''
-
   local width, height = result:match '(%d+)[%sx](%d+)'
 
   return tonumber(width), tonumber(height)
@@ -77,17 +57,16 @@ end
 local function process_image(input, output)
   if u.file_exists(output) then return end
 
-  local output_path = u.dirname(output)
   local tmp_file = path.join { tmp, images, slugify(output) }
 
-  os.execute(('mkdir -pv %s'):format(output_path))
+  os.execute(('mkdir -pv %s'):format(u.dirname(output)))
 
   if u.file_exists(tmp_file) then
     os.execute(('cp -v %s %s'):format(tmp_file, output))
     return
   end
 
-  local width, _ = get_image_size(input)
+  local width = get_image_size(input)
   local resize_opts = width > 768 and '-resize 768 0' or ''
 
   os.execute(('cwebp %s -q 90 %s -o %s'):format(resize_opts, input, output))
@@ -112,8 +91,7 @@ end
 local function get_image(img)
   img.attributes.loading = 'lazy'
 
-  local absolute_url = nil
-  local absolute_thumb = nil
+  local absolute_url, absolute_thumb
 
   if is_remote_src(img.src) then
     absolute_url, absolute_thumb = handle_remote_image(img)
@@ -153,15 +131,11 @@ end
 
 local function get_image_inline(el, action)
   if el.format == 'html' then
-    -- Find and process <img> tags
-    local html_content = el.text
-    local match = html_content:gmatch '<img.*/>'
-
-    for img_tag in match do
+    el.text = el.text:gsub('<img.->', function(img_tag)
       local value = img_tag:match 'src="([^"]+)"'
-      el.text = action(value)
-    end
 
+      return action(value)
+    end)
     return el
   end
 end
