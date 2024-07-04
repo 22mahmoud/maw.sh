@@ -8,6 +8,7 @@ table-of-contents: true
 filters:
   - pagination.lua
   - collections.lua
+  - heading_anchor.lua
   - img_filter.lua
   - include-code-files.lua
   - shiki.js
