@@ -18,6 +18,7 @@ jobs:
           wget $pandoc_url
           tar -xvf $pandoc_linux
           echo "$(pwd)/$pandoc/bin" >> $GITHUB_PATH
+          cat $GITHUB_PATH
           pandoc --version
           # sudo ln -s "$(pwd)/$pandoc/bin/pandoc" /usr/local/bin
 
