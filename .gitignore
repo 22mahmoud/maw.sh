@@ -3,3 +3,4 @@ dist
 .luarc.json
 
 node_modules
+my.secrets
