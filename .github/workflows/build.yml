@@ -18,7 +18,7 @@ jobs:
           wget $pandoc_url
           tar -xvf $pandoc_linux
           echo "$(pwd)/$pandoc/bin" >> $GITHUB_PATH
-          echo "$(pwd)/$pandoc/bin" >>"
+          echo "$(pwd)/$pandoc/bin"
 
       - name: Checkout the source repository
         uses: actions/checkout@v3
