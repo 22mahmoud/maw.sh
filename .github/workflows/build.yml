@@ -14,7 +14,7 @@ jobs:
           pandoc: pandoc-3.1.8
           pandoc_linux: pandoc-3.1.8-linux-amd64.tar.gz
         run: |
-          sudo apt install imagemagick
+          sudo apt install imagemagick ffmpeg
           wget $pandoc_url
           tar -xvf $pandoc_linux
           sudo cp -r $pandoc/bin/* /usr/local/bin
@@ -23,10 +23,26 @@ jobs:
       - name: Checkout the source repository
         uses: actions/checkout@v3
 
+      - name: Restore cached Primes
+        id: cache-primes-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            .tmp
+          key: ${{ runner.os }}-primes
+
       - name: build
         run: |
           make clean
           make build -j$(nproc)
+
+      - name: Save Primes
+        id: cache-primes-save
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            .tmp
+          key: ${{ steps.cache-primes-restore.outputs.cache-primary-key }}
 
       - name: install SSH key
         uses: shimataro/ssh-key-action@v2
