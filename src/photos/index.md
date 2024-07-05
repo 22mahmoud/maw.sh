@@ -1,5 +1,6 @@
 ---
 title-prefix: Photos
+draft: true
 ---
 
 <style>
