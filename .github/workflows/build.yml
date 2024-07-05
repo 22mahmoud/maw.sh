@@ -14,6 +14,9 @@ jobs:
       - name: instal deps
         run: |
           sudo apt install pandoc
+      - name: check pandoc version
+        run: |
+          pandoc --version
 
       - name: build
         run: |
