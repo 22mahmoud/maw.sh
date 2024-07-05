@@ -21,7 +21,7 @@ jobs:
 
           magick_url: https://imagemagick.org/archive/binaries/magick
 
-          ffprobe_url: https://github.com/ffbinaries/ffbinaries-prebuilt/releases/download/v6.1/ffprobe-6.1-win-64.zip
+          ffprobe_url: https://github.com/ffbinaries/ffbinaries-prebuilt/releases/download/v6.1/ffprobe-6.1-linux-64.zip
           ffprobe_linux: ffprobe-6.1-linux-64.zip
         run: |
           wget $magick_url; wget $ffprobe_url; wget $pandoc_url
