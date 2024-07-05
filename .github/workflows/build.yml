@@ -40,6 +40,9 @@ jobs:
           echo "Hello, from act" > foo.txt
 
       - name: rsync over SSH
+        env:
+          SSH_PORT: ${{ secrets.port }}
+          SSH_USERNAME: ${{ secrets.username }}
+          SSH_HOST: ${{ secrets.host }}
         run: |
-          sudo apt install rsync
-          rsync -avz -e "ssh --port ${{ secrets.PORT }}" ./foo.txt ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/foo.txt
+          rsync -avz -e "ssh -p $SSH_PORT" ./foo.txt $SSH_USERNAME@$SSH_HOST:~/foo.txt
