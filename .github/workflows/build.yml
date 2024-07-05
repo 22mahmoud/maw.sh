@@ -41,8 +41,8 @@ jobs:
 
       - name: rsync over SSH
         env:
-          SSH_PORT: ${{ secrets.port }}
-          SSH_USERNAME: ${{ secrets.username }}
-          SSH_HOST: ${{ secrets.host }}
+          SSH_PORT: ${{ secrets.PORT }}
+          SSH_USERNAME: ${{ secrets.USERNAME }}
+          SSH_HOST: ${{ secrets.HOST }}
         run: |
           rsync -avz -e "ssh -p $SSH_PORT" ./foo.txt $SSH_USERNAME@$SSH_HOST:~/foo.txt
