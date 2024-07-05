@@ -41,7 +41,12 @@
 
   <section class="e-content">
     $if(featured-image.photo)$
-    <img loading="lazy" hidden class="u-featured" src="$featured-image.photo.url$" />
+    <img
+      loading="lazy"
+      hidden
+      class="u-featured"
+      src="$featured-image.photo.original$"
+    />
     $endif$
 
     <!-- -->

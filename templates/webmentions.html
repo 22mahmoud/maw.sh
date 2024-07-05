@@ -2,7 +2,11 @@
   <h2 id="webmentions">Webmentions</h2>
 
   <div class="webmentions-form">
-    <p>Have you written a <a href="https://indieweb.org/Webmention">response</a> to this? Let me know the URL:</p>
+    <p>
+      Have you written a
+      <a href="https://indieweb.org/Webmention">response</a> to this? Let me
+      know the URL:
+    </p>
     <form action="https://webmention.io/maw.sh/webmention" method="post">
       <input
         required=""
@@ -12,11 +16,7 @@
         value=""
         placeholder="URL of your article"
       />
-      <input
-        type="hidden"
-        name="target"
-        value="$base_url$/$path$/"
-      />
+      <input type="hidden" name="target" value="$base_url$/$path$/" />
       <input class="button" type="submit" name="submit" value="Send" />
     </form>
   </div>
@@ -28,14 +28,18 @@
       $for(like-of)$
       <li class="bookmark-item h-entry">
         <a href="$like-of.author.url$" class="bookmark-link u-like-of">
-          <img
-            loading="lazy"
-            alt="$like-of.author.name$'s photo"
-            width="$like-of.author.photo.width$"
-            height="$like-of.author.photo.height$"
-            src="$like-of.author.photo.thumb$"
-            class="bookmark-author-photo"
-          />
+          <picture>
+            <source srcset="$like-of.author.photo.avif$" type="image/avif" />
+            <source srcset="$like-of.author.photo.webp$" type="image/webp" />
+            <img
+              loading="lazy"
+              alt="$like-of.author.name$'s photo"
+              class="bookmark-author-photo"
+              src="$like-of.author.photo.original$"
+              width="$like-of.author.photo.width$"
+              height="$like-of.author.photo.height$"
+            />
+          </picture>
         </a>
       </li>
       $endfor$
@@ -52,14 +56,18 @@
       $for(repost-of)$
       <li class="bookmark-item h-entry">
         <a href="$repost-of.author.url$" class="bookmark-link u-repost-of">
-          <img
-            loading="lazy"
-            alt="$repost-of.author.name$'s photo"
-            width="$repost-of.author.photo.width$"
-            height="$repost-of.author.photo.height$"
-            src="$repost-of.author.photo.thumb$"
-            class="bookmark-author-photo"
-          />
+          <picture>
+            <source srcset="$repost-of.author.photo.avif$" type="image/avif" />
+            <source srcset="$repost-of.author.photo.webp$" type="image/webp" />
+            <img
+              loading="lazy"
+              alt="$repost-of.author.name$'s photo"
+              class="bookmark-author-photo"
+              src="$repost-of.author.photo.original$"
+              width="$repost-of.author.photo.width$"
+              height="$repost-of.author.photo.height$"
+            />
+          </picture>
         </a>
       </li>
       $endfor$
@@ -76,14 +84,24 @@
       $for(bookmark-of)$
       <li class="bookmark-item h-entry">
         <a href="$bookmark-of.author.url$" class="bookmark-link u-bookmark-of">
-          <img
-            loading="lazy"
-            alt="$bookmark-of.author.name$'s photo"
-            width="$bookmark-of.author.photo.width$"
-            height="$bookmark-of.author.photo.height$"
-            src="$bookmark-of.author.photo.thumb$"
-            class="bookmark-author-photo"
-          />
+          <picture>
+            <source
+              srcset="$bookmark-of.author.photo.avif$"
+              type="image/avif"
+            />
+            <source
+              srcset="$bookmark-of.author.photo.webp$"
+              type="image/webp"
+            />
+            <img
+              loading="lazy"
+              alt="$bookmark-of.author.name$'s photo"
+              class="bookmark-author-photo"
+              src="$bookmark-of.author.photo.original$"
+              width="$bookmark-of.author.photo.width$"
+              height="$bookmark-of.author.photo.height$"
+            />
+          </picture>
         </a>
       </li>
       $endfor$
@@ -101,14 +119,19 @@
     <ul>
       $for(in-reply-to)$
       <li class="comment-item p-comment h-entry">
-        <img
-          loading="lazy"
-          alt="$in-reply-to.author.name$'s photo"
-          width="$in-reply-to.author.photo.width$"
-          height="$in-reply-to.author.photo.height$"
-          src="$in-reply-to.author.photo.thumb$"
-          class="comment-author-photo"
-        />
+        <picture>
+          <source srcset="$in-reply-to.author.photo.avif$" type="image/avif" />
+          <source srcset="$in-reply-to.author.photo.webp$" type="image/webp" />
+          <img
+            loading="lazy"
+            alt="$in-reply-to.author.name$'s photo"
+            width="$in-reply-to.author.photo.width$"
+            height="$in-reply-to.author.photo.height$"
+            src="$in-reply-to.author.photo.original$"
+            class="comment-author-photo"
+          />
+        </picture>
+
         <div class="comment-content">
           <div class="comment-header">
             <strong>

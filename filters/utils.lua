@@ -10,6 +10,8 @@ function M.trim(s) return (s:gsub('^%s*(.-)%s*$', '%1')) end
 
 function M.starts_with(str, prefix) return str:sub(1, #prefix) == prefix end
 
+function M.strip(s) return s:match '^%s*(.-)%s*$' end
+
 function M.shell(command)
   local pipe = io.popen(command, 'r')
   if not pipe then return end

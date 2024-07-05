@@ -18,18 +18,27 @@ local function get_file_absolute_path(file)
   return path.normalize(path.join { '/', u.dirname(current_file):gsub('src/', ''), file })
 end
 
-local function slugify(url) return url:gsub('[^%w_]', '_') end
+local function slugify(url)
+  local slugified = url:gsub('[^%w_]', '_')
+  return slugified
+end
 
-local function get_file_extension(file) return select(2, path.split_extension(file)) end
+local function get_file_extension(file)
+  local _, ext = path.split_extension(file)
+  return ext
+end
 
-local function get_file_name(file) return select(1, path.split_extension(file)) end
+local function get_file_name(file)
+  local name, _ = path.split_extension(file)
+  return name
+end
 
 local function is_gif(file) return get_file_extension(file) == '.gif' end
 
 local function is_video(file) return get_file_extension(file) == '.mp4' end
 
 local function get_thumb_path(file)
-  return path.join { u.dirname(file), 'thumbs', ('%s.webp'):format(get_file_name(u.basename(file))) }
+  return path.join { u.dirname(file), 'thumbs', get_file_name(u.basename(file)) }
 end
 
 local function download_image(url, output)
@@ -54,24 +63,41 @@ local function set_image_size(img, file)
   if height then img.attributes.height = height end
 end
 
-local function process_image(input, output)
-  if u.file_exists(output) then return end
+local function process_image(input, output_base)
+  local avif_output = output_base .. '.avif'
+  local webp_output = output_base .. '.webp'
+  local original_output = output_base .. get_file_extension(input)
 
-  local tmp_file = path.join { tmp, images, slugify(output) }
+  if
+    u.file_exists(avif_output)
+    and u.file_exists(webp_output)
+    and u.file_exists(original_output)
+  then
+    return
+  end
 
-  os.execute(('mkdir -pv %s'):format(u.dirname(output)))
+  local tmp_avif = path.join { tmp, images, slugify(avif_output) }
+  local tmp_webp = path.join { tmp, images, slugify(webp_output) }
+  local tmp_original = path.join { tmp, images, slugify(original_output) }
 
-  if u.file_exists(tmp_file) then
-    os.execute(('cp -v %s %s'):format(tmp_file, output))
+  os.execute(('mkdir -pv %s'):format(u.dirname(output_base)))
+
+  if u.file_exists(tmp_avif) and u.file_exists(tmp_webp) and u.file_exists(tmp_original) then
+    os.execute(('cp -v %s %s'):format(tmp_avif, avif_output))
+    os.execute(('cp -v %s %s'):format(tmp_webp, webp_output))
     return
   end
 
   local width = get_image_size(input)
-  local resize_opts = width > 768 and '-resize 768 0' or ''
+  local resize_opts = width > 768 and '-resize 768' or ''
 
-  os.execute(('cwebp %s -q 90 %s -o %s'):format(resize_opts, input, output))
-  os.execute(('mkdir -pv %s'):format(u.dirname(tmp_file)))
-  os.execute(('cp -v %s %s'):format(output, tmp_file))
+  os.execute(('magick %s %s %s'):format(input, resize_opts, original_output))
+  os.execute(('magick %s %s %s'):format(input, resize_opts, avif_output))
+  os.execute(('magick %s -quality 80 %s %s'):format(input, resize_opts, webp_output))
+
+  os.execute(('cp -v %s %s'):format(original_output, tmp_original))
+  os.execute(('cp -v %s %s'):format(avif_output, tmp_avif))
+  os.execute(('cp -v %s %s'):format(webp_output, tmp_webp))
 end
 
 local function handle_remote_image(img)
@@ -107,12 +133,12 @@ local function get_image(img)
   if is_gif(img.src) or is_video(img.src) then
     set_image_size(img, input_file)
     img.src = absolute_url
+
     return img
   end
 
   process_image(input_file, output_file)
-  set_image_size(img, output_file)
-  img.src = absolute_thumb
+  set_image_size(img, output_file .. '.avif')
 
   return img, absolute_url, absolute_thumb
 end
@@ -140,53 +166,75 @@ local function get_image_inline(el, action)
   end
 end
 
+local function get_inline_image(img, absolute_url, output_base)
+  local avif_src = output_base .. '.avif'
+  local webp_src = output_base .. '.webp'
+  local original_src = output_base .. get_file_extension(absolute_url)
+
+  local attrs = ''
+  for k, v in pairs(img.attributes) do
+    attrs = ('%s %s="%s"'):format(attrs, k, v)
+  end
+
+  local tag = [[<a href="%s">
+    <picture>
+      <source srcset="%s" type="image/avif" />
+      <source srcset="%s" type="image/webp" />
+      <img loading="lazy" src="%s" %s />
+    </picture>
+  </a>]]
+
+  return (tag):format(absolute_url, avif_src, webp_src, original_src, attrs)
+end
+
 return {
+  {
+    Inline = function(el)
+      local function action(value)
+        local temp_img = pandoc.Image({}, value)
+        local img, absolute_url, output_base = get_image(temp_img)
+
+        return get_inline_image(img, absolute_url, output_base)
+      end
+
+      return get_image_inline(el, action)
+    end,
+  },
   {
     Meta = function(meta)
       local function action(value)
         local temp_img = pandoc.Image({}, pandoc.utils.stringify(value))
 
-        local img, absolute_url, absolute_thumb, _ = get_image(temp_img)
+        local img, absolute_url, output_base = get_image(temp_img)
+
+        local avif_src = output_base .. '.avif'
+        local webp_src = output_base .. '.webp'
+        local original_src = output_base .. get_file_extension(absolute_url)
 
         return {
           url = absolute_url,
-          thumb = absolute_thumb,
+          webp = webp_src,
+          avif = avif_src,
+          original = original_src,
           width = img.attributes.width,
           height = img.attributes.height,
         }
       end
 
       get_image_meta(meta, action)
+
       return meta
     end,
   },
   {
     Image = function(original_img)
-      local img, absolute_url, _ = get_image(original_img)
+      local img, absolute_url, output_base = get_image(original_img)
 
       if is_gif(img.src) or is_video(img.src) then return img end
 
-      return pandoc.Link(img, absolute_url)
-    end,
-  },
-  {
-    Inline = function(el)
-      local function action(value)
-        local temp_img = pandoc.Image({}, value)
+      local inline_img = get_inline_image(img, absolute_url, output_base)
 
-        local img, absolute_url, absolute_thumb, _ = get_image(temp_img)
-
-        local attrs = ''
-        for k, v in pairs(img.attributes) do
-          attrs = ('%s %s="%s"'):format(attrs, k, v)
-        end
-
-        local img_tag = [[<a href="%s"><img loading="lazy" src="%s" %s /></a>]]
-
-        return img_tag:format(absolute_url, absolute_thumb, attrs)
-      end
-
-      return get_image_inline(el, action)
+      return pandoc.RawInline('html', inline_img)
     end,
   },
 }
