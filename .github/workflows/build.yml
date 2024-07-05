@@ -8,26 +8,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - name: instal deps
-      #   env:
-      #     pandoc_url: https://github.com/jgm/pandoc/releases/download/3.1.8/pandoc-3.1.8-linux-amd64.tar.gz
-      #     pandoc: pandoc-3.1.8
-      #     pandoc_linux: pandoc-3.1.8-linux-amd64.tar.gz
-      #   run: |
-      #     sudo apt install imagemagick
-      #     wget $pandoc_url
-      #     tar -xvf $pandoc_linux
-      #     sudo cp -r $pandoc/bin/* /usr/local/bin
-      #     sudo cp -r $pandoc/share/* /usr/local/share
-      #
-      # - name: Checkout the source repository
-      #   uses: actions/checkout@v3
-      #
-      # - name: build
-      #   run: |
-      #     make clean
-      #     make build -j$(nproc)
+      - name: instal deps
+        env:
+          pandoc_url: https://github.com/jgm/pandoc/releases/download/3.1.8/pandoc-3.1.8-linux-amd64.tar.gz
+          pandoc: pandoc-3.1.8
+          pandoc_linux: pandoc-3.1.8-linux-amd64.tar.gz
+        run: |
+          sudo apt install imagemagick
+          wget $pandoc_url
+          tar -xvf $pandoc_linux
+          sudo cp -r $pandoc/bin/* /usr/local/bin
+          sudo cp -r $pandoc/share/* /usr/local/share
 
+      - name: Checkout the source repository
+        uses: actions/checkout@v3
+
+      - name: build
+        run: |
+          make clean
+          make build -j$(nproc)
 
       - name: install SSH key
         uses: shimataro/ssh-key-action@v2
@@ -39,14 +38,10 @@ jobs:
       - name: add known_hosts
         run: ssh-keyscan -p ${{ secrets.PORT }} -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
-      - name: add file
-        run: |
-          echo "Hello, from act" > foo.txt
-
       - name: rsync over SSH
         env:
           SSH_PORT: ${{ secrets.PORT }}
           SSH_USERNAME: ${{ secrets.USERNAME }}
           SSH_HOST: ${{ secrets.HOST }}
         run: |
-          rsync -avz -e "ssh -p $SSH_PORT" ./foo.txt $SSH_USERNAME@$SSH_HOST:~/foo.txt
+          rsync -avz -e "ssh -p $SSH_PORT" dist $SSH_USERNAME@$SSH_HOST:~/website
