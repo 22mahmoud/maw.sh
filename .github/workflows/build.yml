@@ -27,7 +27,7 @@ jobs:
         run: |
           pandoc --version
 
-      # - name: build
-      #   run: |
-      #     make clean build
+      - name: build
+        run: |
+          make clean build
 
