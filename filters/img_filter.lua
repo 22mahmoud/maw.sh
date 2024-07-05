@@ -91,9 +91,9 @@ local function process_image(input, output_base)
   local width = get_image_size(input)
   local resize_opts = width > 768 and '-resize 768' or ''
 
-  os.execute(('convert %s %s %s'):format(input, resize_opts, original_output))
-  os.execute(('convert %s %s %s'):format(input, resize_opts, avif_output))
-  os.execute(('convert %s -quality 80 %s %s'):format(input, resize_opts, webp_output))
+  os.execute(('magick %s %s %s'):format(input, resize_opts, original_output))
+  os.execute(('magick %s %s %s'):format(input, resize_opts, avif_output))
+  os.execute(('magick %s -quality 80 %s %s'):format(input, resize_opts, webp_output))
 
   os.execute(('cp -v %s %s'):format(original_output, tmp_original))
   os.execute(('cp -v %s %s'):format(avif_output, tmp_avif))
@@ -105,8 +105,18 @@ local function handle_remote_image(img)
   local ext = get_file_extension(img.src)
 
   local download_path = path.join { dist, remote_images, slug .. ext }
+  local tmp_path = path.join { tmp, images, slug }
 
-  if not u.file_exists(download_path) then download_image(img.src, download_path) end
+  os.execute(('mkdir -pv %s'):format(u.dirname(download_path)))
+
+  if u.file_exists(tmp_path) then
+    os.execute(('cp -v %s %s'):format(tmp_path, download_path))
+  else
+    if not u.file_exists(download_path) then
+      download_image(img.src, download_path)
+      os.execute(('cp -v %s %s'):format(download_path, tmp_path))
+    end
+  end
 
   local absolute_url = path.join { '/', remote_images, slug .. ext }
   local absolute_thumb = get_thumb_path(absolute_url)
