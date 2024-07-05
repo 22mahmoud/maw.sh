@@ -3,6 +3,10 @@ name: build
 on:
   workflow_dispatch:
   push:
+  workflow_run:
+    workflows: ['update_webmentions']
+    types:
+      - completed
 
 jobs:
   build:
@@ -34,7 +38,7 @@ jobs:
 
       - name: build
         run: |
-          make clean
+          make distclean
           make build -j$(nproc)
 
       - name: Save Primes
