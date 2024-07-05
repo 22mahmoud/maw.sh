@@ -65,5 +65,6 @@ jobs:
           SSH_PORT: ${{ secrets.PORT }}
           SSH_USERNAME: ${{ secrets.USERNAME }}
           SSH_HOST: ${{ secrets.HOST }}
+          BUILD_PATH: ${{ secrets.BUILD_PATH }}
         run: |
-          rsync -avz -e "ssh -p $SSH_PORT" dist $SSH_USERNAME@$SSH_HOST:~/website
+          rsync -avz -e "ssh -p $SSH_PORT" dist $SSH_USERNAME@$SSH_HOST:$BUILD_PATH
