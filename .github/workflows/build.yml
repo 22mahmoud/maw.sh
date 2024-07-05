@@ -19,7 +19,7 @@ jobs:
           pandoc: pandoc-3.1.8
           pandoc_linux: pandoc-3.1.8-linux-amd64.tar.gz
         run: |
-          wget $magick_url; sudo apt install ffmpeg imagemagick
+          wget $pandoc_url; sudo apt install ffmpeg imagemagick
           sudo ln -s /usr/bin/convert /usr/bin/magick
           tar -xvf $pandoc_linux
           sudo cp -r $pandoc/bin/* /usr/local/bin
