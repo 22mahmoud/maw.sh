@@ -17,7 +17,9 @@ jobs:
           pwd
           wget $pandoc_url
           tar -xvf $pandoc_linux
-          sudo ln -s "$(pwd)/$pandoc/bin/pandoc" /usr/local/bin
+          echo "$(pwd)/$pandoc/bin" >> $GITHUB_PATH
+          pandoc --version
+          # sudo ln -s "$(pwd)/$pandoc/bin/pandoc" /usr/local/bin
 
 
       - name: Checkout the source repository
