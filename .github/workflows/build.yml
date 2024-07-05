@@ -32,8 +32,11 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.KEY }}
-          known_hosts: ${{ secrets.SSH_HOST }}:${{ secrets.port }}
+          known_hosts: "hamo"
           if_key_exists: fail 
+
+      - name: Deploy with rsync
+        run: ssh-keyscan -p ${{ secrets.PORT }} -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
       - name: add file
         run: |
