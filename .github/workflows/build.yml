@@ -14,7 +14,7 @@ jobs:
           pandoc: pandoc-3.1.8
           pandoc_linux: pandoc-3.1.8-linux-amd64.tar.gz
         run: |
-          pwd
+          apt install imagemagick
           wget $pandoc_url
           tar -xvf $pandoc_linux
           sudo cp -r $pandoc/bin/* /usr/local/bin
@@ -25,6 +25,7 @@ jobs:
 
       - name: check pandoc version
         run: |
+          convert --version
           pandoc --version
 
       - name: build
