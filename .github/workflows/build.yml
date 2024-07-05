@@ -12,13 +12,21 @@ jobs:
         uses: actions/checkout@v3
 
       - name: instal deps
+        env:
+          pandoc_releases: https://github.com/jgm/pandoc/releases/download/3.1.8/pandoc-3.1.8-linux-amd64.tar.gz
+          pandoc_version: 3.1.8
+          pandoc: pandoc-3.1.8
+          pandoc_linux: pandoc-3.1.8-linux-amd64.tar.gz
         run: |
-          sudo apt install pandoc
+          wget $pandoc_url
+          tar -xvf $pandoc_linux
+          echo "export PATH=\$PATH:/usr/local/bin:$pandoc/bin" >> $GITHUB_ENV
+
       - name: check pandoc version
         run: |
           pandoc --version
 
-      - name: build
-        run: |
-          make clean build
+      # - name: build
+      #   run: |
+      #     make clean build
 
