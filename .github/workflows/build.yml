@@ -1,0 +1,21 @@
+name: build
+
+on:
+  [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the source repository
+        uses: actions/checkout@v3
+
+      - name: instal deps
+        run: |
+          sudo apt install pandoc
+
+      - name: build
+        run: |
+          make clean build
+
