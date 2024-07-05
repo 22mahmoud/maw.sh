@@ -8,28 +8,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: instal deps
-        env:
-          pandoc_url: https://github.com/jgm/pandoc/releases/download/3.1.8/pandoc-3.1.8-linux-amd64.tar.gz
-          pandoc: pandoc-3.1.8
-          pandoc_linux: pandoc-3.1.8-linux-amd64.tar.gz
+      # - name: instal deps
+      #   env:
+      #     pandoc_url: https://github.com/jgm/pandoc/releases/download/3.1.8/pandoc-3.1.8-linux-amd64.tar.gz
+      #     pandoc: pandoc-3.1.8
+      #     pandoc_linux: pandoc-3.1.8-linux-amd64.tar.gz
+      #   run: |
+      #     sudo apt install imagemagick
+      #     wget $pandoc_url
+      #     tar -xvf $pandoc_linux
+      #     sudo cp -r $pandoc/bin/* /usr/local/bin
+      #     sudo cp -r $pandoc/share/* /usr/local/share
+      #
+      # - name: Checkout the source repository
+      #   uses: actions/checkout@v3
+      #
+      # - name: build
+      #   run: |
+      #     make clean
+      #     make build -j$(nproc)
+
+      - name: install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+          if_key_exists: fail 
+
+      - name: add file
         run: |
-          sudo apt install imagemagick
-          wget $pandoc_url
-          tar -xvf $pandoc_linux
-          sudo cp -r $pandoc/bin/* /usr/local/bin
-          sudo cp -r $pandoc/share/* /usr/local/share
+          echo "Hello, from act" > foo.txt
 
-      - name: Checkout the source repository
-        uses: actions/checkout@v3
-
-      - name: check pandoc version
+      - name: rsync over SSH
         run: |
-          convert --version
-          pandoc --version
-
-      - name: build
-        run: |
-          make clean
-          make build -j$(nproc)
-
+          sudo apt install rsync
+          rsync -avz -e "ssh --port ${{ secrets.PORT }}" ./foo.txt ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/foo.txt
