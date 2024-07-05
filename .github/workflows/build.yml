@@ -18,21 +18,9 @@ jobs:
           pandoc_url: https://github.com/jgm/pandoc/releases/download/3.1.8/pandoc-3.1.8-linux-amd64.tar.gz
           pandoc: pandoc-3.1.8
           pandoc_linux: pandoc-3.1.8-linux-amd64.tar.gz
-
-          magick_url: https://imagemagick.org/archive/binaries/magick
-
-          ffprobe_url: https://github.com/ffbinaries/ffbinaries-prebuilt/releases/download/v6.1/ffprobe-6.1-linux-64.zip
-          ffprobe_linux: ffprobe-6.1-linux-64.zip
         run: |
-          wget $magick_url; wget $ffprobe_url; wget $pandoc_url
-
-          unzip $ffprobe_linux
-          sudo chmod +x ./ffprobe
-          sudo cp ./ffprobe /usr/local/bin
-
-          sudo chmod +x ./magick
-          sudo cp ./magick /usr/local/bin
-
+          sudo apt install ffmpeg imagemagick
+          sudo ln -s /usr/bin/convert /usr/bin/magick
           tar -xvf $pandoc_linux
           sudo cp -r $pandoc/bin/* /usr/local/bin
           sudo cp -r $pandoc/share/* /usr/local/share
