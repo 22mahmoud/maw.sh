@@ -91,9 +91,9 @@ local function process_image(input, output_base)
   local width = get_image_size(input)
   local resize_opts = width > 768 and '-resize 768' or ''
 
-  os.execute(('magick %s %s %s'):format(input, resize_opts, original_output))
-  os.execute(('magick %s %s %s'):format(input, resize_opts, avif_output))
-  os.execute(('magick %s -quality 80 %s %s'):format(input, resize_opts, webp_output))
+  os.execute(('convert %s %s %s'):format(input, resize_opts, original_output))
+  os.execute(('convert %s %s %s'):format(input, resize_opts, avif_output))
+  os.execute(('convert %s -quality 80 %s %s'):format(input, resize_opts, webp_output))
 
   os.execute(('cp -v %s %s'):format(original_output, tmp_original))
   os.execute(('cp -v %s %s'):format(avif_output, tmp_avif))

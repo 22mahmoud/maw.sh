@@ -30,5 +30,6 @@ jobs:
 
       - name: build
         run: |
-          make clean build
+          make clean
+          make build -j$(nproc)
 
