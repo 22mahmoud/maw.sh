@@ -28,25 +28,29 @@ jobs:
       - name: Checkout the source repository
         uses: actions/checkout@v3
 
-      # - name: Restore cached Primes
-      #   id: cache-primes-restore
-      #   uses: actions/cache/restore@v4
-      #   with:
-      #     path: .tmp
-      #     key: ${{ runner.os }}-primes
+      - name: Restore cached Primes
+        id: cache-primes-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: .tmp
+          key: ${{ runner.os }}-tmp-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-tmp-
 
       - name: build
         run: |
           make clean
           make build -j$(nproc)
 
-      # - name: Save Primes
-      #   id: cache-primes-save
-      #   uses: actions/cache/save@v4
-      #   with:
-      #     path: .tmp
-      #     key: ${{ runner.os }}-primes
-      #
+      - name: Save Primes
+        id: cache-primes-save
+        uses: actions/cache/save@v4
+        with:
+          path: .tmp
+          key: ${{ runner.os }}-tmp-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-tmp-
+
       - name: install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
