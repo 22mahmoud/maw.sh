@@ -39,7 +39,7 @@ jobs:
 
       - name: build
         run: |
-          make clean
+          make distclean
           make build -j$(nproc)
 
       - name: Save Primes
