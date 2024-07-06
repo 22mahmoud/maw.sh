@@ -2,16 +2,21 @@
 
 src="src"
 dist=dist
-rss_file="$dist"/rss-thoughts.xml
+atom_file="$dist"/rss-thoughts.xml
+stylesheet="/rss-style.xsl"
 
 main() {
   echo "<?xml version='1.0' encoding='UTF-8' ?>"
-  echo "<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom' xmlns:content='http://purl.org/rss/1.0/modules/content/'>"
-  echo "<channel>"
-  echo '<atom:link href="https://maw.sh/rss.xml" rel="self" type="application/rss+xml" />'
-  echo '<title>Thoughts - Mahmoud Ashraf</title>'
-  echo '<description>Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt.</description>'
-  echo '<link>https://maw.sh/</link>'
+  echo "<?xml-stylesheet type='text/xsl' href='$stylesheet'?>"
+  echo "<feed xmlns='http://www.w3.org/2005/Atom'>"
+  echo "<id>rss-thoughts.xml</id>"
+  echo "<title>Thoughts - Mahmoud Ashraf</title>"
+  echo "<subtitle>Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt.</subtitle>"
+  echo "<link href='https://maw.sh/rss-thoughts.xml' rel='self'/>"
+  echo "<link href='https://maw.sh/'/>"
+  echo "<updated>$(date -u +"%Y-%m-%dT%H:%M:%SZ")</updated>"
+  echo "<id>https://maw.sh/</id>"
+  echo "<author><name>Mahmoud Ashraf</name></author>"
 
   thoughts=$(mktemp)
   find "$src"/thoughts -type f -name index.md ! -path "$src/thoughts/index.md" -print |
@@ -23,9 +28,9 @@ main() {
 
       slug="$(basename "$(dirname "$file")")"
       date="$(yq --front-matter="extract" '.date' "$file")"
-      formatted_date="$(date -d "$date" '+%a, %d %b %Y %H:%M:%S %z')"
+      formatted_date="$(date -u -d "$date" +"%Y-%m-%dT%H:%M:%SZ")"
 
-      title="$(printf "new thought - %s" "$formatted_date")"
+      title="$(printf "%s" "$formatted_date")"
 
       echo "$date|$title|$slug|$formatted_date|$file" >>"$thoughts"
     done
@@ -43,23 +48,21 @@ main() {
     html_content="$(cat "$temp_file")"
     rm -rf "$temp_file"
 
-    echo "<item>"
+    echo "<entry>"
     echo "<title>$title</title>"
-    echo "<guid>https://maw.sh/thoughts/$slug</guid>"
-    echo "<link>https://maw.sh/thoughts/$slug</link>"
-    echo "<pubDate>$formatted_date</pubDate>"
-    # echo "<description>$description</description>"
-    echo "<content:encoded><![CDATA["
+    echo "<link href='https://maw.sh/thoughts/$slug'/>"
+    echo "<id>https://maw.sh/thoughts/$slug</id>"
+    echo "<updated>$formatted_date</updated>"
+    echo "<content type='html'><![CDATA["
     echo "$html_content"
-    echo "]]></content:encoded>"
-    echo "</item>"
+    echo "]]></content>"
+    echo "</entry>"
   done
 
   rm "$thoughts"
 
-  echo '</channel>'
-  echo '</rss>'
+  echo '</feed>'
 }
 
-main >"$rss_file"
-echo "[rss generated]:" "$rss_file"
+main >"$atom_file"
+echo "[atom feed generated]:" "$atom_file"
