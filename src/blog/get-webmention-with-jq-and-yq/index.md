@@ -202,8 +202,7 @@ merge_entries() {
   new_entries="$2"
 
   jq -s '.[0] + .[1] | unique_by(.["wm-id"])' \
-    <(echo "$existing_entries") <(echo "$new_entries") |
-    sed 's/\([^\\]\)@/\1\\@/g'
+    <(echo "$existing_entries") <(echo "$new_entries")
 }
 ```
 
