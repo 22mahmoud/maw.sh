@@ -35,6 +35,7 @@ main() {
     pandoc \
       --variable no-metadata=true \
       --lua-filter filters/img_filter.lua \
+      --filter filters/shiki.js \
       --lua-filter filters/include-code-files.lua \
       -f markdown -t html "$file" -o "$temp_file" >/dev/null 2>&1
 

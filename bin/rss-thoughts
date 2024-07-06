@@ -31,11 +31,17 @@ main() {
     done
 
   sort -t '|' -k1,1r "$thoughts" | while IFS='|' read -r date title slug formatted_date file; do
-    html_content="$(pandoc \
+    temp_file=$(mktemp)
+
+    pandoc \
+      --variable no-metadata=true \
       --lua-filter filters/img_filter.lua \
       --filter filters/shiki.js \
       --lua-filter filters/include-code-files.lua \
-      -f markdown -t html "$file")"
+      -f markdown -t html "$file" -o "$temp_file" >/dev/null 2>&1
+
+    html_content="$(cat "$temp_file")"
+    rm -rf "$temp_file"
 
     echo "<item>"
     echo "<title>$title</title>"
