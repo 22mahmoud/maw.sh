@@ -37,9 +37,7 @@ jobs:
           path: |
             .tmp
             dist
-          key: ${{ runner.os }}-tmp-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-tmp-
+          key: build-output-cache
 
       - name: clean dist dir
         if: github.event_name == 'workflow_dispatch'
@@ -66,7 +64,8 @@ jobs:
           path: |
             .tmp
             dist
-          key: ${{ runner.os }}-tmp-${{ github.sha }}
+          # key: ${{ runner.os }}-tmp-${{ github.sha }}
+          key: ${{ steps.restore-cache.outputs.cache-primary-key }}
 
       - name: install SSH key
         uses: shimataro/ssh-key-action@v2
