@@ -33,7 +33,6 @@ main() {
   sort -t '|' -k1,1r "$thoughts" | while IFS='|' read -r date title slug formatted_date file; do
     html_content="$(pandoc \
       --lua-filter filters/img_filter.lua \
-      --filter filters/shiki.js \
       --lua-filter filters/include-code-files.lua \
       -f markdown -t html "$file")"
 
