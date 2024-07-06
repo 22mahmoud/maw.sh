@@ -54,7 +54,7 @@ problems
   Absolutely we have to have a problems that the true hero to solve it,
   just use hash-map.
 
-  ![a hand push a blue button called HASHMAP "meme"](hashmap-meme.jpg)
+  ![](hashmap-meme.jpg "a hand push a blue button called HASHMAP "meme"")
 
 - **kadane algorithm**
 

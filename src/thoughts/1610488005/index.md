@@ -7,4 +7,4 @@ I got a new mechanical keyboard today, yaaay 🎊🎊
 
 Redragon k530
 
-![redragon k530 keyboard](mech.jpg)
+![](mech.jpg "redragon k530 keyboard")

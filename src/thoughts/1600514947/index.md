@@ -5,4 +5,4 @@ thought: true
 
 I just got my free ticket to #nextjsconf!
 
-![nextjsconf](ticket.png)
+![](ticket.png "nextjsconf")

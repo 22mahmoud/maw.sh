@@ -85,6 +85,7 @@ local function process_image(input, output_base)
   if u.file_exists(tmp_avif) and u.file_exists(tmp_webp) and u.file_exists(tmp_original) then
     os.execute(('cp -v %s %s'):format(tmp_avif, avif_output))
     os.execute(('cp -v %s %s'):format(tmp_webp, webp_output))
+    os.execute(('cp -v %s %s'):format(tmp_original, original_output))
     return
   end
 
@@ -109,13 +110,16 @@ local function handle_remote_image(img)
 
   os.execute(('mkdir -pv %s'):format(u.dirname(download_path)))
 
-  if u.file_exists(tmp_path) then
+  local is_exist = u.file_exists(download_path)
+  local is_temp_exist = u.file_exists(tmp_path)
+
+  if is_exist then
+  -- do nothing
+  elseif is_temp_exist and not is_exist then
     os.execute(('cp -v %s %s'):format(tmp_path, download_path))
-  else
-    if not u.file_exists(download_path) then
-      download_image(img.src, download_path)
-      os.execute(('cp -v %s %s'):format(download_path, tmp_path))
-    end
+  elseif not is_temp_exist then
+    download_image(img.src, download_path)
+    os.execute(('cp -v %s %s'):format(download_path, tmp_path))
   end
 
   local absolute_url = path.join { '/', remote_images, slug .. ext }
@@ -126,6 +130,7 @@ end
 
 local function get_image(img)
   img.attributes.loading = 'lazy'
+  img.attributes.alt = img.title or ''
 
   local absolute_url, absolute_thumb
 

@@ -6,5 +6,5 @@ featured-video: demo.mp4
 
 **TIL**: I figured out that #vim has built-in :sort command instead use filter `!sort` command
 
-![](demo.mp4)
+![](demo.mp4 "")
 

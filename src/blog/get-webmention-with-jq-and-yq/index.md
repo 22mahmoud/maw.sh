@@ -24,7 +24,7 @@ This article will not cover how to set up webmentions on your blog, instead, it
 will demonstrate how to use `jq` and `yq` to fetch webmentions and save them in
 your Git repository.
 
-![michelangelo touch of god drawing](hand-in-hand.jpg)
+![](hand-in-hand.jpg "michelangelo touch of god drawing")
 
 ## What are `jq` and `yq` ?
 

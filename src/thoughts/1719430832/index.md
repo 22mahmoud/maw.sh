@@ -7,5 +7,5 @@ featured-image:
 
 I really like my new website web-buttons, they give me a nostalgic feeling
 
-![website footer screenshot showing web-buttons](footer-screenshot.png)
+![](footer-screenshot.png "website footer screenshot showing web-buttons")
 

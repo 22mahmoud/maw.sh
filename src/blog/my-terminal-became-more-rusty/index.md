@@ -12,7 +12,7 @@ category: terminal
 post: true
 ---
 
-![big crap attack the city](cover.jpeg)
+![](cover.jpeg "big crap attack the city")
 
 As a Software-Engineer I spent most of the time inside my terminal, So
 I need for that a fast terminal with fast tools to speed up my productivity.
@@ -46,7 +46,7 @@ Alacritty doesn't come with ligature support but you can use
 this [fork](https://github.com/zenixls2/alacritty/tree/ligature). or if
 you are using Arch you can install it from [aur](https://aur.archlinux.org/packages/alacritty-ligatures/)
 
-![screenshot of the terminal showing alacritty ligatures](alacritty.jpeg)
+![](alacritty.jpeg "screenshot of the terminal showing alacritty ligatures")
 
 ---
 
@@ -59,7 +59,7 @@ You can use it with any shell bash, zsh, fish and even powerShell.
 
 The screenshot below showing the result of my customized configuration.
 
-![screenshot of starship prompt](starship.jpeg)
+![](starship.jpeg "screenshot of starship prompt")
 
 ---
 
@@ -82,7 +82,7 @@ fi
 
 the result of my `ls` and `ll` commands.
 
-![screenshot of exa](exa.jpeg)
+![](exa.jpeg "screenshot of exa")
 
 ---
 
@@ -99,7 +99,7 @@ if [ "$(command -v bat)" ]; then
 fi
 ```
 
-![screenshot of bat](bat.jpeg)
+![](bat.jpeg "screenshot of bat")
 
 ---
 
@@ -129,7 +129,7 @@ feature and set a theme for Nord, You can choose your preferred theme run and ch
 delta --list-syntax-themes
 ```
 
-![screenshot of delta](delta.jpeg)
+![](delta.jpeg "screenshot of delta")
 
 ---
 
@@ -178,7 +178,7 @@ rg "\.content" -g "*.pug"
 rg fast README.md --replace FAST
 ```
 
-![screenshot of ripgrep](ripgrep.jpeg)
+![](ripgrep.jpeg "screenshot of ripgrep")
 
 ---
 
@@ -208,7 +208,7 @@ In this time not `top` 😀 it is `bottom`
 
 it's a cross-platform system monitor.
 
-![screenshot of bottom](bottom.jpeg)
+![](bottom.jpeg "screenshot of bottom")
 
 ---
 
@@ -216,7 +216,7 @@ it's a cross-platform system monitor.
 
 tldr is a cheatsheets for CLIs, instead of read the whole `man`.
 
-![screenshot of tldr](tldr.jpeg)
+![](tldr.jpeg "screenshot of tldr")
 
 ---
 

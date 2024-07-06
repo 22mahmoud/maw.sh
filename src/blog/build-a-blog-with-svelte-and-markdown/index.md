@@ -43,7 +43,7 @@ npm run dev
 
 Voila, 🎉 the application now up and running.
 
-![screenshot of the home page for sapper boilerplate](bg1.jpeg)
+![](bg1.jpeg "screenshot of the home page for sapper boilerplate")
 
 Let's open the project in your favorite editor. and go to the `blog` folder
 inside the `src/routes`.
@@ -171,7 +171,7 @@ the markdown.
 
 If you navigate to `/blog` route you should have a page similar to this:
 
-![screenshot of blogs pages](bg2.jpeg)
+![](bg2.jpeg "screenshot of blogs pages")
 
 Now we need to handle the post route. open `src/routes/blog/[slug].json.js`
 
@@ -247,7 +247,7 @@ import 'highlight.js/styles/github.css';
 // ...
 ```
 
-![screenshot of the final result showing a sample blog post](bg3.jpeg)
+![](bg3.jpeg "screenshot of the final result showing a sample blog post")
 
 ## conclusion
 

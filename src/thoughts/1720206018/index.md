@@ -9,4 +9,4 @@ featured-image:
 
 📅 Jul 30, 2021
 
-![](DSC_1585_01.jpg)
+![](DSC_1585_01.jpg "")

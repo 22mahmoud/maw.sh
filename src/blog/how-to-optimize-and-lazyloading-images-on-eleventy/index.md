@@ -78,7 +78,7 @@ yarn dev
 now open `localhost:8080` on your browser and
 it should work without any customized eleventy configuration.
 
-![screenshot of application inside the browser](setup-screen.jpeg)
+![](setup-screen.jpeg "screenshot of application inside the browser")
 
 ## Display some images
 
@@ -128,7 +128,7 @@ will be copied to the build directory.
 Restart your server and go back to your browser
 and it should everything work.
 
-![screenshot of application inside the browser](images-screen.jpeg)
+![](images-screen.jpeg "screenshot of application inside the browser")
 
 ## Test images performance without optimization
 
@@ -140,7 +140,7 @@ in my case it took `50s` to render all images, and some of these
 images have size more than `2mb`. so we need to find a way
 to make it faster.
 
-![gif showing how slow the image rendering](network-vid.gif)
+![](network-vid.gif "gif showing how slow the image rendering")
 
 ## Add `eleventy-img` plugin
 
@@ -280,7 +280,7 @@ Restart your server and go to the browser. and again open network tab.
 and Boom 💥 in this time all images loaded on `5s` and no image
 has size more than `120kb`.
 
-![gif showing how the result after using eleventy-img plugin](network2-vid.gif)
+![](network2-vid.gif "gif showing how the result after using eleventy-img plugin")
 
 ## Add lazy-loading and the blurry effect
 
@@ -365,7 +365,7 @@ Add this styles for img tags
 
 Voilà 🎉, now we have a nice looking and fast images on your site.
 
-![gif showing how the result after using vanilla-lazyload and blurry base64](network3-vid.gif)
+![](network3-vid.gif "gif showing how the result after using vanilla-lazyload and blurry base64")
 
 ## Conclusion
 
