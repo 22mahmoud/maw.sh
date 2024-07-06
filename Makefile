@@ -8,9 +8,7 @@ extensions := jpeg jpg mp4 gif png txt webp avif
 md_files   := $(shell find $(src) -name "*.md" ! -path $(src)/index.md)
 html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 
-build:
-	npm install
-	$(MAKE) static $(output)/rss-thoughts.xml $(output)/rss.xml $(output)/sitemap.xml
+build: static $(output)/rss-thoughts.xml $(output)/rss.xml $(output)/sitemap.xml
 
 dev:
 	@find $(src) filters templates -type f | entr $(MAKE) dist/blog/build-a-blog-with-svelte-and-markdown/index.html
