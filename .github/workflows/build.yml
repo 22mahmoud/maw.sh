@@ -34,21 +34,28 @@ jobs:
         id: cache-primes-restore
         uses: actions/cache/restore@v4
         with:
-          path: .tmp
+          path: |
+            .tmp
+            dist
           key: ${{ runner.os }}-tmp-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-tmp-
 
+      - name: clean dist dir
+        if: github.event_name == 'workflow_dispatch'
+        run: make distclean
+
       - name: build
         run: |
-          make distclean
           make build -j$(nproc)
 
       - name: Save Primes
         id: cache-primes-save
         uses: actions/cache/save@v4
         with:
-          path: .tmp
+          path: |
+            .tmp
+            dist
           key: ${{ runner.os }}-tmp-${{ github.sha }}
 
       - name: install SSH key
