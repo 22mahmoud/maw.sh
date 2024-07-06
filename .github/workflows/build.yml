@@ -50,8 +50,6 @@ jobs:
         with:
           path: .tmp
           key: ${{ runner.os }}-tmp-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-tmp-
 
       - name: install SSH key
         uses: shimataro/ssh-key-action@v2
