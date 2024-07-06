@@ -14,9 +14,9 @@ jobs:
     steps:
       - name: instal deps
         env:
-          pandoc_url: https://github.com/jgm/pandoc/releases/download/3.1.8/pandoc-3.1.8-linux-amd64.tar.gz
-          pandoc: pandoc-3.1.8
-          pandoc_linux: pandoc-3.1.8-linux-amd64.tar.gz
+          pandoc_url: https://github.com/jgm/pandoc/releases/download/3.2.1/pandoc-3.2.1-linux-amd64.tar.gz
+          pandoc: pandoc-3.2.1
+          pandoc_linux: pandoc-3.2.1-linux-amd64.tar.gz
         run: |
           wget $pandoc_url; sudo apt install ffmpeg imagemagick
           sudo ln -s /usr/bin/convert /usr/bin/magick
@@ -36,7 +36,7 @@ jobs:
           path: |
             .tmp
             dist
-          key: build-output-cache
+          key: ${{ runner.os }}-tmp-${{ github.sha }}
 
       - name: clean dist dir
         if: github.event_name == 'workflow_dispatch'
@@ -63,8 +63,7 @@ jobs:
           path: |
             .tmp
             dist
-          # key: ${{ runner.os }}-tmp-${{ github.sha }}
-          key: build-output-cache
+          key: ${{ runner.os }}-tmp-${{ github.sha }}
 
       - name: install SSH key
         uses: shimataro/ssh-key-action@v2
@@ -78,9 +77,9 @@ jobs:
 
       - name: rsync over SSH
         env:
-          SSH_PORT: ${{ secrets.PORT }}
-          SSH_USERNAME: ${{ secrets.USERNAME }}
-          SSH_HOST: ${{ secrets.HOST }}
-          BUILD_PATH: ${{ secrets.BUILD_PATH }}
+          ssh_port: ${{ secrets.PORT }}
+          ssh_username: ${{ secrets.USERNAME }}
+          ssh_host: ${{ secrets.HOST }}
+          build_path: ${{ secrets.BUILD_PATH }}
         run: |
-          rsync -avz -e "ssh -p $SSH_PORT" dist $SSH_USERNAME@$SSH_HOST:$BUILD_PATH
+          rsync -avz -e "ssh -p $ssh_port" dist $ssh_username@$ssh_host:$build_path
