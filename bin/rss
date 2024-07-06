@@ -33,6 +33,7 @@ main() {
     formatted_date="$(date -d "$date" '+%a, %d %b %Y %H:%M:%S %z')"
     html_content="$(pandoc \
       --lua-filter filters/img_filter.lua \
+      --filter filters/shiki.js \
       --lua-filter filters/include-code-files.lua \
       -f markdown -t html "$file")"
 
@@ -55,3 +56,4 @@ main() {
 }
 
 main >"$rss_file"
+echo "[rss generated]:" "$rss_file"
