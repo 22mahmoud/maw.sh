@@ -30,11 +30,16 @@ main() {
     done
 
   sort -t '|' -k1,1r "$blogs" | while IFS='|' read -r date title description slug file; do
+    temp_file=$(mktemp)
     formatted_date="$(date -d "$date" '+%a, %d %b %Y %H:%M:%S %z')"
-    html_content="$(pandoc \
+    pandoc \
+      --variable no-metadata=true \
       --lua-filter filters/img_filter.lua \
       --lua-filter filters/include-code-files.lua \
-      -f markdown -t html "$file")"
+      -f markdown -t html "$file" -o "$temp_file" >/dev/null 2>&1
+
+    html_content="$(cat "$temp_file")"
+    rm -rf "$temp_file"
 
     echo "<item>"
     echo "<title>$title</title>"
