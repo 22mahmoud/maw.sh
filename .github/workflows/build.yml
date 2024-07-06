@@ -7,7 +7,6 @@ on:
     workflows: ['update_webmentions']
     types:
       - completed
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -65,14 +64,14 @@ jobs:
             .tmp
             dist
           # key: ${{ runner.os }}-tmp-${{ github.sha }}
-          key: ${{ steps.restore-cache.outputs.cache-primary-key }}
+          key: build-output-cache
 
       - name: install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.KEY }}
           known_hosts: "placeholder"
-          if_key_exists: fail 
+          if_key_exists: fail
 
       - name: add known_hosts
         run: ssh-keyscan -p ${{ secrets.PORT }} -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
