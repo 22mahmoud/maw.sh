@@ -27,7 +27,7 @@ main() {
 
       slug="$(basename "$(dirname "$file")")"
       title="$(yq --front-matter="extract" '.title-prefix' "$file")"
-      description="$(yq --front-matter="extract" '.description' "$file")"
+      description=$(yq --front-matter="extract" '.description' "$file" | tr -d '\n')
       date="$(yq --front-matter="extract" '.date' "$file")"
 
       echo "$date|$title|$description|$slug|$file" >>"$blogs"
