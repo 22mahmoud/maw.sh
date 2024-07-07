@@ -130,7 +130,6 @@ end
 
 local function get_image(img)
   img.attributes.loading = 'lazy'
-  img.attributes.alt = img.title or ''
 
   local absolute_url, absolute_thumb
 
@@ -150,6 +149,8 @@ local function get_image(img)
     img.src = absolute_url
 
     return img
+  else
+    img.attributes.alt = img.title or ''
   end
 
   process_image(input_file, output_file)
