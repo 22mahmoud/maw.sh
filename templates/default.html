@@ -50,7 +50,7 @@
     <meta property="og:url" href="$base_url$/$path$" />
     <meta
       property="og:image"
-      content="$if(og-image)$ $base_url$$og-image$ $elseif(featured-image.photo)$ $base_url$$featured-image.photo.url$ $else$ $base_url$/avatar.webp $endif$"
+      content="$if(og-image)$ $base_url$$og-image.photo$ $elseif(featured-image.photo)$ $base_url$$featured-image.photo.url$ $else$ $base_url$/avatar.webp $endif$"
     />
     <meta property="og:site_name" content="$base_url$">
     <meta property="og:locale" content="$locale$">

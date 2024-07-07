@@ -10,6 +10,8 @@ keywords:
   - linux
 category: vim
 post: true
+featured-image:
+  photo: ./search-and-replace-og.jpg
 ---
 
 I'm using pandoc to generate this website from markdown files to html, and the
