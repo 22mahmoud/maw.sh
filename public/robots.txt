@@ -30,8 +30,8 @@ Disallow: /
 # AI Data Scraper
 # https://darkvisitors.com/agents/google-extended
 
-User-agent: Google-Extended
-Disallow: /
+# User-agent: Google-Extended
+# Disallow: /
 
 # AI Data Scraper
 # https://darkvisitors.com/agents/gptbot
