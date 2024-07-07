@@ -1,6 +1,5 @@
 ---
 title-prefix: (neo)vim search and replace, with quickfix and capture groups
-draft: true
 date: 2024-07-07T00:00+03:00
 description: |
   In this artticle I'll show you how I am using grep + quickfix to search and replace
