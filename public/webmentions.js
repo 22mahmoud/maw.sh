@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const saturation = Math.floor(Math.random() * 50) + 50;
     const lightness = 80;
 
-    return `hsla($${hue}, $${saturation}%, $${lightness}%, 0.4)`;
+    return `hsla(${hue}, ${saturation}%, ${lightness}%, 0.4)`;
   }
 
   document
