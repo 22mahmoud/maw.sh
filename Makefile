@@ -4,10 +4,11 @@ pages      := pages
 bin        := bin
 tmp        := .tmp
 extensions := jpeg jpg mp4 gif png txt webp avif
-exclude    := ! -path src/rss/index.md ! -path src/rss-thoughts/index.md ! -path src/index.md
+excludes   := $(src)/rss/index.md $(src)/rss-thoughts/index.md $(src)/index.md
 
-md_files   := $(shell find $(src) -name "*.md" $(excludes))
-html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
+excludes_args  := $(shell echo $(excludes) | sed 's/[^ ]*/! -path &/g')
+md_files       := $(shell find $(src) -name "*.md" $(excludes_args))
+html_files     := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 
 blog_files      := $(shell find $(src)/blog -name "*.md" ! -path src/blog/index.md)
 thoughts_files  := $(shell find $(src)/thoughts -name "*.md" ! -path src/thoughts/index.md)

@@ -6,9 +6,9 @@ template: default.html
 metadata-file: metadata.yaml
 table-of-contents: true
 filters:
-  - date-format.lua
   - pagination.lua
   - collections.lua
+  - date-format.lua
   - heading_anchor.lua
   - img_filter.lua
   - include-code-files.lua
