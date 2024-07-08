@@ -43,7 +43,7 @@ $(output)/%/index.html: $(src)/%/* templates/* filters/* bin/generate
 
 ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/--include="*.\1"/g')
 static: html
-	@rsync -av --update $(ext_args) --exclude="*" $(src)/ $(output)/
+	rsync -av --update --include="*/" $(ext_args) --exclude="*" $(src)/ $(output)/
 	@rsync -av --update --include="*" public/ $(output)/
 
 distclean:
