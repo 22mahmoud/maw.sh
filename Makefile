@@ -4,7 +4,7 @@ pages      := pages
 bin        := bin
 tmp        := .tmp
 extensions := jpeg jpg mp4 gif png txt webp avif
-excludes	 :=	! -path src/rss/index.md ! -path src/index.md
+excludes	 :=	! -path src/rss/index.md ! -path src/rss-thoughts/index.md ! -path src/index.md
 
 md_files   := $(shell find $(src) -name "*.md" $(excludes))
 html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
@@ -42,7 +42,7 @@ $(output)/%/index.html: $(src)/%/* templates/* filters/* bin/generate
 
 ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/--include="*.\1"/g')
 static: html
-	@rsync -av --update --include="*/" $(ext_args) --exclude="*" $(src)/ $(output)/
+	@rsync -av --update $(ext_args) --exclude="*" $(src)/ $(output)/
 	@rsync -av --update --include="*" public/ $(output)/
 
 distclean:
