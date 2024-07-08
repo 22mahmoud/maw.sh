@@ -3,7 +3,7 @@
 output="$1"
 output_dir=$(dirname "$output")
 
-input="$(echo "$1" | sed 's/^dist/src/' | sed 's/index.html$/index.md/')"
+input="$(echo "$1" | sed 's/^dist/src/' | sed 's/index.html$/index.md/' | sed 's/.xml$/\/index.md/')"
 input_dir=$(dirname "$input")
 
 path=$(echo "$input_dir" | sed -E 's|^src(/)?||')
@@ -25,6 +25,12 @@ if [ "$is_draft" = 'true' ]; then
   rm -vrf "$(dirname "$output")"
   echo "[html skipped (a draft)]:" "$output"
   exit 0
+fi
+
+is_rss="$(yq --front-matter="extract" '.rss' "$input")"
+
+if [ "$is_rss" = 'true' ]; then
+  pandoc_args="$pandoc_args --template rss.xml --variable updated_at=$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 fi
 
 pagination="$(yq --front-matter="extract" '.pagination' "$input")"

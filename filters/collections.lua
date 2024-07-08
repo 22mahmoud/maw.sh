@@ -28,6 +28,10 @@ function Meta(meta)
 
         if groupValue and not meta[groupValue] then meta[groupValue] = pandoc.MetaList {} end
 
+        if not doc.meta['title-prefix'] then
+          doc.meta['title-prefix'] = doc.meta.date
+        end
+
         doc.meta.url = path.join { '/', u.dirname(file):sub(5) }
 
         u.normalize_meta_relative_paths(doc.meta, doc.meta.url)

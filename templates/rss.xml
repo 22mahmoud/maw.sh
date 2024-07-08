@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<?xml-stylesheet type='text/xsl' href='/rss-style.xsl'?>
+<feed xmlns='http://www.w3.org/2005/Atom'>
+  <id>$id$</id>
+  <title>$title-prefix$</title>
+  <subtitle>Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt.</subtitle>
+  <link href='https://maw.sh/$id$' rel='self'/>
+  <link href='https://maw.sh/'/>
+  <updated>$updated_at$</updated>
+  <id>https://maw.sh/</id>
+  <author><name>Mahmoud Ashraf</name></author>
+
+  $for(entries)$
+  <entry>
+    <title>$entries.title-prefix$</title>
+    <link href='$base_url$$entries.url$/'/>
+    <id>$base_url$$entries.url$/</id>
+    <updated>$entries.date$</updated>
+    <summary>$description$</summary>
+    <content type='html'><![CDATA[$entries.content$]]></content>
+  </entry>
+  $endfor$
+
+</feed>

@@ -4,9 +4,13 @@ pages      := pages
 bin        := bin
 tmp        := .tmp
 extensions := jpeg jpg mp4 gif png txt webp avif
+excludes	 :=	! -path src/rss/index.md ! -path src/index.md
 
-md_files   := $(shell find $(src) -name "*.md" ! -path $(src)/index.md)
+md_files   := $(shell find $(src) -name "*.md" $(excludes))
 html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
+
+blog_files 			:= $(shell find $(src)/blog -name "*.md" ! -path src/blog/index.md)
+thoughts_files	:= $(shell find $(src)/thoughts -name "*.md" ! -path src/thoughts/index.md)
 
 build: static $(output)/rss-thoughts.xml $(output)/rss.xml $(output)/sitemap.xml
 
@@ -21,20 +25,20 @@ prepare:
 
 html: prepare $(html_files) $(output)/index.html
 
-$(output)/rss.xml: html $(md_files) $(bin)/rss
-	@$(bin)/rss
+$(output)/rss.xml: $(blog_files) templates/rss.xml
+	@$(bin)/generate $@
 
-$(output)/rss-thoughts.xml: html $(md_files) $(bin)/rss-thoughts
-	@$(bin)/rss-thoughts
+$(output)/rss-thoughts.xml: $(thoughts_files) templates/rss.xml
+	@$(bin)/generate $@
 
 $(output)/sitemap.xml: html $(md_files) $(bin)/sitemap
 	@$(bin)/sitemap
 
 $(output)/index.html: $(src)/index.md $(md_files) templates/* filters/* bin/generate
-	@bin/generate $@
+	@$(bin)/generate $@
 
 $(output)/%/index.html: $(src)/%/* templates/* filters/* bin/generate
-	@bin/generate $@
+	@$(bin)/generate $@
 
 ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/--include="*.\1"/g')
 static: html
