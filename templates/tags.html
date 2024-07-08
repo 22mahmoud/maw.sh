@@ -1,0 +1,15 @@
+<h1>Tags</h1>
+
+<div>
+  <ul>
+    $for(tags)$ $for(tags)$
+    <!-- -->
+    <li>
+      <a href="/tags/$tags.title$">
+        $tags.title$ <span>($tags.entries/length$)</span>
+      </a>
+    </li>
+    <!-- -->
+    $endfor$ $endfor$
+  </ul>
+</div>

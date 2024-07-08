@@ -5,7 +5,7 @@ date: 2024-06-16T00:00+03:00
 description: week \#02 of leetcode grinding
 keywords:
   - leetcode
-  - problem sovling
+  - problem-sovling
   - backtracking
   - Linkedlist
 category: leetcode

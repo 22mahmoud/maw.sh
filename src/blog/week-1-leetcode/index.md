@@ -5,7 +5,7 @@ date: 2024-06-08T00:00+03:00
 description: week \#01 of leetcode grinding
 keywords:
   - leetcode
-  - problem sovling
+  - problem-sovling
   - hash-map
   - two-pointer
 category: leetcode

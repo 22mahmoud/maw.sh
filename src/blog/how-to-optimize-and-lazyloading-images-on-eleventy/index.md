@@ -8,7 +8,7 @@ keywords:
   - javascript
   - eleventy
   - 11ty
-  - image optimization
+  - image-optimization
 category: front-end
 post: true
 ---
