@@ -12,6 +12,8 @@ function M.starts_with(str, prefix) return str:sub(1, #prefix) == prefix end
 
 function M.strip(s) return s:match '^%s*(.-)%s*$' end
 
+function M.stringify(value) return pandoc.utils.stringify(value) end
+
 function M.shell(command)
   local pipe = io.popen(command, 'r')
   if not pipe then return end
@@ -67,8 +69,8 @@ end
 
 function M.sort_by_date(xs)
   table.sort(xs, function(file1, file2)
-    local date1 = pandoc.utils.stringify(pandoc.read(M.read_file(file1)).meta.date) or ''
-    local date2 = pandoc.utils.stringify(pandoc.read(M.read_file(file2)).meta.date) or ''
+    local date1 = M.stringify(pandoc.read(M.read_file(file1)).meta.date) or ''
+    local date2 = M.stringify(pandoc.read(M.read_file(file2)).meta.date) or ''
     return date1 > date2
   end)
 
@@ -93,7 +95,7 @@ function M.filter_by(by)
     local value = by.value
 
     for _, file in pairs(xs) do
-      local existing = pandoc.utils.stringify(pandoc.read(M.read_file(file)).meta[key] or 'false')
+      local existing = M.stringify(pandoc.read(M.read_file(file)).meta[key] or 'false')
       if existing == value then table.insert(out, file) end
     end
 
@@ -109,6 +111,35 @@ function M.get_first(x)
   end
 end
 
+function M.group_by(by)
+  return function(xs)
+    if not by then return xs end
+
+    local out = {}
+
+    for _, file in ipairs(xs) do
+      local meta = pandoc.read(M.read_file(file)).meta
+      local group_by_value = meta[by]
+      local group_by_value_type = pandoc.utils.type(group_by_value)
+
+      if group_by_value_type ~= 'List' then
+        local key = group_by_value
+
+        out[key] = out[key] or {}
+        table.insert(out[key], { key = key, file = file, __done = true })
+      else
+        for _, value in pairs(group_by_value) do
+          local key = value
+          out[key] = out[key] or {}
+          table.insert(out[key], { key = key, file = file, __done = true })
+        end
+      end
+    end
+
+    return out
+  end
+end
+
 function M.get_collection_files(path, opts)
   opts = opts or {}
   local cmd = [[find src/%s -type f -name "index.md" ! -path "src/%s/index.md"]]
@@ -120,7 +151,8 @@ function M.get_collection_files(path, opts)
     M.sort_by_date,
     M.filter_by { key = 'draft', value = 'false' },
     M.filter_by(opts.filter_by),
-    M.get_first(opts.get_first)
+    M.get_first(opts.get_first),
+    M.group_by(opts.group_by)
   )(cmd)
 end
 
@@ -167,7 +199,7 @@ end
 
 function M.normalize_meta_relative_paths(meta, url)
   local function action(value)
-    local src = pandoc.utils.stringify(value or '')
+    local src = M.stringify(value or '')
 
     if not path.is_relative(src) then return end
 
