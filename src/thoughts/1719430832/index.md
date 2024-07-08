@@ -1,5 +1,5 @@
 ---
-date: 2024-06-26T22:40+03:00
+date: "2024-06-26T19:40:00+00:00"
 thought: true
 featured-image:
   photo: footer-screenshot.png

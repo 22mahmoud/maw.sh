@@ -1,5 +1,5 @@
 ---
-date: 2024-07-05T22:00+03:00
+date: "2024-07-05T19:00:00+00:00"
 thought: true
 featured-image:
   photo: DSC_1585_01.jpg
