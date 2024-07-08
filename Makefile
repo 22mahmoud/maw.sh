@@ -4,13 +4,13 @@ pages      := pages
 bin        := bin
 tmp        := .tmp
 extensions := jpeg jpg mp4 gif png txt webp avif
-excludes	 :=	! -path src/rss/index.md ! -path src/rss-thoughts/index.md ! -path src/index.md
+exclude    := ! -path src/rss/index.md ! -path src/rss-thoughts/index.md ! -path src/index.md
 
 md_files   := $(shell find $(src) -name "*.md" $(excludes))
 html_files := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
 
-blog_files 			:= $(shell find $(src)/blog -name "*.md" ! -path src/blog/index.md)
-thoughts_files	:= $(shell find $(src)/thoughts -name "*.md" ! -path src/thoughts/index.md)
+blog_files      := $(shell find $(src)/blog -name "*.md" ! -path src/blog/index.md)
+thoughts_files  := $(shell find $(src)/thoughts -name "*.md" ! -path src/thoughts/index.md)
 
 build: static $(output)/rss-thoughts.xml $(output)/rss.xml $(output)/sitemap.xml
 
