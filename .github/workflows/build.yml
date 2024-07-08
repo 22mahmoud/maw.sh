@@ -84,4 +84,4 @@ jobs:
           ssh_host: ${{ secrets.HOST }}
           build_path: ${{ secrets.BUILD_PATH }}
         run: |
-          rsync -avz -e "ssh -p $ssh_port" dist $ssh_username@$ssh_host:$build_path
+          rsync -avz -e "ssh -p $ssh_port" dist $ssh_username@$ssh_host:$build_path --delete
