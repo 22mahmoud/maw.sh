@@ -105,8 +105,17 @@ function M.filter_by(by)
     local value = by.value
 
     for _, x in ipairs(xs) do
-      local existing = M.stringify(pandoc.read(M.read_file(x.file)).meta[key] or 'false')
-      if existing == value then table.insert(out, x) end
+      local meta = pandoc.read(M.read_file(x.file)).meta
+      local type = pandoc.utils.type(meta[key])
+      local val_key = meta[key] or 'false'
+
+      if type == 'List' then
+        for _, y in ipairs(meta[key]) do
+          if y == val_key then table.insert(out, x) end
+        end
+      elseif M.stringify(val_key) == value then
+        table.insert(out, x)
+      end
     end
 
     return out
@@ -131,6 +140,8 @@ function M.group_by(by)
       local x = xs[i]
       local meta = pandoc.read(M.read_file(x.file)).meta
       local group_by_value = meta[by]
+      if not group_by_value then goto next end
+
       local group_by_value_type = pandoc.utils.type(group_by_value)
 
       if group_by_value_type ~= 'List' then
@@ -142,10 +153,7 @@ function M.group_by(by)
         if idx > 0 then
           table.insert(out[idx].entries, doc)
         else
-          table.insert(out, {
-            key = key,
-            entries = { doc },
-          })
+          table.insert(out, { key = key, entries = { doc } })
         end
       else
         table.insert(out, { key = by, entries = {} })
@@ -162,18 +170,23 @@ function M.group_by(by)
           end
         end
       end
+
+      ::next::
     end
 
     return out
   end
 end
 
+function M.identity(x) return x end
+
 function M.get_collection_files(path, opts)
   opts = opts or {}
-  local cmd = [[find src/%s -type f -name "index.md" ! -path "src/%s/index.md"]]
+  local cmd = opts.cmd and opts.cmd:gsub('”', ''):gsub('“', '')
+    or [[find src/%s -type f -name "index.md" ! -path "src/%s/index.md"]]
 
   return M.pipe(
-    M.format(path, path),
+    opts.cmd and M.identity or M.format(path, path),
     M.shell,
     M.lines_to_table,
     M.sort_by_date,
@@ -192,11 +205,15 @@ function M.create_html_from_doc(temp, doc, out, canonical)
     src_fh:write(pandoc.write(doc, 'json'))
     src_fh:close()
 
-    local path = M.dirname(out):gsub('^dist/', '')
-    local canonical_var = canonical and ('--variable canonical=%s'):format(canonical) or ''
+    local path_var, canonical_var = '', ''
+    if out ~= '/dev/null' then
+      local path = M.dirname(out):gsub('^dist/', '')
+      path_var = path and ('--variable path=%s'):format(path) or ''
+      canonical_var = canonical and ('--variable canonical=%s'):format(canonical) or ''
+    end
 
-    local pandoc_command = 'pandoc %s --variable path=%s -d pandoc.yaml %s -f json -o %s'
-    os.execute(pandoc_command:format(canonical_var, path, src, out))
+    local pandoc_command = 'pandoc %s %s -d pandoc.yaml %s -f json -o %s'
+    os.execute(pandoc_command:format(canonical_var, path_var, src, out))
     print('[html page generated]: ' .. out)
   end)
 end

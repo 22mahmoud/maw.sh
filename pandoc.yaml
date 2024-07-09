@@ -8,6 +8,7 @@ table-of-contents: true
 filters:
   - pagination.lua
   - collections.lua
+  - tags.lua
   - date-format.lua
   - heading_anchor.lua
   - img_filter.lua

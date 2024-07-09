@@ -8,6 +8,7 @@ keywords:
   - javascript
   - svelte
   - sapper
+  - front-end
 category: front-end
 post: true
 ---

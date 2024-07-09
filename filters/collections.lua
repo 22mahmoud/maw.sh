@@ -21,6 +21,8 @@ function Meta(meta)
       if group_by ~= '' then opts.group_by = group_by end
       if first ~= '' then opts.get_first = first end
 
+      if collection.cmd then opts.cmd = u.stringify(collection.cmd) end
+
       local files = u.get_collection_files(name, opts)
 
       u.process_collection(files, function(x)
@@ -32,6 +34,7 @@ function Meta(meta)
         if not doc.meta['title-prefix'] then doc.meta['title-prefix'] = doc.meta.date end
 
         doc.meta.url = path.join { '/', u.dirname(file):sub(5) }
+        doc.meta.file = file
 
         u.normalize_meta_relative_paths(doc.meta, doc.meta.url)
 
@@ -47,7 +50,7 @@ function Meta(meta)
           local existing = meta[k]:find_if(function(x) return x.key == i end)
 
           if not existing then
-            meta[k]:insert { key = i, entries = pandoc.MetaList { { doc.meta } } }
+            meta[k]:insert { key = i, entries = pandoc.MetaList { doc.meta } }
           else
             existing.entries:insert(doc.meta)
           end
