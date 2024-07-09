@@ -196,7 +196,7 @@ local function get_inline_image(img, absolute_url, output_base)
     <picture>
       <source srcset="%s" type="image/avif" />
       <source srcset="%s" type="image/webp" />
-      <img loading="lazy" src="%s" %s />
+      <img src="%s" %s />
     </picture>
   </a>]]
 

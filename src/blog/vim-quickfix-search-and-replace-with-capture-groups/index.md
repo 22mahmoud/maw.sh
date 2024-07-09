@@ -20,7 +20,7 @@ problem that all my images are converted into `<figure>` tags with
 attribute, and to solve this issue I need to convert all my image formats from
 
 ```md
-![title](./path.jpg) 
+![title](./path.jpg)
 <!-- to be  -->
 ![](./path.jpg "title"]
 ```
@@ -37,7 +37,7 @@ So here is a video to demonstrate how it should work with this command
 
 1. `<.'>` This indicates the code range to apply the command only for the current
    visually selected and for this case I select the entire line with `shift+v`.
-1. `s/` this the shorthand for `:substitute` 
+1. `s/` this the shorthand for `:substitute`
    ```
    s/<pattern-to-find>/<change-with>
    ```
@@ -58,7 +58,7 @@ So here is a video to demonstrate how it should work with this command
 Now after we know our command to change the image format, we need to search for
 all image occurrences in `markdown` files in the `src` directory.
 
-So, we can use vim `grep` command like that 
+So, we can use vim `grep` command like that
 
 > **_NOTE:_**  I'm using neovim  v0.11 which is use `ripgrep` by default. So,
 > maybe some arguments here will not work with normal grep

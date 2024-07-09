@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -19,7 +19,10 @@
       title="Mahmoud Ashraf's thoughts feed"
     />
 
-    <link rel="canonical" href="$base_url$/$if(canonical)$$canonical$$else$$path$$endif$" />
+    <link
+      rel="canonical"
+      href="$base_url$/$if(canonical)$$canonical$$else$$path$$endif$"
+    />
 
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -31,13 +34,13 @@
 
     <link rel="me" href="https://x.com/maw_sh" />
     <link rel="me" href="https://reddit.com/user/22mahmoud_" />
-    <link rel="pgpkey authn" href="$base_url$/gpg-key.gpg"  />
+    <link rel="pgpkey authn" href="$base_url$/gpg-key.gpg" />
     <link
       rel="me"
       href="https://pixelfed.social/i/web/profile/201636586306277376"
     />
     <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
-    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
     <link rel="webmention" href="https://webmention.io/maw.sh/webmention" />
     <link rel="pingback" href="https://webmention.io/sia.codes/xmlrpc" />
     <meta name="fediverse:creator" content="@22mahmoud@fosstodon.org" />
@@ -45,33 +48,34 @@
       property="og:title"
       content="$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$"
     />
-    <meta property="og:description" content="$description-meta$">
+    <meta property="og:description" content="$description-meta$" />
     <meta property="og:type" content="$if(post)$article$else$website$endif$" />
-    <meta property="og:url" href="$base_url$/$path$" />
+    <meta property="og:url" content="$base_url$/$path$" />
     <meta
       property="og:image"
       content="$if(og-image)$ $base_url$$og-image.photo.original$ $elseif(featured-image.photo)$ $base_url$$featured-image.photo.original$ $else$ $base_url$/avatar.webp $endif$"
     />
-    <meta property="og:site_name" content="$base_url$">
-    <meta property="og:locale" content="$locale$">
-    <meta name="twitter:card" content="$if(post)$summary_large_image$else$summary$endif$">
+    <meta property="og:site_name" content="$base_url$" />
+    <meta property="og:locale" content="$locale$" />
+    <meta
+      name="twitter:card"
+      content="$if(post)$summary_large_image$else$summary$endif$"
+    />
     <script type="application/ld+json">
-    {
-      "name":"$author$",
-      "description":"$description$",
-      "author": {
-        "@type":"Person",
-        "name":"$author$"
-      },
-      "@type":"WebSite",
-      "url":"https://maw.sh",
-      "image":"$base_url$/avatar.webp",
-      "headline":"$title$",
-      "sameAs":[
-        "https://github.com/22mahmoud"
-      ],
-      "@context":"http://schema.org"
-    }
+      {
+        "name": "$author$",
+        "description": "$description$",
+        "author": {
+          "@type": "Person",
+          "name": "$author$"
+        },
+        "@type": "WebSite",
+        "url": "https://maw.sh",
+        "image": "$base_url$/avatar.webp",
+        "headline": "$title$",
+        "sameAs": ["https://github.com/22mahmoud"],
+        "@context": "http://schema.org"
+      }
     </script>
 
     $for(author-meta)$
@@ -93,15 +97,16 @@
     <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
 
     $styles.html()$
+
     $if(game)$ $game-styles.html()$ $endif$
+
     $if(post)$ $webmentions-styles.html()$ $endif$
-    $if(thought)$ $webmentions-styles.html()$ $endif$
 
-    $for(css)$
+    $if(thought)$ $webmentions-styles.html()$ $endif$ $for(css)$
+
     <link rel="stylesheet" href="$css$" />
-    $endfor$
 
-    $for(header-includes)$ $header-includes$ $endfor$
+    $endfor$ $for(header-includes)$ $header-includes$ $endfor$
   </head>
 
   <body>
@@ -277,13 +282,15 @@
         >
           <a
             style="text-align: center; width: 32px; display: block"
-            href="https://xn--sr8hvo.ws/previous">
+            href="https://xn--sr8hvo.ws/previous"
+          >
             ←
           </a>
           <a href="https://xn--sr8hvo.ws"> IndieWeb Webring 🕸💍 </a>
           <a
             style="text-align: center; width: 32px; display: block"
-            href="https://xn--sr8hvo.ws/next">
+            href="https://xn--sr8hvo.ws/next"
+          >
             →
           </a>
         </div>

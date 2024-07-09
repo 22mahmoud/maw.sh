@@ -425,7 +425,7 @@ Based on "Pretty RSS Feed": https://github.com/genmon/aboutfeeds/issues/26
             font-size: 0.8em;
             color: var(--c6);
           }
-        
+
           </style>
 			</head>
 			<body>
@@ -434,12 +434,12 @@ Based on "Pretty RSS Feed": https://github.com/genmon/aboutfeeds/issues/26
 						<strong>This is a web feed,</strong> also known as an RSS or Atom feed.
 						<br />
 						<strong>Subscribe</strong> by copying the URL from the address bar into your newsreader.
-          
+
 					</p>
 					<p class="gray">
-            Visit 
+            Visit
 						<a href="https://aboutfeeds.com">About Feeds</a> to get started with newsreaders and subscribing. It’s free.
-          
+
 					</p>
 				</nav>
 				<div class="container">
@@ -460,7 +460,7 @@ Based on "Pretty RSS Feed": https://github.com/genmon/aboutfeeds/issues/26
 				</a>
 			</h3>
 			<small class="gray">
-        Published: 
+        Published:
 				<xsl:value-of select="atom:updated" />
 			</small>
 			<xsl:choose>
