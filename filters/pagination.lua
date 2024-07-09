@@ -44,7 +44,7 @@ function Meta(meta)
 
       for j = 1, page_size do
         local index = (i - 1) * page_size + j
-        local file = files[index]
+        local file = files[index] and files[index].file or nil
         if not file then goto continue end
 
         local doc = pandoc.read(u.read_file(file))

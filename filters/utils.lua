@@ -2,6 +2,16 @@ local path = require 'pandoc.path'
 
 local M = {}
 
+function M.find_index(xs, fn)
+  for i, _ in ipairs(xs) do
+    if fn(xs[i]) then return i end
+
+    return 0
+  end
+
+  return 0
+end
+
 function M.basename(s) return path.filename(s) end
 
 function M.dirname(s) return path.directory(s) end
@@ -11,6 +21,8 @@ function M.trim(s) return (s:gsub('^%s*(.-)%s*$', '%1')) end
 function M.starts_with(str, prefix) return str:sub(1, #prefix) == prefix end
 
 function M.strip(s) return s:match '^%s*(.-)%s*$' end
+
+function M.stringify(value) return pandoc.utils.stringify(value) end
 
 function M.shell(command)
   local pipe = io.popen(command, 'r')
@@ -66,9 +78,9 @@ function M.format(...)
 end
 
 function M.sort_by_date(xs)
-  table.sort(xs, function(file1, file2)
-    local date1 = pandoc.utils.stringify(pandoc.read(M.read_file(file1)).meta.date) or ''
-    local date2 = pandoc.utils.stringify(pandoc.read(M.read_file(file2)).meta.date) or ''
+  table.sort(xs, function(x, y)
+    local date1 = M.stringify(pandoc.read(M.read_file(x.file)).meta.date) or ''
+    local date2 = M.stringify(pandoc.read(M.read_file(y.file)).meta.date) or ''
     return date1 > date2
   end)
 
@@ -78,7 +90,7 @@ end
 function M.lines_to_table(xs)
   local result = {}
   for line in string.gmatch(xs, '(.-)\n') do
-    table.insert(result, line)
+    table.insert(result, { file = line })
   end
 
   return result
@@ -92,9 +104,9 @@ function M.filter_by(by)
     local key = by.key
     local value = by.value
 
-    for _, file in pairs(xs) do
-      local existing = pandoc.utils.stringify(pandoc.read(M.read_file(file)).meta[key] or 'false')
-      if existing == value then table.insert(out, file) end
+    for _, x in ipairs(xs) do
+      local existing = M.stringify(pandoc.read(M.read_file(x.file)).meta[key] or 'false')
+      if existing == value then table.insert(out, x) end
     end
 
     return out
@@ -109,6 +121,53 @@ function M.get_first(x)
   end
 end
 
+function M.group_by(by)
+  return function(xs)
+    if not by then return xs end
+
+    local out = {}
+
+    for i = 1, #xs, 1 do
+      local x = xs[i]
+      local meta = pandoc.read(M.read_file(x.file)).meta
+      local group_by_value = meta[by]
+      local group_by_value_type = pandoc.utils.type(group_by_value)
+
+      if group_by_value_type ~= 'List' then
+        local key = group_by_value
+        local idx = M.find_index(out, function(x) return x.key == key end)
+
+        local doc = { key = key, file = x.file, __done = true }
+
+        if idx > 0 then
+          table.insert(out[idx].entries, doc)
+        else
+          table.insert(out, {
+            key = key,
+            entries = { doc },
+          })
+        end
+      else
+        table.insert(out, { key = by, entries = {} })
+
+        for _, key in ipairs(group_by_value) do
+          local idx = M.find_index(out[#out], function(y) return y.key == key end)
+
+          local doc = { key = key, type = 'list', file = x.file, __done = true }
+
+          if idx > 0 then
+            table.insert(out[#out][idx].entries, doc)
+          else
+            table.insert(out[#out].entries, { key = key, entries = { doc } })
+          end
+        end
+      end
+    end
+
+    return out
+  end
+end
+
 function M.get_collection_files(path, opts)
   opts = opts or {}
   local cmd = [[find src/%s -type f -name "index.md" ! -path "src/%s/index.md"]]
@@ -120,7 +179,8 @@ function M.get_collection_files(path, opts)
     M.sort_by_date,
     M.filter_by { key = 'draft', value = 'false' },
     M.filter_by(opts.filter_by),
-    M.get_first(opts.get_first)
+    M.get_first(opts.get_first),
+    M.group_by(opts.group_by)
   )(cmd)
 end
 
@@ -139,6 +199,18 @@ function M.create_html_from_doc(temp, doc, out, canonical)
     os.execute(pandoc_command:format(canonical_var, path, src, out))
     print('[html page generated]: ' .. out)
   end)
+end
+
+function M.process_collection(xs, fn)
+  if xs.file then fn(xs) end
+
+  for _, value in ipairs(xs) do
+    if value.entries then
+      M.process_collection(value.entries, fn)
+    elseif type(value) == 'table' then
+      M.process_collection(value, fn)
+    end
+  end
 end
 
 local function get_image_meta(metadata, action)
@@ -167,7 +239,7 @@ end
 
 function M.normalize_meta_relative_paths(meta, url)
   local function action(value)
-    local src = pandoc.utils.stringify(value or '')
+    local src = M.stringify(value or '')
 
     if not path.is_relative(src) then return end
 
