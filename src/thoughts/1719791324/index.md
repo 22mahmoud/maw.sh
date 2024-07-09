@@ -1,6 +1,8 @@
 ---
 date: "2024-06-30T23:48:00+00:00"
 thought: true
+keywords: 
+  - site-update
 ---
 
 **site update**: now [thoughts](https://maw.sh/thoughts) page have a pagination

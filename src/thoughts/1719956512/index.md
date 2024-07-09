@@ -1,6 +1,8 @@
 ---
 date: "2024-07-02T21:41:00+00:00"
 thought: true
+keywords: 
+  - thought
 ---
 
 For those who have all their #website content stored as static files inside a Git

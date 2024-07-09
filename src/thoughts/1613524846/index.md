@@ -1,6 +1,10 @@
 ---
 date: "2021-02-17T01:20:00+00:00"
 thought: true
+keywords: 
+  - stickers
+  - gift
+  - dev-dot-to
 ---
 
 Finally, received my gift from [dev.to](https://dev.to)

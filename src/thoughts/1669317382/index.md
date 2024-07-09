@@ -1,6 +1,10 @@
 ---
 date: "2022-11-24T19:16:00+00:00"
 thought: true
+keywords: 
+  - announcement
+  - microphone
+  - lynks
 ---
 
 في الطريق

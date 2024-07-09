@@ -1,6 +1,8 @@
 ---
 date: "2020-12-08T18:06:00+00:00"
 thought: true
+keywords: 
+  - github
 ---
 
 After 7 years since this [Issue](https://github.com/isaacs/github/issues/66)

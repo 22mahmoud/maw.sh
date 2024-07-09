@@ -1,6 +1,10 @@
 ---
 date: "2021-07-18T18:23:00+00:00"
 thought: true
+keywords: 
+  - announcement
+  - photography
+  - dslr
 ---
 
 Let's take some great photos!! 📷
