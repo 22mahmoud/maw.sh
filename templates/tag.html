@@ -6,7 +6,7 @@
     <li>
       $tags.formatted_date$:
 
-      <a href="$tags.url$"
+      <a href="$tags.url$/"
         >$if(tags.title-prefix)$$tags.title-prefix$$else$$tags.url$$endif$</a
       >
     </li>
@@ -15,13 +15,13 @@
 
   <div class="navigation">
     $if(has-prev)$
-    <a href="$prev-url$"> ← Prev </a>
+    <a href="$prev-url$/"> ← Prev </a>
     $endif$
 
     <!-- -->
 
     $if(has-next)$
-    <a href="$next-url$">Next →</a>
+    <a href="$next-url$/">Next →</a>
     $endif$
   </div>
 </div>

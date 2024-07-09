@@ -3,11 +3,11 @@ $body$
 <div class="blogs">
   <div class="section-header">
     <h3>Recent Blogs</h3>
-    <a href="/blog"> <span>See All Blogs</span> → </a>
+    <a href="/blog/"> <span>See All Blogs</span> → </a>
   </div>
   $for(blog)$
   <div class="blog">
-    <a href="$blog.url$">
+    <a href="$blog.url$/">
       <div class="blog-title">$blog.title-prefix$</div>
       <div class="blog-date">$blog.formatted_date$</div>
     </a>
@@ -18,12 +18,12 @@ $body$
 <div class="thoughts">
   <div class="section-header">
     <h3>Recent Thoughts</h3>
-    <a href="/thoughts"> <span>See All Thoughts</span> → </a>
+    <a href="/thoughts/"> <span>See All Thoughts</span> → </a>
   </div>
   <ul>
     $for(thoughts)$
     <li class="thought">
-      <a href="$thoughts.url$">
+      <a href="$thoughts.url$/">
         <div class="thought-date">$thoughts.formatted_date$</div>
       </a>
 
@@ -72,14 +72,14 @@ $body$
 <div>
   <div class="section-header">
     <h3>Recent Games</h3>
-    <a href="/games"> <span>See All Games</span> → </a>
+    <a href="/games/"> <span>See All Games</span> → </a>
   </div>
 
   <div class="games">
     $for(playing)$
     <div class="game game-playing">
       <img loading="lazy" src="$playing.url$/cover-small.webp" />
-      <a href="$playing.url$"></a>
+      <a href="$playing.url$/"></a>
       <div class="game-info">
         <span class="game-title">$playing.title-prefix$</span>
         <div class="footer">
@@ -101,7 +101,7 @@ $body$
     $for(completed)$
     <div class="game game-completed">
       <img loading="lazy" src="$completed.url$/cover-small.webp" />
-      <a href="$completed.url$"></a>
+      <a href="$completed.url$/"></a>
       <div class="game-info">
         <span class="game-title">$completed.title-prefix$</span>
         <div class="footer">
@@ -123,14 +123,14 @@ $body$
 <div>
   <div class="section-header">
     <h3>Recent Leetcode</h3>
-    <a href="/leetcode"> <span>See All leetcodes</span> → </a>
+    <a href="/leetcode/"> <span>See All leetcodes</span> → </a>
   </div>
 
   <ul>
     $for(leetcode)$
     <li>
       $leetcode.formatted_date$:
-      <a href="$leetcode.url$">$leetcode.title-prefix$</a>
+      <a href="$leetcode.url$/">$leetcode.title-prefix$</a>
     </li>
     $endfor$
   </ul>

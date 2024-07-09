@@ -9,7 +9,7 @@
   <ul>
     $for(thoughts)$
     <li class="thought">
-      <a href="$thoughts.url$">
+      <a href="$thoughts.url$/">
         <div class="thought-date">$thoughts.formatted_date$</div>
       </a>
       <div class="thought-content">
@@ -55,13 +55,13 @@
 
   <div class="navigation">
     $if(has-prev)$
-    <a href="$prev-url$"> ← Prev </a>
+    <a href="$prev-url$/"> ← Prev </a>
     $endif$
 
     <!-- -->
 
     $if(has-next)$
-    <a href="$next-url$">Next →</a>
+    <a href="$next-url$/">Next →</a>
     $endif$
   </div>
 </div>

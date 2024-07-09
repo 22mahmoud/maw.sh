@@ -8,6 +8,8 @@ input_dir=$(dirname "$input")
 
 path=$(echo "$input_dir" | sed -E 's|^src(/)?||')
 
+if [ -n "$path" ]; then path="/${path%/}/"; fi
+
 mkdir -pv "$output_dir"
 
 comments_file="$input_dir"/comments.yaml

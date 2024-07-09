@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
       rel="alternate"
       type="application/rss+xml"
@@ -21,7 +18,7 @@
 
     <link
       rel="canonical"
-      href="$base_url$/$if(canonical)$$canonical$$else$$path$$endif$"
+      href="$base_url$$if(canonical)$$canonical$$else$$path$$endif$"
     />
 
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -44,39 +41,81 @@
     <link rel="webmention" href="https://webmention.io/maw.sh/webmention" />
     <link rel="pingback" href="https://webmention.io/sia.codes/xmlrpc" />
     <meta name="fediverse:creator" content="@22mahmoud@fosstodon.org" />
+    <meta property="og:locale" content="en_US">
     <meta
       property="og:title"
-      content="$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$"
+      content="$if(title-prefix)$$title-prefix/nowrap$ – $endif$$pagetitle$"
     />
     <meta property="og:description" content="$description-meta$" />
     <meta property="og:type" content="$if(post)$article$else$website$endif$" />
-    <meta property="og:url" content="$base_url$/$path$" />
+    <meta property="og:url" content="$base_url$$path$" />
     <meta
       property="og:image"
-      content="$if(og-image)$ $base_url$$og-image.photo.original$ $elseif(featured-image.photo)$ $base_url$$featured-image.photo.original$ $else$ $base_url$/avatar.webp $endif$"
+      content="$if(og-image)$$base_url$$og-image.photo.original$$elseif(featured-image.photo)$$base_url$$featured-image.photo.original$$else$$base_url$/avatar.webp$endif$"
     />
-    <meta property="og:site_name" content="$base_url$" />
+    <meta property="og:site_name" content="Mahmoud Ashraf" />
     <meta property="og:locale" content="$locale$" />
     <meta
       name="twitter:card"
       content="$if(post)$summary_large_image$else$summary$endif$"
     />
+
+    $if(post)$
+
     <script type="application/ld+json">
-      {
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "headline": "$title-prefix/nowrap$",
+      "image": "$if(og-image)$$base_url$$og-image.photo.original$$elseif(featured-image.photo)$$base_url$$featured-image.photo.original$$else$$base_url$/avatar.webp$endif$",
+      "datePublished": "$date$",
+      "dateModified": "$if(last_modified)$$last_modified$$else$$date$$endif$",
+      "author": {
+        "@type": "Person",
         "name": "$author$",
-        "description": "$description$",
-        "author": {
-          "@type": "Person",
-          "name": "$author$"
-        },
-        "@type": "WebSite",
-        "url": "https://maw.sh",
-        "image": "$base_url$/avatar.webp",
-        "headline": "$title$",
-        "sameAs": ["https://github.com/22mahmoud"],
-        "@context": "http://schema.org"
+        "url": "$base_url$"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "$author$",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "$base_url$/avatar.webp"
+        }
+      },
+      "description": "$description-meta$",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "$base_url$/$path$"
       }
+    }
     </script>
+
+    $else$
+
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "$author$",
+      "description": "$description-meta$",
+      "url": "$base_url$",
+      "image": "$base_url$/avatar.webp",
+      "author": {
+        "@type": "Person",
+        "name": "$author$"
+      },
+      "sameAs": [
+        "https://github.com/22mahmoud",
+        "https://x.com/maw_sh",
+        "https://reddit.com/user/22mahmoud_",
+        "https://pixelfed.social/i/web/profile/201636586306277376"
+      ]
+    }
+    </script>
+
+    $endif$
+
 
     $for(author-meta)$
     <meta name="author" content="$author-meta$" />
@@ -141,7 +180,7 @@
           <a href="$submission$" target="_blank" style="font-size: 1rem">🔗</a>
         </h2>
         <p><strong>Date:</strong> $date$</p>
-        <p><strong>Tags:</strong> $for(keywords)$<a href="/tags/$keywords$">$keywords$</a>$sep$, $endfor$</p>
+        <p><strong>Tags:</strong> $for(keywords)$<a href="/tags/$keywords$/">$keywords$</a>$sep$, $endfor$</p>
         <details>
           <summary>Description</summary>
           $description$

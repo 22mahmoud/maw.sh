@@ -205,10 +205,15 @@ function M.create_html_from_doc(temp, doc, out, canonical)
     src_fh:write(pandoc.write(doc, 'json'))
     src_fh:close()
 
-    local path_var, canonical_var = '', ''
+    local path_var, canonical_var = '', '', ''
     if out ~= '/dev/null' then
-      local path = M.dirname(out):gsub('^dist/', '')
-      path_var = path and ('--variable path=%s'):format(path) or ''
+      local _path = M.dirname(out):gsub('^dist/', '')
+      if _path ~= '' then _path = '/' .. _path:gsub('^/', ''):gsub('/$', '') .. '/' end
+      path_var = _path and ('--variable path=%s'):format(_path) or ''
+
+      if canonical and canonical ~= '' then
+        canonical = '/' .. canonical:gsub('^/', ''):gsub('/$', '') .. '/'
+      end
       canonical_var = canonical and ('--variable canonical=%s'):format(canonical) or ''
     end
 

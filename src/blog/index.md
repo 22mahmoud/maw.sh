@@ -1,6 +1,7 @@
 ---
 title-prefix: Blog
 pagination:
+  collection: blog
   cmd: find src/blog -type f -name "index.md" ! -path "src/blog/index.md" ! -path "src/blog/tags/index.md"
   page-size: 30
   page-path: page
