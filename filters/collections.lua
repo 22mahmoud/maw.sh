@@ -1,21 +1,10 @@
 local path = require 'pandoc.path'
 local u = require 'filters.utils'
 
-local function process_collection(xs, fn)
-  for _, value in pairs(xs) do
-    if value.__done then
-      fn(value)
-    elseif type(value) == 'table' then
-      process_collection(value, fn)
-    end
-  end
-end
-
 function Meta(meta)
   if meta.collections then
     for _, collection in pairs(meta.collections) do
       local name = u.stringify(collection.name)
-      local key = u.stringify(collection.key or collection.name)
       local has_content = pandoc.MetaBool(collection.content)
       local group_by = u.stringify(collection['group-by'] or '')
 
@@ -23,7 +12,6 @@ function Meta(meta)
       local filter_by_key = u.stringify(filter_by and filter_by['key'] or '')
       local filter_by_value = u.stringify(filter_by and filter_by['value'] or '')
       local first = u.stringify(collection['first'] or '')
-      -- if group_by == '' and not meta[key] then meta[key] = pandoc.MetaList {} end
 
       local opts = {}
       if filter_by_key ~= '' then
@@ -35,9 +23,9 @@ function Meta(meta)
 
       local files = u.get_collection_files(name, opts)
 
-      process_collection(files, function(x)
-        local k = u.stringify(x.key)
-        local file = x.file
+      u.process_collection(files, function(x)
+        local file, type, i = x.file, x.type, u.stringify(x.key)
+        local k = u.stringify(collection.key or x.key or collection.name)
 
         local doc = pandoc.read(u.read_file(file))
 
@@ -51,8 +39,19 @@ function Meta(meta)
           doc.meta.content = u.normalize_relative_paths(doc.blocks, doc.meta.url)
         end
 
-        meta[k] = meta[k] or pandoc.MetaList {}
-        meta[k]:insert(doc.meta)
+        if type ~= 'list' then
+          meta[k] = meta[k] or pandoc.MetaList {}
+          meta[k]:insert(doc.meta)
+        else
+          meta[k] = meta[k] or pandoc.MetaList {}
+          local existing = meta[k]:find_if(function(x) return x.key == i end)
+
+          if not existing then
+            meta[k]:insert { key = i, entries = pandoc.MetaList { { doc.meta } } }
+          else
+            existing.entries:insert(doc.meta)
+          end
+        end
       end)
     end
   end

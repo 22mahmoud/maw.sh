@@ -2,6 +2,16 @@ local path = require 'pandoc.path'
 
 local M = {}
 
+function M.find_index(xs, fn)
+  for i, _ in ipairs(xs) do
+    if fn(xs[i]) then return i end
+
+    return 0
+  end
+
+  return 0
+end
+
 function M.basename(s) return path.filename(s) end
 
 function M.dirname(s) return path.directory(s) end
@@ -68,9 +78,9 @@ function M.format(...)
 end
 
 function M.sort_by_date(xs)
-  table.sort(xs, function(file1, file2)
-    local date1 = M.stringify(pandoc.read(M.read_file(file1)).meta.date) or ''
-    local date2 = M.stringify(pandoc.read(M.read_file(file2)).meta.date) or ''
+  table.sort(xs, function(x, y)
+    local date1 = M.stringify(pandoc.read(M.read_file(x.file)).meta.date) or ''
+    local date2 = M.stringify(pandoc.read(M.read_file(y.file)).meta.date) or ''
     return date1 > date2
   end)
 
@@ -80,7 +90,7 @@ end
 function M.lines_to_table(xs)
   local result = {}
   for line in string.gmatch(xs, '(.-)\n') do
-    table.insert(result, line)
+    table.insert(result, { file = line })
   end
 
   return result
@@ -94,9 +104,9 @@ function M.filter_by(by)
     local key = by.key
     local value = by.value
 
-    for _, file in pairs(xs) do
-      local existing = M.stringify(pandoc.read(M.read_file(file)).meta[key] or 'false')
-      if existing == value then table.insert(out, file) end
+    for _, x in ipairs(xs) do
+      local existing = M.stringify(pandoc.read(M.read_file(x.file)).meta[key] or 'false')
+      if existing == value then table.insert(out, x) end
     end
 
     return out
@@ -117,21 +127,39 @@ function M.group_by(by)
 
     local out = {}
 
-    for _, file in ipairs(xs) do
-      local meta = pandoc.read(M.read_file(file)).meta
+    for i = 1, #xs, 1 do
+      local x = xs[i]
+      local meta = pandoc.read(M.read_file(x.file)).meta
       local group_by_value = meta[by]
       local group_by_value_type = pandoc.utils.type(group_by_value)
 
       if group_by_value_type ~= 'List' then
         local key = group_by_value
+        local idx = M.find_index(out, function(x) return x.key == key end)
 
-        out[key] = out[key] or {}
-        table.insert(out[key], { key = key, file = file, __done = true })
+        local doc = { key = key, file = x.file, __done = true }
+
+        if idx > 0 then
+          table.insert(out[idx].entries, doc)
+        else
+          table.insert(out, {
+            key = key,
+            entries = { doc },
+          })
+        end
       else
-        for _, value in pairs(group_by_value) do
-          local key = value
-          out[key] = out[key] or {}
-          table.insert(out[key], { key = key, file = file, __done = true })
+        table.insert(out, { key = by, entries = {} })
+
+        for _, key in ipairs(group_by_value) do
+          local idx = M.find_index(out[#out], function(y) return y.key == key end)
+
+          local doc = { key = key, type = 'list', file = x.file, __done = true }
+
+          if idx > 0 then
+            table.insert(out[#out][idx].entries, doc)
+          else
+            table.insert(out[#out].entries, { key = key, entries = { doc } })
+          end
         end
       end
     end
@@ -171,6 +199,18 @@ function M.create_html_from_doc(temp, doc, out, canonical)
     os.execute(pandoc_command:format(canonical_var, path, src, out))
     print('[html page generated]: ' .. out)
   end)
+end
+
+function M.process_collection(xs, fn)
+  if xs.file then fn(xs) end
+
+  for _, value in ipairs(xs) do
+    if value.entries then
+      M.process_collection(value.entries, fn)
+    elseif type(value) == 'table' then
+      M.process_collection(value, fn)
+    end
+  end
 end
 
 local function get_image_meta(metadata, action)
