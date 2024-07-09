@@ -15,9 +15,19 @@ function Meta(meta)
     local page_size = tonumber(pandoc.utils.stringify(meta.pagination['page-size'] or '10'))
     local page_path = pandoc.utils.stringify(meta.pagination['page-path'] or 'page')
     local collection = pandoc.utils.stringify(meta.pagination['collection'] or 'data')
-    local dir = u.dirname(PANDOC_STATE.input_files[1])
-    local tmp = path.join { '.tmp', dir }
-    local files = u.get_collection_files(u.basename(dir))
+    local output = pandoc.utils.stringify(meta.pagination['output'] or collection)
+    local dir = 'src/' .. output
+
+    local filter_by = collection['filter-by']
+    local filter_by_key = u.stringify(filter_by and filter_by['key'] or '')
+    local filter_by_value = u.stringify(filter_by and filter_by['value'] or '')
+
+    local opts = {}
+    if filter_by_key ~= '' then
+      opts.filter_by = { key = filter_by_key, value = filter_by_value }
+    end
+
+    local files = u.get_collection_files(collection, opts)
     local total = #files
     local total_pages = math.ceil(total / page_size)
 
@@ -73,7 +83,5 @@ function Meta(meta)
         u.create_html_from_doc(collection, doc, output_path)
       end
     end
-
-    os.execute('mkdir -pv ' .. tmp)
   end
 end

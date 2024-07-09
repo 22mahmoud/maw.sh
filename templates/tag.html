@@ -1,0 +1,24 @@
+<div class="blog">
+  <h1>Tag</h1>
+
+  <ul>
+    $for(blog)$
+    <li>
+      $blog.formatted_date$:
+      <a href="$blog.url$">$blog.title-prefix$</a>
+    </li>
+    $endfor$
+  </ul>
+
+  <div class="navigation">
+    $if(has-prev)$
+    <a href="$prev-url$"> ← Prev </a>
+    $endif$
+
+    <!-- -->
+
+    $if(has-next)$
+    <a href="$next-url$">Next →</a>
+    $endif$
+  </div>
+</div>
