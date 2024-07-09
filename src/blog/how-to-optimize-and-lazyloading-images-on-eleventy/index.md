@@ -9,6 +9,7 @@ keywords:
   - eleventy
   - 11ty
   - image-optimization
+  - front-end
 category: front-end
 post: true
 ---

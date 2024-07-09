@@ -140,6 +140,8 @@ function M.group_by(by)
       local x = xs[i]
       local meta = pandoc.read(M.read_file(x.file)).meta
       local group_by_value = meta[by]
+      if not group_by_value then goto next end
+
       local group_by_value_type = pandoc.utils.type(group_by_value)
 
       if group_by_value_type ~= 'List' then
@@ -151,10 +153,7 @@ function M.group_by(by)
         if idx > 0 then
           table.insert(out[idx].entries, doc)
         else
-          table.insert(out, {
-            key = key,
-            entries = { doc },
-          })
+          table.insert(out, { key = key, entries = { doc } })
         end
       else
         table.insert(out, { key = by, entries = {} })
@@ -171,18 +170,23 @@ function M.group_by(by)
           end
         end
       end
+
+      ::next::
     end
 
     return out
   end
 end
 
+function M.identity(x) return x end
+
 function M.get_collection_files(path, opts)
   opts = opts or {}
-  local cmd = [[find src/%s -type f -name "index.md" ! -path "src/%s/index.md"]]
+  local cmd = opts.cmd and opts.cmd:gsub('”', ''):gsub('“', '')
+    or [[find src/%s -type f -name "index.md" ! -path "src/%s/index.md"]]
 
   return M.pipe(
-    M.format(path, path),
+    opts.cmd and M.identity or M.format(path, path),
     M.shell,
     M.lines_to_table,
     M.sort_by_date,

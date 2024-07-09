@@ -473,4 +473,36 @@
   .header-anchor:hover.header-anchor:after {
     opacity: 1;
   }
+
+  .tags-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tags-list li {
+    margin: 0;
+  }
+
+  .tags-list a {
+    display: inline-block;
+    background-color: var(--c5);
+    color: var(--c2);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .tags-list a:hover {
+    background-color: var(--c3);
+    color: var(--c1);
+  }
+
+  .tags-list span {
+    font-size: 1em;
+    font-weight: bold;
+  }
 </style>

@@ -9,6 +9,17 @@ local function get_output_path(i, dir, page_path)
   return output
 end
 
+local function convert_list_to_table(list)
+  local out = {}
+
+  list:map(function(x)
+    table.insert(out, x)
+    return x
+  end)
+
+  return out
+end
+
 function Meta(meta)
   if meta.pagination then
     local has_content = pandoc.MetaBool(meta.pagination['content'])
@@ -18,16 +29,14 @@ function Meta(meta)
     local output = pandoc.utils.stringify(meta.pagination['output'] or collection)
     local dir = 'src/' .. output
 
-    local filter_by = collection['filter-by']
-    local filter_by_key = u.stringify(filter_by and filter_by['key'] or '')
-    local filter_by_value = u.stringify(filter_by and filter_by['value'] or '')
-
     local opts = {}
-    if filter_by_key ~= '' then
-      opts.filter_by = { key = filter_by_key, value = filter_by_value }
-    end
 
-    local files = u.get_collection_files(collection, opts)
+    local files = meta.pagination.files
+        and convert_list_to_table(
+          meta.pagination.files:map(function(file) return { file = u.stringify(file) } end)
+        )
+      or u.get_collection_files(collection, opts)
+
     local total = #files
     local total_pages = math.ceil(total / page_size)
 

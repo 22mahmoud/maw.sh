@@ -1,11 +1,14 @@
 <div class="blog">
-  <h1>Tag</h1>
+  <h1>Content tagged with "$title-prefix$"</h1>
 
   <ul>
-    $for(blog)$
+    $for(tags)$
     <li>
-      $blog.formatted_date$:
-      <a href="$blog.url$">$blog.title-prefix$</a>
+      $tags.formatted_date$:
+
+      <a href="$tags.url$"
+        >$if(tags.title-prefix)$$tags.title-prefix$$else$$tags.url$$endif$</a
+      >
     </li>
     $endfor$
   </ul>
