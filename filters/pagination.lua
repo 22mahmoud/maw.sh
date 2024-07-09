@@ -30,6 +30,7 @@ function Meta(meta)
     local dir = 'src/' .. output
 
     local opts = {}
+    if meta.pagination.cmd then opts.cmd = u.stringify(meta.pagination.cmd) end
 
     local files = meta.pagination.files
         and convert_list_to_table(

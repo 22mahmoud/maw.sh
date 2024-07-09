@@ -13,12 +13,13 @@ function Meta(meta)
       end)
 
       local collection = meta.collections[1]
+      local dir = u.dirname(PANDOC_STATE.input_files[1]):gsub('^src/', '')
 
       doc_meta['title-prefix'] = k.key
       doc_meta['tag-page'] = true
       doc_meta.pagination = {
         collection = collection.key or collection.name,
-        output = 'tags/' .. k.key,
+        output = ('%s/%s'):format(dir, k.key),
         ['page-size'] = 30,
         ['page-path'] = 'page',
         files = files,
