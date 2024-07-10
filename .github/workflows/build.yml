@@ -75,6 +75,7 @@ jobs:
         run: |
           npm run css
           minhtml --minify-css dist/**/*.html
+          wait
 
       - name: Save dist cache
         id: cache-dist-save
