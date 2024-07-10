@@ -9,7 +9,7 @@ if [ -z "${token}" ]; then
 	exit 1
 fi
 
-since=$(yq ".last_webmention_sync" metadata.yaml)
+since=$(yq ".last_webmention_sync" meta.yml)
 
 format_output() {
 	jq --arg domain "$domain" '.children
@@ -66,7 +66,7 @@ main() {
 
 	# finally update the since
 	new_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-	yq -i ".last_webmention_sync = \"$new_date\"" metadata.yaml
+	yq -i ".last_webmention_sync = \"$new_date\"" meta.yml
 }
 
 main

@@ -3,7 +3,7 @@ to: html5
 standalone: true
 data-dir: .
 template: default.html
-metadata-file: metadata.yaml
+metadata-file: meta.yml
 table-of-contents: true
 css:
   - /css/main.css
