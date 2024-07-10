@@ -27,7 +27,7 @@ function Meta(meta)
 
       local doc = pandoc.Pandoc({}, doc_meta)
 
-      u.create_html_from_doc(u.stringify(collection.key), doc, '/dev/null')
+      u.create_html_from_doc(u.stringify(k.key), doc, '/dev/null')
     end
   end
 end

@@ -30,7 +30,8 @@ function M.shell(command)
 
   local result = pipe:read '*a'
   pipe:close()
-  return result
+
+  return M.strip(result)
 end
 
 function M.read_file(file)
@@ -198,29 +199,34 @@ function M.get_collection_files(path, opts)
 end
 
 function M.create_html_from_doc(temp, doc, out, canonical)
-  return pandoc.system.with_temporary_directory(temp, function(tmpdir)
-    local src = ('%s/input.json'):format(tmpdir)
+  local src = M.shell 'mktemp'
+  print(src)
 
-    local src_fh = io.open(src, 'w')
-    src_fh:write(pandoc.write(doc, 'json'))
-    src_fh:close()
+  local src_fh = io.open(src, 'w')
+  src_fh:write(pandoc.write(doc, 'json'))
+  src_fh:close()
 
-    local path_var, canonical_var = '', '', ''
-    if out ~= '/dev/null' then
-      local _path = M.dirname(out):gsub('^dist/', '')
-      if _path ~= '' then _path = '/' .. _path:gsub('^/', ''):gsub('/$', '') .. '/' end
-      path_var = _path and ('--variable path=%s'):format(_path) or ''
+  local path_var, canonical_var = '', '', ''
+  local message = ('[start generate]: %s'):format(temp)
 
-      if canonical and canonical ~= '' then
-        canonical = '/' .. canonical:gsub('^/', ''):gsub('/$', '') .. '/'
-      end
-      canonical_var = canonical and ('--variable canonical=%s'):format(canonical) or ''
+  if out ~= '/dev/null' then
+    local _path = M.dirname(out):gsub('^dist/', '')
+    if _path ~= '' then _path = '/' .. _path:gsub('^/', ''):gsub('/$', '') .. '/' end
+    path_var = _path and ('--variable path=%s'):format(_path) or ''
+
+    if canonical and canonical ~= '' then
+      canonical = '/' .. canonical:gsub('^/', ''):gsub('/$', '') .. '/'
     end
+    canonical_var = canonical and ('--variable canonical=%s'):format(canonical) or ''
+    message = ('[html page generated]: %s'):format(out)
+  end
 
-    local pandoc_command = 'pandoc %s %s -d pandoc.yaml %s -f json -o %s'
-    os.execute(pandoc_command:format(canonical_var, path_var, src, out))
-    print('[html page generated]: ' .. out)
-  end)
+  local pandoc_command = [[pandoc %s %s -d pandoc.yaml %s -f json -o %s && \
+    rm -rf %s && \
+    echo %s &
+  ]]
+
+  os.execute(pandoc_command:format(canonical_var, path_var, src, out, src, message))
 end
 
 function M.process_collection(xs, fn)
