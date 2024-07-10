@@ -4,7 +4,7 @@ local path = require 'pandoc.path'
 local function get_output_path(i, dir, page_path)
   local output_dir = 'dist/' .. dir:sub(5)
 
-  local output = path.join { output_dir, page_path, i, 'index.html' }
+  local output = path.join { output_dir, page_path, i, 'index.php' }
   os.execute('mkdir -pv ' .. u.dirname(output))
   return output
 end
