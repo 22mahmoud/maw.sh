@@ -144,6 +144,8 @@ local function get_image(img)
   local input_file = prefix .. absolute_url
   local output_file = dist .. absolute_thumb
 
+  if is_video(img.src) then img.attributes.preload = 'none' end
+
   if is_gif(img.src) or is_video(img.src) then
     set_image_size(img, input_file)
     img.src = absolute_url

@@ -22,9 +22,9 @@
     />
 
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link href="/favicon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/images/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link href="/images/favicon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#080808" />
     <link type="text/plain" rel="author" href="$base_url$/humans.txt" />
@@ -51,7 +51,7 @@
     <meta property="og:url" content="$base_url$$path$" />
     <meta
       property="og:image"
-      content="$if(og-image)$$base_url$$og-image.photo.original$$elseif(featured-image.photo)$$base_url$$featured-image.photo.original$$else$$base_url$/avatar.webp$endif$"
+      content="$if(og-image)$$base_url$$og-image.photo.original$$elseif(featured-image.photo)$$base_url$$featured-image.photo.original$$else$$base_url$/images/avatar.webp$endif$"
     />
     <meta property="og:site_name" content="Mahmoud Ashraf" />
     <meta property="og:locale" content="$locale$" />
@@ -67,7 +67,7 @@
       "@context": "http://schema.org",
       "@type": "BlogPosting",
       "headline": "$title-prefix/nowrap$",
-      "image": "$if(og-image)$$base_url$$og-image.photo.original$$elseif(featured-image.photo)$$base_url$$featured-image.photo.original$$else$$base_url$/avatar.webp$endif$",
+      "image": "$if(og-image)$$base_url$$og-image.photo.original$$elseif(featured-image.photo)$$base_url$$featured-image.photo.original$$else$$base_url$/images/avatar.webp$endif$",
       "datePublished": "$date$",
       "dateModified": "$if(last_modified)$$last_modified$$else$$date$$endif$",
       "author": {
@@ -80,7 +80,7 @@
         "name": "$author$",
         "logo": {
           "@type": "ImageObject",
-          "url": "$base_url$/avatar.webp"
+          "url": "$base_url$/images/avatar.webp"
         }
       },
       "description": "$description-meta$",
@@ -100,7 +100,7 @@
       "name": "$author$",
       "description": "$description-meta$",
       "url": "$base_url$",
-      "image": "$base_url$/avatar.webp",
+      "image": "$base_url$/images/avatar.webp",
       "author": {
         "@type": "Person",
         "name": "$author$"
@@ -135,17 +135,23 @@
 
     <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
 
-    $styles.html()$
-
-    $if(game)$ $game-styles.html()$ $endif$
-
-    $if(post)$ $webmentions-styles.html()$ $endif$
-
-    $if(thought)$ $webmentions-styles.html()$ $endif$ $for(css)$
-
+    $for(css)$
     <link rel="stylesheet" href="$css$" />
+    $endfor$ 
 
-    $endfor$ $for(header-includes)$ $header-includes$ $endfor$
+    $if(game)$ 
+    <link rel="stylesheet" href="/css/game.css" />
+    $endif$
+
+    $if(post)$ 
+    <link rel="stylesheet" href="/css/webmentions.css" />
+    $endif$
+
+    $if(thought)$ 
+    <link rel="stylesheet" href="/css/webmentions.css" />
+    $endif$
+
+    $for(header-includes)$ $header-includes$ $endfor$
   </head>
 
   <body>
@@ -216,7 +222,7 @@
 
         <a aria-label="maw.sh rss feed" href="/rss.xml">
           <div class="wb" style="outline-color: #9c3607">
-            <div><img loading="lazy" alt="rss logo" src="/rss.svg" /></div>
+            <div><img loading="lazy" alt="rss logo" src="/images/rss.svg" /></div>
             <div style="background-color: #9c3607; color: #fff">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RSS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
@@ -229,7 +235,7 @@
               <img
                 loading="lazy"
                 alt="pandoc logo"
-                src="/pandoc.svg"
+                src="/images/pandoc.svg"
                 style="width: 18px; height: 18px"
               />
             </div>
@@ -256,7 +262,7 @@
         >
           <div class="wb" style="outline-color: #5437c7">
             <div>
-              <img loading="lazy" alt="Mastodon logo" src="/mastodon.svg" />
+              <img loading="lazy" alt="Mastodon logo" src="/images/mastodon.svg" />
             </div>
             <div style="background-color: #5437c7">Mastodon</div>
           </div>
@@ -272,7 +278,7 @@
               <img
                 loading="lazy"
                 alt="github logo"
-                src="/gh.svg"
+                src="/images/gh.svg"
                 style="width: 22px; height: 22px"
               />
             </div>
@@ -292,7 +298,7 @@
               <img
                 loading="lazy"
                 alt="youtube logo"
-                src="/yt.svg"
+                src="/images/yt.svg"
                 style="width: 22px; height: 22px"
               />
             </div>

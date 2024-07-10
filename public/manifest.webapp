@@ -3,9 +3,9 @@
   "name": "Mahmoud Ashraf",
   "description": "Mahmoud Ashraf's personal website",
   "icons": {
-    "60": "./favicon-60x60.png",
-    "128": "./favicon-128x128.png",
-    "512": "./favicon-512x512.png"
+    "60": "/images/favicon-60x60.png",
+    "128": "/images/favicon-128x128.png",
+    "512": "/images/favicon-512x512.png"
   },
   "developer": {
     "name": "Mahmoud Ashraf",

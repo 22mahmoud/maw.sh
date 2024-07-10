@@ -5,6 +5,8 @@ data-dir: .
 template: default.html
 metadata-file: metadata.yaml
 table-of-contents: true
+css:
+  - /css/main.css
 filters:
   - pagination.lua
   - collections.lua
