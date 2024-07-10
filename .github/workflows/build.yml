@@ -75,9 +75,6 @@ jobs:
       - name: post build
         run: |
           npm run css
-          minhtml --do-not-minify-doctype	\
-          --ensure-spec-compliant-unquoted-attribute-values \
-          --minify-css dist/**/*.html
 
       - name: Save dist cache
         id: cache-dist-save
