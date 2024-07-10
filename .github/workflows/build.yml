@@ -74,7 +74,7 @@ jobs:
       - name: post build
         run: |
           npm run css
-          minhtml --minify-css dist/**/*.php
+          minhtml --minify-css dist/**/*.html
 
       - name: Save dist cache
         id: cache-dist-save

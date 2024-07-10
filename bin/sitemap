@@ -14,8 +14,8 @@ generate_sitemap() {
 	echo 'http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"'
 	echo 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
 
-	find "$SRC_DIR" -name "index.php" | while read -r file; do
-		path="$(echo "$file" | sed -e 's/^dist\///' -e 's/index.php//')"
+	find "$SRC_DIR" -name "index.html" | while read -r file; do
+		path="$(echo "$file" | sed -e 's/^dist\///' -e 's/index.html//')"
 
 		echo "<url>"
 		echo "<loc>$base_url/$path</loc>"
