@@ -200,7 +200,6 @@ end
 
 function M.create_html_from_doc(temp, doc, out, canonical)
   local src = M.shell 'mktemp'
-  print(src)
 
   local src_fh = io.open(src, 'w')
   src_fh:write(pandoc.write(doc, 'json'))
