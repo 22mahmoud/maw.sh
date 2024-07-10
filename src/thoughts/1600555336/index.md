@@ -1,6 +1,6 @@
 ---
 date: "2020-09-19T22:42:00+00:00"
-thought: true
+thought-template: true
 keywords:
   - vue
   - learn

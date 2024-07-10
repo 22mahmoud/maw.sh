@@ -139,15 +139,15 @@
     <link rel="stylesheet" href="$css$" />
     $endfor$
 
-    $if(game)$
+    $if(game-template)$
     <link rel="stylesheet" href="/css/game.css" />
     $endif$
 
-    $if(post)$
+    $if(post-template)$
     <link rel="stylesheet" href="/css/webmentions.css" />
     $endif$
 
-    $if(thought)$
+    $if(thought-template)$
     <link rel="stylesheet" href="/css/webmentions.css" />
     $endif$
 
@@ -180,16 +180,16 @@
       $for(include-before)$ $include-before$ $endfor$
 
 
-      $if(home)$ ${home.html()}
-      $elseif(submission)$ ${leetcode.html()}
-      $elseif(thoughts)$ ${thoughts.html()}
-      $elseif(games)$ ${games.html()}
-      $elseif(tags-page)$ ${tags.html()}
-      $elseif(tag-page)$ ${tag.html()}
-      $elseif(blog)$ ${blog.html()}
-      $elseif(post)$ ${post.html()}
-      $elseif(thought)$ ${thought.html()}
-      $elseif(game)$ ${game.html()}
+      $if(home-template)$ ${home.html()}
+      $elseif(leetcode-template)$ ${leetcode.html()}
+      $elseif(thoughts-template)$ ${thoughts.html()}
+      $elseif(games-template)$ ${games.html()}
+      $elseif(tags-template)$ ${tags.html()}
+      $elseif(tag-template)$ ${tag.html()}
+      $elseif(blog-template)$ ${blog.html()}
+      $elseif(post-template)$ ${post.html()}
+      $elseif(thought-template)$ ${thought.html()}
+      $elseif(game-template)$ ${game.html()}
       $else$ $body$ ${author.html()} $endif$
 
       $for(include-after)$ $include-after$ $endfor$

@@ -9,7 +9,7 @@ keywords:
   - jq
   - yq
 category: shell
-post: true
+post-template: true
 featured-image:
   photo: hand-in-hand.jpg
 ---

@@ -1,5 +1,6 @@
 ---
 title-prefix: Blog
+blog-template: true
 pagination:
   collection: blog
   cmd: find src/blog -type f -name "index.md" ! -path "src/blog/index.md" ! -path "src/blog/tags/index.md"

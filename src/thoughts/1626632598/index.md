@@ -1,6 +1,6 @@
 ---
 date: "2021-07-18T18:23:00+00:00"
-thought: true
+thought-template: true
 keywords:
   - announcement
   - photography

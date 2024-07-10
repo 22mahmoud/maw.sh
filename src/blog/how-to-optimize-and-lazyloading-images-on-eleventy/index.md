@@ -11,7 +11,7 @@ keywords:
   - image-optimization
   - front-end
 category: front-end
-post: true
+post-template: true
 ---
 
 Building a site that has images requires to optimize them

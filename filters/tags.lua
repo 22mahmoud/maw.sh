@@ -1,7 +1,7 @@
 local u = require 'filters.utils'
 
 function Meta(meta)
-  if meta['tags-page'] then
+  if meta['tags-template'] then
     for _, k in ipairs(meta['tags']) do
       local doc_meta = pandoc.Meta {}
 
@@ -16,7 +16,7 @@ function Meta(meta)
       local dir = u.dirname(PANDOC_STATE.input_files[1]):gsub('^src/', '')
 
       doc_meta['title-prefix'] = k.key
-      doc_meta['tag-page'] = true
+      doc_meta['tag-template'] = true
       doc_meta.pagination = {
         collection = collection.key or collection.name,
         output = ('%s/%s'):format(dir, k.key),

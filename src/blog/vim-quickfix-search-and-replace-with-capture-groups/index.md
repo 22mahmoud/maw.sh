@@ -9,7 +9,7 @@ keywords:
   - neovim
   - linux
 category: vim
-post: true
+post-template: true
 featured-image:
   photo: ./search-and-replace-og.jpg
 ---

@@ -1,6 +1,6 @@
 ---
 title-prefix: Games
-games: true
+games-template: true
 collections:
   - name: games
     group-by: state

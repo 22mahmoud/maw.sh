@@ -1,6 +1,6 @@
 ---
 date: "2024-07-03T23:55:00+00:00"
-thought: true
+thought-template: true
 keywords:
   - site-update
 ---

@@ -9,7 +9,7 @@ keywords:
   - hash-map
   - two-pointer
 category: leetcode
-post: true
+post-template: true
 ---
 
 So this is my first week of my [LeetCode](/leetcode) grinding journey, and I want

@@ -1,5 +1,6 @@
 ---
 title-prefix: thoughts
+thoughts-template: true
 pagination:
   collection: thoughts
   page-size: 10

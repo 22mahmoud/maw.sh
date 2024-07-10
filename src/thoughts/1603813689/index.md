@@ -1,6 +1,6 @@
 ---
 date: "2020-10-27T15:48:00+00:00"
-thought: true
+thought-template: true
 keywords:
   - suckless
   - thought

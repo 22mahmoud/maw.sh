@@ -1,6 +1,6 @@
 ---
 date: "2024-06-28T22:35:00+00:00"
-thought: true
+thought-template: true
 featured-video: demo.mp4
 keywords:
   - til

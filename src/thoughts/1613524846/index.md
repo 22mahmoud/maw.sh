@@ -1,6 +1,6 @@
 ---
 date: "2021-02-17T01:20:00+00:00"
-thought: true
+thought-template: true
 keywords:
   - stickers
   - gift

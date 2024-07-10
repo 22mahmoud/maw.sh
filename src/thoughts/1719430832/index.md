@@ -1,6 +1,6 @@
 ---
 date: "2024-06-26T19:40:00+00:00"
-thought: true
+thought-template: true
 featured-image:
   photo: footer-screenshot.png
 keywords:

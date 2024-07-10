@@ -11,5 +11,5 @@ keywords:
   - jq
   - postman
 category: vim
-post: true
+post-template: true
 ---

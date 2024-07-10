@@ -1,6 +1,6 @@
 ---
 date: "2024-07-02T21:41:00+00:00"
-thought: true
+thought-template: true
 keywords:
   - thought
 ---

@@ -1,6 +1,6 @@
 ---
 date: "2020-10-02T19:23:00+00:00"
-thought: true
+thought-template: true
 keywords:
   - webrtc
 ---

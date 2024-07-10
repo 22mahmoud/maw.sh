@@ -10,7 +10,7 @@ keywords:
   - sapper
   - front-end
 category: front-end
-post: true
+post-template: true
 ---
 
 In this post, we will build a website with a blog using svelte, and sapper.

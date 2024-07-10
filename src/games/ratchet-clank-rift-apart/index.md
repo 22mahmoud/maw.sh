@@ -3,7 +3,7 @@ title-prefix: 'Ratchet & Clank: Rift Apart'
 date: 2024-05-21T01:23+03:00
 state: completed
 cover_image: "./cover.webp"
-game: true
+game-template: true
 release_date: "2021-06-11"
 description: |-
   BLAST YOUR WAY THROUGH AN INTERDIMENSIONAL ADVENTURE
