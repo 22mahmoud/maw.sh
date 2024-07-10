@@ -28,7 +28,7 @@ description: Mahmoud Ashraf's list of software/hardware for daily using
   using [bitwarden-rs](https://github.com/dani-garcia/bitwarden_rs)
 - **messaging**: telegram
 - **API Testing**: cURL you can read my
-  [blog post](/blog/no-more-postman-just-curl-and-vim/index.html) about how to use cURL
+  [blog post](/blog/no-more-postman-just-curl-and-vim) about how to use cURL
 
 ## Hardware
 

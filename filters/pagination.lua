@@ -87,7 +87,7 @@ function Meta(meta)
       local output_path = get_output_path(i, dir, page_path)
 
       if i == 1 then
-        u.create_html_from_doc(collection, doc, path.join { 'dist', dir:sub(5), 'index.html' })
+        u.create_html_from_doc(collection, doc, path.join { 'dist', dir:sub(5), 'index.php' })
         u.create_html_from_doc(collection, doc, output_path, dir:gsub('^src/', ''))
       else
         u.create_html_from_doc(collection, doc, output_path)
