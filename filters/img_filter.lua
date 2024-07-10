@@ -155,6 +155,8 @@ local function get_image(img)
     img.attributes.alt = img.title or ''
   end
 
+  img.attributes.decoding = "async";
+
   process_image(input_file, output_file)
   set_image_size(img, output_file .. '.avif')
 
