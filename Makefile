@@ -8,7 +8,7 @@ excludes   := $(src)/rss/index.md $(src)/rss-thoughts/index.md $(src)/index.md
 
 excludes_args  := $(shell echo $(excludes) | sed 's/[^ ]*/! -path &/g')
 md_files       := $(shell find $(src) -name "*.md" $(excludes_args))
-html_files     := $(patsubst $(src)/%.md, $(output)/%.html, $(md_files))
+html_files     := $(patsubst $(src)/%.md, $(output)/%.php, $(md_files))
 
 blog_files      := $(shell find $(src)/blog -name "*.md" ! -path src/blog/index.md)
 thoughts_files  := $(shell find $(src)/thoughts -name "*.md" ! -path src/thoughts/index.md)
@@ -16,7 +16,7 @@ thoughts_files  := $(shell find $(src)/thoughts -name "*.md" ! -path src/thought
 build: static $(output)/rss-thoughts.xml $(output)/rss.xml $(output)/sitemap.xml
 
 dev:
-	@find $(src) filters templates -type f | entr $(MAKE) dist/blog/build-a-blog-with-svelte-and-markdown/index.html
+	@find $(src) filters templates -type f | entr $(MAKE) dist/blog/build-a-blog-with-svelte-and-markdown/index.php
 
 prepare:
 	@mkdir -pv $(output)
@@ -24,7 +24,7 @@ prepare:
 	@mkdir -pv $(tmp)/images
 	touch $(tmp)/images/.nomedia
 
-html: prepare $(html_files) $(output)/index.html
+html: prepare $(html_files) $(output)/index.php
 
 $(output)/rss.xml: $(blog_files) templates/rss.xml
 	@$(bin)/generate $@
@@ -35,10 +35,10 @@ $(output)/rss-thoughts.xml: $(thoughts_files) templates/rss.xml
 $(output)/sitemap.xml: html $(md_files) $(bin)/sitemap
 	@$(bin)/sitemap
 
-$(output)/index.html: $(src)/index.md $(md_files) templates/* filters/* bin/generate
+$(output)/index.php: $(src)/index.md $(md_files) templates/* filters/* bin/generate
 	@$(bin)/generate $@
 
-$(output)/%/index.html: $(src)/%/* templates/* filters/* bin/generate
+$(output)/%/index.php: $(src)/%/* templates/* filters/* bin/generate
 	@$(bin)/generate $@
 
 ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/--include="*.\1"/g')

@@ -3,7 +3,7 @@
 output="$1"
 output_dir=$(dirname "$output")
 
-input="$(echo "$1" | sed 's/^dist/src/' | sed 's/index.html$/index.md/' | sed 's/.xml$/\/index.md/')"
+input="$(echo "$1" | sed 's/^dist/src/' | sed 's/index.php$/index.md/' | sed 's/.xml$/\/index.md/')"
 input_dir=$(dirname "$input")
 
 path=$(echo "$input_dir" | sed -E 's|^src(/)?||')
@@ -42,6 +42,4 @@ fi
 
 eval pandoc -d pandoc.yaml \
   "${pandoc_args}" \
-  "$input" -o "$pandoc_output"
-
-echo "[html generated]:" "$output"
+  "$input" -o "$pandoc_output" && echo "[html generated]:" "$output" &

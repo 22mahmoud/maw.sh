@@ -14,11 +14,15 @@ jobs:
     steps:
       - name: instal deps
         env:
+          minhtml_url: https://github.com/wilsonzlin/minify-html/releases/download/v0.15.0/minhtml-0.15.0-x86_64-unknown-linux-gnu
+          minhtml: minhtml-0.15.0-x86_64-unknown-linux-gnu
           pandoc_url: https://github.com/jgm/pandoc/releases/download/3.2.1/pandoc-3.2.1-linux-amd64.tar.gz
           pandoc: pandoc-3.2.1
           pandoc_linux: pandoc-3.2.1-linux-amd64.tar.gz
         run: |
-          wget $pandoc_url; sudo apt install ffmpeg imagemagick
+          wget $pandoc_url; wget $minhtml_url; sudo apt install ffmpeg imagemagick
+          chmod +x $minhtml
+          sudo cp -r $minhtml /usr/local/bin/minhtml
           sudo ln -s /usr/bin/convert /usr/bin/magick
           tar -xvf $pandoc_linux
           sudo cp -r $pandoc/bin/* /usr/local/bin
@@ -67,6 +71,7 @@ jobs:
         run: |
           make build -j$(nproc)
           npm run css
+          minhtml --minify-css dist/**/*.php
 
       - name: Save dist cache
         id: cache-dist-save
