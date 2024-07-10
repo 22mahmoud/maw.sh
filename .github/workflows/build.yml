@@ -70,6 +70,9 @@ jobs:
       - name: build
         run: |
           make build -j$(nproc)
+
+      - name: post build
+        run: |
           npm run css
           minhtml --minify-css dist/**/*.php
 
