@@ -1,7 +1,7 @@
 ---
 date: "2020-09-23T06:14:00+00:00"
 thought: true
-keywords: 
+keywords:
   - vim
   - neovim
 ---

@@ -1,7 +1,7 @@
 ---
 date: "2024-05-20T11:28:00+00:00"
 thought: true
-keywords: 
+keywords:
   - site-update
 ---
 

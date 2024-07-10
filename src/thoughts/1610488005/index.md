@@ -1,7 +1,7 @@
 ---
 date: "2021-01-12T21:46:00+00:00"
 thought: true
-keywords: 
+keywords:
   - announcement
   - keyboards
 ---

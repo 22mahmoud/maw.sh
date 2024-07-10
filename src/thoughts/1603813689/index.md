@@ -1,7 +1,7 @@
 ---
 date: "2020-10-27T15:48:00+00:00"
 thought: true
-keywords: 
+keywords:
   - suckless
   - thought
 ---

@@ -1,7 +1,7 @@
 ---
 date: "2023-11-17T19:08:00+00:00"
 thought: true
-keywords: 
+keywords:
   - announcement
   - site-update
 ---

@@ -1,7 +1,7 @@
 ---
 date: "2024-07-05T09:08:00+00:00"
 thought: true
-keywords: 
+keywords:
   - thought
 ---
 

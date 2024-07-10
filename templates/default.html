@@ -137,17 +137,17 @@
 
     $for(css)$
     <link rel="stylesheet" href="$css$" />
-    $endfor$ 
+    $endfor$
 
-    $if(game)$ 
+    $if(game)$
     <link rel="stylesheet" href="/css/game.css" />
     $endif$
 
-    $if(post)$ 
+    $if(post)$
     <link rel="stylesheet" href="/css/webmentions.css" />
     $endif$
 
-    $if(thought)$ 
+    $if(thought)$
     <link rel="stylesheet" href="/css/webmentions.css" />
     $endif$
 
@@ -179,22 +179,9 @@
     <main>
       $for(include-before)$ $include-before$ $endfor$
 
-      $if(submission)$
-      <div style="border: 3px solid var(--c5); padding: 0.8rem">
-        <h2 style="margin: 0 0 10px">
-          $id$. $title-prefix$
-          <a href="$submission$" target="_blank" style="font-size: 1rem">🔗</a>
-        </h2>
-        <p><strong>Date:</strong> $date$</p>
-        <p><strong>Tags:</strong> $for(keywords)$<a href="/tags/$keywords$/">$keywords$</a>$sep$, $endfor$</p>
-        <details>
-          <summary>Description</summary>
-          $description$
-        </details>
-      </div>
-      $endif$
 
       $if(home)$ ${home.html()}
+      $elseif(submission)$ ${leetcode.html()}
       $elseif(thoughts)$ ${thoughts.html()}
       $elseif(games)$ ${games.html()}
       $elseif(tags-page)$ ${tags.html()}

@@ -1,0 +1,17 @@
+<div style="border: 3px solid var(--c5); padding: 0.8rem">
+  <h2 style="margin: 0 0 10px">
+    $id$. $title-prefix$
+    <a href="$submission$" target="_blank" style="font-size: 1rem">🔗</a>
+  </h2>
+  <p><strong>Date:</strong> $date$</p>
+  <p>
+    <strong>Tags:</strong>
+    $for(keywords)$<a href="/tags/$keywords$/">$keywords$</a>$sep$, $endfor$
+  </p>
+  <details>
+    <summary>Description</summary>
+    $description$
+  </details>
+</div>
+
+$body$ 

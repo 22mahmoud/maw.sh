@@ -3,7 +3,7 @@ date: "2024-07-05T19:00:00+00:00"
 thought: true
 featured-image:
   photo: DSC_1585_01.jpg
-keywords: 
+keywords:
   - photo
 ---
 

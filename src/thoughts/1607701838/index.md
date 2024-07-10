@@ -1,7 +1,7 @@
 ---
 date: "2020-12-11T15:50:00+00:00"
 thought: true
-keywords: 
+keywords:
   - meme
 ---
 
