@@ -9,7 +9,8 @@ keywords:
   - linux
   - terminal
 category: terminal
-post-template: true
+template:
+  post: true
 ---
 
 ![](cover.jpeg "big crap attack the city")

@@ -6,6 +6,7 @@ description: "Project Eve is an action-adventure game that takes place in the no
 state: wanted
 cover_image: "./cover.webp"
 original_url: "http://www.shiftup.co.kr/eve/"
-game-template: true
+template:
+  game: true
 platform: ps5
 ---

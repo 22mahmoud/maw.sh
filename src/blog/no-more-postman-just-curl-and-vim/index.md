@@ -9,7 +9,8 @@ keywords:
   - curl
   - vim
 category: vim
-post-template: true
+template:
+  post: true
 featured-image:
   photo: cover.webp
 ---

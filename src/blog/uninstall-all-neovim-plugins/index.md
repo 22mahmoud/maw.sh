@@ -10,7 +10,8 @@ keywords:
 category: vim
 featured-image:
   photo: matrix.jpg
-post-template: true
+template:
+  post: true
 ---
 
 ![](matrix.jpg "the matrix movie scene")

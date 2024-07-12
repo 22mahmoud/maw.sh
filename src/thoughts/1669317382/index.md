@@ -1,6 +1,7 @@
 ---
 date: "2022-11-24T19:16:00+00:00"
-thought-template: true
+template:
+  thought: true
 keywords:
   - announcement
   - microphone

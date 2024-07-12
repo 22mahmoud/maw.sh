@@ -1,6 +1,7 @@
 ---
 date: "2023-11-17T19:08:00+00:00"
-thought-template: true
+template:
+  thought: true
 keywords:
   - announcement
   - site-update

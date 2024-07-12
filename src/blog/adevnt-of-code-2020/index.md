@@ -7,7 +7,8 @@ keywords:
   - aoc
   - programming
 category: aoc
-post-template: true
+template:
+  post: true
 ---
 
 This blog will be updated every day to show you my solutions

@@ -1,6 +1,7 @@
 ---
 date: "2021-10-15T20:41:00+00:00"
-thought-template: true
+template:
+  thought: true
 keywords:
   - meme
 ---

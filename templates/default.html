@@ -140,15 +140,15 @@
     <link rel="stylesheet" href="$css$" />
     $endfor$
 
-    $if(game-template)$
+    $if(template.game)$
     <link rel="stylesheet" href="/css/game.css" />
     $endif$
 
-    $if(post-template)$
+    $if(template.post)$
     <link rel="stylesheet" href="/css/webmentions.css" />
     $endif$
 
-    $if(thought-template)$
+    $if(template.thought)$
     <link rel="stylesheet" href="/css/webmentions.css" />
     $endif$
 
@@ -178,21 +178,34 @@
     </header>
 
     <main>
-      $for(include-before)$ $include-before$ $endfor$
+$for(include-before)$ $include-before$ $endfor$
 
-      $if(home-template)$ ${home.html()}
-      $elseif(leetcode-template)$ ${leetcode.html()}
-      $elseif(thoughts-template)$ ${thoughts.html()}
-      $elseif(games-template)$ ${games.html()}
-      $elseif(tags-template)$ ${tags.html()}
-      $elseif(tag-template)$ ${tag.html()}
-      $elseif(blog-template)$ ${blog.html()}
-      $elseif(post-template)$ ${post.html()}
-      $elseif(thought-template)$ ${thought.html()}
-      $elseif(game-template)$ ${game.html()}
-      $else$ $body$ ${author.html()} $endif$
+$if(template)$
 
-      $for(include-after)$ $include-after$ $endfor$
+${template.home:home()}
+
+${template.blog:blog()}
+${template.post:post()}
+
+${template.thoughts:thoughts()}
+${template.thought:thought()}
+
+${template.tags:tags()}
+${template.tag:tag()}
+
+${template.games:games()}
+${template.game:game()}
+
+${template.leetcode:leetcode()}
+
+$else$
+
+$body$ ${author.html()}
+
+$endif$
+
+
+$for(include-after)$ $include-after$ $endfor$
     </main>
 
     <footer>

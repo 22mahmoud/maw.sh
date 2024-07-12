@@ -1,6 +1,7 @@
 ---
 date: "2021-05-16T03:20:00+00:00"
-thought-template: true
+template:
+  thought: true
 keywords:
   - thought
   - learning

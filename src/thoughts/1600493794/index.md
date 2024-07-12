@@ -1,6 +1,7 @@
 ---
 date: "2020-09-19T05:36:34+00:00"
-thought-template: true
+template:
+  thought: true
 keywords:
   - turbolinks
   - 11ty

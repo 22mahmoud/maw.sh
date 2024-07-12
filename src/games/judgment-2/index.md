@@ -9,6 +9,7 @@ description: |-
 state: completed
 cover_image: "./cover.webp"
 original_url: "https://yakuza.sega.com/judgment"
-game-template: true
+template:
+  game: true
 platform: ps5
 ---

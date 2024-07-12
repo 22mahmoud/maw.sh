@@ -1,6 +1,7 @@
 ---
 date: "2020-10-24T11:03:00+00:00"
-thought-template: true
+template:
+  thought: true
 keywords:
   - openbsd
   - thought

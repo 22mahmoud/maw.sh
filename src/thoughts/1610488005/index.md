@@ -1,6 +1,7 @@
 ---
 date: "2021-01-12T21:46:00+00:00"
-thought-template: true
+template:
+  thought: true
 keywords:
   - announcement
   - keyboards

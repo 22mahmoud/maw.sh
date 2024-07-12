@@ -1,6 +1,7 @@
 ---
 date: "2020-09-19T11:29:00+00:00"
-thought-template: true
+template:
+  thought: true
 keywords:
   - nextjs
   - conf

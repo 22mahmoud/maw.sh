@@ -25,7 +25,8 @@ create_or_update_markdown() {
 date: $(date -I'minutes')
 state: wanted
 cover_image: "./cover.webp"
-game-template: true
+template:
+  game:
 ---
 EOF
 		echo "Game file for '$title' created successfully at $dir_name."

@@ -1,6 +1,7 @@
 ---
 title-prefix: Home
-home-template: true
+template:
+  home: true
 collections:
   - name: games
     key: playing

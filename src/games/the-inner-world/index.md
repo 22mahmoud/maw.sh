@@ -3,7 +3,8 @@ title-prefix: The Inner World
 date: 2024-03-09T00:00+02:00
 state: completed
 cover_image: "./cover.webp"
-game-template: true
+template:
+  game: true
 release_date: "2013-08-15"
 description: |-
   The Inner World – A 2D-Point’n’Click Adventure

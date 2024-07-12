@@ -21,7 +21,8 @@ path_name="src/thoughts/$dirname/index.md"
 cat <<EOF >"$path_name"
 ---
 date: $(date +"%Y-%m-%dT%H:%M:%S%:z")
-thought-template: true
+template:
+  thought: true
 ---
 EOF
 

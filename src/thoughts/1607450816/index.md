@@ -1,6 +1,7 @@
 ---
 date: "2020-12-08T18:06:00+00:00"
-thought-template: true
+template:
+  thought: true
 keywords:
   - github
 ---

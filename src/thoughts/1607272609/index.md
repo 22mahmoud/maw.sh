@@ -1,6 +1,7 @@
 ---
 date: "2020-12-06T16:36:00+00:00"
-thought-template: true
+template:
+  thought: true
 keywords:
   - site-update
 ---

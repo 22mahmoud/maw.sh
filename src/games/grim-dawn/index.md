@@ -6,6 +6,7 @@ description: "Grim Dawn is an Action RPG developed by Crate Entertainment.\n\nTh
 state: active
 cover_image: "./cover.webp"
 original_url: "http://www.grimdawn.com/"
-game-template: true
+template:
+  game: true
 platform: bottles
 ---

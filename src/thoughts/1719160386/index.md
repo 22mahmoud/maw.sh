@@ -1,6 +1,7 @@
 ---
 date: "2024-06-23T16:33:00+00:00"
-thought-template: true
+template:
+  thought: true
 keywords:
   - webmentions
 ---
