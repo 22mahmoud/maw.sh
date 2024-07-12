@@ -18,7 +18,7 @@ build: static $(output)/rss-thoughts.xml $(output)/rss.xml $(output)/sitemap.xml
 dev:
 	@find $(src) filters templates -type f | entr $(MAKE) dist/blog/build-a-blog-with-svelte-and-markdown/index.html
 
-prepare:
+prepare: static
 	@mkdir -pv $(output)
 	@mkdir -pv $(output)/remote_images
 	@mkdir -pv $(tmp)/images
@@ -26,23 +26,23 @@ prepare:
 
 html: prepare $(html_files) $(output)/index.html
 
-$(output)/rss.xml: $(blog_files) templates/rss.xml
+$(output)/rss.xml: $(blog_files) prepare templates/rss.xml
 	@$(bin)/generate $@
 
-$(output)/rss-thoughts.xml: $(thoughts_files) templates/rss.xml
+$(output)/rss-thoughts.xml: $(thoughts_files) prepare templates/rss.xml
 	@$(bin)/generate $@
 
-$(output)/sitemap.xml: html $(md_files) $(bin)/sitemap
+$(output)/sitemap.xml: html $(md_files) prepare $(bin)/sitemap
 	@$(bin)/sitemap
 
-$(output)/index.html: $(src)/index.md $(md_files) templates/* filters/* bin/generate
+$(output)/index.html: $(src)/index.md $(md_files) prepare templates/* filters/* bin/generate
 	@$(bin)/generate $@
 
-$(output)/%/index.html: $(src)/%/* templates/* filters/* bin/generate
+$(output)/%/index.html: $(src)/%/* prepare templates/* filters/* bin/generate
 	@$(bin)/generate $@
 
 ext_args := $(shell echo $(extensions) | sed 's/\(\w\+\)/--include="*.\1"/g')
-static: html
+static:
 	@rsync -av --update --include="*/" $(ext_args) --exclude="*" $(src)/ $(output)/
 	@rsync -av --update --include="*" public/ $(output)/
 	@rsync -av --update --include="*" assets/ $(output)/
