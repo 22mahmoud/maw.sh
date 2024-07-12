@@ -60,7 +60,7 @@ copy-paste code into my neovim config and start tweaking it.
 
 ## Examples time
 
-#### - search/browse files:
+### - search/browse files:
 
 for the codebase navigation I'll use the vim `find`, `buffers` commands but
 instead of using `vim.opt.path:append "*"` which leads to hang the command on

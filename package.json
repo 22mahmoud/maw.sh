@@ -5,10 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: nno test specified\" && exit 1",
-    "main-css": "lightningcss --minify --bundle --targets '>= 0.25%' assets/css/main.css -o dist/css/main.css",
-    "game-css": "lightningcss --minify --bundle --targets '>= 0.25%' assets/css/game.css -o dist/css/game.css",
-    "webmentions-css": "lightningcss --minify --bundle --targets '>= 0.25%' assets/css/webmentions.css -o dist/css/webmentions.css",
-    "css": "npm run main-css; npm run game-css; npm run webmentions-css"
+    "css": "lightningcss --minify --bundle --targets '>= 0.25%' assets/css/app.css -o dist/css/app.css"
   },
   "keywords": [],
   "author": "",

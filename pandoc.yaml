@@ -6,7 +6,7 @@ template: default.html
 metadata-file: meta.yml
 table-of-contents: true
 css:
-  - /css/main.css
+  - /css/app.css
 filters:
   - pagination.lua
   - collections.lua

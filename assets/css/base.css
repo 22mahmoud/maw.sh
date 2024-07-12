@@ -1,139 +1,3 @@
-:root {
-  --sans: 1em/1.6 system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue, Fira Sans, sans-serif;
-  --mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier,
-    "Courier New", monospace;
-
-  --c1: #080808;
-  --c2: #f1f2f2;
-  --c3: #5db3fd;
-  --c4: #ebdbb2;
-  --c5: #1d2021;
-  --c6: #b0b0b0;
-
-  --status-active: #28a745;
-  --status-wanted: #ffc107;
-  --status-completed: #17a2b8;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-}
-
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-  margin-block-end: 0;
-}
-
-ul[role="list"],
-ol[role="list"] {
-  list-style: none;
-}
-
-body {
-  min-height: 100vh;
-  line-height: 1.5;
-}
-
-h1,
-h2,
-h3,
-h4,
-button,
-input,
-label {
-  line-height: 1.1;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  text-wrap: balance;
-}
-
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-img,
-picture {
-  max-width: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  font-family: inherit;
-  font-size: inherit;
-}
-
-textarea:not([rows]) {
-  min-height: 10em;
-}
-
-:target {
-  scroll-margin-block: 5ex;
-}
-
-address,
-area,
-article,
-aside,
-audio,
-blockquote,
-datalist,
-details,
-dl,
-fieldset,
-figure,
-form,
-input,
-iframe,
-img,
-meter,
-nav,
-ol,
-optgroup,
-option,
-output,
-p,
-pre,
-progress,
-ruby,
-section,
-table,
-textarea,
-ul,
-video {
-  /* Margins for most elements */
-  margin-bottom: 1rem;
-}
-
-hr {
-  /* Reset the border of the <hr> separator, then set a better line */
-  border: 0;
-  border-bottom: 1px solid var(--c5);
-  margin: 1rem auto;
-}
-
 body {
   margin: 0 auto;
   padding: 1em;
@@ -253,7 +117,6 @@ details[open] > *:last-child {
   margin-bottom: 0;
 }
 
-/* Headlines */
 h1,
 h2,
 h3,
@@ -303,7 +166,6 @@ h6 {
 
 ol,
 ul {
-  /* Replace the browser default padding */
   padding-left: 2rem;
 }
 
@@ -329,6 +191,12 @@ noscript {
   padding: 10px;
   border-radius: 8px;
   display: block;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid var(--c5);
+  margin: 1rem auto;
 }
 
 .site-title a {

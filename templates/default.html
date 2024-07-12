@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preload" href="/css/main.css" as="style" />
+    <link rel="preload" href="$app_css$" as="style" />
     <link
       rel="alternate"
       type="application/rss+xml"
@@ -181,9 +181,7 @@
 $for(include-before)$ $include-before$ $endfor$
 
 $if(template)$
-
 ${template.home:home()}
-
 ${template.blog:blog()}
 ${template.post:post()}
 

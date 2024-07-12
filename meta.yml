@@ -8,6 +8,7 @@ keywords:
 author: Mahmoud Ashraf
 base_url: https://maw.sh
 locale: en-US
+app_css: /css/app.css
 social:
   twitter: https://twitter.com/maw_sh
   mastodon: https://fosstodon.org/\@22mahmoud

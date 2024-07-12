@@ -1,0 +1,17 @@
+:root {
+  --sans: 1em/1.6 system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue, Fira Sans, sans-serif;
+  --mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier,
+    "Courier New", monospace;
+
+  --c1: #080808;
+  --c2: #f1f2f2;
+  --c3: #5db3fd;
+  --c4: #ebdbb2;
+  --c5: #1d2021;
+  --c6: #b0b0b0;
+
+  --status-active: #28a745;
+  --status-wanted: #ffc107;
+  --status-completed: #17a2b8;
+}
