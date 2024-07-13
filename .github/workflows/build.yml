@@ -74,7 +74,6 @@ jobs:
 
       - name: post build
         run: |
-          rm -rf dist/css/*.css
           npm run css
 
       - name: Save dist cache
