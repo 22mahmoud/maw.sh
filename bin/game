@@ -26,7 +26,7 @@ date: $(date -I'minutes')
 state: wanted
 cover_image: "./cover.webp"
 template:
-  game:
+  game: true
 ---
 EOF
 		echo "Game file for '$title' created successfully at $dir_name."
