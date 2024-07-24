@@ -65,7 +65,7 @@
   padding: 0;
   margin: 0;
   margin-left: -8px;
-  margin-top: -28px;
+  margin-top: -8px
 }
 
 .bookmark-link {
@@ -74,8 +74,8 @@
 }
 
 .bookmark-author-photo {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   outline: 4px solid var(--c5);
 }
@@ -90,7 +90,7 @@ h3 {
 }
 
 .webmentions-bookmarks h3 {
-  padding-bottom: 28px;
+  padding-bottom: 8px;
 }
 
 .comment-published-at a {

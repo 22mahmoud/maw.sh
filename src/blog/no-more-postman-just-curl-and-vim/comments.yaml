@@ -1347,3 +1347,98 @@ in-reply-to:
     in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
     wm-property: in-reply-to
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Cybarbie
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/5d2a31eadfdadd80b195d448ea9f7f4049a27cdf7ccae98f49dbe1b68b9ec59e.png
+      url: https://mastodon.social/\@nf3xn
+    url: https://mastodon.social/\@nf3xn/112841918339896521
+    published: "2024-07-24T14:23:49+00:00"
+    wm-received: "2024-07-24T20:32:05Z"
+    wm-id: 1840308
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112841918893639499
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://mas.to/\@bladtman" class="u-url">\@<span>bladtman</span></a></span> <span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> We should make a CTF themed on this.</p>
+      text: \@bladtman \@22mahmoud We should make a CTF themed on this.
+    in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: bladtman
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/1f39b5a8ff55c6a7965e1fbde2985679f00c83821c9d49a6aab292caba0a4892.jpg
+      url: https://mas.to/\@bladtman
+    url: https://mas.to/\@bladtman/112841977136910598
+    published: "2024-07-24T14:38:46+00:00"
+    wm-received: "2024-07-24T20:32:05Z"
+    wm-id: 1840309
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112841977204886525
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://mastodon.social/\@nf3xn" class="u-url">\@<span>nf3xn</span></a></span> <span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> <br />CTF?</p>
+      text: "\\@nf3xn \\@22mahmoud \nCTF?"
+    in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Cybarbie
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/5d2a31eadfdadd80b195d448ea9f7f4049a27cdf7ccae98f49dbe1b68b9ec59e.png
+      url: https://mastodon.social/\@nf3xn
+    url: https://mastodon.social/\@nf3xn/112842002995170939
+    published: "2024-07-24T14:45:21+00:00"
+    wm-received: "2024-07-24T20:32:09Z"
+    wm-id: 1840310
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112842004082768728
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://mas.to/\@bladtman" class="u-url">\@<span>bladtman</span></a></span> <span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> Too lame? There are plenty of IRL cases where you get booted into vim - like say a crontab where you might be able to inject the url into the command and instead of editing the user's crontab you would be downloading your implant to run as that user for a nice comfy shell. Bound to be zabbix admin or something like that. meh ok might be a bit lame.</p>
+      text: \@bladtman \@22mahmoud Too lame? There are plenty of IRL cases where you get booted into vim - like say a crontab where you might be able to inject the url into the command and instead of editing the user's crontab you would be downloading your implant to run as that user for a nice comfy shell. Bound to be zabbix admin or something like that. meh ok might be a bit lame.
+    in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: bladtman
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/1f39b5a8ff55c6a7965e1fbde2985679f00c83821c9d49a6aab292caba0a4892.jpg
+      url: https://mas.to/\@bladtman
+    url: https://mas.to/\@bladtman/112842125724513928
+    published: "2024-07-24T15:16:33+00:00"
+    wm-received: "2024-07-24T20:32:10Z"
+    wm-id: 1840311
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112842125797765647
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://mastodon.social/\@nf3xn" class="u-url">\@<span>nf3xn</span></a></span> <span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> <br />Not lame, I just didn't know what CTF is :)<br />Capture the flag?</p>
+      text: "\\@nf3xn \\@22mahmoud \nNot lame, I just didn't know what CTF is :)\nCapture the flag?"
+    in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: in-reply-to
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Cybarbie
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/5d2a31eadfdadd80b195d448ea9f7f4049a27cdf7ccae98f49dbe1b68b9ec59e.png
+      url: https://mastodon.social/\@nf3xn
+    url: https://mastodon.social/\@nf3xn/112842006423952711
+    published: "2024-07-24T14:46:13+00:00"
+    wm-received: "2024-07-24T20:32:10Z"
+    wm-id: 1840312
+    wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112717119416899615/112842007859039821
+    wm-target: blog/no-more-postman-just-curl-and-vim
+    wm-protocol: webmention
+    content:
+      html: <p><span class="h-card"><a href="https://mas.to/\@bladtman" class="u-url">\@<span>bladtman</span></a></span> <span class="h-card"><a href="https://fosstodon.org/\@22mahmoud" class="u-url">\@<span>22mahmoud</span></a></span> the weirdest of vim webshells</p>
+      text: \@bladtman \@22mahmoud the weirdest of vim webshells
+    in-reply-to: https://maw.sh/blog/no-more-postman-just-curl-and-vim/
+    wm-property: in-reply-to
+    wm-private: false
