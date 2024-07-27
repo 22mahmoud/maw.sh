@@ -60,8 +60,7 @@
       content="$if(post)$summary_large_image$else$summary$endif$"
     />
 
-    $if(template.post)$
-
+$if(template.post)$
     <script type="application/ld+json">
     {
       "@context": "http://schema.org",
@@ -90,9 +89,7 @@
       }
     }
     </script>
-
-    $else$
-
+$else$
     <script type="application/ld+json">
     {
       "@context": "http://schema.org",
@@ -113,45 +110,44 @@
       ]
     }
     </script>
+$endif$
 
-    $endif$
 
-
-    $for(author-meta)$
+$for(author-meta)$
     <meta name="author" content="$author-meta$" />
-    $endfor$
+$endfor$
 
-    $if(date-meta)$
+$if(date-meta)$
     <meta name="dcterms.date" content="$date-meta$" />
-    $endif$
+$endif$
 
-    $if(keywords)$
+$if(keywords)$
     <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
-    $endif$
+$endif$
 
-    $if(description-meta)$
+$if(description-meta)$
     <meta name="description" content="$description-meta$" />
-    $endif$
+$endif$
 
     <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
 
-    $for(css)$
+$for(css)$
     <link rel="stylesheet" href="$css$" />
-    $endfor$
+$endfor$
 
-    $if(template.game)$
+$if(template.game)$
     <link rel="stylesheet" href="/css/game.css" />
-    $endif$
+$endif$
 
-    $if(template.post)$
+$if(template.post)$
     <link rel="stylesheet" href="/css/webmentions.css" />
-    $endif$
+$endif$
 
-    $if(template.thought)$
+$if(template.thought)$
     <link rel="stylesheet" href="/css/webmentions.css" />
-    $endif$
+$endif$
 
-    $for(header-includes)$ $header-includes$ $endfor$
+$for(header-includes)$ $header-includes$ $endfor$
   </head>
 
   <body>
