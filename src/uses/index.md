@@ -22,7 +22,7 @@ description: Mahmoud Ashraf's list of software/hardware for daily using
 - **video**: mpv
 - **email**: neomutt
 - **file manager**: nnn
-- **rss reader**: newsboat
+- **rss reader**: newsboat w/ selfhosted [miniflux](https://miniflux.app/) server.
 - **search engine**: searx using my [instance](https://searx.mahmoudashraf.dev)
 - **password manager**: self-hosted bitwarden
   using [bitwarden-rs](https://github.com/dani-garcia/bitwarden_rs)
@@ -43,7 +43,9 @@ description: Mahmoud Ashraf's list of software/hardware for daily using
   - **Cooling**: Cooler Master ML240L V2 ARGB
   - **GPU**: MSI RX 6700 XT Mech 2X 12GB GDDR6
   - **Memory**: Corsair Vengeance PRO RGB 16GB (2X8) 3200 CL16
-  - **SSD**: XPG GAMMIX S50 Lite PCIe Gen4x4 M.2 1TB
+  - **SSD**:
+    - Samsung 990 PRO 1TB PCIe Gen4. X4 NVMe 2.0c - M.2 Internal SSD
+    - XPG GAMMIX S50 Lite PCIe Gen4x4 M.2 1TB (Dead)
   - **HDD**: shucked "My Book 12TB"
   - **Power supply**: Seasonic Focus Gold GM-750 750W 80Plus Gold-Semi-Modular
   - **Mouse**: CoolerMater MM720 Gaming Mouse
