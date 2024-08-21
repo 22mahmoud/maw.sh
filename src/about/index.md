@@ -29,6 +29,7 @@ At middle school, my Social Studies teacher (yes non-tech teacher 🤷) asked me
 - [Roadtripnation](https://roadtripnation.com)
 - [Swvl](https://swvl.com)
 - [lynks shop](https://shop.lynks.com)
+- [ischool](https://www.ischooltech.com)
 
 ## Available to get hired?
 
