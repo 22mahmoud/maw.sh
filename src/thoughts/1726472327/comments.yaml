@@ -31,3 +31,84 @@ repost-of:
     repost-of: https://maw.sh/thoughts/1726472327/
     wm-property: repost-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Rafinha
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/da01767de9cc3fe1f1664cb890d14adc5a9eda03e9827b119b5c2e4004dfae5d.jpg
+      url: https://mastodon.social/\@Rafinha13
+    url: https://fosstodon.org/\@22mahmoud/113146183301671442#reblogged-by-112632143739275316
+    published: null
+    wm-received: "2024-09-16T09:38:40Z"
+    wm-id: 1847529
+    wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/112632143739275316
+    wm-target: /thoughts/1726472327
+    wm-protocol: webmention
+    repost-of: https://maw.sh//thoughts/1726472327/
+    wm-property: repost-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Rafinha
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/da01767de9cc3fe1f1664cb890d14adc5a9eda03e9827b119b5c2e4004dfae5d.jpg
+      url: https://mastodon.social/\@Rafinha13
+    url: https://fosstodon.org/\@22mahmoud/113146183301671442#reblogged-by-112632143739275316
+    published: null
+    wm-received: "2024-09-16T09:38:42Z"
+    wm-id: 1847532
+    wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/112632143739275316
+    wm-target: thoughts/1726472327
+    wm-protocol: webmention
+    repost-of: https://maw.sh/thoughts/1726472327/
+    wm-property: repost-of
+    wm-private: false
+like-of:
+  - type: entry
+    author:
+      type: card
+      name: Rafinha
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/da01767de9cc3fe1f1664cb890d14adc5a9eda03e9827b119b5c2e4004dfae5d.jpg
+      url: https://mastodon.social/\@Rafinha13
+    url: https://fosstodon.org/\@22mahmoud/113146183301671442#favorited-by-112632143739275316
+    published: null
+    wm-received: "2024-09-16T09:38:40Z"
+    wm-id: 1847530
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/112632143739275316
+    wm-target: /thoughts/1726472327
+    wm-protocol: webmention
+    like-of: https://maw.sh//thoughts/1726472327/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Rafinha
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/da01767de9cc3fe1f1664cb890d14adc5a9eda03e9827b119b5c2e4004dfae5d.jpg
+      url: https://mastodon.social/\@Rafinha13
+    url: https://fosstodon.org/\@22mahmoud/113146183301671442#favorited-by-112632143739275316
+    published: null
+    wm-received: "2024-09-16T09:38:42Z"
+    wm-id: 1847531
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/112632143739275316
+    wm-target: thoughts/1726472327
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1726472327/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Salva Rivas
+      photo: https://webmention.io/avatar/cdn.bsky.app/51492fc81fc987141a26f2ed91fe3eebeebc02652eba5b078b4bf175e89c0f09.jpg
+      url: https://bsky.app/profile/srivas.bsky.social
+    url: https://bsky.app/profile/22mahmoud.bsky.social/post/3l4b2qnmilb2w#liked_by_did:plc:rmighyqfgqo37snbbv46xkkd
+    published: null
+    wm-received: "2024-09-16T09:40:17Z"
+    wm-id: 1847533
+    wm-source: https://brid.gy/like/bluesky/did:plc:tzalteqzxp24srzv5xc7f6j5/at%253A%252F%252Fdid%253Aplc%253Atzalteqzxp24srzv5xc7f6j5%252Fapp.bsky.feed.post%252F3l4b2qnmilb2w/did%253Aplc%253Armighyqfgqo37snbbv46xkkd
+    wm-target: /thoughts/1726472327
+    wm-protocol: webmention
+    like-of: https://maw.sh//thoughts/1726472327/
+    wm-property: like-of
+    wm-private: false
