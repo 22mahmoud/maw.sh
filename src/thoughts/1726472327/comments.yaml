@@ -1,0 +1,33 @@
+repost-of:
+  - type: entry
+    author:
+      type: card
+      name: Nature & Wildlife Feed
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/2a355e8ebe7968eff2c0f472b2ddf0e673bb20294c43adc29145fbe2c2a358e9.png
+      url: https://newsmast.community/\@nature
+    url: https://fosstodon.org/\@22mahmoud/113146183301671442#reblogged-by-111654131502541720
+    published: null
+    wm-received: "2024-09-16T08:11:15Z"
+    wm-id: 1847519
+    wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/111654131502541720
+    wm-target: /thoughts/1726472327
+    wm-protocol: webmention
+    repost-of: https://maw.sh//thoughts/1726472327/
+    wm-property: repost-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Nature & Wildlife Feed
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/2a355e8ebe7968eff2c0f472b2ddf0e673bb20294c43adc29145fbe2c2a358e9.png
+      url: https://newsmast.community/\@nature
+    url: https://fosstodon.org/\@22mahmoud/113146183301671442#reblogged-by-111654131502541720
+    published: null
+    wm-received: "2024-09-16T08:11:15Z"
+    wm-id: 1847520
+    wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/111654131502541720
+    wm-target: thoughts/1726472327
+    wm-protocol: webmention
+    repost-of: https://maw.sh/thoughts/1726472327/
+    wm-property: repost-of
+    wm-private: false
