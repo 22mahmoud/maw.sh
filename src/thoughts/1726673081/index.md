@@ -4,6 +4,12 @@ featured-image:
   photo: PXL_20240918_063420629.RAW-01.MP.COVER.jpg
 template:
   thought: true
+keywords:
+  - photo
+  - nature
+  - beach
+  - sky
+  - sand
 ---
 
 
