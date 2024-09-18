@@ -1,0 +1,82 @@
+like-of:
+  - type: entry
+    author:
+      type: card
+      name: Ron van Haperen
+      photo: https://webmention.io/avatar/fosstodon.org/db1d635fb4356e493a52ae26f48c9f875d733a757cb82141ea43b0221d79f2d5.png
+      url: https://mastodon.social/\@RonBreda
+    url: https://fosstodon.org/\@22mahmoud/113159420374667816#favorited-by-113131204558583667
+    published: null
+    wm-received: "2024-09-18T16:37:55Z"
+    wm-id: 1847989
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113159420374667816/113131204558583667
+    wm-target: thoughts/1726673081
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1726673081/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Donncha Ó Caoimh
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/83e5d38efd8dedb6e4871efee1af05457bda7fd68e1fa8c133cc12584cfc8b0b.jpg
+      url: https://mastodon.ie/\@donncha
+    url: https://fosstodon.org/\@22mahmoud/113159420374667816#favorited-by-109290437327107436
+    published: null
+    wm-received: "2024-09-18T16:37:55Z"
+    wm-id: 1847990
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113159420374667816/109290437327107436
+    wm-target: thoughts/1726673081
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1726673081/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Bookmark
+      photo: https://webmention.io/avatar/cdn.bsky.app/c5c72f0f1f1c6ca7acfbfddcf807dfc95d50d6969afb9b3a66e7bc3771f2a824.jpg
+      url: https://bsky.app/profile/salva-aqui.bsky.social
+    url: https://bsky.app/profile/22mahmoud.bsky.social/post/3l4gwdoc25c2p#liked_by_did:plc:4csjnc6lcqncyktquhtmbecb
+    published: null
+    wm-received: "2024-09-18T16:40:00Z"
+    wm-id: 1847992
+    wm-source: https://brid.gy/like/bluesky/did:plc:tzalteqzxp24srzv5xc7f6j5/at%253A%252F%252Fdid%253Aplc%253Atzalteqzxp24srzv5xc7f6j5%252Fapp.bsky.feed.post%252F3l4gwdoc25c2p/did%253Aplc%253A4csjnc6lcqncyktquhtmbecb
+    wm-target: thoughts/1726673081
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1726673081/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Chris Nelson
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/d03619df3f9a3625152be5efb4fa19e7ab5d18741ab80f4ef08c7b2083a50ec4.jpg
+      url: https://mstdn.social/\@chrisnelsonsdog
+    url: https://fosstodon.org/\@22mahmoud/113159420374667816#favorited-by-110653213543765715
+    published: null
+    wm-received: "2024-09-18T17:08:42Z"
+    wm-id: 1847998
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113159420374667816/110653213543765715
+    wm-target: thoughts/1726673081
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1726673081/
+    wm-property: like-of
+    wm-private: false
+repost-of:
+  - type: entry
+    author:
+      type: card
+      name: Edelruth For HARRIS-WALZ 2024
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/757c4b412293cccaed25893c2c0c98f8a95a7edb4c370afea0dc9bbfd502d747.jpg
+      url: https://mastodon.online/\@Edelruth
+    url: https://fosstodon.org/\@22mahmoud/113159420374667816#reblogged-by-109305035325721759
+    published: null
+    wm-received: "2024-09-18T16:37:57Z"
+    wm-id: 1847991
+    wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/113159420374667816/109305035325721759
+    wm-target: thoughts/1726673081
+    wm-protocol: webmention
+    repost-of: https://maw.sh/thoughts/1726673081/
+    wm-property: repost-of
+    wm-private: false
