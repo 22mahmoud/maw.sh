@@ -63,6 +63,38 @@ like-of:
     like-of: https://maw.sh/thoughts/1726673081/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Aurani
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/871be90cc765340e85c41dccbe4fef538b280f543f28dbd9af6481c7ae60d784.jpg
+      url: https://tech.lgbt/\@Aurani
+    url: https://fosstodon.org/\@22mahmoud/113159420374667816#favorited-by-109540979006252478
+    published: null
+    wm-received: "2024-09-18T17:36:19Z"
+    wm-id: 1848000
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113159420374667816/109540979006252478
+    wm-target: thoughts/1726673081
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1726673081/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Abdelrahman A.
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/4949bb3ad89bc7b01f9766b8481a9eab6e06f0876d44882a6ddd557f8bfa57c4.png
+      url: https://vmst.io/\@abogical
+    url: https://fosstodon.org/\@22mahmoud/113159420374667816#favorited-by-109452528242461491
+    published: null
+    wm-received: "2024-09-18T19:39:20Z"
+    wm-id: 1848018
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113159420374667816/109452528242461491
+    wm-target: thoughts/1726673081
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1726673081/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
