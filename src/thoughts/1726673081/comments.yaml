@@ -95,6 +95,54 @@ like-of:
     like-of: https://maw.sh/thoughts/1726673081/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: ValeTer
+      photo: https://webmention.io/avatar/cdn.bsky.app/ee545991d1bd5dc5c2060228f275e6e816497e294512a8f14fbaf10a0ebb2dc2.jpg
+      url: https://bsky.app/profile/valeter.bsky.social
+    url: https://bsky.app/profile/22mahmoud.bsky.social/post/3l4gwdoc25c2p#liked_by_did:plc:p2dk3b6xl4ffok4i72s5dwvk
+    published: null
+    wm-received: "2024-09-18T20:57:46Z"
+    wm-id: 1848022
+    wm-source: https://brid.gy/like/bluesky/did:plc:tzalteqzxp24srzv5xc7f6j5/at%253A%252F%252Fdid%253Aplc%253Atzalteqzxp24srzv5xc7f6j5%252Fapp.bsky.feed.post%252F3l4gwdoc25c2p/did%253Aplc%253Ap2dk3b6xl4ffok4i72s5dwvk
+    wm-target: thoughts/1726673081
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1726673081/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: 'The Jawa with a #Pixel phone'
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/9d220bc629169f0de49d05c4717211038678feca4d93222d30f2f2530d8517e5.jpg
+      url: https://pixelfed.social/whatchout
+    url: https://fosstodon.org/\@22mahmoud/113159420374667816#favorited-by-112256511404437167
+    published: null
+    wm-received: "2024-09-18T21:28:20Z"
+    wm-id: 1848023
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113159420374667816/112256511404437167
+    wm-target: thoughts/1726673081
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1726673081/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Ash Qin ????
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/5a8e6d9ee47242e5aeefda7d2a3544bac8915d8d215e9806325c5fc3654ee7db.png
+      url: https://focal.love/\@ashqinmoe
+    url: https://fosstodon.org/\@22mahmoud/113159420374667816#favorited-by-110374816143693326
+    published: null
+    wm-received: "2024-09-19T10:43:03Z"
+    wm-id: 1848179
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113159420374667816/110374816143693326
+    wm-target: thoughts/1726673081
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1726673081/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
