@@ -47,6 +47,22 @@ like-of:
     like-of: https://maw.sh//thoughts/1726472327/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: AndroidApps
+      photo: https://webmention.io/avatar/cdn.bsky.app/5c537e1cd5296da49f3695351ec93a48ac8a284bc813023cc8cad7bbd0155d15.jpg
+      url: https://bsky.app/profile/androidapps.bsky.social
+    url: https://bsky.app/profile/22mahmoud.bsky.social/post/3l4b2qnmilb2w#liked_by_did:plc:32qgxncs6ktj4pl7nqgpjy4s
+    published: null
+    wm-received: "2024-09-20T10:54:53Z"
+    wm-id: 1848405
+    wm-source: https://brid.gy/like/bluesky/did:plc:tzalteqzxp24srzv5xc7f6j5/at%253A%252F%252Fdid%253Aplc%253Atzalteqzxp24srzv5xc7f6j5%252Fapp.bsky.feed.post%252F3l4b2qnmilb2w/did%253Aplc%253A32qgxncs6ktj4pl7nqgpjy4s
+    wm-target: /thoughts/1726472327
+    wm-protocol: webmention
+    like-of: https://maw.sh//thoughts/1726472327/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
@@ -79,4 +95,23 @@ repost-of:
     wm-protocol: webmention
     repost-of: https://maw.sh/thoughts/1726472327/
     wm-property: repost-of
+    wm-private: false
+in-reply-to:
+  - type: entry
+    author:
+      type: card
+      name: AndroidApps
+      photo: https://webmention.io/avatar/cdn.bsky.app/5c537e1cd5296da49f3695351ec93a48ac8a284bc813023cc8cad7bbd0155d15.jpg
+      url: https://bsky.app/profile/androidapps.bsky.social
+    url: https://bsky.app/profile/androidapps.bsky.social/post/3l4ledrrca22v
+    published: "2024-09-20T10:33:56+00:00"
+    wm-received: "2024-09-20T10:54:53Z"
+    wm-id: 1848406
+    wm-source: https://brid.gy/comment/bluesky/did:plc:tzalteqzxp24srzv5xc7f6j5/at%253A%252F%252Fdid%253Aplc%253Atzalteqzxp24srzv5xc7f6j5%252Fapp.bsky.feed.post%252F3l4b2qnmilb2w/at%253A%252F%252Fdid%253Aplc%253A32qgxncs6ktj4pl7nqgpjy4s%252Fapp.bsky.feed.post%252F3l4ledrrca22v
+    wm-target: /thoughts/1726472327
+    wm-protocol: webmention
+    content:
+      text: 👍
+    in-reply-to: https://maw.sh//thoughts/1726472327/
+    wm-property: in-reply-to
     wm-private: false
