@@ -369,3 +369,30 @@ article.h-entry footer {
   font-size: 1em;
   font-weight: bold;
 }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin: 24px !important;
+}
+
+.gallery img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery img:only-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

@@ -17,5 +17,8 @@ keywords:
 
 📅 Sep 18, 2024
 
+::: {.gallery}
 ![](PXL_20240918_063420629.RAW-01.MP.COVER.jpg "")
+
 ![](PXL_20240918_081544816.RAW-01.MP.COVER~3.jpg "")
+::: 

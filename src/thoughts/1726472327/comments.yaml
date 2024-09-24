@@ -63,6 +63,38 @@ like-of:
     like-of: https://maw.sh//thoughts/1726472327/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Ash Qin ????
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/5a8e6d9ee47242e5aeefda7d2a3544bac8915d8d215e9806325c5fc3654ee7db.png
+      url: https://focal.love/\@ashqinmoe
+    url: https://fosstodon.org/\@22mahmoud/113146183301671442#favorited-by-110374816143693326
+    published: null
+    wm-received: "2024-09-23T14:56:29Z"
+    wm-id: 1848757
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/110374816143693326
+    wm-target: thoughts/1726472327
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1726472327/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Ash Qin ????
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/5a8e6d9ee47242e5aeefda7d2a3544bac8915d8d215e9806325c5fc3654ee7db.png
+      url: https://focal.love/\@ashqinmoe
+    url: https://fosstodon.org/\@22mahmoud/113146183301671442#favorited-by-110374816143693326
+    published: null
+    wm-received: "2024-09-23T14:56:29Z"
+    wm-id: 1848758
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/110374816143693326
+    wm-target: /thoughts/1726472327
+    wm-protocol: webmention
+    like-of: https://maw.sh//thoughts/1726472327/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
@@ -111,7 +143,7 @@ in-reply-to:
     wm-target: /thoughts/1726472327
     wm-protocol: webmention
     content:
-      text: 👍
+      text: "\U0001F44D"
     in-reply-to: https://maw.sh//thoughts/1726472327/
     wm-property: in-reply-to
     wm-private: false

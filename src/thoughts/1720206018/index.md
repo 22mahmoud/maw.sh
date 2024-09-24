@@ -12,4 +12,6 @@ keywords:
 
 📅 Jul 30, 2021
 
+::: {.gallery}
 ![](DSC_1585_01.jpg "")
+:::

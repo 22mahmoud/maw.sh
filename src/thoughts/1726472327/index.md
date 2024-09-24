@@ -15,4 +15,6 @@ keywords:
 
 📅 Sep 15, 2024
 
+::: {.gallery}
 ![](PXL_20240915_055656804.RAW-02.ORIGINAL~2.jpg "")
+:::
