@@ -6,6 +6,9 @@ template:
   game: true
 title-prefix: Astro Bot
 release_date: "2024-09-06"
+platform: ps5
 description: ""
-original_url: ""
+original_url: https://www.teamasobi.com/games/astro-bot
 ---
+
+This My First PS5 Physical game I purshesd! [check my post](/thoughts/1727450362)
