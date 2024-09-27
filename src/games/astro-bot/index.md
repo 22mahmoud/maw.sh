@@ -9,6 +9,10 @@ release_date: "2024-09-06"
 platform: ps5
 description: ""
 original_url: https://www.teamasobi.com/games/astro-bot
+keywords:
+  - games
+  - ps5
+  - astro-bot
 ---
 
 This My First PS5 Physical game I purshesd! [check my post](/thoughts/1727450362)
