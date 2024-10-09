@@ -1,6 +1,6 @@
 ---
 date: 2024-09-27T18:16+03:00
-state: active
+state: completed
 cover_image: "./cover.webp"
 template:
   game: true
