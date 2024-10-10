@@ -98,3 +98,36 @@ repost-of:
     repost-of: https://maw.sh/blog/uninstall-all-neovim-plugins/
     wm-property: repost-of
     wm-private: false
+like-of:
+  - type: entry
+    author:
+      type: card
+      name: Hasan Ali
+      photo: https://webmention.io/avatar/cdn.fosstodon.org/53b551a370dc4bdd73533caca93a84206a320110ee47cdf95b1face4a05a5ced.png
+      url: https://fosstodon.org/\@hasanhaja
+    url: https://fosstodon.org/\@22mahmoud/113279563230747442#favorited-by-109297676816555409
+    published: null
+    wm-received: "2024-10-09T22:31:34Z"
+    wm-id: 1851276
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113279563230747442/109297676816555409
+    wm-target: blog/uninstall-all-neovim-plugins
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/uninstall-all-neovim-plugins/
+    wm-property: like-of
+    wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: DrRac27
+      photo: https://cdn.fosstodon.org/accounts/avatars/108/895/711/977/938/583/original/fcae2a5ba2473e8b.jpeg
+      url: https://fosstodon.org/\@DrRac27
+    url: https://fosstodon.org/\@22mahmoud/113279563230747442#favorited-by-108895711977938583
+    published: null
+    wm-received: "2024-10-10T03:40:54Z"
+    wm-id: 1851313
+    wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113279563230747442/108895711977938583
+    wm-target: blog/uninstall-all-neovim-plugins
+    wm-protocol: webmention
+    like-of: https://maw.sh/blog/uninstall-all-neovim-plugins/
+    wm-property: like-of
+    wm-private: false
