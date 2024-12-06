@@ -8,6 +8,15 @@ local remote_images = 'remote_images'
 local images = 'images'
 local current_file = PANDOC_STATE.input_files[1]
 
+local function log_error(message)
+  local log_path = path.join { tmp, 'image_filter_errors.log' }
+  local log_file = io.open(log_path, 'a')
+  if log_file then
+    log_file:write(os.date '%Y-%m-%d %H:%M:%S' .. ': ' .. message .. '\n')
+    log_file:close()
+  end
+end
+
 local function is_remote_src(file)
   return u.starts_with(file, 'https://') or u.starts_with(file, 'http://')
 end
@@ -19,13 +28,13 @@ local function get_file_absolute_path(file)
 end
 
 local function slugify(url)
-  local slugified = url:gsub('[^%w_]', '_')
+  local slugified = url:gsub('[^%w_.-]', '_')
   return slugified
 end
 
 local function get_file_extension(file)
   local _, ext = path.split_extension(file)
-  return ext
+  return ext or '.jpg'
 end
 
 local function get_file_name(file)
@@ -42,8 +51,25 @@ local function get_thumb_path(file)
 end
 
 local function download_image(url, output)
-  os.execute(('mkdir -pv %s'):format(u.dirname(output)))
-  os.execute(('curl -L -o %s %s'):format(output, url))
+  local max_retries = 3
+  local retry_delay = 2 -- seconds
+
+  for attempt = 1, max_retries do
+    os.execute(('mkdir -pv %s'):format(u.dirname(output)))
+
+    local curl_cmd = ('curl -L -f -o %s %s'):format(output, url)
+    local result = os.execute(curl_cmd)
+
+    if result then
+      return true
+    else
+      log_error(('Download attempt %d failed for %s'):format(attempt, url))
+      os.execute(('sleep %d'):format(retry_delay))
+    end
+  end
+
+  log_error(('Failed to download image after %d attempts: %s'):format(max_retries, url))
+  return false
 end
 
 local function get_image_size(file)
@@ -64,41 +90,44 @@ local function set_image_size(img, file)
 end
 
 local function process_image(input, output_base)
-  local avif_output = output_base .. '.avif'
-  local webp_output = output_base .. '.webp'
-  local original_output = output_base .. get_file_extension(input)
+  local formats = { 'avif', 'webp', 'original' }
+  local max_width = 768
+  local quality = 80
 
-  if
-    u.file_exists(avif_output)
-    and u.file_exists(webp_output)
-    and u.file_exists(original_output)
-  then
-    return
-  end
-
-  local tmp_avif = path.join { tmp, images, slugify(avif_output) }
-  local tmp_webp = path.join { tmp, images, slugify(webp_output) }
-  local tmp_original = path.join { tmp, images, slugify(original_output) }
+  local processed_files = {}
 
   os.execute(('mkdir -pv %s'):format(u.dirname(output_base)))
 
-  if u.file_exists(tmp_avif) and u.file_exists(tmp_webp) and u.file_exists(tmp_original) then
-    os.execute(('cp -v %s %s'):format(tmp_avif, avif_output))
-    os.execute(('cp -v %s %s'):format(tmp_webp, webp_output))
-    os.execute(('cp -v %s %s'):format(tmp_original, original_output))
-    return
+  for _, format in ipairs(formats) do
+    local output = format == 'original' and (output_base .. get_file_extension(input))
+      or (output_base .. '.' .. format)
+
+    if not u.file_exists(output) then
+      local width = get_image_size(input)
+      local resize_opts = width and width > max_width and ('-resize ' .. max_width) or ''
+
+      local cmd = format == 'avif' and ('magick %s %s %s'):format(input, resize_opts, output)
+        or format == 'webp' and ('magick %s -quality %d %s %s'):format(
+          input,
+          quality,
+          resize_opts,
+          output
+        )
+        or ('magick %s %s %s'):format(input, resize_opts, output)
+
+      local success, _exit_type = os.execute(cmd)
+
+      if not success then
+        log_error(('Failed to process image: %s to %s'):format(input, format))
+      else
+        table.insert(processed_files, output)
+      end
+    else
+      table.insert(processed_files, output)
+    end
   end
 
-  local width = get_image_size(input)
-  local resize_opts = width > 768 and '-resize 768' or ''
-
-  os.execute(('magick %s %s %s'):format(input, resize_opts, original_output))
-  os.execute(('magick %s %s %s'):format(input, resize_opts, avif_output))
-  os.execute(('magick %s -quality 80 %s %s'):format(input, resize_opts, webp_output))
-
-  os.execute(('cp -v %s %s'):format(original_output, tmp_original))
-  os.execute(('cp -v %s %s'):format(avif_output, tmp_avif))
-  os.execute(('cp -v %s %s'):format(webp_output, tmp_webp))
+  return #processed_files == #formats
 end
 
 local function handle_remote_image(img)
@@ -106,24 +135,30 @@ local function handle_remote_image(img)
   local ext = get_file_extension(img.src)
 
   local download_path = path.join { dist, remote_images, slug .. ext }
-  local tmp_path = path.join { tmp, images, slug }
+  local tmp_path = path.join { tmp, images, slug .. ext }
 
   os.execute(('mkdir -pv %s'):format(u.dirname(download_path)))
+  os.execute(('mkdir -pv %s'):format(u.dirname(tmp_path)))
 
   local is_exist = u.file_exists(download_path)
   local is_temp_exist = u.file_exists(tmp_path)
 
-  if is_exist then
-  -- do nothing
-  elseif is_temp_exist and not is_exist then
-    os.execute(('cp -v %s %s'):format(tmp_path, download_path))
-  elseif not is_temp_exist then
-    download_image(img.src, download_path)
-    os.execute(('cp -v %s %s'):format(download_path, tmp_path))
+  if not is_exist then
+    if is_temp_exist then
+      os.execute(('cp -v %s %s'):format(tmp_path, download_path))
+    else
+      local download_success = download_image(img.src, download_path)
+      if download_success then
+        os.execute(('cp -v %s %s'):format(download_path, tmp_path))
+      else
+        return nil, nil
+      end
+    end
   end
 
   local absolute_url = path.join { '/', remote_images, slug .. ext }
-  local absolute_thumb = get_thumb_path(absolute_url)
+  local absolute_thumb =
+    path.join { u.dirname(absolute_url), 'thumbs', get_file_name(absolute_url) }
 
   return absolute_url, absolute_thumb
 end
@@ -135,6 +170,11 @@ local function get_image(img)
 
   if is_remote_src(img.src) then
     absolute_url, absolute_thumb = handle_remote_image(img)
+
+    if not absolute_url then
+      log_error('Failed to process remote image: ' .. img.src)
+      return img
+    end
   else
     absolute_url = get_file_absolute_path(img.src)
     absolute_thumb = get_thumb_path(absolute_url)
@@ -142,7 +182,6 @@ local function get_image(img)
 
   local prefix = (not u.starts_with(absolute_url, '/remote_images') and src or dist)
   local input_file = prefix .. absolute_url
-  local output_file = dist .. absolute_thumb
 
   if is_video(img.src) then img.attributes.preload = 'none' end
 
@@ -155,8 +194,15 @@ local function get_image(img)
     img.attributes.alt = img.title or ''
   end
 
-  process_image(input_file, output_file)
-  set_image_size(img, output_file .. '.avif')
+  os.execute(('mkdir -pv %s'):format(u.dirname(dist .. absolute_thumb)))
+
+  local process_success = process_image(input_file, dist .. absolute_thumb)
+  if not process_success then
+    log_error('Image processing failed: ' .. input_file)
+    return img
+  end
+
+  set_image_size(img, dist .. absolute_thumb .. '.avif')
 
   return img, absolute_url, absolute_thumb
 end
@@ -165,7 +211,8 @@ local function get_image_meta(metadata, action)
   if type(metadata) == 'table' then
     for key, value in pairs(metadata) do
       if key == 'photo' then
-        metadata[key] = action(value)
+        local processed_value = action(value)
+        if processed_value then metadata[key] = processed_value end
       else
         get_image_meta(value, action)
       end
@@ -224,6 +271,8 @@ return {
         local temp_img = pandoc.Image({}, pandoc.utils.stringify(value))
 
         local img, absolute_url, output_base = get_image(temp_img)
+
+        if not output_base then return nil end
 
         local avif_src = output_base .. '.avif'
         local webp_src = output_base .. '.webp'
