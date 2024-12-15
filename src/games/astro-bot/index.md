@@ -1,5 +1,5 @@
 ---
-date: 2024-09-27:23+02:00
+date: 2024-09-27T18:06+02:00
 state: completed
 cover_image: "./cover.webp"
 template:
