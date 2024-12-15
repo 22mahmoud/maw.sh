@@ -143,6 +143,22 @@ like-of:
     like-of: https://maw.sh/thoughts/1726673081/
     wm-property: like-of
     wm-private: false
+  - type: entry
+    author:
+      type: card
+      name: Islander
+      photo: https://webmention.io/avatar/cdn.bsky.app/2533d47a77dc9b58f4c4794debc0f0849ac4830c0b3127cb5b06336b1a8e6f2b.jpg
+      url: https://bsky.app/profile/dhiislander.bsky.social
+    url: https://bsky.app/profile/22mahmoud.bsky.social/post/3l4gwdoc25c2p#liked_by_did:plc:xs2kkqkw2idh7ikzacgo743p
+    published: null
+    wm-received: "2024-11-06T16:17:15Z"
+    wm-id: 1857188
+    wm-source: https://brid.gy/like/bluesky/did:plc:tzalteqzxp24srzv5xc7f6j5/at%253A%252F%252Fdid%253Aplc%253Atzalteqzxp24srzv5xc7f6j5%252Fapp.bsky.feed.post%252F3l4gwdoc25c2p/did%253Aplc%253Axs2kkqkw2idh7ikzacgo743p
+    wm-target: thoughts/1726673081
+    wm-protocol: webmention
+    like-of: https://maw.sh/thoughts/1726673081/
+    wm-property: like-of
+    wm-private: false
 repost-of:
   - type: entry
     author:
