@@ -5,25 +5,25 @@ DEST_DIR=dist
 SITEMAP_XML="$DEST_DIR"/sitemap.xml
 
 generate_sitemap() {
-	base_url="https://maw.sh"
+  base_url="https://maw.sh"
 
-	echo '<?xml version="1.0" encoding="UTF-8"?>'
-	echo '<urlset'
-	echo 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'
-	echo 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9'
-	echo 'http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"'
-	echo 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+  echo '<?xml version="1.0" encoding="UTF-8"?>'
+  echo '<urlset'
+  echo 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'
+  echo 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9'
+  echo 'http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"'
+  echo 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
 
-	find "$SRC_DIR" -name "index.html" | while read -r file; do
-		path="$(echo "$file" | sed -e 's/^dist\///' -e 's/index.html//')"
+  find "$SRC_DIR" -name "index.html" | while read -r file; do
+    path="$(echo "$file" | sed -e 's/^dist\///' -e 's/index.html//')"
 
-		echo "<url>"
-		echo "<loc>$base_url/$path</loc>"
-		echo "<priority>1.0</priority>"
-		echo "</url>"
-	done
+    echo "<url>"
+    echo "<loc>$base_url/$path</loc>"
+    echo "<priority>1.0</priority>"
+    echo "</url>"
+  done
 
-	echo '</urlset>'
+  echo '</urlset>'
 }
 
 generate_sitemap >"$SITEMAP_XML"

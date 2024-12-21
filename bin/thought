@@ -1,15 +1,15 @@
 #!/bin/sh -e
 
 while getopts "v" opt; do
-	case $opt in
-	v)
-		open_in_nvim=true
-		;;
-	\?)
-		echo "Usage: $(basename "$0") [-v]" >&2
-		exit 1
-		;;
-	esac
+  case $opt in
+  v)
+    open_in_nvim=true
+    ;;
+  \?)
+    echo "Usage: $(basename "$0") [-v]" >&2
+    exit 1
+    ;;
+  esac
 done
 
 dirname=$(date +%s)
@@ -29,5 +29,5 @@ EOF
 echo "Thought file created successfully at $path_name."
 
 if [ "$open_in_nvim" = true ]; then
-	nvim "$path_name"
+  nvim "$path_name"
 fi
