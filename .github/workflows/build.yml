@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20]
+        node-version: [22]
 
     steps:
       - name: instal deps
@@ -59,6 +59,11 @@ jobs:
       - name: clean dist dir
         if: github.event_name == 'workflow_dispatch'
         run: make distclean
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
