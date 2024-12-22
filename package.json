@@ -12,13 +12,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@shikijs/transformers": "^1.24.0",
-    "@types/node": "^22.10.1",
+    "@shikijs/transformers": "^1.24.4",
+    "@types/node": "^22.10.2",
     "lightningcss": "^1.28.2",
     "lightningcss-cli": "^1.28.2",
     "pandoc-filter": "^2.2.0",
     "prettier": "^3.4.2",
-    "shiki": "^1.24.0",
+    "shiki": "^1.24.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   }

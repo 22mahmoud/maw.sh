@@ -191,36 +191,22 @@
       </nav>
     </header>
 
+    <!-- prettier-ignore -->
     <main>
-      $for(include-before)$ $include-before$ $endfor$
-
-      <!-- -->
-      $if(template)$
-      <!-- -->
-      ${template.home:home()}
-      <!-- -->
-      ${template.blog:blog()}
-      <!-- -->
-      ${template.post:post()}
-      <!-- -->
-      ${template.thoughts:thoughts()}
-      <!-- -->
-      ${template.thought:thought()}
-      <!-- -->
-      ${template.tags:tags()}
-      <!-- -->
-      ${template.tag:tag()}
-      <!-- -->
-      ${template.games:games()}
-      <!-- -->
-      ${template.game:game()}
-      <!-- -->
-      ${template.leetcode:leetcode()}
-      <!-- -->
-      $else$ $body$ ${author.html()} $endif$
-
-      <!-- -->
-      $for(include-after)$ $include-after$ $endfor$
+$for(include-before)$ $include-before$ $endfor$
+$if(template)$
+${template.home:home()}
+${template.blog:blog()}
+${template.post:post()}
+${template.thoughts:thoughts()}
+${template.thought:thought()}
+${template.tags:tags()}
+${template.tag:tag()}
+${template.games:games()}
+${template.game:game()}
+${template.leetcode:leetcode()}
+$else$ $body$ ${author.html()} $endif$
+$for(include-after)$ $include-after$ $endfor$
     </main>
 
     <footer>
