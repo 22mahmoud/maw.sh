@@ -1,5 +1,5 @@
 ---
-date: "2024-06-25T00:12:00+00:00"
+date: '2024-06-25T00:12:00+00:00'
 template:
   thought: true
 keywords:
@@ -8,6 +8,7 @@ keywords:
 
 here is my todo list for my website, which is kinda complete, only missing two parts (taging, and
 pagination).
+
 ```
 - [x] autoamte index pages, by write custom script
 - [x] custom templte for each page

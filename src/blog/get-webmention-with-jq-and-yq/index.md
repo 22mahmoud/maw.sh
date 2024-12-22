@@ -15,7 +15,6 @@ featured-image:
   photo: hand-in-hand.jpg
 ---
 
-
 Recently, I discovered that I can track the likes, reposts, and comments on
 social media posts that include links to any blog post or thought from my
 website using webmentions. To learn more about webmentions, you can visit the
@@ -25,7 +24,7 @@ This article will not cover how to set up webmentions on your blog, instead, it
 will demonstrate how to use `jq` and `yq` to fetch webmentions and save them in
 your Git repository.
 
-![](hand-in-hand.jpg "michelangelo touch of god drawing")
+![](hand-in-hand.jpg 'michelangelo touch of god drawing')
 
 ## What are `jq` and `yq` ?
 
@@ -76,7 +75,7 @@ codebase, and since I have `metadata.yaml` file, why not save it there?
 
 title: Mahmoud Ashraf
 # ...
-last_webmention_sync: "2024-06-29T15:37:22Z"
+last_webmention_sync: '2024-06-29T15:37:22Z'
 ```
 
 ```sh
@@ -120,7 +119,7 @@ format:
       // ...
     },
     // more entries
-  ]
+  ],
 }
 ```
 
@@ -133,11 +132,16 @@ To this format:
     "properties": [
       {
         "property": "in-reply-to",
-        "entries": [{ "type": "entry", /* ... */ }]
+        "entries": [{ "type": "entry" /* ... */ }],
       },
-      { "property": "likes-of", "entries": [ /* ... */ ] }
-    ]
-  }
+      {
+        "property": "likes-of",
+        "entries": [
+          /* ... */
+        ],
+      },
+    ],
+  },
 ]
 ```
 
@@ -149,7 +153,6 @@ So we need to process the `json` like this:
    target
 1. after that map each to be an object with `target` and `properties`
    and `properties` will contain an array of e.g: `{"property": "likes-of", "entries": []}`
-
 
 ```sh
 format_output() {
@@ -246,6 +249,7 @@ and i use it as `metadata` with `pandoc` and render it with pandoc template.
 
 pandoc --metadata-file=comments.yaml index.md -o index.html
 ```
+
 Another enhancement we can write `github` workflow just to run [this
 script](https://github.com/22mahmoud/maw.sh/blob/master/bin/webmention) every 12 hours instead to
 run it manually from time to time.

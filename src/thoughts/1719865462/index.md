@@ -1,5 +1,5 @@
 ---
-date: "2024-07-01T20:24:00+00:00"
+date: '2024-07-01T20:24:00+00:00'
 template:
   thought: true
 keywords:
@@ -14,20 +14,24 @@ front matter metadata and it will populate all collection data to #pandoc filter
 
 ```md
 # src/index.md
+
 ---
+
 title-prefix: Home
 home: true
 collections:
-  - name: games
-    key: completed
-    filter-by:
-      key: state
-      value: completed
-    first: 3
-  - name: blog
-    first: 3
-  - name: thoughts
-    first: 3
-    content: true
+
+- name: games
+  key: completed
+  filter-by:
+  key: state
+  value: completed
+  first: 3
+- name: blog
+  first: 3
+- name: thoughts
+  first: 3
+  content: true
+
 ---
 ```

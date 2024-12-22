@@ -45,7 +45,7 @@ npm run dev
 
 Voila, 🎉 the application now up and running.
 
-![](bg1.jpeg "screenshot of the home page for sapper boilerplate")
+![](bg1.jpeg 'screenshot of the home page for sapper boilerplate')
 
 Let's open the project in your favorite editor. and go to the `blog` folder
 inside the `src/routes`.
@@ -173,21 +173,21 @@ the markdown.
 
 If you navigate to `/blog` route you should have a page similar to this:
 
-![](bg2.jpeg "screenshot of blogs pages")
+![](bg2.jpeg 'screenshot of blogs pages')
 
 Now we need to handle the post route. open `src/routes/blog/[slug].json.js`
 
 ```javascript
 // src/routes/blog/[slug].json.js
 
-import path from "path";
-import fs from "fs";
-import grayMatter from "gray-matter";
-import marked from "marked";
-import hljs from "highlight.js";
+import path from 'path';
+import fs from 'fs';
+import grayMatter from 'gray-matter';
+import marked from 'marked';
+import hljs from 'highlight.js';
 
-const getPost = fileName =>
-  fs.readFileSync(path.resolve("content", `${fileName}.md`), "utf-8");
+const getPost = (fileName) =>
+  fs.readFileSync(path.resolve('content', `${fileName}.md`), 'utf-8');
 
 export function get(req, res, next) {
   const { slug } = req.params;
@@ -213,19 +213,19 @@ export function get(req, res, next) {
 
   if (html) {
     res.writeHead(200, {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json',
     });
 
     res.end(JSON.stringify({ html, ...data }));
   } else {
     res.writeHead(404, {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json',
     });
 
     res.end(
       JSON.stringify({
-        message: `Not found`
-      })
+        message: `Not found`,
+      }),
     );
   }
 }
@@ -249,7 +249,7 @@ import 'highlight.js/styles/github.css';
 // ...
 ```
 
-![](bg3.jpeg "screenshot of the final result showing a sample blog post")
+![](bg3.jpeg 'screenshot of the final result showing a sample blog post')
 
 ## conclusion
 

@@ -1,11 +1,11 @@
 ---
 date: 2024-12-15T18:06+02:00
 state: completed
-cover_image: "./cover.webp"
+cover_image: './cover.webp'
 template:
   game: true
 title-prefix: Indiana Jones and the Great Circle
-release_date: "2024-12-09"
+release_date: '2024-12-09'
 platform: bottles
 description: |-
   Uncover one of history’s greatest mysteries in a first-person, single-player adventure. The year is 1937, sinister forces are scouring the globe for the secret to an ancient power connected to the Great Circle, and only one person can stop them - Indiana Jones™.

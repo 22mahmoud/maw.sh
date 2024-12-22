@@ -2,10 +2,10 @@
 title-prefix: The Inner World
 date: 2024-03-09T00:00+02:00
 state: completed
-cover_image: "./cover.webp"
+cover_image: './cover.webp'
 template:
   game: true
-release_date: "2013-08-15"
+release_date: '2013-08-15'
 description: |-
   The Inner World – A 2D-Point’n’Click Adventure
   Robert is a novice, a bit clueless, but with a heart of gold. He lives a peaceful life as a court musician in Asposia's largest wind monastery. Contrary to the laws of physics, Asposia is an enormous, hollow space surrounded by an infinite expanse of earth. The world's air is provided through three wind fountains, but as one wind fountain after the other petered out and the wind gods came to Asposia, all of the sudden Robert found him in the middle of a whirlwind.

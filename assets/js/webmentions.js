@@ -7,5 +7,5 @@ function getRandomColor() {
 }
 
 document
-  .querySelectorAll(".bookmark-item img")
-  .forEach((x) => x.style.setProperty("--hover-color", getRandomColor()));
+  .querySelectorAll('.bookmark-item img')
+  .forEach((x) => x.style.setProperty('--hover-color', getRandomColor()));

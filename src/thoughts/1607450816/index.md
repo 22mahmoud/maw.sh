@@ -1,5 +1,5 @@
 ---
-date: "2020-12-08T18:06:00+00:00"
+date: '2020-12-08T18:06:00+00:00'
 template:
   thought: true
 keywords:

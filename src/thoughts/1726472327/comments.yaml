@@ -7,7 +7,7 @@ like-of:
       url: https://mastodon.social/\@Rafinha13
     url: https://fosstodon.org/\@22mahmoud/113146183301671442#favorited-by-112632143739275316
     published: null
-    wm-received: "2024-09-16T09:38:42Z"
+    wm-received: '2024-09-16T09:38:42Z'
     wm-id: 1847531
     wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/112632143739275316
     wm-target: thoughts/1726472327
@@ -23,7 +23,7 @@ like-of:
       url: https://bsky.app/profile/srivas.bsky.social
     url: https://bsky.app/profile/22mahmoud.bsky.social/post/3l4b2qnmilb2w#liked_by_did:plc:rmighyqfgqo37snbbv46xkkd
     published: null
-    wm-received: "2024-09-16T09:40:17Z"
+    wm-received: '2024-09-16T09:40:17Z'
     wm-id: 1847533
     wm-source: https://brid.gy/like/bluesky/did:plc:tzalteqzxp24srzv5xc7f6j5/at%253A%252F%252Fdid%253Aplc%253Atzalteqzxp24srzv5xc7f6j5%252Fapp.bsky.feed.post%252F3l4b2qnmilb2w/did%253Aplc%253Armighyqfgqo37snbbv46xkkd
     wm-target: /thoughts/1726472327
@@ -39,7 +39,7 @@ like-of:
       url: https://bsky.app/profile/dhiislander.bsky.social
     url: https://bsky.app/profile/22mahmoud.bsky.social/post/3l4b2qnmilb2w#liked_by_did:plc:xs2kkqkw2idh7ikzacgo743p
     published: null
-    wm-received: "2024-09-16T14:25:54Z"
+    wm-received: '2024-09-16T14:25:54Z'
     wm-id: 1847550
     wm-source: https://brid.gy/like/bluesky/did:plc:tzalteqzxp24srzv5xc7f6j5/at%253A%252F%252Fdid%253Aplc%253Atzalteqzxp24srzv5xc7f6j5%252Fapp.bsky.feed.post%252F3l4b2qnmilb2w/did%253Aplc%253Axs2kkqkw2idh7ikzacgo743p
     wm-target: /thoughts/1726472327
@@ -55,7 +55,7 @@ like-of:
       url: https://bsky.app/profile/androidapps.bsky.social
     url: https://bsky.app/profile/22mahmoud.bsky.social/post/3l4b2qnmilb2w#liked_by_did:plc:32qgxncs6ktj4pl7nqgpjy4s
     published: null
-    wm-received: "2024-09-20T10:54:53Z"
+    wm-received: '2024-09-20T10:54:53Z'
     wm-id: 1848405
     wm-source: https://brid.gy/like/bluesky/did:plc:tzalteqzxp24srzv5xc7f6j5/at%253A%252F%252Fdid%253Aplc%253Atzalteqzxp24srzv5xc7f6j5%252Fapp.bsky.feed.post%252F3l4b2qnmilb2w/did%253Aplc%253A32qgxncs6ktj4pl7nqgpjy4s
     wm-target: /thoughts/1726472327
@@ -71,7 +71,7 @@ like-of:
       url: https://focal.love/\@ashqinmoe
     url: https://fosstodon.org/\@22mahmoud/113146183301671442#favorited-by-110374816143693326
     published: null
-    wm-received: "2024-09-23T14:56:29Z"
+    wm-received: '2024-09-23T14:56:29Z'
     wm-id: 1848757
     wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/110374816143693326
     wm-target: thoughts/1726472327
@@ -87,7 +87,7 @@ like-of:
       url: https://focal.love/\@ashqinmoe
     url: https://fosstodon.org/\@22mahmoud/113146183301671442#favorited-by-110374816143693326
     published: null
-    wm-received: "2024-09-23T14:56:29Z"
+    wm-received: '2024-09-23T14:56:29Z'
     wm-id: 1848758
     wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/110374816143693326
     wm-target: /thoughts/1726472327
@@ -104,7 +104,7 @@ repost-of:
       url: https://newsmast.community/\@nature
     url: https://fosstodon.org/\@22mahmoud/113146183301671442#reblogged-by-111654131502541720
     published: null
-    wm-received: "2024-09-16T08:11:15Z"
+    wm-received: '2024-09-16T08:11:15Z'
     wm-id: 1847520
     wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/111654131502541720
     wm-target: thoughts/1726472327
@@ -120,7 +120,7 @@ repost-of:
       url: https://mastodon.social/\@Rafinha13
     url: https://fosstodon.org/\@22mahmoud/113146183301671442#reblogged-by-112632143739275316
     published: null
-    wm-received: "2024-09-16T09:38:42Z"
+    wm-received: '2024-09-16T09:38:42Z'
     wm-id: 1847532
     wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/113146183301671442/112632143739275316
     wm-target: thoughts/1726472327
@@ -136,8 +136,8 @@ in-reply-to:
       photo: https://webmention.io/avatar/cdn.bsky.app/5c537e1cd5296da49f3695351ec93a48ac8a284bc813023cc8cad7bbd0155d15.jpg
       url: https://bsky.app/profile/androidapps.bsky.social
     url: https://bsky.app/profile/androidapps.bsky.social/post/3l4ledrrca22v
-    published: "2024-09-20T10:33:56+00:00"
-    wm-received: "2024-09-20T10:54:53Z"
+    published: '2024-09-20T10:33:56+00:00'
+    wm-received: '2024-09-20T10:54:53Z'
     wm-id: 1848406
     wm-source: https://brid.gy/comment/bluesky/did:plc:tzalteqzxp24srzv5xc7f6j5/at%253A%252F%252Fdid%253Aplc%253Atzalteqzxp24srzv5xc7f6j5%252Fapp.bsky.feed.post%252F3l4b2qnmilb2w/at%253A%252F%252Fdid%253Aplc%253A32qgxncs6ktj4pl7nqgpjy4s%252Fapp.bsky.feed.post%252F3l4ledrrca22v
     wm-target: /thoughts/1726472327

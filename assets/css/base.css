@@ -325,7 +325,7 @@ article.h-entry footer {
 
 .header-anchor:after {
   color: var(--c6);
-  content: "#";
+  content: '#';
   font-size: 1em;
   font-style: italic;
   font-weight: 400;

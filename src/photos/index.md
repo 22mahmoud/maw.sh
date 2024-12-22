@@ -62,17 +62,17 @@ draft: true
 >
 > 📅 date: July, 2021
 
-- ![](DSC_0843.jpg "image")
-- ![](DSC_1585_01.jpg "image")
-- ![](DSC_0863.jpg "image")
-- ![](DSC_0926.jpg "image")
-- ![](DSC_1231.jpg "image")
-- ![](DSC_1383.jpg "image")
-- ![](DSC_1578.jpg "image")
-- ![](DSC_1580.jpg "image")
-- ![](DSC_1727.jpg "image")
-- ![](DSC_1764.jpg "image")
-- ![](DSC_1805.jpg "image")
+- ![](DSC_0843.jpg 'image')
+- ![](DSC_1585_01.jpg 'image')
+- ![](DSC_0863.jpg 'image')
+- ![](DSC_0926.jpg 'image')
+- ![](DSC_1231.jpg 'image')
+- ![](DSC_1383.jpg 'image')
+- ![](DSC_1578.jpg 'image')
+- ![](DSC_1580.jpg 'image')
+- ![](DSC_1727.jpg 'image')
+- ![](DSC_1764.jpg 'image')
+- ![](DSC_1805.jpg 'image')
 
 <br />
 
@@ -82,11 +82,11 @@ draft: true
 >
 > 📅 date: July, 2021
 
-- ![](DSC_0682.jpg "image")
-- ![](DSC_0761_01.jpg "image")
-- ![](DSC_0966.jpg "image")
-- ![](DSC_1032.jpg "image")
-- ![](DSC_1312.jpg "image")
+- ![](DSC_0682.jpg 'image')
+- ![](DSC_0761_01.jpg 'image')
+- ![](DSC_0966.jpg 'image')
+- ![](DSC_1032.jpg 'image')
+- ![](DSC_1312.jpg 'image')
 
 <br />
 
@@ -96,7 +96,7 @@ draft: true
 >
 > 📅 date: May 23, 2021
 
-![](me_2021.jpg "image")
+![](me_2021.jpg 'image')
 
 ---
 
@@ -104,7 +104,7 @@ draft: true
 >
 > 📅 date: 2020
 
-![](sunset_3.jpg "image")
+![](sunset_3.jpg 'image')
 
 ---
 
@@ -112,8 +112,8 @@ draft: true
 >
 > 📅 date: 2020
 
-- ![](sunset_2.jpg "image")
-- ![](kornish_hdr.jpg "image")
+- ![](sunset_2.jpg 'image')
+- ![](kornish_hdr.jpg 'image')
 
 ---
 
@@ -121,7 +121,7 @@ draft: true
 >
 > 📅 date: 2020
 
-![](cafea_2.jpg "image")
+![](cafea_2.jpg 'image')
 
 ---
 
@@ -129,9 +129,9 @@ draft: true
 >
 > 📅 date: 2020
 
-- ![](me_2.jpg "image")
-- ![](me_3.jpg "image")
-- ![](me_4.jpg "image")
+- ![](me_2.jpg 'image')
+- ![](me_3.jpg 'image')
+- ![](me_4.jpg 'image')
 
 <br />
 
@@ -143,7 +143,7 @@ draft: true
 >
 > 📅 date: 2019
 
-![](cafea_1.jpg "image")
+![](cafea_1.jpg 'image')
 
 ---
 
@@ -153,7 +153,7 @@ draft: true
 >
 > 📅 date: 2019
 
-![](sunset_1.jpg "image")
+![](sunset_1.jpg 'image')
 
 ---
 
@@ -161,7 +161,7 @@ draft: true
 >
 > 📅 date: 2019
 
-![](me_1.jpg "image")
+![](me_1.jpg 'image')
 
 ---
 
@@ -171,7 +171,7 @@ draft: true
 >
 > 📅 date: 2019
 
-![](grd_proj_team.jpg "image")
+![](grd_proj_team.jpg 'image')
 
 ---
 
@@ -181,7 +181,7 @@ draft: true
 >
 > 📅 date: 2019
 
-![](war2_3enb.jpg "image")
+![](war2_3enb.jpg 'image')
 
 ---
 
@@ -189,7 +189,7 @@ draft: true
 >
 > 📅 date: 2019
 
-![](clouds_1.jpg "image")
+![](clouds_1.jpg 'image')
 
 ---
 
@@ -199,7 +199,7 @@ draft: true
 >
 > 📅 date: 2018
 
-![](table_number.jpg "image")
+![](table_number.jpg 'image')
 
 ---
 
@@ -207,6 +207,6 @@ draft: true
 >
 > 📅 date: 2018
 
-![](eajiba_1.jpg "image")
+![](eajiba_1.jpg 'image')
 
 </div>

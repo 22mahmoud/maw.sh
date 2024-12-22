@@ -1,5 +1,5 @@
 ---
-date: "2024-06-26T19:40:00+00:00"
+date: '2024-06-26T19:40:00+00:00'
 template:
   thought: true
 featured-image:
@@ -10,5 +10,4 @@ keywords:
 
 I really like my new website web-buttons, they give me a nostalgic feeling
 
-![](footer-screenshot.png "website footer screenshot showing web-buttons")
-
+![](footer-screenshot.png 'website footer screenshot showing web-buttons')

@@ -28,4 +28,3 @@ header-includes: |-
     }
   </style>
 ---
-

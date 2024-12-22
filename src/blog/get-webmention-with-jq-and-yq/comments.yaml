@@ -7,7 +7,7 @@ like-of:
       url: https://fosstodon.org/\@wader
     url: https://fosstodon.org/\@22mahmoud/112701992545484918#favorited-by-109387760467335761
     published: null
-    wm-received: "2024-06-29T22:06:52Z"
+    wm-received: '2024-06-29T22:06:52Z'
     wm-id: 1836776
     wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112701992545484918/109387760467335761
     wm-target: blog/get-webmention-with-jq-and-yq
@@ -24,7 +24,7 @@ repost-of:
       url: https://mastodon.social/\@CyborgHT
     url: https://fosstodon.org/\@22mahmoud/112701992545484918#reblogged-by-112598948718075645
     published: null
-    wm-received: "2024-06-29T21:33:48Z"
+    wm-received: '2024-06-29T21:33:48Z'
     wm-id: 1836770
     wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/112701992545484918/112598948718075645
     wm-target: blog/get-webmention-with-jq-and-yq
@@ -40,7 +40,7 @@ repost-of:
       url: https://fosstodon.org/\@rossm
     url: https://fosstodon.org/\@22mahmoud/112701992545484918#reblogged-by-109599823930559872
     published: null
-    wm-received: "2024-06-29T22:06:52Z"
+    wm-received: '2024-06-29T22:06:52Z'
     wm-id: 1836775
     wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/112701992545484918/109599823930559872
     wm-target: blog/get-webmention-with-jq-and-yq

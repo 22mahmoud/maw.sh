@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" href="$app_css$" as="style" />
     <link
       rel="alternate"
@@ -23,9 +23,23 @@
     />
 
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/images/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
-    <link href="/images/favicon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/images/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      href="/images/favicon-180x180.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#080808" />
     <link type="text/plain" rel="author" href="$base_url$/humans.txt" />
@@ -33,10 +47,7 @@
     <link rel="me" href="$social.twitter$" />
     <link rel="me" href="$social.reddit$" />
     <link rel="pgpkey authn" href="$base_url$/gpg-key.gpg" />
-    <link
-      rel="me"
-      href="$social.pixelfed$"
-    />
+    <link rel="me" href="$social.pixelfed$" />
     <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
     <link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
     <link rel="webmention" href="https://webmention.io/maw.sh/webmention" />
@@ -60,94 +71,102 @@
       content="$if(post)$summary_large_image$else$summary$endif$"
     />
 
-$if(template.post)$
+    $if(template.post)$
     <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "BlogPosting",
-      "headline": "$title-prefix/nowrap$",
-      "image": "$if(og-image)$$base_url$$og-image.photo.original$$elseif(featured-image.photo)$$base_url$$featured-image.photo.original$$else$$base_url$/images/avatar.webp$endif$",
-      "datePublished": "$date$",
-      "dateModified": "$if(last_modified)$$last_modified$$else$$date$$endif$",
-      "author": {
-        "@type": "Person",
-        "name": "$author$",
-        "url": "$base_url$"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "$author$",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "$base_url$/images/avatar.webp"
+      {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "$title-prefix/nowrap$",
+        "image": "$if(og-image)$$base_url$$og-image.photo.original$$elseif(featured-image.photo)$$base_url$$featured-image.photo.original$$else$$base_url$/images/avatar.webp$endif$",
+        "datePublished": "$date$",
+        "dateModified": "$if(last_modified)$$last_modified$$else$$date$$endif$",
+        "author": {
+          "@type": "Person",
+          "name": "$author$",
+          "url": "$base_url$"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "$author$",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "$base_url$/images/avatar.webp"
+          }
+        },
+        "description": "$description-meta$",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "$base_url$/$path$"
         }
-      },
-      "description": "$description-meta$",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "$base_url$/$path$"
       }
-    }
     </script>
-$else$
+    $else$
     <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "WebSite",
-      "name": "$author$",
-      "description": "$description-meta$",
-      "url": "$base_url$",
-      "image": "$base_url$/images/avatar.webp",
-      "author": {
-        "@type": "Person",
-        "name": "$author$"
-      },
-      "sameAs": [
-        "https://github.com/22mahmoud",
-        "https://x.com/maw_sh",
-        "https://reddit.com/user/22mahmoud_",
-        "https://pixelfed.social/i/web/profile/201636586306277376"
-      ]
-    }
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "name": "$author$",
+        "description": "$description-meta$",
+        "url": "$base_url$",
+        "image": "$base_url$/images/avatar.webp",
+        "author": {
+          "@type": "Person",
+          "name": "$author$"
+        },
+        "sameAs": [
+          "https://github.com/22mahmoud",
+          "https://x.com/maw_sh",
+          "https://reddit.com/user/22mahmoud_",
+          "https://pixelfed.social/i/web/profile/201636586306277376"
+        ]
+      }
     </script>
-$endif$
+    $endif$
 
-
-$for(author-meta)$
+    <!-- -->
+    $for(author-meta)$
     <meta name="author" content="$author-meta$" />
-$endfor$
+    $endfor$
 
-$if(date-meta)$
+    <!-- -->
+    $if(date-meta)$
     <meta name="dcterms.date" content="$date-meta$" />
-$endif$
+    $endif$
 
-$if(keywords)$
+    <!-- -->
+    $if(keywords)$
     <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
-$endif$
+    $endif$
 
-$if(description-meta)$
+    <!-- -->
+    $if(description-meta)$
     <meta name="description" content="$description-meta$" />
-$endif$
+    $endif$
 
     <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
 
-$for(css)$
+    <!-- -->
+    $for(css)$
     <link rel="stylesheet" href="$css$" />
-$endfor$
+    $endfor$
 
-$if(template.game)$
+    <!-- -->
+    $if(template.game)$
     <link rel="stylesheet" href="/css/game.css" />
-$endif$
+    $endif$
 
-$if(template.post)$
+    <!-- -->
+    $if(template.post)$
     <link rel="stylesheet" href="/css/webmentions.css" />
-$endif$
+    $endif$
 
-$if(template.thought)$
+    <!-- -->
+    $if(template.thought)$
     <link rel="stylesheet" href="/css/webmentions.css" />
-$endif$
+    $endif$
 
-$for(header-includes)$ $header-includes$ $endfor$
+    <!-- -->
+    $for(header-includes)$ $header-includes$ $endfor$
   </head>
 
   <body>
@@ -173,32 +192,35 @@ $for(header-includes)$ $header-includes$ $endfor$
     </header>
 
     <main>
-$for(include-before)$ $include-before$ $endfor$
+      $for(include-before)$ $include-before$ $endfor$
 
-$if(template)$
-${template.home:home()}
-${template.blog:blog()}
-${template.post:post()}
+      <!-- -->
+      $if(template)$
+      <!-- -->
+      ${template.home:home()}
+      <!-- -->
+      ${template.blog:blog()}
+      <!-- -->
+      ${template.post:post()}
+      <!-- -->
+      ${template.thoughts:thoughts()}
+      <!-- -->
+      ${template.thought:thought()}
+      <!-- -->
+      ${template.tags:tags()}
+      <!-- -->
+      ${template.tag:tag()}
+      <!-- -->
+      ${template.games:games()}
+      <!-- -->
+      ${template.game:game()}
+      <!-- -->
+      ${template.leetcode:leetcode()}
+      <!-- -->
+      $else$ $body$ ${author.html()} $endif$
 
-${template.thoughts:thoughts()}
-${template.thought:thought()}
-
-${template.tags:tags()}
-${template.tag:tag()}
-
-${template.games:games()}
-${template.game:game()}
-
-${template.leetcode:leetcode()}
-
-$else$
-
-$body$ ${author.html()}
-
-$endif$
-
-
-$for(include-after)$ $include-after$ $endfor$
+      <!-- -->
+      $for(include-after)$ $include-after$ $endfor$
     </main>
 
     <footer>
@@ -215,7 +237,9 @@ $for(include-after)$ $include-after$ $endfor$
 
         <a aria-label="maw.sh rss feed" href="/rss.xml">
           <div class="wb" style="outline-color: #9c3607">
-            <div><img loading="lazy" alt="rss logo" src="/images/rss.svg" /></div>
+            <div>
+              <img loading="lazy" alt="rss logo" src="/images/rss.svg" />
+            </div>
             <div style="background-color: #9c3607; color: #fff">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RSS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
@@ -248,24 +272,20 @@ $for(include-after)$ $include-after$ $endfor$
           </div>
         </a>
 
-        <a
-          aria-label="My Mastodon account"
-          rel="me"
-          href="$social.mastodon$"
-        >
+        <a aria-label="My Mastodon account" rel="me" href="$social.mastodon$">
           <div class="wb" style="outline-color: #5437c7">
             <div>
-              <img loading="lazy" alt="Mastodon logo" src="/images/mastodon.svg" />
+              <img
+                loading="lazy"
+                alt="Mastodon logo"
+                src="/images/mastodon.svg"
+              />
             </div>
             <div style="background-color: #5437c7">Mastodon</div>
           </div>
         </a>
 
-        <a
-          aria-label="My Github account"
-          rel="me"
-          href="$social.github$"
-        >
+        <a aria-label="My Github account" rel="me" href="$social.github$">
           <div class="wb" style="outline-color: #000">
             <div>
               <img
@@ -281,11 +301,7 @@ $for(include-after)$ $include-after$ $endfor$
           </div>
         </a>
 
-        <a
-          aria-label="My Youtube account"
-          rel="me"
-          href="$social.youtube$"
-        >
+        <a aria-label="My Youtube account" rel="me" href="$social.youtube$">
           <div class="wb" style="outline-color: #cd1508">
             <div>
               <img

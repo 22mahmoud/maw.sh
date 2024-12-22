@@ -6,8 +6,8 @@ in-reply-to:
       photo: https://webmention.io/avatar/cdn.fosstodon.org/8034541e40e4af10482a408cc0108e086a1eb8442716b5275b770c58bf73d969.jpg
       url: https://mastodon.social/\@EuCaue
     url: https://mastodon.social/\@EuCaue/112697143732896551
-    published: "2024-06-29T00:45:44+00:00"
-    wm-received: "2024-06-29T00:54:07Z"
+    published: '2024-06-29T00:45:44+00:00'
+    wm-received: '2024-06-29T00:54:07Z'
     wm-id: 1836571
     wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112696742328794392/112697143758590644
     wm-target: thoughts/1719614148
@@ -29,8 +29,8 @@ in-reply-to:
       photo: https://webmention.io/avatar/cdn.fosstodon.org/6e67339b6a611ebfc17f4f4f10890f9ebe348cc1069fddbe5c54fe438aabdcad.jpg
       url: https://fosstodon.org/\@mid_kid
     url: https://fosstodon.org/\@mid_kid/112697124932494546
-    published: "2024-06-29T00:40:57+00:00"
-    wm-received: "2024-06-29T00:54:07Z"
+    published: '2024-06-29T00:40:57+00:00'
+    wm-received: '2024-06-29T00:54:07Z'
     wm-id: 1836572
     wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112696742328794392/112697124932494546
     wm-target: thoughts/1719614148
@@ -50,7 +50,7 @@ like-of:
       url: https://fosstodon.org/\@jm
     url: https://fosstodon.org/\@22mahmoud/112696742328794392#favorited-by-125281
     published: null
-    wm-received: "2024-06-28T23:14:30Z"
+    wm-received: '2024-06-28T23:14:30Z'
     wm-id: 1836566
     wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112696742328794392/125281
     wm-target: thoughts/1719614148
@@ -66,7 +66,7 @@ like-of:
       url: https://fosstodon.org/\@mid_kid
     url: https://fosstodon.org/\@22mahmoud/112696742328794392#favorited-by-111653411527563003
     published: null
-    wm-received: "2024-06-29T00:54:10Z"
+    wm-received: '2024-06-29T00:54:10Z'
     wm-id: 1836573
     wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112696742328794392/111653411527563003
     wm-target: thoughts/1719614148
@@ -82,7 +82,7 @@ like-of:
       url: https://mastodon.social/\@EuCaue
     url: https://fosstodon.org/\@22mahmoud/112696742328794392#favorited-by-109415840765754596
     published: null
-    wm-received: "2024-06-29T00:54:10Z"
+    wm-received: '2024-06-29T00:54:10Z'
     wm-id: 1836574
     wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112696742328794392/109415840765754596
     wm-target: thoughts/1719614148
@@ -98,7 +98,7 @@ like-of:
       url: https://mastodon.social/\@brires
     url: https://fosstodon.org/\@22mahmoud/112696742328794392#favorited-by-112091227520868710
     published: null
-    wm-received: "2024-06-29T19:30:14Z"
+    wm-received: '2024-06-29T19:30:14Z'
     wm-id: 1836712
     wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112696742328794392/112091227520868710
     wm-target: thoughts/1719614148

@@ -9,7 +9,7 @@
   font-size: 1rem;
 }
 
-.webmentions-form input[type="url"] {
+.webmentions-form input[type='url'] {
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 0.5rem;
@@ -19,7 +19,7 @@
   font-size: 1rem;
 }
 
-.webmentions-form input[type="submit"] {
+.webmentions-form input[type='submit'] {
   padding: 0.5rem 1rem;
   background-color: var(--status-completed);
   border: none;
@@ -65,7 +65,7 @@
   padding: 0;
   margin: 0;
   margin-left: -8px;
-  margin-top: -8px
+  margin-top: -8px;
 }
 
 .bookmark-link {

@@ -22,7 +22,9 @@ attribute, and to solve this issue I need to convert all my image formats from
 
 ```md
 ![title](./path.jpg)
+
 <!-- to be  -->
+
 ![](./path.jpg "title"]
 ```
 
@@ -34,7 +36,7 @@ So here is a video to demonstrate how it should work with this command
 :'<,'>s/\!\[\(.*\)\](\(.*\))/![](\2 "\1")
 ```
 
-![](./out.mp4 "video showing use substitute command in vim")
+![](./out.mp4 'video showing use substitute command in vim')
 
 1. `<.'>` This indicates the code range to apply the command only for the current
    visually selected and for this case I select the entire line with `shift+v`.
@@ -43,16 +45,15 @@ So here is a video to demonstrate how it should work with this command
    s/<pattern-to-find>/<change-with>
    ```
 1. `\!\[\(.*\)\](\(.*\))`
-    - escape all special characters `!` `[` `]` by adding backslash `\` before each
-    of them
-    - define a group to capture all text inside the square brackets `[]` by
-    using `\(.*\)`
-    - the define another group to capture the path inside `()` by using the
-    `\(.*\)`
+   - escape all special characters `!` `[` `]` by adding backslash `\` before each
+     of them
+   - define a group to capture all text inside the square brackets `[]` by
+     using `\(.*\)`
+   - the define another group to capture the path inside `()` by using the
+     `\(.*\)`
 1. `![](\2 "\1")` now we change the entire line with our format and
-    - `\2` refers to the second capture group which is the path `path.jpg`
-    - `\1` refers to the first capture group which is the title `"title"`
-
+   - `\2` refers to the second capture group which is the path `path.jpg`
+   - `\1` refers to the first capture group which is the title `"title"`
 
 ## Search for all image occurrences
 
@@ -61,14 +62,14 @@ all image occurrences in `markdown` files in the `src` directory.
 
 So, we can use vim `grep` command like that
 
-> **_NOTE:_**  I'm using neovim  v0.11 which is use `ripgrep` by default. So,
+> **_NOTE:_** I'm using neovim v0.11 which is use `ripgrep` by default. So,
 > maybe some arguments here will not work with normal grep
 
 ```vim
 :silent grep "\!\[" src --glob "*.md"
 ```
 
-![](./screenshot-240707-1547-14.png "a screenshot show the prev command in vim")
+![](./screenshot-240707-1547-14.png 'a screenshot show the prev command in vim')
 
 Now we have all our results inside the `quickfix` list, we can use
 `:c[next|prev]` command to cycle between the list and apply our command for each
@@ -86,7 +87,6 @@ be:
 
 We add `/g` as well to apply the command in all files. Also if you need
 manually confirm for each substitute you add `/gc`.
-
 
 ## Finally save the files
 

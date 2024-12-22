@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 // @ts-check
 
-"use strict";
+'use strict';
 
-import pandoc from "pandoc-filter";
-import { codeToHtml } from "shiki";
-import { transformerNotationWordHighlight } from "@shikijs/transformers";
+import pandoc from 'pandoc-filter';
+import { codeToHtml } from 'shiki';
+import { transformerNotationWordHighlight } from '@shikijs/transformers';
 
 /**
  * @param {string} code
@@ -15,18 +15,18 @@ import { transformerNotationWordHighlight } from "@shikijs/transformers";
 function highlightCodeBlock(code, lang) {
   return codeToHtml(code, {
     lang,
-    theme: "vitesse-dark",
+    theme: 'vitesse-dark',
     transformers: [transformerNotationWordHighlight()],
   });
 }
 
 pandoc.stdio(async ({ t: type, c: value }) => {
-  if (type === "CodeBlock") {
+  if (type === 'CodeBlock') {
     const [[_, [lang]], code] = value;
     const highlighted = await highlightCodeBlock(code, lang);
 
-    return type === "CodeBlock"
-      ? pandoc.RawBlock("html", highlighted)
-      : pandoc.RawInline("html", highlighted);
+    return type === 'CodeBlock'
+      ? pandoc.RawBlock('html', highlighted)
+      : pandoc.RawInline('html', highlighted);
   }
 });

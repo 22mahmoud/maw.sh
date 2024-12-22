@@ -1,6 +1,5 @@
 ### maw.sh - Mahmoud Ashraf Website
 
-
 #### dependencies
 
 - linux

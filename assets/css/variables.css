@@ -1,11 +1,11 @@
 :root {
   --sans: system-ui, -apple-system, BlinkMacSystemFont, avenir next, avenir,
     segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji",
-    sans-serif;
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji', sans-serif;
 
-  --mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier,
-    "Courier New", monospace;
+  --mono: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier,
+    'Courier New', monospace;
 
   --c1: #080808;
   --c2: #f1f2f2;

@@ -11,6 +11,7 @@ You can run this command to automatically download my GPG key and add it to your
 ```sh
 curl -L https://maw.sh/gpg-key.gpg | gpg --import
 ```
+
 Or copy the public key below:
 
 ```plain

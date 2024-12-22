@@ -1,5 +1,5 @@
 ---
-date: "2021-02-17T01:20:00+00:00"
+date: '2021-02-17T01:20:00+00:00'
 template:
   thought: true
 keywords:
@@ -11,4 +11,4 @@ keywords:
 Finally, received my gift from [dev.to](https://dev.to)
 Thanks [@ThePracticalDev](https://twitter.com/ThePracticalDev)
 
-![](dev-gift.jpg "dev.to stickers and thank you card")
+![](dev-gift.jpg 'dev.to stickers and thank you card')

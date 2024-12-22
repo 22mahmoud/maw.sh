@@ -6,8 +6,8 @@ in-reply-to:
       photo: https://webmention.io/avatar/cdn.fosstodon.org/60d7144c4fdc85e0a6c502f718df325f1ff46eab26c7f99cfda6e55e47c71a30.png
       url: https://ioc.exchange/\@rye
     url: https://ioc.exchange/\@rye/112719889387481216
-    published: "2024-07-03T01:10:15+00:00"
-    wm-received: "2024-07-03T01:34:25Z"
+    published: '2024-07-03T01:10:15+00:00'
+    wm-received: '2024-07-03T01:34:25Z'
     wm-id: 1837321
     wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112719093605992264/112719889527308533
     wm-target: thoughts/1719956512
@@ -25,8 +25,8 @@ in-reply-to:
       photo: https://webmention.io/avatar/cdn.fosstodon.org/a9dfc8b247f42ca8642f8a0ef72bc233cbfcd2e8b61fc7235f6eb5b32d65c0cb.jpg
       url: https://mastodon.mit.edu/\@chris
     url: https://mastodon.mit.edu/\@chris/112720097147738538
-    published: "2024-07-03T02:03:05+00:00"
-    wm-received: "2024-07-03T02:05:13Z"
+    published: '2024-07-03T02:03:05+00:00'
+    wm-received: '2024-07-03T02:05:13Z'
     wm-id: 1837323
     wm-source: https://brid.gy/comment/mastodon/\@22mahmoud\@fosstodon.org/112719093605992264/112720097204156659
     wm-target: thoughts/1719956512
@@ -46,7 +46,7 @@ like-of:
       url: https://ioc.exchange/\@rye
     url: https://fosstodon.org/\@22mahmoud/112719093605992264#favorited-by-111033166582438883
     published: null
-    wm-received: "2024-07-03T01:34:24Z"
+    wm-received: '2024-07-03T01:34:24Z'
     wm-id: 1837320
     wm-source: https://brid.gy/like/mastodon/\@22mahmoud\@fosstodon.org/112719093605992264/111033166582438883
     wm-target: thoughts/1719956512
@@ -63,7 +63,7 @@ repost-of:
       url: https://fosstodon.org/\@lulu_powerful
     url: https://fosstodon.org/\@22mahmoud/112719093605992264#reblogged-by-109548122212218270
     published: null
-    wm-received: "2024-07-03T01:34:26Z"
+    wm-received: '2024-07-03T01:34:26Z'
     wm-id: 1837322
     wm-source: https://brid.gy/repost/mastodon/\@22mahmoud\@fosstodon.org/112719093605992264/109548122212218270
     wm-target: thoughts/1719956512

@@ -16,9 +16,9 @@ jobs:
         env:
           minhtml_url: https://github.com/wilsonzlin/minify-html/releases/download/v0.15.0/minhtml-0.15.0-x86_64-unknown-linux-gnu
           minhtml: minhtml-0.15.0-x86_64-unknown-linux-gnu
-          pandoc_url: https://github.com/jgm/pandoc/releases/download/3.5/pandoc-3.5-linux-amd64.tar.gz
-          pandoc: pandoc-3.5
-          pandoc_linux: pandoc-3.5-linux-amd64.tar.gz
+          pandoc_url: https://github.com/jgm/pandoc/releases/download/3.6/pandoc-3.6-linux-amd64.tar.gz
+          pandoc: pandoc-3.6
+          pandoc_linux: pandoc-3.6-linux-amd64.tar.gz
         run: |
           wget $pandoc_url; wget $minhtml_url; sudo apt install ffmpeg imagemagick
           chmod +x $minhtml
@@ -96,7 +96,7 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.KEY }}
-          known_hosts: "placeholder"
+          known_hosts: 'placeholder'
           if_key_exists: fail
 
       - name: add known_hosts

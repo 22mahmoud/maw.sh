@@ -13,5 +13,5 @@ keywords:
 let's have some fun this weekend with [astro bot](/games/astro-bot)
 
 ::: {.gallery}
-![](PXL_20240926_205614808.RAW-01.MP.COVER.jpg "")
+![](PXL_20240926_205614808.RAW-01.MP.COVER.jpg)
 :::
