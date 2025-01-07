@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: nno test specified\" && exit 1",
+    "format": "prettier --write .",
     "css": "lightningcss --minify --bundle --targets '>= 0.25%' assets/css/app.css -o dist/css/app.css"
   },
   "keywords": [],
