@@ -1,0 +1,2 @@
+[phases.setup]
+nixPkgs = ["...", "ffmpeg", "imagemagick", "yq-go", "rsync", "curl", "wget", "pandoc"]
