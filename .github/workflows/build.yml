@@ -23,8 +23,9 @@ jobs:
           pandoc: pandoc-3.6
           pandoc_linux: pandoc-3.6-linux-amd64.tar.gz
         run: |
-          wget $pandoc_url; wget $minhtml_url; sudo apt install ffmpeg imagemagick
+          wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq; wget $pandoc_url; wget $minhtml_url; sudo apt install ffmpeg imagemagick
           chmod +x $minhtml
+          chmod +x /usr/bin/yq
           sudo cp -r $minhtml /usr/local/bin/minhtml
           sudo ln -s /usr/bin/convert /usr/bin/magick
           tar -xvf $pandoc_linux
