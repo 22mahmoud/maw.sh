@@ -19,14 +19,19 @@ jobs:
         env:
           minhtml_url: https://github.com/wilsonzlin/minify-html/releases/download/v0.15.0/minhtml-0.15.0-x86_64-unknown-linux-gnu
           minhtml: minhtml-0.15.0-x86_64-unknown-linux-gnu
+
           pandoc_url: https://github.com/jgm/pandoc/releases/download/3.6/pandoc-3.6-linux-amd64.tar.gz
           pandoc: pandoc-3.6
           pandoc_linux: pandoc-3.6-linux-amd64.tar.gz
+
+          yq_url: https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          yq: yq_linux_amd64
         run: |
-          wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq; wget $pandoc_url; wget $minhtml_url; sudo apt install ffmpeg imagemagick
+          wget $yq_url; wget $pandoc_url; wget $minhtml_url; sudo apt install ffmpeg imagemagick
           chmod +x $minhtml
-          chmod +x /usr/bin/yq
+          chmod +x $yq
           sudo cp -r $minhtml /usr/local/bin/minhtml
+          sudo cp -r $yq /usr/local/bin/yq
           sudo ln -s /usr/bin/convert /usr/bin/magick
           tar -xvf $pandoc_linux
           sudo cp -r $pandoc/bin/* /usr/local/bin
