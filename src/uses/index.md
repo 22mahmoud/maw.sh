@@ -23,7 +23,7 @@ description: Mahmoud Ashraf's list of software/hardware for daily using
 - **email**: neomutt
 - **file manager**: nnn
 - **rss reader**: newsboat w/ selfhosted [miniflux](https://miniflux.app/) server.
-- **search engine**: searx using my [instance](https://searx.mahmoudashraf.dev)
+- **search engine**: searx using my [instance](https://search.mahmoudashraf.dev)
 - **password manager**: self-hosted bitwarden
   using [bitwarden-rs](https://github.com/dani-garcia/bitwarden_rs)
 - **messaging**: telegram
