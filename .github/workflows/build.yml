@@ -34,6 +34,7 @@ jobs:
             /usr/local/bin/yq
             /usr/local/bin/pandoc
             /usr/local/bin/magick
+            /usr/local/bin/identify
             /usr/local/share/pandoc
             ~/.imagemagick
           key: ${{ runner.os }}-deps-${{ env.imagemagick_version }}-${{env.pandoc}}-${{ hashFiles('**/lockfiles') }}
