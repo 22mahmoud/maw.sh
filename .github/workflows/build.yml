@@ -2,7 +2,7 @@ name: build
 
 on:
   workflow_dispatch:
-  # push:
+  push:
   workflow_run:
     workflows: ['update_webmentions']
     types:
@@ -128,3 +128,7 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository }}:latest
             ghcr.io/${{ github.repository }}:${{ github.sha }}
+
+      - name: Deploy to Coolify
+        run: |
+          curl --request GET '${{ secrets.COOLIFY_WEBHOOK }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
