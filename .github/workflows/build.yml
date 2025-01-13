@@ -38,7 +38,7 @@ jobs:
             ~/.imagemagick
           key: ${{ runner.os }}-deps-${{ env.imagemagick_version }}-${{env.pandoc}}-${{ hashFiles('**/lockfiles') }}
 
-      - name: instal deps
+      - name: instal external deps
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: |
           # Install build dependencies for ImageMagick
@@ -66,6 +66,11 @@ jobs:
           tar -xvf ${{ env.pandoc_linux }}
           sudo cp -r ${{ env.pandoc }}/bin/* /usr/local/bin
           sudo cp -r ${{ env.pandoc }}/share/* /usr/local/share
+
+      - name: install deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget ffmpeg
 
       - name: Checkout the source repository
         uses: actions/checkout@v4

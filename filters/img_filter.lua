@@ -89,7 +89,7 @@ local function set_image_size(img, file)
   if height then img.attributes.height = height end
 end
 
-local function process_image(input, output_base)
+local function process_image(input, output_base, tmp_base)
   local formats = { 'avif', 'webp', 'original' }
   local max_width = 768
   local quality = 80
@@ -97,33 +97,38 @@ local function process_image(input, output_base)
   local processed_files = {}
 
   os.execute(('mkdir -pv %s'):format(u.dirname(output_base)))
+  os.execute(('mkdir -pv %s'):format(u.dirname(tmp_base)))
 
   for _, format in ipairs(formats) do
+    local tmp_output = format == 'original' and (tmp_base .. get_file_extension(input))
+      or (tmp_base .. '.' .. format)
     local output = format == 'original' and (output_base .. get_file_extension(input))
       or (output_base .. '.' .. format)
 
-    if not u.file_exists(output) then
+    if u.file_exists(tmp_output) then
+      os.execute(('cp -v %s %s'):format(tmp_output, output))
+      table.insert(processed_files, output)
+    else
       local width = get_image_size(input)
       local resize_opts = width and width > max_width and ('-resize ' .. max_width) or ''
 
-      local cmd = format == 'avif' and ('magick %s %s %s'):format(input, resize_opts, output)
+      local cmd = format == 'avif' and ('magick %s %s %s'):format(input, resize_opts, tmp_output)
         or format == 'webp' and ('magick %s -quality %d %s %s'):format(
           input,
           quality,
           resize_opts,
-          output
+          tmp_output
         )
-        or ('magick %s %s %s'):format(input, resize_opts, output)
+        or ('magick %s %s %s'):format(input, resize_opts, tmp_output)
 
       local success, _exit_type = os.execute(cmd)
 
       if not success then
         log_error(('Failed to process image: %s to %s'):format(input, format))
       else
+        os.execute(('cp -v %s %s'):format(tmp_output, output))
         table.insert(processed_files, output)
       end
-    else
-      table.insert(processed_files, output)
     end
   end
 
@@ -182,27 +187,28 @@ local function get_image(img)
 
   local prefix = (not u.starts_with(absolute_url, '/remote_images') and src or dist)
   local input_file = prefix .. absolute_url
+  local tmp_thumb_base = path.join { tmp, images, get_file_name(absolute_url):gsub('^/', '') }
+  local output_thumb_base = dist .. absolute_thumb
 
   if is_video(img.src) then img.attributes.preload = 'none' end
 
   if is_gif(img.src) or is_video(img.src) then
     set_image_size(img, input_file)
     img.src = absolute_url
-
     return img
   else
     img.attributes.alt = img.title or ''
   end
 
-  os.execute(('mkdir -pv %s'):format(u.dirname(dist .. absolute_thumb)))
+  os.execute(('mkdir -pv %s'):format(u.dirname(output_thumb_base)))
 
-  local process_success = process_image(input_file, dist .. absolute_thumb)
+  local process_success = process_image(input_file, output_thumb_base, tmp_thumb_base)
   if not process_success then
     log_error('Image processing failed: ' .. input_file)
     return img
   end
 
-  set_image_size(img, dist .. absolute_thumb .. '.avif')
+  set_image_size(img, output_thumb_base .. '.avif')
 
   return img, absolute_url, absolute_thumb
 end
