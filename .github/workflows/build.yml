@@ -9,30 +9,32 @@ on:
       - completed
 jobs:
   build:
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [22]
 
+    env:
+      pandoc_url: https://github.com/jgm/pandoc/releases/download/3.6/pandoc-3.6-linux-amd64.tar.gz
+      pandoc: pandoc-3.6
+      pandoc_linux: pandoc-3.6-linux-amd64.tar.gz
+
+      yq_url: https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+      yq: yq_linux_amd64
+
     steps:
       - name: instal deps
-        env:
-          minhtml_url: https://github.com/wilsonzlin/minify-html/releases/download/v0.15.0/minhtml-0.15.0-x86_64-unknown-linux-gnu
-          minhtml: minhtml-0.15.0-x86_64-unknown-linux-gnu
-
-          pandoc_url: https://github.com/jgm/pandoc/releases/download/3.6/pandoc-3.6-linux-amd64.tar.gz
-          pandoc: pandoc-3.6
-          pandoc_linux: pandoc-3.6-linux-amd64.tar.gz
-
-          yq_url: https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-          yq: yq_linux_amd64
         run: |
-          wget $yq_url; wget $pandoc_url; wget $minhtml_url; sudo apt install ffmpeg imagemagick
-          chmod +x $minhtml
+          wget $yq_url; wget $pandoc_url; sudo apt install ffmpeg imagemagick
+
           chmod +x $yq
-          sudo cp -r $minhtml /usr/local/bin/minhtml
           sudo cp -r $yq /usr/local/bin/yq
+
           sudo ln -s /usr/bin/convert /usr/bin/magick
+
           tar -xvf $pandoc_linux
           sudo cp -r $pandoc/bin/* /usr/local/bin
           sudo cp -r $pandoc/share/* /usr/local/share
@@ -57,7 +59,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: |
-            dist
+            .tmp
           key: ${{ runner.os }}-tmp-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-tmp-
@@ -83,6 +85,7 @@ jobs:
 
       - name: build
         run: |
+          set -e
           make build -j$(nproc)
           wait
 
@@ -106,21 +109,22 @@ jobs:
             .tmp
           key: ${{ runner.os }}-tmp-${{ github.sha }}
 
-      - name: install SSH key
-        uses: shimataro/ssh-key-action@v2
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
         with:
-          key: ${{ secrets.KEY }}
-          known_hosts: 'placeholder'
-          if_key_exists: fail
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: add known_hosts
-        run: ssh-keyscan -p ${{ secrets.PORT }} -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      - name: rsync over SSH
-        env:
-          ssh_port: ${{ secrets.PORT }}
-          ssh_username: ${{ secrets.USERNAME }}
-          ssh_host: ${{ secrets.HOST }}
-          build_path: ${{ secrets.BUILD_PATH }}
-        run: |
-          rsync -avz -e "ssh -p $ssh_port" dist $ssh_username@$ssh_host:$build_path --delete
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ github.sha }}

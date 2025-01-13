@@ -42,6 +42,6 @@ fi
 
 eval pandoc -d pandoc.yaml \
   "${pandoc_args}" \
-  "$input" -o "$pandoc_output" && echo "[html generated]:" "$output" &
+  "$input" -o "$pandoc_output"
 
-wait
+echo "[html generated]:" "$output"
