@@ -221,6 +221,6 @@ header-includes: |-
 Hi, I'm **Mahmoud Ashraf** 👋.
 Based in **Alexandria, Egypt**, I'm a **Software Engineer** who makes websites.
 I write about **Tech, Linux, Privacy, and Front-end Development**.
-Instead of using social media, I share my **posts and photos** here.!!
+Instead of using social media, I share my **posts and photos** here.
 
 [Learn More About Me](/about)
