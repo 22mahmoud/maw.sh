@@ -45,43 +45,14 @@ jobs:
           # Install build dependencies for ImageMagick
           sudo apt-get update
           sudo apt-get install -y \
-            wget build-essential libpng-dev libjpeg-dev libtiff-dev \
-            libwebp-dev libheif-dev libde265-dev libvpx-dev \
-            libfftw3-dev libltdl-dev liblcms2-dev liblqr-1-0-dev \
-            libraqm-dev librsvg2-dev libxml2-dev libghc-cairo-dev \
-            libglib2.0-dev ghostscript libdjvulibre-dev libjxl-dev \
-            libraw-dev libopenjp2-7-dev libwmf-dev libzip-dev \
-            ocl-icd-opencl-dev opencl-headers libopenexr-dev \
-            libpango1.0-dev ffmpeg
-
-          # Create required Perl directories
-          sudo mkdir -p /usr/local/lib/x86_64-linux-gnu/perl/5.38.2/Image
-          sudo chown -R $USER:$USER /usr/local/lib/x86_64-linux-gnu/perl
+            wget build-essential libpng-dev libjpeg-dev \
+            libtiff-dev libwebp-dev ffmpeg
 
           # Download and install ImageMagick 7
           wget https://github.com/ImageMagick/ImageMagick/archive/refs/tags/${{ env.imagemagick_version }}.tar.gz
           tar xvf ${{ env.imagemagick_version }}.tar.gz
           cd ImageMagick-${{ env.imagemagick_version }}
-          ./configure --prefix=$HOME/.imagemagick \
-            --enable-shared \
-            --disable-static \
-            --with-modules \
-            --enable-hdri \
-            --enable-opencl \
-            --with-fftw \
-            --with-djvu \
-            --with-webp \
-            --with-heic \
-            --with-rsvg \
-            --with-xml \
-            --with-openjp2 \
-            --with-wmf \
-            --with-jxl \
-            --with-raw \
-            --with-lqr \
-            --with-openexr \
-            --with-pango \
-            --with-gslib
+          ./configure --prefix=$HOME/.imagemagick
           make -j$(nproc)
           make install
           sudo ln -s $HOME/.imagemagick/bin/magick /usr/local/bin/magick
@@ -102,7 +73,7 @@ jobs:
       - name: install deps
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget ffmpeg
+          sudo apt-get install -y wget ffmpeg libavif-bin
 
       - name: Checkout the source repository
         uses: actions/checkout@v4

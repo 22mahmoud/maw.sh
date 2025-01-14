@@ -112,8 +112,15 @@ local function process_image(input, output_base, tmp_base)
       local width = get_image_size(input)
       local resize_opts = width and width > max_width and ('-resize ' .. max_width) or ''
 
-      local cmd = format == 'avif' and ('magick %s %s %s'):format(input, resize_opts, tmp_output)
-        or format == 'webp' and ('magick %s -quality %d %s %s'):format(
+      local cmd = format == 'avif'
+          and ('magick %s %s %s && avifenc -j 4 --min 0 --max 63 -a end-usage=q -a cq-level=25 -a tune=ssim %s %s'):format(
+            input,
+            resize_opts,
+            tmp_base .. '_tmp.' .. 'png',
+            tmp_base .. '_tmp.' .. 'png',
+            tmp_output
+          )
+        or format == 'webp' and ('magick %s  -format webp -quality %d %s %s'):format(
           input,
           quality,
           resize_opts,
