@@ -75,7 +75,7 @@ end
 local function get_image_size(file)
   local cmd = is_video(file)
       and 'ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=x %s'
-    or 'identify -format "%%w %%h" %s | head -n1'
+    or 'magick identify -format "%%w %%h" %s | head -n1'
 
   local result = u.shell(cmd:format(file)) or ''
   local width, height = result:match '(%d+)[%sx](%d+)'
