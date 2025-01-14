@@ -46,13 +46,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             wget build-essential libpng-dev libjpeg-dev \
-            libtiff-dev libwebp-dev ffmpeg
+            libtiff-dev libwebp-dev ffmpeg libheif-dev
 
           # Download and install ImageMagick 7
           wget https://github.com/ImageMagick/ImageMagick/archive/refs/tags/${{ env.imagemagick_version }}.tar.gz
           tar xvf ${{ env.imagemagick_version }}.tar.gz
           cd ImageMagick-${{ env.imagemagick_version }}
-          ./configure --prefix=$HOME/.imagemagick
+          ./configure --prefix=$HOME/.imagemagick --with-heic --with-webp
           make -j$(nproc)
           make install
           sudo ln -s $HOME/.imagemagick/bin/magick /usr/local/bin/magick
