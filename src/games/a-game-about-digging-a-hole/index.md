@@ -1,6 +1,6 @@
 ---
 date: 2025-02-15T16:45+02:00
-state: wanted
+state: completed
 cover_image: "./cover.webp"
 template:
   game: true
