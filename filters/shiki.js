@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// @ts-check
 
 import { transformerNotationWordHighlight } from '@shikijs/transformers';
 import pandoc from 'pandoc-filter';
