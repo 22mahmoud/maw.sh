@@ -1,11 +1,70 @@
-:root {
-  --sans: system-ui, -apple-system, BlinkMacSystemFont, avenir next, avenir,
-    segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji', sans-serif;
+@font-face {
+  font-display: swap;
+  font-family: 'DepartureMono';
+  src: url('/DepartureMono-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 
-  --mono: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier,
-    'Courier New', monospace;
+@font-face {
+  font-display: swap;
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fraunces-v32-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fraunces-v32-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fraunces-v32-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/figtree-v7-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/figtree-v7-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/figtree-v7-latin-700.woff2') format('woff2');
+}
+
+:root {
+  --font-heading: 'Fraunces', Georgia, Times, serif;
+
+  --font-body:
+    'Figtree', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --font-mono:
+    'DepartureMono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo,
+    Courier, 'Courier New', monospace;
 
   --c1: #080808;
   --c2: #f1f2f2;

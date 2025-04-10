@@ -1,7 +1,7 @@
 body {
   margin: 0 auto;
   padding: 1em;
-  font-family: var(--sans);
+  font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.6;
   background: var(--c1);
@@ -17,6 +17,32 @@ main {
   flex: 1;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+p,
+li,
+blockquote {
+  font-family: var(--font-body);
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
+}
+
+pre {
+  padding: 1em;
+  overflow-x: auto;
+}
+
 figure {
   margin: 0;
   margin-bottom: 1rem;
@@ -24,7 +50,7 @@ figure {
   border: 1px solid var(--c1);
   text-align: center;
   background-color: var(--c5);
-  font-family: var(--sans);
+  font-family: var(--body);
 }
 
 figure img {
@@ -72,7 +98,7 @@ pre {
 }
 
 code {
-  font: 1em/1.6 var(--mono);
+  font: 1em / 1.6 var(--mono);
   color: var(--c4);
 }
 
@@ -280,7 +306,6 @@ article.h-entry footer {
 }
 
 .wb {
-  font-family: Arial, sans-serif;
   color: white;
   background-color: white;
   width: fit-content;
