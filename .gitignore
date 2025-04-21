@@ -1,7 +1,1 @@
-dist
-.tmp
-.luarc.json
-
-.env
 node_modules
-my.secrets

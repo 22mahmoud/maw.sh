@@ -1,3 +1,0 @@
-[submodule "src/leetcode"]
-	path = src/leetcode
-	url = https://github.com/22mahmoud/leetcode.git
