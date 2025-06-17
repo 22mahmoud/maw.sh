@@ -1,4 +1,0 @@
-services:
-  maw_sh:
-    image: ghcr.io/22mahmoud/maw.sh:latest
-    restart: unless-stopped
