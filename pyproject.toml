@@ -17,3 +17,10 @@ dev = [
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
+
+[tool.djlint]
+profile = "django"
+indent = 2
+line_break_after_multiline_tag = true
+max_line_length = 100
+preserve_blank_lines = true
