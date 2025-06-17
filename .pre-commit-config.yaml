@@ -1,6 +1,23 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
+
+biome-base: &biome-base
+  language: system
+  types: [text]
+  files: "\\.(jsx?|tsx?|c(js|ts)|m(js|ts)|d\\.(ts|cts|mts)|jsonc?|css|svelte|vue|astro|graphql|gql)$"
+
 repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-added-large-files
+
   - repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.7.13
     hooks:
@@ -23,3 +40,15 @@ repos:
       - id: ruff-check
         args: [--fix]
       - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: local-biome-format
+        name: biome format
+        entry: pnpm run format
+        <<: *biome-base
+
+      - id: local-biome-lint
+        name: biome lint
+        entry: pnpm run lint
+        <<: *biome-base
