@@ -1,6 +1,17 @@
+"""
+Django settings for this project.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.2/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/5.2/ref/settings/
+"""
+
 import os
 
 from config.env import env, BASE_DIR
+from config.settings.wagtail import WAGTAIL_INSTALLED_APPS, WAGTAIL_MIDDLEWARE
 
 try:
     import django_stubs_ext
@@ -11,9 +22,6 @@ except ImportError:
 
 env.read_env(os.path.join(BASE_DIR, ".env"))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str("SECRET_KEY")
 
@@ -23,21 +31,7 @@ DEBUG = env.bool("DEBUG", default=True)
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
-
-INSTALLED_APPS = [
-    "wagtail.contrib.forms",
-    "wagtail.contrib.redirects",
-    "wagtail.embeds",
-    "wagtail.sites",
-    "wagtail.users",
-    "wagtail.snippets",
-    "wagtail.documents",
-    "wagtail.images",
-    "wagtail.search",
-    "wagtail.admin",
-    "wagtail",
-    "taggit",
-    "modelcluster",
+INSTALLED_APPS = WAGTAIL_INSTALLED_APPS + [
     "django.contrib.admin",
     "django_vite",
     "django.contrib.auth",
@@ -54,9 +48,7 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
-]
+] + WAGTAIL_MIDDLEWARE
 
 ROOT_URLCONF = "config.urls"
 
@@ -79,10 +71,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -90,10 +80,8 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -112,71 +100,28 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
-
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "UTC"
-
 USE_I18N = True
-
 USE_TZ = True
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# vite
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
-
 STATIC_URL = "static/"
-
 STATICFILES_DIRS = [BASE_DIR / "static", "public"]
 STATIC_ROOT = "staticfiles"
-DJANGO_VITE = {"default": {"dev_mode": True}}
 
-# WAGTAIL SETTINGS
-
-WAGTAIL_SITE_NAME = "Mahmoud Ashraf"
-WAGTAILADMIN_BASE_URL = "http:localhost:8000"
-
+# Handle upload files and media
+# https://docs.djangoproject.com/en/5.2/topics/files/
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 
-# Replace the search backend
-# WAGTAILSEARCH_BACKENDS = {
-#  'default': {
-#    'BACKEND': 'wagtail.search.backends.elasticsearch8',
-#    'INDEX': 'myapp'
-#  }
-# }
-
-# Wagtail email notifications from address
-# WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'wagtail@myhost.io'
-
-# Wagtail email notification format
-# WAGTAILADMIN_NOTIFICATION_USE_HTML = True
-
-# Allowed file extensions for documents in the document library.
-# This can be omitted to allow all files, but note that this may present a security risk
-# if untrusted users are allowed to upload files -
-# see https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
-WAGTAILDOCS_EXTENSIONS = [
-    "csv",
-    "docx",
-    "key",
-    "odt",
-    "pdf",
-    "pptx",
-    "rtf",
-    "txt",
-    "xlsx",
-    "zip",
-]
-
-# Reverse the default case-sensitive handling of tags
-TAGGIT_CASE_INSENSITIVE = True
+# lib settings
+from config.settings.wagtail import *  # noqa: E402, F403
+from config.settings.vite import *  # noqa: E402, F403
