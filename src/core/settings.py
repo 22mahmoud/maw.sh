@@ -156,10 +156,11 @@ DJANGO_VITE = {"default": {"dev_mode": True}}
 # WAGTAIL SETTINGS
 
 WAGTAIL_SITE_NAME = "Mahmoud Ashraf"
-WAGTAILADMIN_BASE_URL = "/cms"
+WAGTAILADMIN_BASE_URL = "http:localhost:8000"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 
 # Replace the search backend
 # WAGTAILSEARCH_BACKENDS = {

@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev:frontend": "vite",
+    "dev:server": "python src/manage.py runserver",
     "build": "vite build",
     "format": "biome format --write",
     "lint": "biome lint --write"

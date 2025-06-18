@@ -1,4 +1,4 @@
-from django.urls import include, path, re_path
+from django.urls import include, path
 from django.contrib import admin
 from django.conf import settings
 from django.views.generic import TemplateView
@@ -11,7 +11,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("cms/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
-    re_path("home/", TemplateView.as_view(template_name="home.html")),
+    path("home/", TemplateView.as_view(template_name="home.html")),
 ]
 
 if settings.DEBUG:
