@@ -1,0 +1,31 @@
+# Todo
+
+- [x] Setup Django
+- [x] Setup wagtail
+- [ ] Setup Postgres
+- [x] Setup Vite
+- [ ] Home Page
+- [ ] IndieWeb Post Types
+    - [ ] Article (Blog Post)
+    - [ ] Note (Thoughts)
+    - [ ] Like
+    - [ ] Reply
+    - [ ] Bookmark
+    - [ ] Photo
+    - [ ] Video
+- [ ] Webmentions
+- [ ] Comments
+- [ ] Tracker
+    - [ ] Video Games
+    - [ ] Reading
+    - [ ] TV
+    - [ ] Movies
+    - [ ] Leetcode
+- [ ] About
+- [ ] Uses
+- [ ] Contact
+- [ ] Services / hire me
+- [ ] Resume
+- [ ] RSS
+- [ ] sitemap.xml
+- [ ] robots.txt
