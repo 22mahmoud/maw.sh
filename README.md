@@ -29,3 +29,4 @@
 - [ ] RSS
 - [ ] sitemap.xml
 - [ ] robots.txt
+- [ ] deployment
