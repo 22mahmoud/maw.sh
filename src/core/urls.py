@@ -1,7 +1,7 @@
 from django.urls import include, path
 from django.contrib import admin
 from django.conf import settings
-from django.views.generic import TemplateView
+from django.views.generic import RedirectView, TemplateView
 
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
@@ -20,6 +20,12 @@ if settings.DEBUG:
 
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += [
+        path(
+            "favicon.ico",
+            RedirectView.as_view(url=settings.STATIC_URL + "favicon.ico"),
+        )
+    ]
 
     urlpatterns += [
         path("test404/", TemplateView.as_view(template_name="404.html")),
