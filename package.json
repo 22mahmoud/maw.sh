@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev:frontend": "vite",
-    "dev:server": "python src/manage.py runserver",
+    "dev:server": "python manage.py runserver",
     "build": "vite build",
     "format": "biome format --write",
     "lint": "biome lint --write"
