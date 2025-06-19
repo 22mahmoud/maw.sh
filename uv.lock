@@ -174,15 +174,15 @@ wheels = [
 
 [[package]]
 name = "django-stubs-ext"
-version = "5.2.0"
+version = "5.2.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/7c/7a/84338605817960942c1ea9d852685923ccccd0d91ba0d49532605973491f/django_stubs_ext-5.2.0.tar.gz", hash = "sha256:00c4ae307b538f5643af761a914c3f8e4e3f25f4e7c6d7098f1906c0d8f2aac9", size = 9618, upload-time = "2025-04-26T10:48:38.05Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f9/19/bf8cc0e6c48b4bf4fb72274cecc6b575a4789effecdd95d9ccc7ba9380bb/django_stubs_ext-5.2.1.tar.gz", hash = "sha256:fc0582cb3289306c43ce4a0a15af86922ce1dbec3c19eab80980ee70c04e0392", size = 6550, upload-time = "2025-06-17T18:06:59.133Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e2/65/9f5ca467d84a67c0c547f10b0ece9fd9c26c5efc818a01bf6a3d306c2a0c/django_stubs_ext-5.2.0-py3-none-any.whl", hash = "sha256:b27ae0aab970af4894ba4e9b3fcd3e03421dc8731516669659ee56122d148b23", size = 9066, upload-time = "2025-04-26T10:48:36.032Z" },
+    { url = "https://files.pythonhosted.org/packages/a4/82/9fab66569b3e682205b52c2b203058a816c0755bc54e2adcd5d3f6018c43/django_stubs_ext-5.2.1-py3-none-any.whl", hash = "sha256:98fb0646f1a1ef07708eec5f6f7d27523f12c0c8714abae8db981571ff957588", size = 9153, upload-time = "2025-06-17T18:06:57.986Z" },
 ]
 
 [[package]]
@@ -605,11 +605,11 @@ wheels = [
 
 [[package]]
 name = "urllib3"
-version = "2.4.0"
+version = "2.5.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/8a/78/16493d9c386d8e60e442a35feac5e00f0913c0f4b7c217c11e8ec2ff53e0/urllib3-2.4.0.tar.gz", hash = "sha256:414bc6535b787febd7567804cc015fee39daab8ad86268f1310a9250697de466", size = 390672, upload-time = "2025-04-10T15:23:39.232Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/15/22/9ee70a2574a4f4599c47dd506532914ce044817c7752a79b6a51286319bc/urllib3-2.5.0.tar.gz", hash = "sha256:3fc47733c7e419d4bc3f6b3dc2b4f890bb743906a30d56ba4a5bfa4bbff92760", size = 393185, upload-time = "2025-06-18T14:07:41.644Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6b/11/cc635220681e93a0183390e26485430ca2c7b5f9d33b15c74c2861cb8091/urllib3-2.4.0-py3-none-any.whl", hash = "sha256:4e16665048960a0900c702d4a66415956a584919c03361cac9f1df5c5dd7e813", size = 128680, upload-time = "2025-04-10T15:23:37.377Z" },
+    { url = "https://files.pythonhosted.org/packages/a7/c2/fe1e52489ae3122415c51f387e221dd0773709bad6c6cdaa599e8a2c5185/urllib3-2.5.0-py3-none-any.whl", hash = "sha256:e6b01673c0fa6a13e374b50871808eb3bf7046c4b125b216f6bf1cc604cff0dc", size = 129795, upload-time = "2025-06-18T14:07:40.39Z" },
 ]
 
 [[package]]

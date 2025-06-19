@@ -1,7 +1,10 @@
 WAGTAIL_INSTALLED_APPS = [
+    "src.base",
+    "src.seo",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
+    "wagtail.contrib.settings",
     "wagtail.sites",
     "wagtail.users",
     "wagtail.snippets",
@@ -16,6 +19,10 @@ WAGTAIL_INSTALLED_APPS = [
 
 WAGTAIL_MIDDLEWARE = [
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+]
+
+WAGTAIL_TEMPLATE_CONTEXT_PROCESSORS = [
+    "wagtail.contrib.settings.context_processors.settings"
 ]
 
 WAGTAIL_SITE_NAME = "Mahmoud Ashraf"

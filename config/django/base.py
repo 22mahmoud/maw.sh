@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 
 from config.env import env, BASE_DIR
-from config.settings.wagtail import WAGTAIL_INSTALLED_APPS, WAGTAIL_MIDDLEWARE
+from config.settings.wagtail import (
+    WAGTAIL_INSTALLED_APPS,
+    WAGTAIL_MIDDLEWARE,
+    WAGTAIL_TEMPLATE_CONTEXT_PROCESSORS,
+)
 
 try:
     import django_stubs_ext
@@ -64,7 +68,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-            ],
+            ]
+            + WAGTAIL_TEMPLATE_CONTEXT_PROCESSORS
         },
     },
 ]
@@ -104,7 +109,6 @@ LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
