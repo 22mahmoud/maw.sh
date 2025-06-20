@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% load wagtailimages_tags wagtailcore_tags wagtailsettings_tags %}
+{% load i18n %}
+
+{% block content %}
+
+  <div class="zigzag justify-around px-2 py-8 bg-dark flex">
+
+    <div class="gap-6 flex flex-col justify-between flex-1 max-w-[65ch]">
+      <div class="flex flex-col gap-3">
+        <p class="font-bold text-5xl leading-15">
+          {{ page.hero_headline }}
+        </p>
+
+        <div class="text-2xl leading-8">
+          {{ page.hero_text|richtext }}
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <a href="{% pageurl page.hero_cta_link %}"
+           class="group relative inline-block text-darker font-bold text-2xl px-3 py-2 cursor-pointer shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e5ff53]">
+          <span class="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 bg-gradient-1 transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0 z-10"></span>
+          <span class="pointer-events-none absolute inset-0 bg-accent transition-colors duration-300 group-hover:bg-[#e5ff53] z-20"></span>
+          <span class="relative z-30">{{ page.hero_cta }}</span>
+        </a>
+
+        {% with site_settings=settings.base.SiteSettings %}
+          <div class="flex gap-4">
+            <a href="https://youtube.com/@{{ site_settings.youtube }}">
+              {% include "icons/youtube.svg" with class="fill-primary" %}
+            </a>
+
+            <a href="https://github.com/{{ site_settings.github }}">
+              {% include "icons/github.svg" with class="fill-primary" %}
+            </a>
+
+            <a href="https://bsky.app/profile/{{ site_settings.github }}.bsky.social">
+              {% include "icons/bluesky.svg" with class="fill-primary" %}
+            </a>
+
+            <a href="https://linkedin.com/in/{{ site_settings.github }}">
+              {% include "icons/linkedin.svg" with class="fill-primary" %}
+            </a>
+
+            <a href="https://fosstodon.org/@{{ site_settings.github }}">
+              {% include "icons/mastodon.svg" with class="fill-primary" %}
+            </a>
+
+            <a href="#">
+              {% include "icons/rss.svg" with class="fill-primary" %}
+            </a>
+          </div>
+        {% endwith %}
+      </div>
+    </div>
+
+    <div class="relative">
+      {% with avilable_for_projects=settings.base.SiteSettings.avilable_for_projects %}
+        <p class="font-medium flex justify-center items-center gap-1 text-sm absolute top-8 -left-2 bg-primary text-dark px-2 py-1.5 rounded-md shadow-sm border-b-3 border-[#B6B0B0]">
+          <span class="{% if avilable_for_projects %}
+                         bg-green-600 border-green-100/40
+                       {% else %}
+                         bg-red-600 border-red-100/40
+                       {% endif %}
+                       border-3 animate-pulse w-4 h-4 rounded-full"></span>
+          <span>
+            {% if avilable_for_projects %}
+              {% trans "Available for projects" %}
+            {% else %}
+              {% trans "Offline" %}
+            {% endif %}
+          </span>
+        </p>
+      {% endwith %}
+      <div class="w-[300px] h-[300px] bg-gradient-to-b from-gradient-1 to-gradient-2 pr-2 rounded-full">
+        {% picture page.hero_image format-{avif,webp,jpeg} width-300 class="w-full h-full object-cover rounded-full" %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

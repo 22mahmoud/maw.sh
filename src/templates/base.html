@@ -24,12 +24,9 @@
     {% vite_asset 'src/resources/js/app.ts' %}
   </head>
 
-  <body>
+  <body class="bg-darker text-primary max-w-6xl mx-auto">
     {% wagtailuserbar %}
     {% include "includes/header.html" %}
-
-    {# <pre>{{ settings | pprint }}</pre> #}
-    {# <header> </header> #}
 
     <main>
       {% block content %}

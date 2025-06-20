@@ -15,6 +15,10 @@ class GenericPage(SeoMetaFields, Page):  # type: ignore
 
 @register_setting(icon="site")
 class SiteSettings(BaseSiteSetting):
+    avilable_for_projects = models.BooleanField(
+        verbose_name=_("Avilable for projects"), default=False
+    )
+
     twitter = models.CharField(
         blank=True,
         verbose_name=_("Twitter"),
@@ -52,6 +56,12 @@ class SiteSettings(BaseSiteSetting):
 
     edit_handler = TabbedInterface(
         [
+            ObjectList(
+                [
+                    FieldPanel("avilable_for_projects"),
+                ],
+                heading="General",
+            ),
             ObjectList(
                 [
                     FieldPanel("twitter"),

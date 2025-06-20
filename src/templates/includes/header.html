@@ -1,10 +1,13 @@
 {% load wagtailcore_tags %}
 {% load navigation_tags %}
 
-<header>
-  <nav>
-    <ul>
-      {% top_menu source=self %}
-    </ul>
-  </nav>
+<header class="shadow bg-gradient-to-r from-gradient-1 to-gradient-2 pb-[2px]">
+  <div class="h-full w-full bg-dark text-2xl font-bold px-2 py-3 flex justify-between">
+    <a href="{% slugurl 'home' %}">~/mahmoud_ashraf</a>
+    <nav>
+      <ul class="flex gap-4">
+        {% top_menu source=self %}
+      </ul>
+    </nav>
+  </div>
 </header>
