@@ -6,8 +6,8 @@ from wagtail.admin.panels import MultiFieldPanel
 from wagtail.models import Page
 
 
-class SeoMetaFields(models.Model):
-    class Meta:
+class SeoMetaFields(Page):
+    class Meta:  # type: ignore
         abstract = True
 
     canonical_url = models.URLField(
@@ -30,6 +30,10 @@ class SeoMetaFields(models.Model):
             "or the default from Settings > SEO."
         ),
     )
+
+    @property
+    def seo_canonical_url(self) -> str:
+        return self.canonical_url or self.get_full_url() or ""
 
     promote_panels = Page.promote_panels + [
         MultiFieldPanel(

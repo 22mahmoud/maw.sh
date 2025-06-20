@@ -1,12 +1,15 @@
 WAGTAIL_INSTALLED_APPS = [
+    # my apps
     "src.base",
     "src.seo",
+    # wagtail core apps
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
     "wagtail.contrib.settings",
     "wagtail.sites",
     "wagtail.users",
+    "wagtail.contrib.styleguide",
     "wagtail.snippets",
     "wagtail.documents",
     "wagtail.images",
