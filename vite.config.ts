@@ -12,7 +12,7 @@ export default defineConfig({
   },
   build: {
     manifest: 'manifest.json',
-    outDir: path.resolve('./src/static'),
+    outDir: path.resolve('./static'),
     emptyOutDir: true,
     rollupOptions: {
       input: {
