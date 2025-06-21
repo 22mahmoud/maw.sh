@@ -1,18 +1,17 @@
-{% load wagtailimages_tags wagtailcore_tags wagtailsettings_tags %}
-{% load i18n %}
+<section class="zigzag px-4 py-10 sm:py-12 md:py-16 bg-dark flex flex-col sm:items-center lg:flex-row lg:justify-around gap-6 sm:gap-10">
+  <!-- Profile Image and Status -->
+  <div class="relative order-1 sm:order-1 lg:order-2 self-center">
+    {% include "./status_badge.html" %}
+    {% include "./profile_picture.html" %}
+  </div>
 
-<section class="zigzag justify-around px-2 py-8 bg-dark flex">
-  <div class="gap-6 flex flex-col justify-between flex-1 max-w-[65ch]">
+  <!-- Text + CTA + Socials -->
+  <div class="flex flex-col gap-6 justify-between order-2 sm:order-2 lg:order-1 max-w-[65ch] self-center text-center sm:text-center lg:text-left">
     {% include "./headline.html" %}
 
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col md:flex-row justify-center md:justify-between items-center gap-x-4 gap-y-6">
       {% include "./cta_button.html" %}
       {% include "./social_links.html" %}
     </div>
-  </div>
-
-  <div class="relative">
-    {% include "./status_badge.html" %}
-    {% include "./profile_picture.html" %}
   </div>
 </section>

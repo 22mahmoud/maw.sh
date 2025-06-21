@@ -1,6 +1,6 @@
 {% with site_settings=settings.base.SiteSettings %}
   <nav aria-label="Social media links">
-    <ul class="flex gap-4 items-center">
+    <ul class="flex flex-wrap gap-3 sm:gap-4 items-center justify-start sm:justify-end">
       {% for platform, url, icon in site_settings.social_links %}
         <li>
           <a href="{{ url }}"

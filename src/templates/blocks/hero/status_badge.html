@@ -1,7 +1,7 @@
 {% load i18n %}
 
 {% with available=settings.base.SiteSettings.avilable_for_projects %}
-  <p class="font-medium flex justify-center items-center gap-1 text-sm absolute top-8 -left-2 bg-primary text-dark px-2 py-1.5 rounded-md shadow-sm border-b-3 border-[#B6B0B0]">
+  <p class="font-medium flex justify-center items-center gap-1 text-sm absolute top-2 sm:top-8 -left-2 sm:-left-2 bg-primary text-dark px-2 py-1.5 rounded-md shadow-sm border-b-3 border-[#B6B0B0]">
     <span class="{% if available %}
                    bg-green-600 border-green-100/40
                  {% else %}

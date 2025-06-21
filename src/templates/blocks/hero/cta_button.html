@@ -1,7 +1,7 @@
 {% load wagtailcore_tags %}
 
 <a href="{% pageurl self.cta_link %}"
-   class="group relative inline-block text-darker font-bold text-2xl px-3 py-2 cursor-pointer shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e5ff53]">
+   class="group relative inline-block text-darker font-bold text-lg sm:text-2xl px-3 py-2 sm:px-4 sm:py-2.5 cursor-pointer shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e5ff53]">
   <span class="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 bg-gradient-1 transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0 z-10"></span>
   <span class="pointer-events-none absolute inset-0 bg-accent transition-colors duration-300 group-hover:bg-[#e5ff53] z-20"></span>
   <span class="relative z-30">{{ self.cta }}</span>

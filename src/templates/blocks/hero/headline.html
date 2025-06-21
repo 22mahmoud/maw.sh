@@ -1,10 +1,10 @@
 {% load wagtailcore_tags %}
 
 <div class="flex flex-col gap-3">
-  <p class="font-bold text-5xl leading-15">
+  <p class="font-bold text-3xl sm:text-5xl leading-snug">
     {{ self.headline }}
   </p>
-  <div class="text-2xl leading-8">
+  <div class="text-xl sm:text-2xl leading-7 sm:leading-8">
     {{ self.text|richtext }}
   </div>
 </div>
