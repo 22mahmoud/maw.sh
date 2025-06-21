@@ -29,7 +29,6 @@ def smart_deserialize(value):
 
 @register.simple_tag
 def get_icon(name, fallback="icons/default.svg"):
-    print(name)
     icon_path = f"icons/{name}.svg"
     try:
         get_template(icon_path)

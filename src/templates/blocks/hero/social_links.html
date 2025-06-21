@@ -2,7 +2,7 @@
 
 <nav aria-label="Social media links">
   <ul class="flex flex-wrap gap-3 sm:gap-4 items-center justify-start sm:justify-end">
-    {% for link in self.social_links %}
+    {% for link in value %}
       {% if link.block_type == "site" %}
         {% with social=link.value.platform|smart_deserialize %}
           <li>
@@ -11,7 +11,7 @@
                aria-label="{{ social.platform|capfirst }}"
                title="{{ social.platform|capfirst }}">
               {% get_icon social.icon as icon %}
-              {% include icon with class="fill-primary group-hover:fill-accent transition-colors" %}
+              {% include icon with class="w-8 h-8 fill-primary group-hover:fill-accent transition-colors" %}
             </a>
           </li>
         {% endwith %}
@@ -22,7 +22,7 @@
              aria-label="{{ link.value.platform|capfirst }}"
              title="{{ link.value.platform|capfirst }}">
             {% get_icon link.value.platform as icon %}
-            {% include icon with class="fill-primary group-hover:fill-accent transition-colors" %}
+            {% include icon with class="w-8 h-8 fill-primary group-hover:fill-accent transition-colors" %}
           </a>
         </li>
       {% endif %}
