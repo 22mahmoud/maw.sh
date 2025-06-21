@@ -94,10 +94,13 @@ class SiteSettings(BaseSiteSetting):
         }
 
         return [
-            (platform, url_template.format(handle), icon)
+            {
+                "url": links[platform][0].format(handle),
+                "icon": links[platform][1],
+                "platform": platform,
+            }
             for platform, handle in handles.items()
             if handle
-            for url_template, icon in [links[platform]]
         ]
 
     edit_handler = TabbedInterface(

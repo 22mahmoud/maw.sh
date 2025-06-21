@@ -1,25 +1,31 @@
-{% with site_settings=settings.base.SiteSettings %}
-  <nav aria-label="Social media links">
-    <ul class="flex flex-wrap gap-3 sm:gap-4 items-center justify-start sm:justify-end">
-      {% for platform, url, icon in site_settings.social_links %}
+{% load base_tags %}
+
+<nav aria-label="Social media links">
+  <ul class="flex flex-wrap gap-3 sm:gap-4 items-center justify-start sm:justify-end">
+    {% for link in self.social_links %}
+      {% if link.block_type == "site" %}
+        {% with social=link.value.platform|smart_deserialize %}
+          <li>
+            <a href="{{ social.url }}"
+               class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+               aria-label="{{ social.platform|capfirst }}"
+               title="{{ social.platform|capfirst }}">
+              {% get_icon social.icon as icon %}
+              {% include icon with class="fill-primary group-hover:fill-accent transition-colors" %}
+            </a>
+          </li>
+        {% endwith %}
+      {% elif link.block_type == "custom" %}
         <li>
-          <a href="{{ url }}"
+          <a href="{{ link.value.url }}"
              class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
-             aria-label="{{ platform|capfirst }}"
-             title="{{ platform|capfirst }}">
-            {% include "icons/"|add:icon|add:".svg" with class="fill-primary group-hover:fill-accent transition-colors" %}
+             aria-label="{{ link.value.platform|capfirst }}"
+             title="{{ link.value.platform|capfirst }}">
+            {% get_icon link.value.platform as icon %}
+            {% include icon with class="fill-primary group-hover:fill-accent transition-colors" %}
           </a>
         </li>
-      {% endfor %}
-
-      <li>
-        <a href=""
-           class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
-           aria-label="RSS"
-           title="RSS">
-          {% include "icons/rss.svg" with class="fill-primary group-hover:fill-accent transition-colors" %}
-        </a>
-      </li>
-    </ul>
-  </nav>
-{% endwith %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
