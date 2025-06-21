@@ -1,16 +1,27 @@
 from django.db import models
 from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel, TabbedInterface, ObjectList
+from wagtail.fields import StreamField
 from wagtail.contrib.settings.models import register_setting, BaseSiteSetting
 from django.utils.translation import gettext_lazy as _
 
 from src.seo.models import SeoMetaFields
+from .blocks import HeroBlock
 
 
 class GenericPage(SeoMetaFields, Page):  # type: ignore
     introduction = models.TextField(help_text="Text to describe the page", blank=True)
 
-    content_panels = Page.content_panels + [FieldPanel("introduction")]
+    body = StreamField(
+        [("hero", HeroBlock())],
+        use_json_field=True,
+        blank=True,
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel("introduction"),
+        FieldPanel("body"),
+    ]
 
 
 @register_setting(icon="site")

@@ -1,6 +1,5 @@
 WAGTAIL_INSTALLED_APPS = [
     # my apps
-    "src.home",
     "src.base",
     "src.seo",
     # wagtail core apps
