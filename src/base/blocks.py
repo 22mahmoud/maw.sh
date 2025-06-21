@@ -10,6 +10,6 @@ class HeroBlock(blocks.StructBlock):
     cta_link = blocks.PageChooserBlock(required=False)
 
     class Meta:  # type: ignore
-        template = "blocks/hero_block.html"
+        template = "blocks/hero/hero_block.html"
         icon = "image"
         label = "Hero Section"

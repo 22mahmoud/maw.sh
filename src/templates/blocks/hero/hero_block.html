@@ -1,0 +1,18 @@
+{% load wagtailimages_tags wagtailcore_tags wagtailsettings_tags %}
+{% load i18n %}
+
+<section class="zigzag justify-around px-2 py-8 bg-dark flex">
+  <div class="gap-6 flex flex-col justify-between flex-1 max-w-[65ch]">
+    {% include "./headline.html" %}
+
+    <div class="flex justify-between items-center">
+      {% include "./cta_button.html" %}
+      {% include "./social_links.html" %}
+    </div>
+  </div>
+
+  <div class="relative">
+    {% include "./status_badge.html" %}
+    {% include "./profile_picture.html" %}
+  </div>
+</section>

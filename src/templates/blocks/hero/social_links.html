@@ -1,0 +1,25 @@
+{% with site_settings=settings.base.SiteSettings %}
+  <nav aria-label="Social media links">
+    <ul class="flex gap-4 items-center">
+      {% for platform, url, icon in site_settings.social_links %}
+        <li>
+          <a href="{{ url }}"
+             class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+             aria-label="{{ platform|capfirst }}"
+             title="{{ platform|capfirst }}">
+            {% include "icons/"|add:icon|add:".svg" with class="fill-primary group-hover:fill-accent transition-colors" %}
+          </a>
+        </li>
+      {% endfor %}
+
+      <li>
+        <a href=""
+           class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+           aria-label="RSS"
+           title="RSS">
+          {% include "icons/rss.svg" with class="fill-primary group-hover:fill-accent transition-colors" %}
+        </a>
+      </li>
+    </ul>
+  </nav>
+{% endwith %}

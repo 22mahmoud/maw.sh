@@ -1,0 +1,19 @@
+{% load i18n %}
+
+{% with available=settings.base.SiteSettings.avilable_for_projects %}
+  <p class="font-medium flex justify-center items-center gap-1 text-sm absolute top-8 -left-2 bg-primary text-dark px-2 py-1.5 rounded-md shadow-sm border-b-3 border-[#B6B0B0]">
+    <span class="{% if available %}
+                   bg-green-600 border-green-100/40
+                 {% else %}
+                   bg-red-600 border-red-100/40
+                 {% endif %}
+                 border-3 animate-pulse w-4 h-4 rounded-full"></span>
+    <span>
+      {% if available %}
+        {% trans "Available for projects" %}
+      {% else %}
+        {% trans "Offline" %}
+      {% endif %}
+    </span>
+  </p>
+{% endwith %}

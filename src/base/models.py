@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel, TabbedInterface, ObjectList
 from wagtail.fields import StreamField
@@ -60,10 +61,44 @@ class SiteSettings(BaseSiteSetting):
         verbose_name=_("Pixelfed.social"),
     )
 
+    linkedin = models.CharField(
+        blank=True,
+        verbose_name=_("Linkedin"),
+    )
+
     bluesky = models.CharField(
         blank=True,
         verbose_name=_("Bluesky"),
     )
+
+    @cached_property
+    def social_links(self):
+        handles = {
+            "twitter": self.twitter,
+            "youtube": self.youtube,
+            "github": self.github,
+            "bluesky": self.bluesky,
+            "linkedin": self.linkedin,
+            "mastodon": self.fosstodon,
+            "pixelfed": self.pixelfed,
+        }
+
+        links = {
+            "twitter": ("https://x.com/{}", "twitter"),
+            "youtube": ("https://youtube.com/@{}", "youtube"),
+            "github": ("https://github.com/{}", "github"),
+            "bluesky": ("https://bsky.app/profile/{}.bsky.social", "bluesky"),
+            "linkedin": ("https://linkedin.com/in/{}", "linkedin"),
+            "mastodon": ("https://fosstodon.org/@{}", "mastodon"),
+            "pixelfed": ("https://pixelfed.social/{}", "pixelfed"),
+        }
+
+        return [
+            (platform, url_template.format(handle), icon)
+            for platform, handle in handles.items()
+            if handle
+            for url_template, icon in [links[platform]]
+        ]
 
     edit_handler = TabbedInterface(
         [
@@ -82,6 +117,7 @@ class SiteSettings(BaseSiteSetting):
                     FieldPanel("youtube"),
                     FieldPanel("reddit"),
                     FieldPanel("github"),
+                    FieldPanel("linkedin"),
                 ],
                 heading="Social Media",
             ),
