@@ -4,9 +4,7 @@
 {% load i18n %}
 
 {% block content %}
-
   <div class="zigzag justify-around px-2 py-8 bg-dark flex">
-
     <div class="gap-6 flex flex-col justify-between flex-1 max-w-[65ch]">
       <div class="flex flex-col gap-3">
         <p class="font-bold text-5xl leading-15">
@@ -27,31 +25,63 @@
         </a>
 
         {% with site_settings=settings.base.SiteSettings %}
-          <div class="flex gap-4">
-            <a href="https://youtube.com/@{{ site_settings.youtube }}">
-              {% include "icons/youtube.svg" with class="fill-primary" %}
-            </a>
+          <nav aria-label="Social media links">
+            <ul class="flex gap-4 items-center">
+              <li>
+                <a href="https://youtube.com/@{{ site_settings.youtube }}"
+                   class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+                   aria-label="YouTube"
+                   title="YouTube">
+                  {% include "icons/youtube.svg" with class="fill-primary group-hover:fill-accent transition-colors" %}
+                </a>
+              </li>
 
-            <a href="https://github.com/{{ site_settings.github }}">
-              {% include "icons/github.svg" with class="fill-primary" %}
-            </a>
+              <li>
+                <a href="https://github.com/{{ site_settings.github }}"
+                   class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+                   aria-label="GitHub"
+                   title="GitHub">
+                  {% include "icons/github.svg" with class="fill-primary group-hover:fill-accent transition-colors" %}
+                </a>
+              </li>
 
-            <a href="https://bsky.app/profile/{{ site_settings.github }}.bsky.social">
-              {% include "icons/bluesky.svg" with class="fill-primary" %}
-            </a>
+              <li>
+                <a href="https://bsky.app/profile/{{ site_settings.github }}.bsky.social"
+                   class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+                   aria-label="Bluesky"
+                   title="Bluesky">
+                  {% include "icons/bluesky.svg" with class="fill-primary group-hover:fill-accent transition-colors" %}
+                </a>
+              </li>
 
-            <a href="https://linkedin.com/in/{{ site_settings.github }}">
-              {% include "icons/linkedin.svg" with class="fill-primary" %}
-            </a>
+              <li>
+                <a href="https://linkedin.com/in/{{ site_settings.github }}"
+                   class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+                   aria-label="LinkedIn"
+                   title="LinkedIn">
+                  {% include "icons/linkedin.svg" with class="fill-primary group-hover:fill-accent transition-colors" %}
+                </a>
+              </li>
 
-            <a href="https://fosstodon.org/@{{ site_settings.github }}">
-              {% include "icons/mastodon.svg" with class="fill-primary" %}
-            </a>
+              <li>
+                <a href="https://fosstodon.org/@{{ site_settings.github }}"
+                   class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+                   aria-label="Mastodon"
+                   title="Mastodon">
+                  {% include "icons/mastodon.svg" with class="fill-primary group-hover:fill-accent transition-colors" %}
+                </a>
+              </li>
 
-            <a href="#">
-              {% include "icons/rss.svg" with class="fill-primary" %}
-            </a>
-          </div>
+              <li>
+                <a href="#"
+                   class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+                   aria-label="RSS Feed"
+                   title="RSS Feed">
+                  {% include "icons/rss.svg" with class="fill-primary group-hover:fill-accent transition-colors" %}
+                </a>
+              </li>
+            </ul>
+          </nav>
         {% endwith %}
       </div>
     </div>
