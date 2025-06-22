@@ -18,6 +18,8 @@ WAGTAIL_INSTALLED_APPS = [
     "wagtail.search",
     "wagtail.admin",
     "wagtail",
+    # 3rd party apps
+    "wagtailmedia",
     "taggit",
     "modelcluster",
 ]
@@ -63,6 +65,33 @@ WAGTAILDOCS_EXTENSIONS = [
     "xlsx",
     "zip",
 ]
+
+WAGTAILMEDIA = {
+    "MEDIA_MODEL": "wagtailmedia.Media",
+    "MEDIA_FORM_BASE": "",
+    "AUDIO_EXTENSIONS": [
+        "aac",
+        "aiff",
+        "flac",
+        "m4a",
+        "m4b",
+        "mp3",
+        "ogg",
+        "wav",
+    ],
+    "VIDEO_EXTENSIONS": [
+        "avi",
+        "h264",
+        "m4v",
+        "mkv",
+        "mov",
+        "mp4",
+        "mpeg",
+        "mpg",
+        "ogv",
+        "webm",
+    ],
+}
 
 # Reverse the default case-sensitive handling of tags
 TAGGIT_CASE_INSENSITIVE = True

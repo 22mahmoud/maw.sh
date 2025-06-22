@@ -9,6 +9,7 @@ dependencies = [
   "django-vite>=3.1.0",
   "environs[django]>=14.2.0",
   "wagtail>=7.0.1",
+  "wagtailmedia>=0.16.0",
 ]
 
 [dependency-groups]

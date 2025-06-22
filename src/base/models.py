@@ -5,6 +5,7 @@ from wagtail.admin.panels import FieldPanel, TabbedInterface, ObjectList
 from wagtail.fields import StreamField
 from wagtail.contrib.settings.models import register_setting, BaseSiteSetting
 from django.utils.translation import gettext_lazy as _
+from wagtailmedia.blocks import VideoChooserBlock
 
 from src.seo.models import SeoMetaFields
 from .blocks import ClientsMarqueeStaticBlock, HeroBlock, SocialLinkStreamBlock
@@ -18,6 +19,7 @@ class GenericPage(SeoMetaFields, Page):  # type: ignore
             ("hero", HeroBlock()),
             ("clients", ClientsMarqueeStaticBlock()),
             ("social_links", SocialLinkStreamBlock()),
+            ("Video", VideoChooserBlock()),
         ],
         use_json_field=True,
         blank=True,
