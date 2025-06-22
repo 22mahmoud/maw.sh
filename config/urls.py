@@ -1,4 +1,5 @@
 from django.urls import include, path
+from wagtail.contrib.sitemaps.views import sitemap
 from django.contrib import admin
 from django.conf import settings
 from django.views.generic import RedirectView, TemplateView
@@ -12,6 +13,7 @@ urlpatterns = [
     path("cms/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("home/", TemplateView.as_view(template_name="home.html")),
+    path("sitemap.xml", sitemap),
 ]
 
 if settings.DEBUG:
