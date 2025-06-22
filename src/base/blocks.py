@@ -1,24 +1,24 @@
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.models import Site
-from wagtail.models import Page
 
 
 class ClientsMarqueeStaticBlock(blocks.StaticBlock):
     class Meta:  # type: ignore
-        icon = "clipboard-list	"
+        icon = "clipboard-list"
         label = "Clients Marquee"
         template = "blocks/clients_marquee_block.html"
 
     def get_context(self, value, parent_context=None):
+        from src.clients.models import Client
+
         context = super().get_context(value, parent_context=parent_context)
         try:
-            clients_index = Page.objects.get(slug="clients").specific
-            context["clients"] = clients_index.get_children().live().public().specific()  # type: ignore
-        except Page.DoesNotExist:
+            context["clients"] = Client.objects.filter(featured=True)
+            return context
+        except Client.DoesNotExist:
             context["clients"] = []
-
-        return context
+            return context
 
 
 class HeadingBlock(blocks.StructBlock):

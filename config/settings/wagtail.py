@@ -1,5 +1,6 @@
 WAGTAIL_INSTALLED_APPS = [
     # my apps
+    "src.projects",
     "src.clients",
     "src.base",
     "src.seo",

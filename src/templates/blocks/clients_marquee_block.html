@@ -1,4 +1,4 @@
-{% load wagtailimages_tags wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 <div class="bg-darker py-3 px-2">
   <div class="group flex overflow-hidden [--gap:2rem]">
@@ -7,10 +7,9 @@
         {% for _ in range %}
           {% for client in clients %}
             <div class="flex shrink-0">
-              <a href="{% pageurl client %}"
-                 class="filter grayscale brightness-125 contrast-60 opacity-90 transition-all duration-300 hover:grayscale-0 hover:brightness-100 hover:contrast-100 hover:opacity-100">
-                {% picture client.icon format-{avif,webp,jpeg} width-128 class="w-full" %}
-              </a>
+              <div class="filter grayscale brightness-125 contrast-60 opacity-90 transition-all duration-300 hover:grayscale-0 hover:brightness-100 hover:contrast-100 hover:opacity-100">
+                {% picture client.logo format-{avif,webp,jpeg} width-128 class="w-full" %}
+              </div>
             </div>
           {% endfor %}
         {% endfor %}
