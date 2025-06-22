@@ -1,6 +1,45 @@
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.models import Site
+from wagtail.models import Page
+
+
+class ClientsMarqueeStaticBlock(blocks.StaticBlock):
+    class Meta:  # type: ignore
+        icon = "clipboard-list	"
+        label = "Clients Marquee"
+        template = "blocks/clients_marquee_block.html"
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        try:
+            clients_index = Page.objects.get(slug="clients").specific
+            context["clients"] = clients_index.get_children().live().public().specific()  # type: ignore
+        except Page.DoesNotExist:
+            context["clients"] = []
+
+        return context
+
+
+class HeadingBlock(blocks.StructBlock):
+    heading_text = blocks.CharBlock(classname="title", required=True)
+    size = blocks.ChoiceBlock(
+        choices=[
+            ("", "Select a heading size"),
+            ("h1", "H1"),
+            ("h2", "H2"),
+            ("h3", "H3"),
+            ("h4", "H4"),
+            ("h5", "H5"),
+            ("h6", "H6"),
+        ],
+        blank=True,
+        required=False,
+    )
+
+    class Meta:  # type: ignore
+        icon = "title"
+        template = "blocks/heading_block.html"
 
 
 def get_available_social_choices():

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
 @theme {
   --color-primary: #e0e0e0;
   --color-secondy: #9a9a9a;
@@ -8,6 +9,17 @@
   --color-darker: #1a1a1a;
   --color-gradient-1: #16a085;
   --color-gradient-2: #f4d03f;
+
+  --animate-marquee: marquee var(--duration, 80s) infinite linear;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
 }
 
 .zigzag {

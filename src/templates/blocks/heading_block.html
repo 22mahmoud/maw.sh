@@ -1,0 +1,25 @@
+{% if self.size == 'h1' %}
+  <h1 class="text-4xl font-bold text-darker">
+    {{ self.heading_text }}
+  </h1>
+{% elif self.size == 'h2' %}
+  <h2 class="text-3xl font-semibold text-darker">
+    {{ self.heading_text }}
+  </h2>
+{% elif self.size == 'h3' %}
+  <h3 class="text-2xl font-semibold text-dark">
+    {{ self.heading_text }}
+  </h3>
+{% elif self.size == 'h4' %}
+  <h4 class="text-xl font-medium text-dark">
+    {{ self.heading_text }}
+  </h4>
+{% elif self.size == 'h5' %}
+  <h5 class="text-lg font-medium text-gray-700">
+    {{ self.heading_text }}
+  </h5>
+{% elif self.size == 'h6' %}
+  <h6 class="text-base font-normal text-gray-700 uppercase tracking-wide">
+    {{ self.heading_text }}
+  </h6>
+{% endif %}
