@@ -1,24 +1,7 @@
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.models import Site
 
-
-class ClientsMarqueeStaticBlock(blocks.StaticBlock):
-    class Meta:  # type: ignore
-        icon = "clipboard-list"
-        label = "Clients Marquee"
-        template = "blocks/clients_marquee_block.html"
-
-    def get_context(self, value, parent_context=None):
-        from src.clients.models import Client
-
-        context = super().get_context(value, parent_context=parent_context)
-        try:
-            context["clients"] = Client.objects.filter(featured=True)
-            return context
-        except Client.DoesNotExist:
-            context["clients"] = []
-            return context
+from .constants import SOCIAL_PLATFORMS
 
 
 class HeadingBlock(blocks.StructBlock):
@@ -43,12 +26,7 @@ class HeadingBlock(blocks.StructBlock):
 
 
 def get_available_social_choices():
-    from src.base.models import SiteSettings
-
-    site = Site.objects.get(is_default_site=True)
-    settings = SiteSettings.for_site(site)
-
-    return [(item, item["platform"].capitalize()) for item in settings.social_links]
+    return [(value, value["label"]) for _, value in SOCIAL_PLATFORMS.items()]
 
 
 class SiteSocialLinkBlock(blocks.StructBlock):

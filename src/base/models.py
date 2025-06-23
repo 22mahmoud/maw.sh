@@ -8,7 +8,9 @@ from django.utils.translation import gettext_lazy as _
 from wagtailmedia.blocks import VideoChooserBlock
 
 from src.seo.models import SeoMetaFields
-from .blocks import ClientsMarqueeStaticBlock, HeroBlock, SocialLinkStreamBlock
+from src.clients.blocks import ClientsMarqueeStaticBlock
+from .blocks import HeroBlock, SocialLinkStreamBlock
+from .constants import SOCIAL_PLATFORMS
 
 
 class GenericPage(SeoMetaFields, Page):  # type: ignore
@@ -42,9 +44,9 @@ class SiteSettings(BaseSiteSetting):
         verbose_name=_("Twitter"),
     )
 
-    fosstodon = models.CharField(
+    mastodon = models.CharField(
         blank=True,
-        verbose_name=_("Fosstodon"),
+        verbose_name=_("Mastodon"),
     )
 
     youtube = models.CharField(
@@ -79,34 +81,14 @@ class SiteSettings(BaseSiteSetting):
 
     @cached_property
     def social_links(self):
-        handles = {
-            "twitter": self.twitter,
-            "youtube": self.youtube,
-            "github": self.github,
-            "bluesky": self.bluesky,
-            "linkedin": self.linkedin,
-            "mastodon": self.fosstodon,
-            "pixelfed": self.pixelfed,
-        }
-
-        links = {
-            "twitter": ("https://x.com/{}", "twitter"),
-            "youtube": ("https://youtube.com/@{}", "youtube"),
-            "github": ("https://github.com/{}", "github"),
-            "bluesky": ("https://bsky.app/profile/{}.bsky.social", "bluesky"),
-            "linkedin": ("https://linkedin.com/in/{}", "linkedin"),
-            "mastodon": ("https://fosstodon.org/@{}", "mastodon"),
-            "pixelfed": ("https://pixelfed.social/{}", "pixelfed"),
-        }
-
         return [
             {
-                "url": links[platform][0].format(handle),
-                "icon": links[platform][1],
-                "platform": platform,
+                "url": SOCIAL_PLATFORMS[key]["url_pattern"].format(getattr(self, key)),
+                "icon": SOCIAL_PLATFORMS[key]["icon"],
+                "platform": key,
             }
-            for platform, handle in handles.items()
-            if handle
+            for key in SOCIAL_PLATFORMS
+            if getattr(self, key)
         ]
 
     edit_handler = TabbedInterface(
@@ -120,7 +102,7 @@ class SiteSettings(BaseSiteSetting):
             ObjectList(
                 [
                     FieldPanel("twitter"),
-                    FieldPanel("fosstodon"),
+                    FieldPanel("mastodon"),
                     FieldPanel("bluesky"),
                     FieldPanel("pixelfed"),
                     FieldPanel("youtube"),
