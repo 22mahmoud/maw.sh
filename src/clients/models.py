@@ -1,10 +1,11 @@
 from django.db import models
-from wagtail.snippets.models import register_snippet
-from wagtail.admin.panels import FieldPanel
+from django.contrib.contenttypes.fields import GenericRelation
+from wagtail.models import DraftStateMixin, LockableMixin, RevisionMixin, WorkflowMixin
 
 
-@register_snippet
-class Client(models.Model):
+class Client(  # type: ignore
+    WorkflowMixin, DraftStateMixin, LockableMixin, RevisionMixin, models.Model
+):
     name = models.CharField(max_length=255)
     website = models.URLField(blank=True)
     logo = models.ForeignKey(
@@ -15,13 +16,18 @@ class Client(models.Model):
         related_name="+",
     )
     featured = models.BooleanField(default=False, help_text="Show in homepage marquee")
+    _revisions = GenericRelation("wagtailcore.Revision", related_query_name="client")
+    workflow_states = GenericRelation(  # type: ignore
+        "wagtailcore.WorkflowState",
+        content_type_field="base_content_type",
+        object_id_field="object_id",
+        related_query_name="advert",
+        for_concrete_model=False,
+    )
 
-    panels = [
-        FieldPanel("name"),
-        FieldPanel("website"),
-        FieldPanel("featured"),
-        FieldPanel("logo"),
-    ]
+    @property
+    def revisions(self):
+        return self._revisions
 
     def __str__(self):
         return self.name
