@@ -1,9 +1,10 @@
 @import "tailwindcss";
+
 @plugin "@tailwindcss/typography";
 
 @theme {
   --color-primary: #e0e0e0;
-  --color-secondy: #9a9a9a;
+  --color-secondary: #9a9a9a;
   --color-accent: #c7f800;
   --color-dark: #2d2d2d;
   --color-darker: #1a1a1a;

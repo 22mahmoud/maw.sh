@@ -3,7 +3,7 @@
 {% load seo_tags %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full scroll-smooth">
   <head>
     <meta charset="utf-8">
 
@@ -24,16 +24,17 @@
     {% vite_asset 'src/resources/js/app.ts' %}
   </head>
 
-  <body class="bg-darker text-primary max-w-6xl mx-auto">
+  <body class="flex flex-col h-full bg-darker text-primary max-w-6xl mx-auto">
+    <a id="top"></a>
     {% wagtailuserbar %}
+
     {% include "includes/header.html" %}
 
-    <main>
+    <main class="grow">
       {% block content %}
-
       {% endblock content %}
     </main>
 
-    {# <footer></footer> #}
+    {% include "includes/footer.html" %}
   </body>
 </html>
