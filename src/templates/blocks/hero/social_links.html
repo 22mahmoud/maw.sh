@@ -19,9 +19,9 @@
         <li>
           <a href="{{ link.value.url }}"
              class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
-             aria-label="{{ link.value.platform|capfirst }}"
-             title="{{ link.value.platform|capfirst }}">
-            {% get_icon link.value.platform as icon %}
+             aria-label="{{ link.value.icon|capfirst }}"
+             title="{{ link.value.icon|capfirst }}">
+            {% get_icon link.value.icon as icon %}
             {% include icon with class="w-8 h-8 fill-primary group-hover:fill-accent transition-colors" %}
           </a>
         </li>

@@ -1,5 +1,8 @@
+from django.forms import ValidationError
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.documents.blocks import DocumentChooserBlock
+from django.utils.translation import gettext_lazy as _
 
 from .constants import SOCIAL_PLATFORMS
 
@@ -37,22 +40,75 @@ class SiteSocialLinkBlock(blocks.StructBlock):
         label = "Site Social Link"
 
 
-class CustomSocialLinkBlock(blocks.StructBlock):
-    platform = blocks.CharBlock(
-        required=True,
-        help_text="Name of the platform or icon (e.g. 'reddit', 'discord')",
+class LinkStructValue(blocks.StructValue):
+    def url(self):
+        if self.get("internal_link"):
+            return self["internal_link"].url
+
+        if self.get("download_link"):
+            return self["download_link"].url
+
+        return self.get("external_link")
+
+
+class LinkBlock(blocks.StructBlock):
+    text = blocks.CharBlock(
+        label="Link Title Text",
+        required=False,
+        help_text=_(
+            "Specify title for external link or provide override title for"
+            " internal/download/pages links."
+        ),
     )
 
-    url = blocks.URLBlock(required=True)
+    icon = blocks.CharBlock(required=False, help_text="Optional icon name")
+    internal_link = blocks.PageChooserBlock(
+        label="Link (Internal Page)",
+        required=False,
+        help_text=_("Use to link to selected internal page OR..."),
+    )
+
+    download_link = DocumentChooserBlock(
+        label="Download (Document)",
+        required=False,
+        help_text=_("Use to link to selected document for download OR"),
+    )
+
+    external_link = blocks.URLBlock(
+        label="Link (External URL)",
+        required=False,
+        help_text=_("Use to link to an external site."),
+    )
+
+    def clean(self, value):
+        result = super().clean(value)
+
+        link_count = sum(
+            bool(f)
+            for f in [
+                result.get("internal_link"),
+                result.get("download_link"),
+                result.get("external_link"),
+            ]
+        )
+
+        if link_count == 0:
+            raise ValidationError("You must provide one link: page, URL, or document.")
+
+        if link_count > 1:
+            raise ValidationError("Only one type of link can be selected.")
+
+        return result
 
     class Meta:  # type: ignore
         icon = "link"
-        label = "Custom Social Link"
+        label = "Link"
+        value_class = LinkStructValue
 
 
 class SocialLinkStreamBlock(blocks.StreamBlock):
     site = SiteSocialLinkBlock()
-    custom = CustomSocialLinkBlock()
+    custom = LinkBlock()
 
     class Meta:  # type: ignore
         label = "Social Links"
