@@ -29,7 +29,7 @@ class HeadingBlock(blocks.StructBlock):
 
 
 def get_available_social_choices():
-    return [(value, value["label"]) for _, value in SOCIAL_PLATFORMS.items()]
+    return [(key, value["label"]) for key, value in SOCIAL_PLATFORMS.items()]
 
 
 class SiteSocialLinkBlock(blocks.StructBlock):
@@ -60,7 +60,11 @@ class LinkBlock(blocks.StructBlock):
             " internal/download/pages links."
         ),
     )
-
+    sr_text = blocks.CharBlock(
+        label="Screen Reader Link Text",
+        required=False,
+        help_text=_("Specify title for screen Reader in case you use only icons"),
+    )
     icon = blocks.CharBlock(required=False, help_text="Optional icon name")
     internal_link = blocks.PageChooserBlock(
         label="Link (Internal Page)",

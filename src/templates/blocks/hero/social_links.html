@@ -4,28 +4,14 @@
 <nav aria-label="Social media links">
   <ul class="flex flex-wrap gap-3 sm:gap-4 items-center justify-start sm:justify-end">
     {% for link in value %}
-      {% if link.block_type == "site" %}
-        {% get_social_data link.value.platform|smart_deserialize as social %}
-        <li>
-          <a href="{{ social.url }}"
-             class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
-             aria-label="{{ social.platform|capfirst }}"
-             title="{{ social.platform|capfirst }}">
-            {% get_icon social.icon as icon %}
-            {% include icon with class="w-8 h-8 fill-primary group-hover:fill-accent transition-colors" %}
-          </a>
-        </li>
-      {% elif link.block_type == "custom" %}
-        <li>
-          <a href="{{ link.value.url }}"
-             class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
-             aria-label="{{ link.value.icon|capfirst }}"
-             title="{{ link.value.icon|capfirst }}">
-            {% get_icon link.value.icon as icon %}
-            {% include icon with class="w-8 h-8 fill-primary group-hover:fill-accent transition-colors" %}
-          </a>
-        </li>
-      {% endif %}
+      <li>
+        {% if link.block_type == "site" %}
+          {% get_social_data link.value.platform as social %}
+          {% include "includes/link.html" with link=social %}
+        {% else %}
+          {% include "includes/link.html" with link=link.value %}
+        {% endif %}
+      </li>
     {% endfor %}
   </ul>
 </nav>

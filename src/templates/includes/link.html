@@ -1,0 +1,16 @@
+{% load base_tags %}
+
+<a href="{{ link.url }}"
+   class="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded p-2 underline-offset-4 hover:underline">
+
+  {% if link.sr_text %}
+    <span class="sr-only">{{ link.sr_text }}</span>
+  {% endif %}
+
+  {{ link.text }}
+
+  {% if link.icon %}
+    {% get_icon link.icon as icon %}
+    {% include icon with class="w-8 h-8 fill-primary group-hover:fill-accent transition-colors" %}
+  {% endif %}
+</a>

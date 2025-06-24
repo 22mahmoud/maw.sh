@@ -83,6 +83,7 @@ class SiteSettings(BaseSiteSetting):
     def social_links(self):
         return [
             {
+                "text": SOCIAL_PLATFORMS[key]["label"],
                 "url": SOCIAL_PLATFORMS[key]["url_pattern"].format(getattr(self, key)),
                 "icon": SOCIAL_PLATFORMS[key]["icon"],
                 "platform": key,
