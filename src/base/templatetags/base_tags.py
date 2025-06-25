@@ -2,6 +2,7 @@ import ast
 import json
 from django import template
 from django.template.loader import get_template, TemplateDoesNotExist
+from importlib import import_module
 
 register = template.Library()
 
@@ -35,3 +36,25 @@ def get_icon(name, fallback="icons/default.svg"):
         return icon_path
     except TemplateDoesNotExist:
         return fallback
+
+
+@register.simple_tag
+def make_dict(**kwargs):
+    return kwargs
+
+
+@register.simple_tag
+def resolve_classes(block, cva_key, props=None, **kwargs):
+    module = import_module(block)
+
+    get_cva = getattr(module, "get_cva", None)
+    if not callable(get_cva):
+        return ""
+
+    cva_fn = get_cva(cva_key)
+    if not callable(cva_fn):
+        return ""
+
+    props = props or {}
+    props.update(kwargs)
+    return cva_fn(props)

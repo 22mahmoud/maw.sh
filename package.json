@@ -7,7 +7,7 @@
   "scripts": {
     "dev:frontend": "vite",
     "dev:server": "python manage.py runserver",
-    "build": "vite build",
+    "build": "vite build && touch static/.gitkeep",
     "format": "biome format --write",
     "lint": "biome lint --write"
   },

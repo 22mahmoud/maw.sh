@@ -1,13 +1,7 @@
 {% load wagtailcore_tags %}
 
 {% for menuitem in menuitems %}
-  <li class="text-lg font-bold underline">
-    <a class="{% if menuitem.active %}
-                text-[#C7F800]
-              {% endif %}"
-       {% if menuitem.active %}
-         aria-current="page"
-       {% endif %}
-       href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+  <li>
+    {% include "blocks/link_block.html" with value=menuitem %}
   </li>
 {% endfor %}

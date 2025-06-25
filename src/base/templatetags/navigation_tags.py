@@ -17,9 +17,13 @@ def top_menu(context, parent=None, source=None):
     menuitems = (parent or get_site_root(context)).get_children().live().in_menu()
 
     for menuitem in menuitems:
+        menuitem.text = menuitem.title
         menuitem.active = (
             source.url_path.startswith(menuitem.url_path) if source else False
         )
+        menuitem.props = {
+            "variant": "nav_active" if menuitem.active else "nav_inactive"
+        }
 
     return {
         "source": source,

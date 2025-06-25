@@ -10,6 +10,12 @@
   --color-darker: #1a1a1a;
   --color-gradient-1: #16a085;
   --color-gradient-2: #f4d03f;
+  --color-accent-bright: #e5ff53;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-transparent: transparent;
 
   --animate-marquee: marquee var(--duration, 80s) infinite linear;
 

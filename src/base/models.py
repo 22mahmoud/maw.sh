@@ -9,7 +9,7 @@ from wagtailmedia.blocks import VideoChooserBlock
 
 from src.seo.models import SeoMetaFields
 from src.clients.blocks import ClientsMarqueeStaticBlock
-from .blocks import HeroBlock, SocialLinkStreamBlock
+from .blocks import ButtonBlock, HeroBlock, SocialLinkStreamBlock
 from .constants import SOCIAL_PLATFORMS
 
 
@@ -22,6 +22,7 @@ class GenericPage(SeoMetaFields, Page):  # type: ignore
             ("clients", ClientsMarqueeStaticBlock()),
             ("social_links", SocialLinkStreamBlock()),
             ("Video", VideoChooserBlock()),
+            ("button", ButtonBlock()),
         ],
         use_json_field=True,
         blank=True,

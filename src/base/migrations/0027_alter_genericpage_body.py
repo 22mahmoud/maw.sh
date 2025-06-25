@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                     5: (
                         "wagtail.blocks.ChoiceBlock",
                         [],
-                        {"choices": src.base.blocks.get_available_social_choices},
+                        {"choices": src.base.blocks.link.get_available_social_choices},
                     ),
                     6: ("wagtail.blocks.StreamBlock", [[("platform", 5)]], {}),
                     7: (

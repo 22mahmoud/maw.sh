@@ -6,7 +6,7 @@ from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
-from src.base.blocks import HeadingBlock
+from src.base.blocks.text import HeadingBlock
 
 
 class ProjectsIndexPage(Page):

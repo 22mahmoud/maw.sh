@@ -6,10 +6,10 @@
     {% for link in value %}
       <li>
         {% if link.block_type == "site" %}
-          {% get_social_data link.value.platform as social %}
-          {% include "includes/link.html" with link=social %}
+          {% get_social_data link.value as social %}
+          {% include "blocks/link_block.html" with value=social %}
         {% else %}
-          {% include "includes/link.html" with link=link.value %}
+          {% include "blocks/link_block.html" with value=link.value %}
         {% endif %}
       </li>
     {% endfor %}

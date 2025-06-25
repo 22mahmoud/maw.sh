@@ -1,0 +1,24 @@
+{% load base_tags %}
+
+{% resolve_classes "src.base.blocks.button" "button" value.props as wrapper_class %}
+{% resolve_classes "src.base.blocks.button" "button_icon" value.props as icon_class %}
+{% resolve_classes "src.base.blocks.button" "button_text" value.props as text_class %}
+
+<{{ value.wrapper_tag|default:"button" }} {{ value.wrapper_attrs|default:"type='button'" }}
+class="{{ wrapper_class }}"
+aria-label="{{ value.button_text }}"
+>
+
+{% if value.props.variant|default:'primary' == 'primary' %}
+  <span class="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 bg-gradient-1 transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0 z-10"></span>
+  <span class="pointer-events-none absolute inset-0 bg-accent transition-colors duration-300 group-hover:bg-[#e5ff53] z-20"></span>
+{% endif %}
+
+<span class="relative z-30 flex items-center gap-2 {{ text_class }}">
+  {% if value.button_icon %}
+    {% get_icon value.button_icon as icon %}
+    {% include icon with class=icon_class %}
+  {% endif %}
+  {{ value.button_text }}
+</span>
+</{{ value.wrapper_tag|default:"button" }}>
