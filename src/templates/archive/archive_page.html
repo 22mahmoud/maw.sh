@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailroutablepage_tags %}
+
+{% block content %}
+  {% for post in posts %}
+    <div>
+      <a href="{% pageurl post %}">
+        {{ post.first_published_at }}
+      </a>
+      {% for block in post.body %}
+        {% include_block block with is_preview=True %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+
+  <div class="pagination">
+    {% if posts.has_previous %}
+      <a href="{% pageurl page %}page/{{ posts.previous_page_number }}/">Previous</a>
+    {% endif %}
+
+    <span>Page {{ posts.number }} of {{ posts.paginator.num_pages }}</span>
+
+    {% if posts.has_next %}
+      <a href="{% pageurl page %}page/{{ posts.next_page_number }}/">Next</a>
+    {% endif %}
+  </div>
+{% endblock content %}
