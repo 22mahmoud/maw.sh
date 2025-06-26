@@ -17,6 +17,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         app: 'src/resources/js/app.ts',
+        admin: 'src/resources/js/admin.ts',
       },
     },
   },
