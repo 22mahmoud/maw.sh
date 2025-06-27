@@ -1,10 +1,10 @@
 from django.db import models
-from wagtail.models import Page
-from wagtail.fields import StreamField
-from wagtail.embeds.blocks import EmbedBlock
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail import blocks
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.fields import StreamField
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.models import Page
 
 from src.base.blocks.text import HeadingBlock
 

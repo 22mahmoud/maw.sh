@@ -1,7 +1,7 @@
-from django.utils.translation import gettext_lazy as _
 from django.forms import ValidationError
-from wagtail.documents.blocks import DocumentChooserBlock
+from django.utils.translation import gettext_lazy as _
 from wagtail import blocks
+from wagtail.documents.blocks import DocumentChooserBlock
 
 from src.base.constants import SOCIAL_PLATFORMS
 from src.utils.cva import cva

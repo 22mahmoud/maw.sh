@@ -1,7 +1,7 @@
 from .button import ButtonBlock
+from .hero import HeroBlock
 from .link import LinkBlock, SocialLinkStreamBlock
 from .text import HeadingBlock
-from .hero import HeroBlock
 
 __all__ = [
     "ButtonBlock",

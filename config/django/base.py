@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 
-from config.env import env, BASE_DIR
+from config.env import BASE_DIR, env
 from config.settings.wagtail import (
     WAGTAIL_INSTALLED_APPS,
     WAGTAIL_MIDDLEWARE,
@@ -136,5 +136,5 @@ MEDIA_URL = "/media/"
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 
 # lib settings
-from config.settings.wagtail import *  # noqa: E402, F403
 from config.settings.vite import *  # noqa: E402, F403
+from config.settings.wagtail import *  # noqa: E402, F403

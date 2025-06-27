@@ -1,4 +1,5 @@
 from typing import Optional
+
 from django import template
 from django.http import HttpRequest
 from wagtail.models import Site

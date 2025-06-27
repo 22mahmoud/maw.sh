@@ -1,6 +1,7 @@
-from typing import Optional, Dict, Any
-from django.http import HttpRequest
+from typing import Any, Dict, Optional
+
 from django import template
+from django.http import HttpRequest
 from wagtail.models import Page
 
 from src.seo.models import SeoSettings

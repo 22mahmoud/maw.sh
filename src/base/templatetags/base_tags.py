@@ -1,8 +1,9 @@
 import ast
 import json
-from django import template
-from django.template.loader import get_template, TemplateDoesNotExist
 from importlib import import_module
+
+from django import template
+from django.template.loader import TemplateDoesNotExist, get_template
 
 register = template.Library()
 

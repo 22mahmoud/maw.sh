@@ -1,8 +1,12 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from wagtail.contrib.settings.models import register_setting, BaseSiteSetting
-from wagtail.admin.panels import FieldPanel, TabbedInterface, ObjectList
-from wagtail.admin.panels import MultiFieldPanel
+from wagtail.admin.panels import (
+    FieldPanel,
+    MultiFieldPanel,
+    ObjectList,
+    TabbedInterface,
+)
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.models import Page
 
 

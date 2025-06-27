@@ -1,5 +1,6 @@
-from .base import *  # noqa: F403
 from config.env import env
+
+from .base import *  # noqa: F403
 
 DEBUG = env.bool("DEBUG", default=False)
 

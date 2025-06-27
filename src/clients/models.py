@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.contenttypes.fields import GenericRelation
+from django.db import models
 from wagtail.models import DraftStateMixin, LockableMixin, RevisionMixin, WorkflowMixin
 
 

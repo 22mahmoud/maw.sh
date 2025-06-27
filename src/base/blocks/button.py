@@ -1,8 +1,9 @@
 from wagtail import blocks
 from wagtail.documents.blocks import DocumentChooserBlock
 
-from .link import LinkStructValue
 from src.utils.cva import cva
+
+from .link import LinkStructValue
 
 BUTTON_TYPE_CHOICES = (
     ("primary", "Primary"),
