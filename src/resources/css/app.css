@@ -1,8 +1,16 @@
+@import "@/css/fonts.css";
 @import "tailwindcss";
 
 @plugin "@tailwindcss/typography";
+@config "../../../tailwind.config.ts";
 
 @theme {
+  --font-heading: "source-sans-pro", sans-serif;
+  --font-sans: "Figtree", sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+
   --color-primary: #e0e0e0;
   --color-secondary: #9a9a9a;
   --color-accent: #c7f800;
@@ -30,7 +38,8 @@
 }
 
 .zigzag {
-  background-image: linear-gradient(135deg, rgba(30, 30, 30, 0.4) 25%, transparent 25%),
+  background-image:
+    linear-gradient(135deg, rgba(30, 30, 30, 0.4) 25%, transparent 25%),
     linear-gradient(225deg, rgba(30, 30, 30, 0.4) 25%, transparent 25%),
     linear-gradient(45deg, rgba(30, 30, 30, 0.4) 25%, transparent 25%),
     linear-gradient(315deg, rgba(30, 30, 30, 0.4) 25%, transparent 25%);
