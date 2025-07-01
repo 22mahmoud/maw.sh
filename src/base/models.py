@@ -1,16 +1,106 @@
+from django.contrib.contenttypes.fields import GenericRelation
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.functional import cached_property
-from wagtail.models import Page
-from wagtail.admin.panels import FieldPanel, TabbedInterface, ObjectList
-from wagtail.fields import StreamField
-from wagtail.contrib.settings.models import register_setting, BaseSiteSetting
 from django.utils.translation import gettext_lazy as _
+from modelcluster.models import ClusterableModel
+from wagtail.admin.panels import FieldPanel, ObjectList, TabbedInterface
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
+from wagtail.fields import StreamField
+from wagtail.models import (
+    DraftStateMixin,
+    LockableMixin,
+    Page,
+    RevisionMixin,
+    WorkflowMixin,
+)
+from wagtail.models.pages import slugify
 from wagtailmedia.blocks import VideoChooserBlock
 
-from src.seo.models import SeoMetaFields
 from src.clients.blocks import ClientsMarqueeStaticBlock
+from src.seo.models import SeoMetaFields
+
 from .blocks import ButtonBlock, HeroBlock, SocialLinkStreamBlock
 from .constants import SOCIAL_PLATFORMS
+
+
+class Person(  # type: ignore
+    WorkflowMixin,
+    DraftStateMixin,
+    LockableMixin,
+    RevisionMixin,
+    ClusterableModel,
+):
+    class Meta:  # type: ignore
+        verbose_name = "person"
+        verbose_name_plural = "people"
+
+    first_name = models.CharField("First name", max_length=254)
+    last_name = models.CharField("Last name", max_length=254)
+    title = models.CharField("Title", blank=True, max_length=254)
+    bio = models.TextField("Bio", blank=True, max_length=254)
+
+    slug = models.SlugField(
+        null=True,
+        max_length=255,
+        unique=True,
+        blank=True,
+        editable=True,
+    )
+
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    workflow_states = GenericRelation(  # type: ignore
+        "wagtailcore.WorkflowState",
+        content_type_field="base_content_type",
+        object_id_field="object_id",
+        related_query_name="person",
+        for_concrete_model=False,
+    )
+
+    _revisions = GenericRelation(
+        "wagtailcore.Revision",
+        content_type_field="base_content_type",
+        object_id_field="object_id",
+        related_query_name="person",
+        for_concrete_model=False,
+    )
+
+    @property
+    def revisions(self):
+        return self._revisions
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+    @property
+    def thumb_image(self):
+        try:
+            return self.image.get_rendition("fill-50x50").img_tag()  # type: ignore
+        except:  # noqa: E722
+            return ""
+
+    def clean(self):
+        super().clean()
+
+        if not self.slug:
+            self.slug = slugify(f"{self.first_name} {self.last_name}")
+
+        qs = Person.objects.filter(slug=self.slug)
+        if self.pk:
+            qs = qs.exclude(pk=self.pk)
+        if qs.exists():
+            raise ValidationError({"slug": "A person with this slug already exists."})
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
 
 
 class GenericPage(SeoMetaFields, Page):  # type: ignore

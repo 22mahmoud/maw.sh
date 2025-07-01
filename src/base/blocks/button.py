@@ -9,6 +9,8 @@ BUTTON_TYPE_CHOICES = (
     ("primary", "Primary"),
     ("secondary", "Secondary"),
     ("outline", "Outline"),
+    ("muted", "Muted"),
+    ("disabled", "Disabled"),
 )
 
 DEFAULT_BUTTON_TYPE = "primary"
@@ -34,6 +36,15 @@ BUTTON_CVA = cva(
                 "border-2 border-accent-bright text-white bg-transparent "
                 "transition-colors duration-200 hover:bg-accent-bright hover:text-black"
             ),
+            "muted": (
+                "text-neutral-300 hover:text-white hover:bg-neutral-800 "
+                "border border-neutral-700 hover:border-neutral-500 font-medium "
+                "transition-colors duration-200"
+            ),
+            "disabled": (
+                "bg-neutral-800 text-secondary border border-neutral-700 "
+                "opacity-50 cursor-not-allowed pointer-events-none"
+            ),
         },
         "size": {
             "sm": "text-sm px-2 py-1 sm:px-3 sm:py-1.5",
@@ -54,6 +65,8 @@ BUTTON_ICON_CVA = cva(
             "primary": "fill-darker",
             "secondary": "fill-white",
             "outline": "fill-white group-hover:fill-black",
+            "muted": "fill-neutral-300 group-hover:fill-white",
+            "disabled": "fill-secondary",
         },
         "size": {
             "sm": "w-6 h-6",
@@ -74,6 +87,8 @@ BUTTON_TEXT_CVA = cva(
             "primary": "",
             "secondary": "font-medium",
             "outline": "font-normal sm:font-semibold",
+            "muted": "font-medium",
+            "disabled": "text-secondary",
         },
         "size": {
             "sm": "text-sm",
@@ -90,7 +105,7 @@ BUTTON_TEXT_CVA = cva(
 
 class ButtonStructValue(LinkStructValue):
     def is_link(self):
-        return bool(self.url())
+        return bool(self.url()) and self.get("button_type") != "disabled"
 
     def wrapper_tag(self):
         return "a" if self.is_link() else "button"
@@ -98,13 +113,13 @@ class ButtonStructValue(LinkStructValue):
     def wrapper_attrs(self):
         if self.is_link():
             return f"href={self.url()} role='link'"
-
+        elif self.get("button_type") == "disabled":
+            return 'type="button" role="button" disabled'
         return 'type="button" role="button"'
 
     def props(self):
         type_ = self.get("button_type", "primary")
         size = self.get("size", "lg")
-
         return {
             "variant": type_,
             "size": size,

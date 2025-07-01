@@ -19,7 +19,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="this,is,a,keywords">
+
     <link rel="canonical" href="{{ page.seo_canonical_url }}" />
+    {% if next_url %}
+      <link rel="next" href="{{ next_url }}" />
+    {% endif %}
+    {% if prev_url %}
+      <link rel="prev" href="{{ prev_url }}" />
+    {% endif %}
 
     {% vite_hmr_client %}
     {% vite_asset 'src/resources/js/app.ts' %}
@@ -31,7 +38,7 @@
 
     {% include "includes/header.html" %}
 
-    <main class="grow">
+    <main class="relative z-1 bg-darker grow">
       {% block content %}
       {% endblock content %}
     </main>

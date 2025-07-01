@@ -3,6 +3,7 @@ WAGTAIL_INSTALLED_APPS = [
     "src.archive",
     "src.projects",
     "src.clients",
+    "src.home",
     "src.base",
     "src.seo",
     # wagtail core apps

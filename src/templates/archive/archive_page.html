@@ -1,28 +1,56 @@
 {% extends "base.html" %}
+{% load base_tags %}
 {% load wagtailcore_tags %}
 {% load wagtailroutablepage_tags %}
 
 {% block content %}
-  {% for post in posts %}
-    <div>
-      <a href="{% pageurl post %}">
-        {{ post.first_published_at }}
-      </a>
-      {% for block in post.body %}
-        {% include_block block with is_preview=True %}
+  <div class="w-full h-full bg-dark p-4 zigzag">
+    <ul class="h-feed flex flex-col gap-2">
+      {% for post in posts %}
+        <li>
+          {% for block in post.body %}
+            {% include_block block with is_preview=True %}
+          {% endfor %}
+        </li>
       {% endfor %}
+    </ul>
+
+    <div class="w-full mx-auto max-w-2xl mt-8 mb-6">
+      <div class="flex items-center justify-between text-white py-4 px-2">
+        <div class="flex-shrink-0">
+          {% if prev_url %}
+            {% with "href="|add:posts.prev as wrapper_attrs %}
+              {% make_dict size="md" variant="outline" as props %}
+              {% make_dict button_icon="caret-left" props=props wrapper_attrs=wrapper_attrs wrapper_tag="a" button_text="Previous" as prev_button %}
+              {% include "blocks/button_block.html" with value=prev_button %}
+            {% endwith %}
+          {% else %}
+            {% make_dict size="md" variant="disabled" as props %}
+            {% make_dict button_icon="caret-left" props=props button_text="Previous" as prev_button_disabled %}
+            {% include "blocks/button_block.html" with value=prev_button_disabled %}
+          {% endif %}
+        </div>
+
+        <div class="flex-grow flex justify-center px-6">
+          <span class="text-sm text-secondary font-medium">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+          </span>
+        </div>
+
+        <div class="flex-shrink-0 [&>a>span]:flex-row-reverse">
+          {% if next_url %}
+            {% with "href="|add:posts.next as wrapper_attrs %}
+              {% make_dict size="md" variant="outline" as props %}
+              {% make_dict props=props button_icon="caret-right" wrapper_attrs=wrapper_attrs wrapper_tag="a" button_text="Next" as next_button %}
+              {% include "blocks/button_block.html" with value=next_button %}
+            {% endwith %}
+          {% else %}
+            {% make_dict size="md" variant="disabled" disabled=True as props %}
+            {% make_dict props=props button_icon="caret-right" button_text="Next" as next_button_disabled %}
+            {% include "blocks/button_block.html" with value=next_button_disabled %}
+          {% endif %}
+        </div>
+      </div>
     </div>
-  {% endfor %}
-
-  <div class="pagination">
-    {% if posts.has_previous %}
-      <a href="{% pageurl page %}page/{{ posts.previous_page_number }}/">Previous</a>
-    {% endif %}
-
-    <span>Page {{ posts.number }} of {{ posts.paginator.num_pages }}</span>
-
-    {% if posts.has_next %}
-      <a href="{% pageurl page %}page/{{ posts.next_page_number }}/">Next</a>
-    {% endif %}
   </div>
 {% endblock content %}

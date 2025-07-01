@@ -1,0 +1,24 @@
+{% load wagtailcore_tags %}
+
+{# <article class="h-entry"> #}
+{#   <h1 class="p-name"> #}
+{#     {{ self.title }} #}
+{#   </h1> #}
+{##}
+{#   {% if page.owner %} #}
+{#     <a class="u-author h-card" href="https://maw.sh"> #}
+{#       {{ page.owner.get_full_name|default:page.owner.username }} #}
+{#     </a> #}
+{#   {% endif %} #}
+{##}
+{#   {% if page.first_published_at %} #}
+{#     <time class="dt-published" #}
+{#           datetime="{{ page.first_published_at|date:'c' }}"> #}
+{#       {{ page.first_published_at|date:"F j, Y" }} #}
+{#     </time> #}
+{#   {% endif %} #}
+{##}
+{#   <div class="e-content"> #}
+{#     {{ self.body|richtext }} #}
+{#   </div> #}
+{# </article> #}

@@ -1,3 +1,58 @@
-{% load wagtailcore_tags %}
+{% load wagtailimages_tags wagtailroutablepage_tags wagtailcore_tags %}
 
-{{ value.content|richtext }}
+<article class="h-entry mx-auto max-w-2xl shadow bg-gradient-to-b from-gradient-1 to-gradient-2 ps-[2px]">
+  <div class="flex flex-col py-2 px-4 bg-darker gap-2">
+    <header class="flex items-center gap-1">
+      <div class="flex">
+        {% for author in post.authors %}
+          <a class="h-card w-8 h-8 rounded-full first:ml-0 border-2 border-solid border-darker -ml-4
+                    {% if post.authors|length > 1 %}
+                      transform transition-transform duration-200 hover:scale-110 hover:z-10
+                    {% endif %}"
+             href="{% routablepageurl post.get_parent.specific 'posts_by_author' author.slug %}">
+            {% picture author.image format-{avif,webp,jpeg} width-200 alt=author.full_name class="u-photo w-full h-full object-cover rounded-full" %}
+          </a>
+        {% endfor %}
+      </div>
+
+      <a class="u-url text-sm text-secondary" href="{% pageurl post %}">
+        <time class="dt-published"
+              datetime="{{ post.first_published_at|date:'c' }}">
+          {{ post.first_published_at|date:"F j, Y \\a\\t g:i A" }}
+        </time>
+      </a>
+    </header>
+
+    <div class="flex flex-col gap-2 text-sm">
+      <div class=" prose prose-main p-summary {% if value.content_data.is_truncated %} [&>p:last-of-type]:inline [&>p:last-of-type]:mr-1
+      {% endif %}
+      ">
+      {{ value.content_data.truncated|richtext }}
+      {% if value.content_data.is_truncated %}
+        <a class="inline text-accent hover:text-accent-bright underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 transition-colors duration-200"
+           href="{% pageurl post %}">See more</a>
+      {% endif %}
+    </div>
+
+    {% if value.media %}
+      <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 my-3">
+        {% for block in value.media %}
+          <div class="relative aspect-square overflow-hidden border border-primary/10 shadow-md hover:shadow-lg transition-shadow duration-200">
+            {% if block.block_type == 'image' %}
+              {% picture block.value format-{avif,webp,jpeg} width-400 class="u-photo w-full h-full object-cover hover:scale-105 transition-transform duration-300" %}
+            {% elif block.block_type == 'video' %}
+              <div class="u-video w-full h-full *:w-full *:h-full *:object-cover *:hover:scale-105 *:transition-transform *:duration-300">
+                {{ block }}
+              </div>
+            {% elif block.block_type == 'video_embed' %}
+              <div class="w-full h-full **:w-full **:h-full u-video  *:object-cover *:hover:scale-105 *:transition-transform *:duration-300">
+                {{ block }}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+</article>

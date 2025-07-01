@@ -1,10 +1,13 @@
+from django.utils.html import strip_tags
+from django.utils.text import Truncator
 from wagtail import blocks
+from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtailmedia.blocks import VideoChooserBlock
 
 
 class VideoStreamBlock(blocks.StreamBlock):
-    video_url = blocks.URLBlock(
+    video_embed = EmbedBlock(
         label="Video URL (YouTube, Vimeo, etc.)",
         help_text="Paste a direct link to your video from YouTube, Vimeo, or other platforms",
     )
@@ -26,8 +29,31 @@ class MediaStreamBlock(VideoStreamBlock):
         label = "Media"
 
 
+class NoteBlockValue(blocks.StructValue):
+    @property
+    def content_data(self):
+        content = self.get("content")
+        char_limit = 200
+
+        if not content:
+            return {}
+
+        plain_text = strip_tags(content)
+        is_truncated = len(plain_text) > char_limit
+
+        truncator = Truncator(content)
+        truncated_html = truncator.chars(char_limit, html=True)
+
+        return {
+            "truncated": truncated_html,
+            "full": content,
+            "is_truncated": is_truncated,
+        }
+
+
 class NoteBlock(blocks.StructBlock):
     content = blocks.RichTextBlock(
+        features=["bold", "italic", "link", "blockquote", "hr"],
         required=True,
         help_text="Write your note content. Supports rich text formatting like bold, italic, and links",
     )
@@ -46,6 +72,7 @@ class NoteBlock(blocks.StructBlock):
     class Meta:  # type: ignore
         icon = "doc-full"
         label = "Note"
+        value_class = NoteBlockValue
 
 
 class ArticleBlock(blocks.StructBlock):
@@ -54,7 +81,8 @@ class ArticleBlock(blocks.StructBlock):
     )
 
     body = blocks.RichTextBlock(
-        help_text="Write your article content. Use headings (H2, H3) to structure your text"
+        features=["bold", "italic", "link"],
+        help_text="Write your article content. Use headings (H2, H3) to structure your text",
     )
 
     class Meta:  # type: ignore
@@ -71,6 +99,7 @@ class PhotoBlock(blocks.StructBlock):
         help_text="Add one or more photos. Click '+ Add Photo' to include multiple images",
     )
     caption = blocks.RichTextBlock(
+        features=["bold", "italic", "link"],
         required=False,
         help_text="Optional: Add a caption or description for your photo(s)",
     )
@@ -88,6 +117,7 @@ class VideoBlock(blocks.StructBlock):
         help_text="Add videos either by URL (YouTube/Vimeo) or upload from your media library",
     )
     caption = blocks.RichTextBlock(
+        features=["bold", "italic", "link"],
         required=False,
         help_text="Optional: Add a caption or description for your video(s)",
     )
@@ -109,6 +139,7 @@ class ReplyBlock(blocks.StructBlock):
         required=False, help_text="Optional: Description of the target page content"
     )
     content = blocks.RichTextBlock(
+        features=["bold", "italic", "link"],
         required=True,
         help_text="Write your reply. This will be linked to the original post",
     )
@@ -149,6 +180,7 @@ class BookmarkBlock(blocks.StructBlock):
         required=False, help_text="Optional: Description of the target page content"
     )
     notes = blocks.RichTextBlock(
+        features=["bold", "italic", "link"],
         required=False,
         help_text="Optional: Your personal notes about why you're bookmarking this",
     )
