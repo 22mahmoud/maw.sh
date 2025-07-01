@@ -16,10 +16,10 @@
                 {{ author.full_name }}
               </span>
               {% if author.title %}
-                <span class="text-xs text-secondary/80 truncate">{{ author.title }}</span>
+                <span class="text-xs text-primary/80 truncate">{{ author.title }}</span>
               {% endif %}
               {% if author.bio %}
-                <span class="text-xs text-secondary/70 truncate hidden sm:block"
+                <span class="text-xs text-secondary truncate hidden sm:block"
                       title="{{ author.bio }}">
                   {{ author.bio|truncatewords:10 }}
                 </span>
@@ -35,11 +35,11 @@
           <span class="hidden sm:inline">{{ page.first_published_at|date:"F j, Y" }}</span>
           <span class="sm:hidden">{{ page.first_published_at|date:"M j, Y" }}</span>
         </time>
-        <span class="text-xs text-secondary/80">
+        <span class="text-xs text-primary/70">
           {{ page.first_published_at|date:"g:i A" }}
         </span>
         {% if page.last_published_at != page.first_published_at %}
-          <span class="text-xs text-secondary/60 mt-1">
+          <span class="text-xs text-primary/60 mt-1">
             <span class="hidden sm:inline">Updated</span>
             <span class="sm:hidden">Upd.</span>
             {{ page.last_published_at|date:"M j, Y" }}
@@ -50,7 +50,7 @@
 
     {% if page.body.0.block_type == 'article' %}
       <div class="text-center space-y-3 sm:space-y-4">
-        <h1 class="p-name text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight sm:leading-tight md:leading-tight tracking-tight">
+        <h1 class="p-name text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight sm:leading-tight md:leading-tight tracking-tight text-balance">
           {{ page.title }}
         </h1>
         {% if page.subtitle %}

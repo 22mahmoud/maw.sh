@@ -41,7 +41,7 @@ class PostPersonRelationship(Orderable, models.Model):
 
 class ArchivePage(RoutablePageMixin, Page):
     subpage_types = ["PostPage"]
-    POSTS_PER_PAGE = 1
+    POSTS_PER_PAGE = 10
 
     @re_path(r"^(\d{4})/(\d{2})/(\d{2})/(.+)/$", name="archive")
     def archive_by_date_slug(self, request, year, month, day, slug):

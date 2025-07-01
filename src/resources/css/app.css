@@ -37,6 +37,14 @@
   }
 }
 
+.highlighted-word {
+  background-color: #202127;
+  border: 1px solid #3c3f44;
+  padding: 1px 3px;
+  margin: -1px -3px;
+  border-radius: 4px;
+}
+
 .zigzag {
   background-image:
     linear-gradient(135deg, rgba(30, 30, 30, 0.4) 25%, transparent 25%),

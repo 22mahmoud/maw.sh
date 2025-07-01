@@ -1,3 +1,1 @@
-document.addEventListener('DOMContentLoaded', () => {
-  console.log(window);
-});
+import '@/css/admin.css';

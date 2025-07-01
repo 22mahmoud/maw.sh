@@ -5,6 +5,9 @@ from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtailmedia.blocks import VideoChooserBlock
 
+from src.base.blocks import CodeBlock
+from src.base.blocks.text import HeadingBlock
+
 
 class VideoStreamBlock(blocks.StreamBlock):
     video_embed = EmbedBlock(
@@ -76,19 +79,45 @@ class NoteBlock(blocks.StructBlock):
 
 
 class ArticleBlock(blocks.StructBlock):
-    title = blocks.CharBlock(
-        required=True, help_text="Enter the main title for your article"
+    summary = blocks.TextBlock()
+
+    featured_image = ImageChooserBlock(
+        help_text="Choose an image from your media library to display alongside content"
     )
 
-    body = blocks.RichTextBlock(
-        features=["bold", "italic", "link"],
-        help_text="Write your article content. Use headings (H2, H3) to structure your text",
+    body = blocks.StreamBlock(
+        [
+            (
+                "rich_text",
+                blocks.RichTextBlock(
+                    features=["bold", "italic", "link", "code"],
+                    help_text="Write your article content. Use headings (H2, H3) to structure your text",
+                ),
+            ),
+            (
+                "image",
+                ImageChooserBlock(
+                    help_text="Choose an image from your media library to display alongside content"
+                ),
+            ),
+            (
+                "codeblock",
+                CodeBlock(),
+            ),
+            ("heading", HeadingBlock()),
+        ]
     )
+
+    def get_template(self, _, context=None):  # type: ignore
+        is_preview = context.get("is_preview", False)  # type: ignore
+        if is_preview:
+            return "posts/blocks/article_preview.html"
+        else:
+            return "posts/blocks/article.html"
 
     class Meta:  # type: ignore
         icon = "doc-full"
         label = "Article"
-        template = "posts/blocks/article.html"
 
 
 class PhotoBlock(blocks.StructBlock):

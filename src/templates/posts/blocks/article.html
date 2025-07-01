@@ -1,24 +1,26 @@
-{% load wagtailcore_tags %}
+{% load wagtailimages_tags wagtailroutablepage_tags wagtailcore_tags %}
 
-{# <article class="h-entry"> #}
-{#   <h1 class="p-name"> #}
-{#     {{ self.title }} #}
-{#   </h1> #}
-{##}
-{#   {% if page.owner %} #}
-{#     <a class="u-author h-card" href="https://maw.sh"> #}
-{#       {{ page.owner.get_full_name|default:page.owner.username }} #}
-{#     </a> #}
-{#   {% endif %} #}
-{##}
-{#   {% if page.first_published_at %} #}
-{#     <time class="dt-published" #}
-{#           datetime="{{ page.first_published_at|date:'c' }}"> #}
-{#       {{ page.first_published_at|date:"F j, Y" }} #}
-{#     </time> #}
-{#   {% endif %} #}
-{##}
-{#   <div class="e-content"> #}
-{#     {{ self.body|richtext }} #}
-{#   </div> #}
-{# </article> #}
+{% block content %}
+
+  <div class="flex flex-col bg-darker">
+    {% if self.summary %}
+      <div class="p-summary sr-only">
+        {{ self.summary }}
+      </div>
+    {% endif %}
+
+    <div class="e-content prose prose-main prose-sm sm:prose-base lg:prose-lg max-w-none">
+      {% for block in self.body %}
+        {% if block.block_type == 'image' %}
+          {% picture block.value format-{avif,webp,jpeg} width-768 class="mx-auto u-photo" %}
+        {% else %}
+          {{ block }}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {# <div class="e-content"> #}
+  {#   {{ self.body|richtext }} #}
+  {# </div> #}
+{% endblock content %}

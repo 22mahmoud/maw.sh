@@ -1,4 +1,5 @@
 from .button import ButtonBlock
+from .codeblock import CodeBlock
 from .hero import HeroBlock
 from .link import LinkBlock, SocialLinkStreamBlock
 from .text import HeadingBlock
@@ -9,4 +10,5 @@ __all__ = [
     "SocialLinkStreamBlock",
     "HeadingBlock",
     "HeroBlock",
+    "CodeBlock",
 ]
