@@ -3,6 +3,8 @@ from django.db import models
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.utils.timezone import now
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import Tag, TaggedItemBase
 from wagtail.admin.panels import FieldPanel, MultipleChooserPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, re_path
 from wagtail.models import Orderable, Page, ParentalKey
@@ -21,6 +23,12 @@ from .blocks import (
     RepostBlock,
     VideoBlock,
 )
+
+
+class PostPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        "PostPage", related_name="tagged_items", on_delete=models.CASCADE
+    )
 
 
 class PostPersonRelationship(Orderable, models.Model):
@@ -64,10 +72,9 @@ class ArchivePage(RoutablePageMixin, Page):
 
         return post.specific.serve(request)
 
-    @re_path(r"^authors/(?P<author_slug>[\w-]+)/$", name="posts_by_author")
     @re_path(
-        r"^authors/(?P<author_slug>[\w-]+)/page/(?P<page>\d+)/$",
-        name="posts_by_author_paginated",
+        r"^authors/(?P<author_slug>[\w-]+)(/page/(?P<page>\d+))?/$",
+        name="posts_by_author",
     )
     def posts_by_author(self, request, author_slug, page=1):
         """Posts by specific author with pagination"""
@@ -94,6 +101,31 @@ class ArchivePage(RoutablePageMixin, Page):
 
         context["posts"] = paginated_posts
         context["author"] = author
+
+        return self.render(request, context_overrides=context)
+
+    @re_path(r"^tags/(?P<tag_slug>[\w-]+)(/page/(?P<page>\d+))?/$", name="posts_by_tag")
+    def posts_by_tag(self, request, tag_slug, page=1):
+        """Posts by specific tag with pagination"""
+
+        try:
+            tag = Tag.objects.get(slug=tag_slug)
+        except Tag.DoesNotExist:
+            raise Http404("Tag not found")
+
+        posts = self._get_posts_queryset().filter(tags__slug=tag_slug).distinct()
+
+        if not posts.exists():
+            raise Http404(f"No posts found for tag '{tag_slug}'")
+
+        paginated_posts = self._paginate_posts(
+            request, posts, page_number=page, base_url=f"/archive/tags/{tag_slug}"
+        )
+
+        context = self.get_context(request, paginated_posts=paginated_posts)
+
+        context["posts"] = paginated_posts
+        context["tag"] = tag
 
         return self.render(request, context_overrides=context)
 
@@ -191,6 +223,7 @@ class PostPage(SeoMetaFields, Page):  # type: ignore
         max_num=1,
     )
 
+    tags = ClusterTaggableManager(through=PostPageTag, blank=True)
     parent_page_types = ["ArchivePage"]
     subpage_types = []
 
@@ -209,6 +242,14 @@ class PostPage(SeoMetaFields, Page):  # type: ignore
                 person__live=True
             ).select_related("person")
         ]
+
+    @property
+    def get_tags(self):
+        tags = self.tags.all()
+        base_url = self.get_parent().url  # type: ignore
+        for tag in tags:
+            tag.url = f"{base_url}tags/{tag.slug}/"
+        return tags
 
     def get_url_parts(self, request=None):
         response = super().get_url_parts(request)
@@ -244,6 +285,7 @@ class PostPage(SeoMetaFields, Page):  # type: ignore
 
     content_panels = Page.content_panels + [
         FieldPanel("body"),
+        FieldPanel("tags"),
         MultipleChooserPanel(
             "post_person_relationship",
             chooser_field_name="person",
