@@ -1,0 +1,17 @@
+{% load base_tags wagtailimages_tags wagtailcore_tags %}
+
+<div class="flex flex-col gap-4">
+  {% if value.caption %}
+    <div class="e-content prose prose-main max-w-none">
+      {{ value.caption | richtext }}
+    </div>
+  {% endif %}
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for image in value.images %}
+      <div class="relative aspect-square overflow-hidden border border-primary/10 shadow-md hover:shadow-lg transition-shadow duration-200">
+        {% picture image format-{avif,webp,jpeg} width-400 alt=image.title class="u-photo w-full h-full object-cover hover:scale-105 transition-transform duration-300" %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{% load wagtailcore_tags base_tags %}
+
+{% block content %}
+  <div class="prose prose-main flex flex-col bg-darker prose-sm sm:prose-base">
+    <blockquote class="p-summary flex flex-col">
+      <div class="flex flex-wrap items-center gap-x-2">
+        {% get_icon "chat-circle-dots" as icon %}
+        {% include icon with class="w-5 h-5 fill-primary" %}
+        Reply to  <a class="u-in-reply-to" href="{{ self.in_reply_to }}">
+        {% if self.reply_title %}
+          {{ self.reply_title }}
+        {% else %}
+          {{ self.in_reply_to }}
+        {% endif %}
+      </a>
+    </div>
+
+    {% if self.description %}
+      <p>
+        {{ self.description }}
+      </p>
+    {% endif %}
+  </blockquote>
+
+  <div class="e-content max-w-none">
+    {{ self.content | richtext }}
+  </div>
+</div>
+
+{% endblock content %}

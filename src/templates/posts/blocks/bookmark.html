@@ -1,0 +1,30 @@
+{% load wagtailcore_tags base_tags %}
+
+{% block content %}
+  <div class="prose prose-main flex flex-col bg-darker prose-sm sm:prose-base">
+    <blockquote class="p-summary flex flex-col">
+      <div class="flex flex-wrap items-center gap-x-2">
+        {% get_icon "share-fat" as icon %}
+        {% include icon with class="w-5 h-5 fill-primary" %}
+        Bookmarked <a class="u-bookmark-of" href="{{ self.bookmark_of }}">
+        {% if self.title %}
+          {{ self.title }}
+        {% else %}
+          {{ self.bookmark_of }}
+        {% endif %}
+      </a>
+    </div>
+
+    {% if self.description %}
+      <p>
+        {{ self.description }}
+      </p>
+    {% endif %}
+  </blockquote>
+
+  <div class="e-content max-w-none">
+    {{ self.content | richtext }}
+  </div>
+</div>
+
+{% endblock content %}
