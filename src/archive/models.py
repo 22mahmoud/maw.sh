@@ -1,6 +1,6 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
-from django.http import Http404
+from django.http import Http404, HttpResponsePermanentRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.timezone import now
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -227,6 +227,22 @@ class PostPage(SeoMetaFields, Page):  # type: ignore
     parent_page_types = ["ArchivePage"]
     subpage_types = []
 
+    @property
+    def next_sibling(self):
+        return (
+            self.get_next_siblings().type(self.__class__).live().first().specific
+            if self.get_next_siblings().exists()
+            else None
+        )
+
+    @property
+    def prev_sibling(self):
+        return (
+            self.get_prev_siblings().type(self.__class__).live().first().specific
+            if self.get_prev_siblings().exists()
+            else None
+        )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -250,6 +266,14 @@ class PostPage(SeoMetaFields, Page):  # type: ignore
         for tag in tags:
             tag.url = f"{base_url}tags/{tag.slug}/"
         return tags
+
+    def serve(self, request, *args, **kwargs):  # type: ignore
+        canonical_url = self.url
+
+        if request.path != canonical_url:
+            return HttpResponsePermanentRedirect(canonical_url)
+
+        return super().serve(request, *args, **kwargs)
 
     def get_url_parts(self, request=None):
         response = super().get_url_parts(request)

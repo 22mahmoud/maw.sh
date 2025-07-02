@@ -83,6 +83,28 @@
         {% endfor %}
       {% endif %}
     </main>
-    {# <footer>test</footer> #}
+    <footer class="flex justify-between items-center mt-8 border-t border-primary/20 pt-4">
+      {% if page.prev_sibling %}
+        <a href="{% pageurl page.prev_sibling %}"
+           class="text-sm text-primary hover:text-accent transition-colors duration-200">
+          ← Previous: {{ page.prev_sibling.title }}
+        </a>
+      {% else %}
+        {# djlint:off H020 #}
+        <span></span>
+        {# djlint:on #}
+      {% endif %}
+
+      {% if page.next_sibling %}
+        <a href="{% pageurl page.next_sibling %}"
+           class="text-sm text-primary hover:text-accent transition-colors duration-200">
+          Next: {{ page.next_sibling.title }} →
+        </a>
+      {% else %}
+        {# djlint:off H020 #}
+        <span></span>
+        {# djlint:on #}
+      {% endif %}
+    </footer>
   </article>
 {% endblock content %}
