@@ -12,15 +12,13 @@
     <div class="e-content prose prose-main prose-sm sm:prose-base lg:prose-lg max-w-none">
       {% for block in self.body %}
         {% if block.block_type == 'image' %}
-          {% picture block.value format-{avif,webp,jpeg} width-768 class="mx-auto u-photo" %}
+          <a href="{% image_url block.value "original" %}">
+            {% picture block.value format-{avif,webp,jpeg} width-768 class="mx-auto u-photo" %}
+          </a>
         {% else %}
           {{ block }}
         {% endif %}
       {% endfor %}
     </div>
   </div>
-
-  {# <div class="e-content"> #}
-  {#   {{ self.body|richtext }} #}
-  {# </div> #}
 {% endblock content %}

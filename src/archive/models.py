@@ -101,6 +101,8 @@ class ArchivePage(RoutablePageMixin, Page):
 
         context["posts"] = paginated_posts
         context["author"] = author
+        context["archive_title"] = f"Posts by {author.full_name}"
+        context["archive_description"] = author.bio if hasattr(author, "bio") else ""
 
         return self.render(request, context_overrides=context)
 
@@ -126,6 +128,10 @@ class ArchivePage(RoutablePageMixin, Page):
 
         context["posts"] = paginated_posts
         context["tag"] = tag
+        context["archive_title"] = f"Posts tagged “#{tag.name}”"
+        context["archive_description"] = (
+            tag.description if hasattr(tag, "description") else ""  # type: ignore
+        )
 
         return self.render(request, context_overrides=context)
 
@@ -140,6 +146,10 @@ class ArchivePage(RoutablePageMixin, Page):
 
         context = self.get_context(request, paginated_posts=paginated_posts)
         context["posts"] = paginated_posts
+        context["archive_title"] = "Archive"
+        context["archive_description"] = (
+            "Browse all posts published on this site. Explore past articles, updates, and content in chronological order."
+        )
 
         return self.render(request, context_overrides=context)
 

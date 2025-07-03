@@ -46,17 +46,21 @@
 }
 
 .zigzag {
-  background-image:
-    linear-gradient(135deg, rgba(30, 30, 30, 0.4) 25%, transparent 25%),
-    linear-gradient(225deg, rgba(30, 30, 30, 0.4) 25%, transparent 25%),
-    linear-gradient(45deg, rgba(30, 30, 30, 0.4) 25%, transparent 25%),
-    linear-gradient(315deg, rgba(30, 30, 30, 0.4) 25%, transparent 25%);
-  background-position:
-    5px 0,
-    5px 0,
-    0 0,
-    0 0;
-  background-size: 10px 10px;
-  background-repeat: repeat;
-  image-rendering: pixelated;
+  position: relative;
+}
+
+.zigzag::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(/icons/fill.png);
+  background-size: 24px;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.zigzag > * {
+  position: relative;
+  z-index: 1;
 }
