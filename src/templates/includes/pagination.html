@@ -1,39 +1,49 @@
 {% load base_tags %}
 
-<div class="w-full mx-auto max-w-2xl mt-8 mb-6">
-  <div class="flex items-center justify-between text-white py-4 px-2">
-    <div class="flex-shrink-0">
-      {% if prev_url %}
-        {% with "href="|add:prev_url as wrapper_attrs %}
-          {% make_dict size="md" variant="outline" as props %}
-          {% make_dict button_icon="caret-left" props=props wrapper_attrs=wrapper_attrs wrapper_tag="a" button_text="Previous" as prev_button %}
-          {% include "blocks/button_block.html" with value=prev_button %}
-        {% endwith %}
-      {% else %}
-        {% make_dict size="md" variant="disabled" as props %}
-        {% make_dict button_icon="caret-left" props=props button_text="Previous" as prev_button_disabled %}
-        {% include "blocks/button_block.html" with value=prev_button_disabled %}
+<div class="[&_a]:w-fit w-full flex justify-between items-start flex-wrap gap-4">
+  <div class="flex flex-col gap-2">
+    {% if prev_url %}
+      {% with "href="|add:prev_url as wrapper_attrs %}
+        {% make_dict size="md" variant="outline" as props %}
+        {% make_dict button_icon="caret-left" props=props wrapper_attrs=wrapper_attrs wrapper_tag="a" button_text="Previous" as prev_button %}
+        {% include "blocks/button_block.html" with value=prev_button %}
+      {% endwith %}
+      {% if prev_title %}
+        <span class="text-sm text-secondary sm:text-base font-medium text-foreground truncate">
+          {{ prev_title|truncatewords:5 }}
+        </span>
       {% endif %}
-    </div>
+    {% else %}
+      {% make_dict size="md" variant="disabled" as props %}
+      {% make_dict button_icon="caret-left" props=props button_text="Previous" as prev_button_disabled %}
+      {% include "blocks/button_block.html" with value=prev_button_disabled %}
+    {% endif %}
+  </div>
 
-    <div class="flex-grow flex justify-center px-6">
+  {% if page.number and page.paginator.num_pages %}
+    <div class="self-center flex-grow flex justify-center px-6">
       <span class="text-sm text-secondary font-medium">
         Page {{ page.number }} of {{ page.paginator.num_pages }}
       </span>
     </div>
+  {% endif %}
 
-    <div class="flex-shrink-0 [&>a>span]:flex-row-reverse">
-      {% if next_url %}
-        {% with "href="|add:next_url as wrapper_attrs %}
-          {% make_dict size="md" variant="outline" as props %}
-          {% make_dict props=props button_icon="caret-right" wrapper_attrs=wrapper_attrs wrapper_tag="a" button_text="Next" as next_button %}
-          {% include "blocks/button_block.html" with value=next_button %}
-        {% endwith %}
-      {% else %}
-        {% make_dict size="md" variant="disabled" disabled=True as props %}
-        {% make_dict props=props button_icon="caret-right" button_text="Next" as next_button_disabled %}
-        {% include "blocks/button_block.html" with value=next_button_disabled %}
+  <div class="flex flex-col gap-2 items-end [&>a>span]:flex-row-reverse">
+    {% if next_url %}
+      {% with "href="|add:next_url as wrapper_attrs %}
+        {% make_dict size="md" variant="outline" as props %}
+        {% make_dict props=props button_icon="caret-right" wrapper_attrs=wrapper_attrs wrapper_tag="a" button_text="Next" as next_button %}
+        {% include "blocks/button_block.html" with value=next_button %}
+      {% endwith %}
+      {% if next_title %}
+        <span class="text-sm text-secondary sm:text-base font-medium text-foreground truncate">
+          {{ next_title|truncatewords:5 }}
+        </span>
       {% endif %}
-    </div>
+    {% else %}
+      {% make_dict size="md" variant="disabled" disabled=True as props %}
+      {% make_dict props=props button_icon="caret-right" button_text="Next" as next_button_disabled %}
+      {% include "blocks/button_block.html" with value=next_button_disabled %}
+    {% endif %}
   </div>
 </div>

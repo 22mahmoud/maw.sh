@@ -38,6 +38,8 @@
       {% endfor %}
     </ul>
 
-    {% include "includes/pagination.html" with page=posts %}
+    <div class="max-w-2xl mx-auto mt-8">
+      {% include "includes/pagination.html" with page=posts %}
+    </div>
   </div>
 {% endblock content %}
