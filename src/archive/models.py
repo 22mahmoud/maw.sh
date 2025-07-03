@@ -230,7 +230,7 @@ class PostPage(SeoMetaFields, Page):  # type: ignore
     @property
     def next_sibling(self):
         return (
-            self.get_next_siblings().type(self.__class__).live().first().specific
+            self.get_next_siblings().live().first().specific
             if self.get_next_siblings().exists()
             else None
         )
@@ -238,7 +238,7 @@ class PostPage(SeoMetaFields, Page):  # type: ignore
     @property
     def prev_sibling(self):
         return (
-            self.get_prev_siblings().type(self.__class__).live().first().specific
+            self.get_prev_siblings().live().first().specific
             if self.get_prev_siblings().exists()
             else None
         )

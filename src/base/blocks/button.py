@@ -31,13 +31,13 @@ BUTTON_CVA = cva(
     variants={
         "variant": {
             "primary": "text-darker font-bold",
-            "secondary": "bg-neutral-800 text-white hover:bg-neutral-700 font-medium",
+            "secondary": "bg-neutral-800 text-primary hover:bg-neutral-700 font-medium",
             "outline": (
-                "border-2 border-accent-bright text-white bg-transparent "
+                "border-2 border-accent-bright text-primary bg-transparent "
                 "transition-colors duration-200 hover:bg-accent-bright hover:text-black"
             ),
             "muted": (
-                "text-neutral-300 hover:text-white hover:bg-neutral-800 "
+                "text-neutral-300 hover:text-primary hover:bg-neutral-800 "
                 "border border-neutral-700 hover:border-neutral-500 font-medium "
                 "transition-colors duration-200"
             ),
@@ -63,9 +63,9 @@ BUTTON_ICON_CVA = cva(
     variants={
         "variant": {
             "primary": "fill-darker",
-            "secondary": "fill-white",
-            "outline": "fill-white group-hover:fill-black",
-            "muted": "fill-neutral-300 group-hover:fill-white",
+            "secondary": "fill-primary",
+            "outline": "fill-primary group-hover:fill-black",
+            "muted": "fill-neutral-300 group-hover:fill-primary",
             "disabled": "fill-secondary",
         },
         "size": {

@@ -83,28 +83,33 @@
         {% endfor %}
       {% endif %}
     </main>
-    <footer class="flex justify-between items-center mt-8 border-t border-primary/20 pt-4">
-      {% if page.prev_sibling %}
-        <a href="{% pageurl page.prev_sibling %}"
-           class="text-sm text-primary hover:text-accent transition-colors duration-200">
-          ← Previous: {{ page.prev_sibling.title }}
-        </a>
-      {% else %}
-        {# djlint:off H020 #}
-        <span></span>
-        {# djlint:on #}
-      {% endif %}
 
-      {% if page.next_sibling %}
-        <a href="{% pageurl page.next_sibling %}"
-           class="text-sm text-primary hover:text-accent transition-colors duration-200">
-          Next: {{ page.next_sibling.title }} →
-        </a>
-      {% else %}
-        {# djlint:off H020 #}
-        <span></span>
-        {# djlint:on #}
-      {% endif %}
+    <footer class="[&_a]:border-1! [&_a]:w-fit flex justify-between items-start flex-wrap gap-4 mt-8 border-t border-primary/20 pt-6">
+      <div class="flex flex-col gap-2 min-w-0 flex-1 max-w-[calc(50%-0.5rem)] sm:max-w-none sm:flex-initial">
+        {% if page.prev_sibling %}
+          {% with "href="|add:page.prev_sibling.url as wrapper_attrs %}
+            {% make_dict size="md" variant="outline" as props %}
+            {% make_dict button_icon="caret-left" button_text="Previous" props=props wrapper_tag="a" wrapper_attrs=wrapper_attrs as prev_button %}
+            {% include "blocks/button_block.html" with value=prev_button %}
+          {% endwith %}
+          <span class="text-secondary text-sm sm:text-base font-medium text-foreground truncate">
+            {{ page.prev_sibling.title|truncatewords:5 }}
+          </span>
+        {% endif %}
+      </div>
+
+      <div class="flex flex-col gap-2 text-right [&>a>span]:flex-row-reverse min-w-0 flex-1 max-w-[calc(50%-0.5rem)] sm:max-w-none sm:flex-initial">
+        {% if page.next_sibling %}
+          {% with "href="|add:page.next_sibling.url as wrapper_attrs %}
+            {% make_dict size="md" variant="outline" as props %}
+            {% make_dict button_icon="caret-right" button_text="Next" props=props wrapper_tag="a" wrapper_attrs=wrapper_attrs as next_button %}
+            {% include "blocks/button_block.html" with value=next_button %}
+          {% endwith %}
+          <span class="text-sm text-secondary sm:text-base font-medium text-foreground truncate">
+            {{ page.next_sibling.title|truncatewords:5 }}
+          </span>
+        {% endif %}
+      </div>
     </footer>
   </article>
 {% endblock content %}
