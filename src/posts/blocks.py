@@ -9,6 +9,17 @@ from src.base.blocks import CodeBlock
 from src.base.blocks.text import HeadingBlock
 
 
+class ListItemBlock(blocks.StructBlock):
+    content = blocks.StreamBlock(
+        [
+            ("text", blocks.RichTextBlock(features=["bold", "italic", "link", "code"])),
+            ("code", CodeBlock()),
+            ("image", ImageChooserBlock()),
+        ],
+        use_json_field=True,
+    )
+
+
 class VideoStreamBlock(blocks.StreamBlock):
     video_embed = EmbedBlock(
         label="Video URL (YouTube, Vimeo, etc.)",
@@ -100,12 +111,13 @@ class ArticleBlock(blocks.StructBlock):
                     help_text="Choose an image from your media library to display alongside content"
                 ),
             ),
-            (
-                "codeblock",
-                CodeBlock(),
-            ),
+            ("ordered_list", blocks.ListBlock(ListItemBlock)),
+            ("codeblock", CodeBlock()),
+            ("video", VideoChooserBlock()),
+            ("embed", EmbedBlock()),
             ("heading", HeadingBlock()),
-        ]
+        ],
+        use_json_field=True,
     )
 
     def get_template(self, _, context=None):  # type: ignore

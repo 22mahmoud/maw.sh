@@ -15,6 +15,14 @@
           <a href="{% image_url block.value "original" %}">
             {% picture block.value format-{avif,webp,jpeg} width-768 class="mx-auto u-photo" %}
           </a>
+        {% elif block.block_type == 'ordered_list' %}
+          <ol>
+            {% for item in block.value %}
+              <li>
+                {{ item.content }}
+              </li>
+            {% endfor %}
+          </ol>
         {% else %}
           {{ block }}
         {% endif %}

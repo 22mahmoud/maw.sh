@@ -5,11 +5,11 @@
   <div class="w-full h-full bg-dark p-4 zigzag">
     <header class="max-w-2xl mx-auto mb-8">
       <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary">
-        {{ archive_title|default:"Archive" }}
+        {{ page.title|default:"Archive" }}
       </h2>
-      {% if archive_description %}
+      {% if page.introduction %}
         <p class="mt-2 text-base text-secondary max-w-prose mx-auto">
-          {{ archive_description }}
+          {{ page.introduction }}
         </p>
       {% endif %}
     </header>
@@ -27,7 +27,7 @@
                                 {% if post.authors|length > 1 %}
                                   transform transition-transform duration-200 hover:scale-110 hover:z-10
                                 {% endif %}"
-                         href="{% routablepageurl post.get_parent.specific 'posts_by_author' author.slug %}">
+                         href="{% routablepageurl page.get_site.root_page.specific 'posts_by_author' author.slug %}">
                         {% picture author.image format-{avif,webp,jpeg} width-200 alt=author.full_name class="u-photo w-full h-full object-cover rounded-full" %}
                       </a>
                     {% endfor %}

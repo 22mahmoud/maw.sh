@@ -4,13 +4,16 @@ from django.db import models
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from modelcluster.models import ClusterableModel
+from taggit.models import TaggedItemBase
 from wagtail.admin.panels import FieldPanel, ObjectList, TabbedInterface
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import StreamField
 from wagtail.models import (
     DraftStateMixin,
     LockableMixin,
+    Orderable,
     Page,
+    ParentalKey,
     RevisionMixin,
     WorkflowMixin,
 )
@@ -22,6 +25,28 @@ from src.seo.models import SeoMetaFields
 
 from .blocks import ButtonBlock, HeroBlock, SocialLinkStreamBlock
 from .constants import SOCIAL_PLATFORMS
+
+
+class PageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        "wagtailcore.Page", related_name="tagged_items", on_delete=models.CASCADE
+    )
+
+
+class PostPersonRelationship(Orderable, models.Model):
+    page = ParentalKey(
+        "wagtailcore.Page",
+        related_name="page_person_relationship",
+        on_delete=models.CASCADE,
+    )
+
+    person = models.ForeignKey(
+        "base.Person",
+        related_name="person_page_relationship",
+        on_delete=models.CASCADE,
+    )
+
+    panels = [FieldPanel("person")]
 
 
 class Person(  # type: ignore

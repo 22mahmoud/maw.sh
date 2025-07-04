@@ -1,6 +1,13 @@
 WAGTAIL_INSTALLED_APPS = [
     # my apps
-    "src.archive",
+    "src.videos",
+    "src.photos",
+    "src.replies",
+    "src.bookmarks",
+    "src.reposts",
+    "src.likes",
+    "src.articles",
+    "src.notes",
     "src.projects",
     "src.clients",
     "src.home",
