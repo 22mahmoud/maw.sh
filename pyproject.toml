@@ -9,6 +9,7 @@ dependencies = [
   "django-storages[s3]>=1.14.6",
   "django-vite>=3.1.0",
   "environs[django]>=14.2.0",
+  "gunicorn>=23.0.0",
   "psycopg[binary]>=3.2.9",
   "wagtail>=7.0.1",
   "wagtailmedia>=0.16.0",

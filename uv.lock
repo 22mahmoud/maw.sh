@@ -361,6 +361,18 @@ wheels = [
 ]
 
 [[package]]
+name = "gunicorn"
+version = "23.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "packaging" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/34/72/9614c465dc206155d93eff0ca20d42e1e35afc533971379482de953521a4/gunicorn-23.0.0.tar.gz", hash = "sha256:f014447a0101dc57e294f6c18ca6b40227a4c90e9bdb586042628030cba004ec", size = 375031, upload-time = "2024-08-10T20:25:27.378Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cb/7d/6dac2a6e1eba33ee43f318edbed4ff29151a49b5d37f080aad1e6469bca4/gunicorn-23.0.0-py3-none-any.whl", hash = "sha256:ec400d38950de4dfd418cff8328b2c8faed0edb0d517d3394e457c317908ca4d", size = 85029, upload-time = "2024-08-10T20:25:24.996Z" },
+]
+
+[[package]]
 name = "identify"
 version = "2.6.12"
 source = { registry = "https://pypi.org/simple" }
@@ -417,6 +429,7 @@ dependencies = [
     { name = "django-storages", extra = ["s3"] },
     { name = "django-vite" },
     { name = "environs", extra = ["django"] },
+    { name = "gunicorn" },
     { name = "psycopg", extra = ["binary"] },
     { name = "wagtail" },
     { name = "wagtailmedia" },
@@ -436,6 +449,7 @@ requires-dist = [
     { name = "django-storages", extras = ["s3"], specifier = ">=1.14.6" },
     { name = "django-vite", specifier = ">=3.1.0" },
     { name = "environs", extras = ["django"], specifier = ">=14.2.0" },
+    { name = "gunicorn", specifier = ">=23.0.0" },
     { name = "psycopg", extras = ["binary"], specifier = ">=3.2.9" },
     { name = "wagtail", specifier = ">=7.0.1" },
     { name = "wagtailmedia", specifier = ">=0.16.0" },
@@ -468,6 +482,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/3d/f9/88d94a75de065ea32619465d2f77b29a0469500e99012523b91cc4141cd1/openpyxl-3.1.5.tar.gz", hash = "sha256:cf0e3cf56142039133628b5acffe8ef0c12bc902d2aadd3e0fe5878dc08d1050", size = 186464, upload-time = "2024-06-28T14:03:44.161Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c0/da/977ded879c29cbd04de313843e76868e6e13408a94ed6b987245dc7c8506/openpyxl-3.1.5-py2.py3-none-any.whl", hash = "sha256:5282c12b107bffeef825f4617dc029afaf41d0ea60823bbb665ef3079dc79de2", size = 250910, upload-time = "2024-06-28T14:03:41.161Z" },
+]
+
+[[package]]
+name = "packaging"
+version = "25.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a1/d4/1fc4078c65507b51b96ca8f8c3ba19e6a61c8253c72794544580a7b6c24d/packaging-25.0.tar.gz", hash = "sha256:d443872c98d677bf60f6a1f2f8c1cb748e8fe762d2bf9d3148b5599295b0fc4f", size = 165727, upload-time = "2025-04-19T11:48:59.673Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/20/12/38679034af332785aac8774540895e234f4d07f7545804097de4b666afd8/packaging-25.0-py3-none-any.whl", hash = "sha256:29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484", size = 66469, upload-time = "2025-04-19T11:48:57.875Z" },
 ]
 
 [[package]]

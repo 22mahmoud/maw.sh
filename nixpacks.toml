@@ -9,4 +9,4 @@ cmds = [
 ]
 
 [start]
-cmd = "sh -c 'python manage.py migrate && gunicorn config.wsgi'"
+cmd = "sh -c 'python manage.py migrate && gunicorn config.wsgi --bind 0.0.0.0:3000'"
