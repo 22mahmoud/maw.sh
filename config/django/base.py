@@ -139,6 +139,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 
+# storage
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
+    },
+}
+
 # lib settings
 from config.settings.vite import *  # noqa: E402, F403
 from config.settings.wagtail import *  # noqa: E402, F403
+from config.settings.django_storage import *  # noqa: E402, F403
