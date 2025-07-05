@@ -82,11 +82,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "wagtail",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "NAME": env.str("DB_NAME", "wagtail"),
+        "USER": env.str("DB_USER", "postgres"),
+        "PASSWORD": env.str("DB_PASSWORD", "postgres"),
+        "HOST": env.str("DB_HOST", "127.0.0.1"),
+        "PORT": env.int("DB_PORT", 5432),
     }
 }
 
