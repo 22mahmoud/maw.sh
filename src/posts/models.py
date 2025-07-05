@@ -8,6 +8,10 @@ from wagtail.models import Page
 from src.pagination import PaginatedArchiveMixin
 
 
+class BasePostPage:
+    pass
+
+
 class BasePostsIndexPage(PaginatedArchiveMixin, RoutablePageMixin, Page):
     """Base class for post index pages with pagination and routing"""
 

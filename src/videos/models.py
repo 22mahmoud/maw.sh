@@ -3,7 +3,12 @@ from wagtail.fields import StreamField
 from wagtail.models import Page
 
 from src.base.models import PageTag
-from src.posts import BasePostsIndexPage, SinglePostMixin, get_post_content_panels
+from src.posts import (
+    BasePostsIndexPage,
+    SinglePostMixin,
+    get_post_content_panels,
+    BasePostPage,
+)
 from src.posts.blocks import VideoBlock
 from src.seo.models import SeoMetaFields
 
@@ -21,7 +26,7 @@ class VideosPageIndex(BasePostsIndexPage):
         )
 
 
-class VideoPage(SinglePostMixin, SeoMetaFields, Page):  # type: ignore
+class VideoPage(BasePostPage, SinglePostMixin, SeoMetaFields, Page):  # type: ignore
     template = "archive/post_page.html"
     body = StreamField(
         [("video", VideoBlock())],

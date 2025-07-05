@@ -1,3 +1,4 @@
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.http import Http404
 from taggit.models import Tag
@@ -13,7 +14,9 @@ from src.base.blocks.link import SocialLinkStreamBlock
 from src.base.models import Person
 from src.clients.blocks import ClientsMarqueeStaticBlock
 from src.pagination.mixins import PaginatedArchiveMixin
+from src.posts.models import BasePostPage
 from src.seo.models import SeoMetaFields
+from src.utils import get_all_subclasses
 
 
 class HomePage(PaginatedArchiveMixin, RoutablePageMixin, SeoMetaFields, Page):  # type: ignore
@@ -35,6 +38,21 @@ class HomePage(PaginatedArchiveMixin, RoutablePageMixin, SeoMetaFields, Page):  
         FieldPanel("introduction"),
         FieldPanel("body"),
     ]
+
+    @re_path(r"^feed/(?:page/(?P<page>\d+)/?)?$", name="all_posts")
+    def all_posts(self, request, page=1):
+        """Posts by specific author with pagination"""
+
+        posts = self._get_filtered_posts({})
+
+        return self._render_archive_page(
+            request=request,
+            posts=posts,
+            page_number=page,
+            base_url="/feed",
+            title="Feed",
+            introduction="this is an introduction",
+        )
 
     @re_path(
         r"^authors/(?P<author_slug>[\w-]+)(/page/(?P<page>\d+))?/$",
@@ -81,12 +99,17 @@ class HomePage(PaginatedArchiveMixin, RoutablePageMixin, SeoMetaFields, Page):  
 
     def _get_filtered_posts(self, filter_kwargs, order_by="-first_published_at"):
         """Get filtered and ordered posts"""
+
+        all_subclasses = get_all_subclasses(BasePostPage)
+
+        content_types = ContentType.objects.get_for_models(*all_subclasses).values()
+
         return (
             Page.objects.live()  # type: ignore
             .public()
+            .filter(content_type__in=content_types)
             .filter(**filter_kwargs)
             .order_by(order_by)
-            .distinct()
         )
 
     def _render_archive_page(
