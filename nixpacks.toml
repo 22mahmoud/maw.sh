@@ -1,12 +1,4 @@
 providers = ["python", "node"]
 
-[phases.build]
-cmds = [
-  "pnpm build",
-  "mkdir staticfiles",
-  "cp ./static/manifest.json staticfiles",
-  "python manage.py collectstatic --noinput",
-]
-
 [start]
-cmd = "sh -c 'python manage.py migrate && gunicorn config.wsgi --bind 0.0.0.0:3000'"
+cmd = "./scripts/start"
