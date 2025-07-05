@@ -29,5 +29,9 @@
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2"
+  },
+  "engines": {
+    "node": "22",
+    "pnpm": "10.12.1"
   }
 }

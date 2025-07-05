@@ -1,4 +1,4 @@
-providers = ["python", "node"]
+providers = ["..."]
 
 [phases.build]
 cmds = [
