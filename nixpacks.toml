@@ -10,4 +10,4 @@ cmds = [
 ]
 
 [start]
-cmd = "python manage.py migrate && gunicorn {app_name}.wsgi"
+cmd = "python manage.py migrate && gunicorn config.wsgi"
