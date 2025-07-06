@@ -142,7 +142,7 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 # storage
 STORAGES = {
     "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
         "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage",

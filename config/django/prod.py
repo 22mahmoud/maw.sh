@@ -5,6 +5,8 @@ from .base import *  # noqa: F403
 from .base import BASE_DIR, MIDDLEWARE, STORAGES
 
 MIDDLEWARE.append("whitenoise.middleware.WhiteNoiseMiddleware")
+
+STORAGES["default"]["BACKEND"] = "storages.backends.s3.S3Storage"
 STORAGES["staticfiles"]["BACKEND"] = (
     "whitenoise.storage.CompressedManifestStaticFilesStorage"
 )
