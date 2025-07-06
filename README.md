@@ -2,17 +2,17 @@
 
 - [x] Setup Django
 - [x] Setup wagtail
-- [ ] Setup Postgres
+- [x] Setup Postgres
 - [x] Setup Vite
 - [ ] Home Page
-- [ ] IndieWeb Post Types
-    - [ ] Article (Blog Post)
-    - [ ] Note (Thoughts)
-    - [ ] Like
-    - [ ] Reply
-    - [ ] Bookmark
-    - [ ] Photo
-    - [ ] Video
+- [x] IndieWeb Post Types
+    - [x] Article (Blog Post)
+    - [x] Note (Thoughts)
+    - [x] Like
+    - [x] Reply
+    - [x] Bookmark
+    - [x] Photo
+    - [x] Video
 - [ ] Webmentions
 - [ ] Comments
 - [ ] Tracker
@@ -27,6 +27,6 @@
 - [ ] Services / hire me
 - [ ] Resume
 - [ ] RSS
-- [ ] sitemap.xml
+- [x] sitemap.xml
 - [ ] robots.txt
-- [ ] deployment
+- [x] deployment
