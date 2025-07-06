@@ -6,13 +6,16 @@ from wagtail.contrib.routable_page.models import RoutablePageMixin, re_path
 from wagtail.models import Page
 
 from src.pagination import PaginatedArchiveMixin
+from src.posts.mixins import SinglePostMixin
+from src.seo.models import SeoMetaFields
 
 
-class BasePostPage:
-    pass
+class BasePostPage(SinglePostMixin, SeoMetaFields):  # type: ignore
+    class Meta:  # type: ignore
+        abstract = True
 
 
-class BasePostsIndexPage(PaginatedArchiveMixin, RoutablePageMixin, Page):
+class BasePostsIndexPage(PaginatedArchiveMixin, SeoMetaFields, RoutablePageMixin, Page):
     """Base class for post index pages with pagination and routing"""
 
     introduction = models.TextField(help_text="Text to describe the page", blank=True)

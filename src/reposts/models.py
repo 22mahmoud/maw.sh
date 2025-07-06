@@ -1,16 +1,13 @@
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from wagtail.fields import StreamField
-from wagtail.models import Page
 
 from src.base.models import PageTag
 from src.posts import (
     BasePostPage,
     BasePostsIndexPage,
-    SinglePostMixin,
     get_post_content_panels,
 )
 from src.posts.blocks import RepostBlock
-from src.seo.models import SeoMetaFields
 
 
 class RepostsPageIndex(BasePostsIndexPage):
@@ -26,7 +23,7 @@ class RepostsPageIndex(BasePostsIndexPage):
         )
 
 
-class RepostPage(BasePostPage, SinglePostMixin, SeoMetaFields, Page):  # type: ignore
+class RepostPage(BasePostPage):  # type: ignore
     template = "archive/post_page.html"
     body = StreamField(
         [("repost", RepostBlock())],

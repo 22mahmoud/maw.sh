@@ -2,90 +2,92 @@
 {% load base_tags wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags %}
 
 {% block content %}
-  <article class="h-entry mx-auto max-w-3xl space-y-6 py-4 px-4 sm:px-6">
-    <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm py-4 border-b border-primary/20">
-      <div class="flex items-center flex-wrap gap-3 sm:gap-4 flex-1 min-w-0">
-        {% for author in page.authors %}
-          <a href="{% routablepageurl page.get_site.root_page.specific 'posts_by_author' author.slug %}"
-             class="h-card flex items-center gap-3 transition-all duration-200 hover:scale-[1.02] group">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-transparent group-hover:ring-accent/30 transition-all duration-200">
-              {% picture author.image format-{avif,webp,jpeg} width-200 alt=author.full_name class="u-photo w-full h-full object-cover" %}
-            </div>
-            <div class="flex flex-col min-w-0 flex-1">
-              <span class="p-name font-medium text-primary group-hover:text-accent transition-colors duration-200 truncate">
-                {{ author.full_name }}
-              </span>
-              {% if author.title %}
-                <span class="text-xs text-primary/80 truncate">{{ author.title }}</span>
-              {% endif %}
-              {% if author.bio %}
-                <span class="text-xs text-secondary truncate hidden sm:block"
-                      title="{{ author.bio }}">
-                  {{ author.bio|truncatewords:5 }}
+  <div class="zigzag bg-dark h-full">
+    <article class="flex flex-col h-full h-entry mx-auto max-w-3xl space-y-6 py-4 px-4 sm:px-6">
+      <header class="px-4 bg-darker flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm py-4 border-b border-primary/20">
+        <div class="flex items-center flex-wrap gap-3 sm:gap-4 flex-1 min-w-0">
+          {% for author in page.authors %}
+            <a href="{% routablepageurl page.get_site.root_page.specific 'posts_by_author' author.slug %}"
+               class="h-card flex items-center gap-3 transition-all duration-200 hover:scale-[1.02] group">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-transparent group-hover:ring-accent/30 transition-all duration-200">
+                {% picture author.image format-{avif,webp,jpeg} width-200 alt=author.full_name class="u-photo w-full h-full object-cover" %}
+              </div>
+              <div class="flex flex-col min-w-0 flex-1">
+                <span class="p-name font-medium text-primary group-hover:text-accent transition-colors duration-200 truncate">
+                  {{ author.full_name }}
                 </span>
-              {% endif %}
-            </div>
-          </a>
-        {% endfor %}
-      </div>
+                {% if author.title %}
+                  <span class="text-xs text-primary/80 truncate">{{ author.title }}</span>
+                {% endif %}
+                {% if author.bio %}
+                  <span class="text-xs text-secondary truncate hidden sm:block"
+                        title="{{ author.bio }}">
+                    {{ author.bio|truncatewords:5 }}
+                  </span>
+                {% endif %}
+              </div>
+            </a>
+          {% endfor %}
+        </div>
 
-      <div class="flex flex-col items-start sm:items-end text-left sm:text-right flex-shrink-0">
-        <time class="dt-published font-medium text-primary text-sm sm:text-base"
-              datetime="{{ page.first_published_at|date:'c' }}">
-          <span class="hidden sm:inline">{{ page.first_published_at|date:"F j, Y" }}</span>
-          <span class="sm:hidden">{{ page.first_published_at|date:"M j, Y" }}</span>
-        </time>
-        <span class="text-xs text-primary/70">
-          {{ page.first_published_at|date:"g:i A" }}
-        </span>
-        {% if page.last_published_at != page.first_published_at %}
-          <span class="text-xs text-primary/60 mt-1">
-            <span class="hidden sm:inline">Updated</span>
-            <span class="sm:hidden">Upd.</span>
-            {{ page.last_published_at|date:"M j, Y" }}
+        <div class="flex flex-col items-start sm:items-end text-left sm:text-right flex-shrink-0">
+          <time class="dt-published font-medium text-primary text-sm sm:text-base"
+                datetime="{{ page.first_published_at|date:'c' }}">
+            <span class="hidden sm:inline">{{ page.first_published_at|date:"F j, Y" }}</span>
+            <span class="sm:hidden">{{ page.first_published_at|date:"M j, Y" }}</span>
+          </time>
+          <span class="text-xs text-primary/70">
+            {{ page.first_published_at|date:"g:i A" }}
           </span>
-        {% endif %}
-        {% if page.get_tags %}
-          <div class="flex items-center flex-wrap gap-2 mt-2 sm:justify-end">
-            <ul class="flex flex-wrap gap-2">
-              {% for tag in page.get_tags %}
-                <li>
-                  <a href="{{ tag.url }}"
-                     aria-label="Filter by tag name {{ tag }}"
-                     class="p-category inline-block rounded-full border border-primary/30 bg-primary/5 px-2.5 py-0.5 text-xs font-medium text-primary transition-colors duration-200 hover:bg-accent hover:text-black">
-                    #{{ tag }}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
-      </div>
-    </header>
-
-    <main>
-      {% if page.body.0.block_type == 'article' %}
-        <div class="mb-6 prose prose-main text-center space-y-3 sm:space-y-4">
-          <h1 class="p-name text-balance font-heading">
-            {{ page.title }}
-          </h1>
-          {% if page.subtitle %}
-            <p class="text-base sm:text-lg md:text-xl text-secondary/90 leading-relaxed max-w-4xl mx-auto">
-              {{ page.subtitle }}
-            </p>
+          {% if page.last_published_at != page.first_published_at %}
+            <span class="text-xs text-primary/60 mt-1">
+              <span class="hidden sm:inline">Updated</span>
+              <span class="sm:hidden">Upd.</span>
+              {{ page.last_published_at|date:"M j, Y" }}
+            </span>
+          {% endif %}
+          {% if page.get_tags %}
+            <div class="flex items-center flex-wrap gap-2 mt-2 sm:justify-end">
+              <ul class="flex flex-wrap gap-2">
+                {% for tag in page.get_tags %}
+                  <li>
+                    <a href="{{ tag.url }}"
+                       aria-label="Filter by tag name {{ tag }}"
+                       class="p-category inline-block rounded-full border border-primary/30 bg-primary/5 px-2.5 py-0.5 text-xs font-medium text-primary transition-colors duration-200 hover:bg-accent hover:text-black">
+                      #{{ tag }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
           {% endif %}
         </div>
-      {% endif %}
+      </header>
 
-      {% if page.body %}
-        {% for block in page.body %}
-          {% include_block block %}
-        {% endfor %}
-      {% endif %}
-    </main>
+      <main class="flex-1">
+        {% if page.body.0.block_type == 'article' %}
+          <div class="mb-6 prose prose-main text-center space-y-3 sm:space-y-4">
+            <h1 class="p-name text-balance font-heading">
+              {{ page.title }}
+            </h1>
+            {% if page.subtitle %}
+              <p class="text-base sm:text-lg md:text-xl text-secondary/90 leading-relaxed max-w-4xl mx-auto">
+                {{ page.subtitle }}
+              </p>
+            {% endif %}
+          </div>
+        {% endif %}
 
-    <footer class="[&_a]:border-1! [&_a]:w-fit mt-8 border-t border-primary/20 pt-6">
-      {% include "includes/pagination.html" with prev_url=page.prev_sibling.url prev_title=page.prev_sibling.title|truncatewords:5 next_url=page.next_sibling.url next_title=page.next_sibling.title|truncatewords:5 %}
-    </footer>
-  </article>
+        {% if page.body %}
+          {% for block in page.body %}
+            {% include_block block %}
+          {% endfor %}
+        {% endif %}
+      </main>
+
+      <footer class="bg-darker [&_a]:border-1! [&_a]:w-fit mt-8 border-t border-primary/20 p-4">
+        {% include "includes/pagination.html" with prev_url=page.prev_sibling.url prev_title=page.prev_sibling.title|truncatewords:5 next_url=page.next_sibling.url next_title=page.next_sibling.title|truncatewords:5 %}
+      </footer>
+    </article>
+  </div>
 {% endblock content %}
