@@ -13,6 +13,7 @@
     - [x] Bookmark
     - [x] Photo
     - [x] Video
+- [ ] Search
 - [ ] Webmentions
 - [ ] Comments
 - [ ] Tracker
@@ -30,4 +31,4 @@
 - [x] sitemap.xml
 - [ ] robots.txt
 - [x] deployment
-- [ ] CI
+- [x] CI
