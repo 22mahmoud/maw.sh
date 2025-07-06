@@ -1,6 +1,13 @@
 from config.env import env
 
 from .base import *  # noqa: F403
+from .base import MIDDLEWARE, STORAGES
+
+MIDDLEWARE.append("whitenoise.middleware.WhiteNoiseMiddleware")
+STORAGES["staticfiles"]["BACKEND"] = (
+    "whitenoise.storage.CompressedManifestStaticFilesStorage"
+)
+
 
 DEBUG = env.bool("DEBUG", default=False)
 

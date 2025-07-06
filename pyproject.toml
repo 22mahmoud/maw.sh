@@ -13,6 +13,7 @@ dependencies = [
   "psycopg[binary]>=3.2.9",
   "wagtail>=7.0.1",
   "wagtailmedia>=0.16.0",
+  "whitenoise[brotli]>=6.9.0",
 ]
 
 [dependency-groups]
