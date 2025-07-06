@@ -30,3 +30,4 @@
 - [x] sitemap.xml
 - [ ] robots.txt
 - [x] deployment
+- [ ] CI

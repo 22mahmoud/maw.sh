@@ -112,7 +112,7 @@ class ButtonStructValue(LinkStructValue):
 
     def wrapper_attrs(self):
         if self.is_link():
-            return f"href={self.url()} role='link'"
+            return f"href={self.url()} role=link"
         elif self.get("button_type") == "disabled":
             return 'type="button" role="button" disabled'
         return 'type="button" role="button"'
