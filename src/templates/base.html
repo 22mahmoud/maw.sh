@@ -1,6 +1,7 @@
 {% load django_vite %}
 {% load wagtailuserbar %}
 {% load seo_tags %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en" class="h-full scroll-smooth">
@@ -19,6 +20,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="this,is,a,keywords">
+
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
     <link rel="canonical" href="{{ page.seo_canonical_url }}" />
     {% if next_url %}
