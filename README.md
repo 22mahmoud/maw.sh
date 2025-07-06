@@ -31,5 +31,3 @@
 - [ ] robots.txt
 - [x] deployment
 - [ ] CI
-
-test
