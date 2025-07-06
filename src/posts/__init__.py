@@ -1,5 +1,5 @@
 from .mixins import SinglePostMixin
-from .models import BasePostsIndexPage, BasePostPage
+from .models import BasePostPage, BasePostsIndexPage
 from .utils import get_post_content_panels
 
 __all__ = [

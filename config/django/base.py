@@ -150,6 +150,6 @@ STORAGES = {
 }
 
 # lib settings
+from config.settings.django_storage import *  # noqa: E402, F403
 from config.settings.vite import *  # noqa: E402, F403
 from config.settings.wagtail import *  # noqa: E402, F403
-from config.settings.django_storage import *  # noqa: E402, F403

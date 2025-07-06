@@ -4,10 +4,10 @@ from wagtail.models import Page
 
 from src.base.models import PageTag
 from src.posts import (
+    BasePostPage,
     BasePostsIndexPage,
     SinglePostMixin,
     get_post_content_panels,
-    BasePostPage,
 )
 from src.posts.blocks import LikeBlock
 from src.seo.models import SeoMetaFields

@@ -1,7 +1,8 @@
 from config.env import env
+from config.settings.wagtail_prod import *  # noqa: E402, F403
 
 from .base import *  # noqa: F403
-from .base import MIDDLEWARE, STORAGES, BASE_DIR
+from .base import BASE_DIR, MIDDLEWARE, STORAGES
 
 MIDDLEWARE.append("whitenoise.middleware.WhiteNoiseMiddleware")
 STORAGES["staticfiles"]["BACKEND"] = (
