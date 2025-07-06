@@ -20,12 +20,12 @@
     "@shikijs/transformers": "^3.7.0",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
-    "@types/node": "^24.0.8",
+    "@types/node": "^24.0.10",
     "shiki": "^3.7.0",
     "shiki-transformer-copy-button": "^0.0.5",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
-    "vite": "7.0.0"
+    "vite": "7.0.2"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2"
