@@ -30,6 +30,7 @@ WAGTAIL_INSTALLED_APPS = [
     "wagtail.admin",
     "wagtail",
     # 3rd party apps
+    "wagtailmenus",
     "wagtailmedia",
     "taggit",
     "modelcluster",
@@ -40,25 +41,12 @@ WAGTAIL_MIDDLEWARE = [
 ]
 
 WAGTAIL_TEMPLATE_CONTEXT_PROCESSORS = [
-    "wagtail.contrib.settings.context_processors.settings"
+    "wagtail.contrib.settings.context_processors.settings",
+    "wagtailmenus.context_processors.wagtailmenus",
 ]
 
 WAGTAIL_SITE_NAME = "Mahmoud Ashraf"
 WAGTAILADMIN_BASE_URL = "http:localhost:8000"
-
-# Replace the search backend
-# WAGTAILSEARCH_BACKENDS = {
-#  'default': {
-#    'BACKEND': 'wagtail.search.backends.elasticsearch8',
-#    'INDEX': 'myapp'
-#  }
-# }
-
-# Wagtail email notifications from address
-# WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'wagtail@myhost.io'
-
-# Wagtail email notification format
-# WAGTAILADMIN_NOTIFICATION_USE_HTML = True
 
 # Allowed file extensions for documents in the document library.
 # This can be omitted to allow all files, but note that this may present a security risk

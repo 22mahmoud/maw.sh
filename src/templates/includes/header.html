@@ -1,5 +1,5 @@
+{% load menu_tags %}
 {% load wagtailcore_tags %}
-{% load navigation_tags %}
 
 <header class="shadow bg-gradient-to-r from-gradient-1 to-gradient-2 pb-[2px]">
   <div class="h-full w-full bg-dark text-2xl font-bold px-2 py-3 flex flex-wrap items-center justify-between gap-2">
@@ -10,7 +10,7 @@
     </a>
     <nav class="w-full sm:w-auto">
       <ul class="flex flex-wrap justify-start sm:justify-end gap-4 text-base sm:text-lg">
-        {% top_menu source=self %}
+        {% main_menu template="includes/main_menu.html" %}
       </ul>
     </nav>
   </div>

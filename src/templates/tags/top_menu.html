@@ -1,7 +1,0 @@
-{% load wagtailcore_tags %}
-
-{% for menuitem in menuitems %}
-  <li>
-    {% include "blocks/link_block.html" with value=menuitem %}
-  </li>
-{% endfor %}

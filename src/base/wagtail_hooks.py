@@ -1,3 +1,4 @@
+from wagtail import hooks
 from wagtail.admin.panels import (
     FieldPanel,
     FieldRowPanel,
@@ -41,3 +42,14 @@ class PersonViewSet(SnippetViewSet):
 
 
 register_snippet(PersonViewSet)
+
+
+@hooks.register("menus_modify_primed_menu_items")  # type: ignore
+def make_some_changes(menu_items, **_):
+    for item in menu_items:
+        item.text = item.text
+        item.url = item.href
+        item.active = bool(item.active_class)
+        item.props = {"variant": "nav_active" if item.active else "nav_inactive"}
+
+    return menu_items
