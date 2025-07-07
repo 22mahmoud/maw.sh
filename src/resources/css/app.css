@@ -5,7 +5,7 @@
 @config "../../../tailwind.config.ts";
 
 @theme {
-  --font-heading: "source-sans-pro", sans-serif;
+  --font-heading: "Outfit", sans-serif;
   --font-sans: "Figtree", sans-serif;
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",

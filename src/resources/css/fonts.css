@@ -1,23 +1,17 @@
 @font-face {
-  font-family: "source-sans-pro";
-  src:
-    url("/fonts/source-sans-pro-normal-400.woff2") format("woff2"),
-    url("/fonts/source-sans-pro-normal-400.woff") format("woff"),;
   font-display: swap;
+  font-family: "Outfit";
   font-style: normal;
   font-weight: 400;
-  font-stretch: normal;
+  src: url("/fonts/outfit-v14-latin-regular.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "source-sans-pro";
-  src:
-    url("/fonts/source-sans-pro-normal-700.woff2") format("woff2"),
-    url("/fonts/source-sans-pro-normal-700.woff") format("woff");
   font-display: swap;
+  font-family: "Outfit";
   font-style: normal;
   font-weight: 700;
-  font-stretch: normal;
+  src: url("/fonts/outfit-v14-latin-700.woff2") format("woff2");
 }
 
 @font-face {
