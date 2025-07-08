@@ -2,13 +2,19 @@
 
 {% block content %}
   <div class="flex flex-col gap-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {% for image in value.images %}
 
-        <a href="{% image_url image "original" %}"
-           class="cursor-pointer relative aspect-square overflow-hidden border border-primary/10 shadow-md hover:shadow-lg transition-shadow duration-200">
-          {% picture image format-{avif,webp,jpeg} width-400 alt=image.title class="u-photo w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" %}
-        </a>
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+      {% for image in value.images %}
+        {% if is_preview %}
+          <div class="relative aspect-square overflow-hidden border border-primary/10 shadow-md hover:shadow-lg transition-shadow duration-200">
+            {% picture image format-{avif,webp,jpeg} width-400 alt=image.title class="u-photo w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" %}
+          </div>
+        {% else %}
+          <a href="{% image_url image "original" %}"
+             class="cursor-pointer relative aspect-square overflow-hidden border border-primary/10 shadow-md hover:shadow-lg transition-shadow duration-200">
+            {% picture image format-{avif,webp,jpeg} width-400 alt=image.title class="u-photo w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" %}
+          </a>
+        {% endif %}
       {% endfor %}
     </div>
 
@@ -17,5 +23,29 @@
         {{ value.caption | richtext }}
       </div>
     {% endif %}
+
+    <div class="text-sm text-secondary flex flex-col gap-3 mt-4">
+      {% if value.taken_date %}
+        <time class="dt-photo flex items-center gap-2">
+          <span class="inline-flex items-center gap-2">
+            {% get_icon 'camera' as icon %}
+            {% include icon with class="w-4 h-4 sm:w-5 sm:h-5 fill-accent" %}
+            <span>
+              Taken on {{ value.taken_date|date:"F j, Y" }}
+            </span>
+          </span>
+        </time>
+      {% endif %}
+
+      {% if value.location %}
+        <div class="p-location flex items-center gap-2">
+          {% get_icon 'map-pin' as icon %}
+          {% include icon with class="w-4 h-4 sm:w-5 sm:h-5 fill-accent" %}
+          <span>
+            {{ value.location }}
+          </span>
+        </div>
+      {% endif %}
+    </div>
   </div>
 {% endblock content %}

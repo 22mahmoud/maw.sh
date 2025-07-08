@@ -139,10 +139,23 @@ class PhotoBlock(blocks.StructBlock):
         label="Photo(s)",
         help_text="Add one or more photos. Click '+ Add Photo' to include multiple images",
     )
+
     caption = blocks.RichTextBlock(
         features=["bold", "italic", "link"],
         required=False,
         help_text="Optional: Add a caption or description for your photo(s)",
+    )
+
+    taken_date = blocks.DateTimeBlock(
+        required=False,
+        label="Date Taken",
+        help_text="When was this photo taken?",
+    )
+
+    location = blocks.CharBlock(
+        required=False,
+        label="Location",
+        help_text="Where was this photo taken? (City, place name, etc.)",
     )
 
     class Meta:  # type: ignore
