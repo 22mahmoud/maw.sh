@@ -16,7 +16,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.12.1",
   "devDependencies": {
-    "@biomejs/biome": "2.0.6",
+    "@biomejs/biome": "2.1.0",
     "@shikijs/transformers": "^3.7.0",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
@@ -25,7 +25,7 @@
     "shiki-transformer-copy-button": "^0.0.5",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
-    "vite": "7.0.2"
+    "vite": "7.0.3"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2"
