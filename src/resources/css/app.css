@@ -3,6 +3,10 @@
 
 @plugin "@tailwindcss/typography";
 @config "../../../tailwind.config.ts";
+@plugin "@tailwindcss/forms" {
+  /* biome-ignore lint/correctness/noUnknownProperty: tailwindcss */
+  strategy: "class";
+}
 
 @theme {
   --font-heading: "Outfit", sans-serif;
