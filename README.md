@@ -14,7 +14,7 @@
     - [x] Photo
     - [x] Video
 - [ ] Search
-- [ ] Webmentions
+- [x] Webmentions
 - [ ] Comments
 - [ ] Tracker
     - [ ] Video Games

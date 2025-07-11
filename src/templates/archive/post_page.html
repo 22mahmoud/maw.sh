@@ -232,13 +232,14 @@
                             <time datetime="{{ mention.published|date:'c' }}">{{ mention.published|date:"M j, Y" }}</time>
                           </a>
                         </div>
-                        <div class="prose prose-sm max-w-none text-primary/90 prose-a:text-accent prose-a:font-normal hover:prose-a:underline prose-strong:text-primary prose-code:text-accent-bright prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-blockquote:border-l-2 prose-blockquote:border-accent prose-blockquote:pl-4 prose-blockquote:text-secondary">
+                        <div class="prose prose-main prose-sm max-w-none text-primary/90">
                           {{ mention.content_html|safe }}
                         </div>
                       </div>
                     </div>
                   {% endfor %}
                 </div>
+
               </div>
             {% endif %}
           </div>
