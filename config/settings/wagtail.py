@@ -1,5 +1,6 @@
 WAGTAIL_INSTALLED_APPS = [
     # my apps
+    "src.webmentions",
     "src.videos",
     "src.photos",
     "src.replies",
@@ -8,6 +9,7 @@ WAGTAIL_INSTALLED_APPS = [
     "src.likes",
     "src.articles",
     "src.notes",
+    "src.posts",
     "src.projects",
     "src.clients",
     "src.home",

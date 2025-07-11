@@ -7,6 +7,9 @@ from .models import Client
 
 class ClientViewSet(SnippetViewSet):
     model = Client
+    add_to_admin_menu = True
+    menu_label = "Clients"  # type: ignore
+    icon = "group"  # type: ignore
     panels = [
         FieldPanel("name"),
         FieldPanel("website"),

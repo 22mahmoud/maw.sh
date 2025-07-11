@@ -1,4 +1,4 @@
-from wagtail.admin.panels import FieldPanel, MultipleChooserPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, MultipleChooserPanel
 from wagtail.models import Page
 
 
@@ -23,5 +23,14 @@ def get_post_content_panels(include_body=True, include_tags=True, include_author
                 min_num=1,
             )
         )
+
+    panels.append(
+        MultiFieldPanel(  # type: ignore
+            [
+                FieldPanel("legacy_url_path"),
+            ],
+            heading="Legacy Migration",
+        )
+    )
 
     return panels

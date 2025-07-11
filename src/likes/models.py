@@ -2,12 +2,9 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from wagtail.fields import StreamField
 
 from src.base.models import PageTag
-from src.posts import (
-    BasePostPage,
-    BasePostsIndexPage,
-    get_post_content_panels,
-)
 from src.posts.blocks import LikeBlock
+from src.posts.models import BasePostPage, BasePostsIndexPage
+from src.posts.utils import get_post_content_panels
 
 
 class LikesPageIndex(BasePostsIndexPage):

@@ -116,6 +116,133 @@
             {% include_block block %}
           {% endfor %}
         {% endif %}
+
+        {% if page.webmentions %}
+          <div class="mt-16 pt-8 border-t border-primary/20 space-y-10">
+            <h2 class="text-2xl sm:text-3xl font-heading text-primary">
+              Webmentions
+            </h2>
+
+            {% if page.webmentions.likes %}
+              <div class="space-y-4">
+                <h3 class="text-lg font-medium text-primary">
+                  Likes <span class="text-base text-secondary font-normal">({{ page.webmentions.likes|length }})</span>
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                  {% for mention in page.webmentions.likes %}
+                    <a href="{{ mention.author.url }}"
+                       title="{{ mention.author.name }}"
+                       class="group block w-10 h-10 rounded-full overflow-hidden transition-all duration-200 hover:scale-110">
+                      <div class="w-full h-full ring-2 ring-transparent group-hover:ring-accent/70 rounded-full transition-all duration-200">
+                        {% if mention.author.photo %}
+                          {% picture mention.author.photo width-40 lading="lazy" class="w-full h-full object-cover" %}
+                        {% else %}
+                          <div class="flex items-center justify-center w-full h-full bg-neutral-700 text-primary font-bold text-lg">
+                            ?
+                          </div>
+                        {% endif %}
+                      </div>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+
+            {% if page.webmentions.reposts %}
+              <div class="space-y-4">
+                <h3 class="text-lg font-medium text-primary">
+                  Reposts <span class="text-base text-secondary font-normal">({{ page.webmentions.reposts|length }})</span>
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                  {% for mention in page.webmentions.reposts %}
+                    <a href="{{ mention.author.url }}"
+                       title="{{ mention.author.name }}"
+                       class="group block w-10 h-10 rounded-full overflow-hidden transition-all duration-200 hover:scale-110">
+                      <div class="w-full h-full ring-2 ring-transparent group-hover:ring-accent/70 rounded-full transition-all duration-200">
+                        {% if mention.author.photo %}
+                          {% picture mention.author.photo width-40 lading="lazy" class="w-full h-full object-cover" %}
+                        {% else %}
+                          <div class="flex items-center justify-center w-full h-full bg-neutral-700 text-primary font-bold text-lg">
+                            ?
+                          </div>
+                        {% endif %}
+                      </div>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+
+            {% if page.webmentions.bookmarks %}
+              <div class="space-y-4">
+                <h3 class="text-lg font-medium text-primary">
+                  Bookmarks <span class="text-base text-secondary font-normal">({{ page.webmentions.bookmarks|length }})</span>
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                  {% for mention in page.webmentions.bookmarks %}
+                    <a href="{{ mention.author.url }}"
+                       title="{{ mention.author.name }}"
+                       class="group block w-10 h-10 rounded-full overflow-hidden transition-all duration-200 hover:scale-110">
+                      <div class="w-full h-full ring-2 ring-transparent group-hover:ring-accent/70 rounded-full transition-all duration-200">
+                        {% if mention.author.photo %}
+                          {% picture mention.author.photo width-40 lading="lazy" class="w-full h-full object-cover" %}
+                        {% else %}
+                          <div class="flex items-center justify-center w-full h-full bg-neutral-700 text-primary font-bold text-lg">
+                            ?
+                          </div>
+                        {% endif %}
+                      </div>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+
+            {% if page.webmentions.replies %}
+              <div class="space-y-4">
+                <h3 class="text-lg font-medium text-primary">
+                  Replies <span class="text-base text-secondary font-normal">({{ page.webmentions.replies|length }})</span>
+                </h3>
+                <div class="flex flex-col gap-6">
+                  {% for mention in page.webmentions.replies %}
+                    <div class="flex gap-3 sm:gap-4">
+                      <div class="flex-shrink-0">
+                        <a href="{{ mention.author.url }}"
+                           class="group block w-10 h-10 rounded-full overflow-hidden">
+                          <div class="w-full h-full rounded-full ring-2 ring-transparent group-hover:ring-accent/70 transition-all duration-200">
+                            {% if mention.author.photo %}
+                              {% picture mention.author.photo width-40 lading="lazy" class="w-full h-full object-cover" %}
+                            {% else %}
+                              <div class="flex items-center justify-center w-full h-full bg-neutral-700 text-primary font-bold text-lg">
+                                ?
+                              </div>
+                            {% endif %}
+                          </div>
+                        </a>
+                      </div>
+                      <div class="flex-1 bg-darker p-3 sm:p-4 rounded-lg border border-primary/10">
+                        <div class="flex justify-between items-center text-sm mb-2">
+                          <a href="{{ mention.author.url }}"
+                             class="font-medium text-primary hover:text-accent transition-colors duration-200">
+                            {{ mention.author.name }}
+                          </a>
+                          <a href="{{ mention.url }}"
+                             class="text-xs text-secondary hover:underline"
+                             title="View original reply">
+                            <time datetime="{{ mention.published|date:'c' }}">{{ mention.published|date:"M j, Y" }}</time>
+                          </a>
+                        </div>
+                        <div class="prose prose-sm max-w-none text-primary/90 prose-a:text-accent prose-a:font-normal hover:prose-a:underline prose-strong:text-primary prose-code:text-accent-bright prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-blockquote:border-l-2 prose-blockquote:border-accent prose-blockquote:pl-4 prose-blockquote:text-secondary">
+                          {{ mention.content_html|safe }}
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
       </main>
 
       <footer class="bg-darker [&_a]:border-1! [&_a]:w-fit mt-8 border-t border-primary/20 p-4">

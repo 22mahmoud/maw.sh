@@ -38,7 +38,10 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = WAGTAIL_INSTALLED_APPS + [
     "django.contrib.admin",
     "django_vite",
+    "django.contrib.redirects",
     "django.contrib.auth",
+    "polymorphic",
+    "django.contrib.sites",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
@@ -47,6 +50,7 @@ INSTALLED_APPS = WAGTAIL_INSTALLED_APPS + [
 ]
 
 MIDDLEWARE = [
+    "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -148,6 +152,12 @@ STORAGES = {
         "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
     },
 }
+
+SITE_ID = 1
+
+WEBMENTION_DOMAIN = "maw.sh"  # e.g., maw.sh
+WEBMENTION_TOKEN = env.str("WEBMENTION_TOKEN")
+LEGACY_SITE_DOMAIN = "maw.sh"
 
 # lib settings
 from config.settings.django_storage import *  # noqa: E402, F403
