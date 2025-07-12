@@ -1,4 +1,11 @@
 providers = ["python", "node"]
 
+[phases."python:post"]
+dependsOn = ['node:build']
+cmds = [
+  "python manage.py collectstatic --noinput",
+  "python manage.py migrate --noinput",
+]
+
 [start]
-cmd = "./scripts/start"
+cmd = "gunicorn config.wsgi --workers 5 --bind 0.0.0.0:8000 --worker-class sync --timeout 60 --access-logfile - --error-logfile - --log-level info --max-requests 1000 --max-requests-jitter 100"
