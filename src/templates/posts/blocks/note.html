@@ -16,7 +16,8 @@
       {% for block in self.media %}
         <div class="relative aspect-square overflow-hidden border border-primary/10 shadow-md hover:shadow-lg transition-shadow duration-200">
           {% if block.block_type == 'image' %}
-            <a href="{% image_url block.value "original" %}">
+            {% image block.value original as full %}
+            <a href="{{ full.full_url }}">
               {% picture block.value format-{avif,webp,jpeg} width-800 class="u-photo w-full h-full object-cover hover:scale-105 transition-transform duration-300" %}
             </a>
           {% elif block.block_type == 'video' %}

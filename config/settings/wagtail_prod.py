@@ -8,3 +8,5 @@ WAGTAILFRONTENDCACHE = {
         "ZONEID": env.str("CLOUDFLARE_ZONEID", ""),
     },
 }
+
+WAGTAILIMAGES_RENDITION_STORAGE = "wagtailrenditions"

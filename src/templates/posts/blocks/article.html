@@ -12,9 +12,8 @@
     <div class="e-content prose prose-main prose-sm sm:prose-base lg:prose-lg max-w-none">
       {% for block in self.body %}
         {% if block.block_type == 'image' %}
-          <a href="{% image_url block.value "original" %}">
-            {% picture block.value format-{avif,webp,jpeg} width-768 class="mx-auto u-photo" %}
-          </a>
+          {% image block.value original as full %}
+          <a href="{{ full.full_url }}"> {% picture block.value format-{avif,webp,jpeg} width-768 class="mx-auto u-photo" %} </a>
         {% elif block.block_type == 'ordered_list' %}
           <ol>
             {% for item in block.value %}

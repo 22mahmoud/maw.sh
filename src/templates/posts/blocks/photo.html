@@ -10,7 +10,8 @@
             {% picture image format-{avif,webp,jpeg} width-400 alt=image.title class="u-photo w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" %}
           </div>
         {% else %}
-          <a href="{% image_url image "original" %}"
+          {% image image original as full %}
+          <a href="{{ full.full_url }}"
              class="cursor-pointer relative aspect-square overflow-hidden border border-primary/10 shadow-md hover:shadow-lg transition-shadow duration-200">
             {% picture image format-{avif,webp,jpeg} width-400 alt=image.title class="u-photo w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" %}
           </a>
