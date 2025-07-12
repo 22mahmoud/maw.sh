@@ -159,6 +159,17 @@ WEBMENTION_DOMAIN = "maw.sh"  # e.g., maw.sh
 WEBMENTION_TOKEN = env.str("WEBMENTION_TOKEN")
 LEGACY_SITE_DOMAIN = "maw.sh"
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": env.str("REDIS_LOCATION"),
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "PASSWORD": env.str("REDIS_PASSWORD", ""),
+        },
+    }
+}
+
 # lib settings
 from config.settings.django_storage import *  # noqa: E402, F403
 from config.settings.vite import *  # noqa: E402, F403
