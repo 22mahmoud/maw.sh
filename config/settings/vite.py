@@ -1,4 +1,9 @@
-from config.env import env
+from config.env import BASE_DIR, env
 
 # DJANGO_VITE = {"default": {"dev_mode": False}}
-DJANGO_VITE = {"default": {"dev_mode": env.bool("DEBUG", default=True)}}
+DJANGO_VITE = {
+    "default": {
+        "dev_mode": env.bool("DEBUG", default=True),
+        "manifest_path": BASE_DIR / "static" / "manifest.json",
+    }
+}
