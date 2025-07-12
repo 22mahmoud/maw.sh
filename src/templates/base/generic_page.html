@@ -2,7 +2,6 @@
 {% load wagtailcore_tags %}
 
 {% block content %}
-  <input class="form-input" />
   {% for block in page.body %}
     {% include_block block %}
   {% endfor %}
