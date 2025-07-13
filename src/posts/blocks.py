@@ -90,7 +90,7 @@ class ArticleBlock(blocks.StructBlock):
             (
                 "rich_text",
                 blocks.RichTextBlock(
-                    features=["bold", "italic", "link", "code"],
+                    features=["bold", "italic", "link", "code", "blockquote"],
                     help_text="Write your article content. Use headings (H2, H3) to structure your text",
                 ),
             ),

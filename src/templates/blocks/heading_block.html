@@ -1,25 +1,5 @@
-{% if self.size == 'h1' %}
-  <h1 class="font-heading">
-    {{ self.heading_text }}
-  </h1>
-{% elif self.size == 'h2' %}
-  <h2 class="font-heading">
-    {{ self.heading_text }}
-  </h2>
-{% elif self.size == 'h3' %}
-  <h3 class="font-heading">
-    {{ self.heading_text }}
-  </h3>
-{% elif self.size == 'h4' %}
-  <h4 class="font-heading">
-    {{ self.heading_text }}
-  </h4>
-{% elif self.size == 'h5' %}
-  <h5 class="font-heading">
-    {{ self.heading_text }}
-  </h5>
-{% elif self.size == 'h6' %}
-  <h6 class="font-heading">
-    {{ self.heading_text }}
-  </h6>
-{% endif %}
+{% load wagtailcore_tags %}
+
+<{{ self.size }}>
+{{ self.heading_text|richtext }}
+</{{ self.size }}>
