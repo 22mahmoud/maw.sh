@@ -2,6 +2,7 @@ from storages.backends.s3boto3 import S3Boto3Storage
 
 from config.env import env
 
+AWS_IS_GZIPPED = True
 AWS_S3_FILE_OVERWRITE = False
 AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME")
 AWS_S3_CUSTOM_DOMAIN = env.str("AWS_S3_CUSTOM_DOMAIN")
