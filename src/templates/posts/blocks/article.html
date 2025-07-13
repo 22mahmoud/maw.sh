@@ -13,7 +13,7 @@
       {% for block in self.body %}
         {% if block.block_type == 'image' %}
           {% image block.value original as full %}
-          <a href="{{ full.full_url }}"> {% picture block.value format-{avif,webp,jpeg} width-768 class="mx-auto u-photo" %} </a>
+          <a href="{{ full.full_url }}"> {% picture block.value format-{avif,webp,jpeg} width-768 class="mx-auto u-photo" loading="lazy" decoding="async" %} </a>
         {% else %}
           {{ block }}
         {% endif %}
