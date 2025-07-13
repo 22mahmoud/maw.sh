@@ -3,7 +3,6 @@ providers = ["python", "node"]
 [phases."python:post"]
 dependsOn = ['node:build']
 cmds = [
-  "python -m whitenoise.compress static",
   "python manage.py collectstatic --noinput --clear --verbosity 2",
   "python manage.py migrate --noinput",
 ]
