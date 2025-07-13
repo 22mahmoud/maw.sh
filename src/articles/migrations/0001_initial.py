@@ -100,7 +100,7 @@ class Migration(migrations.Migration):
                             ),
                             3: (
                                 "wagtail.blocks.ListBlock",
-                                (src.posts.blocks.ListItemBlock,),
+                                (src.posts.blocks.ListBlock,),
                                 {},
                             ),
                             4: (

@@ -5,37 +5,42 @@
 {% block content %}
   <div class="zigzag bg-dark h-full pt-6">
     <article class="flex flex-col h-full h-entry mx-auto max-w-3xl gap-6 py-4 px-4 sm:px-6">
-      <ul class="flex flex-wrap text-secondary items-center space-x-1 sm:space-x-2"
-          role="navigation"
-          aria-label="Breadcrumb">
-        <li>
-          <a href="{% slugurl 'home' %}"
-             class="h-breadcrumb transition-colors duration-200 hover:text-accent hover:underline">Home</a>
-        </li>
-        <span class="text-primary/50">/</span>
+      <nav aria-label="Breadcrumb">
+        <ul class="flex flex-wrap text-secondary items-center space-x-1 sm:space-x-2">
+          <!-- Home -->
+          <li class="flex items-center after:mx-1 after:text-primary/50 after:content-['/'] last:after:content-none">
+            <a href="{% slugurl 'home' %}"
+               class="h-breadcrumb transition-colors duration-200 hover:text-accent hover:underline">
+              Home
+            </a>
+          </li>
 
-        <li>
-          <a href="/feed/"
-             class="h-breadcrumb transition-colors duration-200 hover:text-accent hover:underline">Feed</a>
-        </li>
-        <span class="text-primary/50">/</span>
+          <!-- Feed -->
+          <li class="flex items-center after:mx-1 after:text-primary/50 after:content-['/'] last:after:content-none">
+            <a href="/feed/"
+               class="h-breadcrumb transition-colors duration-200 hover:text-accent hover:underline">
+              Feed
+            </a>
+          </li>
 
-        {% for p in self.get_ancestors %}
-          {% if not p.is_root and p.slug != "home" %}
-            <li>
-              <a href="{{ p.url }}"
-                 class="h-breadcrumb transition-colors duration-200 hover:text-accent hover:underline">
-                {{ p.title }}
-              </a>
-            </li>
-            <span class="text-primary/50">/</span>
-          {% endif %}
-        {% endfor %}
+          <!-- Ancestors -->
+          {% for p in self.get_ancestors %}
+            {% if not p.is_root and p.slug != "home" %}
+              <li class="flex items-center after:mx-1 after:text-primary/50 after:content-['/'] last:after:content-none">
+                <a href="{{ p.url }}"
+                   class="h-breadcrumb transition-colors duration-200 hover:text-accent hover:underline">
+                  {{ p.title }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
 
-        <li class="h-breadcrumb p-name text-primary font-medium truncate max-w-[10rem] sm:max-w-none">
-          {{ self.title }}
-        </li>
-      </ul>
+          <!-- Current page (no slash after this one) -->
+          <li class="h-breadcrumb p-name text-primary font-medium truncate max-w-[10rem] sm:max-w-none">
+            {{ self.title }}
+          </li>
+        </ul>
+      </nav>
 
       <header class="px-4 bg-darker flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm py-4 border-b border-primary/20">
         <div class="flex items-center flex-wrap gap-3 sm:gap-4 flex-1 min-w-0">

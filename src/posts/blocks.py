@@ -5,19 +5,8 @@ from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtailmedia.blocks import VideoChooserBlock
 
-from src.base.blocks import CodeBlock
+from src.base.blocks import CodeBlock, ListBlock
 from src.base.blocks.text import HeadingBlock
-
-
-class ListItemBlock(blocks.StructBlock):
-    content = blocks.StreamBlock(
-        [
-            ("text", blocks.RichTextBlock(features=["bold", "italic", "link", "code"])),
-            ("code", CodeBlock()),
-            ("image", ImageChooserBlock()),
-        ],
-        use_json_field=True,
-    )
 
 
 class VideoStreamBlock(blocks.StreamBlock):
@@ -111,7 +100,7 @@ class ArticleBlock(blocks.StructBlock):
                     help_text="Choose an image from your media library to display alongside content"
                 ),
             ),
-            ("ordered_list", blocks.ListBlock(ListItemBlock)),
+            ("list", ListBlock()),
             ("codeblock", CodeBlock()),
             ("video", VideoChooserBlock()),
             ("embed", EmbedBlock()),
