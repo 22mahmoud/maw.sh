@@ -17,6 +17,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 class StaticR2Storage(CompressedManifestStaticFilesStorage, S3Boto3Storage):
     location = "static"
     default_acl = "public-read"
+    file_overwrite = True
     object_parameters = {
         "CacheControl": "public, max-age=31536000, s-maxage=31536000, immutable"
     }
