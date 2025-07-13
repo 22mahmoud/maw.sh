@@ -41,3 +41,10 @@ LOGGING = {
         },
     },
 }
+
+
+def whitenoise_headers(headers, path, url):
+    headers["accept-encoding"] = "gzip, deflate, br"
+
+
+WHITENOISE_ADD_HEADERS_FUNCTION = whitenoise_headers
