@@ -36,7 +36,8 @@
     {% vite_asset 'src/resources/js/app.ts' %}
   </head>
 
-  <body class="flex flex-col h-full bg-darker text-primary max-w-6xl mx-auto">
+  <body hx-ext="preload"
+        class="flex flex-col h-full bg-darker text-primary max-w-6xl mx-auto">
     <a id="top"></a>
     {% wagtailuserbar %}
 
