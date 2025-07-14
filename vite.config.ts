@@ -15,6 +15,11 @@ export default defineConfig({
     outDir: path.resolve('./static'),
     emptyOutDir: true,
     rollupOptions: {
+      output: {
+        advancedChunks: {
+          groups: [{ name: 'vendor', test: /node_modules\/htmx\.org\// }],
+        },
+      },
       input: {
         app: 'src/resources/js/app.ts',
         admin: 'src/resources/js/admin.ts',

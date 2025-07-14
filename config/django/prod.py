@@ -1,3 +1,5 @@
+import re
+
 from config.env import env
 from config.settings.wagtail_prod import *  # noqa: E402, F403
 
@@ -41,3 +43,10 @@ LOGGING = {
         },
     },
 }
+
+
+def immutable_file_test(_, url):
+    return re.match(r"^.+[.-][0-9a-zA-Z_-]{8,12}\..+$", url)
+
+
+WHITENOISE_IMMUTABLE_FILE_TEST = immutable_file_test
