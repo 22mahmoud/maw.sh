@@ -1,5 +1,6 @@
 import ast
 import json
+import re
 from importlib import import_module
 
 from django import template
@@ -59,3 +60,8 @@ def resolve_classes(block, cva_key, props=None, **kwargs):
     props = props or {}
     props.update(kwargs)
     return cva_fn(props)
+
+
+@register.filter
+def strip_p_tags(value):
+    return re.sub(r"</?p[^>]*>", "", value)

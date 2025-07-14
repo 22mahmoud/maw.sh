@@ -1,5 +1,20 @@
-{% load wagtailcore_tags %}
+{% load base_tags wagtailcore_tags %}
 
-<{{ self.size }}>
-{{ self.heading_text|richtext }}
-</{{ self.size }}>
+{% with heading_id=self.heading_text.source|striptags|slugify %}
+  <{{ self.size|default:"h2" }}
+  {% if self.use_anchor %}
+    id="{{ heading_id }}"
+  {% endif %}
+  class="scroll-mt-24 text-primary font-heading font-bold tracking-tight"
+  >
+  {{ self.heading_text.source|strip_p_tags|richtext }}
+  {% if self.use_anchor %}
+    <a href="#{{ heading_id }}"
+       class="inline-block ml-2 text-secondary align-baseline transition-all duration-200 transform hover:text-accent hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent/50 rounded-sm"
+       aria-label="Anchor link for this section">
+      {% get_icon 'paperclip' as icon %}
+      {% include icon with fill="currentColor" class="w-5 h-5" %}
+    </a>
+  {% endif %}
+  </{{ self.size|default:"h2" }}>
+{% endwith %}

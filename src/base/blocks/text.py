@@ -19,6 +19,8 @@ class HeadingBlock(blocks.StructBlock):
         required=False,
     )
 
+    use_anchor = blocks.BooleanBlock(required=False, default=False)
+
     class Meta:  # type: ignore
         icon = "title"
         template = "blocks/heading_block.html"
