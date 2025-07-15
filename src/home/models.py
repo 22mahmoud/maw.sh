@@ -10,6 +10,7 @@ from wagtailmedia.blocks import VideoChooserBlock
 
 from src.base.blocks.button import ButtonBlock
 from src.base.blocks.hero import HeroBlock
+from src.base.blocks.layout import FlexLayoutBlock
 from src.base.blocks.link import SocialLinkStreamBlock
 from src.base.models import Person
 from src.clients.blocks import ClientsMarqueeStaticBlock
@@ -29,6 +30,7 @@ class HomePage(PaginatedArchiveMixin, RoutablePageMixin, SeoMetaFields, Page):  
             ("social_links", SocialLinkStreamBlock()),
             ("Video", VideoChooserBlock()),
             ("button", ButtonBlock()),
+            ("flex_layout", FlexLayoutBlock()),
         ],
         use_json_field=True,
         blank=True,

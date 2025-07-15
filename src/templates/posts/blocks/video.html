@@ -1,27 +1,34 @@
 {% load base_tags wagtailcore_tags wagtailembeds_tags %}
 
 {% block content %}
-  <div class="e-content flex flex-col gap-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+  {# The main container adjusts its spacing based on the layout context. #}
+  <div class="e-content flex flex-col
+              {% if layout == 'compact' or layout == 'preview' %}
+                gap-2
+              {% else %}
+                gap-4
+              {% endif %}">
+
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2
+                {% if layout != 'compact' and layout != 'preview' %}
+                  lg:grid-cols-3 lg:gap-4
+                {% endif %}">
       {% for video_block in value.videos %}
-        <div class="relative overflow-hidden border border-primary/10 shadow-md hover:shadow-lg transition-shadow duration-200">
-          {% if video_block.block_type == 'video_embed' %}
-            <div class="u-video w-full h-full **:w-full **:h-full *:object-cover">
-              {{ video_block }}
-            </div>
-          {% elif video_block.block_type == 'video' %}
-            <div class="u-video w-full h-full *:w-full *:h-full *:object-cover">
-              {{ video_block }}
+        <div class="group relative aspect-video overflow-hidden border border-primary/10 shadow-sm transition-all duration-300 hover:shadow-xl">
+          {% if video_block.block_type == 'video_embed' or video_block.block_type == 'video' %}
+            <div class="u-video h-full w-full *:h-full *:w-full *:object-cover *:transition-transform *:duration-300 group-hover:*:scale-105">
+              {% include_block video_block %}
             </div>
           {% endif %}
         </div>
       {% endfor %}
     </div>
 
-    {% if value.caption %}
+    {% if layout != 'compact' and value.caption %}
       <div class="prose prose-main max-w-none">
         {{ value.caption | richtext }}
       </div>
     {% endif %}
+
   </div>
 {% endblock content %}

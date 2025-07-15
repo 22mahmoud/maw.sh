@@ -28,7 +28,7 @@
                                   transform transition-transform duration-200 hover:scale-110 hover:z-10
                                 {% endif %}"
                          href="{% routablepageurl page.get_site.root_page.specific 'posts_by_author' author.slug %}">
-                        {% picture author.image format-{avif,webp,jpeg} width-200 alt=author.full_name class="u-photo w-full h-full object-cover rounded-full" %}
+                        {% picture author.image format-{avif,webp,jpeg} width-64 alt=author.full_name class="u-photo w-full h-full object-cover rounded-full" %}
                       </a>
                     {% endfor %}
                   </div>
@@ -41,7 +41,7 @@
                   </a>
                 </header>
 
-                {% include_block block with is_preview=True %}
+                {% include_block block with layout="preview" %}
               </div>
             </article>
           {% endfor %}

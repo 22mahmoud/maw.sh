@@ -1,29 +1,29 @@
 {% load wagtailcore_tags base_tags %}
 
-{% block content %}
-  <div class="prose prose-main flex flex-col prose-sm sm:prose-base">
-    <blockquote class="p-summary flex flex-col">
-      <div class="flex flex-wrap items-center gap-x-2">
-        {% get_icon "chat-circle-dots" as icon %}
-        {% include icon with class="w-5 h-5 fill-primary" %}
-        Reply to  <a class="u-in-reply-to" href="{{ self.in_reply_to }}">
-        {% if self.reply_title %}
-          {{ self.reply_title }}
-        {% else %}
-          {{ self.in_reply_to }}
-        {% endif %}
+<div class="flex flex-col gap-4">
+  <div class="p-name prose prose-main flex max-w-none items-center gap-x-2 text-base">
+    {% get_icon "chat-circle-dots" as icon %}
+    {% include icon with class="h-5 w-5 shrink-0 fill-reply" %}
+    <span>
+      Reply to
+      <a class="u-in-reply-to h-cite text-accent underline-offset-2 hover:underline"
+         href="{{ self.in_reply_to }}">
+        <span class="p-name">{{ self.reply_title|default:self.in_reply_to }}</span>
       </a>
-    </div>
-
-    {% if self.description %}
-      <p>
-        {{ self.description }}
-      </p>
-    {% endif %}
-  </blockquote>
-
-  <div class="p-content max-w-none">
-    {{ self.content | richtext }}
+    </span>
   </div>
+
+  {% if layout != 'compact' and self.description %}
+    <div class="prose prose-main prose-sm max-w-none sm:prose-base">
+      <blockquote>
+        {{ self.description }}
+      </blockquote>
+    </div>
+  {% endif %}
+
+  {% if self.content %}
+    <div class="e-content prose prose-main max-w-none">
+      {{ self.content|richtext }}
+    </div>
+  {% endif %}
 </div>
-{% endblock content %}

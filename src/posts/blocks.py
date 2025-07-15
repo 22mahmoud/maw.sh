@@ -9,6 +9,13 @@ from src.base.blocks import CodeBlock, ListBlock
 from src.base.blocks.text import HeadingBlock
 
 
+def resolve_block_template(block_type: str, layout: str | None = None) -> str:
+    if not layout:
+        return f"posts/blocks/{block_type}.html"
+
+    return f"posts/blocks/{block_type}_{layout}.html"
+
+
 class VideoStreamBlock(blocks.StreamBlock):
     video_embed = EmbedBlock(
         label="Video URL (YouTube, Vimeo, etc.)",
@@ -66,11 +73,8 @@ class NoteBlock(blocks.StructBlock):
     )
 
     def get_template(self, _, context=None):  # type: ignore
-        is_preview = context.get("is_preview", False)  # type: ignore
-        if is_preview:
-            return "posts/blocks/note_preview.html"
-        else:
-            return "posts/blocks/note.html"
+        layout = context.get("layout", None) if context else None
+        return resolve_block_template("note", layout)
 
     class Meta:  # type: ignore
         icon = "doc-full"
@@ -110,11 +114,8 @@ class ArticleBlock(blocks.StructBlock):
     )
 
     def get_template(self, _, context=None):  # type: ignore
-        is_preview = context.get("is_preview", False)  # type: ignore
-        if is_preview:
-            return "posts/blocks/article_preview.html"
-        else:
-            return "posts/blocks/article.html"
+        layout = context.get("layout", None) if context else None
+        return resolve_block_template("article", layout)
 
     class Meta:  # type: ignore
         icon = "doc-full"

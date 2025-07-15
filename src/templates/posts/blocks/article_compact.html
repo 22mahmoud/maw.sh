@@ -1,0 +1,45 @@
+{% load base_tags %}
+{% load wagtailimages_tags wagtailroutablepage_tags wagtailcore_tags %}
+
+<article class="h-entry flex flex-col group bg-darker shadow-sm hover:shadow-md transition duration-300 min-h-32">
+  <div hidden>
+    {% for author in post.authors %}
+      <a class="h-card"
+         href="{% routablepageurl page.get_site.root_page.specific 'posts_by_author' author.slug %}">
+        {% picture author.image format-{avif,webp,jpeg} width-64 alt=author.full_name class="u-photo" %}
+      </a>
+    {% endfor %}
+  </div>
+
+  {% if post.get_tags %}
+    <ul hidden>
+      {% for tag in post.get_tags %}
+        <li>
+          <a href="{{ tag.url }}" class="p-category">
+            #{{ tag }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <a class="u-url flex-1 flex flex-col justify-between gap-2 h-full p-4"
+     href="{% pageurl post %}">
+    <h3 class="p-name font-heading text-2xl font-bold text-primary group-hover:text-accent line-clamp-2 transition-colors duration-300">
+      {{ post.title }}
+    </h3>
+
+    <time class="dt-published text-sm text-secondary flex gap-1 items-center group-hover:text-accent transition-colors duration-300"
+          datetime="{{ post.first_published_at|date:'c' }}">
+      {% get_icon "calendar-blank" as icon %}
+      {% include icon with class="w-4 h-4 fill-secondary group-hover:fill-accent transition-colors duration-300" %}
+      {{ post.first_published_at|date:"F j, Y" }}
+    </time>
+
+    {% if post.summary %}
+      <p hidden class="p-summary">
+        {{ post.summary }}
+      </p>
+    {% endif %}
+  </a>
+</article>

@@ -1,30 +1,29 @@
 {% load wagtailcore_tags base_tags %}
 
-{% block content %}
-  <div class="prose prose-main flex flex-col prose-sm sm:prose-base">
-    <blockquote class="p-summary flex flex-col">
-      <div class="flex flex-wrap items-center gap-x-2">
-        {% get_icon "share-fat" as icon %}
-        {% include icon with class="w-5 h-5 fill-primary" %}
-        Bookmarked <a class="u-bookmark-of" href="{{ self.bookmark_of }}">
-        {% if self.title %}
-          {{ self.title }}
-        {% else %}
-          {{ self.bookmark_of }}
-        {% endif %}
+<div class="flex flex-col gap-4">
+  <div class="p-name prose prose-main flex max-w-none items-center gap-x-2 text-base">
+    {% get_icon "bookmark-simple" as icon %}
+    {% include icon with class="h-5 w-5 shrink-0 fill-bookmark" %}
+    <span>
+      Bookmarked
+      <a class="u-bookmark-of h-cite text-accent underline-offset-2 hover:underline"
+         href="{{ self.bookmark_of }}">
+        <span class="p-name">{{ self.title|default:self.bookmark_of }}</span>
       </a>
-    </div>
-
-    {% if self.description %}
-      <p>
-        {{ self.description }}
-      </p>
-    {% endif %}
-  </blockquote>
-
-  <div class="e-content max-w-none">
-    {{ self.content | richtext }}
+    </span>
   </div>
-</div>
 
-{% endblock content %}
+  {% if layout != 'compact' and self.description %}
+    <div class="prose prose-main prose-sm max-w-none sm:prose-base">
+      <blockquote>
+        {{ self.description }}
+      </blockquote>
+    </div>
+  {% endif %}
+
+  {% if self.notes %}
+    <div class="e-content prose prose-main max-w-none">
+      {{ self.notes|richtext }}
+    </div>
+  {% endif %}
+</div>

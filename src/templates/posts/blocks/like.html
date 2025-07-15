@@ -1,29 +1,26 @@
 {% load wagtailcore_tags base_tags %}
 
-{% block content %}
-  <div class="prose prose-main flex flex-col prose-sm sm:prose-base">
-    <blockquote class="p-summary flex flex-col">
-      <div class="flex flex-wrap items-center gap-x-2">
-        {% get_icon "heart" as icon %}
-        {% include icon with class="w-5 h-5 fill-red-600" %}
-        Liked <a class="u-like-of" href="{{ self.like_of }}">
-        {% if self.title %}
-          {{ self.title }}
-        {% else %}
-          {{ self.like_of }}
-        {% endif %}
+<div class="prose prose-main">
+  <div class="flex items-center text-sm sm:text-base">
+    {% get_icon "heart" as icon %}
+    {% include icon with class="inline-block h-5 w-5 shrink-0 fill-like mr-2" %}
+
+    <div class="p-summary">
+      Liked
+      <a class="u-like-of h-cite font-semibold text-accent underline-offset-2 hover:underline"
+         href="{{ self.like_of }}">
+        <span class="p-name">
+          {{ self.title|default:self.like_of }}
+        </span>
       </a>
     </div>
-    {% if self.description %}
+  </div>
+
+  {% if layout != 'compact' and self.description %}
+    <blockquote class="e-content mt-2 border-l-2 pl-4 text-sm text-secondary">
       <p>
         {{ self.description }}
       </p>
-    {% endif %}
-  </blockquote>
-
-  <div class="e-content max-w-none">
-    {{ self.content | richtext }}
-  </div>
+    </blockquote>
+  {% endif %}
 </div>
-
-{% endblock content %}

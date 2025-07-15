@@ -1,0 +1,48 @@
+{% load base_tags %}
+{% load wagtailimages_tags wagtailroutablepage_tags wagtailcore_tags %}
+
+<div class="zigzag px-2 py-2 bg-dark flex flex-col gap-4">
+  <div class="flex items-center justify-between">
+    <h2 class="font-heading text-3xl font-bold">
+      {{ self.heading }}
+    </h2>
+    {% make_dict size="md" variant="default" as props %}
+    {% make_dict text="See all" props=props url="/feed" as see_all_link %}
+    {% include "blocks/link_block.html" with value=see_all_link %}
+  </div>
+
+  <ul class="h-feed flex flex-col gap-2">
+    {% for post in posts %}
+      <li>
+        {% for block in post.body %}
+          <article class="h-entry mx-auto max-w-2xl shadow bg-gradient-to-b from-gradient-1 to-gradient-2 ps-[2px]">
+            <div class="flex flex-col py-2 px-4 bg-darker gap-2">
+              <header class="flex items-center gap-1">
+                <div class="flex">
+                  {% for author in post.authors %}
+                    <a class="h-card w-8 h-8 rounded-full first:ml-0 border-2 border-solid border-darker -ml-4
+                              {% if post.authors|length > 1 %}
+                                transform transition-transform duration-200 hover:scale-110 hover:z-10
+                              {% endif %}"
+                       href="{% routablepageurl page.get_site.root_page.specific 'posts_by_author' author.slug %}">
+                      {% picture author.image format-{avif,webp,jpeg} width-64 alt=author.full_name class="u-photo w-full h-full object-cover rounded-full" %}
+                    </a>
+                  {% endfor %}
+                </div>
+
+                <a class="u-url text-sm text-secondary" href="{% pageurl post %}">
+                  <time class="dt-published"
+                        datetime="{{ post.first_published_at|date:'c' }}">
+                    {{ post.first_published_at|date:"F j, Y \\a\\t g:i A" }}
+                  </time>
+                </a>
+              </header>
+
+              {% include_block block with layout="compact" %}
+            </div>
+          </article>
+        {% endfor %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
