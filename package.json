@@ -17,16 +17,16 @@
   "packageManager": "pnpm@10.12.1",
   "devDependencies": {
     "@biomejs/biome": "2.1.1",
-    "@shikijs/transformers": "^3.7.0",
+    "@shikijs/transformers": "^3.8.0",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
-    "@types/node": "^24.0.13",
-    "shiki": "^3.7.0",
+    "@types/node": "^24.0.14",
+    "shiki": "^3.8.0",
     "shiki-transformer-copy-button": "^0.0.5",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
-    "vite": "npm:rolldown-vite@latest"
+    "vite": "npm:rolldown-vite@^7.0.9"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
