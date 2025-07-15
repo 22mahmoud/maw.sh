@@ -16,7 +16,7 @@
     {% for block in value.media %}
       <div class="relative aspect-square overflow-hidden border border-primary/10 shadow-md hover:shadow-lg transition-shadow duration-200">
         {% if block.block_type == 'image' %}
-          {% picture block.value format-{avif,webp,jpeg} width-400 class="u-photo w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" %}
+          {% picture block.value format-{avif,webp,jpeg} width-400 class="u-photo w-full h-full object-cover hover:scale-105 transition-transform duration-300" %}
         {% elif block.block_type == 'video' %}
           <div class="u-video w-full h-full *:w-full *:h-full *:object-cover *:hover:scale-105 *:transition-transform *:duration-300">
             {{ block }}
