@@ -31,10 +31,10 @@ LINK_ICON_CVA = cva(
     base="transition-colors",
     variants={
         "variant": {
-            "default": "fill-primary group-hover:fill-accent",
-            "icon": "fill-primary group-hover:fill-accent",
-            "nav": "fill-white group-hover:fill-accent",
-            "nav_active": "fill-accent",
+            "default": "text-primary group-hover:text-accent",
+            "icon": "text-primary group-hover:text-accent",
+            "nav": "text-white group-hover:text-accent",
+            "nav_active": "text-accent",
         },
         "size": {
             "sm": "w-4 h-4",
@@ -61,28 +61,30 @@ def link(
     suffix_icon: str | None = None,
     href: str | None = None,
     nav_active: bool = False,
+    icon_class: str | None = None,
     **kwargs,
 ):
     """
     Renders a link component with variants and flexible icon support.
     """
     user_classes = kwargs.pop("class", "")
+    user_icon_classes = icon_class or ""
 
-    # Determine content structure
     is_icon_only = bool(icon) and not (text or prefix_icon or suffix_icon)
 
-    # Prepare attributes
     attrs = {"href": href} if href else {}
     attrs.update(kwargs)
 
-    # Handle aria-label for accessibility, especially for icon-only links
+    for key, value in kwargs.items():
+        html_attr_key = key.replace("_", "-")
+        attrs[html_attr_key] = value
+
     if "aria-label" not in attrs:
         if is_icon_only and icon:
             attrs["aria-label"] = icon.replace("-", " ").title()
         elif text:
             attrs["aria-label"] = text
 
-    # Handle aria-current for active navigation links
     if nav_active:
         attrs["aria-current"] = "page"
 
@@ -91,24 +93,14 @@ def link(
     ]
     wrapper_attrs = mark_safe(" ".join(attr_parts))
 
-    # Handle variant for active nav state
-    final_variant = "nav" if nav_active else variant
+    final_variant = "nav_active" if nav_active else variant
 
-    # Compute CSS classes
     cva_props = {"variant": final_variant, "size": size}
     cva_wrapper_class = LINK_CVA(cva_props)
     cva_icon_class = LINK_ICON_CVA(cva_props)
 
-    # Special handling for active nav links to override hover styles
-    if nav_active:
-        cva_wrapper_class = cva_wrapper_class.replace(
-            "hover:text-accent", "text-accent"
-        )
-        cva_icon_class = cva_icon_class.replace(
-            "group-hover:fill-accent", "fill-accent"
-        )
-
     final_wrapper_class = f"{cva_wrapper_class} {user_classes}".strip()
+    final_icon_class = f"{cva_icon_class} {user_icon_classes}".strip()
 
     return {
         "text": text,
@@ -117,5 +109,5 @@ def link(
         "suffix_icon": suffix_icon,
         "wrapper_attrs": wrapper_attrs,
         "wrapper_class": final_wrapper_class,
-        "icon_class": cva_icon_class,
+        "icon_class": final_icon_class,
     }

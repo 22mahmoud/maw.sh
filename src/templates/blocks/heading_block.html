@@ -1,4 +1,4 @@
-{% load base_tags wagtailcore_tags %}
+{% load link_tags base_tags wagtailcore_tags %}
 
 {% with heading_id=self.heading_text.source|striptags|slugify %}
   <{{ self.size|default:"h2" }}
@@ -9,11 +9,7 @@
   >
   {{ self.heading_text.source|strip_p_tags|richtext }}
   {% if self.use_anchor %}
-    <a href="#{{ heading_id }}"
-       class="inline-block ml-2 text-secondary align-baseline transition-all duration-200 transform hover:text-accent hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent/50 rounded-sm"
-       aria-label="Anchor link for this section">
-      {% icon "paperclip" fill="currentColor" class="w-5 h-5" %}
-    </a>
+    {% link icon="paperclip" href="#"|add:heading_id size="md" icon_class="w-5! h-5! text-secondary! hover:text-accent!" aria_label="Anchor link for this section" class="ml-2 align-baseline transition-all duration-200 transform hover:scale-110" %}
   {% endif %}
   </{{ self.size|default:"h2" }}>
 {% endwith %}

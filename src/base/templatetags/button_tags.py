@@ -43,11 +43,11 @@ BUTTON_ICON_CVA = cva(
     base="",
     variants={
         "variant": {
-            "primary": "fill-darker",
-            "secondary": "fill-primary",
-            "outline": "fill-primary group-hover:fill-black",
-            "muted": "fill-neutral-300 group-hover:fill-primary",
-            "disabled": "fill-secondary",
+            "primary": "text-darker",
+            "secondary": "text-primary",
+            "outline": "text-primary group-hover:text-black",
+            "muted": "text-neutral-300 group-hover:text-primary",
+            "disabled": "text-secondary",
         },
         "size": {
             "sm": "w-4 h-4",
@@ -120,6 +120,10 @@ def button(
             attrs["disabled"] = True
 
     attrs.update(kwargs)
+
+    for key, value in kwargs.items():
+        html_attr_key = key.replace("_", "-")
+        attrs[html_attr_key] = value
 
     if "aria-label" not in attrs:
         if is_icon_only and icon:
