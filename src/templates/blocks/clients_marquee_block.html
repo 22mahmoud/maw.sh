@@ -1,14 +1,14 @@
 {% load wagtailimages_tags %}
 
-<div class="bg-darker py-3 px-2">
-  <div class="group flex overflow-hidden [--gap:2rem]">
-    <div class="flex items-center [gap:var(--gap)] animate-marquee group-hover:[animation-play-state:paused]">
+<div class="bg-darker py-4 px-2">
+  <div class="relative overflow-hidden">
+    <div class="flex animate-marquee whitespace-nowrap [--gap:1.5rem] group hover:[animation-play-state:paused]">
       {% with ""|center:2 as range %}
         {% for _ in range %}
           {% for client in clients %}
-            <div class="flex shrink-0">
-              <div class="filter grayscale brightness-125 contrast-60 opacity-90 transition-all duration-300 hover:grayscale-0 hover:brightness-100 hover:contrast-100 hover:opacity-100">
-                {% picture client.logo format-{avif,webp,jpeg} height-32 class="h-full w-full" %}
+            <div class="flex items-center mx-[calc(var(--gap)/2)] shrink-0">
+              <div class="h-6 md:h-7 lg:h-8 w-auto transition-all duration-300 filter grayscale brightness-110 contrast-75 opacity-90 hover:grayscale-0 hover:brightness-100 hover:contrast-100 hover:opacity-100">
+                {% picture client.logo format-{avif,webp,jpeg} height-48 class="h-full w-auto" %}
               </div>
             </div>
           {% endfor %}
