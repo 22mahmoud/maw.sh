@@ -31,8 +31,7 @@
 
     <time class="dt-published text-sm text-secondary flex gap-1 items-center group-hover:text-accent transition-colors duration-300"
           datetime="{{ post.first_published_at|date:'c' }}">
-      {% get_icon "calendar-blank" as icon %}
-      {% include icon with class="w-4 h-4 fill-secondary group-hover:fill-accent transition-colors duration-300" %}
+      {% icon "calendar-blank" class="w-4 h-4 fill-secondary group-hover:fill-accent transition-colors duration-300" %}
       {{ post.first_published_at|date:"F j, Y" }}
     </time>
 

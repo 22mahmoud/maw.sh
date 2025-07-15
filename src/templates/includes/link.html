@@ -1,0 +1,20 @@
+{% load base_tags %}
+
+<a {{ wrapper_attrs|safe }} class="{{ wrapper_class }}">
+  {% if icon %}
+    {% icon icon class=icon_class %}
+  {% endif %}
+
+  {% if prefix_icon %}
+    {% icon prefix_icon class=icon_class %}
+  {% endif %}
+
+  {% if text %}
+    {# No extra text_class needed as LINK_CVA handles text color #}
+    <span>{{ text }}</span>
+  {% endif %}
+
+  {% if suffix_icon %}
+    {% icon suffix_icon class=icon_class %}
+  {% endif %}
+</a>

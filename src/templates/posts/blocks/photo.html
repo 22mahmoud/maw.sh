@@ -34,8 +34,7 @@
       {% if value.taken_date %}
         <time class="dt-photo flex items-center gap-2">
           <span class="inline-flex items-center gap-2">
-            {% get_icon 'camera' as icon %}
-            {% include icon with class="h-4 w-4 fill-accent sm:h-5 sm:w-5" %}
+            {% icon "camera" class="h-4 w-4 fill-accent sm:h-5 sm:w-5" %}
             <span>
               Taken on {{ value.taken_date|date:"F j, Y" }}
             </span>
@@ -45,8 +44,7 @@
 
       {% if value.location %}
         <div class="p-location flex items-center gap-2">
-          {% get_icon 'map-pin' as icon %}
-          {% include icon with class="h-4 w-4 fill-accent sm:h-5 sm:w-5" %}
+          {% icon "map-pin" class="h-4 w-4 fill-accent sm:h-5 sm:w-5" %}
           <span>
             {{ value.location }}
           </span>

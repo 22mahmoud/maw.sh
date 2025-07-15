@@ -1,4 +1,4 @@
-{% load base_tags %}
+{% load link_tags %}
 {% load wagtailcore_tags %}
 
 <div class="zigzag px-2 py-2 bg-dark flex flex-col gap-4">
@@ -6,9 +6,8 @@
     <h2 class="font-heading text-3xl font-bold">
       {{ self.heading }}
     </h2>
-    {% make_dict size="md" variant="default" as props %}
-    {% make_dict text="See all" props=props url="/blog" as see_all_link %}
-    {% include "blocks/link_block.html" with value=see_all_link %}
+
+    {% link text="See all" href="/blog" size="md" variant="default" suffix_icon="arrow-right" %}
   </div>
 
   <ul class="h-feed grid grid-cols-2 md:grid-cols-1 gap-2">

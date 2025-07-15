@@ -1,27 +1,3 @@
-{% load base_tags %}
-{% resolve_classes "src.base.blocks.link" "link" value.props as wrapper_class %}
-{% resolve_classes "src.base.blocks.link" "link_icon" value.props as icon_class %}
-{% resolve_classes "src.base.blocks.link" "link_text" value.props as text_class %}
+{% load link_tags %}
 
-<a href="{{ value.url }}"
-   class="{{ wrapper_class }} {{ value.wrapper_class }}"
-   {% if value.get_aria_label %}
-     aria-label="{{ value.get_aria_label }}"
-   {% endif %}
-   {% if value.props.variant == "nav_active" %}
-     aria-current="page"
-   {% endif %}>
-
-  {% if value.icon %}
-    {% get_icon value.icon as icon %}
-    {% include icon with class=icon_class %}
-  {% endif %}
-
-  {% if value.text %}
-    <span class="{{ text_class }} {{ value.wrapper_class }}">{{ value.text }}</span>
-  {% endif %}
-
-  {% if value.sr_text %}
-    <span class="sr-only">{{ value.sr_text }}</span>
-  {% endif %}
-</a>
+{% link text=value.text icon=value.icon prefix_icon=value.prefix_icon suffix_icon=value.suffix_icon size=value.size href=value.url %}
