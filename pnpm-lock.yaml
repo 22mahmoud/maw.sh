@@ -11,9 +11,6 @@ importers:
       '@hotwired/stimulus':
         specifier: ^3.2.2
         version: 3.2.2
-      htmx-ext-preload:
-        specifier: ^2.1.1
-        version: 2.1.1
       htmx.org:
         specifier: ^2.0.6
         version: 2.0.6
@@ -596,9 +593,6 @@ packages:
 
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
-
-  htmx-ext-preload@2.1.1:
-    resolution: {integrity: sha512-Gm9NJTMgbR4OAhZ8a4abkBSVccuI+yCVJs5Nrsn2mWDv+Ha5bSwSw8Bc4Y8D+TCaeNSFd8Qz/fe1sqBIVmv0GA==}
 
   htmx.org@2.0.6:
     resolution: {integrity: sha512-7ythjYneGSk3yCHgtCnQeaoF+D+o7U2LF37WU3O0JYv3gTZSicdEFiI/Ai/NJyC5ZpYJWMpUb11OC5Lr6AfAqA==}
@@ -1329,10 +1323,6 @@ snapshots:
       space-separated-tokens: 2.0.2
 
   html-void-elements@3.0.0: {}
-
-  htmx-ext-preload@2.1.1:
-    dependencies:
-      htmx.org: 2.0.6
 
   htmx.org@2.0.6: {}
 
