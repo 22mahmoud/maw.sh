@@ -4,7 +4,8 @@
       class="w-full flex flex-col gap-4"
       hx-post="{% url 'contact' %}"
       hx-target="#contact-form"
-      hx-swap="outerHTML">
+      hx-swap="outerHTML"
+      hx-trigger="recaptchaSubmit">
 
   <div class="w-full flex-1 flex flex-col md:flex-row gap-4">
     {% field
@@ -43,7 +44,9 @@
   error_message=form.message.errors.as_text
   %}
 
-  {{ form.captcha }}
+  <input type="hidden"
+         name="g-recaptcha-response"
+         id="contact-recaptcha-token-input">
 
   {% button
     size="md"

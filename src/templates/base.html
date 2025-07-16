@@ -34,6 +34,9 @@
 
     {% vite_hmr_client %}
     {% vite_asset 'src/resources/js/app.ts' %}
+
+    {% block head %}
+    {% endblock head %}
   </head>
 
   <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'
