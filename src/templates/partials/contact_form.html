@@ -1,0 +1,62 @@
+{% load base_tags button_tags field_tags %}
+
+<form id="contact-form"
+      class="w-full flex flex-col gap-4"
+      hx-post="{% url 'contact' %}"
+      hx-target="#contact-form"
+      hx-swap="outerHTML">
+
+  <div class="w-full flex-1 flex flex-col md:flex-row gap-4">
+    {% field
+    name="email"
+    label="Email"
+    autocomplete="email"
+    placeholder="me@example.com"
+    value=form.email.value
+    error=form.email.errors
+    error_message=form.email.errors.as_text
+    %}
+
+    {% field
+    required=""
+    name="name"
+    type="text"
+    label="Name"
+    autocomplete="name"
+    placeholder="John Doe"
+    value=form.name.value
+    error=form.name.errors
+    error_message=form.name.errors.as_text
+    %}
+  </div>
+
+  {% field
+  required=""
+  name="message"
+  id="message"
+  label="Message"
+  placeholder="Your message here..."
+  as="textarea"
+  rows=4
+  value=form.message.value
+  error=form.message.errors
+  error_message=form.message.errors.as_text
+  %}
+
+  {{ form.captcha }}
+
+  {% button
+    size="md"
+    type="submit"
+    class="w-fit"
+    %}
+    <span>Send Message</span>
+    {% icon 'circle-notch' id="spinner" class="htmx-indicator animate-spin h-5 w-5" %}
+  {% endbutton %}
+
+  <div class="text-accent-bright pt-2 font-medium">
+    {% if success_message %}
+      {{ success_message }}
+    {% endif %}
+  </div>
+</form>

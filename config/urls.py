@@ -10,6 +10,7 @@ from wagtail.images.views.serve import ServeView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("forms/", include("src.forms.urls")),
     path("cms/", include(wagtailadmin_urls)),
     re_path(
         r"^images/([^/]*)/(\d*)/([^/]*)/[^/]*$",

@@ -36,7 +36,7 @@
     {% vite_asset 'src/resources/js/app.ts' %}
   </head>
 
-  <body hx-ext="preload"
+  <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'
         class="flex flex-col h-full bg-darker text-primary max-w-6xl mx-auto">
     <a id="top"></a>
     {% wagtailuserbar %}

@@ -36,6 +36,8 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 INSTALLED_APPS = WAGTAIL_INSTALLED_APPS + [
+    "django_recaptcha",
+    "django_htmx",
     "django.contrib.admin",
     "django_vite",
     "django.contrib.redirects",
@@ -50,6 +52,7 @@ INSTALLED_APPS = WAGTAIL_INSTALLED_APPS + [
 ]
 
 MIDDLEWARE = [
+    "django_htmx.middleware.HtmxMiddleware",
     "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -168,6 +171,9 @@ CACHES = {
         },
     }
 }
+
+RECAPTCHA_PUBLIC_KEY = env.str("RECAPTCHA_PUBLIC_KEY", "")
+RECAPTCHA_PRIVATE_KEY = env.str("RECAPTCHA_PRIVATE_KEY", "")
 
 # lib settings
 from config.settings.django_storage import *  # noqa: E402, F403

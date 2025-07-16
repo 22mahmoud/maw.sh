@@ -1,0 +1,17 @@
+<div class="flex-1 flex flex-col gap-1.5">
+  <label for="{{ name }}" class="{{ label_class }}">
+    {{ label_text }}
+  </label>
+
+  {% if tag_type == "textarea" %}
+    <textarea {{ field_attrs }}>{{ value }}</textarea>
+  {% else %}
+    <input {{ field_attrs }}>
+  {% endif %}
+
+  {% if has_error and error_message %}
+    <p class="text-sm text-red-400 mt-1">
+      {{ error_message }}
+    </p>
+  {% endif %}
+</div>

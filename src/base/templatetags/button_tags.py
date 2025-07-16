@@ -128,10 +128,9 @@ class ButtonNode(template.Node):
 
         if is_icon_only and icon:
             attrs["aria-label"] = icon.replace("-", " ").title()
-        elif content:
-            attrs["aria-label"] = content
 
-        attrs = {k.replace("_", "-"): v for k, v in attrs.items()}
+        for key, val in resolved.items():
+            attrs[key.replace("_", "-")] = val
 
         return render_to_string(
             "includes/button.html",

@@ -7,7 +7,9 @@ requires-python = ">=3.13"
 dependencies = [
   "boto3>=1.39.3",
   "django>=5.2.3",
+  "django-htmx>=1.23.2",
   "django-polymorphic>=4.1.0",
+  "django-recaptcha>=4.1.0",
   "django-redis>=6.0.0",
   "django-storages[s3]>=1.14.6",
   "django-vite>=3.1.0",
@@ -39,4 +41,4 @@ indent = 2
 line_break_after_multiline_tag = true
 max_line_length = 100
 preserve_blank_lines = true
-custom_blocks="link,button"
+custom_blocks = "link,button"

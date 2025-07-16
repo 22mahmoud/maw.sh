@@ -1,6 +1,7 @@
 import re
 
 from django import template
+from django.forms.utils import flatatt
 from django.template.loader import TemplateDoesNotExist, render_to_string
 from django.utils.safestring import mark_safe
 
@@ -17,10 +18,24 @@ def icon(name: str, **kwargs):
     if not name:
         return ""
 
+    attrs = {}
+
+    attrs["fill"] = "currentColor"
+    attrs.update(kwargs)
+
+    for key, val in attrs.items():
+        attrs[key.replace("_", "-")] = val
+
+    context = {
+        "attrs": mark_safe(flatatt(attrs)),
+        "class": attrs.get("class", None),
+        "fill": attrs.get("fill", "currentColor"),
+    }
+
     template_name = f"icons/{name}.svg"
 
     try:
-        svg_content = render_to_string(template_name, kwargs)
+        svg_content = render_to_string(template_name, context)
         return mark_safe(svg_content)
     except TemplateDoesNotExist:
         return ""

@@ -15,11 +15,7 @@
     {% icon prefix_icon class=icon_class %}
   {% endif %}
 
-  {% if text %}
-    <span>{{ text }}</span>
-  {% elif content %}
-    <span>{{ content|safe }}</span>
-  {% endif %}
+  {{ content|safe }}
 
   {% if suffix_icon %}
     {% icon suffix_icon class=icon_class %}

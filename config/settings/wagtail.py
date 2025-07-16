@@ -1,5 +1,6 @@
 WAGTAIL_INSTALLED_APPS = [
     # my apps
+    "src.forms",
     "src.webmentions",
     "src.videos",
     "src.photos",

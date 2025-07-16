@@ -16,6 +16,7 @@ from src.base.blocks.layout import FlexLayoutBlock, SpacerBlock
 from src.base.blocks.link import SocialLinkStreamBlock
 from src.base.models import Person
 from src.clients.blocks import ClientsMarqueeStaticBlock
+from src.forms.blocks import ContactFormStaticBlock
 from src.pagination.mixins import PaginatedArchiveMixin
 from src.posts.models import BasePostPage
 from src.seo.models import SeoMetaFields
@@ -36,6 +37,7 @@ class HomePage(PaginatedArchiveMixin, RoutablePageMixin, SeoMetaFields, Page):  
             ("featured_blog", FeaturedBlogBlock()),
             ("feed", FeedBlock()),
             ("spacer", SpacerBlock()),
+            ("contact_form", ContactFormStaticBlock()),
         ],
         use_json_field=True,
         blank=True,

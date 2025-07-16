@@ -3,10 +3,6 @@
 
 @plugin "@tailwindcss/typography";
 @config "../../../tailwind.config.ts";
-@plugin "@tailwindcss/forms" {
-  /* biome-ignore lint/correctness/noUnknownProperty: tailwindcss */
-  strategy: "class";
-}
 
 @theme {
   --font-heading: "Outfit", sans-serif;
@@ -74,4 +70,16 @@
 .zigzag > * {
   position: relative;
   z-index: 1;
+}
+
+.htmx-indicator {
+  display: none;
+}
+
+.htmx-request .htmx-indicator {
+  display: inline;
+}
+
+.htmx-request.htmx-indicator {
+  display: inline;
 }
