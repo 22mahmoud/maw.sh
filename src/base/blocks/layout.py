@@ -6,6 +6,25 @@ from src.base.blocks.hero import HeroBlock
 from src.base.blocks.link import LinkBlock, SiteSocialLinkBlock
 
 
+class SpacerBlock(blocks.StructBlock):
+    size = blocks.ChoiceBlock(
+        choices=[
+            ("sm", "Small"),
+            ("md", "Medium"),
+            ("lg", "Large"),
+            ("xl", "Extra Large"),
+        ],
+        default="md",
+        label="Spacer Size",
+        help_text="Select a predefined amount of vertical space to add.",
+    )
+
+    class Meta:  # type: ignore
+        template = "blocks/spacer_block.html"
+        icon = "arrows-up-down"
+        label = "Preset Spacer"
+
+
 class FlexLayoutBlock(blocks.StructBlock):
     gap = blocks.ChoiceBlock(
         choices=[

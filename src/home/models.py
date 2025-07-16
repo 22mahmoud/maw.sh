@@ -9,8 +9,9 @@ from wagtail.models import Page
 from wagtailmedia.blocks import VideoChooserBlock
 
 from src.base.blocks.button import ButtonBlock
+from src.base.blocks.feed import FeaturedBlogBlock, FeedBlock
 from src.base.blocks.hero import HeroBlock
-from src.base.blocks.layout import FlexLayoutBlock
+from src.base.blocks.layout import FlexLayoutBlock, SpacerBlock
 from src.base.blocks.link import SocialLinkStreamBlock
 from src.base.models import Person
 from src.clients.blocks import ClientsMarqueeStaticBlock
@@ -31,6 +32,9 @@ class HomePage(PaginatedArchiveMixin, RoutablePageMixin, SeoMetaFields, Page):  
             ("Video", VideoChooserBlock()),
             ("button", ButtonBlock()),
             ("flex_layout", FlexLayoutBlock()),
+            ("featured_blog", FeaturedBlogBlock()),
+            ("feed", FeedBlock()),
+            ("spacer", SpacerBlock()),
         ],
         use_json_field=True,
         blank=True,
