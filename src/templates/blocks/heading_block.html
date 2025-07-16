@@ -9,7 +9,13 @@
   >
   {{ self.heading_text.source|strip_p_tags|richtext }}
   {% if self.use_anchor %}
-    {% link icon="paperclip" href="#"|add:heading_id size="md" icon_class="w-5! h-5! text-secondary! hover:text-accent!" aria_label="Anchor link for this section" class="ml-2 align-baseline transition-all duration-200 transform hover:scale-110" %}
+    {% link
+      icon="paperclip"
+      href="#"|add:heading_id size="md"
+      icon_class="w-5! h-5! text-secondary! hover:text-accent!"
+      aria_label="Anchor link for this section"
+      class="inline-block ml-2 align-baseline transition-all duration-200 transform hover:scale-110" %}
+    {% endlink %}
   {% endif %}
   </{{ self.size|default:"h2" }}>
 {% endwith %}

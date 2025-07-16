@@ -49,7 +49,6 @@ def make_some_changes(menu_items, **_):
     for item in menu_items:
         item.text = item.text
         item.url = item.href
-        item.active = bool(item.active_class)
-        item.props = {"variant": "nav_active" if item.active else "nav_inactive"}
+        item.variant = "nav_active" if bool(item.active_class) else "nav"
 
     return menu_items

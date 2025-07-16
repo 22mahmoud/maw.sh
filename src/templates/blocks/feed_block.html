@@ -6,7 +6,10 @@
     <h2 class="font-heading text-3xl font-bold">
       {{ self.heading }}
     </h2>
-    {% link text="See all" href="/feed" size="md" variant="default" suffix_icon="arrow-right" %}
+
+    {% link href="/feed" size="md" variant="default" suffix_icon="arrow-right" %}
+      See All
+    {% endlink %}
   </div>
 
   <ul class="h-feed flex flex-col gap-2">

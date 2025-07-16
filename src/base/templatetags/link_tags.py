@@ -1,4 +1,6 @@
 from django import template
+from django.forms.utils import flatatt
+from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 
 from src.utils.cva import cva
@@ -51,63 +53,77 @@ LINK_ICON_CVA = cva(
 register = template.Library()
 
 
-@register.inclusion_tag("includes/link.html")
-def link(
-    text: str | None = None,
-    variant: str = "default",
-    size: str = "md",
-    icon: str | None = None,
-    prefix_icon: str | None = None,
-    suffix_icon: str | None = None,
-    href: str | None = None,
-    nav_active: bool = False,
-    icon_class: str | None = None,
-    **kwargs,
-):
-    """
-    Renders a link component with variants and flexible icon support.
-    """
-    user_classes = kwargs.pop("class", "")
-    user_icon_classes = icon_class or ""
+class LinkNode(template.Node):
+    def __init__(self, nodelist, kwargs):
+        self.nodelist = nodelist
+        self.kwargs = kwargs
 
-    is_icon_only = bool(icon) and not (text or prefix_icon or suffix_icon)
+    def render(self, context):
+        resolved = {key: val.resolve(context) for key, val in self.kwargs.items()}
+        content = self.nodelist.render(context).strip() or None
 
-    attrs = {"href": href} if href else {}
-    attrs.update(kwargs)
+        icon = resolved.get("icon")
+        prefix_icon = resolved.get("prefix_icon")
+        suffix_icon = resolved.get("suffix_icon")
+        href = resolved.get("href", "#")
+        variant = resolved.get("variant", "default")
+        size = resolved.get("size", "md")
+        user_classes = resolved.get("class", "")
+        user_icon_class = resolved.pop("icon_class", "")
 
-    for key, value in kwargs.items():
-        html_attr_key = key.replace("_", "-")
-        attrs[html_attr_key] = value
+        is_icon_only = icon and not content and not prefix_icon and not suffix_icon
 
-    if "aria-label" not in attrs:
+        if is_icon_only:
+            variant = "icon"
+
+        props = {"variant": variant, "size": size}
+        cva_class = LINK_CVA(props)
+        icon_class = f"{LINK_ICON_CVA(props)} {user_icon_class}".strip()
+
+        attrs = {}
+
+        attrs["class"] = f"{cva_class} {user_classes}".strip()
+        attrs["href"] = href
+
+        if variant == "nav_active":
+            attrs["aria-current"] = "page"
+
         if is_icon_only and icon:
             attrs["aria-label"] = icon.replace("-", " ").title()
-        elif text:
-            attrs["aria-label"] = text
 
-    if nav_active:
-        attrs["aria-current"] = "page"
+        for key, val in resolved.items():
+            attrs[key.replace("_", "-")] = val
 
-    attr_parts = [
-        f'{key}="{value}"' for key, value in attrs.items() if value is not None
-    ]
-    wrapper_attrs = mark_safe(" ".join(attr_parts))
+        return render_to_string(
+            "includes/link.html",
+            {
+                "content": content,
+                "icon": icon,
+                "prefix_icon": prefix_icon,
+                "suffix_icon": suffix_icon,
+                "icon_class": icon_class,
+                "wrapper_attrs": mark_safe(flatatt(attrs)),
+            },
+        )
 
-    final_variant = "nav_active" if nav_active else variant
 
-    cva_props = {"variant": final_variant, "size": size}
-    cva_wrapper_class = LINK_CVA(cva_props)
-    cva_icon_class = LINK_ICON_CVA(cva_props)
+@register.tag
+def link(parser, token):
+    """
+    Usage:
+        {% link href="/about" icon="github" class="ml-2" target="_blank" %}
+          About Us
+        {% endlink %}
+    """
+    nodelist = parser.parse(("endlink",))
+    parser.delete_first_token()
 
-    final_wrapper_class = f"{cva_wrapper_class} {user_classes}".strip()
-    final_icon_class = f"{cva_icon_class} {user_icon_classes}".strip()
+    bits = token.split_contents()[1:]
+    kwargs = {}
 
-    return {
-        "text": text,
-        "icon": icon,
-        "prefix_icon": prefix_icon,
-        "suffix_icon": suffix_icon,
-        "wrapper_attrs": wrapper_attrs,
-        "wrapper_class": final_wrapper_class,
-        "icon_class": final_icon_class,
-    }
+    for bit in bits:
+        if "=" in bit:
+            key, value = bit.split("=", 1)
+            kwargs[key] = parser.compile_filter(value)
+
+    return LinkNode(nodelist, kwargs)

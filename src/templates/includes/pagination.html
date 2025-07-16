@@ -3,7 +3,9 @@
 <div class="[&_a]:w-fit w-full flex justify-between items-start flex-wrap gap-4">
   <div class="flex flex-col gap-2">
     {% with prev_url|yesno:"outline,disabled" as variant %}
-      {% button text="Previous" prefix_icon="caret-left" variant=variant size="md" href=prev_url %}
+      {% button prefix_icon="caret-left" variant=variant size="md" href=prev_url %}
+        Previous
+      {% endbutton %}
     {% endwith %}
 
     {% if prev_url and prev_title %}
@@ -23,7 +25,9 @@
 
   <div class="flex flex-col gap-2 items-end [&>a>span]:flex-row-reverse">
     {% with next_url|yesno:"outline,disabled" as variant %}
-      {% button text="Next" suffix_icon="caret-right" variant=variant size="md" href=next_url %}
+      {% button suffix_icon="caret-right" variant=variant size="md" href=next_url %}
+        Next
+      {% endbutton %}
     {% endwith %}
 
     {% if next_url and next_title %}

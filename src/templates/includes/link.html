@@ -1,6 +1,6 @@
 {% load base_tags %}
 
-<a {{ wrapper_attrs|safe }} class="{{ wrapper_class }}">
+<a {{ wrapper_attrs|safe }}>
   {% if icon %}
     {% icon icon class=icon_class %}
   {% endif %}
@@ -9,8 +9,8 @@
     {% icon prefix_icon class=icon_class %}
   {% endif %}
 
-  {% if text %}
-    <span>{{ text }}</span>
+  {% if content %}
+    {{ content|safe }}
   {% endif %}
 
   {% if suffix_icon %}

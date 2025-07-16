@@ -1,7 +1,8 @@
 from django import template
+from django.forms.utils import flatatt
+from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 
-from src.base.blocks.button import DEFAULT_BUTTON_SIZE, DEFAULT_BUTTON_TYPE
 from src.utils.cva import cva
 
 BUTTON_CVA = cva(
@@ -86,74 +87,85 @@ BUTTON_TEXT_CVA = cva(
 register = template.Library()
 
 
-@register.inclusion_tag("includes/button.html")
-def button(
-    text: str | None = None,
-    variant: str = DEFAULT_BUTTON_TYPE,
-    size: str = DEFAULT_BUTTON_SIZE,
-    icon: str | None = None,
-    prefix_icon: str | None = None,
-    suffix_icon: str | None = None,
-    href: str | None = None,
-    **kwargs,
-):
-    user_classes = kwargs.pop("class", "")
+class ButtonNode(template.Node):
+    def __init__(self, nodelist, kwargs):
+        self.nodelist = nodelist
+        self.kwargs = kwargs
 
-    is_icon_only = False
-    if icon:
-        is_icon_only = True
-        text = None
-        prefix_icon = None
-        suffix_icon = None
+    def render(self, context):
+        resolved = {key: val.resolve(context) for key, val in self.kwargs.items()}
+        content = self.nodelist.render(context).strip() or None
 
-    is_link = bool(href) and variant != "disabled"
-    wrapper_tag = "a" if is_link else "button"
+        icon = resolved.get("icon")
+        prefix_icon = resolved.get("prefix_icon")
+        suffix_icon = resolved.get("suffix_icon")
+        href = resolved.get("href")
+        variant = resolved.get("variant", "primary")
+        size = resolved.get("size", "md")
 
-    attrs = {}
-    if is_link:
-        attrs["href"] = href
-        attrs["role"] = "link"
-    else:
-        attrs["type"] = "button"
-        attrs["role"] = "button"
-        if variant == "disabled":
-            attrs["disabled"] = True
+        is_icon_only = icon and not content and not prefix_icon and not suffix_icon
 
-    attrs.update(kwargs)
+        user_classes = resolved.pop("class", "")
+        user_icon_class = resolved.pop("icon_class", "")
+        user_text_class = resolved.pop("text_class", "")
 
-    for key, value in kwargs.items():
-        html_attr_key = key.replace("_", "-")
-        attrs[html_attr_key] = value
+        tag = "a" if href and variant != "disabled" else "button"
 
-    if "aria-label" not in attrs:
+        props = {"variant": variant, "size": size}
+        wrapper_class = f"{BUTTON_CVA(props)} {user_classes}".strip()
+        icon_class = f"{BUTTON_ICON_CVA(props)} {user_icon_class}".strip()
+        text_class = f"{BUTTON_TEXT_CVA(props)} {user_text_class}".strip()
+
+        attrs = {}
+        attrs["class"] = wrapper_class
+
+        if tag == "a":
+            attrs["href"] = href
+        else:
+            attrs["type"] = "button"
+            if variant == "disabled":
+                attrs["disabled"] = True
+
         if is_icon_only and icon:
             attrs["aria-label"] = icon.replace("-", " ").title()
-        elif text:
-            attrs["aria-label"] = text
+        elif content:
+            attrs["aria-label"] = content
 
-    attr_parts = [
-        key if value is True else f'{key}="{value}"'
-        for key, value in attrs.items()
-        if value not in [False, None]
-    ]
+        attrs = {k.replace("_", "-"): v for k, v in attrs.items()}
 
-    wrapper_attrs = mark_safe(" ".join(attr_parts))
+        return render_to_string(
+            "includes/button.html",
+            {
+                "variant": variant,
+                "content": content or None,
+                "icon": icon,
+                "prefix_icon": prefix_icon,
+                "suffix_icon": suffix_icon,
+                "icon_class": icon_class,
+                "text_class": text_class,
+                "wrapper_tag": tag,
+                "wrapper_attrs": mark_safe(flatatt(attrs)),
+            },
+        )
 
-    props = {"variant": variant, "size": size}
-    cva_wrapper_class = BUTTON_CVA(props)
-    icon_class = BUTTON_ICON_CVA(props)
-    text_class = BUTTON_TEXT_CVA(props)
-    final_wrapper_class = f"{cva_wrapper_class} {user_classes}".strip()
 
-    return {
-        "text": text,
-        "variant": variant,
-        "icon": icon,
-        "prefix_icon": prefix_icon,
-        "suffix_icon": suffix_icon,
-        "wrapper_tag": wrapper_tag,
-        "wrapper_attrs": wrapper_attrs,
-        "wrapper_class": final_wrapper_class,
-        "icon_class": icon_class,
-        "text_class": text_class,
-    }
+@register.tag
+def button(parser, token):
+    """
+    Usage:
+        {% button href="/signup" variant="primary" icon="plus" %}
+            Sign Up
+        {% endbutton %}
+    """
+    nodelist = parser.parse(("endbutton",))
+    parser.delete_first_token()
+
+    bits = token.split_contents()[1:]
+    kwargs = {}
+
+    for bit in bits:
+        if "=" in bit:
+            key, value = bit.split("=", 1)
+            kwargs[key] = parser.compile_filter(value)
+
+    return ButtonNode(nodelist, kwargs)
