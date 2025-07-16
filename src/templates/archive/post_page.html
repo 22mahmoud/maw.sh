@@ -1,46 +1,11 @@
 {# djlint:off D018 #}
 {% extends "base.html" %}
-{% load base_tags wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags %}
+{% load link_tags wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags %}
 
 {% block content %}
   <div class="zigzag bg-dark h-full pt-6">
     <article class="flex flex-col h-full h-entry mx-auto max-w-3xl gap-6 py-4 px-4 sm:px-6">
-      <nav aria-label="Breadcrumb">
-        <ul class="flex flex-wrap text-secondary items-center space-x-1 sm:space-x-2">
-          <!-- Home -->
-          <li class="flex items-center after:mx-1 after:text-primary/50 after:content-['/'] last:after:content-none">
-            <a href="{% slugurl 'home' %}"
-               class="h-breadcrumb transition-colors duration-200 hover:text-accent hover:underline">
-              Home
-            </a>
-          </li>
-
-          <!-- Feed -->
-          <li class="flex items-center after:mx-1 after:text-primary/50 after:content-['/'] last:after:content-none">
-            <a href="/feed/"
-               class="h-breadcrumb transition-colors duration-200 hover:text-accent hover:underline">
-              Feed
-            </a>
-          </li>
-
-          <!-- Ancestors -->
-          {% for p in self.get_ancestors %}
-            {% if not p.is_root and p.slug != "home" %}
-              <li class="flex items-center after:mx-1 after:text-primary/50 after:content-['/'] last:after:content-none">
-                <a href="{{ p.url }}"
-                   class="h-breadcrumb transition-colors duration-200 hover:text-accent hover:underline">
-                  {{ p.title }}
-                </a>
-              </li>
-            {% endif %}
-          {% endfor %}
-
-          <!-- Current page (no slash after this one) -->
-          <li class="h-breadcrumb p-name text-primary font-medium truncate max-w-[10rem] sm:max-w-none">
-            {{ self.title }}
-          </li>
-        </ul>
-      </nav>
+      {% include "includes/breadcrumb.html" with page=self %}
 
       <header class="px-4 bg-darker flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm py-4 border-b border-primary/20">
         <div class="flex items-center flex-wrap gap-3 sm:gap-4 flex-1 min-w-0">
@@ -89,11 +54,9 @@
               <ul class="flex flex-wrap gap-2">
                 {% for tag in page.get_tags %}
                   <li>
-                    <a href="{{ tag.url }}"
-                       aria-label="Filter by tag name {{ tag }}"
-                       class="p-category inline-block rounded-full border border-primary/30 bg-primary/5 px-2.5 py-0.5 text-xs font-medium text-primary transition-colors duration-200 hover:bg-accent hover:text-black">
+                    {% link href=tag.url variant="tag" %}
                       #{{ tag }}
-                    </a>
+                    {% endlink %}
                   </li>
                 {% endfor %}
               </ul>

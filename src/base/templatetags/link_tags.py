@@ -16,6 +16,12 @@ LINK_CVA = cva(
             "icon": "text-primary hover:text-accent",
             "nav": "text-white hover:text-accent",
             "nav_active": "text-accent",
+            "breadcrumb": "h-breadcrumb text-secondary hover:text-accent hover:underline",
+            "tag": (
+                "p-category inline-block rounded-full border border-primary/30 "
+                "bg-primary/5 px-2.5 py-0.5 text-xs font-medium text-primary "
+                "transition-colors duration-200 hover:bg-accent hover:text-black"
+            ),
         },
         "size": {
             "sm": "text-sm",

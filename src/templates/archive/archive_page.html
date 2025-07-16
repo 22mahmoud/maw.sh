@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailimages_tags wagtailroutablepage_tags wagtailcore_tags %}
+{% load wagtailcore_tags %}
 
 {% block content %}
   <div class="w-full h-full bg-dark p-4 zigzag">
@@ -20,27 +20,7 @@
           {% for block in post.body %}
             <article class="h-entry mx-auto max-w-2xl shadow bg-gradient-to-b from-gradient-1 to-gradient-2 ps-[2px]">
               <div class="flex flex-col py-2 px-4 bg-darker gap-2">
-                <header class="flex items-center gap-1">
-                  <div class="flex">
-                    {% for author in post.authors %}
-                      <a class="h-card w-8 h-8 rounded-full first:ml-0 border-2 border-solid border-darker -ml-4
-                                {% if post.authors|length > 1 %}
-                                  transform transition-transform duration-200 hover:scale-110 hover:z-10
-                                {% endif %}"
-                         href="{% routablepageurl page.get_site.root_page.specific 'posts_by_author' author.slug %}">
-                        {% picture author.image format-{avif,webp,jpeg} width-64 alt=author.full_name class="u-photo w-full h-full object-cover rounded-full" %}
-                      </a>
-                    {% endfor %}
-                  </div>
-
-                  <a class="u-url text-sm text-secondary" href="{% pageurl post %}">
-                    <time class="dt-published"
-                          datetime="{{ post.first_published_at|date:'c' }}">
-                      {{ post.first_published_at|date:"F j, Y \\a\\t g:i A" }}
-                    </time>
-                  </a>
-                </header>
-
+                {% include "includes/feed_post_header.html" with post=post %}
                 {% include_block block with layout="preview" %}
               </div>
             </article>
