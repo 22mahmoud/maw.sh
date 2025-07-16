@@ -8,6 +8,7 @@ from wagtail.fields import StreamField
 from wagtail.models import Page
 from wagtailmedia.blocks import VideoChooserBlock
 
+from src.articles.models import ArticlePage
 from src.base.blocks.button import ButtonBlock
 from src.base.blocks.feed import FeaturedBlogBlock, FeedBlock
 from src.base.blocks.hero import HeroBlock
@@ -49,7 +50,9 @@ class HomePage(PaginatedArchiveMixin, RoutablePageMixin, SeoMetaFields, Page):  
     def all_posts(self, request, page=1):
         """Posts by specific author with pagination"""
 
-        posts = self._get_filtered_posts({})
+        all_post_types = self._get_filtered_posts({})
+        article_page_content_type = ContentType.objects.get_for_model(ArticlePage)
+        posts = all_post_types.exclude(content_type=article_page_content_type)
 
         return self._render_archive_page(
             request=request,
