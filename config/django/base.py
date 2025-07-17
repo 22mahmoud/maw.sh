@@ -36,6 +36,8 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 INSTALLED_APPS = WAGTAIL_INSTALLED_APPS + [
+    "django.forms",
+    "captcha",
     "django_htmx",
     "django.contrib.admin",
     "django_vite",
@@ -160,6 +162,7 @@ WEBMENTION_DOMAIN = "maw.sh"  # e.g., maw.sh
 WEBMENTION_TOKEN = env.str("WEBMENTION_TOKEN")
 LEGACY_SITE_DOMAIN = "maw.sh"
 
+FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -170,6 +173,8 @@ CACHES = {
         },
     }
 }
+
+CAPTCHA_IMAGE_SIZE = (80, 36)
 
 # lib settings
 from config.settings.django_storage import *  # noqa: E402, F403

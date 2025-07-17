@@ -339,7 +339,7 @@ class Migration(migrations.Migration):
                         },
                     ),
                     40: ("wagtail.blocks.StructBlock", [[("size", 39)]], {}),
-                    41: ("src.forms.blocks.ContactFormStaticBlock", (), {}),
+                    41: ("src.our_forms.blocks.ContactFormStaticBlock", (), {}),
                 },
             ),
         ),

@@ -1,0 +1,52 @@
+{% load field_tags %}
+
+<div class="flex flex-col gap-2 max-w-80">
+  <div class="flex items-end gap-4">
+    <div class="flex-1">
+      <div class="flex flex-col gap-1.5">
+        <label for="id_{{ widget.subwidgets.1.name }}"
+               class="{% label_class state=errors|yesno:'error,default' %}">
+          Verification Code
+        </label>
+
+        {% for widget in widget.subwidgets %}
+          {% if widget.type == 'text' %}
+            <input type="text"
+                   name="{{ widget.name }}"
+                   id="id_{{ widget.name }}"
+                   class="{% input_class state=errors|yesno:'error,default' %}"
+                   autocapitalize="off"
+                   autocomplete="off"
+                   autocorrect="off"
+                   spellcheck="false"
+                   required />
+          {% else %}
+            <input type="hidden"
+                   name="{{ widget.name }}"
+                   id="id_{{ widget.name }}"
+                   required
+                   value="{{ widget.value }}"
+                   autocomplete="off">
+          {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+
+    <div>
+      <img width="80px"
+           height="36px"
+           src="{{ image }}"
+           alt="captcha"
+           class="h-full" />
+    </div>
+  </div>
+
+  {% if errors %}
+    <p class="text-sm text-red-400 mt-1">
+      {% for error in errors %}
+        {{ error }}
+      {% endfor %}
+    </p>
+  {% endif %}
+</div>

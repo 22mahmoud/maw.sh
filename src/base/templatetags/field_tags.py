@@ -114,3 +114,13 @@ def field(parser, token):
             )
 
     return FormFieldNode(kwargs)
+
+
+@register.simple_tag
+def input_class(state="default", user_class=""):
+    return f"{INPUT_CVA({'state': state})} {user_class}".strip()
+
+
+@register.simple_tag
+def label_class(state="default"):
+    return LABEL_CVA({"state": state})

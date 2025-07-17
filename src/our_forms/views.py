@@ -17,11 +17,7 @@ def contact(request):
             "success_message": "Message sent! Thanks for reaching out. 🎊",
         }
 
-        response = render(request, "partials/contact_form.html", context)
-
-        return response
     else:
         context = {"form": form}
-        response = render(request, "partials/contact_form.html", context)
 
-        return response
+    return render(request, "partials/contact_form.html", context)

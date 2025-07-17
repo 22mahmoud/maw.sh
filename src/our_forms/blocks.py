@@ -1,6 +1,6 @@
 from wagtail import blocks
 
-from src.forms.forms import ContactForm
+from src.our_forms.forms import ContactForm
 
 
 class ContactFormStaticBlock(blocks.StaticBlock):
