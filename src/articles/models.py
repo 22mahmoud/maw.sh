@@ -8,8 +8,9 @@ from src.posts.utils import get_post_content_panels
 
 
 class ArticlesPageIndex(BasePostsIndexPage):
+    POSTS_PER_PAGE = 10000
     subpage_types = ["ArticlePage"]
-    template = "archive/archive_page.html"
+    template = "archive/blog_page.html"
 
     def get_posts_queryset(self):
         return (

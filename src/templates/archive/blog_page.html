@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+  <div class="h-full w-full bg-dark p-4 sm:p-6 md:p-8 zigzag">
+    <header class="max-w-3xl mx-auto mb-8">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary tracking-tight">
+        {{ page.title|default:"Archive" }}
+      </h2>
+      {% if page.introduction %}
+        <p class="mt-3 text-sm text-secondary leading-relaxed max-w-prose">
+          {{ page.introduction }}
+        </p>
+      {% endif %}
+    </header>
+
+    <ul class="h-feed max-w-3xl mx-auto divide-y divide-neutral-700 text-primary">
+      {% for post in posts %}
+        <li class="h-entry py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
+          <div class="flex-1">
+            <a href="{% pageurl post %}"
+               class="u-url p-name hover:text-accent focus:text-accent transition-colors font-medium outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">
+              {{ post.title }}
+            </a>
+          </div>
+
+          <div class="hidden">
+            {% for tag in post.get_tags %}
+              <span class="p-category">{{ tag }}</span>
+            {% endfor %}
+          </div>
+
+          <time class="dt-published text-secondary text-xs sm:text-sm whitespace-nowrap"
+                datetime="{{ post.first_published_at|date:'c' }}">
+            {{ post.first_published_at|date:"M d, Y" }}
+          </time>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock content %}

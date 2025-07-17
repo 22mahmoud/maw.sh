@@ -13,6 +13,7 @@ class ContactSubmissionViewSet(SnippetViewSet):
     menu_label = "Contact Submissions"
     icon = "mail"
     add_to_admin_menu = True
+    menu_order = 300
     list_display = ("name", "email", "submitted_at")
     list_filter = ("submitted_at",)
     search_fields = ("name", "email", "message")
