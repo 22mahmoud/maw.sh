@@ -1,11 +1,5 @@
 {% load django_vite %}
 
-{% block head %}
-  <script defer
-          src="https://www.google.com/recaptcha/api.js?render={{ RECAPTCHA_SITE_KEY }}"></script>
-  {% vite_asset 'src/resources/js/contact-recaptcha.ts' %}
-{% endblock head %}
-
 <div class="zigzag bg-dark my-12 py-6">
   <div class="max-w-2xl my-12 mx-auto flex flex-col gap-8">
     <div class="flex flex-col items-center gap-4">

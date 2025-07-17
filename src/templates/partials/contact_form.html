@@ -5,7 +5,8 @@
       hx-post="{% url 'contact' %}"
       hx-target="#contact-form"
       hx-swap="outerHTML"
-      hx-trigger="recaptchaSubmit">
+      hx-triggerd="verified"
+      hx-on="submit: submitHandler()">
 
   <div class="w-full flex-1 flex flex-col md:flex-row gap-4">
     {% field
@@ -44,14 +45,12 @@
   error_message=form.message.errors.as_text
   %}
 
-  <input type="hidden"
-         name="g-recaptcha-response"
-         id="contact-recaptcha-token-input">
-
   {% button
     size="md"
     type="submit"
     class="w-fit"
+    id="contact-submit-button"
+    data_sitekey="6LezuYUrAAAAALB8VB8BgbhTF_N9uRtoi3nEELpV" data_callback="announce"
     %}
     <span>Send Message</span>
     {% icon 'circle-notch' id="spinner" class="htmx-indicator animate-spin h-5 w-5" %}

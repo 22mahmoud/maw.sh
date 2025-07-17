@@ -23,7 +23,6 @@ export default defineConfig({
       input: {
         app: 'src/resources/js/app.ts',
         admin: 'src/resources/js/admin.ts',
-        'contact-recaptcha': 'src/resources/js/contact-recaptcha.ts',
       },
     },
   },

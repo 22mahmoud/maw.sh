@@ -36,7 +36,6 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 INSTALLED_APPS = WAGTAIL_INSTALLED_APPS + [
-    "django_recaptcha",
     "django_htmx",
     "django.contrib.admin",
     "django_vite",
@@ -171,9 +170,6 @@ CACHES = {
         },
     }
 }
-
-RECAPTCHA_PUBLIC_KEY = env.str("VITE_RECAPTCHA_SITE_KEY", "")
-RECAPTCHA_PRIVATE_KEY = env.str("RECAPTCHA_PRIVATE_KEY", "")
 
 # lib settings
 from config.settings.django_storage import *  # noqa: E402, F403
