@@ -16,7 +16,7 @@ from src.base.blocks.layout import FlexLayoutBlock, SpacerBlock
 from src.base.blocks.link import SocialLinkStreamBlock
 from src.base.models import Person
 from src.clients.blocks import ClientsMarqueeStaticBlock
-from src.our_forms.blocks import ContactFormStaticBlock
+from src.contact.blocks import ContactFormStaticBlock
 from src.pagination.mixins import PaginatedArchiveMixin
 from src.posts.models import BasePostPage
 from src.seo.models import SeoMetaFields
