@@ -5,7 +5,7 @@ from whitenoise.storage import CompressedManifestStaticFilesStorage
 
 class CustomStaticFilesStorage(CompressedManifestStaticFilesStorage):
     def hashed_name(self, name, content=None, filename=None):
-        if name.startswith(("assets/", "manifest.json", "robots.txt")):
+        if name.startswith(("assets/", "manifest.json")):
             return name
 
         return super().hashed_name(name, content, filename)

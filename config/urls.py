@@ -16,6 +16,10 @@ urlpatterns = [
     path("captcha/", include("captcha.urls")),
     path("search/", SearchView.as_view(), name="search"),
     path("cms/", include(wagtailadmin_urls)),
+    path(
+        "robots.txt",
+        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
+    ),
     re_path(
         r"^images/([^/]*)/(\d*)/([^/]*)/[^/]*$",
         ServeView.as_view(),
