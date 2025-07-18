@@ -11,9 +11,12 @@
     <input {{ field_attrs }}>
   {% endif %}
 
-  {% if has_error and error_message %}
-    <p class="text-sm text-red-400 mt-1">
-      {{ error_message }}
-    </p>
-  {% endif %}
+  <p id="{{ error_id }}"
+     class="text-sm text-red-400 mt-1
+            {% if not error_message %}
+              sr-only
+            {% endif %}"
+     role="alert">
+    {{ error_message|default:"" }}
+  </p>
 </div>

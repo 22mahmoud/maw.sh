@@ -56,22 +56,27 @@ class FormFieldNode(template.Node):
         tag_type = resolved.get("as", "input")
         label_text = resolved.get("label", None)
         has_error = resolved.get("error", False)
-        error_message = resolved.get("error_message", None)
+        error_message = resolved.get("error_message", "")
         user_class = resolved.get("class", "")
 
         state = "error" if has_error else "default"
-
         input_class = f"{INPUT_CVA({'state': state})} {user_class}".strip()
         label_class = LABEL_CVA({"state": state})
 
         attrs = resolved.copy()
         attrs["id"] = resolved.get("id", name)
         attrs["class"] = input_class
+        attrs["aria-invalid"] = "true" if has_error else "false"
 
-        keys_to_remove = ["label", "error", "error_message", "as_textarea"]
-        for key in keys_to_remove:
+        error_id = f"{attrs['id']}-error"
+        if error_message:
+            attrs["aria-describedby"] = error_id
+
+        # Clean up unused keys
+        for key in ["label", "error", "error_message", "as_textarea"]:
             attrs.pop(key, None)
 
+        # Convert to HTML attributes
         attrs = {k.replace("_", "-"): v for k, v in attrs.items()}
 
         return render_to_string(
@@ -80,7 +85,7 @@ class FormFieldNode(template.Node):
                 "name": name,
                 "label_text": label_text,
                 "label_class": label_class,
-                "has_error": has_error,
+                "error_id": error_id,
                 "error_message": error_message,
                 "tag_type": tag_type,
                 "value": value or "",
