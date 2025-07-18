@@ -33,6 +33,13 @@
   --color-rsvp: #f97316;
 
   --animate-marquee: marquee var(--duration, 80s) infinite linear;
+  --animate-blink: blink 1.2s infinite step-start;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
 
   @keyframes marquee {
     from {

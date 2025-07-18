@@ -1,6 +1,6 @@
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, MultipleChooserPanel
-from wagtail.search import index
 from wagtail.models import Page
+from wagtail.search import index
 
 
 def get_post_content_panels(include_body=True, include_tags=True, include_authors=True):

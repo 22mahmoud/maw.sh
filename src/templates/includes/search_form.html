@@ -1,0 +1,38 @@
+{% load base_tags field_tags button_tags %}
+
+<form action="{% url "search" %}"
+      method="get"
+      role="search"
+      {% if type == "desktop" %}
+        class="w-full sm:w-auto flex items-stretch gap-2"
+      {% else %}
+        class="w-full flex items-stretch gap-2 mb-4"
+      {% endif %}>
+
+  {% if type == "desktop" %}
+    {% field
+    id="desktop_search"
+    name="q"
+    required=""
+    type="search"
+    placeholder="Search..."
+    class="h-[42px] w-full text-base max-w-xs"
+    aria_label="Search"
+    %}
+  {% else %}
+    {% field
+    id="mobile_search"
+    name="q"
+    required=""
+    type="search"
+    placeholder="Search..."
+    class="h-[42px] w-full text-base"
+    aria_label="Search"
+    %}
+  {% endif %}
+
+  {% button type="submit" variant="muted" size="sm" class="h-[42px] px-4" %}
+    {% icon "magnifying-glass" class="w-5 h-5" %}
+    <span class="sr-only">Search</span>
+  {% endbutton %}
+</form>
