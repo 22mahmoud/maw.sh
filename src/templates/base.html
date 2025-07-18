@@ -4,7 +4,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en" class="h-full scroll-smooth">
+<html lang="en" class="scroll-smooth">
   <head>
     <link rel="dns-prefetch" href="//static.mahmoudashraf.dev">
     <link rel="preconnect" href="https://static.mahmoudashraf.dev" crossorigin>
@@ -40,13 +40,13 @@
   </head>
 
   <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'
-        class="flex flex-col h-full bg-darker text-primary max-w-6xl mx-auto">
+        class="min-h-screen flex flex-col bg-darker text-primary max-w-6xl mx-auto">
     <a id="top"></a>
     {% wagtailuserbar %}
 
     {% include "includes/header.html" %}
 
-    <main class="relative z-1 bg-darker grow">
+    <main class="relative z-1 bg-darker grow flex flex-col">
       {% block content %}
       {% endblock content %}
     </main>

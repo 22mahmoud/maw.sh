@@ -66,12 +66,8 @@ class PaginatedArchiveMixin:
         context = self.get_context(request, **kwargs)  # type: ignore
 
         if paginated_posts:
-            context.update(
-                {
-                    "posts": paginated_posts,
-                    "next_url": getattr(paginated_posts, "next", None),
-                    "prev_url": getattr(paginated_posts, "prev", None),
-                }
-            )
+            context["posts"] = paginated_posts
+            context["next_url"] = getattr(paginated_posts, "next", None)
+            context["prev_url"] = getattr(paginated_posts, "prev", None)
 
         return context

@@ -7,11 +7,13 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.images.views.serve import ServeView
+from src.search.views import SearchView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("forms/", include("src.contact.urls")),
     path("captcha/", include("captcha.urls")),
+    path("search/", SearchView.as_view(), name="search"),
     path("cms/", include(wagtailadmin_urls)),
     re_path(
         r"^images/([^/]*)/(\d*)/([^/]*)/[^/]*$",

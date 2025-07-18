@@ -4,7 +4,7 @@ from wagtail.fields import StreamField
 from src.base.models import PageTag
 from src.posts.blocks import ReplyBlock
 from src.posts.models import BasePostPage, BasePostsIndexPage
-from src.posts.utils import get_post_content_panels
+from src.posts.utils import get_post_content_panels, get_post_search_fields
 
 
 class RepliesPageIndex(BasePostsIndexPage):
@@ -33,3 +33,4 @@ class ReplyPage(BasePostPage):  # type: ignore
     parent_page_types = ["RepliesPageIndex"]
     subpage_types = []
     content_panels = get_post_content_panels()
+    search_fields = get_post_search_fields()

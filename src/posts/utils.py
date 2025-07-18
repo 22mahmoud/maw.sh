@@ -1,4 +1,5 @@
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, MultipleChooserPanel
+from wagtail.search import index
 from wagtail.models import Page
 
 
@@ -34,3 +35,10 @@ def get_post_content_panels(include_body=True, include_tags=True, include_author
     )
 
     return panels
+
+
+def get_post_search_fields():
+    search_fields = Page.search_fields.copy()
+    search_fields.append(index.SearchField("body"))
+    search_fields.append(index.SearchField("tags"))
+    return search_fields

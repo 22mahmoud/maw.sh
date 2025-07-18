@@ -4,7 +4,7 @@ from wagtail.fields import StreamField
 from src.base.models import PageTag
 from src.posts.blocks import ArticleBlock
 from src.posts.models import BasePostPage, BasePostsIndexPage
-from src.posts.utils import get_post_content_panels
+from src.posts.utils import get_post_content_panels, get_post_search_fields
 
 
 class ArticlesPageIndex(BasePostsIndexPage):
@@ -34,3 +34,4 @@ class ArticlePage(BasePostPage):  # type: ignore
     parent_page_types = ["ArticlesPageIndex"]
     subpage_types = []
     content_panels = get_post_content_panels()
+    search_fields = get_post_search_fields()

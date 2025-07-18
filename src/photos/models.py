@@ -4,7 +4,7 @@ from wagtail.fields import StreamField
 from src.base.models import PageTag
 from src.posts.blocks import PhotoBlock
 from src.posts.models import BasePostPage, BasePostsIndexPage
-from src.posts.utils import get_post_content_panels
+from src.posts.utils import get_post_content_panels, get_post_search_fields
 
 
 class PhotosPageIndex(BasePostsIndexPage):
@@ -29,7 +29,9 @@ class PhotoPage(BasePostPage):  # type: ignore
         min_num=1,
         max_num=1,
     )
+
     tags = ClusterTaggableManager(through=PageTag, blank=True)
     parent_page_types = ["PhotosPageIndex"]
     subpage_types = []
     content_panels = get_post_content_panels()
+    search_fields = get_post_search_fields()

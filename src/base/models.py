@@ -18,6 +18,7 @@ from wagtail.models import (
     WorkflowMixin,
 )
 from wagtail.models.pages import slugify
+from wagtail.search import index
 from wagtailmedia.blocks import VideoChooserBlock
 
 from src.clients.blocks import ClientsMarqueeStaticBlock
@@ -55,6 +56,7 @@ class Person(  # type: ignore
     LockableMixin,
     RevisionMixin,
     ClusterableModel,
+    index.Indexed,
 ):
     class Meta:  # type: ignore
         verbose_name = "person"

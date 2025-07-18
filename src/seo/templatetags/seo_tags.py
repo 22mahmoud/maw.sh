@@ -13,7 +13,18 @@ register = template.Library()
 def seo_full_title(context: Dict[str, Any], page: Page) -> str:
     """Generates SEO title with suffix from settings."""
 
-    title = (getattr(page, "seo_title", None) or getattr(page, "title", "")).strip()
+    title = ""
+
+    if hasattr(page, "seo_title") and page.seo_title:
+        title = page.seo_title
+    elif hasattr(page, "title") and page.title:
+        title = page.title
+    elif context.get("page") and context["page"].get("seo_title"):
+        title = context["page"]["seo_title"]
+    elif context.get("page") and context["page"].get("title"):
+        title = context["page"]["title"]
+
+    title = title.strip()
     suffix = ""
 
     request: Optional[HttpRequest] = context.get("request")

@@ -23,8 +23,7 @@ def icon(name: str, **kwargs):
     attrs["fill"] = "currentColor"
     attrs.update(kwargs)
 
-    for key, val in attrs.items():
-        attrs[key.replace("_", "-")] = val
+    attrs = {k.replace("_", "-"): v for k, v in attrs.items()}
 
     context = {
         "attrs": mark_safe(flatatt(attrs)),
@@ -32,7 +31,7 @@ def icon(name: str, **kwargs):
         "fill": attrs.get("fill", "currentColor"),
     }
 
-    template_name = f"icons/{name}.svg"
+    template_name = f"icons/{name}.html"
 
     try:
         svg_content = render_to_string(template_name, context)

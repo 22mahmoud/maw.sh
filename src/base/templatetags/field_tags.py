@@ -54,7 +54,7 @@ class FormFieldNode(template.Node):
             )
 
         tag_type = resolved.get("as", "input")
-        label_text = resolved.get("label", name.replace("_", " ").title())
+        label_text = resolved.get("label", None)
         has_error = resolved.get("error", False)
         error_message = resolved.get("error_message", None)
         user_class = resolved.get("class", "")
