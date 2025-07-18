@@ -22,7 +22,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="this,is,a,keywords">
 
-    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="icon"
+          type="image/png"
+          href="{% static "favicon-96x96.png" %}"
+          sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{% static "favicon.svg" %}" />
+    <link rel="shortcut icon" href="{% static "favicon.ico" %}" />
+    <link rel="apple-touch-icon"
+          sizes="180x180"
+          href="{% static "apple-touch-icon.png" %}" />
+    <meta name="apple-mobile-web-app-title" content="Mahmoud Ashraf" />
+    <link rel="manifest" href="{% static "site.webmanifest" %}" />
 
     <link rel="canonical" href="{{ page.seo_canonical_url }}" />
     {% if next_url %}

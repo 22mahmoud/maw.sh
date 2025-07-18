@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@alpinejs/collapse':
+        specifier: ^3.14.9
+        version: 3.14.9
       '@hotwired/stimulus':
         specifier: ^3.2.2
         version: 3.2.2
@@ -18,6 +21,9 @@ importers:
         specifier: ^2.0.6
         version: 2.0.6
     devDependencies:
+      '@alpinejs__collapse':
+        specifier: link:@types/@alpinejs__collapse
+        version: link:@types/@alpinejs__collapse
       '@biomejs/biome':
         specifier: 2.1.2
         version: 2.1.2
@@ -36,6 +42,9 @@ importers:
       '@types/alpinejs':
         specifier: ^3.13.11
         version: 3.13.11
+      '@types/alpinejs__collapse':
+        specifier: ^3.13.4
+        version: 3.13.4
       '@types/node':
         specifier: ^24.0.14
         version: 24.0.14
@@ -56,6 +65,9 @@ importers:
         version: rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.6)(jiti@2.4.2)
 
 packages:
+
+  '@alpinejs/collapse@3.14.9':
+    resolution: {integrity: sha512-cUjbBVo4KR/CfFg0cLB+Q7a8SnjmD4MdxmtZvFjh25Dlf/ZWYPSPx/28b+aAykuX/SUoDPQRmdFiVVvq+iILHw==}
 
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
@@ -512,6 +524,9 @@ packages:
   '@types/alpinejs@3.13.11':
     resolution: {integrity: sha512-3KhGkDixCPiLdL3Z/ok1GxHwLxEWqQOKJccgaQL01wc0EVM2tCTaqlC3NIedmxAXkVzt/V6VTM8qPgnOHKJ1MA==}
 
+  '@types/alpinejs__collapse@3.13.4':
+    resolution: {integrity: sha512-kUBJWEDrHahD2Tb1lrir7iNTGN9ukvoJFjOY41EGC7F21E1KMSch5NrGgE0sqINrRT3lf1UZm3wxB3CNjJHBwg==}
+
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
 
@@ -890,6 +905,8 @@ packages:
 
 snapshots:
 
+  '@alpinejs/collapse@3.14.9': {}
+
   '@ampproject/remapping@2.3.0':
     dependencies:
       '@jridgewell/gen-mapping': 0.3.12
@@ -1229,6 +1246,10 @@ snapshots:
     optional: true
 
   '@types/alpinejs@3.13.11': {}
+
+  '@types/alpinejs__collapse@3.13.4':
+    dependencies:
+      '@types/alpinejs': 3.13.11
 
   '@types/hast@3.0.4':
     dependencies:

@@ -9,6 +9,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.images.views.serve import ServeView
 
 from src.search.views import SearchView
+from src.base.views import robots_txt
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -16,10 +17,7 @@ urlpatterns = [
     path("captcha/", include("captcha.urls")),
     path("search/", SearchView.as_view(), name="search"),
     path("cms/", include(wagtailadmin_urls)),
-    path(
-        "robots.txt",
-        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
-    ),
+    path("robots.txt", robots_txt),
     re_path(
         r"^images/([^/]*)/(\d*)/([^/]*)/[^/]*$",
         ServeView.as_view(),
