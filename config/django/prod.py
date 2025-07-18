@@ -13,7 +13,7 @@ STORAGES = {
         "BACKEND": "config.settings.django_storage.MediaR2Storage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
     "wagtailrenditions": {
         "BACKEND": "config.settings.django_storage.WagtailRenditionStorage",
