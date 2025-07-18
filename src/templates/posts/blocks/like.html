@@ -1,24 +1,34 @@
 {% load wagtailcore_tags base_tags %}
 
-<div class="prose prose-main">
-  <div class="flex items-center text-sm sm:text-base">
+<div class="prose prose-main
+            {% if layout == 'compact' %}
+              text-sm
+            {% else %}
+              text-base
+            {% endif %}">
+  <div class="flex items-center break-all
+              {% if layout != 'compact' %}
+                text-sm sm:text-base
+              {% else %}
+                text-sm
+              {% endif %}">
     {% icon "heart" class="inline-block h-5 w-5 shrink-0 text-like mr-2" %}
-    <div class="p-summary">
+    <span>
       Liked
-      <a class="u-like-of h-cite font-semibold text-accent underline-offset-2 hover:underline"
+      <a class="u-like-of h-cite text-accent underline-offset-2 hover:underline"
          href="{{ self.like_of }}">
         <span class="p-name">
           {{ self.title|default:self.like_of }}
         </span>
       </a>
-    </div>
+    </span>
   </div>
 
-  {% if layout != 'compact' and self.description %}
-    <blockquote class="e-content mt-2 border-l-2 pl-4 text-sm text-secondary">
-      <p>
+  {% if layout != "compact" and self.description %}
+    <div class="prose prose-main prose-sm max-w-none sm:prose-base mt-2">
+      <blockquote>
         {{ self.description }}
-      </p>
-    </blockquote>
+      </blockquote>
+    </div>
   {% endif %}
 </div>

@@ -81,7 +81,7 @@
 
         {% if page.body %}
           {% for block in page.body %}
-            {% include_block block %}
+            {% include_block block with layout="default" %}
           {% endfor %}
         {% endif %}
 

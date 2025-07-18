@@ -1,19 +1,31 @@
 {% load wagtailcore_tags base_tags %}
 
-<div class="prose prose-main">
-  <div class="flex items-center text-sm sm:text-base">
+<div class="prose prose-main
+            {% if layout == 'compact' %}
+              text-sm
+            {% else %}
+              text-base
+            {% endif %}">
+  <div class="flex items-center break-all
+              {% if layout != 'compact' %}
+                text-sm sm:text-base
+              {% else %}
+                text-sm
+              {% endif %}">
     {% icon "chat-circle-dots" class="inline-block h-5 w-5 shrink-0 text-reply mr-2" %}
     <span>
       Reply to
       <a class="u-in-reply-to h-cite text-accent underline-offset-2 hover:underline"
          href="{{ self.in_reply_to }}">
-        <span class="p-name">{{ self.reply_title|default:self.in_reply_to }}</span>
+        <span class="p-name">
+          {{ self.title|default:self.in_reply_to }}
+        </span>
       </a>
     </span>
   </div>
 
-  {% if layout != 'compact' and self.description %}
-    <div class="prose prose-main prose-sm max-w-none sm:prose-base">
+  {% if layout != "compact" and self.description %}
+    <div class="prose prose-main prose-sm max-w-none sm:prose-base mt-2">
       <blockquote>
         {{ self.description }}
       </blockquote>
@@ -21,7 +33,7 @@
   {% endif %}
 
   {% if self.content %}
-    <div class="e-content prose prose-main max-w-none">
+    <div class="e-content prose prose-main max-w-none mt-4">
       {{ self.content|richtext }}
     </div>
   {% endif %}

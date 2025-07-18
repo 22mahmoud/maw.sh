@@ -1,8 +1,18 @@
 {% load wagtailcore_tags base_tags %}
 
-<div class="prose prose-main">
-  <div class="flex items-center text-sm sm:text-base">
-    {% icon "share-fat" class="inline-block h-5 w-5 shrink-0 text-repost mr-2" %}
+<div class="prose prose-main
+            {% if layout == 'compact' %}
+              text-sm
+            {% else %}
+              text-base
+            {% endif %}">
+  <div class="flex items-center break-all
+              {% if layout != 'compact' %}
+                text-sm sm:text-base
+              {% else %}
+                text-sm
+              {% endif %}">
+    {% icon "chat-circle-dots" class="inline-block h-5 w-5 shrink-0 text-repost mr-2" %}
     <span>
       Reposted
       <a class="u-repost-of h-cite text-accent underline-offset-2 hover:underline"
@@ -14,11 +24,12 @@
     </span>
   </div>
 
-  {% if layout != 'compact' and self.description %}
-    <div class="prose prose-main prose-sm max-w-none sm:prose-base">
+  {% if layout != "compact" and self.description %}
+    <div class="prose prose-main prose-sm max-w-none sm:prose-base mt-2">
       <blockquote>
         {{ self.description }}
       </blockquote>
     </div>
   {% endif %}
+
 </div>
