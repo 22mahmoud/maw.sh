@@ -1,10 +1,9 @@
-import re
-
 from config.env import env
 from config.settings.wagtail_prod import *  # noqa: E402, F403
 
 from .base import *  # noqa: F403
 from .base import BASE_DIR, MIDDLEWARE
+from config.settings.whitenoise import *  # noqa: F403
 
 MIDDLEWARE.append("whitenoise.middleware.WhiteNoiseMiddleware")
 
@@ -13,7 +12,7 @@ STORAGES = {
         "BACKEND": "config.settings.django_storage.MediaR2Storage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND": "config.settings.whitenoise.CustomStaticFilesStorage",
     },
     "wagtailrenditions": {
         "BACKEND": "config.settings.django_storage.WagtailRenditionStorage",
@@ -43,10 +42,3 @@ LOGGING = {
         },
     },
 }
-
-
-def immutable_file_test(_, url):
-    return re.match(r"^.+[.-][0-9a-zA-Z_-]{8,12}\..+$", url)
-
-
-WHITENOISE_IMMUTABLE_FILE_TEST = immutable_file_test
