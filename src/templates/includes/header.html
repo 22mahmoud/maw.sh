@@ -5,14 +5,15 @@
         class="sticky z-100 top-0 shadow bg-gradient-to-r from-gradient-1 to-gradient-2 font-bold pb-[2px]">
   <div class="h-full w-full bg-dark px-2 py-3 flex flex-wrap items-center justify-between gap-4">
     <a href="{% slugurl 'home' %}"
-       class="text-2xl font-bold whitespace-nowrap group"
+       class="text-2xl font-heading font-bold group"
        aria-label="Homepage">
-      <h1 class="text-white">
+      <span class="text-primary">
         ~/mahmoud<span class="relative -bottom-0.5 group-hover:animate-blink">_</span>ashraf
-      </h1>
+      </span>
     </a>
 
-    <button @click="open = !open"
+    <button id="mobile-menu-toggle"
+            @click="open = !open"
             x-clock
             class="sm:hidden inline-flex items-center justify-center p-2 rounded-md text-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             :aria-expanded="open.toString()"
@@ -33,12 +34,44 @@
     </div>
   </div>
 
+  <noscript>
+    <style>
+    #mobile-menu-toggle {
+      display: none !important;
+    }
+
+    @media (max-width: 639px) {
+      #mobile-menu {
+        display: block !important;
+      }
+
+      #mobile-menu > div {
+        padding: 8px;
+      }
+
+      #mobile-menu ul {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (min-width: 640px) {
+      #mobile-menu {
+        display: none !important;
+      }
+    }
+    </style>
+  </noscript>
+
   <div x-collapse
        x-cloak
        x-show="open"
        @click.outside="open = false"
        @keydown.escape.window="open = false"
-       class="sm:hidden bg-dark overflow-hidden transition-all duration-300 ease-in-out">
+       class="sm:hidden bg-dark overflow-hidden"
+       id="mobile-menu">
     <div class="px-4 pt-4 pb-6">
       {% include "includes/search_form.html" with type="mobile" %}
 
