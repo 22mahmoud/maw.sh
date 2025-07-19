@@ -1,10 +1,16 @@
 {% load base_tags button_tags field_tags partials %}
 
 <form id="contact-form"
+      method="post"
+      action="{% url 'contact' %}"
       class="w-full flex flex-col gap-4"
       hx-post="{% url 'contact' %}"
       hx-target="#contact-form"
       hx-swap="outerHTML">
+
+  {% csrf_token %}
+  <input type="hidden" name="page_id" value="{{ page.id }}">
+  <input type="hidden" name="source_url_fragment" value="#contact-form">
 
   <div class="w-full flex-1 flex flex-col md:flex-row gap-4">
 
