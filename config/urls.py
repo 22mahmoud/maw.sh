@@ -8,8 +8,8 @@ from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.images.views.serve import ServeView
 
-from src.search.views import SearchView
 from src.base.views import robots_txt
+from src.search.views import SearchView
 
 urlpatterns = [
     path("admin/", admin.site.urls),

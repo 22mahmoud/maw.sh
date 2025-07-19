@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.views.decorators.http import require_GET
 
-
 robots_txt_content = """\
 User-agent: *
 Sitemap: https://site.mahmoudashraf.dev/sitemap.xml

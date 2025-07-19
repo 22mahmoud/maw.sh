@@ -38,14 +38,15 @@
        x-show="open"
        @click.outside="open = false"
        @keydown.escape.window="open = false"
-       class="sm:hidden bg-dark px-4 pt-4 pb-6 overflow-hidden">
+       class="sm:hidden bg-dark overflow-hidden transition-all duration-300 ease-in-out">
+    <div class="px-4 pt-4 pb-6">
+      {% include "includes/search_form.html" with type="mobile" %}
 
-    {% include "includes/search_form.html" with type="mobile" %}
-
-    <nav>
-      <ul class="flex flex-col gap-2 text-base">
-        {% main_menu template="includes/main_menu.html" %}
-      </ul>
-    </nav>
+      <nav>
+        <ul class="flex flex-col gap-2 text-base">
+          {% main_menu template="includes/main_menu.html" %}
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>

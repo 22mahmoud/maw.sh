@@ -1,49 +1,68 @@
-{% load base_tags button_tags field_tags %}
+{% load base_tags button_tags field_tags partials %}
 
 <form id="contact-form"
       class="w-full flex flex-col gap-4"
       hx-post="{% url 'contact' %}"
       hx-target="#contact-form"
-      hx-swap="outerHTML"
-      hx-triggerd="verified"
-      hx-on="submit: submitHandler()">
+      hx-swap="outerHTML">
 
   <div class="w-full flex-1 flex flex-col md:flex-row gap-4">
-    {% field
-    name="email"
-    label="Email"
-    autocomplete="email"
-    placeholder="me@example.com"
-    value=form.email.value
-    error=form.email.errors
-    error_message=form.email.errors.as_text
-    %}
 
-    {% field
-    required=""
-    name="name"
-    type="text"
-    label="Name"
-    autocomplete="name"
-    placeholder="John Doe"
-    value=form.name.value
-    error=form.name.errors
-    error_message=form.name.errors.as_text
-    %}
+    {% partialdef email inline %}
+      <div id="email-wrapper"
+           hx-post="{% url "validate_contact_field" %}"
+           hx-trigger="input changed delay:500ms, blur from:#email"
+           hx-target="#email-wrapper"
+           hx-sync="closest form:abort"
+           class="w-full">
+        {% field name="email" label="Email" autocomplete="email" placeholder="me@example.com" value=form.email.value error=form.email.errors error_message=form.email.errors.as_text id="email" %}
+      </div>
+    {% endpartialdef %}
+
+    {% partialdef name inline %}
+      <div id="name-wrapper"
+           hx-post="{% url "validate_contact_field" %}"
+           hx-trigger="input changed delay:500ms, blur from:#name"
+           hx-target="#name-wrapper"
+           hx-sync="closest form:abort"
+           class="w-full">
+        {% field
+        required=""
+        name="name"
+        type="text"
+        label="Name"
+        autocomplete="name"
+        placeholder="John Doe"
+        value=form.name.value
+        error=form.name.errors
+        error_message=form.name.errors.as_text
+        id="name"
+        %}
+      </div>
+    {% endpartialdef %}
+
   </div>
 
-  {% field
-  required=""
-  name="message"
-  id="message"
-  label="Message"
-  placeholder="Your message here..."
-  as="textarea"
-  rows=4
-  value=form.message.value
-  error=form.message.errors
-  error_message=form.message.errors.as_text
-  %}
+  {% partialdef message inline %}
+    <div id="message-wrapper"
+         hx-post="{% url "validate_contact_field" %}"
+         hx-trigger="input changed delay:500ms, blur from:#message"
+         hx-target="#message-wrapper"
+         hx-include="#contact-form">
+      {% field
+      required=""
+      name="message"
+      id="message"
+      label="Message"
+      placeholder="Your message here..."
+      as="textarea"
+      rows=4
+      value=form.message.value
+      error=form.message.errors
+      error_message=form.message.errors.as_text
+      %}
+    </div>
+  {% endpartialdef %}
 
   {{ form.captcha }}
 
@@ -52,7 +71,6 @@
     type="submit"
     class="w-fit"
     id="contact-submit-button"
-    data_sitekey="6LezuYUrAAAAALB8VB8BgbhTF_N9uRtoi3nEELpV" data_callback="announce"
     %}
     <span>Send Message</span>
     {% icon 'circle-notch' id="spinner" class="htmx-indicator animate-spin h-5 w-5" %}

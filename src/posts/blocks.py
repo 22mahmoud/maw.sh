@@ -10,7 +10,7 @@ from src.base.blocks.text import HeadingBlock
 
 
 def resolve_block_template(block_type: str, layout: str | None = None) -> str:
-    if not layout:
+    if not layout or layout == "default":
         return f"posts/blocks/{block_type}.html"
 
     return f"posts/blocks/{block_type}_{layout}.html"

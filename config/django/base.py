@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 INSTALLED_APPS = WAGTAIL_INSTALLED_APPS + [
+    "template_partials",
     "django.forms",
     "captcha",
     "django_htmx",
