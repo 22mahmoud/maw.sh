@@ -8,9 +8,11 @@
       hx-target="#contact-form"
       hx-swap="outerHTML">
 
-  {% csrf_token %}
-  <input type="hidden" name="page_id" value="{{ page.id }}">
-  <input type="hidden" name="source_url_fragment" value="#contact-form">
+  <noscript>
+    {% csrf_token %}
+    <input type="hidden" name="page_id" value="{{ page.id }}">
+    <input type="hidden" name="source_url_fragment" value="#contact-form">
+  </noscript>
 
   <div class="w-full flex-1 flex flex-col md:flex-row gap-4">
 
