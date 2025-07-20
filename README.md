@@ -4,7 +4,7 @@
 - [x] Setup wagtail
 - [x] Setup Postgres
 - [x] Setup Vite
-- [ ] Home Page
+- [x] Home Page
 - [x] IndieWeb Post Types
     - [x] Article (Blog Post)
     - [x] Note (Thoughts)
@@ -13,8 +13,9 @@
     - [x] Bookmark
     - [x] Photo
     - [x] Video
-- [ ] Search
+- [x] Search
 - [x] Webmentions
+- [x] Projects
 - [ ] Comments
 - [ ] Tracker
     - [ ] Video Games
@@ -29,6 +30,6 @@
 - [ ] Resume
 - [ ] RSS
 - [x] sitemap.xml
-- [ ] robots.txt
+- [x] robots.txt
 - [x] deployment
 - [x] CI
