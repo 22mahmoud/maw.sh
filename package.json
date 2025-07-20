@@ -24,7 +24,7 @@
     "@tailwindcss/vite": "^4.1.11",
     "@types/alpinejs": "^3.13.11",
     "@types/alpinejs__collapse": "^3.13.4",
-    "@types/node": "^24.0.14",
+    "@types/node": "^24.0.15",
     "shiki": "^3.8.1",
     "shiki-transformer-copy-button": "^0.0.5",
     "tailwindcss": "^4.1.11",
