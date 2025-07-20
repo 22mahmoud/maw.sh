@@ -65,14 +65,14 @@
   </head>
 
   <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'
-        class="min-h-full bg-darker text-primary max-w-6xl mx-auto">
+        class="min-h-full flex flex-col bg-darker text-primary max-w-6xl mx-auto">
     <a id="top"></a>
 
     {% wagtailuserbar %}
 
     {% include "includes/header.html" %}
 
-    <main class="relative bg-darker z-1">
+    <main class="grow flex flex-col h-full relative bg-darker z-1">
       {% block content %}
       {% endblock content %}
     </main>

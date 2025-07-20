@@ -29,6 +29,20 @@ class ProjectPageTechnologyRelationship(Orderable):
 
 
 class ProjectsIndexPage(Page):
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+
+        projects = (
+            ProjectPage.objects.child_of(self)  # type: ignore
+            .live()
+            .public()
+            .order_by("-first_published_at")
+        )
+
+        context["projects"] = projects
+
+        return context
+
     subpage_types = ["projects.ProjectPage"]
 
 
@@ -45,6 +59,14 @@ class ProjectPage(Page):
         "Short Description",
         max_length=200,
         blank=True,
+    )
+
+    featured_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
     )
 
     project_type = models.CharField("Project Type", max_length=100, blank=True)
@@ -91,6 +113,7 @@ class ProjectPage(Page):
             [
                 FieldPanel("short_description"),
                 FieldPanel("project_type"),
+                FieldPanel("featured_image"),
                 FieldPanel("role"),
                 MultipleChooserPanel(
                     "technology_relationships",

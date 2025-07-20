@@ -19,6 +19,7 @@ from src.clients.blocks import ClientsMarqueeStaticBlock
 from src.contact.blocks import ContactFormStaticBlock
 from src.pagination.mixins import PaginatedArchiveMixin
 from src.posts.models import BasePostPage
+from src.projects.blocks import FeaturedProjectsStaticBlock
 from src.seo.models import SeoMetaFields
 from src.utils import get_all_subclasses
 
@@ -38,6 +39,7 @@ class HomePage(PaginatedArchiveMixin, RoutablePageMixin, SeoMetaFields, Page):  
             ("feed", FeedBlock()),
             ("spacer", SpacerBlock()),
             ("contact_form", ContactFormStaticBlock()),
+            ("featured_projects", FeaturedProjectsStaticBlock()),
         ],
         use_json_field=True,
         blank=True,
