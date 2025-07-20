@@ -1,3 +1,4 @@
+from django.http import HttpRequest
 from wagtail import blocks
 
 from src.contact.forms import ContactForm
@@ -7,10 +8,9 @@ class ContactFormStaticBlock(blocks.StaticBlock):
     def get_context(self, value, parent_context=None):
         context = super().get_context(value, parent_context)
 
-        if not parent_context:
+        if not isinstance(request := context.get("request"), HttpRequest):
             return context
 
-        request = parent_context.get("request")
         session = request.session
 
         form_data = session.pop("contact_form_data", None)
