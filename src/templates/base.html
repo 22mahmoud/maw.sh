@@ -8,6 +8,16 @@
   <head>
     <link rel="dns-prefetch" href="//static.mahmoudashraf.dev">
     <link rel="preconnect" href="https://static.mahmoudashraf.dev" crossorigin>
+    <link rel="preload"
+          href="{% static 'fonts/outfit-v14-latin-700.woff2' %}"
+          as="font"
+          type="font/woff2"
+          crossorigin>
+    <link rel="preload"
+          href="{% static 'fonts/figtree-v8-latin-regular.woff2' %}"
+          as="font"
+          type="font/woff2"
+          crossorigin>
     <meta charset="utf-8">
     <title>
       {% block title %}

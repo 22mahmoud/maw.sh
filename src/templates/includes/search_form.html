@@ -1,12 +1,12 @@
 {% load base_tags field_tags button_tags %}
 
-<form action="{% url "search" %}"
+<form action="{% url 'search' %}"
       method="get"
       role="search"
       {% if type == "desktop" %}
-        class="w-full sm:w-auto flex items-stretch gap-2"
+        class="w-full sm:w-auto flex items-stretch gap-2 sm:gap-3"
       {% else %}
-        class="w-full flex items-stretch gap-2 mb-4"
+        class="w-full flex items-stretch gap-1 sm:gap-2 mb-4"
       {% endif %}>
 
   {% if type == "desktop" %}
@@ -16,7 +16,7 @@
     required=""
     type="search"
     placeholder="Search..."
-    class="h-[42px] w-full text-base max-w-xs"
+    class="h-10 w-full text-base max-w-[20rem] sm:max-w-[24rem]"
     aria_label="Search"
     %}
   {% else %}
@@ -26,12 +26,12 @@
     required=""
     type="search"
     placeholder="Search..."
-    class="h-[42px] w-full text-base"
+    class="h-10 w-full text-base"
     aria_label="Search"
     %}
   {% endif %}
 
-  {% button type="submit" variant="muted" size="sm" class="h-[42px] px-4" %}
+  {% button type="submit" variant="muted" size="sm" class="h-10 px-3 sm:px-4" %}
     {% icon "magnifying-glass" class="w-5 h-5" %}
     <span class="sr-only">Search</span>
   {% endbutton %}
