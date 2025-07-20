@@ -8,7 +8,7 @@ from wagtail.admin.panels import (
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.views.snippets import SnippetViewSet
 
-from .models import Person
+from .models import Person, Technology
 
 
 class PersonViewSet(SnippetViewSet):
@@ -41,7 +41,19 @@ class PersonViewSet(SnippetViewSet):
     ]
 
 
+class TechnologyViewSet(SnippetViewSet):
+    model = Technology
+    menu_label = "Technology"  # type: ignore
+    icon = "code"  # type: ignore
+    list_display = ("name", "thumb_icon")  # type: ignore
+    panels = [
+        FieldPanel("name"),
+        FieldPanel("icon"),
+    ]
+
+
 register_snippet(PersonViewSet)
+register_snippet(TechnologyViewSet)
 
 
 @hooks.register("menus_modify_primed_menu_items")  # type: ignore

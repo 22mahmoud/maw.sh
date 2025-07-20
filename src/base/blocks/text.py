@@ -5,6 +5,7 @@ class HeadingBlock(blocks.StructBlock):
     heading_text = blocks.RichTextBlock(
         features=["bold", "italic", "link", "code"], required=True
     )
+
     size = blocks.ChoiceBlock(
         choices=[
             ("", "Select a heading size"),
@@ -17,6 +18,36 @@ class HeadingBlock(blocks.StructBlock):
         ],
         blank=True,
         required=False,
+    )
+
+    text_position = blocks.ChoiceBlock(
+        choices=[
+            ("left", "Left"),
+            ("center", "Center"),
+            ("right", "Right"),
+        ],
+        default="left",
+        required=False,
+    )
+
+    text_size = blocks.ChoiceBlock(
+        choices=[
+            ("text-xs", "Extra Small"),
+            ("text-sm", "Small"),
+            ("text-base", "Base"),
+            ("text-lg", "Large"),
+            ("text-xl", "XL"),
+            ("text-2xl", "2XL"),
+            ("text-3xl", "3XL"),
+            ("text-4xl", "4XL"),
+            ("text-5xl", "5XL"),
+            ("text-6xl", "6XL"),
+            ("text-7xl", "7XL"),
+            ("text-8xl", "8XL"),
+            ("text-9xl", "9XL"),
+        ],
+        required=False,
+        blank=True,
     )
 
     use_anchor = blocks.BooleanBlock(required=False, default=False)

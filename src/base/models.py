@@ -18,7 +18,6 @@ from wagtail.models import (
     WorkflowMixin,
 )
 from wagtail.models.pages import slugify
-from wagtail.search import index
 from wagtailmedia.blocks import VideoChooserBlock
 
 from src.clients.blocks import ClientsMarqueeStaticBlock
@@ -30,7 +29,9 @@ from .constants import SOCIAL_PLATFORMS
 
 class PageTag(TaggedItemBase):
     content_object = ParentalKey(
-        "wagtailcore.Page", related_name="tagged_items", on_delete=models.CASCADE
+        "wagtailcore.Page",
+        related_name="tagged_items",
+        on_delete=models.CASCADE,
     )
 
 
@@ -50,13 +51,33 @@ class PostPersonRelationship(Orderable, models.Model):
     panels = [FieldPanel("person")]
 
 
+class Technology(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    icon = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    @property
+    def thumb_icon(self):
+        try:
+            return self.icon.get_rendition("fill-50x50").img_tag()  # type: ignore
+        except:  # noqa: E722
+            return ""
+
+    def __str__(self):
+        return self.name
+
+
 class Person(  # type: ignore
     WorkflowMixin,
     DraftStateMixin,
     LockableMixin,
     RevisionMixin,
     ClusterableModel,
-    index.Indexed,
 ):
     class Meta:  # type: ignore
         verbose_name = "person"

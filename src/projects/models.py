@@ -1,12 +1,31 @@
 from django.db import models
 from wagtail import blocks
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, MultipleChooserPanel
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.fields import StreamField
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.models import Page
+from wagtail.models import Orderable, Page, ParentalKey
+from wagtailmedia.blocks import VideoChooserBlock
 
+from src.base.blocks.codeblock import CodeBlock
+from src.base.blocks.list import ListBlock
 from src.base.blocks.text import HeadingBlock
+
+
+class ProjectPageTechnologyRelationship(Orderable):
+    page = ParentalKey(
+        "projects.ProjectPage",
+        related_name="technology_relationships",
+        on_delete=models.CASCADE,
+    )
+
+    technology = models.ForeignKey(
+        "base.Technology",
+        related_name="+",
+        on_delete=models.CASCADE,
+    )
+
+    panels = [FieldPanel("technology")]
 
 
 class ProjectsIndexPage(Page):
@@ -30,21 +49,37 @@ class ProjectPage(Page):
 
     project_type = models.CharField("Project Type", max_length=100, blank=True)
     role = models.CharField("My Role", max_length=100, blank=True)
-    technologies = models.CharField("Technologies Used", max_length=200, blank=True)
 
     start_date = models.DateField("Start Date", null=True, blank=True)
     end_date = models.DateField("End Date", null=True, blank=True)
     is_featured = models.BooleanField("Featured Project", default=False)
 
+    @property
+    def technologies(self):
+        return [rel.technology for rel in self.technology_relationships.all()]  # type: ignore
+
     body = StreamField(
         [
-            ("paragraph", blocks.RichTextBlock()),
-            ("image", ImageChooserBlock()),
+            (
+                "rich_text",
+                blocks.RichTextBlock(
+                    features=["bold", "italic", "link", "code", "blockquote"],
+                    help_text="Write your article content. Use headings (H2, H3) to structure your text",
+                ),
+            ),
+            (
+                "image",
+                ImageChooserBlock(
+                    help_text="Choose an image from your media library to display alongside content"
+                ),
+            ),
             ("quote", blocks.BlockQuoteBlock()),
-            ("heading", HeadingBlock()),
-            ("embed", EmbedBlock()),
             ("gallery", blocks.ListBlock(ImageChooserBlock(), label="Image Gallery")),
-            ("code", blocks.TextBlock(label="Code Snippet")),
+            ("list", ListBlock()),
+            ("codeblock", CodeBlock()),
+            ("video", VideoChooserBlock()),
+            ("embed", EmbedBlock()),
+            ("heading", HeadingBlock()),
         ],
         use_json_field=True,
         blank=True,
@@ -57,7 +92,14 @@ class ProjectPage(Page):
                 FieldPanel("short_description"),
                 FieldPanel("project_type"),
                 FieldPanel("role"),
-                FieldPanel("technologies"),
+                MultipleChooserPanel(
+                    "technology_relationships",
+                    chooser_field_name="technology",
+                    heading="Technologies",
+                    label="Technology",
+                    panels=None,
+                    min_num=0,
+                ),
                 FieldPanel("is_featured"),
             ],
             heading="Project Info",

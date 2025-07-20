@@ -5,9 +5,9 @@
   {% if self.use_anchor %}
     id="{{ heading_id }}"
   {% endif %}
-  class="scroll-mt-24 text-primary font-heading font-bold tracking-tight"
-  >
+  class="scroll-mt-24 text-primary font-heading font-bold tracking-tight {{ self.text_size|default:'' }} text-{{ self.text_position|default:'left' }}" >
   {{ self.heading_text.source|strip_p_tags|richtext }}
+
   {% if self.use_anchor %}
     {% link
       icon="paperclip"
@@ -17,5 +17,6 @@
       class="inline-block ml-2 align-baseline transition-all duration-200 transform hover:scale-110" %}
     {% endlink %}
   {% endif %}
+
   </{{ self.size|default:"h2" }}>
 {% endwith %}

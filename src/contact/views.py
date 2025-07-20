@@ -1,9 +1,8 @@
 from django.http import Http404, HttpResponseBadRequest
-from django.views import View
-from django.template.response import TemplateResponse
 from django.shortcuts import redirect, render
+from django.template.response import TemplateResponse
+from django.views import View
 from wagtail.models import Page
-
 
 from .forms import ContactForm
 
