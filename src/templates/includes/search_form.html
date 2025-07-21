@@ -11,24 +11,26 @@
 
   {% if type == "desktop" %}
     {% field
-    id="desktop_search"
-    name="q"
-    required=""
-    type="search"
-    placeholder="Search..."
-    class="h-10 w-full text-base max-w-[20rem] sm:max-w-[24rem]"
-    aria_label="Search"
-    %}
+      id="desktop_search"
+      name="q"
+      required=""
+      type="search"
+      placeholder="Search..."
+      class="h-10 w-full text-base max-w-[20rem] sm:max-w-[24rem]"
+      aria_label="Search"
+      %}
+    {% endfield %}
   {% else %}
     {% field
-    id="mobile_search"
-    name="q"
-    required=""
-    type="search"
-    placeholder="Search..."
-    class="h-10 w-full text-base"
-    aria_label="Search"
-    %}
+      id="mobile_search"
+      name="q"
+      required=""
+      type="search"
+      placeholder="Search..."
+      class="h-10 w-full text-base"
+      aria_label="Search"
+      %}
+    {% endfield %}
   {% endif %}
 
   {% button type="submit" variant="muted" size="sm" class="h-10 px-3 sm:px-4" %}

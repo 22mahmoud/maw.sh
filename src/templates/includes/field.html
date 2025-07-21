@@ -1,22 +1,59 @@
-<div class="flex-1 flex flex-col gap-1.5">
-  {% if label_text %}
-    <label for="{{ name }}" class="{{ label_class }}">
-      {{ label_text }}
-    </label>
-  {% endif %}
+{% if tag_type == 'checkbox' %}
+  <div class="flex items-center gap-2">
+    <input type="checkbox" id="{{ name }}" name="{{ name }}" {{ field_attrs }}>
 
-  {% if tag_type == "textarea" %}
-    <textarea {{ field_attrs }}>{{ value }}</textarea>
-  {% else %}
-    <input {{ field_attrs }}>
-  {% endif %}
+    {% if label_text %}
+      <label for="{{ name }}" class="{{ label_class }}">
+        {{ label_text }}
+      </label>
+    {% endif %}
+  </div>
+{% elif tag_type == 'radio' %}
+  <div class="flex-1 flex flex-col gap-1.5">
+    {% if label_text %}
+      <p class="{{ label_class }}">
+        {{ label_text }}
+      </p>
+    {% endif %}
 
-  <p id="{{ error_id }}"
-     class="text-sm text-red-400 mt-1
-            {% if not error_message %}
-              sr-only
-            {% endif %}"
-     role="alert">
-    {{ error_message|default:"" }}
-  </p>
-</div>
+    <div class="flex flex-col gap-2">
+      {{ options_html|safe }}
+    </div>
+
+    <p id="{{ error_id }}"
+       class="text-sm text-red-400 mt-1
+              {% if not error_message %}
+                sr-only
+              {% endif %}"
+       role="alert">
+      {{ error_message|default:"" }}
+    </p>
+  </div>
+{% else %}
+  <div class="flex-1 flex flex-col gap-1.5">
+    {% if label_text %}
+      <label for="{{ name }}" class="{{ label_class }}">
+        {{ label_text }}
+      </label>
+    {% endif %}
+
+    {% if tag_type == 'select' %}
+      <select {{ field_attrs }}>
+        {{ options_html|safe }}
+      </select>
+    {% elif tag_type == "textarea" %}
+      <textarea {{ field_attrs }}>{{ value }}</textarea>
+    {% else %}
+      <input {{ field_attrs }}>
+    {% endif %}
+
+    <p id="{{ error_id }}"
+       class="text-sm text-red-400 mt-1
+              {% if not error_message %}
+                sr-only
+              {% endif %}"
+       role="alert">
+      {{ error_message|default:"" }}
+    </p>
+  </div>
+{% endif %}

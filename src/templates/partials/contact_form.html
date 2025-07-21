@@ -24,6 +24,7 @@
            hx-sync="closest form:abort"
            class="w-full">
         {% field name="email" label="Email" autocomplete="email" placeholder="me@example.com" value=form.email.value error=form.email.errors error_message=form.email.errors.as_text id="email" %}
+        {% endfield %}
       </div>
     {% endpartialdef %}
 
@@ -35,20 +36,20 @@
            hx-sync="closest form:abort"
            class="w-full">
         {% field
-        required=""
-        name="name"
-        type="text"
-        label="Name"
-        autocomplete="name"
-        placeholder="John Doe"
-        value=form.name.value
-        error=form.name.errors
-        error_message=form.name.errors.as_text
-        id="name"
-        %}
+          required=""
+          name="name"
+          type="text"
+          label="Name"
+          autocomplete="name"
+          placeholder="John Doe"
+          value=form.name.value
+          error=form.name.errors
+          error_message=form.name.errors.as_text
+          id="name"
+          %}
+        {% endfield %}
       </div>
     {% endpartialdef %}
-
   </div>
 
   {% partialdef message inline %}
@@ -58,17 +59,18 @@
          hx-target="#message-wrapper"
          hx-include="#contact-form">
       {% field
-      required=""
-      name="message"
-      id="message"
-      label="Message"
-      placeholder="Your message here..."
-      as="textarea"
-      rows=4
-      value=form.message.value
-      error=form.message.errors
-      error_message=form.message.errors.as_text
-      %}
+        required=""
+        name="message"
+        id="message"
+        label="Message"
+        placeholder="Your message here..."
+        as="textarea"
+        rows=4
+        value=form.message.value
+        error=form.message.errors
+        error_message=form.message.errors.as_text
+        %}
+      {% endfield %}
     </div>
   {% endpartialdef %}
 

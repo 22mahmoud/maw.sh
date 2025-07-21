@@ -21,6 +21,7 @@
                 class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto items-stretch sm:items-center">
             <div class="flex-grow">
               {% field required="" name="q" type="search" value=search_query placeholder="Search again..." aria_label="Search query" %}
+              {% endfield %}
             </div>
             {% button type="submit" variant="outline" class="w-fit sm:w-auto" %}
               Search
