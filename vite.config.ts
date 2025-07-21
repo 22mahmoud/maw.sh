@@ -17,7 +17,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         advancedChunks: {
-          groups: [{ name: 'vendor', test: /node_modules\/(htmx\.org|alpinejs)\// }],
+          groups: [{ name: 'vendor', test: /node_modules\/(htmx\.org|alpinejs|gsap)\// }],
         },
       },
       input: {
