@@ -29,7 +29,7 @@
     "shiki-transformer-copy-button": "^0.0.5",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
-    "vite": "npm:rolldown-vite@^7.0.9"
+    "vite": "npm:rolldown-vite@^7.0.10"
   },
   "dependencies": {
     "@alpinejs/collapse": "^3.14.9",
