@@ -19,6 +19,7 @@ WAGTAIL_INSTALLED_APPS = [
     "src.base",
     "src.seo",
     # wagtail core apps
+    "wagtail.contrib.search_promotions",
     "wagtail.contrib.frontend_cache",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
