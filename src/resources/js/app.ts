@@ -9,7 +9,7 @@ window.htmx = htmx;
 
 Alpine.plugin(collapse);
 
-if (window.__APP_DATA__.isNewGuestbookPage) {
+if (window.__APP_DATA__?.isNewGuestbookPage) {
   await import('./guestbook-editor');
 }
 
