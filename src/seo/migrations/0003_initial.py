@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("seo", "0002_delete_seosettings"),
-        ("wagtailcore", "0095_query_searchpromotion_querydailyhits"),
+        ("wagtailcore", "0094_alter_page_locale"),
         ("wagtailimages", "0027_image_description"),
     ]
 
