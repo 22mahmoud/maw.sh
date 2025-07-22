@@ -1,64 +1,7 @@
 from django.http import HttpRequest
 from wagtail import blocks
 
-guestbook_editor_presets = [
-    {
-        "name": "Retro Wave",
-        "bg": "bg-darker",
-        "text": "text-accent",
-        "font": "font-mono",
-        "radius": "rounded",
-        "emoji": "🕹️",
-    },
-    {
-        "name": "Sunset Vibes",
-        "bg": "bg-sunset",
-        "text": "text-white",
-        "font": "font-serif",
-        "radius": "rounded-xl",
-        "emoji": "🌅",
-    },
-    {
-        "name": "Minimal",
-        "bg": "bg-dark",
-        "text": "text-white",
-        "font": "font-sans",
-        "radius": "rounded-lg",
-        "emoji": "🖤",
-    },
-    {
-        "name": "Bright Pop",
-        "bg": "bg-accent",
-        "text": "text-black",
-        "font": "font-sans",
-        "radius": "rounded-3xl",
-        "emoji": "🎉",
-    },
-    {
-        "name": "Calm Forest",
-        "bg": "bg-gradient-1",
-        "text": "text-white",
-        "font": "font-serif",
-        "radius": "rounded-xl",
-        "emoji": "🌲",
-    },
-    {
-        "name": "Golden Hour",
-        "bg": "bg-gradient-2",
-        "text": "text-black",
-        "font": "font-sans",
-        "radius": "rounded-lg",
-        "emoji": "🌞",
-    },
-    {
-        "name": "Night Neon",
-        "bg": "bg-darker",
-        "text": "text-accent",
-        "font": "font-mono",
-        "radius": "rounded-xl",
-        "emoji": "🌌",
-    },
-]
+from .data import guestbook_editor_presets
 
 
 class GuestbookFormStaticBlock(blocks.StaticBlock):
@@ -66,6 +9,7 @@ class GuestbookFormStaticBlock(blocks.StaticBlock):
         from src.guestbook.forms import GuestbookForm
 
         context = super().get_context(value, parent_context)
+        default_preset = guestbook_editor_presets[0]
 
         if not isinstance((request := context.get("request")), HttpRequest):
             return context
@@ -80,11 +24,11 @@ class GuestbookFormStaticBlock(blocks.StaticBlock):
         else:
             form = GuestbookForm(
                 initial={
-                    "bg": guestbook_editor_presets[0]["bg"],
-                    "text": guestbook_editor_presets[0]["text"],
-                    "font": guestbook_editor_presets[0]["font"],
-                    "radius": guestbook_editor_presets[0]["radius"],
-                    "emoji": guestbook_editor_presets[0]["emoji"],
+                    "bg": default_preset["bg"],
+                    "text": default_preset["text"],
+                    "font": default_preset["font"],
+                    "radius": default_preset["radius"],
+                    "emoji": default_preset["emoji"],
                 }
             )
 
