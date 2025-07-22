@@ -566,7 +566,7 @@ requires-dist = [
     { name = "environs", extras = ["django"], specifier = ">=14.2.0" },
     { name = "gunicorn", specifier = ">=23.0.0" },
     { name = "psycopg", extras = ["binary"], specifier = ">=3.2.9" },
-    { name = "wagtail", specifier = "==7.0.1" },
+    { name = "wagtail", specifier = ">=7.0.1" },
     { name = "wagtailmedia", specifier = ">=0.16.0" },
     { name = "wagtailmenus", specifier = ">=4.0.4" },
     { name = "whitenoise", extras = ["brotli"], specifier = ">=6.9.0" },

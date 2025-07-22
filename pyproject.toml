@@ -17,7 +17,7 @@ dependencies = [
   "environs[django]>=14.2.0",
   "gunicorn>=23.0.0",
   "psycopg[binary]>=3.2.9",
-  "wagtail==7.0.1",
+  "wagtail>=7.0.1",
   "wagtailmedia>=0.16.0",
   "wagtailmenus>=4.0.4",
   "whitenoise[brotli]>=6.9.0",
