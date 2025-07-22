@@ -1,75 +1,43 @@
 import Alpine from 'alpinejs';
 
+type Preset = {
+  name: string;
+  bg: string;
+  text: string;
+  font: string;
+  radius: string;
+  emoji: string;
+};
+
 Alpine.data('guestbookEditor', () => {
-  const presets = [
-    {
-      name: 'Sunset Vibes',
-      bg: 'bg-sunset',
-      text: 'text-white',
-      font: 'font-serif',
-      radius: 'rounded-xl',
-      emoji: '🌅',
-    },
-    {
-      name: 'Retro Wave',
-      bg: 'bg-darker',
-      text: 'text-accent',
-      font: 'font-mono',
-      radius: 'rounded-md',
-      emoji: '🕹️',
-    },
-    {
-      name: 'Bright Pop',
-      bg: 'bg-accent',
-      text: 'text-black',
-      font: 'font-sans',
-      radius: 'rounded-3xl',
-      emoji: '🎉',
-    },
-    {
-      name: 'Minimal',
-      bg: 'bg-dark',
-      text: 'text-white',
-      font: 'font-sans',
-      radius: 'rounded-lg',
-      emoji: '🖤',
-    },
-    {
-      name: 'Calm Forest',
-      bg: 'bg-gradient-1',
-      text: 'text-white',
-      font: 'font-serif',
-      radius: 'rounded-xl',
-      emoji: '🌲',
-    },
-    {
-      name: 'Golden Hour',
-      bg: 'bg-gradient-2',
-      text: 'text-black',
-      font: 'font-sans',
-      radius: 'rounded-lg',
-      emoji: '🌞',
-    },
-    {
-      name: 'Night Neon',
-      bg: 'bg-darker',
-      text: 'text-accent',
-      font: 'font-mono',
-      radius: 'rounded-xl',
-      emoji: '🌌',
-    },
-  ];
+  const dataElm = document.getElementById('guestbook-editor-presets');
+  const raw = dataElm?.textContent;
+
+  let presets: Preset[];
+
+  try {
+    if (!raw) throw new Error('No preset data found');
+
+    presets = JSON.parse(raw) as Preset[];
+
+    if (!Array.isArray(presets)) {
+      throw new Error('Invalid preset format');
+    }
+  } catch (err) {
+    console.error('Failed to parse presets:', err);
+    presets = [];
+  }
 
   return {
     form: {
       name: '',
       message: '',
-      emoji: '',
+      emoji: presets[0].emoji,
       url: '',
-      bg: 'bg-white',
-      text: 'text-black',
-      font: 'font-sans',
-      radius: 'rounded-lg',
+      bg: presets[0].bg,
+      text: presets[0].text,
+      font: presets[0].font,
+      radius: presets[0].radius,
     },
     presets,
     applyPreset(index: number) {

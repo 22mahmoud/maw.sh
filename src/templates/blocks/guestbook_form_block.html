@@ -1,80 +1,66 @@
 {% load base_tags button_tags %}
 
+{{ guestbook_editor_presets|json_script:"guestbook-editor-presets" }}
+
 <div x-data="guestbookEditor()" class="w-full">
   <div class="space-y-6 max-w-xl mx-auto">
 
     {% include "partials/guestbook_form.html" with form=form %}
 
-    <div x-show="true" x-cloak>
+    <div>
       <h2 class="text-sm text-neutral-400 font-medium mb-2">
         Choose a Preset
       </h2>
       <div class="flex flex-wrap gap-2 items-center">
-        <template x-for="(preset, i) in presets" :key="i">
+        {% for preset in guestbook_editor_presets %}
           <button type="button"
                   class="text-xs px-3 py-1 rounded border border-neutral-700 hover:bg-neutral-700 transition"
-                  x-text="preset.name"
-                  @click="applyPreset(i)"
-                  :aria-label="`Apply ${preset.name} preset`">
+                  x-on:click="applyPreset({{ forloop.counter0 }})"
+                  aria-label="Apply {{ preset.name }} preset">
+            {{ preset.name }}
           </button>
-        </template>
+        {% endfor %}
         <button type="button"
                 class="text-xs px-3 py-1 bg-accent text-black rounded shadow hover:bg-accent-bright transition"
-                @click="randomize"
+                x-on:click="randomize"
                 aria-label="Apply a random preset">
           🎲 Random
         </button>
       </div>
     </div>
 
-    <div x-data="{ previewVisible: true }"
-         class="flex flex-col gap-4 px-4 pt-4 pb-6 sm:static sm:mt-6 sm:px-0 sticky bottom-0 z-30 -mx-4 bg-dark/90 backdrop-blur border-t border-neutral-700 sm:bg-transparent sm:border-0 sm:backdrop-blur-none">
-      <div class="flex w-full items-center justify-between gap-4 bg-surface-alt text-left underline-offset-2 hover:bg-surface-alt/75 focus-visible:bg-surface-alt/75 focus-visible:underline focus-visible:outline-hidden dark:bg-surface-dark-alt dark:hover:bg-surface-dark-alt/75 dark:focus-visible:bg-surface-dark-alt/75"
-           @click="previewVisible = !previewVisible"
-           :aria-expanded="previewVisible.toString()"
-           aria-controls="guestbook-preview"
-           role="button"
-           x-bind:class="isExpanded ? 'text-on-surface-strong dark:text-on-surface-dark-strong font-bold'  : 'text-on-surface dark:text-on-surface-dark font-medium'">
-        <h2 class="text-sm text-neutral-400 font-medium">
-          Preview
-        </h2>
-        <span class="text-neutral-400"
-              :class="previewVisible ? 'rotate-180' : 'rotate-0'">
-          {% icon 'caret-down' class="w-5 h-5" %}
-        </span>
-      </div>
+    <div class="flex flex-col gap-4 px-4 pt-4 pb-6 sm:static sm:mt-6 sm:px-0 bottom-0 z-30 -mx-4 bg-dark/90 backdrop-blur border-t border-neutral-700 sm:bg-transparent sm:border-0 sm:backdrop-blur-none">
+      {% with guestbook_editor_presets.0 as default %}
+        <div id="guestbook-preview"
+             x-bind:class="[form.bg, form.text, form.font, form.radius]"
+             class="min-h-50 flex flex-col relative p-6 transition-all shadow-xl border border-neutral-700 {{ default.bg }} {{ default.text }} {{ default.font }} {{ default.radius }}"
+             role="region"
+             aria-label="Preview card">
+          <div class="text-3xl" x-text="form.emoji || '✨'">
+            {{ default.emoji }}
+          </div>
 
-      <div x-show="previewVisible"
-           x-collapse
-           x-cloak
-           id="guestbook-preview"
-           class="min-h-50 flex flex-col relative p-6 transition-all shadow-xl border border-neutral-700"
-           :class="[form.bg, form.text, form.font, form.radius]"
-           role="region"
-           aria-label="Preview card">
+          <p class="flex-1 mt-2 text-xl font-medium"
+             x-text="form.message || 'Your message will appear here'">
+            Your message will appear here
+          </p>
 
-        <div class="text-3xl" x-text="form.emoji || '✨'">
+          <p x-cloak class="self-end text-sm mt-2">
+            <template x-if="form.name && form.url">
+              <a :href="form.url"
+                 class="inline-flex items-center gap-1 underline"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                — <span x-text="form.name"></span>
+                {% icon 'arrow-square-out' class="w-3 h-3" %}
+              </a>
+            </template>
+            <template x-if="form.name && !form.url">
+              <span x-text="'— ' + form.name"></span>
+            </template>
+          </p>
         </div>
-
-        <p class="flex-1 mt-2 text-xl font-medium"
-           x-text="form.message || 'Your message will appear here'">
-        </p>
-
-        <p class="self-end text-sm mt-2">
-          <template x-if="form.name && form.url">
-            <a :href="form.url"
-               class="inline-flex items-center gap-1 underline"
-               target="_blank"
-               rel="noopener noreferrer">
-              — <span x-text="form.name"></span>
-              {% icon 'arrow-square-out' class="w-3 h-3" %}
-            </a>
-          </template>
-          <template x-if="form.name && !form.url">
-            <span x-text="'— ' + form.name"></span>
-          </template>
-        </p>
-      </div>
+      {% endwith %}
 
       {% button
         form="guestbook-form"
@@ -86,7 +72,6 @@
         <span>Submit</span>
         {% icon 'circle-notch' id="spinner" class="htmx-indicator animate-spin h-5 w-5" %}
       {% endbutton %}
-
     </div>
   </div>
 </div>
