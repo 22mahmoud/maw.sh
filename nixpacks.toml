@@ -3,8 +3,8 @@ providers = ["python", "node"]
 [phases."python:post"]
 dependsOn = ['node:build']
 cmds = [
-  "python manage.py collectstatic --noinput --clear --verbosity 2",
-  "python manage.py migrate --noinput",
+  "uv run python manage.py collectstatic --noinput --clear --verbosity 2",
+  "uv run python manage.py migrate --noinput",
 ]
 
 [start]

@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
     dependencies = [
         ("guestbook", "0003_remove_guestbook_color"),
-        ("wagtailcore", "0094_alter_page_locale"),
+        ("wagtailcore", "0095_query_searchpromotion_querydailyhits"),
     ]
 
     operations = [

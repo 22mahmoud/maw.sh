@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ("clients", "0001_initial"),
-        ("wagtailcore", "0094_alter_page_locale"),
+        ("wagtailcore", "0095_query_searchpromotion_querydailyhits"),
     ]
 
     operations = [

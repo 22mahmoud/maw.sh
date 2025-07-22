@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("wagtailcore", "0094_alter_page_locale"),
+        ("wagtailcore", "0095_query_searchpromotion_querydailyhits"),
         ("wagtailimages", "0027_image_description"),
     ]
 
