@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
+
 {% block head %}
   <script type="text/javascript">
     window.__APP_DATA__ = {
@@ -9,15 +10,23 @@
 {% endblock head %}
 
 {% block content %}
-  <div class="flex-1 w-full bg-dark px-4 py-6 md:py-10 zigzag">
-    <header class="max-w-3xl mx-auto mb-10 text-center">
-      <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary">
-        Add Guestbook Entry
-      </h2>
+  <div class="flex-1 w-full bg-dark px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 zigzag">
+    <header class="mx-auto text-center max-w-3xl mb-12">
+      <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight">
+        Sign the Guestbook
+      </h1>
+
+      {% if page.intro %}
+        <div class="mt-4 text-secondary leading-relaxed max-w-prose mx-auto">
+          {{ page.intro|richtext }}
+        </div>
+      {% endif %}
     </header>
 
-    {% for block in page.body %}
-      {% include_block block %}
-    {% endfor %}
+    <div class="max-w-3xl mx-auto space-y-8">
+      {% for block in page.body %}
+        {% include_block block %}
+      {% endfor %}
+    </div>
   </div>
 {% endblock content %}
