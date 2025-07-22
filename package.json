@@ -16,7 +16,6 @@
   "license": "ISC",
   "packageManager": "pnpm@10.13.1",
   "devDependencies": {
-    "@alpinejs__collapse": "link:@types/@alpinejs__collapse",
     "@biomejs/biome": "2.1.2",
     "@shikijs/transformers": "^3.8.1",
     "@tailwindcss/forms": "^0.5.10",

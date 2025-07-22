@@ -21,9 +21,6 @@ importers:
         specifier: ^2.0.6
         version: 2.0.6
     devDependencies:
-      '@alpinejs__collapse':
-        specifier: link:@types/@alpinejs__collapse
-        version: link:@types/@alpinejs__collapse
       '@biomejs/biome':
         specifier: 2.1.2
         version: 2.1.2
