@@ -95,7 +95,3 @@
 .htmx-request.htmx-indicator {
   display: inline;
 }
-
-[x-cloak] {
-  display: none !important;
-}

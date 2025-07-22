@@ -7,7 +7,7 @@
 
     {% include "partials/guestbook_form.html" with form=form %}
 
-    <div>
+    <div class="js-only">
       <h2 class="text-sm text-neutral-400 font-medium mb-2">
         Choose a Preset
       </h2>
@@ -29,11 +29,11 @@
       </div>
     </div>
 
-    <div class="flex flex-col gap-4 px-4 pt-4 pb-6 sm:static sm:mt-6 sm:px-0 bottom-0 z-30 -mx-4 bg-dark/90 backdrop-blur border-t border-neutral-700 sm:bg-transparent sm:border-0 sm:backdrop-blur-none">
+    <div class="flex flex-col gap-4 px-4 pt-4 pb-6 sm:static sm:mt-6 sm:px-0 bottom-0 z-30 -mx-4 border-t border-neutral-700">
       {% with guestbook_editor_presets.0 as default %}
         <div id="guestbook-preview"
              x-bind:class="[form.bg, form.text, form.font, form.radius]"
-             class="min-h-50 flex flex-col relative p-6 transition-all shadow-xl border border-neutral-700 {{ default.bg }} {{ default.text }} {{ default.font }} {{ default.radius }}"
+             class="js-only min-h-50 flex flex-col relative p-6 transition-all shadow-xl border border-neutral-700 {{ default.bg }} {{ default.text }} {{ default.font }} {{ default.radius }}"
              role="region"
              aria-label="Preview card">
           <div class="text-3xl" x-text="form.emoji || '✨'">
@@ -45,7 +45,7 @@
             Your message will appear here
           </p>
 
-          <p x-cloak class="self-end text-sm mt-2">
+          <p class="self-end text-sm mt-2">
             <template x-if="form.name && form.url">
               <a :href="form.url"
                  class="inline-flex items-center gap-1 underline"
@@ -73,6 +73,7 @@
         {% icon 'circle-notch' id="spinner" class="htmx-indicator animate-spin h-5 w-5" %}
       {% endbutton %}
     </div>
+
   </div>
 </div>
 

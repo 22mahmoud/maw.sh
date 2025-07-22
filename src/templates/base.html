@@ -4,7 +4,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en" class="h-full scroll-smooth">
+<html lang="en" class="h-full scroll-smooth no-js">
   <head>
     <link rel="dns-prefetch" href="//static.mahmoudashraf.dev">
     <link rel="preconnect" href="https://static.mahmoudashraf.dev" crossorigin>
@@ -29,6 +29,20 @@
         {% seo_full_title page %}
       {% endblock title %}
     </title>
+    <script>
+      document.documentElement.classList.remove('no-js');
+    </script>
+    <style>
+      [x-cloak] { display: none !important; }
+
+      .no-js .js-only {
+        display: none;
+      }
+
+     .js-only {
+        visibility: visible;
+      }
+    </style>
     <meta name="description"
           content="{% block description %}
                      {% seo_meta_description page %}
