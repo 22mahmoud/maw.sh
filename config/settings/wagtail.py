@@ -1,5 +1,6 @@
 WAGTAIL_INSTALLED_APPS = [
     # my apps
+    "src.guestbook",
     "src.search",
     "src.contact",
     "src.webmentions",

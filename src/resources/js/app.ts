@@ -8,4 +8,9 @@ window.Alpine = Alpine;
 window.htmx = htmx;
 
 Alpine.plugin(collapse);
+
+if (window.__APP_DATA__.isNewGuestbookPage) {
+  await import('./guestbook-editor');
+}
+
 Alpine.start();

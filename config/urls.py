@@ -13,7 +13,8 @@ from src.search.views import SearchView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("forms/", include("src.contact.urls")),
+    path("forms/contact/", include("src.contact.urls")),
+    path("forms/guestbook/", include("src.guestbook.urls")),
     path("captcha/", include("captcha.urls")),
     path("search/", SearchView.as_view(), name="search"),
     path("cms/", include(wagtailadmin_urls)),

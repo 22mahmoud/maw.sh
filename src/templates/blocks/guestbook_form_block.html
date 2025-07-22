@@ -1,0 +1,75 @@
+{% load base_tags button_tags %}
+
+<div x-data="guestbookEditor()"
+     class="w-full bg-dark px-4 py-6 md:py-10 zigzag">
+  <div class="space-y-6 max-w-xl mx-auto">
+
+    {% include "partials/guestbook_form.html" with form=form %}
+
+    <div x-show="true" x-cloak>
+      <h2 class="text-sm text-neutral-400 font-medium mb-2">
+        Choose a Preset
+      </h2>
+      <div class="flex flex-wrap gap-2 items-center">
+        <template x-for="(preset, i) in presets" :key="i">
+          <button type="button"
+                  class="text-xs px-3 py-1 rounded border border-neutral-700 hover:bg-neutral-700 transition"
+                  x-text="preset.name"
+                  @click="applyPreset(i)"
+                  :aria-label="`Apply ${preset.name} preset`">
+          </button>
+        </template>
+        <button type="button"
+                class="text-xs px-3 py-1 bg-accent text-black rounded shadow hover:bg-accent-bright transition"
+                @click="randomize"
+                aria-label="Apply a random preset">
+          🎲 Random
+        </button>
+      </div>
+    </div>
+
+    <div x-show="true"
+         x-cloak
+         class="min-h-50 flex flex-col relative p-6 transition-all shadow-xl border border-neutral-700"
+         :class="[form.bg, form.text, form.font, form.radius]"
+         role="region"
+         aria-label="Preview card">
+      <div class="text-3xl" x-text="form.emoji || '✨'">
+      </div>
+      <p class="flex-1 mt-2 text-xl font-medium"
+         x-text="form.message || 'Your message will appear here'">
+      </p>
+      <p class="self-end text-sm mt-2">
+        <template x-if="form.name && form.url">
+          <a :href="form.url"
+             class="inline-flex items-center gap-1 underline"
+             target="_blank"
+             rel="noopener noreferrer">
+            — <span x-text="form.name"></span>
+            {% icon 'arrow-squar-out' class="w-3 h-3" %}
+          </a>
+        </template>
+        <template x-if="form.name && !form.url">
+          <span x-text="'— ' + form.name"></span>
+        </template>
+      </p>
+    </div>
+
+    {% button
+      form="guestbook-form"
+      size="md"
+      type="submit"
+      class="w-fit"
+      id="contact-submit-button"
+      %}
+      <span>Submit</span>
+      {% icon 'circle-notch' id="spinner" class="htmx-indicator animate-spin h-5 w-5" %}
+    {% endbutton %}
+  </div>
+</div>
+
+<noscript>
+  <div class="max-w-xl bg-darker mx-auto mt-6 p-4 text-sm text-neutral-400 border border-neutral-700 rounded">
+    JavaScript is disabled. Preset selection and card preview are unavailable, but you can still submit the guestbook form.
+  </div>
+</noscript>

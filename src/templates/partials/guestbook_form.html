@@ -1,0 +1,188 @@
+{% load field_tags partials %}
+
+<form id="guestbook-form"
+      method="post"
+      action="{% url 'guestbook' %}"
+      hx-post="{% url 'guestbook' %}"
+      hx-target="#guestbook-form"
+      hx-swap="outerHTML">
+  <div class="space-y-4">
+    <noscript>
+      {% csrf_token %}
+      <input type="hidden" name="page_id" value="{{ page.id }}">
+      <input type="hidden" name="source_url_fragment" value="#guestbook-form">
+    </noscript>
+
+    <div class="grid grid-cols-2 gap-4">
+      {% partialdef name inline %}
+        <div id="name-wrapper"
+             hx-post="{% url "validate_guestbook_field" %}"
+             hx-trigger="input changed delay:500ms, blur from:#name"
+             hx-target="#name-wrapper"
+             hx-sync="closest form:abort"
+             class="w-full">
+          {% field
+            required=""
+            name="name"
+            label="Name"
+            value=form.name.value
+            error=form.name.errors
+            error_message=form.name.errors.as_text
+            x-model="form.name" %}
+          {% endfield %}
+        </div>
+      {% endpartialdef %}
+
+      {% partialdef emoji inline %}
+        <div id="emoji-wrapper"
+             hx-post="{% url "validate_guestbook_field" %}"
+             hx-trigger="input changed delay:500ms, blur from:#emoji"
+             hx-target="#emoji-wrapper"
+             hx-sync="closest form:abort"
+             class="w-full">
+          {% field
+            required=""
+            name="emoji"
+            label="Emoji"
+            maxlength=2
+            value=form.emoji.value
+            error=form.emoji.errors
+            error_message=form.emoji.errors.as_text
+            x-model="form.emoji" %}
+          {% endfield %}
+        </div>
+      {% endpartialdef %}
+    </div>
+
+    {% partialdef message inline %}
+      <div id="message-wrapper"
+           hx-post="{% url "validate_guestbook_field" %}"
+           hx-trigger="input changed delay:500ms, blur from:#message"
+           hx-target="#message-wrapper"
+           hx-sync="closest form:abort"
+           class="w-full">
+        {% field
+          required=""
+          name="message"
+          label="Message"
+          as="textarea"
+          rows=4
+          value=form.message.value
+          error=form.message.errors
+          error_message=form.message.errors.as_text
+          x-model="form.message" %}
+        {% endfield %}
+      </div>
+    {% endpartialdef %}
+
+    {% partialdef url inline %}
+      <div id="url-wrapper"
+           hx-post="{% url "validate_guestbook_field" %}"
+           hx-trigger="input changed delay:500ms, blur from:#url"
+           hx-target="#url-wrapper"
+           hx-sync="closest form:abort"
+           class="max-w-sm">
+        {% field
+          name="url"
+          label="Website (optional)"
+          x-model="form.url"
+          value=form.url.value
+          error=form.url.errors
+          error_message=form.url.errors.as_text
+          %}
+        {% endfield %}
+      </div>
+    {% endpartialdef %}
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {% field
+        name="bg"
+        label="Background"
+        as="select"
+        value=form.bg.value
+        error=form.bg.errors
+        error_message=form.bg.errors.as_text
+        x-model="form.bg" %}
+        <option value="bg-sunset">
+          Sunset
+        </option>
+        <option value="bg-white">
+          White
+        </option>
+        <option value="bg-gradient-1">
+          Green
+        </option>
+        <option value="bg-gradient-2">
+          Yellow
+        </option>
+        <option value="bg-accent">
+          Accent
+        </option>
+        <option value="bg-darker">
+          Dark
+        </option>
+      {% endfield %}
+
+      {% field
+        name="text"
+        label="Text Color"
+        as="select"
+        value=form.text.value
+        error=form.text.errors
+        error_message=form.text.errors.as_text
+        x-model="form.text" %}
+        <option value="text-black">
+          Black
+        </option>
+        <option value="text-white">
+          White
+        </option>
+        <option value="text-accent">
+          Accent
+        </option>
+      {% endfield %}
+
+      {% field
+        name="font"
+        label="Font"
+        as="select"
+        x-model="form.font"
+        value=form.font.value
+        error=form.font.errors
+        error_message=form.font.errors.as_text
+        %}
+        <option value="font-sans">
+          Sans
+        </option>
+        <option value="font-heading">
+          Heading
+        </option>
+        <option value="font-mono">
+          Mono
+        </option>
+      {% endfield %}
+
+      {% field
+        name="radius"
+        label="Card Shape"
+        as="select"
+        value=form.radius.value
+        error=form.radius.errors
+        error_message=form.radius.errors.as_text
+        x-model="form.radius" %}
+        <option value="rounded-none">
+          None
+        </option>
+        <option value="rounded">
+          Slight
+        </option>
+        <option value="rounded-lg">
+          Large
+        </option>
+        <option value="rounded-xl">
+          Extra
+        </option>
+      {% endfield %}
+    </div>
+  </div>
+</form>

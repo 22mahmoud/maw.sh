@@ -4,18 +4,23 @@
 @plugin "@tailwindcss/typography";
 @config "../../../tailwind.config.ts";
 
+.bg-sunset {
+  @apply bg-gradient-to-r from-gradient-1 to-gradient-2;
+}
+
 @theme {
   --font-heading: "Outfit", sans-serif;
   --font-sans: "Figtree", sans-serif;
   --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-    monospace;
+    DepartureMono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
 
   --color-primary: #e0e0e0;
   --color-secondary: #9a9a9a;
   --color-accent: #c7f800;
   --color-dark: #2d2d2d;
   --color-darker: #1a1a1a;
+  --color-stuble: #b3b3b3;
   --color-gradient-1: #16a085;
   --color-gradient-2: #f4d03f;
   --color-accent-bright: #e5ff53;
