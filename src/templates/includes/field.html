@@ -37,6 +37,12 @@
       </label>
     {% endif %}
 
+    {% if help_text %}
+      <p class="text-sm text-secondary">
+        {{ help_text }}
+      </p>
+    {% endif %}
+
     {% if tag_type == 'select' %}
       <select {{ field_attrs }}>
         {{ options_html|safe }}

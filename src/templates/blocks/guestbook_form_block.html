@@ -2,48 +2,47 @@
 
 {{ guestbook_editor_presets|json_script:"guestbook-editor-presets" }}
 
-<div x-data="guestbookEditor()" class="w-full">
-  <div class="space-y-6 max-w-xl mx-auto">
+<div x-data="{...guestbookEditor(), isOpen: true}" class="w-full">
+  <div class="space-y-6 max-w-xl mx-auto"
+       hx-disabled-elt="#guestbook-submit-button"
+       hx-indicator="#spinner">
 
     {% include "partials/guestbook_form.html" with form=form %}
 
-    <div class="js-only">
-      <h2 class="text-sm text-neutral-400 font-medium mb-2">
-        Choose a Preset
-      </h2>
-      <div class="flex flex-wrap gap-2 items-center">
-        {% for preset in guestbook_editor_presets %}
-          <button type="button"
-                  class="text-xs px-3 py-1 rounded border border-neutral-700 hover:bg-neutral-700 transition"
-                  x-on:click="applyPreset({{ forloop.counter0 }})"
-                  aria-label="Apply {{ preset.name }} preset">
-            {{ preset.name }}
-          </button>
-        {% endfor %}
-        <button type="button"
-                class="text-xs px-3 py-1 bg-accent text-black rounded shadow hover:bg-accent-bright transition"
-                x-on:click="randomize"
-                aria-label="Apply a random preset">
-          🎲 Random
-        </button>
-      </div>
-    </div>
+    <div class="-mx-4 z-30 sticky top-0 bottom-0 md:static bg-darker/70 backdrop-blur-xs md:backdrop-blur-none border-t border-neutral-700 h-full md:h-auto flex flex-col gap-4 px-4 pt-4 pb-6 md:pt-0">
+      <noscript>
+        <div class="bg-darker mx-auto mt-6 p-4 text-sm text-neutral-400 border border-neutral-700 rounded">
+          JavaScript is disabled. Preset selection and card preview are unavailable, but you can still submit the guestbook form.
+        </div>
+      </noscript>
 
-    <div class="flex flex-col gap-4 px-4 pt-4 pb-6 sm:static sm:mt-6 sm:px-0 bottom-0 z-30 -mx-4 border-t border-neutral-700">
       {% with guestbook_editor_presets.0 as default %}
-        <div id="guestbook-preview"
-             x-bind:class="[form.bg, form.text, form.font, form.radius]"
-             class="js-only min-h-50 flex flex-col relative p-6 transition-all shadow-xl border border-neutral-700 {{ default.bg }} {{ default.text }} {{ default.font }} {{ default.radius }}"
+        <button @click="isOpen = !isOpen"
+                :aria-expanded="isOpen"
+                aria-controls="guestbook-preview"
+                class="js-only text-sm font-medium text-secondary mt-4 flex justify-between items-center w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition">
+          <span>Live Preview</span>
+          <span :class="{'rotate-180': isOpen}"
+                class="transition-transform duration-300">
+            {% icon "caret-up" class="w-5 h-5" %}
+          </span>
+        </button>
+        <div x-show="isOpen"
+             x-collapse
+             id="guestbook-preview"
+             x-bind:class="classes"
+             class="js-only min-h-50 flex flex-col relative p-6 transition-all shadow-xl border border-neutral-700 rounded-lg {{ default.get_style_classes }} {{ default.radius }}"
              role="region"
              aria-label="Preview card">
           <div class="text-3xl" x-text="form.emoji || '✨'">
             {{ default.emoji }}
           </div>
 
-          <p class="flex-1 mt-2 text-xl font-medium"
-             x-text="form.message || 'Your message will appear here'">
+          <div class="prose prose-main prose-sm flex-1 mt-2 font-medium break-words line-clamp-5 {{ default.get_style_classes }}"
+               x-bind:class="classes"
+               x-html="form.message ? renderMarkdown(form.message) : 'Your message will appear here'">
             Your message will appear here
-          </p>
+          </div>
 
           <p class="self-end text-sm mt-2">
             <template x-if="form.name && form.url">
@@ -76,9 +75,3 @@
 
   </div>
 </div>
-
-<noscript>
-  <div class="max-w-xl bg-darker mx-auto mt-6 p-4 text-sm text-neutral-400 border border-neutral-700 rounded">
-    JavaScript is disabled. Preset selection and card preview are unavailable, but you can still submit the guestbook form.
-  </div>
-</noscript>

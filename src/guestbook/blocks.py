@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from wagtail import blocks
 
-from .data import guestbook_editor_presets
+from .data import get_guestbook_editor_presets
 
 
 class GuestbookFormStaticBlock(blocks.StaticBlock):
@@ -9,6 +9,7 @@ class GuestbookFormStaticBlock(blocks.StaticBlock):
         from src.guestbook.forms import GuestbookForm
 
         context = super().get_context(value, parent_context)
+        guestbook_editor_presets = get_guestbook_editor_presets()
         default_preset = guestbook_editor_presets[0]
 
         if not isinstance((request := context.get("request")), HttpRequest):
@@ -24,10 +25,7 @@ class GuestbookFormStaticBlock(blocks.StaticBlock):
         else:
             form = GuestbookForm(
                 initial={
-                    "bg": default_preset["bg"],
-                    "text": default_preset["text"],
-                    "font": default_preset["font"],
-                    "radius": default_preset["radius"],
+                    "style": default_preset["id"],
                     "emoji": default_preset["emoji"],
                 }
             )

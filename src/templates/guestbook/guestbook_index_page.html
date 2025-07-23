@@ -31,14 +31,14 @@
         </li>
 
         {% for entry in entries %}
-          <li class="break-inside-avoid mb-6 p-6 flex flex-col shadow-xl border border-neutral-700 transition hover:scale-[1.01] duration-150 ease-in-out {{ entry.bg }} {{ entry.text }} {{ entry.font }} {{ entry.radius }}">
+          <li class="break-inside-avoid mb-6 p-6 flex flex-col shadow-xl border border-neutral-700 transition hover:scale-[1.01] duration-150 ease-in-out {{ entry.get_style_classes }} {{ entry.radius }}">
             <div class="text-3xl">
               {{ entry.emoji|default:"✨" }}
             </div>
 
-            <p class="flex-1 mt-3 text-base sm:text-lg font-medium leading-snug line-clamp-3">
-              {{ entry.message|richtext }}
-            </p>
+            <div class="prose prose-main prose-sm flex-1 mt-3 text-base sm:text-lg font-medium leading-snug break-words line-clamp-5 {{ entry.get_style_classes }}">
+              {{ entry.message|safe }}
+            </div>
 
             <div class="self-end mt-3 text-sm text-right space-y-1">
               {% if entry.url %}

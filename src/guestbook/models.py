@@ -50,23 +50,18 @@ class GuestbookFormPage(Page):
 
 
 class Guestbook(models.Model):
-    class BackgroundStyle(models.TextChoices):
-        WHITE = "bg-white", "White"
-        SUNSET = "bg-sunset", "Sunset"
-        GREEN = "bg-gradient-1", "Green"
-        YELLOW = "bg-gradient-2", "Yellow"
-        ACCENT = "bg-accent", "Accent"
-        DARKER = "bg-darker", "Dark"
+    STYLE_MAP = {
+        "retro": "bg-darker text-accent font-mono",
+        "sunset": "bg-sunset text-white font-heading",
+        "minimal": "bg-dark text-white font-sans",
+        "bright": "bg-accent text-black font-sans",
+    }
 
-    class TextColor(models.TextChoices):
-        BLACK = "text-black", "Black"
-        WHITE = "text-white", "White"
-        ACCENT = "text-accent", "Accent"
-
-    class FontStyle(models.TextChoices):
-        SANS = "font-sans", "Sans"
-        HEADING = "font-heading", "Heading"
-        MONO = "font-mono", "Mono"
+    class StylePreset(models.TextChoices):
+        RETRO = "retro", "🕹️ Retro Wave"
+        SUNSET = "sunset", "🌅 Sunset Vibes"
+        MINIMAL = "minimal", "🖤 Minimal"
+        BRIGHT = "bright", "🎉 Bright Pop"
 
     class BorderRadius(models.TextChoices):
         NONE = "rounded-none", "None"
@@ -81,7 +76,7 @@ class Guestbook(models.Model):
 
     name = models.CharField(max_length=100)
     emoji = models.CharField(max_length=2, help_text="Emoji representing mood or vibe")
-    message = models.TextField()
+    message = models.TextField(max_length=200)
     url = models.URLField(
         blank=True, help_text="Optional link (e.g., social profile, site)"
     )
@@ -93,26 +88,27 @@ class Guestbook(models.Model):
         help_text="Control who can view this entry",
     )
 
-    bg = models.CharField(
-        max_length=50, choices=BackgroundStyle.choices, default=BackgroundStyle.WHITE
-    )
-
-    text = models.CharField(
-        max_length=50, choices=TextColor.choices, default=TextColor.BLACK
-    )
-
-    font = models.CharField(
-        max_length=50, choices=FontStyle.choices, default=FontStyle.SANS
+    style = models.CharField(
+        max_length=20,
+        choices=StylePreset.choices,
+        default=StylePreset.MINIMAL,
+        help_text="Visual style preset for the card",
     )
 
     radius = models.CharField(
-        max_length=50, choices=BorderRadius.choices, default=BorderRadius.SLIGHT
+        max_length=20,
+        choices=BorderRadius.choices,
+        default=BorderRadius.SLIGHT,
+        help_text="Border radius of the card",
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.emoji} {self.name}"
+
+    def get_style_classes(self):
+        return self.STYLE_MAP.get(self.style, "")
 
     class Meta:
         verbose_name = "Guestbook Entry"

@@ -1,3 +1,5 @@
+import time
+
 from django.http import Http404, HttpResponseBadRequest
 from django.shortcuts import redirect, render
 from django.template.response import TemplateResponse
@@ -12,11 +14,14 @@ class GuestbookView(View):
     http_method_names = ["post"]
 
     def post(self, request, *args, **kwargs):
+        time.sleep(10)
         form = GuestbookForm(request.POST)
         is_htmx = request.htmx
 
         if form.is_valid():
-            form.save()
+            guestbook = form.save(commit=False)
+            guestbook.message = form.render_message()
+            guestbook.save()
 
             context = {
                 "form": GuestbookForm(),

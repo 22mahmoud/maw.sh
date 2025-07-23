@@ -20,12 +20,10 @@ class GuestbookSubmissionViewSet(SnippetViewSet):
     panels = [
         FieldPanel("name", read_only=True),
         FieldPanel("emoji", read_only=True),
-        FieldPanel("message", read_only=True),
-        FieldPanel("url", read_only=True),
+        FieldPanel("message", read_only=False),
+        FieldPanel("url", read_only=False),
         FieldPanel("visibility"),
-        FieldPanel("bg", read_only=True),
-        FieldPanel("text", read_only=True),
-        FieldPanel("font", read_only=True),
+        FieldPanel("style", read_only=True),
         FieldPanel("radius", read_only=True),
         FieldPanel("created_at", read_only=True),
     ]

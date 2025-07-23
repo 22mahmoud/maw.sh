@@ -1,58 +1,29 @@
-guestbook_editor_presets = [
-    {
-        "name": "Retro Wave",
-        "bg": "bg-darker",
-        "text": "text-accent",
-        "font": "font-mono",
-        "radius": "rounded",
-        "emoji": "🕹️",
-    },
-    {
-        "name": "Sunset Vibes",
-        "bg": "bg-sunset",
-        "text": "text-white",
-        "font": "font-serif",
-        "radius": "rounded-xl",
-        "emoji": "🌅",
-    },
-    {
-        "name": "Minimal",
-        "bg": "bg-dark",
-        "text": "text-white",
-        "font": "font-sans",
-        "radius": "rounded-lg",
-        "emoji": "🖤",
-    },
-    {
-        "name": "Bright Pop",
-        "bg": "bg-accent",
-        "text": "text-black",
-        "font": "font-sans",
-        "radius": "rounded-3xl",
-        "emoji": "🎉",
-    },
-    {
-        "name": "Calm Forest",
-        "bg": "bg-gradient-1",
-        "text": "text-white",
-        "font": "font-serif",
-        "radius": "rounded-xl",
-        "emoji": "🌲",
-    },
-    {
-        "name": "Golden Hour",
-        "bg": "bg-gradient-2",
-        "text": "text-black",
-        "font": "font-sans",
-        "radius": "rounded-lg",
-        "emoji": "🌞",
-    },
-    {
-        "name": "Night Neon",
-        "bg": "bg-darker",
-        "text": "text-accent",
-        "font": "font-mono",
-        "radius": "rounded-xl",
-        "emoji": "🌌",
-    },
-]
+def get_guestbook_editor_presets():
+    from src.guestbook.models import Guestbook
+
+    return [
+        {
+            "id": "retro",
+            "name": "Retro Wave",
+            "emoji": "🕹️",
+            "styles": Guestbook.STYLE_MAP["retro"],
+        },
+        {
+            "id": "sunset",
+            "name": "Sunset Vibes",
+            "emoji": "🌅",
+            "styles": Guestbook.STYLE_MAP["sunset"],
+        },
+        {
+            "id": "minimal",
+            "name": "Minimal",
+            "emoji": "🖤",
+            "styles": Guestbook.STYLE_MAP["minimal"],
+        },
+        {
+            "id": "bright",
+            "name": "Bright Pop",
+            "emoji": "🎉",
+            "styles": Guestbook.STYLE_MAP["bright"],
+        },
+    ]

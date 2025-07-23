@@ -13,14 +13,14 @@
       <input type="hidden" name="source_url_fragment" value="#guestbook-form">
     </noscript>
 
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid grid-cols-3 gap-4 items-stretch">
       {% partialdef name inline %}
         <div id="name-wrapper"
+             class="col-span-2"
              hx-post="{% url "validate_guestbook_field" %}"
              hx-trigger="input changed delay:500ms, blur from:#name"
              hx-target="#name-wrapper"
-             hx-sync="closest form:abort"
-             class="w-full">
+             hx-sync="closest form:abort">
           {% field
             required=""
             name="name"
@@ -35,11 +35,11 @@
 
       {% partialdef emoji inline %}
         <div id="emoji-wrapper"
+             class="h-full"
              hx-post="{% url "validate_guestbook_field" %}"
              hx-trigger="input changed delay:500ms, blur from:#emoji"
              hx-target="#emoji-wrapper"
-             hx-sync="closest form:abort"
-             class="w-full">
+             hx-sync="closest form:abort">
           {% field
             required=""
             name="emoji"
@@ -70,6 +70,7 @@
           value=form.message.value
           error=form.message.errors
           error_message=form.message.errors.as_text
+          help_text="Supports basic Markdown and HTML. Max 280 characters. GIFs allowed from giphy/tenor/imgur."
           x-model="form.message" %}
         {% endfield %}
       </div>
@@ -88,103 +89,41 @@
           x-model="form.url"
           value=form.url.value
           error=form.url.errors
-          error_message=form.url.errors.as_text
-          %}
+          error_message=form.url.errors.as_text %}
         {% endfield %}
       </div>
     {% endpartialdef %}
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      {% with selected=form.bg.value %}
-        {% field
-          name="bg"
-          label="Background"
-          as="select"
-          value=selected
-          error=form.bg.errors
-          error_message=form.bg.errors.as_text
-          x-model="form.bg" %}
-          <option value="bg-sunset" {% if selected == "bg-sunset" %}selected{% endif %}>
-            Sunset
-          </option>
-          <option value="bg-white" {% if selected == "bg-white" %}selected{% endif %}>
-            White
-          </option>
-          <option value="bg-gradient-1"
-                  {% if selected == "bg-gradient-1" %}
-                    selected
-                  {% endif %}>
-            Green
-          </option>
-          <option value="bg-gradient-2"
-                  {% if selected == "bg-gradient-2" %}
-                    selected
-                  {% endif %}>
-            Yellow
-          </option>
-          <option value="bg-accent" {% if selected == "bg-accent" %}selected{% endif %}>
-            Accent
-          </option>
-          <option value="bg-darker" {% if selected == "bg-darker" %}selected{% endif %}>
-            Dark
-          </option>
-        {% endfield %}
-      {% endwith %}
+    {% with selected=form.style.value %}
+      {% field
+        class="flex flex-row!"
+        name="style"
+        label="Style Preset"
+        as="radio"
+        value=selected
+        error=form.style.errors
+        error_message=form.style.errors.as_text
+        %}
+        <div class="flex flex-row gap-4 flex-wrap">
+          {% for key, label in form.fields.style.choices %}
+            <label class="bg-dark flex items-center gap-2 p-2 border border-neutral-700 rounded cursor-pointer hover:border-accent transition-all"
+                   :class="{ 'ring-1 ring-accent': form.style === '{{ key }}' }">
+              <input type="radio"
+                     name="style"
+                     x-model="form.style"
+                     value="{{ key }}"
+                     {% if selected == key %}
+                       checked
+                     {% endif %}
+                     class="accent-accent w-5 h-5 border border-neutral-700" />
+              <span class="text-sm text-primary">{{ label }}</span>
+            </label>
+          {% endfor %}
+        </div>
+      {% endfield %}
+    {% endwith %}
 
-      {% with selected=form.text.value %}
-        {% field
-          name="text"
-          label="Text Color"
-          as="select"
-          value=selected
-          error=form.text.errors
-          error_message=form.text.errors.as_text
-          x-model="form.text" %}
-          <option value="text-black"
-                  {% if selected == "text-black" %}
-                    selected
-                  {% endif %}>
-            Black
-          </option>
-          <option value="text-white"
-                  {% if selected == "text-white" %}
-                    selected
-                  {% endif %}>
-            White
-          </option>
-          <option value="text-accent"
-                  {% if selected == "text-accent" %}
-                    selected
-                  {% endif %}>
-            Accent
-          </option>
-        {% endfield %}
-      {% endwith %}
-
-      {% with selected=form.font.value %}
-        {% field
-          name="font"
-          label="Font"
-          as="select"
-          x-model="form.font"
-          value=selected
-          error=form.font.errors
-          error_message=form.font.errors.as_text %}
-          <option value="font-sans" {% if selected == "font-sans" %}selected{% endif %}>
-            Sans
-          </option>
-          <option value="font-heading"
-                  {% if selected == "font-heading" %}
-                    selected
-                  {% endif %}>
-            Heading
-          </option>
-          <option value="font-mono" {% if selected == "font-mono" %}selected{% endif %}>
-            Mono
-          </option>
-        {% endfield %}
-      {% endwith %}
-
+    <div class="max-w-xs">
       {% with selected=form.radius.value %}
         {% field
           name="radius"
@@ -193,28 +132,12 @@
           value=selected
           error=form.radius.errors
           error_message=form.radius.errors.as_text
-          x-model="form.radius" %}
-          <option value="rounded-none"
-                  {% if selected == "rounded-none" %}
-                    selected
-                  {% endif %}>
-            None
-          </option>
-          <option value="rounded" {% if selected == "rounded" %}selected{% endif %}>
-            Slight
-          </option>
-          <option value="rounded-lg"
-                  {% if selected == "rounded-lg" %}
-                    selected
-                  {% endif %}>
-            Large
-          </option>
-          <option value="rounded-xl"
-                  {% if selected == "rounded-xl" %}
-                    selected
-                  {% endif %}>
-            Extra
-          </option>
+          x_model="form.radius" %}
+          {% for key, label in form.fields.radius.choices %}
+            <option value="{{ key }}" {% if selected == key %}selected{% endif %}>
+              {{ label }}
+            </option>
+          {% endfor %}
         {% endfield %}
       {% endwith %}
     </div>

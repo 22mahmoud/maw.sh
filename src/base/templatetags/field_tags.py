@@ -59,6 +59,7 @@ class FieldBlockNode(template.Node):
         label_text = resolved.get("label", None)
         has_error = resolved.get("error", False)
         error_message = resolved.get("error_message", "")
+        help_text = resolved.get("help_text", "")
         user_class = resolved.get("class", "")
 
         state = "error" if has_error else "default"
@@ -84,7 +85,7 @@ class FieldBlockNode(template.Node):
             attrs["aria-describedby"] = error_id
 
         # Clean up
-        for key in ["label", "error", "error_message"]:
+        for key in ["label", "error", "error_message", "help_text"]:
             attrs.pop(key, None)
 
         attrs = {k.replace("_", "-"): v for k, v in attrs.items()}
@@ -97,6 +98,7 @@ class FieldBlockNode(template.Node):
                 "label_class": label_class,
                 "error_id": error_id,
                 "error_message": error_message,
+                "help_text": help_text,
                 "tag_type": tag_type,
                 "value": value or "",
                 "field_attrs": mark_safe(flatatt(attrs)),
