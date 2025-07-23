@@ -45,10 +45,10 @@ repos:
     hooks:
       - id: local-biome-format
         name: biome format
-        entry: pnpm run format
+        entry: bun run format
         <<: *biome-base
 
       - id: local-biome-lint
         name: biome lint
-        entry: pnpm run lint
+        entry: bun run lint
         <<: *biome-base

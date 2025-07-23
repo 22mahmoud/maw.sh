@@ -14,7 +14,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "bun@1.2.19",
   "devDependencies": {
     "@biomejs/biome": "2.1.2",
     "@shikijs/transformers": "^3.8.1",
@@ -37,7 +37,9 @@
     "htmx.org": "^2.0.6"
   },
   "engines": {
-    "node": "22",
-    "pnpm": "10.13.1"
+    "node": "24"
+  },
+  "volta": {
+    "node": "24.4.1"
   }
 }
