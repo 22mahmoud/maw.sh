@@ -87,6 +87,7 @@ Alpine.data('guestbookEditor', () => {
       style: presets[0]?.id ?? '',
       radius: '',
     },
+    isPreviewOpen: true,
     presets,
     get currentPreset() {
       return this.presets.find(p => p.id === this.form.style) ?? this.presets[0];

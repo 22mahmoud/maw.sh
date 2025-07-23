@@ -2,7 +2,7 @@
 
 {{ guestbook_editor_presets|json_script:"guestbook-editor-presets" }}
 
-<div x-data="{...guestbookEditor(), isOpen: true}" class="w-full">
+<div x-data="guestbookEditor()" class="w-full">
   <div class="space-y-6 max-w-xl mx-auto"
        hx-disabled-elt="#guestbook-submit-button"
        hx-indicator="#spinner">
@@ -17,17 +17,17 @@
       </noscript>
 
       {% with guestbook_editor_presets.0 as default %}
-        <button @click="isOpen = !isOpen"
-                :aria-expanded="isOpen"
+        <button @click="isPreviewOpen = !isPreviewOpen"
+                :aria-expanded="isPreviewOpen"
                 aria-controls="guestbook-preview"
                 class="js-only text-sm font-medium text-secondary mt-4 flex justify-between items-center w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition">
           <span>Live Preview</span>
-          <span :class="{'rotate-180': isOpen}"
+          <span :class="{'rotate-180': isPreviewOpen}"
                 class="transition-transform duration-300">
             {% icon "caret-up" class="w-5 h-5" %}
           </span>
         </button>
-        <div x-show="isOpen"
+        <div x-show="isPreviewOpen"
              x-collapse
              id="guestbook-preview"
              x-bind:class="classes"
