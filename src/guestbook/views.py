@@ -1,5 +1,3 @@
-import time
-
 from django.http import Http404, HttpResponseBadRequest
 from django.shortcuts import redirect, render
 from django.template.response import TemplateResponse
@@ -14,7 +12,7 @@ class GuestbookView(View):
     http_method_names = ["post"]
 
     def post(self, request, *args, **kwargs):
-        time.sleep(10)
+        # time.sleep(10)
         form = GuestbookForm(request.POST)
         is_htmx = request.htmx
 
