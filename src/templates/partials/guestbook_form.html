@@ -1,4 +1,4 @@
-{% load field_tags partials %}
+{% load field_tags %}
 
 <form id="guestbook-form"
       method="post"
@@ -14,85 +14,52 @@
     </noscript>
 
     <div class="grid grid-cols-3 gap-4 items-stretch">
-      {% partialdef name inline %}
-        <div id="name-wrapper"
-             class="col-span-2"
-             hx-post="{% url "validate_guestbook_field" %}"
-             hx-trigger="input changed delay:500ms, blur from:#name"
-             hx-target="#name-wrapper"
-             hx-sync="closest form:abort">
-          {% field
-            required=""
-            name="name"
-            label="Name"
-            value=form.name.value
-            error=form.name.errors
-            error_message=form.name.errors.as_text
-            x-model="form.name" %}
-          {% endfield %}
-        </div>
-      {% endpartialdef %}
-
-      {% partialdef emoji inline %}
-        <div id="emoji-wrapper"
-             class="h-full"
-             hx-post="{% url "validate_guestbook_field" %}"
-             hx-trigger="input changed delay:500ms, blur from:#emoji"
-             hx-target="#emoji-wrapper"
-             hx-sync="closest form:abort">
-          {% field
-            required=""
-            name="emoji"
-            label="Emoji"
-            maxlength=2
-            value=form.emoji.value
-            error=form.emoji.errors
-            error_message=form.emoji.errors.as_text
-            x-model="form.emoji" %}
-          {% endfield %}
-        </div>
-      {% endpartialdef %}
-    </div>
-
-    {% partialdef message inline %}
-      <div id="message-wrapper"
-           hx-post="{% url "validate_guestbook_field" %}"
-           hx-trigger="input changed delay:500ms, blur from:#message"
-           hx-target="#message-wrapper"
-           hx-sync="closest form:abort"
-           class="w-full">
+      <div class="col-span-2">
         {% field
           required=""
-          name="message"
-          label="Message"
-          as="textarea"
-          rows=4
-          value=form.message.value
-          error=form.message.errors
-          error_message=form.message.errors.as_text
-          help_text="Supports basic Markdown and HTML. Max 280 characters. GIFs allowed from giphy/tenor/imgur."
-          x-model="form.message" %}
+          name="name"
+          label="Name"
+          value=form.name.value
+          error=form.name.errors
+          error_message=form.name.errors.as_text
+          x-model="form.name" %}
         {% endfield %}
       </div>
-    {% endpartialdef %}
 
-    {% partialdef url inline %}
-      <div id="url-wrapper"
-           hx-post="{% url "validate_guestbook_field" %}"
-           hx-trigger="input changed delay:500ms, blur from:#url"
-           hx-target="#url-wrapper"
-           hx-sync="closest form:abort"
-           class="max-w-sm">
-        {% field
-          name="url"
-          label="Website (optional)"
-          x-model="form.url"
-          value=form.url.value
-          error=form.url.errors
-          error_message=form.url.errors.as_text %}
-        {% endfield %}
-      </div>
-    {% endpartialdef %}
+      {% field
+        required=""
+        name="emoji"
+        label="Emoji"
+        maxlength=2
+        value=form.emoji.value
+        error=form.emoji.errors
+        error_message=form.emoji.errors.as_text
+        x-model="form.emoji" %}
+      {% endfield %}
+    </div>
+
+    {% field
+      required=""
+      maxlength="280"
+      name="message"
+      label="Message"
+      as="textarea"
+      rows=4
+      value=form.message.value
+      error=form.message.errors
+      error_message=form.message.errors.as_text
+      help_text="Supports basic Markdown and HTML. Max 280 characters. GIFs allowed from giphy/tenor/imgur."
+      x-model="form.message" %}
+    {% endfield %}
+
+    {% field
+      name="url"
+      label="Website (optional)"
+      x-model="form.url"
+      value=form.url.value
+      error=form.url.errors
+      error_message=form.url.errors.as_text %}
+    {% endfield %}
 
     {% with selected=form.style.value %}
       {% field

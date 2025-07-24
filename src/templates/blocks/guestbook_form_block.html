@@ -31,15 +31,14 @@
              x-collapse
              id="guestbook-preview"
              x-bind:class="classes"
-             class="js-only min-h-50 flex flex-col relative p-6 transition-all shadow-xl border border-neutral-700 rounded-lg {{ default.get_style_classes }} {{ default.radius }}"
+             class="js-only prose prose-main min-h-50 flex flex-col relative p-6 transition-all shadow-xl border border-neutral-700 rounded-lg {{ default.get_style_classes }} {{ default.radius }}"
              role="region"
              aria-label="Preview card">
           <div class="text-3xl" x-text="form.emoji || '✨'">
             {{ default.emoji }}
           </div>
 
-          <div class="prose prose-main prose-sm flex-1 mt-2 font-medium break-words line-clamp-5 {{ default.get_style_classes }}"
-               x-bind:class="classes"
+          <div class="bg-transparent flex-1 mt-3 break-words line-clamp-5"
                x-html="form.message ? renderMarkdown(form.message) : 'Your message will appear here'">
             Your message will appear here
           </div>

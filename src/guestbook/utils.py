@@ -45,18 +45,26 @@ def render_guestbook_markdown(value):
     md = markdown.Markdown(extensions=["fenced_code"])
     html_output = md.convert(value)
 
-    soup = BeautifulSoup(html_output, "html.parser")
+    sanitized_html = bleach.clean(
+        html_output,
+        tags=ALLOWED_TAGS,
+        attributes=ALLOWED_ATTRS,
+        strip=True,
+    )
+
+    soup = BeautifulSoup(sanitized_html, "html.parser")
 
     for img in soup.find_all("img"):
         if not isinstance(img, Tag):
             continue
 
         src_raw = img.get("src")
-
         if not isinstance(src_raw, str):
             continue
 
         src: str = src_raw
+        user_width = img.get("width")
+        user_height = img.get("height")
 
         try:
             headers = {
@@ -69,21 +77,20 @@ def render_guestbook_markdown(value):
                 "Accept-Language": "en-US,en;q=0.9",
                 "Accept-Encoding": "identity",
             }
+
             response = requests.get(src, headers=headers, timeout=5)
             response.raise_for_status()
             image = Image.open(BytesIO(response.content))
 
-            img["width"] = str(image.width)
-            img["height"] = str(image.height)
+            if not user_width:
+                img["width"] = str(image.width)
+            if not user_height:
+                img["height"] = str(image.height)
+
+            img["loading"] = "lazy"
+            img["decoding"] = "async"
         except Exception as e:
             print(f"[IMG ERROR] src={src} — {type(e).__name__}: {e}")
             pass
 
-    html_with_dimensions = str(soup)
-
-    return bleach.clean(
-        html_with_dimensions,
-        tags=ALLOWED_TAGS,
-        attributes=ALLOWED_ATTRS,
-        strip=True,
-    )
+    return str(soup)

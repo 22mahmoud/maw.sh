@@ -54,7 +54,7 @@ class Guestbook(models.Model):
         "retro": "bg-darker text-accent font-mono",
         "sunset": "bg-sunset text-white font-heading",
         "minimal": "bg-dark text-white font-sans",
-        "bright": "bg-accent text-black font-sans",
+        "bright": "bg-accent text-black font-sans prose-invert",
     }
 
     class StylePreset(models.TextChoices):
