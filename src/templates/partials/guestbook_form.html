@@ -38,29 +38,6 @@
       {% endfield %}
     </div>
 
-    {% field
-      required=""
-      maxlength="280"
-      name="message"
-      label="Message"
-      as="textarea"
-      rows=4
-      value=form.message.value
-      error=form.message.errors
-      error_message=form.message.errors.as_text
-      help_text="Supports basic Markdown and HTML. Max 280 characters. GIFs allowed from giphy/tenor/imgur."
-      x-model="form.message" %}
-    {% endfield %}
-
-    {% field
-      name="url"
-      label="Website (optional)"
-      x-model="form.url"
-      value=form.url.value
-      error=form.url.errors
-      error_message=form.url.errors.as_text %}
-    {% endfield %}
-
     {% with selected=form.style.value %}
       {% field
         class="flex flex-row!"
@@ -89,6 +66,29 @@
         </div>
       {% endfield %}
     {% endwith %}
+
+    {% field
+      required=""
+      maxlength="280"
+      name="message"
+      label="Message"
+      as="textarea"
+      rows=4
+      value=form.message.value
+      error=form.message.errors
+      error_message=form.message.errors.as_text
+      help_text="Supports basic Markdown and HTML. Max 280 characters. GIFs allowed from giphy/tenor/imgur."
+      x-model="form.message" %}
+    {% endfield %}
+
+    {% field
+      name="url"
+      label="Website (optional)"
+      x-model="form.url"
+      value=form.url.value
+      error=form.url.errors
+      error_message=form.url.errors.as_text %}
+    {% endfield %}
 
     <div class="max-w-xs">
       {% with selected=form.radius.value %}
