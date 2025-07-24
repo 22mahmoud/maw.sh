@@ -16,6 +16,7 @@
 - [x] Search
 - [x] Webmentions
 - [x] Projects
+- [x] Guestbook
 - [ ] Comments
 - [ ] Tracker
     - [ ] Video Games
