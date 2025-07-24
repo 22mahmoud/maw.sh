@@ -1,3 +1,5 @@
+from config.env import env
+
 WAGTAIL_INSTALLED_APPS = [
     # my apps
     "src.guestbook",
@@ -100,3 +102,13 @@ WAGTAILMEDIA = {
 
 # Reverse the default case-sensitive handling of tags
 TAGGIT_CASE_INSENSITIVE = True
+
+
+WAGTAILSEARCH_BACKENDS = {
+    "default": {
+        "BACKEND": "wagtail_meilisearch.backend",
+        "HOST": env.str("MEILISEARCH_HOST", "http://127.0.0.1"),
+        "PORT": env.str("MEILISEARCH_PORT", "7700"),
+        "MASTER_KEY": env.str("MEILI_MASTER_KEY", ""),
+    },
+}

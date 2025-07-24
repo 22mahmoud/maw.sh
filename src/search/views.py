@@ -1,13 +1,10 @@
-from django.contrib.contenttypes.models import ContentType
-from django.http import Http404, HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views import View
 from wagtail.contrib.search_promotions.models import Query
 from wagtail.models import Page
 
 from src.pagination.mixins import PaginatedArchiveMixin
-from src.posts.models import BasePostPage
-from src.utils.get_subclasses import get_all_subclasses
 
 
 class SearchView(PaginatedArchiveMixin, View):
@@ -31,35 +28,24 @@ class SearchView(PaginatedArchiveMixin, View):
 
     def get(self, request: HttpRequest) -> HttpResponse:
         search_query = request.GET.get("q", None)
-        queryset = Page.objects.none()
 
         if search_query:
-            post_page_subclasses = get_all_subclasses(BasePostPage)
+            search_query = search_query.strip()
+        if not search_query:
+            search_query = None
 
-            if post_page_subclasses:
-                content_types = [
-                    ContentType.objects.get_for_model(cls)
-                    for cls in post_page_subclasses
-                ]
-
-                queryset = (
-                    Page.objects.live()  # type:ignore
-                    .filter(content_type__in=content_types)
-                    .specific()
-                    .search(search_query)
-                )
-
+        if search_query:
+            queryset = Page.objects.live().specific().search(search_query)  # type: ignore
             Query.get(search_query).add_hit()
+        else:
+            queryset = Page.objects.none()
 
         page_number = request.GET.get("page", "1")
 
-        try:
-            paginated_results = self.paginate_posts(
-                qs=queryset,
-                page_number=int(page_number),
-            )
-        except Http404:
-            paginated_results = None
+        paginated_results = self.paginate_posts(
+            qs=queryset,
+            page_number=int(page_number),
+        )
 
         context = self.get_paginated_context(
             request, paginated_posts=paginated_results, search_query=search_query
