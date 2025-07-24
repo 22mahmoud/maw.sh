@@ -58,11 +58,7 @@ class BasePostPage(SinglePostMixin, SeoMetaFields):  # type: ignore
             elif isinstance(mention, MentionWebmention):
                 groups["mentions"].append(mention)
 
-        return {
-            name: mentions_list
-            for name, mentions_list in groups.items()
-            if mentions_list
-        }
+        return {name: mentions_list for name, mentions_list in groups.items() if mentions_list}
 
     def _get_webmentions(self):
         current_url = self.get_full_url()
@@ -76,11 +72,7 @@ class BasePostPage(SinglePostMixin, SeoMetaFields):  # type: ignore
                 query |= Q(wm_target=legacy_url_https) | Q(wm_target=legacy_url_http)
             query |= Q(wm_target__endswith=self.legacy_url_path)
 
-        return (
-            Webmention.objects.filter(query)
-            .select_related("author")
-            .order_by("wm_received")
-        )
+        return Webmention.objects.filter(query).select_related("author").order_by("wm_received")
 
     class Meta:  # type: ignore
         abstract = True

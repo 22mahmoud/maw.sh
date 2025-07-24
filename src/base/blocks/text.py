@@ -2,9 +2,7 @@ from wagtail import blocks
 
 
 class HeadingBlock(blocks.StructBlock):
-    heading_text = blocks.RichTextBlock(
-        features=["bold", "italic", "link", "code"], required=True
-    )
+    heading_text = blocks.RichTextBlock(features=["bold", "italic", "link", "code"], required=True)
 
     size = blocks.ChoiceBlock(
         choices=[

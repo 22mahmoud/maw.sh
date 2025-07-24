@@ -8,17 +8,14 @@ from src.posts.models import BasePostPage
 
 class Command(BaseCommand):
     help = (
-        "Creates redirects from the 'legacy_url_path' of pages "
-        "to their new canonical Wagtail URL."
+        "Creates redirects from the 'legacy_url_path' of pages to their new canonical Wagtail URL."
     )
 
     def handle(self, *args, **options):
         try:
             current_site = Site.objects.get_current()
         except Site.DoesNotExist:
-            self.stderr.write(
-                self.style.ERROR("Current site not found. Please set SITE_ID.")
-            )
+            self.stderr.write(self.style.ERROR("Current site not found. Please set SITE_ID."))
             return
 
         self.stdout.write(f"Processing redirects for site: {current_site.name}")

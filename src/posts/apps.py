@@ -1,3 +1,5 @@
+from contextlib import suppress
+
 from django.apps import AppConfig
 
 
@@ -6,7 +8,5 @@ class PostsConfig(AppConfig):
     name = "src.posts"
 
     def ready(self):
-        try:
-            import src.posts.signals  # noqa F401
-        except ImportError:
-            pass
+        with suppress(ImportError):
+            import src.posts.signals  # noqa: F401

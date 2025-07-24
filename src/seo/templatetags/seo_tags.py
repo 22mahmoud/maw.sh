@@ -1,16 +1,19 @@
-from typing import Any, Dict, Optional
+from contextlib import suppress
+from typing import TYPE_CHECKING, Any
 
 from django import template
-from django.http import HttpRequest
 from wagtail.models import Page
 
 from src.seo.models import SeoSettings
+
+if TYPE_CHECKING:
+    from django.http import HttpRequest
 
 register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def seo_full_title(context: Dict[str, Any], page: Page) -> str:
+def seo_full_title(context: dict[str, Any], page: Page) -> str:
     """Generates SEO title with suffix from settings."""
 
     title = ""
@@ -27,21 +30,15 @@ def seo_full_title(context: Dict[str, Any], page: Page) -> str:
     title = title.strip()
     suffix = ""
 
-    request: Optional[HttpRequest] = context.get("request")
+    request: HttpRequest | None = context.get("request")
     if not request:
         return title
 
     settings = None
-    try:
+    with suppress(Exception):
         settings = SeoSettings.for_request(request)
-    except Exception:
-        pass
 
-    if (
-        not settings
-        or not hasattr(settings, "title_suffix")
-        or not settings.title_suffix
-    ):
+    if not settings or not hasattr(settings, "title_suffix") or not settings.title_suffix:
         return title
 
     suffix = f" | {settings.title_suffix.strip()}"

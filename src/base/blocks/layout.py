@@ -38,7 +38,10 @@ class FlexLayoutBlock(blocks.StructBlock):
     )
 
     responsive = blocks.ChoiceBlock(
-        help_text="Choose the breakpoint where items switch from stacked (vertical) to inline (horizontal).",
+        help_text=(
+            "Choose the breakpoint where items switch from",
+            "stacked (vertical) to inline (horizontal).",
+        ),
         choices=[
             ("sm", "Stack < 640 px (sm)"),
             ("md", "Stack < 768 px (md)"),

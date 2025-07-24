@@ -15,9 +15,7 @@ def allow_src(_, name, value):
     if name == "src":
         p = urlparse(value)
         allowed_domains = (".giphy.com", ".tenor.com", ".imgur.com")
-        return not p.netloc or any(
-            p.netloc.endswith(domain) for domain in allowed_domains
-        )
+        return not p.netloc or any(p.netloc.endswith(domain) for domain in allowed_domains)
 
     return False
 
@@ -83,11 +81,9 @@ def render_guestbook_markdown(value):
 
     html_with_dimensions = str(soup)
 
-    clean_html = bleach.clean(
+    return bleach.clean(
         html_with_dimensions,
         tags=ALLOWED_TAGS,
         attributes=ALLOWED_ATTRS,
         strip=True,
     )
-
-    return clean_html

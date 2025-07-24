@@ -30,7 +30,7 @@ def icon(name: str, **kwargs):
 
     context = {
         "attrs": mark_safe(flatatt(attrs)),
-        "class": attrs.get("class", None),
+        "class": attrs.get("class"),
         "fill": attrs.get("fill", "currentColor"),
     }
 
@@ -49,9 +49,7 @@ def allow_src(tag, name, value):
     if name == "src":
         p = urlparse(value)
         allowed_domains = (".giphy.com", ".tenor.com", ".imgur.com")
-        return not p.netloc or any(
-            p.netloc.endswith(domain) for domain in allowed_domains
-        )
+        return not p.netloc or any(p.netloc.endswith(domain) for domain in allowed_domains)
 
     return False
 

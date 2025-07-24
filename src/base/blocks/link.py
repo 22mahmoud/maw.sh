@@ -45,9 +45,7 @@ class LinkBlock(blocks.StructBlock):
         ]
 
         if sum(bool(link) for link in links) != 1:
-            raise ValidationError(
-                "Provide exactly one of internal, download, or external link."
-            )
+            raise ValidationError("Provide exactly one of internal, download, or external link.")
         return result
 
     class Meta:  # type: ignore

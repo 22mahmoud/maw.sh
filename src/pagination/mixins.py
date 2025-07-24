@@ -1,5 +1,3 @@
-from typing import Optional
-
 from django.core.paginator import (
     EmptyPage,
     PageNotAnInteger,
@@ -25,9 +23,7 @@ class PaginatedArchiveMixin:
 
         return f"{base_url}/" if page_num == 1 else f"{base_url}/page/{page_num}/"
 
-    def paginate_posts(
-        self, qs, page_number: Optional[int] = None, base_url=None
-    ) -> PaginatorPage:
+    def paginate_posts(self, qs, page_number: int | None = None, base_url=None) -> PaginatorPage:
         if not page_number:
             raise Http404("missing page")
 
@@ -47,9 +43,7 @@ class PaginatedArchiveMixin:
 
         return paginated_posts
 
-    def _add_navigation_urls(
-        self, paginated_posts: PaginatorPage, base_url=None
-    ) -> None:
+    def _add_navigation_urls(self, paginated_posts: PaginatorPage, base_url=None) -> None:
         paginated_posts.next = (  # type: ignore
             self.build_page_url(paginated_posts.next_page_number(), base_url)
             if paginated_posts.has_next()

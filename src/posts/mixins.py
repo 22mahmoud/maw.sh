@@ -1,5 +1,3 @@
-from typing import List, Optional
-
 from django.http import HttpResponsePermanentRedirect
 from django.utils.timezone import now
 
@@ -39,7 +37,7 @@ class SinglePostMixin:
     def generate_slug(self, timestamp: str) -> str:
         return timestamp
 
-    def get_authors(self) -> List:
+    def get_authors(self) -> list:
         if not hasattr(self, "page_person_relationship"):
             return []
 
@@ -50,11 +48,11 @@ class SinglePostMixin:
             ).select_related("person")
         ]
 
-    def authors(self) -> List:
+    def authors(self) -> list:
         return self.get_authors()
 
     @property
-    def get_tags(self) -> List:
+    def get_tags(self) -> list:
         if not hasattr(self, "tags"):
             return []
 
@@ -86,7 +84,7 @@ class SinglePostMixin:
         url_prefix = self.get_parent().get_url(request=request).rstrip("/")  # type: ignore
         return (site_id, root_url, f"{url_prefix}/{post_path}")
 
-    def _get_post_path(self) -> Optional[str]:
+    def _get_post_path(self) -> str | None:
         if not self.first_published_at or not self.slug:  # type: ignore
             return None
 

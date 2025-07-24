@@ -38,9 +38,7 @@ class Webmention(PolymorphicModel):
             cls._model_registry[cls._wm_property] = cls
 
     @classmethod
-    def create_from_api_data(
-        cls, mention_data: dict, author: "WebmentionAuthor"
-    ) -> "Webmention":
+    def create_from_api_data(cls, mention_data: dict, author: "WebmentionAuthor") -> "Webmention":
         """
         Factory method: Creates the correct Webmention subclass from raw API data.
         """

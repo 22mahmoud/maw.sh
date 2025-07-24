@@ -1,5 +1,5 @@
-import os
-from datetime import datetime, timezone
+from datetime import UTC, datetime
+from pathlib import Path
 from urllib.parse import urlparse
 
 import requests
@@ -48,9 +48,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS("No new webmentions to process."))
             return
 
-        self.stdout.write(
-            f"Found {len(mentions_data)} new webmention(s). Processing..."
-        )
+        self.stdout.write(f"Found {len(mentions_data)} new webmention(s). Processing...")
 
         new_mention_count = 0
         with transaction.atomic():
@@ -58,7 +56,7 @@ class Command(BaseCommand):
                 if self._process_mention(mention):
                     new_mention_count += 1
 
-            sync_state.last_sync = datetime.now(timezone.utc)
+            sync_state.last_sync = datetime.now(UTC)
             sync_state.save()
 
         self.stdout.write(
@@ -78,9 +76,7 @@ class Command(BaseCommand):
         if since:
             params["since"] = since.isoformat()
 
-        self.stdout.write(
-            f"Fetching from {base_url} with params: {params.get('since', 'None')}"
-        )
+        self.stdout.write(f"Fetching from {base_url} with params: {params.get('since', 'None')}")
 
         response = requests.get(base_url, params=params)
         response.raise_for_status()
@@ -94,16 +90,12 @@ class Command(BaseCommand):
             return False
 
         if Webmention.objects.filter(wm_id=wm_id).exists():
-            self.stdout.write(
-                self.style.WARNING(f"Skipping already processed wm-id: {wm_id}")
-            )
+            self.stdout.write(self.style.WARNING(f"Skipping already processed wm-id: {wm_id}"))
             return False
 
         author_data = mention_data.get("author")
         if not author_data or not author_data.get("url"):
-            self.stdout.write(
-                self.style.WARNING(f"Skipping mention {wm_id} with no author URL.")
-            )
+            self.stdout.write(self.style.WARNING(f"Skipping mention {wm_id} with no author URL."))
             return False
 
         try:
@@ -134,8 +126,7 @@ class Command(BaseCommand):
                 response.raise_for_status()
 
                 filename = (
-                    os.path.basename(urlparse(photo_url).path)
-                    or f"{author.id}_avatar.jpg"  # type: ignore
+                    Path(urlparse(photo_url).path).name or f"{author.id}_avatar.jpg"  # type: ignore
                 )
 
                 wagtail_image = Image(
@@ -150,15 +141,11 @@ class Command(BaseCommand):
 
             except requests.exceptions.RequestException as e:
                 self.stdout.write(
-                    self.style.WARNING(
-                        f"Could not fetch author photo from {photo_url}: {e}"
-                    )
+                    self.style.WARNING(f"Could not fetch author photo from {photo_url}: {e}")
                 )
             except Exception as e:
                 self.stderr.write(
-                    self.style.ERROR(
-                        f"Error creating Wagtail Image for {photo_url}: {e}"
-                    )
+                    self.style.ERROR(f"Error creating Wagtail Image for {photo_url}: {e}")
                 )
 
         return author

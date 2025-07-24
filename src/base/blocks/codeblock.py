@@ -13,9 +13,7 @@ class CodeBlockForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if "code" in self.fields:
-            self.fields["code"].widget = forms.Textarea(
-                attrs={"rows": 10, "class": "monospace"}
-            )
+            self.fields["code"].widget = forms.Textarea(attrs={"rows": 10, "class": "monospace"})
 
 
 LANGUAGE_CHOICES = [

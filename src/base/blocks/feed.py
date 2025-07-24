@@ -28,9 +28,7 @@ class FeedBlock(blocks.StructBlock):
         all_subclasses = get_all_subclasses(BasePostPage)
         all_content_types = ContentType.objects.get_for_models(*all_subclasses)
         excluded_content_types = ContentType.objects.get_for_model(ArticlePage)
-        content_types = [
-            ct for _, ct in all_content_types.items() if ct != excluded_content_types
-        ]
+        content_types = [ct for _, ct in all_content_types.items() if ct != excluded_content_types]
 
         recent_posts = (
             Page.objects.live()  # type: ignore

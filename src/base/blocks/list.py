@@ -48,9 +48,7 @@ class ListBlock(blocks.StructBlock):
             ),
             (
                 "items",
-                blocks.ListBlock(
-                    ListItemBlock(max_depth=max_depth, _depth=_depth), label="Items"
-                ),
+                blocks.ListBlock(ListItemBlock(max_depth=max_depth, _depth=_depth), label="Items"),
             ),
             *local_blocks,
         )

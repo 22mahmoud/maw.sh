@@ -16,14 +16,10 @@ AWS_S3_OBJECT_PARAMETERS = {
 class MediaR2Storage(S3Boto3Storage):
     location = "media"
     default_acl = "public-read"
-    object_parameters = {
-        "CacheControl": "public, max-age=31536000, s-maxage=31536000, immutable"
-    }
+    object_parameters = {"CacheControl": "public, max-age=31536000, s-maxage=31536000, immutable"}
 
 
 class WagtailRenditionStorage(S3Boto3Storage):
     location = "cms"
     default_acl = "public-read"
-    object_parameters = {
-        "CacheControl": "public, max-age=31536000, s-maxage=31536000, immutable"
-    }
+    object_parameters = {"CacheControl": "public, max-age=31536000, s-maxage=31536000, immutable"}

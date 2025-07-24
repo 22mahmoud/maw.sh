@@ -21,9 +21,7 @@ class SearchView(PaginatedArchiveMixin, View):
             query_params["page"] = str(page_num)
 
         return (
-            f"{self.request.path}?{query_params.urlencode()}"
-            if query_params
-            else self.request.path
+            f"{self.request.path}?{query_params.urlencode()}" if query_params else self.request.path
         )
 
     def get(self, request: HttpRequest) -> HttpResponse:
@@ -55,7 +53,10 @@ class SearchView(PaginatedArchiveMixin, View):
                 "page": {
                     "title": "Search",
                     "introduction": (
-                        f"{total_results} result{'s' if total_results != 1 else ''} found for '{search_query}'."
+                        (
+                            f"{total_results} result{'s' if total_results != 1 else ''} "
+                            f"found for '{search_query}'."
+                        )
                         if search_query
                         else "Enter a search query to explore the archive."
                     ),

@@ -6,7 +6,7 @@ import sys
 
 from config.env import BASE_DIR, env
 
-env.read_env(os.path.join(BASE_DIR, ".env"))
+env.read_env(BASE_DIR / ".env")
 
 
 def main():

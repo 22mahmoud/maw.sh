@@ -22,9 +22,7 @@ class VideoStreamBlock(blocks.StreamBlock):
         help_text="Paste a direct link to your video from YouTube, Vimeo, or other platforms",
     )
 
-    video = VideoChooserBlock(
-        help_text="Upload and select a video file from your media library"
-    )
+    video = VideoChooserBlock(help_text="Upload and select a video file from your media library")
 
     class Meta:  # type: ignore
         label = "Video"
@@ -65,7 +63,10 @@ class NoteBlock(blocks.StructBlock):
     content = blocks.RichTextBlock(
         features=["bold", "italic", "link", "blockquote", "hr"],
         required=True,
-        help_text="Write your note content. Supports rich text formatting like bold, italic, and links",
+        help_text=(
+            "Write your note content.",
+            "Supports rich text formatting like bold, italic, and links",
+        ),
     )
     media = MediaStreamBlock(
         required=False,
@@ -95,7 +96,10 @@ class ArticleBlock(blocks.StructBlock):
                 "rich_text",
                 blocks.RichTextBlock(
                     features=["bold", "italic", "link", "code", "blockquote"],
-                    help_text="Write your article content. Use headings (H2, H3) to structure your text",
+                    help_text=(
+                        "Write your article content.",
+                        "Use headings (H2, H3) to structure your text",
+                    ),
                 ),
             ),
             (
@@ -217,9 +221,7 @@ class BookmarkBlock(blocks.StructBlock):
         required=True,
         help_text="URL of the page you want to bookmark for later reference",
     )
-    title = blocks.CharBlock(
-        required=False, help_text="Optional: Title of the bookmarked content"
-    )
+    title = blocks.CharBlock(required=False, help_text="Optional: Title of the bookmarked content")
     description = blocks.TextBlock(
         required=False, help_text="Optional: Description of the target page content"
     )

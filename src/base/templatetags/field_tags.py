@@ -15,8 +15,7 @@ INPUT_CVA = cva(
     variants={
         "state": {
             "default": (
-                "border border-neutral-700 "
-                "focus:border-accent focus:ring-1 focus:ring-accent/50"
+                "border border-neutral-700 focus:border-accent focus:ring-1 focus:ring-accent/50"
             ),
             "error": (
                 "border border-red-500 text-red-500 placeholder:text-red-500/70 "
@@ -51,12 +50,10 @@ class FieldBlockNode(template.Node):
         name = resolved.get("name")
         value = resolved.get("value", "")
         if not name:
-            raise template.TemplateSyntaxError(
-                "The 'field' tag requires a 'name' attribute."
-            )
+            raise template.TemplateSyntaxError("The 'field' tag requires a 'name' attribute.")
 
         tag_type = resolved.get("as", "input")
-        label_text = resolved.get("label", None)
+        label_text = resolved.get("label")
         has_error = resolved.get("error", False)
         error_message = resolved.get("error_message", "")
         help_text = resolved.get("help_text", "")
@@ -65,11 +62,11 @@ class FieldBlockNode(template.Node):
         state = "error" if has_error else "default"
 
         if tag_type == "checkbox":
-            input_class = f"accent-accent w-5 h-5 rounded border border-neutral-700 {user_class}".strip()
-        elif tag_type == "radio":
             input_class = (
-                f"accent-accent w-5 h-5 border border-neutral-700 {user_class}".strip()
+                f"accent-accent w-5 h-5 rounded border border-neutral-700 {user_class}".strip()
             )
+        elif tag_type == "radio":
+            input_class = f"accent-accent w-5 h-5 border border-neutral-700 {user_class}".strip()
         else:
             input_class = f"{INPUT_CVA({'state': state})} {user_class}".strip()
 

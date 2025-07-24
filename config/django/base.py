@@ -8,8 +8,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-import os
-
 from config.env import BASE_DIR, env
 from config.settings.wagtail import (
     WAGTAIL_INSTALLED_APPS,
@@ -24,7 +22,7 @@ try:
 except ImportError:
     pass
 
-env.read_env(os.path.join(BASE_DIR, ".env"))
+env.read_env(BASE_DIR / ".env")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str("SECRET_KEY")
@@ -144,7 +142,7 @@ STATIC_ROOT = "staticfiles"
 
 # Handle upload files and media
 # https://docs.djangoproject.com/en/5.2/topics/files/
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 
