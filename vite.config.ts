@@ -14,10 +14,14 @@ export default defineConfig({
     manifest: 'manifest.json',
     outDir: path.resolve('./static'),
     emptyOutDir: true,
+    minify: 'terser',
+    cssMinify: 'esbuild',
     rollupOptions: {
       output: {
-        advancedChunks: {
-          groups: [{ name: 'vendor', test: /node_modules\/(htmx\.org|alpinejs)\// }],
+        manualChunks(id) {
+          if (/node_modules\/(htmx\.org|alpinejs)\//.test(id)) {
+            return 'vendor';
+          }
         },
       },
       input: {
