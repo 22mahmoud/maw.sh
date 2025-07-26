@@ -56,6 +56,11 @@ LOGGING = {
 
 EMAIL_BACKEND = "djcelery_email.backends.CeleryEmailBackend"
 
+CELERY_EMAIL_TASK_CONFIG = {
+    "name": "djcelery_email_send",
+    "ignore_result": False,
+}
+
 EMAIL_HOST = env.str("EMAIL_HOST", "")
 EMAIL_PORT = env.str("EMAIL_PORT", "")
 EMAIL_HOST_USER = env.str("EMAIL_USER", "")
