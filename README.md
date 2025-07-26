@@ -30,7 +30,7 @@
 - [ ] Contact
 - [ ] Services / hire me
 - [ ] Resume
-- [ ] RSS
+- [x] RSS
 - [x] Celery
 - [x] sitemap.xml
 - [x] robots.txt
