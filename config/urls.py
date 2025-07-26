@@ -10,6 +10,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.images.views.serve import ServeView
 
 from src.base.views import robots_txt
+from src.posts.feed import LatestBLogsFeed, LatestFeed
 from src.search.views import SearchView
 
 urlpatterns = [
@@ -21,6 +22,8 @@ urlpatterns = [
     path("cms/", include(wagtailadmin_urls)),
     path("comments/", include("src.comments.urls")),
     path("accounts/", include("allauth.urls")),
+    path("rss.xml/", LatestBLogsFeed()),
+    path("rss-thoughts.xml/", LatestFeed(), name="latest_feed"),
     path(
         "accounts/profile/",
         login_required(TemplateView.as_view(template_name="account/profile.html")),
