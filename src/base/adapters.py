@@ -12,7 +12,6 @@ class AccountAdapter(DefaultAccountAdapter):
         return super().respond_email_verification_sent(request, user)
 
     def post_login(self, request, user, **kwargs):  # type: ignore
-        print("post_login")
         if request.htmx:
             response = super().post_login(request, user, **kwargs)
             redirect_url = response["Location"]
