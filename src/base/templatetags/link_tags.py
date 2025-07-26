@@ -22,6 +22,14 @@ LINK_CVA = cva(
                 "bg-primary/5 px-2.5 py-0.5 text-xs font-medium text-primary "
                 "transition-colors duration-200 hover:bg-accent hover:text-black"
             ),
+            "auth": (
+                "inline-flex items-center justify-center gap-2 rounded-full "
+                "border border-primary/20 "
+                "bg-transparent px-4 py-1.5 text-sm font-medium text-primary "
+                "hover:bg-accent hover:text-black transition-colors duration-200 "
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent "
+                "focus-visible:ring-offset-2 focus-visible:ring-offset-darker"
+            ),
         },
         "size": {
             "sm": "text-sm",

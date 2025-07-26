@@ -1,3 +1,4 @@
+from django.urls import reverse
 from wagtail import hooks
 from wagtail.admin.panels import (
     FieldPanel,
@@ -57,10 +58,25 @@ register_snippet(TechnologyViewSet)
 
 
 @hooks.register("menus_modify_primed_menu_items")  # type: ignore
-def make_some_changes(menu_items, **_):
+def modify_primed_menu_items(menu_items, request, **_):
     for item in menu_items:
-        item.text = item.text
         item.url = item.href
         item.variant = "nav_active" if bool(item.active_class) else "nav"
 
+    if request.user.is_authenticated:
+        menu_items.append(
+            {
+                "url": reverse("account_profile"),
+                "text": "Profile",
+                "variant": "auth",
+            }
+        )
+    else:
+        menu_items.append(
+            {
+                "url": reverse("account_login"),
+                "text": "Sign in",
+                "variant": "auth",
+            }
+        )
     return menu_items
