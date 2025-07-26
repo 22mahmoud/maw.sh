@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     + [
         "src.tasks",
         "src.comments",
+        "django_celery_beat",
         "djcelery_email",
         "django_celery_results",
         "django_comments_xtd",

@@ -1,0 +1,4 @@
+providers = ["python"]
+
+[start]
+cmd = "celery -A src.tasks beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler"
