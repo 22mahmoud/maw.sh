@@ -13,37 +13,42 @@ register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def seo_full_title(context: dict[str, Any], page: Page) -> str:
+def seo_full_title(context: dict[str, Any], page: Page | None = None) -> str:
     """Generates SEO title with suffix from settings."""
 
     title = ""
 
-    if hasattr(page, "seo_title") and page.seo_title:
-        title = page.seo_title
-    elif hasattr(page, "title") and page.title:
-        title = page.title
-    elif context.get("page") and context["page"].get("seo_title"):
-        title = context["page"]["seo_title"]
-    elif context.get("page") and context["page"].get("title"):
-        title = context["page"]["title"]
+    if page:
+        raw_title = getattr(page, "seo_title", None) or getattr(page, "title", None)
+    else:
+        raw_page = context.get("page")
+        raw_title = None
+        if isinstance(raw_page, dict):
+            raw_title = raw_page.get("seo_title") or raw_page.get("title")
+        elif raw_page:
+            raw_title = getattr(raw_page, "seo_title", None) or getattr(raw_page, "title", None)
 
-    title = title.strip()
-    suffix = ""
+    # Sanitize the title
+    if callable(raw_title):
+        title = raw_title()
+    elif isinstance(raw_title, str):
+        title = raw_title
+    elif raw_title:
+        title = str(raw_title)
+
+    title = title.strip() if isinstance(title, str) else ""
 
     request: HttpRequest | None = context.get("request")
     if not request:
         return title
 
-    settings = None
+    suffix = ""
     with suppress(Exception):
         settings = SeoSettings.for_request(request)
+        if settings and getattr(settings, "title_suffix", None):
+            suffix = f" | {settings.title_suffix.strip()}"
 
-    if not settings or not hasattr(settings, "title_suffix") or not settings.title_suffix:
-        return title
-
-    suffix = f" | {settings.title_suffix.strip()}"
-
-    return f"{title}{suffix}"
+    return f"{title}{suffix}" if title else suffix
 
 
 @register.simple_tag

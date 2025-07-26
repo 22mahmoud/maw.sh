@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 from django.urls import include, path, re_path
 from django.views.generic import RedirectView, TemplateView
 from wagtail import urls as wagtail_urls
@@ -18,6 +19,13 @@ urlpatterns = [
     path("captcha/", include("captcha.urls")),
     path("search/", SearchView.as_view(), name="search"),
     path("cms/", include(wagtailadmin_urls)),
+    path("comments/", include("src.comments.urls")),
+    path("accounts/", include("allauth.urls")),
+    path(
+        "accounts/profile/",
+        login_required(TemplateView.as_view(template_name="account/profile.html")),
+        name="account_profile",
+    ),
     path("robots.txt", robots_txt),
     re_path(
         r"^images/([^/]*)/(\d*)/([^/]*)/[^/]*$",

@@ -1,0 +1,180 @@
+{% load i18n base_tags comments comments_xtd %}
+
+<li hx-swap-oob="true" id="c{{ comment.id }}">
+  <div class="flex gap-4">
+    <div class="flex-shrink-0">
+      <div class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-transparent group-hover:ring-accent transition-all duration-200">
+        {{ comment.user.email|xtd_comment_gravatar }}
+      </div>
+    </div>
+
+    <div class="flex-1 rounded-xl bg-darker/90 p-4">
+      <div class="flex justify-between items-center text-sm mb-2">
+        <span class="font-medium text-primary">
+          {{ comment.user_name }}
+          {% if comment.user and comment.user|has_permission:"django_comments.can_moderate" %}
+            <span class="ml-2 text-xs text-secondary bg-secondary/10 px-2 py-0.5 rounded">
+              {% trans "moderator" %}
+            </span>
+          {% endif %}
+        </span>
+        <a href="{% get_comment_permalink comment %}"
+           title="{% trans "comment permalink" %}">
+          <time datetime="{{ comment.submit_date|date:'c' }}"
+                class="text-xs text-secondary/80">
+            {{ comment.submit_date|date:"M j, Y · H:i" }}
+          </time>
+        </a>
+      </div>
+
+      <div class="text-start prose prose-main prose-sm max-w-none text-primary/90 mb-3 leading-relaxed">
+        {% if comment.is_removed %}
+          <em class="text-secondary italic">{% trans "This comment has been removed." %}</em>
+        {% else %}
+          {{ comment.comment|linebreaks }}
+        {% endif %}
+      </div>
+
+      {% if not type == 'preview' %}
+        <div class="flex flex-wrap justify-between items-center text-sm gap-2 text-muted">
+          <div class="flex items-center gap-4">
+            {% if not comment.is_removed %}
+              <div class="flex items-center gap-1">
+                {% if show_feedback and item.likedit_users %}
+                  <span class="px-1.5 py-0.5 rounded text-xs bg-muted/10 text-muted cursor-default"
+                        title="{{ item.likedit_users|join:'\n' }}">
+                    {{ item.likedit_users|length }}
+                  </span>
+                {% endif %}
+                <form method="post"
+                      action="{% url 'comments-xtd-like' comment.pk %}"
+                      hx-post="{% url 'comments-xtd-like' comment.pk %}"
+                      hx-swap="outerHTML"
+                      class="inline">
+                  {% csrf_token %}
+                  <input type="hidden" name="next" value="{{ comment.get_absolute_url }}">
+                  <button type="submit"
+                          name="submit"
+                          aria-label="Like"
+                          class="group inline-flex items-center justify-center text-muted hover:text-accent transition focus:outline-none focus:ring-2 focus:ring-accent/70 rounded cursor-pointer">
+                    {% if item.likedit %}
+                      {% icon "thumbs-up" class="w-4 h-4 fill-current text-accent" %}
+                    {% else %}
+                      {% icon "thumbs-up" class="w-4 h-4 stroke-current group-hover:text-accent" %}
+                    {% endif %}
+                  </button>
+                </form>
+              </div>
+
+              <span class="text-muted/60">•</span>
+
+              <div class="flex items-center gap-1">
+                {% if show_feedback and item.dislikedit_users %}
+                  <span class="px-1.5 py-0.5 rounded text-xs bg-muted/10 text-muted cursor-default"
+                        title="{{ item.dislikedit_users|join:'\n' }}">
+                    {{ item.dislikedit_users|length }}
+                  </span>
+                {% endif %}
+                <form method="post"
+                      action="{% url 'comments-xtd-dislike' comment.pk %}"
+                      hx-post="{% url 'comments-xtd-dislike' comment.pk %}"
+                      hx-swap="outerHTML"
+                      class="inline">
+                  {% csrf_token %}
+                  <input type="hidden" name="next" value="{{ comment.get_absolute_url }}">
+                  <button type="submit"
+                          name="submit"
+                          aria-label="Dislike"
+                          class="group inline-flex items-center justify-center text-muted hover:text-accent transition focus:outline-none focus:ring-2 focus:ring-accent/70 rounded cursor-pointer">
+                    {% if item.dislikedit %}
+                      {% icon "thumbs-down" class="w-4 h-4 fill-current text-accent" %}
+                    {% else %}
+                      {% icon "thumbs-down" class="w-4 h-4 stroke-current group-hover:text-accent" %}
+                    {% endif %}
+                  </button>
+                </form>
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="flex items-center gap-3">
+            {% if not comment.is_removed %}
+              {% if allow_flagging %}
+                {% if perms.comments.can_moderate and item.flagged_count %}
+                  <span class="text-xs text-red-600 ml-1"
+                        title="{% blocktrans count counter=item.flagged_count %}
+                                 A user has flagged this comment as inappropriate.
+                               {% plural %}
+                                 {{ counter }} users have flagged this comment as inappropriate.
+                               {% endblocktrans %}">
+                    {{ item.flagged_count }}
+                  </span>
+                {% endif %}
+
+                <div id="flagged-{{ comment.id }}">
+                  {% if request.user in item.flagged %}
+                    {% icon "flag" class="w-4 h-4 text-red-500" title="comment flagged" %}
+                  {% else %}
+                    <form method="post"
+                          action="{% url 'comments-flag' comment.pk %}"
+                          hx-post="{% url 'comments-flag' comment.pk %}"
+                          hx-confirm="{% trans "Are you sure you want to flag this comment?" %}"
+                          hx-target="this"
+                          hx-swap="outerHTML"
+                          class="flex items-center justify-center">
+                      {% csrf_token %}
+                      <button type="submit"
+                              title="{% trans "flag comment" %}"
+                              class="cursor-pointer hover:text-red-500 transition">
+                        {% icon "flag" class="w-4 h-4" %}
+                      </button>
+                    </form>
+                  {% endif %}
+                </div>
+              {% endif %}
+
+              {% if perms.comments.can_moderate %}
+                {% if allow_flagging %}
+                  <span class="text-muted/60">•</span>
+                {% endif %}
+                <form method="post"
+                      action="{% url 'comments-delete' comment.pk %}"
+                      hx-post="{% url 'comments-delete' comment.pk %}"
+                      hx-confirm="{% trans "Are you sure you want to remove this comment?" %}"
+                      hx-swap="outerHTML"
+                      hx-target="#c{{ comment.id }}"
+                      class="flex items-center justify-center">
+                  {% csrf_token %}
+                  <button type="submit"
+                          title="{% trans "remove comment" %}"
+                          class="hover:text-red-500 transition">
+                    {% icon "trash" class="w-4 h-4" %}
+                  </button>
+                </form>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+
+        {% if comment.allow_thread and not comment.is_removed %}
+          <div class="mt-3">
+            <a href="{% url 'comments-xtd-reply' comment.pk %}"
+               hx-get="{% url 'comments-xtd-reply' comment.pk %}"
+               hx-target="#comment-form-wrapper"
+               hx-swap="outerHTML"
+               class="text-sm text-accent hover:underline"
+               hx-on::after-request="document.querySelector('#comments-section')?.scrollIntoView({behavior: 'smooth'});">
+              {% trans "Reply" %}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if children %}
+      <div class="ml-6 mt-4 border-l border-primary/10 pl-4">
+        {% render_xtdcomment_tree with comments=children %}
+      </div>
+    {% endif %}
+  {% endif %}
+</li>

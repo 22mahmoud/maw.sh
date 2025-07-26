@@ -9,6 +9,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from config.env import BASE_DIR, env
+from config.settings.django_allauth import (
+    ALLAUTH_INSTALLED_APPS,
+    ALLAUTH_MIDDLEWARE,
+)
 from config.settings.wagtail import (
     WAGTAIL_INSTALLED_APPS,
     WAGTAIL_MIDDLEWARE,
@@ -33,34 +37,45 @@ DEBUG = env.bool("DEBUG", default=True)
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
-INSTALLED_APPS = WAGTAIL_INSTALLED_APPS + [
-    "template_partials",
-    "django.forms",
-    "captcha",
-    "django_htmx",
-    "django.contrib.admin",
-    "django_vite",
-    "django.contrib.redirects",
-    "django.contrib.auth",
-    "polymorphic",
-    "django.contrib.sites",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "django.contrib.sitemaps",
-]
+INSTALLED_APPS = (
+    WAGTAIL_INSTALLED_APPS
+    + [
+        "django_comments_xtd",
+        "django_comments",
+        "src.comments",
+        "template_partials",
+        "django.forms",
+        "captcha",
+        "django_htmx",
+        "django.contrib.admin",
+        "django.contrib.auth",
+        "django_vite",
+        "django.contrib.redirects",
+        "polymorphic",
+        "django.contrib.sites",
+        "django.contrib.contenttypes",
+        "django.contrib.sessions",
+        "django.contrib.messages",
+        "django.contrib.staticfiles",
+        "django.contrib.sitemaps",
+    ]
+    + ALLAUTH_INSTALLED_APPS
+)
 
-MIDDLEWARE = [
-    "django_htmx.middleware.HtmxMiddleware",
-    "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-] + WAGTAIL_MIDDLEWARE
+MIDDLEWARE = (
+    [
+        "django_htmx.middleware.HtmxMiddleware",
+        "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
+        "django.middleware.security.SecurityMiddleware",
+        "django.contrib.sessions.middleware.SessionMiddleware",
+        "django.middleware.common.CommonMiddleware",
+        "django.middleware.csrf.CsrfViewMiddleware",
+        "django.contrib.auth.middleware.AuthenticationMiddleware",
+        "django.contrib.messages.middleware.MessageMiddleware",
+    ]
+    + ALLAUTH_MIDDLEWARE
+    + WAGTAIL_MIDDLEWARE
+)
 
 ROOT_URLCONF = "config.urls"
 
@@ -175,7 +190,11 @@ CACHES = {
 
 CAPTCHA_IMAGE_SIZE = (80, 36)
 
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
 # lib settings
+from config.settings.django_allauth import *  # noqa: E402, F403
+from config.settings.django_comments_xtd import *  # noqa: E402, F403
 from config.settings.django_storage import *  # noqa: E402, F403
 from config.settings.vite import *  # noqa: E402, F403
 from config.settings.wagtail import *  # noqa: E402, F403

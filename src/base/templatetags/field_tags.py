@@ -90,6 +90,7 @@ class FieldBlockNode(template.Node):
         return render_to_string(
             "includes/field.html",
             {
+                "id": attrs["id"],
                 "name": name,
                 "label_text": label_text,
                 "label_class": label_class,

@@ -1,0 +1,26 @@
+{% extends "django_comments_xtd/base.html" %}
+{% load base_tags i18n %}
+{% load comments_xtd %}
+
+{% block title %}
+  {% trans "Comment flagged" %}.
+{% endblock title %}
+
+{% block header %}
+  <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object }}</a>
+{% endblock header %}
+
+{% block content %}
+  {% if request.htmx %}
+    <div id="flagged-{{ comment.id }}" hx-swap-oob="true">
+      {% icon "flag" class="w-4 h-4 text-red-500" title="comment flagged" %}
+    </div>
+  {% else %}
+    <h4 class="text-center">
+      {% trans "The comment has been flagged." %}
+    </h4>
+    <p class="text-center">
+      {% trans "Thank you for taking the time to improve the quality of discussion in our site." %}
+    </p>
+  {% endif %}
+{% endblock content %}

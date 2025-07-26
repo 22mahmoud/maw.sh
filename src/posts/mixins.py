@@ -70,6 +70,9 @@ class SinglePostMixin:
 
         return super().serve(request, *args, **kwargs)  # type: ignore
 
+    def get_absolute_url(self, request=None):
+        return self.get_full_url(request)  # type: ignore
+
     def get_url_parts(self, request=None):
         response = super().get_url_parts(request)  # type: ignore
         if response is None:

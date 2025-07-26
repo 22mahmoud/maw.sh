@@ -102,6 +102,7 @@ class ButtonNode(template.Node):
         href = resolved.get("href")
         variant = resolved.get("variant", "primary")
         size = resolved.get("size", "md")
+        as_tag = resolved.get("as")
 
         is_icon_only = icon and not content and not prefix_icon and not suffix_icon
 
@@ -132,18 +133,35 @@ class ButtonNode(template.Node):
         for key, val in resolved.items():
             attrs[key.replace("_", "-")] = val
 
+        # Clean up
+        for key in [
+            "icon",
+            "prefix_icon",
+            "suffix_icon",
+            "variant",
+            "size",
+            "as",
+            "class",
+            "user_class",
+            "icon_class",
+            "text_class",
+        ]:
+            attrs.pop(key, None)
+
         return render_to_string(
             "includes/button.html",
             {
                 "variant": variant,
-                "content": content or None,
+                "content": content or "",
                 "icon": icon,
                 "prefix_icon": prefix_icon,
                 "suffix_icon": suffix_icon,
                 "icon_class": icon_class,
                 "text_class": text_class,
                 "wrapper_tag": tag,
+                "wrapper_class": wrapper_class,
                 "wrapper_attrs": mark_safe(flatatt(attrs)),
+                "is_input": as_tag == "input",
             },
         )
 

@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load button_tags base_tags wagtailcore_tags %}
 
+{% block head %}
+  <link rel="dns-prefetch" href="//giphy.com">
+  <link rel="dns-prefetch" href="//tenor.com">
+  <link rel="dns-prefetch" href="//imgur.com">
+{% endblock head %}
+
 {% block content %}
   <div class="flex-1 zigzag w-full bg-dark px-4 py-6 md:py-12">
     <header class="mx-auto text-center max-w-3xl mb-12">

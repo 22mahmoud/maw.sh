@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load i18n allauth base_tags field_tags button_tags %}
+{% load socialaccount %}
+
+{% block title %}
+  {% trans "Sign In | Mahmoud Ashraf" %}
+{% endblock title %}
+
+{% block content %}
+  <div class="flex-1 w-full bg-dark px-4 py-8 sm:py-12 md:py-16 zigzag">
+    <div class="max-w-xl mx-auto px-6 py-8 sm:px-8 sm:py-10 space-y-6 text-primary">
+      <h2 class="text-2xl font-heading font-semibold">
+        {% trans "Sign In" %}
+      </h2>
+
+      {% if not SOCIALACCOUNT_ONLY %}
+        <p class="text-primary">
+          {% blocktranslate %}
+            If you have not created an account yet, then please
+            <a href="{{ signup_url }}" class="text-accent underline hover:text-accent-bright">
+              sign up
+            </a> first.
+          {% endblocktranslate %}
+        </p>
+        <form id="login-form"
+              method="post"
+              action="{% url 'account_login' %}"
+              hx-post="{% url 'account_login' %}"
+              hx-select="#login-form"
+              hx-swap="outerHTML"
+              class="flex flex-col gap-5">
+          {% csrf_token %}
+          {{ redirect_field }}
+
+          {% if form.non_field_errors %}
+            <div class="rounded-md border border-red-500 bg-red-100 text-red-800 px-4 py-2 text-sm space-y-1">
+              {% for error in form.non_field_errors %}
+                <p>
+                  {{ error }}
+                </p>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% for field in form %}
+            {% if field.name == 'remember' %}
+              {% field
+                as="checkbox"
+                type=field.field.widget.input_type
+                name=field.name
+                id=field.id_for_label
+                label=field.label
+                value=field.value
+                help_text=field.help_text
+                required=field.field.required
+                error=field.errors
+                error_message=field.errors.as_text
+                %}
+              {% endfield %}
+            {% else %}
+              {% field
+                type=field.field.widget.input_type
+                name=field.name
+                id=field.id_for_label
+                label=field.label
+                value=field.value
+                help_text=field.help_text
+                required=field.field.required
+                error=field.errors
+                error_message=field.errors.as_text
+                %}
+              {% endfield %}
+            {% endif %}
+          {% endfor %}
+
+          <div>
+            {% button type="submit" variant="primary" %}
+              {% trans "Sign In" %}
+            {% endbutton %}
+          </div>
+        </form>
+      {% endif %}
+
+      {% if SOCIALACCOUNT_ENABLED %}
+        {% include "socialaccount/snippets/login.html" %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock content %}

@@ -1,9 +1,9 @@
 {% if tag_type == 'checkbox' %}
   <div class="flex items-center gap-2">
-    <input type="checkbox" id="{{ name }}" name="{{ name }}" {{ field_attrs }}>
+    <input type="checkbox" name="{{ name }}" {{ field_attrs }}>
 
     {% if label_text %}
-      <label for="{{ name }}" class="{{ label_class }}">
+      <label for="{{ id }}" class="{{ label_class }}">
         {{ label_text }}
       </label>
     {% endif %}
@@ -32,15 +32,15 @@
 {% else %}
   <div class="flex-1 flex flex-col gap-1.5">
     {% if label_text %}
-      <label for="{{ name }}" class="{{ label_class }}">
+      <label for="{{ id }}" class="{{ label_class }}">
         {{ label_text }}
       </label>
     {% endif %}
 
     {% if help_text %}
-      <p class="text-sm text-secondary">
+      <div class="prose prose-sm prose-main text-sm text-secondary">
         {{ help_text }}
-      </p>
+      </div>
     {% endif %}
 
     {% if tag_type == 'select' %}
