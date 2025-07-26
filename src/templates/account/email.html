@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static allauth i18n %}
-{% load field_tags button_tags %}
+{% load base_tags field_tags button_tags %}
 
 {% block title %}
   {% trans "Email Addresses | Mahmoud Ashraf" %}
@@ -18,66 +18,73 @@
           {% trans "The following email addresses are associated with your account:" %}
         </p>
 
-        {% for radio in emailaddress_radios %}
-          <form method="post" action="{% url 'account_email' %}" class="space-y-6">
-            {% with emailaddress=radio.emailaddress %}
-              {% csrf_token %}
-              <input type="hidden"
-                     name="email"
-                     value="{{ emailaddress.email }}"
-                     id="{{ radio.id }}" />
+        <div id="emails" hx-swap-oob="true" class="space-y-6">
+          {% for radio in emailaddress_radios %}
+            <form method="post"
+                  action="{% url 'account_email' %}"
+                  hx-post="{% url 'account_email' %}"
+                  class="space-y-6">
+              {% with emailaddress=radio.emailaddress %}
+                {% csrf_token %}
+                <input type="hidden"
+                       name="email"
+                       value="{{ emailaddress.email }}"
+                       id="{{ radio.id }}" />
 
-              <div class="flex flex-col gap-2 p-4 border border-neutral-700 bg-darker/30 rounded">
-                <div>
-                  <p class="font-medium text-primary">
-                    {{ emailaddress.email }}
-                  </p>
+                <div class="flex flex-col gap-2 p-4 border border-neutral-700 bg-darker/30 rounded">
+                  <div>
+                    <p class="font-medium text-primary">
+                      {{ emailaddress.email }}
+                    </p>
 
-                  <div class="text-sm space-x-1 mt-1 text-neutral-600 dark:text-neutral-400">
-                    {% if emailaddress.verified %}
-                      <span class="inline-block px-2 py-0.5 rounded text-sm font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-700 dark:text-white">
-                        {% trans "Verified" %}
-                      </span>
-                    {% else %}
-                      <span class="inline-block px-2 py-0.5 rounded text-sm font-medium bg-amber-100 text-amber-800 dark:bg-amber-600 dark:text-white">
-                        {% trans "Unverified" %}
-                      </span>
+                    <div class="text-sm space-x-1 mt-1 text-neutral-600 dark:text-neutral-400">
+                      {% if emailaddress.verified %}
+                        <span class="inline-block px-2 py-0.5 rounded text-sm font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-700 dark:text-white">
+                          {% trans "Verified" %}
+                        </span>
+                      {% else %}
+                        <span class="inline-block px-2 py-0.5 rounded text-sm font-medium bg-amber-100 text-amber-800 dark:bg-amber-600 dark:text-white">
+                          {% trans "Unverified" %}
+                        </span>
+                      {% endif %}
+                      {% if emailaddress.primary %}
+                        <span class="inline-block px-2 py-0.5 rounded text-sm font-medium bg-sky-100 text-sky-800 dark:bg-sky-600 dark:text-white">
+                          {% trans "Primary" %}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  <div class="flex gap-4 text-sm cursor-pointer">
+                    {% if not emailaddress.primary and emailaddress.verified %}
+                      <button type="submit"
+                              name="action_primary"
+                              class="cursor-pointer underline hover:text-primary/90">
+                        {% trans "Make Primary" %}
+                      </button>
                     {% endif %}
-                    {% if emailaddress.primary %}
-                      <span class="inline-block px-2 py-0.5 rounded text-sm font-medium bg-sky-100 text-sky-800 dark:bg-sky-600 dark:text-white">
-                        {% trans "Primary" %}
-                      </span>
+                    {% if not emailaddress.verified %}
+                      <button type="submit"
+                              name="action_send"
+                              class="cursor-pointer underline hover:text-primary/90">
+                        {% trans "Re-send Verification" %}
+                      </button>
                     {% endif %}
+                    {% if not emailaddress.primary %}
+                      <button type="submit"
+                              name="action_remove"
+                              class="cursor-pointer underline hover:text-primary/90">
+                        {% trans "Remove" %}
+                      </button>
+                    {% endif %}
+
+                    {% icon 'circle-notch' id="spinner" class="htmx-indicator animate-spin h-5 w-5" %}
                   </div>
                 </div>
-
-                <div class="flex gap-4 text-sm cursor-pointer">
-                  {% if not emailaddress.primary and emailaddress.verified %}
-                    <button type="submit"
-                            name="action_primary"
-                            class="cursor-pointer underline hover:text-primary/90">
-                      {% trans "Make Primary" %}
-                    </button>
-                  {% endif %}
-                  {% if not emailaddress.verified %}
-                    <button type="submit"
-                            name="action_send"
-                            class="cursor-pointer underline hover:text-primary/90">
-                      {% trans "Re-send Verification" %}
-                    </button>
-
-                    <button type="submit"
-                            name="action_remove"
-                            class="cursor-pointer underline hover:text-primary/90">
-                      {% trans "Remove" %}
-                    </button>
-                  {% endif %}
-                </div>
-              </div>
-            </form>
-          {% endwith %}
-        {% endfor %}
-
+              </form>
+            {% endwith %}
+          {% endfor %}
+        </div>
       {% else %}
         {% include "account/snippets/warn_no_email.html" %}
       {% endif %}
@@ -87,7 +94,12 @@
           {% trans "Add Email Address" %}
         </h3>
 
-        <form method="post" action="{% url 'account_email' %}" class="space-y-4">
+        <form id="add-email-form"
+              method="post"
+              action="{% url 'account_email' %}"
+              hx-post="{% url 'account_email' %}"
+              hx-select="#add-email-form, #emails"
+              class="space-y-4">
           {% csrf_token %}
           {% for field in form %}
             {% field
@@ -107,6 +119,7 @@
           <div>
             {% button type="submit" name="action_add" variant="primary" %}
               {% trans "Add Email" %}
+              {% icon 'circle-notch' id="spinner" class="htmx-indicator animate-spin h-5 w-5" %}
             {% endbutton %}
           </div>
         </form>

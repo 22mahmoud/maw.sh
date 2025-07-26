@@ -344,6 +344,19 @@ wheels = [
 ]
 
 [[package]]
+name = "django-csp"
+version = "4.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+    { name = "packaging" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/52/db/23567744dff2169aadb095f726088074476b24dfff5a759ffcf6389cf401/django_csp-4.0.tar.gz", hash = "sha256:b27010bb702eb20a3dad329178df2b61a2b82d338b70fbdc13c3a3bd28712833", size = 20028, upload-time = "2025-04-02T16:41:46.721Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e1/a4/736ab90ee527a23e194d1ce7358c6bcced66381ced83c28268b4aea236f7/django_csp-4.0-py3-none-any.whl", hash = "sha256:d5a0a05463a6b75a4f1fc1828c58c89af8db9364d09fc6e12f122b4d7f3d00dc", size = 25689, upload-time = "2025-04-02T16:41:45.689Z" },
+]
+
+[[package]]
 name = "django-filter"
 version = "25.1"
 source = { registry = "https://pypi.org/simple" }
@@ -701,6 +714,7 @@ dependencies = [
     { name = "django" },
     { name = "django-allauth", extra = ["socialaccount"] },
     { name = "django-comments-xtd" },
+    { name = "django-csp" },
     { name = "django-htmx" },
     { name = "django-polymorphic" },
     { name = "django-redis" },
@@ -737,6 +751,7 @@ requires-dist = [
     { name = "django", specifier = ">=5.2.3" },
     { name = "django-allauth", extras = ["socialaccount"], specifier = ">=65.10.0" },
     { name = "django-comments-xtd", specifier = ">=2.10.7" },
+    { name = "django-csp", specifier = ">=4.0" },
     { name = "django-htmx", specifier = ">=1.23.2" },
     { name = "django-polymorphic", specifier = ">=4.1.0" },
     { name = "django-redis", specifier = ">=6.0.0" },

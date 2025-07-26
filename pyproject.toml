@@ -11,6 +11,7 @@ dependencies = [
   "django>=5.2.3",
   "django-allauth[socialaccount]>=65.10.0",
   "django-comments-xtd>=2.10.7",
+  "django-csp>=4.0",
   "django-htmx>=1.23.2",
   "django-polymorphic>=4.1.0",
   "django-redis>=6.0.0",

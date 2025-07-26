@@ -2,7 +2,7 @@
 {% load wagtailcore_tags %}
 
 {% block head %}
-  <script type="text/javascript">
+  <script nonce="{{ CSP_NONCE }}">
     window.__APP_DATA__ = {
       isNewGuestbookPage: true,
     }

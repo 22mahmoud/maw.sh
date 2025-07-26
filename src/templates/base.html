@@ -29,10 +29,10 @@
         {% seo_full_title page %}
       {% endblock title %}
     </title>
-    <script>
+    <script nonce="{{ CSP_NONCE }}">
       document.documentElement.classList.remove('no-js');
     </script>
-    <style>
+    <style nonce="{{ CSP_NONCE }}">
       [x-cloak] { display: none !important; }
 
       .no-js .js-only {
@@ -75,7 +75,7 @@
     {% endblock head %}
 
     {% vite_hmr_client %}
-    {% vite_asset 'src/resources/js/app.ts' %}
+    {% vite_asset 'src/resources/js/app.ts' nonce=CSP_NONCE %}
 
   </head>
 

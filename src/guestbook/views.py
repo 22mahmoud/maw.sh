@@ -12,7 +12,6 @@ class GuestbookView(View):
     http_method_names = ["post"]
 
     def post(self, request, *args, **kwargs):
-        # time.sleep(10)
         form = GuestbookForm(request.POST)
         is_htmx = request.htmx
 

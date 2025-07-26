@@ -1,3 +1,5 @@
+from csp.constants import NONCE, NONE, SELF, UNSAFE_EVAL, UNSAFE_INLINE
+
 from config.env import env
 from config.settings.wagtail_prod import *  # noqa: E402, F403
 from config.settings.whitenoise import *  # noqa: F403
@@ -30,6 +32,7 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
 
 DEFAULT_HSTS_SECONDS = 30 * 24 * 60 * 60  # 30 days
 SECURE_HSTS_SECONDS = int(env.int("SECURE_HSTS_SECONDS", DEFAULT_HSTS_SECONDS))
@@ -58,3 +61,26 @@ EMAIL_HOST_USER = env.str("EMAIL_USER", "")
 EMAIL_HOST_PASSWORD = env.str("EMAIL_PASSWORD", "")
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = env.str("EMAIL_FROM", "")
+
+
+CONTENT_SECURITY_POLICY = {
+    "DIRECTIVES": {
+        "default-src": [SELF, "https://static.mahmoudashraf.dev"],
+        "script-src": [SELF, NONCE, UNSAFE_INLINE, UNSAFE_EVAL],
+        "style-src": [SELF, NONCE, UNSAFE_INLINE],
+        "font-src": [SELF],
+        "img-src": [
+            SELF,
+            "data:",
+            "https://*.tenor.com",
+            "https://*.tenor.com",
+            "https://*.imgur.com",
+        ],
+        "connect-src": [SELF],
+        "manifest-src": [SELF],
+        "object-src": [NONE],
+        "frame-ancestors": [SELF],
+        "form-action": [SELF],
+        "upgrade-insecure-requests": True,
+    },
+}

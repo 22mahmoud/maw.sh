@@ -43,6 +43,7 @@ INSTALLED_APPS = (
         "django_comments_xtd",
         "django_comments",
         "src.comments",
+        "csp",
         "template_partials",
         "django.forms",
         "captcha",
@@ -72,6 +73,7 @@ MIDDLEWARE = (
         "django.middleware.csrf.CsrfViewMiddleware",
         "django.contrib.auth.middleware.AuthenticationMiddleware",
         "django.contrib.messages.middleware.MessageMiddleware",
+        "csp.middleware.CSPMiddleware",
     ]
     + ALLAUTH_MIDDLEWARE
     + WAGTAIL_MIDDLEWARE
@@ -91,6 +93,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "csp.context_processors.nonce",
             ]
             + WAGTAIL_TEMPLATE_CONTEXT_PROCESSORS
         },
