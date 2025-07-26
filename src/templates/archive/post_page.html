@@ -110,10 +110,22 @@
           <section id="comment-confirmation" hx-swap-oob="true">
           </section>
 
-          <section class="p-6">
-            <h2 class="text-lg font-semibold text-primary text-center mb-4">
+          <section class="py-6 max-w-2xl">
+            <h2 class="text-xl font-semibold mb-1">
               Post your comment
             </h2>
+
+            {% if not request.user.is_authenticated %}
+              <p class="text-sm text-stuble mb-4">
+                You can
+                <a href="{% url 'account_login' %}?next={{ request.get_full_path|urlencode }}"
+                   class="text-accent underline hover:text-accent-bright">log in</a> or comment as a visitor.
+              </p>
+            {% else %}
+              <p class="text-sm text-stuble mb-4">
+                You're logged in as <span class="font-medium">{{ request.user.get_full_name|default:request.user.username }}</span>.
+              </p>
+            {% endif %}
 
             <section id="comment-form-wrapper" hx-swap-oob="true">
               <section id="comment-preview"
