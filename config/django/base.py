@@ -40,9 +40,12 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = (
     WAGTAIL_INSTALLED_APPS
     + [
+        "src.tasks",
+        "src.comments",
+        "djcelery_email",
+        "django_celery_results",
         "django_comments_xtd",
         "django_comments",
-        "src.comments",
         "csp",
         "template_partials",
         "django.forms",
@@ -195,7 +198,9 @@ CAPTCHA_IMAGE_SIZE = (80, 36)
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+
 # lib settings
+from config.settings.celery import *  # noqa: E402, F403
 from config.settings.django_allauth import *  # noqa: E402, F403
 from config.settings.django_comments_xtd import *  # noqa: E402, F403
 from config.settings.django_storage import *  # noqa: E402, F403

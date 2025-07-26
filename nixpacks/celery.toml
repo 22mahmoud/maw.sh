@@ -1,0 +1,4 @@
+providers = ["python"]
+
+[start]
+cmd = "celery -A src.tasks worker -l INFO"
