@@ -8,4 +8,4 @@ cmds = [
 ]
 
 [start]
-cmd = "../scripts/start"
+cmd = "./scripts/start"
