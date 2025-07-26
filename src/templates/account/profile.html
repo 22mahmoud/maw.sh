@@ -29,8 +29,12 @@
         </div>
 
         <div class="grid gap-1 sm:grid-cols-2 sm:items-center">
-          <dt class="font-medium">
+          <dt class="flex flex-col font-medium">
             {% trans "Email" %}
+            {% url 'account_email' as email_url %}
+            {% link href=email_url class="text-accent text-sm hover:underline" %}
+              {% trans "Manage email addresses" %}
+            {% endlink %}
           </dt>
           <dd class="sm:text-right text-muted break-words">
             {{ request.user.email }}
