@@ -35,40 +35,42 @@
   </div>
 
   <noscript>
-    <style>
-    #mobile-menu-toggle {
-      display: none !important;
-    }
-
-    @media (max-width: 639px) {
-      #mobile-menu {
-        display: block !important;
-      }
-      #mobile-menu > div {
-        padding: 1rem;
-      }
-      #mobile-menu ul {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 0.5rem;
-        font-size: 1rem;
-      }
-      #mobile-menu form {
-        margin-bottom: 1rem;
-      }
-    }
-
-    @media (min-width: 640px) {
-      #mobile-menu {
+    <style nonce="{{ CSP_NONCE }}">
+      #mobile-menu-toggle {
         display: none !important;
       }
-      .sm\:flex {
-        display: flex !important;
+
+      @media (max-width: 639px) {
+        #mobile-menu {
+          display: block !important;
+        }
+        #mobile-menu > div {
+          padding: 1rem;
+        }
+        #mobile-menu ul {
+          display: flex !important;
+          align-items: center !important;
+          flex-direction: row !important;
+          gap: 1.5rem;
+          padding: .5rem;
+          font-size: 1rem;
+        }
+        #mobile-menu form {
+          margin-bottom: 1rem;
+        }
       }
-      .sm\:hidden {
-        display: none !important;
+
+      @media (min-width: 640px) {
+        #mobile-menu {
+          display: none !important;
+        }
+        .sm\:flex {
+          display: flex !important;
+        }
+        .sm\:hidden {
+          display: none !important;
+        }
       }
-    }
     </style>
   </noscript>
 

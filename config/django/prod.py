@@ -33,6 +33,7 @@ SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = "lax"
 
 DEFAULT_HSTS_SECONDS = 30 * 24 * 60 * 60  # 30 days
 SECURE_HSTS_SECONDS = int(env.int("SECURE_HSTS_SECONDS", DEFAULT_HSTS_SECONDS))
@@ -62,12 +63,18 @@ EMAIL_HOST_PASSWORD = env.str("EMAIL_PASSWORD", "")
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = env.str("EMAIL_FROM", "")
 
-
 CONTENT_SECURITY_POLICY = {
     "DIRECTIVES": {
         "default-src": [SELF, "https://static.mahmoudashraf.dev"],
-        "script-src": [SELF, NONCE, UNSAFE_INLINE, UNSAFE_EVAL],
-        "style-src": [SELF, NONCE, UNSAFE_INLINE],
+        "script-src": [
+            SELF,
+            NONCE,
+            UNSAFE_EVAL,
+        ],
+        "style-src": [
+            SELF,
+            UNSAFE_INLINE,
+        ],
         "font-src": [SELF],
         "img-src": [
             SELF,
@@ -75,6 +82,8 @@ CONTENT_SECURITY_POLICY = {
             "https://*.tenor.com",
             "https://*.tenor.com",
             "https://*.imgur.com",
+            "https://static.mahmoudashraf.dev",
+            "https://www.gravatar.com",
         ],
         "connect-src": [SELF],
         "manifest-src": [SELF],

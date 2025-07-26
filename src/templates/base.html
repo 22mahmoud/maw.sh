@@ -29,6 +29,7 @@
         {% seo_full_title page %}
       {% endblock title %}
     </title>
+
     <script nonce="{{ CSP_NONCE }}">
       document.documentElement.classList.remove('no-js');
     </script>
@@ -83,7 +84,9 @@
         class="min-h-full flex flex-col bg-darker text-primary max-w-6xl mx-auto">
     <a id="top"></a>
 
-    {% wagtailuserbar %}
+    {% if not request.htmx %}
+      {% wagtailuserbar %}
+    {% endif %}
 
     {% include "includes/header.html" %}
 
