@@ -17,7 +17,8 @@
 - [x] Webmentions
 - [x] Projects
 - [x] Guestbook
-- [ ] Comments
+- [x] Comments
+- [x] Auth
 - [ ] Tracker
     - [ ] Video Games
     - [ ] Reading
@@ -30,6 +31,7 @@
 - [ ] Services / hire me
 - [ ] Resume
 - [ ] RSS
+- [x] Celery
 - [x] sitemap.xml
 - [x] robots.txt
 - [x] deployment
