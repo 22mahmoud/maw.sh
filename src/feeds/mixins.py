@@ -2,7 +2,6 @@ from urllib.parse import urljoin
 
 from django.contrib.sites.models import Site
 from django.contrib.syndication.views import Feed as DjangoFeed
-from django.utils.safestring import mark_safe
 
 
 class Feed(DjangoFeed):
@@ -56,6 +55,6 @@ class FeedMixin:
 
     def item_extra_kwargs(self, item):
         return {
-            "content": mark_safe(item.body.render_as_block()),
+            "content": item.body,
             "_categories": self._item_categories(item),
         }
