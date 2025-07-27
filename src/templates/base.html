@@ -1,7 +1,4 @@
-{% load django_vite %}
-{% load wagtailuserbar %}
-{% load seo_tags %}
-{% load static %}
+{% load base_tags partials django_vite wagtailuserbar static seo_tags %}
 
 <!DOCTYPE html>
 <html lang="en" class="h-full scroll-smooth no-js">
@@ -24,6 +21,7 @@
           type="font/woff2"
           crossorigin>
     <meta charset="utf-8">
+
     <title>
       {% block title %}
         {% seo_full_title page %}
@@ -81,8 +79,47 @@
   </head>
 
   <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'
-        class="min-h-full flex flex-col bg-darker text-primary max-w-6xl mx-auto">
+        class="relative min-h-full flex flex-col bg-darker text-primary max-w-6xl mx-auto">
     <a id="top"></a>
+
+    <div id="messages"
+         hx-swap-oob="true"
+         class="fixed bottom-20 right-4 sm:right-8 z-50 w-[calc(100%-2rem)] sm:w-96 max-w-full space-y-3 pointer-events-none sm:pointer-events-auto px-2 sm:px-0">
+      <div class="relative space-y-3">
+        {% for message in messages %}
+          <div x-data="{ visible: false, timeout: null }"
+            {# djlint:off #}
+            x-init="$nextTick(() => {
+                const i = {{ forloop.counter0 }};
+                const delay = 150 * Math.sqrt(i);
+                setTimeout(() => {
+                  visible = true;
+                  timeout = setTimeout(() => visible = false, 4000);
+                }, delay);
+              })"
+            {# djlint:on #}
+            @mouseenter="clearTimeout(timeout)"
+            @mouseleave="timeout = setTimeout(() => visible = false, 4000)"
+            x-show="visible"
+            x-transition:enter="transition ease-out duration-500 transform"
+            x-transition:enter-start="translate-x-4 opacity-0"
+            x-transition:enter-end="translate-x-0 opacity-100"
+            x-transition:leave="transition ease-in duration-300 transform"
+            x-transition:leave-start="translate-x-0 opacity-100"
+            x-transition:leave-end="translate-x-4 opacity-0"
+            class="pointer-events-auto flex items-start justify-between gap-4 px-4 py-3 sm:px-5 sm:py-4 shadow-xl text-sm sm:text-base font-semibold border-l-4 bg-darker border border-dark {{ message.tags|message_color }}">
+            <div class="flex-1 break-words">
+              {{ message }}
+            </div>
+
+            <button @click="visible = false"
+                    class="shrink-0 cursor-pointer text-xl leading-none text-secondary hover:text-primary focus:outline-none focus-visible:ring">
+              {% icon "x" class="w-4 h-4" %}
+            </button>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
 
     {% if not request.htmx %}
       {% wagtailuserbar %}

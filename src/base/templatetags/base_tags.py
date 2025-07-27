@@ -43,3 +43,16 @@ def icon(name: str, **kwargs):
 @register.filter
 def get_item(dictionary, key):
     return dictionary.get(key)
+
+
+@register.filter
+def message_color(tags):
+    if "error" in tags:
+        return "bg-[#2d2d2d] text-red-400 border-s-red-500"
+    if "warning" in tags:
+        return "bg-[#2d2d2d] text-orange-400 border-s-orange-500"
+    if "success" in tags:
+        return "bg-[#2d2d2d] text-green-400 border-s-green-500"
+    if "info" in tags:
+        return "bg-[#2d2d2d] text-blue-400 border-s-blue-500"
+    return "bg-[#2d2d2d] text-primary border-s-neutral-700"
