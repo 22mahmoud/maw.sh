@@ -33,7 +33,7 @@
           {{ redirect_field }}
 
           {% if form.non_field_errors %}
-            <div class="rounded-md border border-red-500 bg-red-100 text-red-800 px-4 py-2 text-sm space-y-1">
+            <div class="bg-red-500/10 text-red-400 border border-red-500/30 p-4 rounded text-sm">
               {% for error in form.non_field_errors %}
                 <p>
                   {{ error }}

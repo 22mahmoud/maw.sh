@@ -52,6 +52,18 @@
             {% endlink %}
           </dd>
         </div>
+
+        <div class="grid gap-1 sm:grid-cols-2 sm:items-center">
+          <dt class="font-medium">
+            {% trans "Connections" %}
+          </dt>
+          <dd class="sm:text-right">
+            {% url 'socialaccount_connections' as change_password_url %}
+            {% link href=change_password_url class="text-accent hover:underline" %}
+              {% trans "Manage Account connections" %}
+            {% endlink %}
+          </dd>
+        </div>
       </dl>
       <div class="pt-4 border-t border-muted text-right">
         <form method="post" action="{% url 'account_logout' %}">

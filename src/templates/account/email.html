@@ -18,6 +18,16 @@
           {% trans "The following email addresses are associated with your account:" %}
         </p>
 
+        {% if form.non_field_errors %}
+          <div class="bg-red-500/10 text-red-400 border border-red-500/30 p-4 rounded text-sm">
+            {% for error in form.non_field_errors %}
+              <p>
+                {{ error }}
+              </p>
+            {% endfor %}
+          </div>
+        {% endif %}
+
         <div id="emails" hx-swap-oob="true" class="space-y-6">
           {% for radio in emailaddress_radios %}
             <form method="post"

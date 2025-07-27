@@ -25,8 +25,14 @@ SOCIALACCOUNT_PROVIDERS = {
             "client_id": env.str("GITHUB_CLIENT_ID", ""),
             "secret": env.str("GITHUB_SECRET", ""),
         },
-        "SCOPE": ["user"],
+        "SCOPE": ["read:user", "user:email"],
     }
 }
 
 ACCOUNT_SIGNUP_FORM_HONEYPOT_FIELD = "phone_number"
+ACCOUNT_EMAIL_VERIFICATION_SUPPORTS_RESEND = True
+ACCOUNT_EMAIL_NOTIFICATIONS = True
+ACCOUNT_USERNAME_BLACKLIST = ["admin", "root", "mod", "support"]
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
+EMAIL_AUTHENTICATION_AUTO_CONNECT = True

@@ -43,6 +43,7 @@ INSTALLED_APPS = (
         "src.feeds",
         "src.tasks",
         "src.comments",
+        "src.accounts",
         "django_celery_beat",
         "djcelery_email",
         "django_celery_results",

@@ -38,3 +38,8 @@ def icon(name: str, **kwargs):
         return mark_safe(svg_content)
     except TemplateDoesNotExist:
         return ""
+
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
