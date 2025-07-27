@@ -83,7 +83,7 @@ class LatestBlogsFeed(FeedMixin, Feed):
         return ArticlePage.objects.live().specific().order_by("-first_published_at")[:100]
 
     def item_description(self, item):
-        if not item.body or not item.body.stream_data:
+        if not item.body:
             return ""
 
         try:
