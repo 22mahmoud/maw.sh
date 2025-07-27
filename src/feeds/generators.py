@@ -14,4 +14,4 @@ class ExtendedAtomFeed(feedgenerator.Atom1Feed):
             handler.addQuickElement("category", None, attrs)  # type: ignore
 
         if content := item.get("content"):
-            handler.addQuickElement("content", str(content), {"type": "html"})  # type: ignore
+            handler.addQuickElement("content", content, {"type": "html"})  # type: ignore

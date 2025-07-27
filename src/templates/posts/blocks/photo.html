@@ -19,7 +19,7 @@
     {% endfor %}
   </div>
 
-  {% if layout == 'compact' %}
+  {% if layout == 'compact' and not is_feed %}
     <span hidden class="p-location"> {{ value.location }} </span>
   {% endif %}
 

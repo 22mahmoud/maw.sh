@@ -3,7 +3,7 @@
 {% block content %}
 
   <div class="flex flex-col">
-    {% if self.summary %}
+    {% if self.summary and not is_feed %}
       <div class="p-summary sr-only">
         {{ self.summary }}
       </div>

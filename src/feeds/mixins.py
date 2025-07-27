@@ -55,6 +55,6 @@ class FeedMixin:
 
     def item_extra_kwargs(self, item):
         return {
-            "content": item.body,
+            "content": item.body.render_as_block({"is_feed": True}),
             "_categories": self._item_categories(item),
         }
