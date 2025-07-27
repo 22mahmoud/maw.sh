@@ -28,3 +28,5 @@ SOCIALACCOUNT_PROVIDERS = {
         "SCOPE": ["user"],
     }
 }
+
+ACCOUNT_SIGNUP_FORM_HONEYPOT_FIELD = "phone_number"

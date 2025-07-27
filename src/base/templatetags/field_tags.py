@@ -81,11 +81,32 @@ class FieldBlockNode(template.Node):
         if error_message:
             attrs["aria-describedby"] = error_id
 
-        # Clean up
-        for key in ["label", "error", "error_message", "help_text"]:
+        non_html_keys = {
+            "label",
+            "error",
+            "error_message",
+            "help_text",
+            "as",
+            "field",
+        }
+
+        for key in non_html_keys:
             attrs.pop(key, None)
 
-        attrs = {k.replace("_", "-"): v for k, v in attrs.items()}
+        if tag_type == "textarea":
+            attrs.pop("value")
+
+        # Normalize: replace underscores with dashes and remove empty values
+        cleaned_attrs = {}
+        for k, v in attrs.items():
+            if v in [None, False, ""]:
+                continue
+            cleaned_attrs[k.replace("_", "-")] = v
+
+        # Set aria-invalid and optionally aria-describedby
+        cleaned_attrs["aria-invalid"] = "true" if has_error else "false"
+        if error_message:
+            cleaned_attrs["aria-describedby"] = f"{resolved.get('id', name)}-error"
 
         return render_to_string(
             "includes/field.html",
@@ -99,7 +120,7 @@ class FieldBlockNode(template.Node):
                 "help_text": help_text,
                 "tag_type": tag_type,
                 "value": value or "",
-                "field_attrs": mark_safe(flatatt(attrs)),
+                "field_attrs": mark_safe(flatatt(cleaned_attrs)),
                 "options_html": mark_safe(content),
             },
         )
