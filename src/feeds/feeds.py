@@ -7,17 +7,27 @@ from src.articles.models import ArticlePage
 from src.posts.models import BasePostPage
 from src.utils.get_subclasses import get_all_subclasses
 
+from .mixins import FeedMixin
+
 
 class ExtendedAtomFeed(feedgenerator.Atom1Feed):
     def add_item_elements(self, handler, item):
         super().add_item_elements(handler, item)
+
+        for cat in item.get("_categories", []):
+            attrs = {"term": cat["term"]}
+            if "scheme" in cat:
+                attrs["scheme"] = cat["scheme"]
+            if "label" in cat:
+                attrs["label"] = cat["label"]
+            handler.addQuickElement("category", None, attrs)
 
         content = item.get("content")
         if content:
             handler.addQuickElement("content", content, {"type": "html"})
 
 
-class LatestFeed(Feed):
+class LatestFeed(FeedMixin, Feed):
     feed_type = ExtendedAtomFeed
     title = "Mahmoud Ashraf – Latest Social Posts"
     link = "/feed/"
@@ -34,21 +44,6 @@ class LatestFeed(Feed):
         for subclass in subclasses:
             items += list(subclass.objects.live().specific())
         return sorted(items, key=lambda p: p.first_published_at, reverse=True)[:10]
-
-    def item_title(self, item):
-        return item.title
-
-    def item_link(self, item):
-        return item.get_absolute_url()
-
-    def item_guid(self, item):
-        return self.item_link(item)
-
-    def item_pubdate(self, item):
-        return item.first_published_at
-
-    def item_updateddate(self, item):
-        return getattr(item, "latest_revision_created_at", item.first_published_at)
 
     def item_description(self, item):
         if not item.body or not item.body[0]:
@@ -91,11 +86,8 @@ class LatestFeed(Feed):
             case _:
                 return ""
 
-    def item_extra_kwargs(self, item):
-        return {"content": str(item.body)}
 
-
-class LatestBLogsFeed(Feed):
+class LatestBLogsFeed(FeedMixin, Feed):
     feed_type = ExtendedAtomFeed
     title = "Mahmoud Ashraf – Blog Articles"
     subtitle = (
@@ -108,26 +100,8 @@ class LatestBLogsFeed(Feed):
     def items(self):
         return ArticlePage.objects.live().specific().order_by("-first_published_at")[:10]
 
-    def item_title(self, item):
-        return item.title
-
-    def item_link(self, item):
-        return item.get_absolute_url()
-
-    def item_guid(self, item):
-        return self.item_link(item)
-
-    def item_pubdate(self, item):
-        return item.first_published_at
-
-    def item_updateddate(self, item):
-        return item.latest_revision_created_at or item.first_published_at
-
     def item_description(self, item):
         block = item.body[0]
         if block.block_type == "article":
             return block.value.get("summary", "")
         return ""
-
-    def item_extra_kwargs(self, item):
-        return {"content": str(item.body)}

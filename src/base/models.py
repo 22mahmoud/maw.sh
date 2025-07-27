@@ -87,6 +87,8 @@ class Person(  # type: ignore
     last_name = models.CharField("Last name", max_length=254)
     title = models.CharField("Title", blank=True, max_length=254)
     bio = models.TextField("Bio", blank=True, max_length=254)
+    website = models.URLField("Website", blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
 
     slug = models.SlugField(
         null=True,
@@ -134,6 +136,9 @@ class Person(  # type: ignore
             return self.image.get_rendition("fill-50x50").img_tag()  # type: ignore
         except:  # noqa: E722
             return ""
+
+    def get_absolute_url(self):
+        return f"/auhors/{self.slug}"
 
     def clean(self):
         super().clean()

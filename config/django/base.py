@@ -40,6 +40,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = (
     WAGTAIL_INSTALLED_APPS
     + [
+        "src.feeds",
         "src.tasks",
         "src.comments",
         "django_celery_beat",
