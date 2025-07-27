@@ -90,6 +90,7 @@ CONTENT_SECURITY_POLICY = {
         "form-action": [
             SELF,
             "https://github.com",
+            "https://accounts.google.com",
         ],
         "upgrade-insecure-requests": True,
     },
