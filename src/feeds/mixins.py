@@ -1,9 +1,29 @@
+from urllib.parse import urljoin
+
+from django.contrib.sites.models import Site
+from django.contrib.syndication.views import Feed as DjangoFeed
+from django.utils.safestring import mark_safe
+
+
+class Feed(DjangoFeed):
+    def __call__(self, request, *args, **kwargs):
+        self.request = request
+        return super().__call__(request, *args, **kwargs)
+
+
 class FeedMixin:
+    def _absolute_url(self, relative_url: str) -> str:
+        if self.request:  # type: ignore
+            return self.request.build_absolute_uri(relative_url)  # type: ignore
+
+        site = Site.objects.get_current()
+        return urljoin(f"https://{site.domain}", relative_url)
+
     def _item_categories(self, item):
         return [
             {
                 "term": tag.name,
-                "scheme": tag.url,
+                "scheme": self._absolute_url(tag.url),
                 "label": tag.slug.replace("-", " ").title(),
             }
             for tag in item.get_tags
@@ -12,7 +32,7 @@ class FeedMixin:
     def item_authors(self, item):
         return [
             {
-                "name": person.full_name,
+                "name": getattr(person, "full_name", str(person)),
                 "uri": person.website or person.get_absolute_url(),
                 "email": getattr(person, "email", None),
             }
@@ -36,6 +56,6 @@ class FeedMixin:
 
     def item_extra_kwargs(self, item):
         return {
-            "content": str(item.body),
+            "content": mark_safe(item.body.render_as_block()),
             "_categories": self._item_categories(item),
         }

@@ -1,8 +1,8 @@
 from django.urls import path
 
-from .feeds import LatestBLogsFeed, LatestFeed
+from .feeds import LatestBlogsFeed, LatestFeed
 
 urlpatterns = [
-    path("blog/", LatestBLogsFeed()),
+    path("blog/", LatestBlogsFeed()),
     path("feed/", LatestFeed()),
 ]

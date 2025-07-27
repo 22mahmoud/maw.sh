@@ -1,30 +1,15 @@
 # pyright: reportAttributeAccessIssue=false
-from django.contrib.syndication.views import Feed
-from django.utils import feedgenerator
+from itertools import chain
+
 from django.utils.html import escape, strip_tags
+from django.utils.safestring import mark_safe
 
 from src.articles.models import ArticlePage
 from src.posts.models import BasePostPage
 from src.utils.get_subclasses import get_all_subclasses
 
-from .mixins import FeedMixin
-
-
-class ExtendedAtomFeed(feedgenerator.Atom1Feed):
-    def add_item_elements(self, handler, item):
-        super().add_item_elements(handler, item)
-
-        for cat in item.get("_categories", []):
-            attrs = {"term": cat["term"]}
-            if "scheme" in cat:
-                attrs["scheme"] = cat["scheme"]
-            if "label" in cat:
-                attrs["label"] = cat["label"]
-            handler.addQuickElement("category", None, attrs)
-
-        content = item.get("content")
-        if content:
-            handler.addQuickElement("content", content, {"type": "html"})
+from .generators import ExtendedAtomFeed
+from .mixins import Feed, FeedMixin
 
 
 class LatestFeed(FeedMixin, Feed):
@@ -40,10 +25,8 @@ class LatestFeed(FeedMixin, Feed):
 
     def items(self):
         subclasses = self._get_subclasses()
-        items = []
-        for subclass in subclasses:
-            items += list(subclass.objects.live().specific())
-        return sorted(items, key=lambda p: p.first_published_at, reverse=True)[:10]
+        posts = chain.from_iterable(cls.objects.live().specific() for cls in subclasses)
+        return sorted(posts, key=lambda p: p.first_published_at, reverse=True)[:100]
 
     def item_description(self, item):
         if not item.body or not item.body[0]:
@@ -87,21 +70,25 @@ class LatestFeed(FeedMixin, Feed):
                 return ""
 
 
-class LatestBLogsFeed(FeedMixin, Feed):
+class LatestBlogsFeed(FeedMixin, Feed):
     feed_type = ExtendedAtomFeed
     title = "Mahmoud Ashraf – Blog Articles"
+    link = "/blog/"
     subtitle = (
         "Long-form writing by Mahmoud Ashraf, "
         "a front-end developer sharing insights from Alexandria, Egypt."
     )
-    link = "/blog/"
-    subtitle = "Mahmoud Ashraf is a Front-end developer based in Alexandria, Egypt."
 
     def items(self):
-        return ArticlePage.objects.live().specific().order_by("-first_published_at")[:10]
+        return ArticlePage.objects.live().specific().order_by("-first_published_at")[:100]
 
     def item_description(self, item):
-        block = item.body[0]
-        if block.block_type == "article":
-            return block.value.get("summary", "")
-        return ""
+        if not item.body or not item.body.stream_data:
+            return ""
+
+        try:
+            block = item.body[0]
+        except IndexError:
+            return ""
+
+        return mark_safe(block.value.get("summary", ""))
