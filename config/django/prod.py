@@ -5,9 +5,7 @@ from config.settings.wagtail_prod import *  # noqa: E402, F403
 from config.settings.whitenoise import *  # noqa: F403
 
 from .base import *  # noqa: F403
-from .base import BASE_DIR, MIDDLEWARE
-
-MIDDLEWARE.append("whitenoise.middleware.WhiteNoiseMiddleware")
+from .base import BASE_DIR
 
 STORAGES = {
     "default": {
