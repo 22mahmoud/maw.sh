@@ -5,6 +5,7 @@ ALLAUTH_INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.github",
+    "allauth.socialaccount.providers.google",
 ]
 
 ALLAUTH_MIDDLEWARE = [
@@ -26,7 +27,19 @@ SOCIALACCOUNT_PROVIDERS = {
             "secret": env.str("GITHUB_SECRET", ""),
         },
         "SCOPE": ["read:user", "user:email"],
-    }
+    },
+    "google": {
+        "APP": {
+            "client_id": env.str("GOOGLE_CLIENT_ID", ""),
+            "secret": env.str("GOOGLE_SECRET", ""),
+        },
+        "SCOPE": ["profile", "email"],
+        "AUTH_PARAMS": {
+            "access_type": "offline",
+        },
+        "OAUTH_PKCE_ENABLED": True,
+        "FETCH_USERINFO": True,
+    },
 }
 
 ACCOUNT_SIGNUP_FORM_HONEYPOT_FIELD = "phone_number"

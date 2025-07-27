@@ -20,8 +20,12 @@
         {% endblocktrans %}
       </p>
 
-      <form method="post"
+      <form id="signup-form"
+            method="post"
             action="{% url 'socialaccount_signup' %}"
+            hx-post="{% url 'socialaccount_signup' %}"
+            hx-select="#signup-form"
+            hx-swap="outerHTML"
             class="flex flex-col gap-5">
 
         {% csrf_token %}
@@ -29,14 +33,27 @@
         {{ redirect_field }}
 
         {% for field in form %}
-          {% field
-            name=field.name
-            label=field.label
-            value=field.value
-            error=field.errors
-            error_message=field.errors.as_text
-            %}
-          {% endfield %}
+          {% with attrs=field.field.widget.attrs %}
+            {% field
+              name=field.name
+              label=field.label
+              help_text=field.help_text
+              value=field.value
+              error=field.errors
+              error_message=field.errors.as_text
+              disabled=field.field.disabled
+              required=field.field.required
+              type=field.field.widget.input_type
+              id=field.id_for_label
+              readonly=attrs.readonly|default_if_none:False
+              checked=attrs.checked|default_if_none:False
+              autocomplete=attrs.autocomplete|default:""
+              placeholder=attrs.placeholder|default:""
+              rows=attrs.rows|default_if_none:""
+              as=field.field.widget.input_type|default_if_none:"input"
+              %}
+            {% endfield %}
+          {% endwith %}
         {% endfor %}
 
         <div>

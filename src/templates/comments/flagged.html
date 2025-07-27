@@ -6,14 +6,23 @@
   {% trans "Comment flagged" %}.
 {% endblock title %}
 
-{% block header %}
-  <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object }}</a>
-{% endblock header %}
-
 {% block content %}
   {% if request.htmx %}
     <div id="flagged-{{ comment.id }}" hx-swap-oob="true">
       {% icon "flag" class="w-4 h-4 text-red-500" title="comment flagged" %}
+    </div>
+
+    <div id="flags-counter-{{ comment.id }}" hx-swap-oob="true">
+      {% if perms.comments.can_moderate %}
+        <span class="text-xs text-red-600 ml-1"
+              title="{% blocktrans count counter=comment.flags.count %}
+                       A user has flagged this comment as inappropriate.
+                     {% plural %}
+                       {{ counter }} users have flagged this comment as inappropriate.
+                     {% endblocktrans %}">
+          {{ comment.flags.count }}
+        </span>
+      {% endif %}
     </div>
   {% else %}
     <h4 class="text-center">
@@ -22,5 +31,6 @@
     <p class="text-center">
       {% trans "Thank you for taking the time to improve the quality of discussion in our site." %}
     </p>
+    <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object }}</a>
   {% endif %}
 {% endblock content %}

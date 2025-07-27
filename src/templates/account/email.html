@@ -18,21 +18,25 @@
           {% trans "The following email addresses are associated with your account:" %}
         </p>
 
-        {% if form.non_field_errors %}
-          <div class="bg-red-500/10 text-red-400 border border-red-500/30 p-4 rounded text-sm">
-            {% for error in form.non_field_errors %}
-              <p>
-                {{ error }}
-              </p>
-            {% endfor %}
-          </div>
-        {% endif %}
+        <div id="non-field-errors" hx-swap-oob="true">
+          {% if form.non_field_errors %}
+            <div class="bg-red-500/10 text-red-400 border border-red-500/30 p-4 rounded text-sm">
+              {% for error in form.non_field_errors %}
+                <p>
+                  {{ error }}
+                </p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
 
         <div id="emails" hx-swap-oob="true" class="space-y-6">
           {% for radio in emailaddress_radios %}
             <form method="post"
+                  id="email-{{ radio.id }}"
                   action="{% url 'account_email' %}"
                   hx-post="{% url 'account_email' %}"
+                  hx-select="#email-{{ radio.id }}"
                   class="space-y-6">
               {% with emailaddress=radio.emailaddress %}
                 {% csrf_token %}
@@ -110,20 +114,31 @@
               hx-post="{% url 'account_email' %}"
               hx-select="#add-email-form, #emails"
               class="space-y-4">
+
           {% csrf_token %}
+
           {% for field in form %}
-            {% field
-              type=field.field.widget.input_type
-              name=field.name
-              id=field.id_for_label
-              label=field.label
-              value=field.value
-              help_text=field.help_text
-              required=field.field.required
-              error=field.errors
-              error_message=field.errors.as_text
-              %}
-            {% endfield %}
+            {% with attrs=field.field.widget.attrs %}
+              {% field
+                name=field.name
+                label=field.label
+                help_text=field.help_text
+                value=field.value
+                error=field.errors
+                error_message=field.errors.as_text
+                disabled=field.field.disabled
+                required=field.field.required
+                type=field.field.widget.input_type
+                id=field.id_for_label
+                readonly=attrs.readonly|default_if_none:False
+                checked=attrs.checked|default_if_none:False
+                autocomplete=attrs.autocomplete|default:""
+                placeholder=attrs.placeholder|default:""
+                rows=attrs.rows|default_if_none:""
+                as=field.field.widget.input_type|default_if_none:"input"
+                %}
+              {% endfield %}
+            {% endwith %}
           {% endfor %}
 
           <div>

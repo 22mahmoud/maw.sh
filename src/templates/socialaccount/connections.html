@@ -13,26 +13,40 @@
         {% trans "Account Connections" %}
       </h2>
 
-      {% if form.accounts %}
-        <p class="text-primary/80">
-          {% blocktrans %}You can sign in to your account using any of the following third-party accounts:{% endblocktrans %}
-        </p>
+      <div id="subtitle" hx-swap-oob="true">
+        {% if form.accounts %}
+          <p class="text-primary/80">
+            {% blocktrans %}You can sign in to your account using any of the following third-party accounts:{% endblocktrans %}
+          </p>
+        {% else %}
 
-        {% if form.non_field_errors %}
-          <div class="bg-red-500/10 text-red-400 border border-red-500/30 p-4 rounded text-sm">
-            {% for error in form.non_field_errors %}
-              <p>
-                {{ error }}
-              </p>
-            {% endfor %}
-          </div>
+          <p class="text-primary/80">
+            {% trans "You currently have no third-party accounts connected to this account." %}
+          </p>
         {% endif %}
+      </div>
+
+      {% if form.accounts %}
+        <div id="non-field-errors" hx-swap-oob="true">
+          {% if form.non_field_errors %}
+            <div class="bg-red-500/10 text-red-400 border border-red-500/30 p-4 rounded text-sm">
+              {% for error in form.non_field_errors %}
+                <p>
+                  {{ error }}
+                </p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
 
         <div id="accounts" class="space-y-6">
           {% for acc in form.fields.account.choices %}
             {% with account=acc.0.instance.get_provider_account %}
               <form method="post"
+                    id="provider-{{ account.account.id }}"
                     action="{% url 'socialaccount_connections' %}"
+                    hx-post="{% url 'socialaccount_connections' %}"
+                    hx-select="#provider-{{ account.account.id }}"
                     class="space-y-4">
                 {% csrf_token %}
                 <input type="hidden" name="account" value="{{ account.account.pk }}" />
@@ -64,16 +78,10 @@
             {% endwith %}
           {% endfor %}
         </div>
-      {% else %}
-        <p class="text-primary/80">
-          {% trans "You currently have no third-party accounts connected to this account." %}
-        </p>
       {% endif %}
-
       <h3 class="text-xl font-semibold pt-6">
         {% trans "Add a Third-Party Account" %}
       </h3>
-
       {% include "socialaccount/snippets/provider_list.html" with process="connect" %}
     </div>
   </div>

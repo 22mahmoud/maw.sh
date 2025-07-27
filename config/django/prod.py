@@ -87,7 +87,10 @@ CONTENT_SECURITY_POLICY = {
         "manifest-src": [SELF],
         "object-src": [NONE],
         "frame-ancestors": [SELF],
-        "form-action": [SELF],
+        "form-action": [
+            SELF,
+            "https://github.com",
+        ],
         "upgrade-insecure-requests": True,
     },
 }
