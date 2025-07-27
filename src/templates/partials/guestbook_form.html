@@ -22,7 +22,9 @@
           value=form.name.value
           error=form.name.errors
           error_message=form.name.errors.as_text
-          x-model="form.name" %}
+          :value="form.name"
+          @input="setFormName"
+          %}
         {% endfield %}
       </div>
 
@@ -34,7 +36,9 @@
         value=form.emoji.value
         error=form.emoji.errors
         error_message=form.emoji.errors.as_text
-        x-model="form.emoji" %}
+        :value="form.emoji"
+        @input="setFormEmoji"
+        %}
       {% endfield %}
     </div>
 
@@ -50,15 +54,17 @@
         %}
         <div class="flex flex-row gap-4 flex-wrap">
           {% for key, label in form.fields.style.choices %}
-            <label class="bg-dark flex items-center gap-2 p-2 border border-neutral-700 rounded cursor-pointer hover:border-accent transition-all"
-                   :class="{ 'ring-1 ring-accent': form.style === '{{ key }}' }">
+            <label data-key="{{ key }}"
+                   class="bg-dark flex items-center gap-2 p-2 border border-neutral-700 rounded cursor-pointer hover:border-accent transition-all"
+                   :class="activeSelectedPresetClass">
               <input type="radio"
                      name="style"
-                     x-model="form.style"
                      value="{{ key }}"
                      {% if selected == key %}
                        checked
                      {% endif %}
+                     :checked="isPresetChecked"
+                     @change="setFormStyle"
                      class="accent-accent w-5 h-5 border border-neutral-700" />
               <span class="text-sm text-primary">{{ label }}</span>
             </label>
@@ -78,16 +84,20 @@
       error=form.message.errors
       error_message=form.message.errors.as_text
       help_text="Supports basic Markdown and HTML. Max 280 characters. GIFs allowed from giphy/tenor/imgur."
-      x-model="form.message" %}
+      :value="form.message"
+      @input="setFormMessage"
+      %}
     {% endfield %}
 
     {% field
       name="url"
       label="Website (optional)"
-      x-model="form.url"
       value=form.url.value
       error=form.url.errors
-      error_message=form.url.errors.as_text %}
+      error_message=form.url.errors.as_text
+      :value="form.url"
+      @input="setFormUrl"
+      %}
     {% endfield %}
 
     <div class="max-w-xs">
@@ -99,9 +109,14 @@
           value=selected
           error=form.radius.errors
           error_message=form.radius.errors.as_text
-          x_model="form.radius" %}
+          @change="setFormRadius"
+          %}
           {% for key, label in form.fields.radius.choices %}
-            <option value="{{ key }}" {% if selected == key %}selected{% endif %}>
+            <option value="{{ key }}"
+                    {% if selected == key %}
+                      selected
+                    {% endif %}
+                    :selected="isRadiusSelected">
               {{ label }}
             </option>
           {% endfor %}

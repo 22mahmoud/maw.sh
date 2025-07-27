@@ -101,7 +101,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "csp.context_processors.nonce",
             ]
-            + WAGTAIL_TEMPLATE_CONTEXT_PROCESSORS
+            + WAGTAIL_TEMPLATE_CONTEXT_PROCESSORS,
         },
     },
 ]

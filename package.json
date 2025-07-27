@@ -36,7 +36,7 @@
   "dependencies": {
     "@alpinejs/collapse": "^3.14.9",
     "@hotwired/stimulus": "^3.2.2",
-    "alpinejs": "^3.14.9",
+    "alpinejs": "npm:@alpinejs/csp@^3.14.9",
     "dompurify": "^3.2.6",
     "htmx.org": "^2.0.6",
     "marked": "^16.1.1"

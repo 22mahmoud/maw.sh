@@ -15,8 +15,8 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2
       alpinejs:
-        specifier: ^3.14.9
-        version: 3.14.9
+        specifier: npm:@alpinejs/csp@^3.14.9
+        version: '@alpinejs/csp@3.14.9'
       dompurify:
         specifier: ^3.2.6
         version: 3.2.6
@@ -74,6 +74,9 @@ packages:
 
   '@alpinejs/collapse@3.14.9':
     resolution: {integrity: sha512-cUjbBVo4KR/CfFg0cLB+Q7a8SnjmD4MdxmtZvFjh25Dlf/ZWYPSPx/28b+aAykuX/SUoDPQRmdFiVVvq+iILHw==}
+
+  '@alpinejs/csp@3.14.9':
+    resolution: {integrity: sha512-Z/aeDo4Wn4bA4+u77kw9h+nGGW+QzbR2ULTQ1pwOFWk3j2SZtTTI1ZM6FrYOqkFUcwo44e12pY+Y/Va6GTIlFQ==}
 
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
@@ -573,9 +576,6 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  alpinejs@3.14.9:
-    resolution: {integrity: sha512-gqSOhTEyryU9FhviNqiHBHzgjkvtukq9tevew29fTj+ofZtfsYriw4zPirHHOAy9bw8QoL3WGhyk7QqCh5AYlw==}
-
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
 
@@ -952,6 +952,10 @@ snapshots:
 
   '@alpinejs/collapse@3.14.9': {}
 
+  '@alpinejs/csp@3.14.9':
+    dependencies:
+      '@vue/reactivity': 3.1.5
+
   '@ampproject/remapping@2.3.0':
     dependencies:
       '@jridgewell/gen-mapping': 0.3.12
@@ -1311,10 +1315,6 @@ snapshots:
   '@vue/shared@3.1.5': {}
 
   acorn@8.15.0: {}
-
-  alpinejs@3.14.9:
-    dependencies:
-      '@vue/reactivity': 3.1.5
 
   buffer-from@1.1.2: {}
 

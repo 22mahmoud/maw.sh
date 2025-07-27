@@ -27,6 +27,7 @@ class GuestbookFormStaticBlock(blocks.StaticBlock):
                 initial={
                     "style": default_preset["id"],
                     "emoji": default_preset["emoji"],
+                    "radius": default_preset["radius"],
                 }
             )
 

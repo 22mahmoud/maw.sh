@@ -1,8 +1,7 @@
 {% load base_tags field_tags button_tags menu_tags %}
 {% load wagtailcore_tags %}
 
-<header x-data="{ open: false }"
-        x-init="window.addEventListener('scroll', () => { $el.classList.toggle('shadow-xl', window.scrollY > 10) })"
+<header x-data="headerNav"
         class="sticky z-50 top-0 shadow bg-gradient-to-r from-gradient-1 to-gradient-2 font-bold pb-[2px] transition-shadow duration-300">
 
   <div class="w-full bg-dark">
@@ -16,14 +15,14 @@
       </a>
 
       <button id="mobile-menu-toggle"
-              @click="open = !open"
+              @click="toggle"
               x-cloak
               class="sm:hidden inline-flex items-center justify-center p-3 w-12 h-12 rounded-mdtext-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              :aria-expanded="open ? 'true' : 'false'"
+              :aria-expanded="openStr"
               aria-controls="mobile-menu"
               aria-label="Toggle navigation menu">
-        {% icon "hamburger" x_show="!open" class="h-6 w-6" aria_hidden="true" %}
-        {% icon "x" x_show="open" class="h-6 w-6" aria_hidden="true" %}
+        {% icon "hamburger" x_show="closed" class="h-6 w-6" aria_hidden="true" %}
+        {% icon "x" x_show="opened" class="h-6 w-6" aria_hidden="true" %}
       </button>
 
       <div class="hidden sm:flex items-center gap-4" x-clock>
@@ -81,9 +80,9 @@
 
   <div x-collapse
        x-cloak
-       x-show="open"
-       @click.outside="open = false"
-       @keydown.escape.window="open = false"
+       x-show="opened"
+       @click.outside="close"
+       @keydown.escape.window="close"
        class="sm:hidden bg-dark overflow-hidden transition-all duration-300 ease-in-out"
        id="mobile-menu">
     <div class="px-4 pt-4 pb-6">

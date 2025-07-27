@@ -83,7 +83,7 @@ Alpine.data('guestbookEditor', () => {
       name: '',
       message: '',
       url: '',
-      radius: '',
+      radius: presets[0]?.radius ?? '',
       emoji: presets[0]?.emoji ?? '',
       style: presets[0]?.id ?? '',
     },
@@ -93,7 +93,70 @@ Alpine.data('guestbookEditor', () => {
       return this.presets.find(p => p.id === this.form.style) ?? this.presets[0];
     },
     get classes() {
-      return `${this.currentPreset.styles} ${this.form.radius}`;
+      const styles = this.currentPreset?.styles ?? '';
+      const radius = this.form.radius || this.currentPreset?.radius || '';
+
+      return `${styles} ${radius}`.trim();
+    },
+    get activeSelectedPresetClass() {
+      const key = this.$el.getAttribute('data-key');
+
+      return key === this.form.style ? 'ring-1 ring-accent' : '';
+    },
+
+    isPresetChecked() {
+      return this.$el.value === this.form.style;
+    },
+
+    togglePreview() {
+      this.isPreviewOpen = !this.isPreviewOpen;
+    },
+
+    setFormMessage(event: InputEvent) {
+      this.form.message = event?.target?.value;
+    },
+
+    setFormName(event: InputEvent) {
+      this.form.name = event?.target?.value;
+    },
+
+    setFormUrl(event: InputEvent) {
+      this.form.url = event?.target?.value;
+    },
+
+    setFormEmoji(event: InputEvent) {
+      this.form.emoji = event?.target?.value;
+    },
+
+    setFormStyle(event: InputEvent) {
+      this.form.style = event?.target?.value;
+    },
+
+    setFormRadius(event: InputEvent) {
+      this.form.radius = event?.target?.value;
+    },
+
+    isRadiusSelected() {
+      return this.$el.value === this.form.radius;
+    },
+
+    get styledFormName() {
+      return `— ${this.form.name}`;
+    },
+
+    get collapseButtonClass() {
+      return this.isPreviewOpen ? 'rotate-180' : '';
+    },
+    get messagePreview() {
+      return this.form.message
+        ? this.renderMarkdown(this.form.message)
+        : 'Your message will appear here';
+    },
+    get canPreviewNameWithUrl() {
+      return this.form.name && this.form.url;
+    },
+    get canPreviewNameOnly() {
+      return this.form.name && !this.form.url;
     },
     async renderMarkdown(md: string = '') {
       const rawHtml = await marked.parse(md);

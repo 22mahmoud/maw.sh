@@ -7,6 +7,9 @@ import htmx from 'htmx.org';
 window.Alpine = Alpine;
 window.htmx = htmx;
 
+import '@/js/header-nav';
+import '@/js/messages';
+
 Alpine.plugin(collapse);
 
 if (window.__APP_DATA__?.isNewGuestbookPage) {

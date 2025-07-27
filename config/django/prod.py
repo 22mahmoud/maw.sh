@@ -1,4 +1,4 @@
-from csp.constants import NONCE, NONE, SELF, UNSAFE_EVAL, UNSAFE_INLINE
+from csp.constants import NONCE, NONE, SELF
 
 from config.env import env
 from config.settings.wagtail_prod import *  # noqa: E402, F403
@@ -62,17 +62,11 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = env.str("EMAIL_FROM", "")
 
 CONTENT_SECURITY_POLICY = {
+    "EXCLUDE_URL_PREFIXES": ["/admin/", "/cms/"],
     "DIRECTIVES": {
         "default-src": [SELF, "https://static.mahmoudashraf.dev"],
-        "script-src": [
-            SELF,
-            NONCE,
-            UNSAFE_EVAL,
-        ],
-        "style-src": [
-            SELF,
-            UNSAFE_INLINE,
-        ],
+        "script-src": [SELF, NONCE],
+        "style-src": [SELF, NONCE],
         "font-src": [SELF],
         "img-src": [
             SELF,
