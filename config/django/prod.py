@@ -85,6 +85,10 @@ CONTENT_SECURITY_POLICY = {
         "manifest-src": [SELF],
         "object-src": [NONE],
         "frame-ancestors": [SELF],
+        "frame-src": [
+            SELF,
+            "https://*.youtube.com",
+        ],
         "form-action": [
             SELF,
             "https://github.com",

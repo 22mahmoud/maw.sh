@@ -203,14 +203,16 @@ CAPTCHA_IMAGE_SIZE = (80, 36)
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 PERMISSIONS_POLICY = {
-    "accelerometer": [],
-    "autoplay": [],
+    "accelerometer": ["self", "https://www.youtube.com"],
+    "ambient-light-sensor": [],
+    "autoplay": ["self", "https://www.youtube.com"],
     "camera": [],
     "display-capture": [],
-    "encrypted-media": [],
-    "fullscreen": [],
+    "encrypted-media": ["self", "https://www.youtube.com"],
+    "fullscreen": ["self", "https://www.youtube.com"],
     "geolocation": [],
-    "gyroscope": [],
+    "gyroscope": ["self", "https://www.youtube.com"],
+    "interest-cohort": [],
     "magnetometer": [],
     "microphone": [],
     "midi": [],
