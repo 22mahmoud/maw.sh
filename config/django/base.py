@@ -74,6 +74,7 @@ MIDDLEWARE = (
         "django_htmx.middleware.HtmxMiddleware",
         "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
         "django.middleware.security.SecurityMiddleware",
+        "django_permissions_policy.PermissionsPolicyMiddleware",
         "django.contrib.sessions.middleware.SessionMiddleware",
         "django.middleware.common.CommonMiddleware",
         "django.middleware.csrf.CsrfViewMiddleware",
@@ -200,6 +201,22 @@ CACHES = {
 CAPTCHA_IMAGE_SIZE = (80, 36)
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+PERMISSIONS_POLICY = {
+    "accelerometer": [],
+    "autoplay": [],
+    "camera": [],
+    "display-capture": [],
+    "encrypted-media": [],
+    "fullscreen": [],
+    "geolocation": [],
+    "gyroscope": [],
+    "magnetometer": [],
+    "microphone": [],
+    "midi": [],
+    "payment": [],
+    "usb": [],
+}
 
 # lib settings
 from config.settings.celery import *  # noqa: E402, F403
