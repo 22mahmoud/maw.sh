@@ -1,4 +1,4 @@
-from csp.constants import NONCE, NONE, SELF
+from csp.constants import NONCE, NONE, SELF, UNSAFE_INLINE
 
 from config.env import env
 from config.settings.wagtail_prod import *  # noqa: E402, F403
@@ -66,7 +66,7 @@ CONTENT_SECURITY_POLICY = {
     "DIRECTIVES": {
         "default-src": [NONE],
         "script-src": [SELF, NONCE],
-        "style-src": [SELF, NONCE],
+        "style-src": [SELF, UNSAFE_INLINE],
         "font-src": [SELF],
         "img-src": [
             SELF,
@@ -77,6 +77,7 @@ CONTENT_SECURITY_POLICY = {
             "https://static.mahmoudashraf.dev",
             "https://www.gravatar.com",
         ],
+        "media-src": [SELF],
         "connect-src": [SELF],
         "manifest-src": [SELF],
         "object-src": [NONE],
