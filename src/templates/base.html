@@ -2,38 +2,39 @@
 
 <!DOCTYPE html>
 <html lang="en" class="h-full scroll-smooth no-js">
-  <head>
-    <link rel="dns-prefetch" href="//static.mahmoudashraf.dev">
-    <link rel="preconnect" href="https://static.mahmoudashraf.dev" crossorigin>
-    <link rel="preload"
-          href="{% static 'fonts/outfit-v14-latin-700.woff2' %}"
-          as="font"
-          type="font/woff2"
-          crossorigin>
-    <link rel="preload"
-          href="{% static 'fonts/figtree-v8-latin-regular.woff2' %}"
-          as="font"
-          type="font/woff2"
-          crossorigin>
-    <link rel="preload"
-          href="{% static 'fonts/figtree-v8-latin-600.woff2' %}"
-          as="font"
-          type="font/woff2"
-          crossorigin>
-    <meta charset="utf-8">
-    <meta name="htmx-config"
-          content='{"inlineStyleNonce": "{{ CSP_NONCE }}", "inlineScriptNonce":"{{ CSP_NONCE }}","includeIndicatorStyles":false, "allowEval": false}'>
+  {% if not request.htmx %}
+    <head>
+      <link rel="dns-prefetch" href="//static.mahmoudashraf.dev">
+      <link rel="preconnect" href="https://static.mahmoudashraf.dev" crossorigin>
+      <link rel="preload"
+            href="{% static 'fonts/outfit-v14-latin-700.woff2' %}"
+            as="font"
+            type="font/woff2"
+            crossorigin>
+      <link rel="preload"
+            href="{% static 'fonts/figtree-v8-latin-regular.woff2' %}"
+            as="font"
+            type="font/woff2"
+            crossorigin>
+      <link rel="preload"
+            href="{% static 'fonts/figtree-v8-latin-600.woff2' %}"
+            as="font"
+            type="font/woff2"
+            crossorigin>
+      <meta charset="utf-8">
+      <meta name="htmx-config"
+            content='{"inlineStyleNonce": "{{ CSP_NONCE }}", "inlineScriptNonce":"{{ CSP_NONCE }}","includeIndicatorStyles":false, "allowEval": false}'>
 
-    <title>
-      {% block title %}
-        {% seo_full_title page %}
-      {% endblock title %}
-    </title>
+      <title>
+        {% block title %}
+          {% seo_full_title page %}
+        {% endblock title %}
+      </title>
 
-    <script nonce="{{ CSP_NONCE }}">
+      <script nonce="{{ CSP_NONCE }}">
       document.documentElement.classList.remove('no-js');
-    </script>
-    <style nonce="{{ CSP_NONCE }}">
+      </script>
+      <style nonce="{{ CSP_NONCE }}">
       [x-cloak] { display: none !important; }
 
       .no-js .js-only {
@@ -43,49 +44,52 @@
      .js-only {
         visibility: visible;
       }
-    </style>
-    <meta name="description"
-          content="{% block description %}
-                     {% seo_meta_description page %}
-                   {% endblock description %}">
+      </style>
+      <meta name="description"
+            content="{% block description %}
+                       {% seo_meta_description page %}
+                     {% endblock description %}">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="this,is,a,keywords">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="keywords" content="this,is,a,keywords">
 
-    <link rel="icon"
-          type="image/png"
-          href="{% static "favicon-96x96.png" %}"
-          sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="{% static "favicon.svg" %}" />
-    <link rel="shortcut icon" href="{% static "favicon.ico" %}" />
-    <link rel="apple-touch-icon"
-          sizes="180x180"
-          href="{% static "apple-touch-icon.png" %}" />
-    <meta name="apple-mobile-web-app-title" content="Mahmoud Ashraf" />
-    <link rel="manifest" href="{% static "site.webmanifest" %}" />
+      <link rel="icon"
+            type="image/png"
+            href="{% static "favicon-96x96.png" %}"
+            sizes="96x96" />
+      <link rel="icon" type="image/svg+xml" href="{% static "favicon.svg" %}" />
+      <link rel="shortcut icon" href="{% static "favicon.ico" %}" />
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="{% static "apple-touch-icon.png" %}" />
+      <meta name="apple-mobile-web-app-title" content="Mahmoud Ashraf" />
+      <link rel="manifest" href="{% static "site.webmanifest" %}" />
 
-    <link rel="canonical" href="{{ page.seo_canonical_url }}" />
-    {% if next_url %}
-      <link rel="next" href="{{ next_url }}" />
-    {% endif %}
-    {% if prev_url %}
-      <link rel="prev" href="{{ prev_url }}" />
-    {% endif %}
+      <link rel="canonical" href="{{ page.seo_canonical_url }}" />
+      {% if next_url %}
+        <link rel="next" href="{{ next_url }}" />
+      {% endif %}
+      {% if prev_url %}
+        <link rel="prev" href="{{ prev_url }}" />
+      {% endif %}
 
-    {% block head %}
-    {% endblock head %}
+      {% block head %}
+      {% endblock head %}
 
-    {% vite_hmr_client %}
-    {% vite_asset 'src/resources/js/app.ts' nonce=CSP_NONCE %}
+      {% vite_hmr_client %}
+      {% vite_asset 'src/resources/js/app.ts' nonce=CSP_NONCE %}
 
-  </head>
+    </head>
+  {% endif %}
 
   <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'
         class="relative min-h-full flex flex-col bg-darker text-primary max-w-6xl mx-auto">
 
-    {% wagtailuserbar %}
+    {% if not request.htmx %}
+      {% wagtailuserbar %}
 
-    <a id="top"></a>
+      <a id="top"></a>
+    {% endif %}
 
     <div id="messages"
          hx-swap-oob="beforeend"
@@ -117,23 +121,27 @@
       </div>
     </div>
 
-    {% include "includes/header.html" %}
+    {% if not request.htmx %}
+      {% include "includes/header.html" %}
+    {% endif %}
 
     <main class="grow flex flex-col h-full relative bg-darker z-1">
       {% block content %}
       {% endblock content %}
     </main>
 
-    {% include "includes/footer.html" %}
+    {% if not request.htmx %}
+      {% include "includes/footer.html" %}
 
-    {% if False and not request.user.is_authenticated %}
-      <script nonce="{{ CSP_NONCE }}" src="//accounts.google.com/gsi/client" async></script>
-      {# djlint:off #}
+      {% if False and not request.user.is_authenticated %}
+        <script nonce="{{ CSP_NONCE }}" src="//accounts.google.com/gsi/client" async></script>
+        {# djlint:off #}
       <div id="g_id_onload"
            data-client_id="269809974094-1mjt6e4clvjjbg06884vjv8k59t8qa6a.apps.googleusercontent.com"
            data-login_uri="{% url 'google_login_by_token' %}">
-      {# djlint:on #}
-    </div>
+        {# djlint:on #}
+      </div>
+    {% endif %}
   {% endif %}
 </body>
 </html>
