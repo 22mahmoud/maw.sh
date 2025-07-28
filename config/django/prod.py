@@ -64,7 +64,7 @@ DEFAULT_FROM_EMAIL = env.str("EMAIL_FROM", "")
 CONTENT_SECURITY_POLICY = {
     "EXCLUDE_URL_PREFIXES": ["/admin/", "/cms/"],
     "DIRECTIVES": {
-        "default-src": [SELF, "https://static.mahmoudashraf.dev"],
+        "default-src": [NONE],
         "script-src": [SELF, NONCE],
         "style-src": [SELF, NONCE],
         "font-src": [SELF],
@@ -86,6 +86,7 @@ CONTENT_SECURITY_POLICY = {
             "https://github.com",
             "https://accounts.google.com",
         ],
+        "base-uri": [SELF],
         "upgrade-insecure-requests": True,
     },
 }

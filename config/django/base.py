@@ -49,7 +49,6 @@ INSTALLED_APPS = (
         "django_celery_results",
         "django_comments_xtd",
         "django_comments",
-        "csp",
         "template_partials",
         "django.forms",
         "captcha",
@@ -59,6 +58,7 @@ INSTALLED_APPS = (
         "django_vite",
         "django.contrib.redirects",
         "polymorphic",
+        "csp",
         "django.contrib.sites",
         "django.contrib.contenttypes",
         "django.contrib.sessions",
@@ -200,7 +200,6 @@ CACHES = {
 CAPTCHA_IMAGE_SIZE = (80, 36)
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
 
 # lib settings
 from config.settings.celery import *  # noqa: E402, F403

@@ -7,10 +7,11 @@ import htmx from 'htmx.org';
 window.Alpine = Alpine;
 window.htmx = htmx;
 
+Alpine.plugin(collapse);
+
 import '@/js/header-nav';
 import '@/js/messages';
-
-Alpine.plugin(collapse);
+import '@/js/django-comments';
 
 if (window.__APP_DATA__?.isNewGuestbookPage) {
   await import('./guestbook-editor');

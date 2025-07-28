@@ -21,6 +21,8 @@
           type="font/woff2"
           crossorigin>
     <meta charset="utf-8">
+    <meta name="htmx-config"
+          content='{"inlineStyleNonce": "{{ CSP_NONCE }}", "inlineScriptNonce":"{{ CSP_NONCE }}","includeIndicatorStyles":false, "allowEval": false}'>
 
     <title>
       {% block title %}
@@ -72,9 +74,6 @@
 
     {% block head %}
     {% endblock head %}
-
-    <meta name="htmx-config"
-          content='{"inlineStyleNonce": "{{ CSP_NONCE }}", "inlineScriptNonce":"{{ CSP_NONCE }}","includeIndicatorStyles":false}'>
 
     {% vite_hmr_client %}
     {% vite_asset 'src/resources/js/app.ts' nonce=CSP_NONCE %}

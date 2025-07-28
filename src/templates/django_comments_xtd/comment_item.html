@@ -165,12 +165,12 @@
 
           {% if comment.allow_thread and not comment.is_removed %}
             <div class="mt-2">
-              <a href="{% url 'comments-xtd-reply' comment.pk %}"
+              <a id="django-comments-xtd-reply"
+                 href="{% url 'comments-xtd-reply' comment.pk %}"
                  hx-get="{% url 'comments-xtd-reply' comment.pk %}"
                  hx-target="#comment-form-wrapper"
                  hx-swap="outerHTML"
-                 class="text-sm text-accent hover:underline"
-                 hx-on::after-request="document.querySelector('#comments-section')?.scrollIntoView({behavior: 'smooth'});">
+                 class="text-sm text-accent hover:underline">
                 {% trans "Reply" %}
               </a>
             </div>
