@@ -44,6 +44,7 @@ INSTALLED_APPS = (
         "src.tasks",
         "src.comments",
         "src.accounts",
+        "debug_toolbar",
         "django_celery_beat",
         "djcelery_email",
         "django_celery_results",
@@ -71,6 +72,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE = (
     [
+        "debug_toolbar.middleware.DebugToolbarMiddleware",
         "django_htmx.middleware.HtmxMiddleware",
         "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
         "django.middleware.security.SecurityMiddleware",
@@ -97,6 +99,7 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
+                "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
@@ -202,23 +205,28 @@ CAPTCHA_IMAGE_SIZE = (80, 36)
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-PERMISSIONS_POLICY = {
-    "accelerometer": ["self", "https://www.youtube.com"],
-    "ambient-light-sensor": [],
-    "autoplay": ["self", "https://www.youtube.com"],
-    "camera": [],
-    "display-capture": [],
-    "encrypted-media": ["self", "https://www.youtube.com"],
-    "fullscreen": ["self", "https://www.youtube.com"],
-    "geolocation": [],
-    "gyroscope": ["self", "https://www.youtube.com"],
-    "interest-cohort": [],
-    "magnetometer": [],
-    "microphone": [],
-    "midi": [],
-    "payment": [],
-    "usb": [],
-}
+# PERMISSIONS_POLICY = {
+#     "accelerometer": ["self", "https://www.youtube.com"],
+#     "ambient-light-sensor": [],
+#     "autoplay": ["self", "https://www.youtube.com"],
+#     "camera": [],
+#     "display-capture": [],
+#     "encrypted-media": ["self", "https://www.youtube.com"],
+#     "fullscreen": ["self", "https://www.youtube.com"],
+#     "geolocation": [],
+#     "gyroscope": ["self", "https://www.youtube.com"],
+#     "interest-cohort": [],
+#     "magnetometer": [],
+#     "microphone": [],
+#     "midi": [],
+#     "payment": [],
+#     "usb": [],
+# }
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+    "localhost",
+]
 
 # lib settings
 from config.settings.celery import *  # noqa: E402, F403

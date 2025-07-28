@@ -1,4 +1,4 @@
-from csp.constants import NONCE, NONE, SELF, UNSAFE_INLINE
+# from csp.constants import NONCE, NONE, SELF, UNSAFE_INLINE
 
 from config.env import env
 from config.settings.wagtail_prod import *  # noqa: E402, F403
@@ -61,40 +61,42 @@ EMAIL_HOST_PASSWORD = env.str("EMAIL_PASSWORD", "")
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = env.str("EMAIL_FROM", "")
 
-CONTENT_SECURITY_POLICY = {
-    "EXCLUDE_URL_PREFIXES": ["/admin/", "/cms/"],
-    "DIRECTIVES": {
-        "default-src": [NONE],
-        "script-src": [SELF, NONCE],
-        "style-src": [SELF, UNSAFE_INLINE],
-        "font-src": [SELF],
-        "img-src": [
-            SELF,
-            "data:",
-            "https://*.tenor.com",
-            "https://*.tenor.com",
-            "https://*.imgur.com",
-            "https://static.mahmoudashraf.dev",
-            "https://www.gravatar.com",
-        ],
-        "media-src": [
-            SELF,
-            "https://static.mahmoudashraf.dev",
-        ],
-        "connect-src": [SELF],
-        "manifest-src": [SELF],
-        "object-src": [NONE],
-        "frame-ancestors": [SELF],
-        "frame-src": [
-            SELF,
-            "https://*.youtube.com",
-        ],
-        "form-action": [
-            SELF,
-            "https://github.com",
-            "https://accounts.google.com",
-        ],
-        "base-uri": [SELF],
-        "upgrade-insecure-requests": True,
-    },
-}
+SHOW_TOOLBAR_CALLBACK = "debug_toolbar.middleware.show_toolbar_with_docker"
+
+# CONTENT_SECURITY_POLICY = {
+#     "EXCLUDE_URL_PREFIXES": ["/admin/", "/cms/"],
+#     "DIRECTIVES": {
+#         "default-src": [NONE],
+#         "script-src": [SELF, NONCE],
+#         "style-src": [SELF, UNSAFE_INLINE],
+#         "font-src": [SELF],
+#         "img-src": [
+#             SELF,
+#             "data:",
+#             "https://*.tenor.com",
+#             "https://*.tenor.com",
+#             "https://*.imgur.com",
+#             "https://static.mahmoudashraf.dev",
+#             "https://www.gravatar.com",
+#         ],
+#         "media-src": [
+#             SELF,
+#             "https://static.mahmoudashraf.dev",
+#         ],
+#         "connect-src": [SELF],
+#         "manifest-src": [SELF],
+#         "object-src": [NONE],
+#         "frame-ancestors": [SELF],
+#         "frame-src": [
+#             SELF,
+#             "https://*.youtube.com",
+#         ],
+#         "form-action": [
+#             SELF,
+#             "https://github.com",
+#             "https://accounts.google.com",
+#         ],
+#         "base-uri": [SELF],
+#         "upgrade-insecure-requests": True,
+#     },
+# }

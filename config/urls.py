@@ -1,3 +1,4 @@
+from debug_toolbar.toolbar import debug_toolbar_urls
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path, re_path
@@ -11,7 +12,7 @@ from wagtail.images.views.serve import ServeView
 from src.base.views import robots_txt
 from src.search.views import SearchView
 
-urlpatterns = [
+urlpatterns = debug_toolbar_urls() + [
     path("admin/", admin.site.urls),
     path("forms/contact/", include("src.contact.urls")),
     path("forms/guestbook/", include("src.guestbook.urls")),
