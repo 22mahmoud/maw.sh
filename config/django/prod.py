@@ -77,7 +77,10 @@ CONTENT_SECURITY_POLICY = {
             "https://static.mahmoudashraf.dev",
             "https://www.gravatar.com",
         ],
-        "media-src": [SELF],
+        "media-src": [
+            SELF,
+            "https://static.mahmoudashraf.dev",
+        ],
         "connect-src": [SELF],
         "manifest-src": [SELF],
         "object-src": [NONE],
