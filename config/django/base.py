@@ -205,26 +205,26 @@ CAPTCHA_IMAGE_SIZE = (80, 36)
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-# PERMISSIONS_POLICY = {
-#     "accelerometer": ["self", "https://www.youtube.com"],
-#     "ambient-light-sensor": [],
-#     "autoplay": ["self", "https://www.youtube.com"],
-#     "camera": [],
-#     "display-capture": [],
-#     "encrypted-media": ["self", "https://www.youtube.com"],
-#     "fullscreen": ["self", "https://www.youtube.com"],
-#     "geolocation": [],
-#     "gyroscope": ["self", "https://www.youtube.com"],
-#     "interest-cohort": [],
-#     "magnetometer": [],
-#     "microphone": [],
-#     "midi": [],
-#     "payment": [],
-#     "usb": [],
-# }
+PERMISSIONS_POLICY = {
+    "accelerometer": [],
+    "ambient-light-sensor": [],
+    "autoplay": ["self"],
+    "camera": [],
+    "display-capture": [],
+    "encrypted-media": [],
+    "fullscreen": [],
+    "geolocation": [],
+    "gyroscope": [],
+    "interest-cohort": [],
+    "magnetometer": [],
+    "microphone": [],
+    "midi": [],
+    "payment": [],
+    "usb": [],
+}
 
 INTERNAL_IPS = env.list(
-    "INTERNAL_IPS ",
+    "INTERNAL_IPS",
     default=[
         "127.0.0.1",
         "localhost",
