@@ -32,13 +32,6 @@
       </title>
 
       <script nonce="{{ CSP_NONCE }}">
-        htmx.on('htmx:afterSettle', detail => {
-          if (typeof window.djdt !== 'undefined' && detail.target instanceof HTMLBodyElement) {
-            djdt.show_toolbar();
-          }
-        });
-      </script>
-      <script nonce="{{ CSP_NONCE }}">
         document.documentElement.classList.remove('no-js');
       </script>
       <style nonce="{{ CSP_NONCE }}">

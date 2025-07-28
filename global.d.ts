@@ -9,6 +9,9 @@ declare global {
   interface Window {
     htmx: typeof htmx;
     Alpine: typeof Alpine;
+    djdt: {
+      show_toolbar: () => void;
+    };
     __APP_DATA__: AppData;
   }
 

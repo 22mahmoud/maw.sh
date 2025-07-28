@@ -18,3 +18,9 @@ if (window.__APP_DATA__?.isNewGuestbookPage) {
 }
 
 Alpine.start();
+
+htmx.on('htmx:afterSettle', detail => {
+  if (typeof window.djdt !== 'undefined' && detail.target instanceof HTMLBodyElement) {
+    window.djdt.show_toolbar();
+  }
+});
