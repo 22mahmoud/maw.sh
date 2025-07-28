@@ -223,10 +223,13 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 #     "usb": [],
 # }
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-    "localhost",
-]
+INTERNAL_IPS = env.list(
+    "INTERNAL_IPS ",
+    default=[
+        "127.0.0.1",
+        "localhost",
+    ],
+)
 
 # lib settings
 from config.settings.celery import *  # noqa: E402, F403
