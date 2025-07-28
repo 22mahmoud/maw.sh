@@ -23,7 +23,7 @@
           error=form.name.errors
           error_message=form.name.errors.as_text
           :value="form.name"
-          @input="setFormName"
+          @input="updateFormField"
           %}
         {% endfield %}
       </div>
@@ -37,7 +37,7 @@
         error=form.emoji.errors
         error_message=form.emoji.errors.as_text
         :value="form.emoji"
-        @input="setFormEmoji"
+        @input="updateFormField"
         %}
       {% endfield %}
     </div>
@@ -56,15 +56,15 @@
           {% for key, label in form.fields.style.choices %}
             <label data-key="{{ key }}"
                    class="bg-dark flex items-center gap-2 p-2 border border-neutral-700 rounded cursor-pointer hover:border-accent transition-all"
-                   :class="activeSelectedPresetClass">
+                   :class="presetSelectorClass">
               <input type="radio"
                      name="style"
                      value="{{ key }}"
                      {% if selected == key %}
                        checked
                      {% endif %}
-                     :checked="isPresetChecked"
-                     @change="setFormStyle"
+                     :checked="isTargetSelected"
+                     @change="updateFormField"
                      class="accent-accent w-5 h-5 border border-neutral-700" />
               <span class="text-sm text-primary">{{ label }}</span>
             </label>
@@ -85,7 +85,7 @@
       error_message=form.message.errors.as_text
       help_text="Supports basic Markdown and HTML. Max 280 characters. GIFs allowed from giphy/tenor/imgur."
       :value="form.message"
-      @input="setFormMessage"
+      @input="updateFormField"
       %}
     {% endfield %}
 
@@ -96,7 +96,7 @@
       error=form.url.errors
       error_message=form.url.errors.as_text
       :value="form.url"
-      @input="setFormUrl"
+      @input="updateFormField"
       %}
     {% endfield %}
 
@@ -109,14 +109,15 @@
           value=selected
           error=form.radius.errors
           error_message=form.radius.errors.as_text
-          @change="setFormRadius"
+          @change="updateFormField"
           %}
           {% for key, label in form.fields.radius.choices %}
-            <option value="{{ key }}"
+            <option data-name="radius"
+                    value="{{ key }}"
                     {% if selected == key %}
                       selected
                     {% endif %}
-                    :selected="isRadiusSelected">
+                    :selected="isTargetSelected">
               {{ label }}
             </option>
           {% endfor %}

@@ -59,114 +59,105 @@ function isValidImgSrc(value: string): boolean {
   }
 }
 
-Alpine.data('guestbookEditor', () => {
+function getPresets() {
   const dataElm = document.getElementById('guestbook-editor-presets');
   const raw = dataElm?.textContent;
-
-  let presets: Preset[];
 
   try {
     if (!raw) throw new Error('No preset data found');
 
-    presets = JSON.parse(raw) as Preset[];
+    const presets = JSON.parse(raw) as Preset[];
 
     if (!Array.isArray(presets)) {
       throw new Error('Invalid preset format');
     }
+
+    return presets;
   } catch (err) {
     console.error('Failed to parse presets:', err);
-    presets = [];
+    return [];
   }
+}
+
+Alpine.data('guestbookEditor', () => {
+  const presets: Preset[] = getPresets();
+  const initialPreset = presets[0] ?? {};
 
   return {
     form: {
       name: '',
       message: '',
       url: '',
-      radius: presets[0]?.radius ?? '',
-      emoji: presets[0]?.emoji ?? '',
-      style: presets[0]?.id ?? '',
+      radius: initialPreset.radius ?? '',
+      emoji: initialPreset.emoji ?? '',
+      style: initialPreset.id ?? '',
     },
-    isPreviewOpen: true,
-    presets,
-    get currentPreset() {
-      return this.presets.find(p => p.id === this.form.style) ?? this.presets[0];
+    isPreviewVisible: true,
+
+    get activePreset() {
+      return presets.find(p => p.id === this.form.style) ?? initialPreset;
     },
-    get classes() {
-      const styles = this.currentPreset?.styles ?? '';
-      const radius = this.form.radius || this.currentPreset?.radius || '';
+
+    get previewCardClasses(): string {
+      const styles = this.activePreset?.styles ?? '';
+      const radius = this.form.radius || this.activePreset?.radius || '';
 
       return `${styles} ${radius}`.trim();
     },
-    get activeSelectedPresetClass() {
-      const key = this.$el.getAttribute('data-key');
 
-      return key === this.form.style ? 'ring-1 ring-accent' : '';
+    get presetSelectorClass(): string {
+      return this.$el.getAttribute('data-key') === this.form.style ? 'ring-1 ring-accent' : '';
     },
 
-    isPresetChecked() {
-      return this.$el.value === this.form.style;
-    },
-
-    togglePreview() {
-      this.isPreviewOpen = !this.isPreviewOpen;
-    },
-
-    setFormMessage(event: InputEvent) {
-      this.form.message = event?.target?.value;
-    },
-
-    setFormName(event: InputEvent) {
-      this.form.name = event?.target?.value;
-    },
-
-    setFormUrl(event: InputEvent) {
-      this.form.url = event?.target?.value;
-    },
-
-    setFormEmoji(event: InputEvent) {
-      this.form.emoji = event?.target?.value;
-    },
-
-    setFormStyle(event: InputEvent) {
-      this.form.style = event?.target?.value;
-    },
-
-    setFormRadius(event: InputEvent) {
-      this.form.radius = event?.target?.value;
-    },
-
-    isRadiusSelected() {
-      return this.$el.value === this.form.radius;
-    },
-
-    get styledFormName() {
+    get formattedName() {
       return `— ${this.form.name}`;
     },
 
-    get collapseButtonClass() {
-      return this.isPreviewOpen ? 'rotate-180' : '';
+    get previewToggleIconClass() {
+      return this.isPreviewVisible ? 'rotate-180' : '';
     },
-    get messagePreview() {
+
+    get renderedMessage(): Promise<string> | string {
       return this.form.message
         ? this.renderMarkdown(this.form.message)
         : 'Your message will appear here';
     },
-    get canPreviewNameWithUrl() {
+
+    get canShowNameWithUrl() {
       return this.form.name && this.form.url;
     },
-    get canPreviewNameOnly() {
+
+    get canShowNameOnly() {
       return this.form.name && !this.form.url;
     },
+
+    isTargetSelected(): boolean {
+      const elm = this.$el as HTMLInputElement | HTMLOptionElement;
+      const name = elm.getAttribute('data-name') || elm.getAttribute('name');
+
+      return !!name && elm.value === this.form[name as keyof typeof this.form];
+    },
+
+    updateFormField(event: Event) {
+      const target = event.target as HTMLInputElement;
+      const key = target.name as keyof typeof this.form | null;
+
+      if (!key || !(key in this.form)) return;
+
+      this.form[key] = target.value;
+    },
+
+    togglePreviewVisibility() {
+      this.isPreviewVisible = !this.isPreviewVisible;
+    },
+
     async renderMarkdown(md: string = '') {
       const rawHtml = await marked.parse(md);
 
-      const cleanHtml = DOMPurify.sanitize(rawHtml, {
+      return DOMPurify.sanitize(rawHtml, {
         ALLOWED_TAGS: allowedTags,
         ALLOWED_ATTR: allowedAttrs,
       });
-
-      return cleanHtml;
     },
   };
 });
