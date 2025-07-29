@@ -1,10 +1,10 @@
 {% load link_tags author_avatar_filter %}
-{% load wagtailimages_tags wagtailroutablepage_tags %}
+{% load wagtailimages_tags %}
 
 <div class="flex">
   {% for author in authors %}
     {% link
-      href=routablepageurl page.get_site.root_page.specific 'posts_by_author' author.slug
+      href="{{ author.get_absolute_url }}"
       class=authors|length|author_link_class %}
       {% picture author.image format-{avif,webp,jpeg} width-64 alt=author.full_name class="u-photo w-full h-full object-cover rounded-full" %}
     {% endlink %}

@@ -44,7 +44,7 @@ def seo_full_title(context: dict[str, Any], page: Page | None = None) -> str:
 
     suffix = ""
     with suppress(Exception):
-        settings = SeoSettings.for_request(request)
+        settings = SeoSettings.for_request(request=request)
         if settings and getattr(settings, "title_suffix", None):
             suffix = f" | {settings.title_suffix.strip()}"
 
@@ -54,5 +54,4 @@ def seo_full_title(context: dict[str, Any], page: Page | None = None) -> str:
 @register.simple_tag
 def seo_meta_description(page: Page) -> str:
     """Returns search description if available."""
-
     return getattr(page, "search_description", "")

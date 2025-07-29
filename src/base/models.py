@@ -138,7 +138,7 @@ class Person(  # type: ignore
             return ""
 
     def get_absolute_url(self):
-        return f"/auhors/{self.slug}"
+        return f"/authors/{self.slug}"
 
     def clean(self):
         super().clean()

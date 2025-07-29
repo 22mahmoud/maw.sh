@@ -13,12 +13,10 @@
     </div>
 
     <ul class="h-feed grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      {% for block in self.posts %}
-        {% with post=block.specific %}
-          <li class="bg-gradient-to-r from-gradient-1 to-gradient-2 pb-[2px] hover:from-gradient-2 hover:to-gradient-1 transition-all duration-300">
-            {% include "posts/blocks/article_compact.html" with post=post %}
-          </li>
-        {% endwith %}
+      {% for post in posts %}
+        <li class="bg-gradient-to-r from-gradient-1 to-gradient-2 pb-[2px] hover:from-gradient-2 hover:to-gradient-1 transition-all duration-300">
+          {% include "posts/blocks/article_compact.html" with post=post %}
+        </li>
       {% endfor %}
     </ul>
   </div>

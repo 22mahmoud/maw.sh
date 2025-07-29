@@ -1,5 +1,6 @@
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.db.models import Prefetch
 from django.http import Http404
 from taggit.models import Tag
 from wagtail.admin.panels import FieldPanel
@@ -14,7 +15,7 @@ from src.base.blocks.feed import FeaturedBlogBlock, FeedBlock
 from src.base.blocks.hero import HeroBlock
 from src.base.blocks.layout import FlexLayoutBlock, SpacerBlock
 from src.base.blocks.link import SocialLinkStreamBlock
-from src.base.models import Person
+from src.base.models import Person, PostPersonRelationship
 from src.clients.blocks import ClientsMarqueeStaticBlock
 from src.contact.blocks import ContactFormStaticBlock
 from src.pagination.mixins import PaginatedArchiveMixin
@@ -122,6 +123,14 @@ class HomePage(PaginatedArchiveMixin, RoutablePageMixin, SeoMetaFields, Page):  
             .public()
             .filter(content_type__in=content_types)
             .filter(**filter_kwargs)
+            .prefetch_related("tags")
+            .prefetch_related(
+                Prefetch(
+                    "page_person_relationship",
+                    queryset=PostPersonRelationship.objects.select_related("person__image"),
+                ),
+            )
+            .specific()
             .order_by(order_by)
         )
 

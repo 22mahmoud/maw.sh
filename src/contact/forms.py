@@ -1,4 +1,4 @@
-from captcha.fields import CaptchaField, CaptchaTextInput
+from captcha.fields import CaptchaTextInput
 from django import forms
 
 from .models import ContactSubmission
@@ -15,15 +15,15 @@ class CustomCaptchaTextInput(CaptchaTextInput):
 
 
 class ContactForm(forms.ModelForm):
-    captcha = CaptchaField(widget=CustomCaptchaTextInput)
+    # captcha = CaptchaField(widget=CustomCaptchaTextInput)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        if self.is_bound and self.errors.get("captcha"):
-            errors = self.errors["captcha"]
-            self.fields["captcha"].widget.attrs["errors"] = errors
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #
+    #     if self.is_bound and self.errors.get("captcha"):
+    #         errors = self.errors["captcha"]
+    #         self.fields["captcha"].widget.attrs["errors"] = errors
 
     class Meta:
         model = ContactSubmission
-        fields = ["name", "email", "message", "captcha"]
+        fields = ["name", "email", "message"]

@@ -1,42 +1,44 @@
-{% load base_tags %}
+{% load base_tags wagtail_cache %}
 
-<section class="zigzag px-4 sm:px-6 lg:px-8 py-12 md:py-16 bg-dark flex flex-col">
-  <div class="max-w-7xl mx-auto w-full">
-    <div class="flex items-center justify-between mb-8 md:mb-12">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary">
-        Featured Projects
-      </h2>
-    </div>
+{% wagtailcache 315360000 featured_projects %}
+  <section class="zigzag px-4 sm:px-6 lg:px-8 py-12 md:py-16 bg-dark flex flex-col">
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="flex items-center justify-between mb-8 md:mb-12">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary">
+          Featured Projects
+        </h2>
+      </div>
 
-    <ul class="h-feed grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      {% for project in projects %}
-        <li class="group">
-          <a href="{{ project.url }}"
-             class="flex flex-col h-full bg-darker shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 border-b-[3px] border-gradient-1 group-hover:border-gradient-2">
+      <ul class="h-feed grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {% for project in projects %}
+          <li class="group">
+            <a href="{{ project.url }}"
+               class="flex flex-col h-full bg-darker shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 border-b-[3px] border-gradient-1 group-hover:border-gradient-2">
 
-            <div class="p-6 flex flex-col gap-4 h-full">
-              <h3 class="text-xl font-bold font-heading text-primary group-hover:text-accent transition-colors duration-300">
-                {{ project.title }}
-              </h3>
+              <div class="p-6 flex flex-col gap-4 h-full">
+                <h3 class="text-xl font-bold font-heading text-primary group-hover:text-accent transition-colors duration-300">
+                  {{ project.title }}
+                </h3>
 
-              <p class="text-sm text-secondary leading-relaxed line-clamp-4">
-                {{ project.short_description|truncatewords:20 }}
-              </p>
+                <p class="text-sm text-secondary leading-relaxed line-clamp-4">
+                  {{ project.short_description|truncatewords:20 }}
+                </p>
 
-              <div class="mt-auto pt-4 border-t border-neutral-800 flex items-center justify-between">
-                <span class="text-xs md:text-sm text-secondary flex items-center gap-2 group-hover:text-accent transition-colors duration-300">
-                  {% icon "calendar-blank" class="w-4 h-4 text-secondary group-hover:text-accent transition-colors duration-300" %}
-                  {{ project.start_date|date:"Y" }}
-                  {% if project.end_date %}
-                    – {{ project.end_date|date:"Y" }}
-                  {% endif %}
-                </span>
+                <div class="mt-auto pt-4 border-t border-neutral-800 flex items-center justify-between">
+                  <span class="text-xs md:text-sm text-secondary flex items-center gap-2 group-hover:text-accent transition-colors duration-300">
+                    {% icon "calendar-blank" class="w-4 h-4 text-secondary group-hover:text-accent transition-colors duration-300" %}
+                    {{ project.start_date|date:"Y" }}
+                    {% if project.end_date %}
+                      – {{ project.end_date|date:"Y" }}
+                    {% endif %}
+                  </span>
+                </div>
               </div>
-            </div>
 
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+{% endwagtailcache %}

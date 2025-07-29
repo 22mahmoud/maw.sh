@@ -31,6 +31,7 @@ class ArticlePage(BasePostPage):  # type: ignore
         max_num=1,
     )
     tags = ClusterTaggableManager(through=PageTag, blank=True)
+
     parent_page_types = ["ArticlesPageIndex"]
     subpage_types = []
     content_panels = get_post_content_panels()

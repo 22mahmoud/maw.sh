@@ -98,6 +98,11 @@ class Webmention(PolymorphicModel):
     def __str__(self):
         return f"{self.get_type}: {self.author} → {self.wm_target}"
 
+    class Meta:  # type: ignore
+        indexes = [
+            models.Index(fields=["wm_property", "wm_target"]),
+        ]
+
 
 class LikeWebmention(Webmention):
     _wm_property = "like-of"

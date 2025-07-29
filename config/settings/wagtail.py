@@ -18,8 +18,8 @@ WAGTAIL_INSTALLED_APPS = [
     "src.projects",
     "src.clients",
     "src.home",
-    "src.base",
     "src.seo",
+    "src.base",
     # wagtail core apps
     "wagtail.contrib.search_promotions",
     "wagtail.contrib.frontend_cache",
@@ -33,7 +33,7 @@ WAGTAIL_INSTALLED_APPS = [
     "wagtail.users",
     "wagtail.snippets",
     "wagtail.documents",
-    "src.base.apps.CustomImagesAppConfig",
+    "src.images.apps.CustomImagesAppConfig",
     "wagtail.search",
     "wagtail.admin",
     "wagtail",

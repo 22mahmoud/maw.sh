@@ -12,8 +12,8 @@ class FeaturedProjectsStaticBlock(blocks.StaticBlock):
             .public()
             .filter(is_featured=True)
             .order_by("-first_published_at")
+            .specific()
         )
-
         context["projects"] = [p.specific for p in featured_projects]
 
         return context

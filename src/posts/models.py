@@ -1,6 +1,7 @@
 from collections import OrderedDict
 
 from django.conf import settings
+from django.core.cache import cache
 from django.db import models
 from django.db.models import Q
 from django.http import Http404
@@ -32,8 +33,13 @@ class BasePostPage(SinglePostMixin, SeoMetaFields):  # type: ignore
         help_text="The full path of the URL from the old static site (e.g., /blog/old-slug).",
     )
 
-    @property
-    def webmentions(self):
+    def get_webmentions(self):
+        cache_key = f"webmentions:{self.slug}"
+        cached = cache.get(cache_key)
+
+        if cached is not None:
+            return cached
+
         groups = OrderedDict(
             [
                 ("likes", []),
@@ -58,21 +64,26 @@ class BasePostPage(SinglePostMixin, SeoMetaFields):  # type: ignore
             elif isinstance(mention, MentionWebmention):
                 groups["mentions"].append(mention)
 
-        return {name: mentions_list for name, mentions_list in groups.items() if mentions_list}
+        result = {name: mentions_list for name, mentions_list in groups.items() if mentions_list}
+        cache.set(cache_key, result, timeout=300)
+        return result
 
     def _get_webmentions(self):
         current_url = self.get_full_url()
         query = Q(wm_target=current_url)
 
         if self.legacy_url_path:
-            if hasattr(settings, "LEGACY_SITE_DOMAIN"):
-                legacy_domain = settings.LEGACY_SITE_DOMAIN
-                legacy_url_https = f"https://{legacy_domain}{self.legacy_url_path}"
-                legacy_url_http = f"http://{legacy_domain}{self.legacy_url_path}"
-                query |= Q(wm_target=legacy_url_https) | Q(wm_target=legacy_url_http)
-            query |= Q(wm_target__endswith=self.legacy_url_path)
+            legacy_domain = settings.LEGACY_SITE_DOMAIN
+            legacy_url_https = f"https://{legacy_domain}{self.legacy_url_path}"
+            legacy_url_http = f"http://{legacy_domain}{self.legacy_url_path}"
+            query |= Q(wm_target=legacy_url_https) | Q(wm_target=legacy_url_http)
 
-        return Webmention.objects.filter(query).select_related("author").order_by("wm_received")
+        return (
+            Webmention.objects.filter(query)
+            .select_related("author", "author__photo")
+            .prefetch_related("author__photo__renditions")
+            .order_by("wm_received")
+        )
 
     class Meta:  # type: ignore
         abstract = True
@@ -106,7 +117,7 @@ class BasePostsIndexPage(PaginatedArchiveMixin, SeoMetaFields, RoutablePageMixin
             first_published_at__day=day,
         )
 
-        return post.specific.serve(request)
+        return post.serve(request)
 
     @re_path(r"^$")
     @re_path(r"^page/(?P<page>\d+)/$")

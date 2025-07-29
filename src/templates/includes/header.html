@@ -1,5 +1,5 @@
 {% load base_tags field_tags button_tags menu_tags %}
-{% load wagtailcore_tags %}
+{% load wagtail_cache wagtailcore_tags %}
 
 <header x-data="headerNav"
         class="sticky z-50 top-0 shadow bg-gradient-to-r from-gradient-1 to-gradient-2 font-bold pb-[2px] transition-shadow duration-300">
@@ -30,7 +30,9 @@
 
         <nav>
           <ul class="flex flex-wrap items-center justify-end gap-x-6 gap-y-2 text-base sm:text-lg">
-            {% main_menu template="includes/main_menu.html" %}
+            {% wagtailcache 315360000 main_menu user.is_authenticated %}
+              {% main_menu template="includes/main_menu.html" %}
+            {% endwagtailcache %}
           </ul>
         </nav>
       </div>
@@ -90,7 +92,9 @@
 
       <nav>
         <ul class="flex flex-col gap-2 text-base">
-          {% main_menu template="includes/main_menu.html" %}
+          {% wagtailcache 315360000 main_menu user.is_authenticated %}
+            {% main_menu template="includes/main_menu.html" %}
+          {% endwagtailcache %}
         </ul>
       </nav>
     </div>

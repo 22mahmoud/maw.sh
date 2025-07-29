@@ -23,13 +23,11 @@ class SinglePostMixin:
 
     @property
     def next_sibling(self):
-        next_page = self.get_next_siblings().live().first()  # type: ignore
-        return next_page.specific if next_page else None
+        return self.get_next_siblings().live().first()  # type: ignore
 
     @property
     def prev_sibling(self):
-        prev_page = self.get_prev_siblings().live().first()  # type: ignore
-        return prev_page.specific if prev_page else None
+        return self.get_prev_siblings().live().first()  # type: ignore
 
     def generate_title(self, timestamp: str) -> str:
         return timestamp
@@ -38,15 +36,12 @@ class SinglePostMixin:
         return timestamp
 
     def get_authors(self) -> list:
-        if not hasattr(self, "page_person_relationship"):
+        # If not prefetched, this will still hit the DB lazily.
+        relationships = getattr(self, "page_person_relationship", None)
+        if relationships is None:
             return []
 
-        return [
-            relationship.person
-            for relationship in self.page_person_relationship.filter(  # type: ignore
-                person__live=True
-            ).select_related("person")
-        ]
+        return [rel.person for rel in relationships.all() if rel.person.live]
 
     def authors(self) -> list:
         return self.get_authors()
@@ -78,35 +73,16 @@ class SinglePostMixin:
         if response is None:
             return None
 
-        site_id, root_url, _ = response
-        post_path = self._get_post_path()
-
-        if post_path is None:
-            return None
-
-        url_prefix = self.get_parent().get_url(request=request).rstrip("/")  # type: ignore
-        return (site_id, root_url, f"{url_prefix}/{post_path}")
-
-    def _get_post_path(self) -> str | None:
+        site_id, root_url, page_path = response
         if not self.first_published_at or not self.slug:  # type: ignore
             return None
 
-        parent = self.get_parent()  # type: ignore
-        if not parent:
-            return None
-
-        parent = parent.specific
-
-        if hasattr(parent, "reverse_subpage"):
-            return parent.reverse_subpage(
-                "archive",
-                args=[
-                    self.first_published_at.strftime("%Y"),  # type: ignore
-                    self.first_published_at.strftime("%m"),  # type: ignore
-                    self.first_published_at.strftime("%d"),  # type: ignore
-                    self.slug,
-                ],
-            )
+        try:
+            url_prefix, _ = page_path.rsplit(self.slug + "/", 1)
+        except ValueError:
+            return response
 
         date_part = self.first_published_at.strftime(self.URL_DATE_FORMAT)  # type: ignore
-        return f"{date_part}/{self.slug}/"
+        new_page_path = f"{url_prefix}{date_part}/{self.slug}/"
+
+        return (site_id, root_url, new_page_path)

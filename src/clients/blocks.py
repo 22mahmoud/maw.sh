@@ -12,7 +12,9 @@ class ClientsMarqueeStaticBlock(blocks.StaticBlock):
     def get_context(self, value, parent_context=None):
         context = super().get_context(value, parent_context=parent_context)
         try:
-            context["clients"] = Client.objects.filter(featured=True)
+            context["clients"] = Client.objects.filter(featured=True).prefetch_related(
+                "logo__renditions"
+            )
             return context
         except Client.DoesNotExist:
             context["clients"] = []
