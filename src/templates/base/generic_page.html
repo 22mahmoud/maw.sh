@@ -1,5 +1,39 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block head %}
+  {% for block in page.body %}
+    {% if block.block_type == 'hero' %}
+      {% srcset_image block.value.image format-avif width-{160,192,256,288,576} as avif %}
+      {% srcset_image block.value.image format-webp width-{160,192,256,288,576} as webp %}
+
+      <link rel="preload"
+            as="image"
+            type="image/avif"
+            imagesrcset="{% for r in avif.renditions %}
+                           {{ r.url }} {{ r.width }}w
+                           {% if not forloop.last %}
+                             ,
+                           {% endif %}
+                         {% endfor %}"
+            imagesizes="(min-width: 1024px) 288px, (min-width: 640px) 256px, (min-width: 475px) 192px, 160px"
+            fetchpriority="high">
+
+      <link rel="preload"
+            as="image"
+            type="image/webp"
+            imagesrcset="{% for r in webp.renditions %}
+                           {{ r.url }} {{ r.width }}w
+                           {% if not forloop.last %}
+                             ,
+                           {% endif %}
+                         {% endfor %}"
+            imagesizes="(min-width: 1024px) 288px, (min-width: 640px) 256px, (min-width: 475px) 192px, 160px"
+            fetchpriority="high">
+    {% endif %}
+  {% endfor %}
+{% endblock head %}
 
 {% block content %}
   {% for block in page.body %}

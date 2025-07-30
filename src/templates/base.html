@@ -5,6 +5,7 @@
 <html lang="en" class="h-full scroll-smooth no-js">
   {% if not request.htmx %}
     <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="dns-prefetch" href="//static.mahmoudashraf.dev">
       <link rel="preconnect" href="https://static.mahmoudashraf.dev" crossorigin>
       <link rel="preload"
@@ -53,7 +54,6 @@
                        {% seo_meta_description page %}
                      {% endblock description %}">
 
-      <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="keywords" content="this,is,a,keywords">
 
       <link rel="icon"
