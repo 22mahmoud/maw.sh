@@ -2,29 +2,33 @@ import Alpine from 'alpinejs';
 
 Alpine.data('messages', () => ({
   visible: false,
-  timeout: null,
+  timeout: null as number | null,
 
   init() {
     this.$nextTick(() => {
-      const i = Number(this.$el.getAttribute('data-counter') ?? 0);
-      const delay = 150 * Math.sqrt(i);
+      const index = Number(this.$el?.dataset.counter ?? 0);
+      const delay = 150 * Math.sqrt(index);
+
       setTimeout(() => {
-        this.visible = true;
-        this.timeout = setTimeout(() => {
-          this.visible = false;
-        }, 4000);
+        this.show();
       }, delay);
     });
   },
 
+  show() {
+    this.visible = true;
+    this.timeout = window.setTimeout(this.close.bind(this), 4000);
+  },
+
   stop() {
-    clearTimeout(this.timeout);
+    if (this.timeout !== null) {
+      clearTimeout(this.timeout);
+      this.timeout = null;
+    }
   },
 
   play() {
-    this.timeout = setTimeout(() => {
-      this.visible = false;
-    }, 4000);
+    this.timeout = window.setTimeout(this.close.bind(this), 4000);
   },
 
   get opened() {
@@ -37,5 +41,6 @@ Alpine.data('messages', () => ({
 
   close() {
     this.visible = false;
+    this.timeout = null;
   },
 }));

@@ -8,6 +8,7 @@
     "dev:frontend": "vite",
     "dev:server": "python manage.py runserver",
     "build": "vite build && touch static/.gitkeep",
+    "build:types": "tsc --noEmit --pretty",
     "format": "biome format --write",
     "lint": "biome lint --write",
     "celery:server": "celery -A src.tasks worker -l INFO --without-gossip --without-mingle --without-heartbeat",

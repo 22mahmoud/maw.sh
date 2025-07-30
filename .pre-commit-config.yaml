@@ -52,3 +52,9 @@ repos:
         name: biome lint
         entry: pnpm run lint
         <<: *biome-base
+
+      - id: local-tsc
+        name: typescript type check
+        entry: pnpm build:types
+        language: system
+        pass_filenames: false
