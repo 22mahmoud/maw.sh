@@ -1,3 +1,5 @@
+{% load base_tags %}
+
 {% if tag_type == 'checkbox' %}
   <div class="flex items-center gap-2">
     <input type="checkbox" name="{{ name }}" {{ field_attrs }}>
@@ -50,7 +52,25 @@
     {% elif tag_type == "textarea" %}
       <textarea {{ field_attrs }}>{{ value }}</textarea>
     {% else %}
-      <input {{ field_attrs }}>
+      {% if type == "password" %}
+        <div x-data="passwordField" class="relative">
+          <input :type="inputType" {{ field_attrs }} class="pr-12">
+          <button type="button"
+                  @click="toggle"
+                  :aria-label="toggleLabel"
+                  class="js-only absolute inset-y-0 right-0 flex items-center px-3 text-secondary transition-colors duration-200 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+            <span x-show="isHidden" x-cloak>
+              {% icon "eye" class="w-5 h-5" %}
+            </span>
+            <span x-show="isVisible" x-cloak>
+              {% icon "eye-slash" class="w-5 h-5" %}
+            </span>
+          </button>
+        </div>
+
+      {% else %}
+        <input {{ field_attrs }}>
+      {% endif %}
     {% endif %}
 
     <p id="{{ error_id }}"

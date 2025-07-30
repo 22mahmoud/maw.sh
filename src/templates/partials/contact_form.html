@@ -22,7 +22,7 @@
            hx-target="#email-wrapper"
            hx-sync="closest form:abort"
            class="w-full">
-        {% field name="email" label="Email" autocomplete="email" placeholder="me@example.com" value=form.email.value error=form.email.errors error_message=form.email.errors.as_text id="email" %}
+        {% field type="email" name="email" label="Email" autocomplete="email" placeholder="me@example.com" value=form.email.value error=form.email.errors error_message=form.email.errors.as_text id="email" %}
         {% endfield %}
       </div>
     {% endpartialdef %}
@@ -35,7 +35,7 @@
            hx-sync="closest form:abort"
            class="w-full">
         {% field
-          required=""
+          required="required"
           name="name"
           type="text"
           label="Name"
@@ -58,7 +58,7 @@
          hx-target="#message-wrapper"
          hx-include="#contact-form">
       {% field
-        required=""
+        required="required"
         name="message"
         id="message"
         label="Message"

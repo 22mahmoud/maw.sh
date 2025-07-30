@@ -1,10 +1,14 @@
 {% load i18n base_tags comments comments_xtd %}
 
-<li hx-swap-oob="true" id="c{{ comment.id }}">
+<li hx-swap-oob="true" id="c{{ comment.id }}" role="listitem">
   <div class="flex gap-4">
     <div class="flex-shrink-0">
       <div class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-transparent group-hover:ring-accent transition-all duration-200">
-        {{ comment.user.email|xtd_comment_gravatar }}
+        <img src="{{ comment.user.email|xtd_comment_gravatar_url }}"
+             alt="{{ comment.user_name }}’s avatar"
+             class="w-10 h-10 rounded-full"
+             width="40"
+             height="40">
       </div>
     </div>
 
@@ -56,11 +60,13 @@
                     <input type="hidden" name="next" value="{{ comment.get_absolute_url }}">
                     <button type="submit"
                             name="submit"
-                            aria-label="Like"
+                            aria-label="{% trans "Like this comment" %}"
                             class="group inline-flex items-center justify-center text-muted hover:text-accent transition focus:outline-none focus:ring-2 focus:ring-accent/70 rounded cursor-pointer">
                       {% if item.likedit %}
+                        <span class="sr-only">{% trans "Liked" %}</span>
                         {% icon "thumbs-up" class="w-4 h-4 fill-current text-accent" %}
                       {% else %}
+                        <span class="sr-only">{% trans "Like" %}</span>
                         {% icon "thumbs-up" class="w-4 h-4 stroke-current group-hover:text-accent" %}
                       {% endif %}
                       {% icon 'circle-notch' id="spinner" class="ms-2 htmx-indicator animate-spin h-3 w-3" %}
@@ -86,11 +92,13 @@
                     <input type="hidden" name="next" value="{{ comment.get_absolute_url }}">
                     <button type="submit"
                             name="submit"
-                            aria-label="Dislike"
+                            aria-label="{% trans "Dislike this comment" %}"
                             class="group inline-flex items-center justify-center text-muted hover:text-accent transition focus:outline-none focus:ring-2 focus:ring-accent/70 rounded cursor-pointer">
                       {% if item.dislikedit %}
+                        <span class="sr-only">{% trans "Disliked" %}</span>
                         {% icon "thumbs-down" class="w-4 h-4 fill-current text-accent" %}
                       {% else %}
+                        <span class="sr-only">{% trans "Dislike" %}</span>
                         {% icon "thumbs-down" class="w-4 h-4 stroke-current group-hover:text-accent" %}
                       {% endif %}
                       {% icon 'circle-notch' id="spinner" class="ms-2 htmx-indicator animate-spin h-3 w-3" %}
@@ -118,7 +126,8 @@
 
                   <div id="flagged-{{ comment.id }}">
                     {% if request.user in item.flagged %}
-                      {% icon "flag" class="w-4 h-4 text-red-500" title="comment flagged" %}
+                      <span class="sr-only">{% trans "Flagged" %}</span>
+                      {% icon "flag" class="w-4 h-4 text-red-500" %}
                     {% else %}
                       <form method="post"
                             action="{% url 'comments-flag' comment.pk %}"
@@ -129,8 +138,9 @@
                             class="flex items-center justify-center">
                         {% csrf_token %}
                         <button type="submit"
-                                title="{% trans "flag comment" %}"
+                                aria-label="{% trans "Flag this comment" %}"
                                 class="flex gap-2 cursor-pointer hover:text-red-500 transition">
+                          <span class="sr-only">{% trans "Flag" %}</span>
                           {% icon "flag" class="w-4 h-4" %}
                           {% icon 'circle-notch' id="spinner" class="ms-2 htmx-indicator animate-spin h-3 w-3" %}
                         </button>
@@ -152,8 +162,9 @@
                         class="flex items-center justify-center">
                     {% csrf_token %}
                     <button type="submit"
-                            title="{% trans "remove comment" %}"
+                            aria-label="{% trans "Remove comment" %}"
                             class="hover:text-red-500 transition flex items-center cursor-pointer">
+                      <span class="sr-only">{% trans "Delete" %}</span>
                       {% icon "trash" class="w-4 h-4" %}
                       {% icon 'circle-notch' id="spinner" class="ms-2 htmx-indicator animate-spin h-3 w-3" %}
                     </button>
@@ -167,6 +178,7 @@
             <div class="mt-2">
               <a id="django-comments-xtd-reply"
                  href="{% url 'comments-xtd-reply' comment.pk %}"
+                 aria-label="{% trans "Reply to this comment" %}"
                  hx-get="{% url 'comments-xtd-reply' comment.pk %}"
                  hx-target="#comment-form-wrapper"
                  hx-swap="outerHTML"

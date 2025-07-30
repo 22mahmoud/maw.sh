@@ -113,6 +113,7 @@ class FieldBlockNode(template.Node):
             {
                 "id": attrs["id"],
                 "name": name,
+                "type": attrs.get("type"),
                 "label_text": label_text,
                 "label_class": label_class,
                 "error_id": error_id,

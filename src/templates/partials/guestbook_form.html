@@ -16,7 +16,7 @@
     <div class="grid grid-cols-3 gap-4 items-stretch">
       <div class="col-span-2">
         {% field
-          required=""
+          required="required"
           name="name"
           label="Name"
           value=form.name.value
@@ -29,7 +29,7 @@
       </div>
 
       {% field
-        required=""
+        required="required"
         name="emoji"
         label="Emoji"
         maxlength=2
@@ -74,7 +74,7 @@
     {% endwith %}
 
     {% field
-      required=""
+      required="required"
       maxlength="280"
       name="message"
       label="Message"

@@ -1,13 +1,12 @@
 from debug_toolbar.toolbar import debug_toolbar_urls
 from django.conf import settings
 from django.contrib import admin
-from django.urls import include, path, re_path
+from django.urls import include, path
 from django.views.generic import RedirectView, TemplateView
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.documents import urls as wagtaildocs_urls
-from wagtail.images.views.serve import ServeView
 
 from src.base.views import robots_txt
 from src.search.views import SearchView
@@ -22,14 +21,9 @@ urlpatterns = debug_toolbar_urls() + [
     path("comments/", include("src.comments.urls")),
     path("rss/", include("src.feeds.urls")),
     path("accounts/", include("src.accounts.urls")),
-    path("robots.txt", robots_txt),
-    re_path(
-        r"^images/([^/]*)/(\d*)/([^/]*)/[^/]*$",
-        ServeView.as_view(),
-        name="wagtailimages_serve",
-    ),
+    path("robots.txt/", robots_txt),
     path("documents/", include(wagtaildocs_urls)),
-    path("sitemap.xml", sitemap),
+    path("sitemap.xml/", sitemap),
 ]
 
 if settings.DEBUG:
