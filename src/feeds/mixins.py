@@ -28,7 +28,7 @@ class FeedMixin:
             for tag in item.get_tags
         ]
 
-    def item_authors(self, item):
+    def _item_authors(self, item):
         return [
             {
                 "name": getattr(person, "full_name", str(person)),
@@ -57,4 +57,5 @@ class FeedMixin:
         return {
             "content": item.body.render_as_block({"is_feed": True}),
             "_categories": self._item_categories(item),
+            "_authors": self._item_authors(item),
         }
