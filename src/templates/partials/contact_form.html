@@ -14,66 +14,12 @@
     <input type="hidden" name="source_url_fragment" value="#contact-form">
   </noscript>
 
-  <div class="w-full flex-1 flex flex-col md:flex-row gap-4">
-    {% partialdef email inline %}
-      <div id="email-wrapper"
-           hx-post="{% url "validate_contact_field" %}"
-           hx-trigger="input changed delay:500ms, blur from:#email"
-           hx-target="#email-wrapper"
-           hx-sync="closest form:abort"
-           class="w-full">
-        {% field type="email" name="email" label="Email" autocomplete="email" placeholder="me@example.com" value=form.email.value error=form.email.errors error_message=form.email.errors.as_text id="email" %}
-        {% endfield %}
-      </div>
-    {% endpartialdef %}
-
-    {% partialdef name inline %}
-      <div id="name-wrapper"
-           hx-post="{% url "validate_contact_field" %}"
-           hx-trigger="input changed delay:500ms, blur from:#name"
-           hx-target="#name-wrapper"
-           hx-sync="closest form:abort"
-           class="w-full">
-        {% field
-          required="required"
-          name="name"
-          type="text"
-          label="Name"
-          autocomplete="name"
-          placeholder="John Doe"
-          value=form.name.value
-          error=form.name.errors
-          error_message=form.name.errors.as_text
-          id="name"
-          %}
-        {% endfield %}
-      </div>
-    {% endpartialdef %}
-  </div>
-
-  {% partialdef message inline %}
-    <div id="message-wrapper"
-         hx-post="{% url "validate_contact_field" %}"
-         hx-trigger="input changed delay:500ms, blur from:#message"
-         hx-target="#message-wrapper"
-         hx-include="#contact-form">
-      {% field
-        required="required"
-        name="message"
-        id="message"
-        label="Message"
-        placeholder="Your message here..."
-        as="textarea"
-        rows=4
-        value=form.message.value
-        error=form.message.errors
-        error_message=form.message.errors.as_text
-        %}
+  <div class="grid md:grid-cols-2 gap-4">
+    {% for field in form %}
+      {% field field=field %}
       {% endfield %}
-    </div>
-  {% endpartialdef %}
-
-  {# {{ form.captcha }} #}
+    {% endfor %}
+  </div>
 
   {% button
     size="md"

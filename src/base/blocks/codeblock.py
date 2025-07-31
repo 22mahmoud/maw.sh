@@ -1,3 +1,4 @@
+import random
 import subprocess
 
 from django import forms
@@ -302,6 +303,39 @@ THEME_CHOICES = [
     ("vitesse-light", "Vitesse Light"),
 ]
 
+THEME_KEYS = [key for key, _ in THEME_CHOICES]
+
+
+def highlight_code_with_shiki(
+    code: str, language: str = "plaintext", theme: str | None = None
+) -> str:
+    """
+    Highlight code using Node.js + shiki.mjs.
+    """
+
+    if not theme:
+        theme = random.choice(THEME_KEYS)
+
+    try:
+        result = subprocess.run(
+            ["node", "scripts/shiki.mjs", code, language, theme],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+
+        if result.returncode != 0:
+            raise Exception(f"Node.js error: {result.stderr}")
+
+        return result.stdout.strip()
+
+    except subprocess.TimeoutExpired:
+        raise Exception("Code highlighting timed out")
+    except FileNotFoundError:
+        raise Exception("Node.js not found. Please ensure Node.js is installed.")
+    except Exception as e:
+        raise Exception(f"Failed to highlight code: {str(e)}")
+
 
 class CodeBlock(StructBlock):
     """
@@ -337,10 +371,6 @@ class CodeBlock(StructBlock):
 
     def get_form_context(self, value, prefix="", errors=None):
         context = super().get_form_context(value, prefix=prefix, errors=errors)
-        print("----------")
-        print(context)
-        print("----------")
-
         context["children"].pop("highlighted_html", None)
         return context
 
@@ -352,48 +382,16 @@ class CodeBlock(StructBlock):
 
         if cleaned_data.get("code"):
             try:
-                highlighted_html = self._highlight_code(
-                    cleaned_data["code"],
-                    cleaned_data["language"],
-                    cleaned_data["theme"],
+                highlighted_html = highlight_code_with_shiki(
+                    code=cleaned_data["code"],
+                    language=cleaned_data["language"],
+                    theme=cleaned_data["theme"],
                 )
                 cleaned_data["highlighted_html"] = highlighted_html
             except Exception as e:
                 raise ValidationError(f"Error highlighting code: {str(e)}")
 
         return cleaned_data
-
-    def _highlight_code(self, code, language, theme):
-        """
-        Use shiki.js via Node.js subprocess to highlight code
-        """
-
-        try:
-            # Run the Node.js script
-            result = subprocess.run(
-                [
-                    "node",
-                    "scripts/shiki.mjs",
-                    code,
-                    language,
-                    theme,
-                ],
-                capture_output=True,
-                text=True,
-                timeout=30,
-            )
-
-            if result.returncode != 0:
-                raise Exception(f"Node.js error: {result.stderr}")
-
-            return result.stdout.strip()
-
-        except subprocess.TimeoutExpired:
-            raise Exception("Code highlighting timed out")
-        except FileNotFoundError:
-            raise Exception("Node.js not found. Please ensure Node.js is installed.")
-        except Exception as e:
-            raise Exception(f"Failed to highlight code: {str(e)}")
 
     def render(self, value, context=None):
         """

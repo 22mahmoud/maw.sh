@@ -8,6 +8,8 @@ from bs4 import BeautifulSoup
 from bs4.element import Tag
 from PIL import Image
 
+from src.base.blocks.codeblock import highlight_code_with_shiki
+
 
 def allow_src(_, name, value):
     if name in ("alt", "height", "width"):
@@ -20,7 +22,7 @@ def allow_src(_, name, value):
     return False
 
 
-ALLOWED_ATTRS = {"a": ["href"], "img": allow_src}
+ALLOWED_ATTRS = {"a": ["href"], "img": allow_src, "code": ["class"]}
 ALLOWED_TAGS = [
     "p",
     "br",
@@ -53,6 +55,31 @@ def render_guestbook_markdown(value):
     )
 
     soup = BeautifulSoup(sanitized_html, "html.parser")
+
+    for pre in soup.find_all("pre"):
+        if not isinstance(pre, Tag):
+            continue
+
+        code = pre.code
+        if not isinstance(code, Tag):
+            continue
+
+        raw_code = code.get_text()
+        lang_class = code.get("class") or []
+        language = "plaintext"
+
+        for cls in lang_class:
+            if cls.startswith("language-"):
+                language = cls.replace("language-", "")
+                break
+
+        try:
+            highlighted_html = highlight_code_with_shiki(raw_code, language)
+            highlighted_fragment = BeautifulSoup(highlighted_html, "html.parser")
+            pre.replace_with(highlighted_fragment)
+        except Exception as e:
+            print(f"[CODE HIGHLIGHT ERROR] lang={language}: {e}")
+            continue
 
     for img in soup.find_all("img"):
         if not isinstance(img, Tag):

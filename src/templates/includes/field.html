@@ -1,53 +1,59 @@
 {% load base_tags %}
 
 {% if tag_type == 'checkbox' %}
-  <div class="flex items-center gap-2">
-    <input type="checkbox" name="{{ name }}" {{ field_attrs }}>
+  <div class="flex items-center gap-2 {{ wrapper_class }}"
+       {{ wrapper_attrs }}>
+    <input type="checkbox" {{ field_attrs }}>
 
-    {% if label_text %}
+    {% if label %}
       <label for="{{ id }}" class="{{ label_class }}">
-        {{ label_text }}
+        {{ label }}
       </label>
     {% endif %}
   </div>
 {% elif tag_type == 'radio' %}
-  <div class="flex-1 flex flex-col gap-1.5">
-    {% if label_text %}
-      <p class="{{ label_class }}">
-        {{ label_text }}
-      </p>
+  <div class="flex-1 flex flex-col gap-1.5 {{ wrapper_class }}"
+       {{ wrapper_attrs }}>
+    {% if label %}
+      <div class="{{ label_class }}">
+        {{ label }}
+      </div>
     {% endif %}
 
     <div class="flex flex-col gap-2">
-      {{ options_html|safe }}
+      {{ content|safe }}
     </div>
 
-    <p id="{{ error_id }}"
-       class="text-sm text-red-400 mt-1
-              {% if not error_message %}
-                sr-only
-              {% endif %}"
-       role="alert">
-      {{ error_message|default:"" }}
-    </p>
+    <div id="{{ id }}-error"
+         class="text-sm text-red-400 mt-1
+                {% if not errors %}
+                  sr-only
+                {% endif %}"
+         role="alert">
+      {{ errors }}
+    </div>
   </div>
 {% else %}
-  <div class="flex-1 flex flex-col gap-1.5">
-    {% if label_text %}
+  <div {% if not type == 'hidden' %}
+         class="flex-1 flex flex-col gap-1.5  {{ wrapper_class }}"
+       {% endif %}
+       {{ wrapper_attrs }}>
+    {% if label and not type == 'hidden' %}
       <label for="{{ id }}" class="{{ label_class }}">
-        {{ label_text }}
+        {{ label }}
       </label>
     {% endif %}
 
     {% if help_text %}
-      <div class="prose prose-sm prose-main text-sm text-secondary">
+      <div id="{{ id }}-help"
+           class="prose prose-sm prose-main text-sm text-secondary">
         {{ help_text }}
       </div>
     {% endif %}
 
     {% if tag_type == 'select' %}
       <select {{ field_attrs }}>
-        {{ options_html|safe }}
+        {{ content|safe }}
       </select>
     {% elif tag_type == "textarea" %}
       <textarea {{ field_attrs }}>{{ value }}</textarea>
@@ -67,19 +73,45 @@
             </span>
           </button>
         </div>
+      {% elif type == "file" %}
+        <div x-data="fileInputField" class="flex flex-col gap-2">
+          <input @change="updateFileName" {{ field_attrs }}>
 
+          <p x-show="fileName" class="text-sm text-secondary mt-1">
+            Selected: <span class="font-medium" x-text="fileName"></span>
+          </p>
+
+          {% if file_name %}
+            <p class="text-sm text-secondary mt-1">
+              Current:
+              {% if file_url %}
+                <a href="{{ file_url }}" class="underline hover:text-accent transition">{{ file_name }}</a>
+              {% else %}
+                {{ file_name }}
+              {% endif %}
+            </p>
+
+            <label for="{{ id }}-clear" class="flex items-center gap-2 text-sm mt-1">
+              <input type="checkbox"
+                     name="{{ name }}-clear"
+                     id="{{ id }}-clear"
+                     class="accent-red-500 border border-neutral-700 w-4 h-4">
+              Remove current file
+            </label>
+          {% endif %}
+        </div>
       {% else %}
         <input {{ field_attrs }}>
       {% endif %}
     {% endif %}
 
-    <p id="{{ error_id }}"
-       class="text-sm text-red-400 mt-1
-              {% if not error_message %}
-                sr-only
-              {% endif %}"
-       role="alert">
-      {{ error_message|default:"" }}
-    </p>
+    <div id="{{ id }}-error"
+         class="text-sm text-red-400 mt-1
+                {% if not errors %}
+                  sr-only
+                {% endif %}"
+         role="alert">
+      {{ errors }}
+    </div>
   </div>
 {% endif %}

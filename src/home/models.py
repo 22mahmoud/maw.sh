@@ -144,9 +144,6 @@ class HomePage(PaginatedArchiveMixin, RoutablePageMixin, SeoMetaFields, Page):  
         introduction,
         extra_context=None,
     ):
-        if not posts.exists():
-            raise Http404("No posts found")
-
         paginated_posts = self.paginate_posts(posts, page_number, base_url)
         paginated_posts.object_list = [p.specific for p in paginated_posts.object_list]  # type: ignore
 

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load button_tags link_tags %}
+{% load base_tags partials field_tags button_tags link_tags %}
 
 {% block title %}
   {% trans "Profile | Mahmoud Ashraf" %}
@@ -8,71 +8,112 @@
 
 {% block content %}
   <section class="grow-1 w-full bg-dark px-4 py-10 sm:py-14 md:py-20 zigzag">
-    <div class="bg-darker max-w-xl mx-auto bg-card px-6 py-8 sm:px-10 sm:py-12 text-primary grid gap-8">
-      <header class="grid gap-1">
+    <div class="bg-darker max-w-xl mx-auto bg-card px-6 py-8 sm:px-10 sm:py-12 text-primary grid gap-10">
+
+      <header class="grid gap-2 text-center sm:text-left">
         <h1 class="text-3xl font-bold">
           {% trans "Your Profile" %}
         </h1>
         <p class="text-secondary text-sm">
-          {% trans "View your account details and update your settings." %}
+          {% trans "Manage your personal information, login credentials, and connected accounts." %}
         </p>
       </header>
 
-      <dl class="grid gap-4 text-sm sm:text-base">
-        <div class="grid gap-1 sm:grid-cols-2 sm:items-center">
-          <dt class="font-medium">
-            {% trans "Username" %}
-          </dt>
-          <dd class="sm:text-right text-muted break-words">
-            {{ request.user.username }}
-          </dd>
-        </div>
+      <section aria-labelledby="account-info" class="grid gap-6">
+        <h2 id="account-info" class="text-xl font-semibold">
+          {% trans "Account Information" %}
+        </h2>
 
-        <div class="grid gap-1 sm:grid-cols-2 sm:items-center">
-          <dt class="flex flex-col font-medium">
-            {% trans "Email" %}
-            {% url 'account_email' as email_url %}
-            {% link href=email_url class="text-accent text-sm hover:underline" %}
-              {% trans "Manage email addresses" %}
-            {% endlink %}
-          </dt>
-          <dd class="sm:text-right text-muted break-words">
-            {{ request.user.email }}
-          </dd>
-        </div>
+        <dl class="grid gap-4 text-sm sm:text-base">
+          <div class="grid gap-1 sm:grid-cols-2 sm:items-center">
+            <dt class="font-medium">
+              {% trans "Username" %}
+            </dt>
+            <dd class="sm:text-right text-muted break-words">
+              {{ request.user.username }}
+            </dd>
+          </div>
 
-        <div class="grid gap-1 sm:grid-cols-2 sm:items-center">
-          <dt class="font-medium">
-            {% trans "Password" %}
-          </dt>
-          <dd class="sm:text-right">
-            {% url 'account_change_password' as change_password_url %}
-            {% link href=change_password_url class="text-accent hover:underline" %}
-              {% trans "Change Password" %}
-            {% endlink %}
-          </dd>
-        </div>
+          <div class="grid gap-1 sm:grid-cols-2 sm:items-center">
+            <dt class="flex flex-col font-medium">
+              {% trans "Email" %}
+              {% url 'account_email' as email_url %}
+              {% link href=email_url class="text-accent text-sm hover:underline" %}
+                {% trans "Manage email addresses" %}
+              {% endlink %}
+            </dt>
+            <dd class="sm:text-right text-muted break-words">
+              {{ request.user.email }}
+            </dd>
+          </div>
 
-        <div class="grid gap-1 sm:grid-cols-2 sm:items-center">
-          <dt class="font-medium">
-            {% trans "Connections" %}
-          </dt>
-          <dd class="sm:text-right">
-            {% url 'socialaccount_connections' as change_password_url %}
-            {% link href=change_password_url class="text-accent hover:underline" %}
-              {% trans "Manage Account connections" %}
-            {% endlink %}
-          </dd>
-        </div>
-      </dl>
-      <div class="pt-4 border-t border-muted text-right">
+          <div class="grid gap-1 sm:grid-cols-2 sm:items-center">
+            <dt class="font-medium">
+              {% trans "Password" %}
+            </dt>
+            <dd class="sm:text-right">
+              {% url 'account_change_password' as change_password_url %}
+              {% link href=change_password_url class="text-accent hover:underline" %}
+                {% trans "Change Password" %}
+              {% endlink %}
+            </dd>
+          </div>
+
+          <div class="grid gap-1 sm:grid-cols-2 sm:items-center">
+            <dt class="font-medium">
+              {% trans "Connections" %}
+            </dt>
+            <dd class="sm:text-right">
+              {% url 'socialaccount_connections' as conn_url %}
+              {% link href=conn_url class="text-accent hover:underline" %}
+                {% trans "Manage Account Connections" %}
+              {% endlink %}
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="update-profile" class="grid gap-4">
+        <h2 id="update-profile" class="text-xl font-semibold">
+          {% trans "Update Your Profile" %}
+        </h2>
+
+        {% partialdef profile-form inline %}
+          <form method="post"
+                action="{% url 'account_profile' %}"
+                hx-post="{% url 'account_profile' %}"
+                hx-encoding='multipart/form-data'
+                enctype='multipart/form-data'
+                class="grid gap-4"
+                id="profile-form">
+            {% csrf_token %}
+
+            <div class="grid sm:grid-cols-2 gap-4 items-start">
+              {# {{ form.avatar }} #}
+              {% for field in form %}
+                {% field field=field %}
+                {% endfield %}
+              {% endfor %}
+            </div>
+
+            <div>
+              {% button type="submit" variant="outline" class="w-fit" %}
+                {% trans "Save Changes" %}
+              {% endbutton %}
+            </div>
+          </form>
+        {% endpartialdef %}
+      </section>
+
+      <footer class="pt-6 border-t border-muted text-right">
         <form method="post" action="{% url 'account_logout' %}">
           {% csrf_token %}
           {% button type="submit" variant="secondary" %}
             {% trans "Log out" %}
           {% endbutton %}
         </form>
-      </div>
+      </footer>
+
     </div>
   </section>
 {% endblock content %}

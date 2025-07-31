@@ -4,7 +4,7 @@
   <div class="flex gap-4">
     <div class="flex-shrink-0">
       <div class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-transparent group-hover:ring-accent transition-all duration-200">
-        <img src="{{ comment.user.email|xtd_comment_gravatar_url }}"
+        <img src="{% if comment.user.avatar %} {{ comment.user.avatar.url }}{% else %} {{ comment.user_email|xtd_comment_gravatar_url }}{% endif %}"
              alt="{{ comment.user_name }}’s avatar"
              class="w-10 h-10 rounded-full"
              width="40"

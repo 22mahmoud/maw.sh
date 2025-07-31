@@ -232,6 +232,8 @@ INTERNAL_IPS = env.list(
     ],
 )
 
+AUTH_USER_MODEL = "accounts.User"
+
 # lib settings
 from config.settings.celery import *  # noqa: E402, F403
 from config.settings.django_allauth import *  # noqa: E402, F403

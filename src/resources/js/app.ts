@@ -14,6 +14,15 @@ import '@/js/messages';
 import '@/js/django-comments';
 import '@/js/password-field';
 
+Alpine.data('fileInputField', () => ({
+  fileName: '',
+
+  updateFileName(event: InputEvent) {
+    const files = (event.target as HTMLInputElement)?.files;
+    this.fileName = files?.[0]?.name ?? '';
+  },
+}));
+
 if (window.__APP_DATA__?.isNewGuestbookPage) {
   await import('./guestbook-editor');
 }

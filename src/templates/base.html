@@ -1,4 +1,4 @@
-{% load base_tags partials django_vite wagtailuserbar static seo_tags %}
+{% load partials base_tags partials django_vite wagtailuserbar static seo_tags %}
 {% load wagtail_cache %}
 
 <!DOCTYPE html>
@@ -94,35 +94,37 @@
       <a id="top"></a>
     {% endif %}
 
-    <div id="messages"
-         hx-swap-oob="beforeend"
-         class="fixed bottom-20 right-4 sm:right-8 z-50 w-[calc(100%-2rem)] sm:w-96 max-w-full space-y-3 pointer-events-none sm:pointer-events-auto px-2 sm:px-0">
-      <div class="relative space-y-3">
-        {% for message in messages %}
-          <div x-data="messages"
-               data-counter="{{ forloop.counter0 }}"
-               @mouseenter="stop"
-               @mouseleave="play"
-               x-show="opened"
-               x-transition:enter="transition ease-out duration-500 transform"
-               x-transition:enter-start="translate-x-4 opacity-0"
-               x-transition:enter-end="translate-x-0 opacity-100"
-               x-transition:leave="transition ease-in duration-300 transform"
-               x-transition:leave-start="translate-x-0 opacity-100"
-               x-transition:leave-end="translate-x-4 opacity-0"
-               class="pointer-events-auto flex items-start justify-between gap-4 px-4 py-3 sm:px-5 sm:py-4 shadow-xl text-sm sm:text-base font-semibold border-l-4 bg-darker border border-dark {{ message.tags|message_color }}">
-            <div class="flex-1 break-words">
-              {{ message }}
-            </div>
+    {% partialdef messages inline %}
+      <div id="messages"
+           hx-swap-oob="beforeend"
+           class="fixed bottom-20 right-4 sm:right-8 z-50 w-[calc(100%-2rem)] sm:w-96 max-w-full space-y-3 pointer-events-none sm:pointer-events-auto px-2 sm:px-0">
+        <div class="relative space-y-3">
+          {% for message in messages %}
+            <div x-data="messages"
+                 data-counter="{{ forloop.counter0 }}"
+                 @mouseenter="stop"
+                 @mouseleave="play"
+                 x-show="opened"
+                 x-transition:enter="transition ease-out duration-500 transform"
+                 x-transition:enter-start="translate-x-4 opacity-0"
+                 x-transition:enter-end="translate-x-0 opacity-100"
+                 x-transition:leave="transition ease-in duration-300 transform"
+                 x-transition:leave-start="translate-x-0 opacity-100"
+                 x-transition:leave-end="translate-x-4 opacity-0"
+                 class="pointer-events-auto flex items-start justify-between gap-4 px-4 py-3 sm:px-5 sm:py-4 shadow-xl text-sm sm:text-base font-semibold border-l-4 bg-darker border border-dark {{ message.tags|message_color }}">
+              <div class="flex-1 break-words">
+                {{ message }}
+              </div>
 
-            <button @click="close"
-                    class="js-only shrink-0 cursor-pointer text-xl leading-none text-secondary hover:text-primary focus:outline-none focus-visible:ring">
-              {% icon "x" class="w-4 h-4" %}
-            </button>
-          </div>
-        {% endfor %}
+              <button @click="close"
+                      class="js-only shrink-0 cursor-pointer text-xl leading-none text-secondary hover:text-primary focus:outline-none focus-visible:ring">
+                {% icon "x" class="w-4 h-4" %}
+              </button>
+            </div>
+          {% endfor %}
+        </div>
       </div>
-    </div>
+    {% endpartialdef %}
 
     {% if not request.htmx %}
       {% include "includes/header.html" %}

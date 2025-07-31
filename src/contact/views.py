@@ -1,6 +1,5 @@
-from django.http import Http404, HttpResponseBadRequest
+from django.http import Http404
 from django.shortcuts import redirect, render
-from django.template.response import TemplateResponse
 from django.views import View
 from wagtail.models import Page
 
@@ -55,28 +54,3 @@ class ContactView(View):
         if fragment and fragment.startswith("#"):
             redirect_url += fragment
         return redirect_url
-
-
-def validate_contact_field(request):
-    if request.method != "POST" or not request.headers.get("HX-Request"):
-        return HttpResponseBadRequest("Invalid request")
-
-    triggering_element_id = request.htmx.trigger
-    if not triggering_element_id:
-        return HttpResponseBadRequest("Missing trigger ID in htmx request.")
-
-    field_name = triggering_element_id.removesuffix("-wrapper")
-
-    form = ContactForm(request.POST)
-    form.is_valid()
-
-    if field_name not in form.fields:
-        return HttpResponseBadRequest("Invalid field name derived from trigger.")
-
-    template_fragment_name = field_name
-
-    return TemplateResponse(
-        request,
-        f"partials/contact_form.html#{template_fragment_name}",
-        {"form": form},
-    )

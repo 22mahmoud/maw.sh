@@ -1,6 +1,7 @@
 import re
 
 from django import template
+from django.forms import widgets
 from django.forms.utils import flatatt
 from django.template.loader import TemplateDoesNotExist, render_to_string
 from django.utils.safestring import mark_safe
@@ -56,3 +57,17 @@ def message_color(tags):
     if "info" in tags:
         return "bg-[#2d2d2d] text-blue-400 border-s-blue-500"
     return "bg-[#2d2d2d] text-primary border-s-neutral-700"
+
+
+@register.filter
+def widget_type(field):
+    widget = field.field.widget
+    if isinstance(widget, widgets.Textarea):
+        return "textarea"
+    if isinstance(widget, widgets.TextInput):
+        return "input"
+    if isinstance(widget, widgets.CheckboxInput):
+        return "checkbox"
+    if isinstance(widget, widgets.Select):
+        return "select"
+    return "input"

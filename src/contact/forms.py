@@ -1,29 +1,32 @@
-from captcha.fields import CaptchaTextInput
 from django import forms
 
 from .models import ContactSubmission
 
 
-class CustomCaptchaTextInput(CaptchaTextInput):
-    template_name = "includes/custom_captcha_field.html"
-
-    def get_context(self, name, value, attrs):
-        context = super().get_context(name, value, attrs)
-        context["errors"] = self.attrs.get("errors", None)
-
-        return context
-
-
 class ContactForm(forms.ModelForm):
-    # captcha = CaptchaField(widget=CustomCaptchaTextInput)
-
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #
-    #     if self.is_bound and self.errors.get("captcha"):
-    #         errors = self.errors["captcha"]
-    #         self.fields["captcha"].widget.attrs["errors"] = errors
-
     class Meta:
         model = ContactSubmission
         fields = ["name", "email", "message"]
+        widgets = {
+            "name": forms.TextInput(
+                attrs={
+                    "autocomplete": "given-name",
+                    "placeholder": "John Doe",
+                    "wrapper": {"class": "w-full md:col-span-1"},
+                }
+            ),
+            "email": forms.EmailInput(
+                attrs={
+                    "autocomplete": "email",
+                    "placeholder": "me@example.com",
+                    "wrapper": {"class": "w-full md:col-span-1"},
+                }
+            ),
+            "message": forms.Textarea(
+                attrs={
+                    "rows": 4,
+                    "placeholder": "Your message here...",
+                    "wrapper": {"class": "w-full md:col-span-2"},
+                }
+            ),
+        }

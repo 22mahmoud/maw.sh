@@ -76,7 +76,13 @@ class Guestbook(models.Model):
 
     name = models.CharField(max_length=100)
     emoji = models.CharField(max_length=2, help_text="Emoji representing mood or vibe")
-    message = models.TextField(max_length=200)
+    message = models.TextField(
+        max_length=280,
+        help_text=(
+            "Supports basic Markdown and HTML. Max 280 characters. "
+            "GIFs allowed from giphy/tenor/imgur."
+        ),
+    )
     url = models.URLField(blank=True, help_text="Optional link (e.g., social profile, site)")
 
     visibility = models.CharField(

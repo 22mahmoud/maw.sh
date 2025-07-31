@@ -16,12 +16,7 @@
     <div class="grid grid-cols-3 gap-4 items-stretch">
       <div class="col-span-2">
         {% field
-          required="required"
-          name="name"
-          label="Name"
-          value=form.name.value
-          error=form.name.errors
-          error_message=form.name.errors.as_text
+          field=form.name
           :value="form.name"
           @input="updateFormField"
           %}
@@ -29,13 +24,7 @@
       </div>
 
       {% field
-        required="required"
-        name="emoji"
-        label="Emoji"
-        maxlength=2
-        value=form.emoji.value
-        error=form.emoji.errors
-        error_message=form.emoji.errors.as_text
+        field=form.emoji
         :value="form.emoji"
         @input="updateFormField"
         %}
@@ -43,15 +32,7 @@
     </div>
 
     {% with selected=form.style.value %}
-      {% field
-        class="flex flex-row!"
-        name="style"
-        label="Style Preset"
-        as="radio"
-        value=selected
-        error=form.style.errors
-        error_message=form.style.errors.as_text
-        %}
+      {% field field=form.style as="radio" class="flex flex-row!" %}
         <div class="flex flex-row gap-4 flex-wrap">
           {% for key, label in form.fields.style.choices %}
             <label data-key="{{ key }}"
@@ -74,27 +55,14 @@
     {% endwith %}
 
     {% field
-      required="required"
-      maxlength="280"
-      name="message"
-      label="Message"
-      as="textarea"
-      rows=4
-      value=form.message.value
-      error=form.message.errors
-      error_message=form.message.errors.as_text
-      help_text="Supports basic Markdown and HTML. Max 280 characters. GIFs allowed from giphy/tenor/imgur."
+      field=form.message
       :value="form.message"
       @input="updateFormField"
       %}
     {% endfield %}
 
     {% field
-      name="url"
-      label="Website (optional)"
-      value=form.url.value
-      error=form.url.errors
-      error_message=form.url.errors.as_text
+      field=form.url
       :value="form.url"
       @input="updateFormField"
       %}
@@ -102,15 +70,7 @@
 
     <div class="max-w-xs">
       {% with selected=form.radius.value %}
-        {% field
-          name="radius"
-          label="Card Shape"
-          as="select"
-          value=selected
-          error=form.radius.errors
-          error_message=form.radius.errors.as_text
-          @change="updateFormField"
-          %}
+        {% field field=form.radius @input="updateFormField" %}
           {% for key, label in form.fields.radius.choices %}
             <option data-name="radius"
                     value="{{ key }}"
