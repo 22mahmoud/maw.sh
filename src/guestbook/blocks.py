@@ -10,7 +10,9 @@ class GuestbookFormStaticBlock(blocks.StaticBlock):
 
         context = super().get_context(value, parent_context)
         guestbook_editor_presets = get_guestbook_editor_presets()
-        default_preset = guestbook_editor_presets[0]
+        default_preset = {}
+        if len(guestbook_editor_presets):
+            default_preset = guestbook_editor_presets[0]
 
         if not isinstance((request := context.get("request")), HttpRequest):
             return context
@@ -25,9 +27,9 @@ class GuestbookFormStaticBlock(blocks.StaticBlock):
         else:
             form = GuestbookForm(
                 initial={
-                    "style": default_preset["id"],
-                    "emoji": default_preset["emoji"],
-                    "radius": default_preset["radius"],
+                    "style": default_preset.get("id", ""),
+                    "emoji": default_preset.get("emoji", ""),
+                    "radius": default_preset.get("radius", ""),
                 }
             )
 

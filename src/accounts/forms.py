@@ -19,12 +19,12 @@ class UserProfileForm(forms.ModelForm):
             "username": forms.TextInput(
                 attrs={
                     "autocomplete": "username",
-                    "wrapper": {"class": "sm:col-span-2"},
+                    "container_class": "sm:col-span-2",
                 }
             ),
             "avatar": forms.ClearableFileInput(
                 attrs={
-                    "wrapper": {"class": "sm:col-span-2"},
+                    "container_class": "sm:col-span-2 w-fit",
                 }
             ),
         }

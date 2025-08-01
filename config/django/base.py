@@ -103,6 +103,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "src.base.context_processors.global_search_form",
                 "csp.context_processors.nonce",
             ]
             + WAGTAIL_TEMPLATE_CONTEXT_PROCESSORS,
@@ -189,7 +190,8 @@ WEBMENTION_DOMAIN = "maw.sh"  # e.g., maw.sh
 WEBMENTION_TOKEN = env.str("WEBMENTION_TOKEN")
 LEGACY_SITE_DOMAIN = "maw.sh"
 
-FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
+FORM_RENDERER = "src.base.renderers.CustomRenderer"
+
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",

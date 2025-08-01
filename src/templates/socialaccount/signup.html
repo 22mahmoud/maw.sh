@@ -32,10 +32,7 @@
 
         {{ redirect_field }}
 
-        {% for field in form %}
-          {% field field=field %}
-          {% endfield %}
-        {% endfor %}
+        {{ form }}
 
         <div>
           {% button type="submit" variant="primary" %}

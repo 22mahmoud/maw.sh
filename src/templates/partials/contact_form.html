@@ -15,10 +15,7 @@
   </noscript>
 
   <div class="grid md:grid-cols-2 gap-4">
-    {% for field in form %}
-      {% field field=field %}
-      {% endfield %}
-    {% endfor %}
+    {{ form }}
   </div>
 
   {% button

@@ -117,10 +117,7 @@
 
           {% csrf_token %}
 
-          {% for field in form %}
-            {% field field=field %}
-            {% endfield %}
-          {% endfor %}
+          {{ form }}
 
           <div>
             {% button type="submit" name="action_add" variant="primary" %}

@@ -84,6 +84,8 @@ Alpine.data('guestbookEditor', () => {
   const initialPreset = presets[0] ?? {};
 
   return {
+    isPreviewVisible: true,
+
     form: {
       name: '',
       message: '',
@@ -92,7 +94,6 @@ Alpine.data('guestbookEditor', () => {
       emoji: initialPreset.emoji ?? '',
       style: initialPreset.id ?? '',
     },
-    isPreviewVisible: true,
 
     get activePreset() {
       return presets.find(p => p.id === this.form.style) ?? initialPreset;
@@ -103,10 +104,6 @@ Alpine.data('guestbookEditor', () => {
       const radius = this.form.radius || this.activePreset?.radius || '';
 
       return `${styles} ${radius}`.trim();
-    },
-
-    get presetSelectorClass(): string {
-      return this.$el.getAttribute('data-key') === this.form.style ? 'ring-1 ring-accent' : '';
     },
 
     get formattedName() {
@@ -131,9 +128,9 @@ Alpine.data('guestbookEditor', () => {
       return this.form.name && !this.form.url;
     },
 
-    isTargetSelected(): boolean {
+    get isTargetSelected(): boolean {
       const elm = this.$el as HTMLInputElement | HTMLOptionElement;
-      const name = elm.getAttribute('data-name') || elm.getAttribute('name');
+      const name = elm.getAttribute('name');
 
       return !!name && elm.value === this.form[name as keyof typeof this.form];
     },

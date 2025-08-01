@@ -1,0 +1,25 @@
+{% if field.use_fieldset %}
+  <fieldset {% if field.aria_describedby %}
+              aria-describedby="{{ field.aria_describedby }}"
+            {% endif %}>
+    {% if field.label %}
+      {{ field.legend_tag }}
+    {% endif %}
+  {% else %}
+    {% if field.label %}
+      {{ field.label_tag }}
+    {% endif %}
+  {% endif %}
+  {% if field.help_text %}
+    <div {% if field.auto_id %}
+           id="{{ field.auto_id }}_helptext"
+         {% endif %}
+         class="prose prose-sm prose-main text-sm text-secondary">
+      {{ field.help_text|safe }}
+    </div>
+  {% endif %}
+  {{ field }}
+  {{ field.errors }}
+  {% if field.use_fieldset %}
+  </fieldset>
+{% endif %}

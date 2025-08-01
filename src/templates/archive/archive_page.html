@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load button_tags link_tags field_tags wagtailcore_tags %}
+{% load seo_tags button_tags link_tags field_tags wagtailcore_tags %}
 
 {% block content %}
   <div class="grow w-full bg-dark px-4 py-6 md:py-10 zigzag">
@@ -20,8 +20,7 @@
                 method="get"
                 class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto items-stretch sm:items-center">
             <div class="flex-grow">
-              {% field required="required" name="q" type="search" value=search_query placeholder="Search again..." aria_label="Search query" %}
-              {% endfield %}
+              {{ search_form }}
             </div>
             {% button type="submit" variant="outline" class="w-fit sm:w-auto" %}
               Search

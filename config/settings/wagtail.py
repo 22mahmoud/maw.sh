@@ -110,6 +110,9 @@ WAGTAILSEARCH_BACKENDS = {
         "HOST": env.str("MEILISEARCH_HOST", "http://127.0.0.1"),
         "PORT": env.str("MEILISEARCH_PORT", "7700"),
         "MASTER_KEY": env.str("MEILI_MASTER_KEY", ""),
+        "SKIP_MODELS": [
+            "search.DummySearchPage",
+        ],
     },
 }
 

@@ -1,10 +1,12 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.utils.translation import ngettext
 from django.views import View
 from wagtail.contrib.search_promotions.models import Query
 from wagtail.models import Page
 
 from src.pagination.mixins import PaginatedArchiveMixin
+from src.search.models import DummySearchPage
 
 
 class SearchView(PaginatedArchiveMixin, View):
@@ -25,8 +27,7 @@ class SearchView(PaginatedArchiveMixin, View):
         )
 
     def get(self, request: HttpRequest) -> HttpResponse:
-        search_query = request.GET.get("q", "")
-        search_query = search_query.strip() or None
+        search_query = request.GET.get("q", "").strip() or None
 
         if search_query:
             queryset = Page.objects.live().specific().search(search_query)  # type: ignore
@@ -47,21 +48,21 @@ class SearchView(PaginatedArchiveMixin, View):
             search_query=search_query,
         )
 
+        page = DummySearchPage(
+            title="Search",
+            seo_title=f"Search: {search_query}" if search_query else None,
+            introduction=(
+                f"{ngettext('%d result', '%d results', total_results) % total_results} "
+                f" found for '{search_query}'."
+                if search_query
+                else "Enter a search query to explore the archive."
+            ),
+        )
+
         context.update(
             {
                 "type": "search",
-                "page": {
-                    "title": "Search",
-                    "introduction": (
-                        (
-                            f"{total_results} result{'s' if total_results != 1 else ''} "
-                            f"found for '{search_query}'."
-                        )
-                        if search_query
-                        else "Enter a search query to explore the archive."
-                    ),
-                    "seo_title": f"Search: {search_query}" if search_query else None,
-                },
+                "page": page,
                 "empty_state_message": (
                     f"No results found for '{search_query}'."
                     if search_query and total_results == 0

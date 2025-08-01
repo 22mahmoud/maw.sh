@@ -12,21 +12,21 @@ class ContactForm(forms.ModelForm):
                 attrs={
                     "autocomplete": "given-name",
                     "placeholder": "John Doe",
-                    "wrapper": {"class": "w-full md:col-span-1"},
+                    "container_class": "w-full md:col-span-1",
                 }
             ),
             "email": forms.EmailInput(
                 attrs={
                     "autocomplete": "email",
                     "placeholder": "me@example.com",
-                    "wrapper": {"class": "w-full md:col-span-1"},
+                    "container_class": "w-full md:col-span-1",
                 }
             ),
             "message": forms.Textarea(
                 attrs={
                     "rows": 4,
                     "placeholder": "Your message here...",
-                    "wrapper": {"class": "w-full md:col-span-2"},
+                    "container_class": "w-full md:col-span-2",
                 }
             ),
         }

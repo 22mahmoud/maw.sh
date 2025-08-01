@@ -81,26 +81,22 @@
         {% partialdef profile-form inline %}
           <form method="post"
                 action="{% url 'account_profile' %}"
+                enctype='multipart/form-data'
                 hx-post="{% url 'account_profile' %}"
                 hx-encoding='multipart/form-data'
-                enctype='multipart/form-data'
+                hx-swap="outerHTML"
                 class="grid gap-4"
                 id="profile-form">
             {% csrf_token %}
 
             <div class="grid sm:grid-cols-2 gap-4 items-start">
-              {# {{ form.avatar }} #}
-              {% for field in form %}
-                {% field field=field %}
-                {% endfield %}
-              {% endfor %}
+              {{ form }}
             </div>
 
-            <div>
-              {% button type="submit" variant="outline" class="w-fit" %}
-                {% trans "Save Changes" %}
-              {% endbutton %}
-            </div>
+            {% button type="submit" variant="outline" class="w-fit ms-auto" %}
+              {% trans "Save Changes" %}
+              {% icon 'circle-notch' id="spinner" class="ms-2 htmx-indicator animate-spin h-3 w-3" %}
+            {% endbutton %}
           </form>
         {% endpartialdef %}
       </section>
@@ -113,7 +109,6 @@
           {% endbutton %}
         </form>
       </footer>
-
     </div>
   </section>
 {% endblock content %}
