@@ -1,4 +1,4 @@
-providers = ["python"]
+providers = ["python", "node"]
 
 [start]
 cmd = "celery -A src.tasks worker -l INFO --without-gossip --without-mingle --without-heartbeat"
