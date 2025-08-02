@@ -31,7 +31,7 @@ except ImportError:
 env.read_env(BASE_DIR / ".env")
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str("SECRET_KEY")
+SECRET_KEY = env.str("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=True)
@@ -189,7 +189,7 @@ STORAGES = {
 SITE_ID = 1
 
 WEBMENTION_DOMAIN = "maw.sh"  # e.g., maw.sh
-WEBMENTION_TOKEN = env.str("WEBMENTION_TOKEN")
+WEBMENTION_TOKEN = env.str("WEBMENTION_TOKEN", "")
 LEGACY_SITE_DOMAIN = "maw.sh"
 
 FORM_RENDERER = "src.base.renderers.CustomRenderer"
@@ -197,7 +197,7 @@ FORM_RENDERER = "src.base.renderers.CustomRenderer"
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": env.str("REDIS_LOCATION"),
+        "LOCATION": env.str("REDIS_LOCATION", ""),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
             "PASSWORD": env.str("REDIS_PASSWORD", ""),
