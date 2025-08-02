@@ -8,7 +8,7 @@ CELERY_TASK_MAX_RETRIES = 3
 CELERY_RESULT_BACKEND = "django-db"
 CELERY_CACHE_BACKEND = "default"
 CELERY_BROKER_URL = env.str("REDIS_LOCATION", "")
-CELERY_RESULTS_EXTENDED = True
+CELERY_RESULT_EXTENDED = True
 CELERY_EMAIL_TASK_CONFIG = {
     "name": "djcelery_email_send",
     "ignore_result": False,
