@@ -2,13 +2,13 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import RedirectView
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.documents import urls as wagtaildocs_urls
 
-from src.base.views import robots_txt
+from src.base import views
 from src.search.views import SearchView
 
 urlpatterns = debug_toolbar_urls() + [
@@ -21,7 +21,7 @@ urlpatterns = debug_toolbar_urls() + [
     path("comments/", include("src.comments.urls")),
     path("rss/", include("src.feeds.urls")),
     path("accounts/", include("src.accounts.urls")),
-    path("robots.txt/", robots_txt),
+    path("robots.txt/", views.robots_txt),
     path("documents/", include(wagtaildocs_urls)),
     path("sitemap.xml/", sitemap),
 ]
@@ -40,10 +40,13 @@ if settings.DEBUG:
     ]
 
     urlpatterns += [
-        path("test404/", TemplateView.as_view(template_name="404.html")),
-        path("test500/", TemplateView.as_view(template_name="500.html")),
+        path("test404/", views.error_404_view),
+        path("test500/", views.error_500_view),
     ]
 
 urlpatterns += [
     path("", include(wagtail_urls)),
 ]
+
+handler404 = "src.base.views.error_404_view"
+handler500 = "src.base.views.error_500_view"

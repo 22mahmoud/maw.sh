@@ -9,7 +9,7 @@
          {% if widget.value != None %}
            value="{{ widget.value|stringformat:'s' }}"
          {% endif %}
-         class="accent-accent w-5 h-5 border border-neutral-700 peer"
+         class="accent-accent w-5 h-5 border border-neutral-700 peer {{ widget.attrs.class }}"
          {% include "django/forms/widgets/attrs.html" %}>
   {% if widget.wrap_label %}
     {{ widget.label }}

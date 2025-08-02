@@ -12,10 +12,10 @@
     <article class="grow flex flex-col mx-auto max-w-3xl gap-6 py-4 px-4 sm:px-6">
       <header class="prose prose-main text-center space-y-2">
         <h1 class="text-xl font-semibold text-primary">
-          {% if already_liked_it %}
-            {% trans "You liked this comment, do you want to change it?" %}
+          {% if already_disliked_it %}
+            {% trans "You didn't like this comment, do you want to change it?" %}
           {% else %}
-            {% trans "Do you like this comment?" %}
+            {% trans "Do you dislike this comment?" %}
           {% endif %}
         </h1>
         <p class="text-secondary">
@@ -27,7 +27,11 @@
         <div class="flex-1 flex gap-4">
           <div class="flex-shrink-0">
             <div class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-transparent group-hover:ring-accent transition-all duration-200">
-              {{ form.cleaned_data.email|xtd_comment_gravatar }}
+              <img src="{{ comment.user_email|xtd_comment_gravatar_url }}"
+                   alt="{{ comment.user_email }}"
+                   width="40"
+                   height="40"
+                   class="w-full h-full object-cover" />
             </div>
           </div>
 
@@ -64,25 +68,23 @@
         {% endif %}
       {% endwith %}
 
-      {% if already_liked_it %}
+      {% if already_disliked_it %}
         <div class="text-center text-warning bg-yellow-100 dark:bg-yellow-900/30 border border-yellow-300 dark:border-yellow-800 rounded-lg p-4 text-sm">
-          {% trans "Click on the 'withdraw' button if you want to withdraw your positive opinion on this comment." %}
+          {% trans "Click on the 'withdraw' button if you want to withdraw your negative opinion on this comment." %}
         </div>
       {% endif %}
 
       <section class="flex justify-center pt-2">
         <form method="post" class="flex flex-row items-center gap-8">
           {% csrf_token %}
-
           <input type="hidden" name="next" value="{{ comment.get_absolute_url }}">
-
-          {% if already_liked_it %}
+          {% if already_disliked_it %}
             {% button variant="outline" size="md" type="submit" %}
-              Withdraw
+              {% trans "Withdraw" %}
             {% endbutton %}
           {% else %}
-            {% button variant="primary" size="md" type="submit" %}
-              I like it
+            {% button variant="outline" size="md" type="submit" %}
+              {% trans "I dislike it" %}
             {% endbutton %}
           {% endif %}
 

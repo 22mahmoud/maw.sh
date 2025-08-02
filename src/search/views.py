@@ -5,8 +5,8 @@ from django.views import View
 from wagtail.contrib.search_promotions.models import Query
 from wagtail.models import Page
 
+from src.base.models import DummyPage
 from src.pagination.mixins import PaginatedArchiveMixin
-from src.search.models import DummySearchPage
 
 
 class SearchView(PaginatedArchiveMixin, View):
@@ -48,7 +48,7 @@ class SearchView(PaginatedArchiveMixin, View):
             search_query=search_query,
         )
 
-        page = DummySearchPage(
+        page = DummyPage(
             title="Search",
             seo_title=f"Search: {search_query}" if search_query else None,
             introduction=(

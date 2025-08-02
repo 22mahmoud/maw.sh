@@ -2,6 +2,10 @@
 {% load i18n %}
 {% load base_tags comments_xtd comments %}
 
+{% block title %}
+  {% trans "Sent" %}.
+{% endblock title %}
+
 {% block content %}
   {% if request.htmx %}
     <div id="comment-confirmation"

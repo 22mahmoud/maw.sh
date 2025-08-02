@@ -7,7 +7,10 @@
 {% endblock title %}
 
 {% block header %}
-  <a href="{{ comment.content_object.get_absolute_url }}">{{ comment.content_object }}</a>
+  <a href="{{ comment.content_object.get_absolute_url }}"
+     class="text-primary underline hover:text-primary-foreground transition">
+    {{ comment.content_object }}
+  </a>
 {% endblock header %}
 
 {% block content %}
@@ -17,11 +20,28 @@
     children=comment.children
     item=comment.content_object %}
   {% else %}
-    <h4 class="text-center">
-      {% trans "The comment has been removed." %}
-    </h4>
-    <p class="text-center">
-      {% trans "Thank you for taking the time to improve the quality of discussion in our site." %}
-    </p>
+    <div class="flex-1 w-full bg-dark px-4 py-6 md:py-10 zigzag">
+      <article class="max-w-3xl mx-auto">
+        <header class="mb-8 text-center">
+          <h1 class="text-3xl font-bold tracking-tight">
+            {% trans "The comment has been removed." %}
+          </h1>
+        </header>
+
+        <div class="space-y-4 text-center">
+          <p class="text-base text-muted">
+            {% trans "Thank you for taking the time to improve the quality of discussion on our site." %}
+          </p>
+
+          <p class="text-sm text-muted">
+            {% trans "Go back to" %}:
+            <a href="{{ comment.content_object.get_absolute_url }}"
+               class="text-primary underline hover:text-primary-foreground transition">
+              {{ comment.content_object }}
+            </a>
+          </p>
+        </div>
+      </article>
+    </div>
   {% endif %}
 {% endblock content %}

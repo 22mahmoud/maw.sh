@@ -1,6 +1,8 @@
-from django.http import Http404
+from django.contrib import messages
+from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from django.views import View
+from wagtail.blocks.base import render_to_string
 from wagtail.models import Page
 
 from .forms import ContactForm
@@ -15,28 +17,32 @@ class ContactView(View):
 
         if form.is_valid():
             form.save()
-            success_message = "Message sent! Thanks for reaching out. 🎊"
-            request.session["contact_form_success"] = success_message
-
-            context = {
-                "form": ContactForm(),
-                "success_message": success_message,
-            }
+            messages.success(self.request, "Message sent! Thanks for reaching out. 🎊")
 
             if is_htmx:
-                return render(request, "partials/contact_form.html", context)
+                context = {
+                    "form": ContactForm(),
+                    "messages": messages.get_messages(request),
+                }
+
+                fragments = []
+                fragments.append(render_to_string("partials/contact_form.html", context, request))
+                fragments.append(render_to_string("base.html#messages", context, request))
+
+                return HttpResponse("".join(fragments), content_type="text/html")
 
             page = self.get_page(request)
+
             return redirect(self.build_redirect_url(request, page))
 
-        request.session["contact_form_data"] = request.POST.copy()
-        context = {"form": form}
-
         if is_htmx:
-            return render(request, "partials/contact_form.html", context)
+            return render(request, "partials/contact_form.html", {"form": form})
 
         page = self.get_page(request)
-        return redirect(self.build_redirect_url(request, page))
+        page_context = page.get_context(request)
+        page_context["form"] = form
+
+        return render(request, page.template, page_context)
 
     def get_page(self, request):
         page_id = request.POST.get("page_id")
@@ -44,7 +50,7 @@ class ContactView(View):
             raise Http404("Page not specified")
 
         try:
-            return Page.objects.live().public().get(id=page_id).get_specific()  # type: ignore
+            return Page.objects.live().public().get(id=page_id).specific  # type: ignore
         except Page.DoesNotExist:
             raise Http404("Page not found")
 

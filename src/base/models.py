@@ -27,6 +27,18 @@ from .blocks import ButtonBlock, HeroBlock, SocialLinkStreamBlock
 from .constants import SOCIAL_PLATFORMS
 
 
+class DummyPage(Page):
+    introduction = models.TextField()
+    search_fields = ()
+
+    def get_cache_key_components(self):
+        return super().get_cache_key_components() + [
+            self.seo_title or "",
+            self.title or 0,
+            self.introduction or "",
+        ]
+
+
 class PageTag(TaggedItemBase):
     content_object = ParentalKey(
         "wagtailcore.Page",
