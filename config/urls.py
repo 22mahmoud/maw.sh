@@ -12,12 +12,12 @@ from src.base import views
 from src.search.views import SearchView
 
 urlpatterns = debug_toolbar_urls() + [
-    path("admin/", admin.site.urls),
+    path(settings.DJANGO_ADMIN_PATH, admin.site.urls),
     path("forms/contact/", include("src.contact.urls")),
     path("forms/guestbook/", include("src.guestbook.urls")),
     path("captcha/", include("captcha.urls")),
     path("search/", SearchView.as_view(), name="search"),
-    path("cms/", include(wagtailadmin_urls)),
+    path(settings.WAGTAIL_ADMIN_PATH, include(wagtailadmin_urls)),
     path("comments/", include("src.comments.urls")),
     path("rss/", include("src.feeds.urls")),
     path("accounts/", include("src.accounts.urls")),

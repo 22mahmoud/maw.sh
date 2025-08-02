@@ -39,10 +39,6 @@ CSRF_COOKIE_SAMESITE = "lax"
 DEFAULT_HSTS_SECONDS = 30 * 24 * 60 * 60  # 30 days
 SECURE_HSTS_SECONDS = int(env.int("SECURE_HSTS_SECONDS", DEFAULT_HSTS_SECONDS))
 
-DEBUG_TOOLBAR_CONFIG = {
-    "SHOW_TOOLBAR_CALLBACK": "debug_toolbar.middleware.show_toolbar_with_docker",
-}
-
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
