@@ -23,7 +23,7 @@
           </span>
         {% endfor %}
         {% if post.get_tags|length > 2 %}
-          <span class="inline-block border border-secondary/30 bg-secondary/5 px-2.5 py-0.5 text-xs font-medium text-secondary">
+          <span class="rounded-full inline-block border border-secondary/30 bg-secondary/5 px-2.5 py-0.5 text-xs font-medium text-secondary">
             +{{ post.get_tags|length|add:"-2" }}
           </span>
         {% endif %}

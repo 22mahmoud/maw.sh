@@ -8,6 +8,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+# import socket
+
 from config.env import BASE_DIR, env
 from config.settings.django_allauth import (
     ALLAUTH_INSTALLED_APPS,
@@ -233,6 +235,12 @@ INTERNAL_IPS = env.list(
         "localhost",
     ],
 )
+
+# try:
+#     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+#     INTERNAL_IPS += [ip[:-1] + "1" for ip in ips if ip.count(".") == 3]
+# except Exception:
+#     pass
 
 AUTH_USER_MODEL = "accounts.User"
 
