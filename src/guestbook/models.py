@@ -83,6 +83,7 @@ class Guestbook(models.Model):
             "GIFs allowed from giphy/tenor/imgur."
         ),
     )
+    message_html = models.TextField(blank=True, null=True)
     url = models.URLField(blank=True, help_text="Optional link (e.g., social profile, site)")
 
     visibility = models.CharField(

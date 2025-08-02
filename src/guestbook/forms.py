@@ -8,14 +8,12 @@ class GuestbookForm(forms.ModelForm):
     def render_message(self):
         return render_guestbook_markdown(self.cleaned_data["message"])
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields["emoji"].help_text = ""
-
     class Meta:
         model = Guestbook
         fields = ["name", "emoji", "style", "message", "url", "radius"]
-
+        help_texts = {
+            "emoji": "",
+        }
         widgets = {
             "name": forms.TextInput(
                 attrs={

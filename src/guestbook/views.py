@@ -6,6 +6,7 @@ from django_htmx.http import HttpResponseClientRedirect
 from wagtail.models import Page
 
 from .forms import GuestbookForm
+from .tasks import optimize_guestbook_html
 
 
 class GuestbookView(View):
@@ -17,12 +18,9 @@ class GuestbookView(View):
 
         if form.is_valid():
             guestbook = form.save(commit=False)
-            guestbook.message = form.render_message()
+            guestbook.message_html = form.render_message()
             guestbook.save()
-
-            context = {
-                "form": GuestbookForm(),
-            }
+            optimize_guestbook_html.delay(guestbook.id)  # type: ignore
 
             if is_htmx:
                 return HttpResponseClientRedirect("/guestbook")
@@ -30,14 +28,14 @@ class GuestbookView(View):
             page = self.get_page(request)
             return redirect("/guestbook")
 
-        request.session["guestbook_form_data"] = request.POST.copy()
-        context = {"form": form}
-
         if is_htmx:
-            return render(request, "partials/guestbook_form.html", context)
+            return render(request, "partials/guestbook_form.html", {"form": form})
 
         page = self.get_page(request)
-        return redirect(self.build_redirect_url(request, page))
+        page_context = page.get_context(request)
+        page_context["form"] = form
+
+        return render(request, page.template, page_context)
 
     def get_page(self, request):
         page_id = request.POST.get("page_id")
@@ -45,7 +43,7 @@ class GuestbookView(View):
             raise Http404("Page not specified")
 
         try:
-            return Page.objects.live().public().get(id=page_id).get_specific()  # type: ignore
+            return Page.objects.live().public().get(id=page_id).specific  # type: ignore
         except Page.DoesNotExist:
             raise Http404("Page not found")
 

@@ -1,4 +1,3 @@
-from django.http import HttpRequest
 from wagtail import blocks
 
 from .data import get_guestbook_editor_presets
@@ -14,17 +13,9 @@ class GuestbookFormStaticBlock(blocks.StaticBlock):
         if len(guestbook_editor_presets):
             default_preset = guestbook_editor_presets[0]
 
-        if not isinstance((request := context.get("request")), HttpRequest):
-            return context
+        form = parent_context.get("form") if parent_context else None
 
-        session = request.session
-
-        form_data = session.pop("guestbook_form_data", None)
-
-        if form_data:
-            form = GuestbookForm(form_data)
-            form.is_valid()
-        else:
+        if not form:
             form = GuestbookForm(
                 initial={
                     "style": default_preset.get("id", ""),
