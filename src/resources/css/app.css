@@ -74,7 +74,7 @@
   inset: 0;
   background-image: url(/icons/fill.png);
   background-size: 24px;
-  opacity: 0.8;
+  opacity: 0.6;
   pointer-events: none;
   z-index: 0;
 }
