@@ -49,6 +49,7 @@ dev = [
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
+reportAssignmentType = "none"
 
 [tool.ruff]
 line-length = 100

@@ -13,5 +13,5 @@ class CustomBoundField(BoundField):
         return parent_css_classes
 
 
-class CustomRenderer(TemplatesSetting):
+class FormRenderer(TemplatesSetting):
     bound_field_class = CustomBoundField

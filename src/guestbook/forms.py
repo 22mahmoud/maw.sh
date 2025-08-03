@@ -1,10 +1,14 @@
 from django import forms
 
+from src.base.renderers import FormRenderer
+
 from .models import Guestbook
 from .utils import render_guestbook_markdown
 
 
 class GuestbookForm(forms.ModelForm):
+    default_renderer = FormRenderer()
+
     def render_message(self):
         return render_guestbook_markdown(self.cleaned_data["message"])
 

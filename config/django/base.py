@@ -192,8 +192,6 @@ WEBMENTION_DOMAIN = "maw.sh"  # e.g., maw.sh
 WEBMENTION_TOKEN = env.str("WEBMENTION_TOKEN", "")
 LEGACY_SITE_DOMAIN = "maw.sh"
 
-FORM_RENDERER = "src.base.renderers.CustomRenderer"
-
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",

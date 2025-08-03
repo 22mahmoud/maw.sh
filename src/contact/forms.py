@@ -1,9 +1,13 @@
 from django import forms
 
+from src.base.renderers import FormRenderer
+
 from .models import ContactSubmission
 
 
 class ContactForm(forms.ModelForm):
+    default_renderer = FormRenderer()
+
     class Meta:
         model = ContactSubmission
         fields = ["name", "email", "message"]

@@ -16,6 +16,18 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
+
+ACCOUNT_FORMS = {
+    "login": "src.accounts.forms.LoginForm",
+    "signup": "src.accounts.forms.SignupForm",
+    "add_email": "src.accounts.forms.AddEmailForm",
+    "change_password": "src.accounts.forms.ChangePasswordForm",
+    "set_password": "src.accounts.forms.SetPasswordForm",
+    "reset_password": "src.accounts.forms.ResetPasswordForm",
+    "reset_password_from_key": "src.accounts.forms.ResetPasswordKeyForm",
+}
+
+
 ACCOUNT_ADAPTER = "src.base.adapters.AccountAdapter"
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
