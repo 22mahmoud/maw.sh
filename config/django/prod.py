@@ -46,8 +46,11 @@ LOGGING = {
     "disable_existing_loggers": False,
     "formatters": {
         "json": {
-            "()": "pythonjsonlogger.json.JsonFormatter",
-            "fmt": "%(asctime)s %(levelname)s %(name)s %(message)s %(pathname)s %(lineno)d %(exc_info)s",  # noqa: E501
+            "class": "pythonjsonlogger.json.JsonFormatter",
+            "format": (
+                "%(asctime)s %(levelname)s %(name)s %(message)s "
+                "%(pathname)s %(lineno)d %(funcName)s %(process)d %(thread)d"
+            ),
         },
     },
     "handlers": {
@@ -57,10 +60,14 @@ LOGGING = {
             "stream": sys.stdout,
         },
     },
+    "root": {
+        "handlers": ["console"],
+        "level": env.str("DJANGO_LOG_LEVEL", "INFO"),
+    },
     "loggers": {
         "django": {
             "handlers": ["console"],
-            "level": env.str("DJANGO_LOG_LEVEL", "INFO"),
+            "level": "INFO",
             "propagate": False,
         },
         "django.request": {

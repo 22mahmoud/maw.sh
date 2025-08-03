@@ -9,4 +9,5 @@ gunicorn config.wsgi \
   --error-logfile - \
   --log-level info \
   --max-requests 1000 \
+  --log-config-json logconfig.json \
   --max-requests-jitter 100
