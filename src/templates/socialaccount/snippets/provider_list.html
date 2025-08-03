@@ -3,7 +3,7 @@
 
 {% if socialaccount_providers %}
   <div class="max-w-3xs">
-    <div class="mt-8 grid grid-cols-1 gap-3">
+    <div class="grid grid-cols-1 gap-3">
       {% for provider in socialaccount_providers %}
         {% if provider.id == "openid" %}
           {% for brand in provider.get_brands %}

@@ -7,21 +7,27 @@
 {% endblock title %}
 
 {% block content %}
-  <div class="flex-1 w-full bg-dark px-4 py-8 sm:py-12 md:py-16 zigzag">
-    <div class="max-w-xl mx-auto px-6 py-8 sm:px-8 sm:py-10 space-y-6 text-primary">
-      <h2 class="text-2xl font-heading font-semibold">
-        {% trans "Sign In" %}
-      </h2>
+  <section class="grow-1 w-full bg-dark px-4 py-10 sm:py-14 md:py-20 zigzag">
+    <div class="bg-darker max-w-xl mx-auto bg-card px-6 py-8 sm:px-10 sm:py-12 text-primary grid gap-4">
 
-      {% if not SOCIALACCOUNT_ONLY %}
-        <p class="text-primary">
-          {% blocktranslate %}
+      <header class="grid gap-2 text-center sm:text-left">
+        <h2 class="text-3xl font-bold">
+          {% trans "Sign In" %}
+        </h2>
+
+        {% if not SOCIALACCOUNT_ONLY %}
+          <p class="text-secondary">
+            {% blocktranslate %}
             If you have not created an account yet, then please
             <a href="{{ signup_url }}" class="text-accent underline hover:text-accent-bright">
               sign up
             </a> first.
           {% endblocktranslate %}
-        </p>
+          </p>
+        </header>
+      {% endif %}
+
+      {% if not SOCIALACCOUNT_ONLY %}
         <form id="login-form"
               method="post"
               action="{% url 'account_login' %}"
@@ -42,9 +48,11 @@
         </form>
       {% endif %}
 
-      {% if SOCIALACCOUNT_ENABLED %}
-        {% include "socialaccount/snippets/login.html" %}
-      {% endif %}
+      <div>
+        {% if SOCIALACCOUNT_ENABLED %}
+          {% include "socialaccount/snippets/login.html" %}
+        {% endif %}
+      </div>
     </div>
-  </div>
+  </section>
 {% endblock content %}
