@@ -46,11 +46,7 @@ LOGGING = {
     "disable_existing_loggers": False,
     "formatters": {
         "json": {
-            "class": "pythonjsonlogger.json.JsonFormatter",
-            "format": (
-                "%(asctime)s %(levelname)s %(name)s %(message)s "
-                "%(pathname)s %(lineno)d %(funcName)s %(process)d %(thread)d"
-            ),
+            "class": "src.base.logging.DjangoJsonRequestFormatter",
         },
     },
     "handlers": {

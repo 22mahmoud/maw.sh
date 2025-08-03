@@ -11,6 +11,30 @@ from typing import Any
 from pythonjsonlogger.json import JsonFormatter
 
 
+class DjangoJsonRequestFormatter(JsonFormatter):
+    def add_fields(
+        self,
+        log_record: dict[str, Any],
+        record: LogRecord,
+        message_dict: dict[str, Any],
+    ) -> None:
+        super().add_fields(log_record, record, message_dict)
+
+        log_record["time"] = datetime.fromtimestamp(record.created).isoformat()
+        log_record.pop("asctime", None)
+
+        log_record.update(
+            {
+                "pid": record.process,
+                "thread": record.thread,
+                "file": record.pathname,
+                "line": record.lineno,
+                "function": record.funcName,
+                "message": record.getMessage(),
+            }
+        )
+
+
 class JsonRequestFormatter(JsonFormatter):
     def add_fields(
         self,
