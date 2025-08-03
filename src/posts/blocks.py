@@ -87,7 +87,9 @@ class ArticleBlock(blocks.StructBlock):
     summary = blocks.TextBlock()
 
     featured_image = ImageChooserBlock(
-        help_text="Choose an image from your media library to display alongside content"
+        blank=True,
+        required=False,
+        help_text="Choose an image from your media library to display alongside content",
     )
 
     body = blocks.StreamBlock(
