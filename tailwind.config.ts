@@ -18,7 +18,7 @@ const config: Config = {
             '--tw-prose-quote-borders': 'var(--color-neutral-800)',
             '--tw-prose-captions': 'var(--color-stuble)',
             '--tw-prose-code': 'var(--color-accent)',
-            '--tw-prose-pre-code': 'var(--color-white)',
+            '--tw-prose-pre-code': 'var(--color-primary)',
             '--tw-prose-pre-bg': 'var(--color-darker)',
             '--tw-prose-th-borders': 'var(--color-neutral-700)',
             '--tw-prose-td-borders': 'var(--color-neutral-800)',
@@ -36,7 +36,7 @@ const config: Config = {
             '--tw-prose-invert-quote-borders': 'var(--color-neutral-800)',
             '--tw-prose-invert-captions': 'var(--color-primary)',
             '--tw-prose-invert-code': 'var(--color-accent)',
-            '--tw-prose-invert-pre-code': 'var(--color-white)',
+            '--tw-prose-invert-pre-code': 'var(--color-darker)',
             '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 5%)', // lighter background
             '--tw-prose-invert-th-borders': 'var(--color-neutral-700)',
             '--tw-prose-invert-td-borders': 'var(--color-neutral-800)',
