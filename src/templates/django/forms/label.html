@@ -7,6 +7,7 @@
   {% if field.field.required %}
     after:content-['*'] after:ml-1 after:text-red-500
   {% endif %}
+  {{ attrs.class }}
   "
   {% include "django/forms/attrs.html" %}
   >{{ field.label }}</{{ tag }}>

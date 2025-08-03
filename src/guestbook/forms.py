@@ -15,6 +15,14 @@ class GuestbookForm(forms.ModelForm):
     class Meta:
         model = Guestbook
         fields = ["name", "emoji", "style", "message", "url", "radius"]
+        container_classes = {
+            "name": "col-span-2",
+            "emoji": "col-span-1",
+            "message": "col-span-3",
+            "url": "col-span-3",
+            "style": "col-span-3",
+            "radius": "max-w-xs",
+        }
         help_texts = {
             "emoji": "",
         }
@@ -25,7 +33,6 @@ class GuestbookForm(forms.ModelForm):
                     "placeholder": "John Doe",
                     ":value": "form.name",
                     "@input": "updateFormField",
-                    "container_class": "col-span-2",
                 },
             ),
             "emoji": forms.TextInput(
@@ -33,7 +40,6 @@ class GuestbookForm(forms.ModelForm):
                     "autocomplete": "off",
                     ":value": "form.emoji",
                     "@input": "updateFormField",
-                    "container_class": "col-span-1",
                 },
             ),
             "message": forms.Textarea(
@@ -42,7 +48,6 @@ class GuestbookForm(forms.ModelForm):
                     "placeholder": "Leave a message...",
                     ":value": "form.message",
                     "@input": "updateFormField",
-                    "container_class": "col-span-3",
                 }
             ),
             "url": forms.URLInput(
@@ -51,14 +56,12 @@ class GuestbookForm(forms.ModelForm):
                     "placeholder": "https://your-site.com",
                     ":value": "form.url",
                     "@input": "updateFormField",
-                    "container_class": "col-span-3",
                 }
             ),
             "style": forms.RadioSelect(
                 attrs={
                     ":checked": "isTargetSelected",
                     "@change": "updateFormField",
-                    "container_class": "col-span-3",
                     "class": "mt-1 flex flex-row gap-2 flex-wrap",
                 }
             ),
@@ -66,7 +69,6 @@ class GuestbookForm(forms.ModelForm):
                 attrs={
                     "@input": "updateFormField",
                     ":selected": "isTargetSelected",
-                    "container_class": "max-w-xs",
                 }
             ),
         }

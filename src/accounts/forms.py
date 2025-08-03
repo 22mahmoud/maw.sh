@@ -24,20 +24,19 @@ class UserProfileForm(forms.ModelForm):
             "username",
             "avatar",
         ]
+        container_classes = {
+            "username": "sm:col-span-2",
+            "avatar": "sm:col-span-2 w-fit",
+        }
         widgets = {
             "first_name": forms.TextInput(attrs={"autocomplete": "given-name"}),
             "last_name": forms.TextInput(attrs={"autocomplete": "family-name"}),
             "username": forms.TextInput(
                 attrs={
                     "autocomplete": "username",
-                    "container_class": "sm:col-span-2",
                 }
             ),
-            "avatar": forms.ClearableFileInput(
-                attrs={
-                    "container_class": "sm:col-span-2 w-fit",
-                }
-            ),
+            "avatar": forms.ClearableFileInput(),
         }
 
 
