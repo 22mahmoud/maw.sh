@@ -1,3 +1,5 @@
+import sys
+
 from csp.constants import NONCE, NONE, SELF, UNSAFE_INLINE
 
 from config.env import env
@@ -42,18 +44,38 @@ SECURE_HSTS_SECONDS = int(env.int("SECURE_HSTS_SECONDS", DEFAULT_HSTS_SECONDS))
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
+    "formatters": {
+        "json": {
+            "()": "pythonjsonlogger.json.JsonFormatter",
+            "fmt": "%(asctime)s %(levelname)s %(name)s %(message)s %(pathname)s %(lineno)d %(exc_info)s",  # noqa: E501
+        },
+    },
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
+            "formatter": "json",
+            "stream": sys.stdout,
         },
     },
     "loggers": {
         "django": {
             "handlers": ["console"],
             "level": env.str("DJANGO_LOG_LEVEL", "INFO"),
+            "propagate": False,
+        },
+        "django.request": {
+            "handlers": ["console"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+        "django.db.backends": {
+            "handlers": ["console"],
+            "level": env.str("DJANGO_LOG_BACKENDS_LEVEL", "DEBUG"),
+            "propagate": False,
         },
     },
 }
+
 
 EMAIL_BACKEND = "djcelery_email.backends.CeleryEmailBackend"
 

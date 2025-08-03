@@ -30,6 +30,7 @@ dependencies = [
   "markdown>=3.8.2",
   "pillow>=11.3.0",
   "psycopg[binary]>=3.2.9",
+  "python-json-logger>=3.3.0",
   "requests>=2.32.4",
   "wagtail>=7.0.1",
   "wagtail-meilisearch>=1.0.0",
