@@ -87,8 +87,7 @@ class ProjectPage(Page):
                 blocks.RichTextBlock(
                     features=["bold", "italic", "link", "code", "blockquote"],
                     help_text=(
-                        "Write your article content.",
-                        "Use headings (H2, H3) to structure your text",
+                        "Write your article content. Use headings (H2, H3) to structure your text"
                     ),
                 ),
             ),

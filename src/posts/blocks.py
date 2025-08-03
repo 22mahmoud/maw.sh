@@ -64,8 +64,7 @@ class NoteBlock(blocks.StructBlock):
         features=["bold", "italic", "link", "blockquote", "hr"],
         required=True,
         help_text=(
-            "Write your note content.",
-            "Supports rich text formatting like bold, italic, and links",
+            "Write your note content. Supports rich text formatting like bold, italic, and links"
         ),
     )
     media = MediaStreamBlock(
@@ -99,8 +98,7 @@ class ArticleBlock(blocks.StructBlock):
                 blocks.RichTextBlock(
                     features=["bold", "italic", "link", "code", "blockquote"],
                     help_text=(
-                        "Write your article content.",
-                        "Use headings (H2, H3) to structure your text",
+                        "Write your article content. Use headings (H2, H3) to structure your text"
                     ),
                 ),
             ),
