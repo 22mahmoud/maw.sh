@@ -29,8 +29,8 @@ class ProjectPageTechnologyRelationship(Orderable):
 
 
 class ProjectsIndexPage(Page):
-    def get_context(self, value, parent_context=None):
-        context = super().get_context(value, parent_context=parent_context)
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
 
         projects = (
             ProjectPage.objects.child_of(self)  # type: ignore

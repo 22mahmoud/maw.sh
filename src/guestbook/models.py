@@ -18,8 +18,8 @@ class GuestbookIndexPage(Page):
     parent_page_types = ["home.HomePage"]
     subpage_types = ["guestbook.GuestbookFormPage"]
 
-    def get_context(self, request):
-        context = super().get_context(request)
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
         context["entries"] = Guestbook.objects.filter(
             visibility=Guestbook.Visibility.PUBLIC
         ).order_by("-created_at")
