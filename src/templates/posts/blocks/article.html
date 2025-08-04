@@ -1,15 +1,14 @@
 {% load wagtailimages_tags wagtailroutablepage_tags wagtailcore_tags %}
 
 {% block content %}
-
-  <div class="flex flex-col">
+  <div class="w-full flex flex-col">
     {% if self.summary and not is_feed %}
       <div class="p-summary sr-only">
         {{ self.summary }}
       </div>
     {% endif %}
 
-    <div class="e-content prose prose-main prose-sm sm:prose-base lg:prose-lg max-w-none">
+    <div class="w-full e-content prose prose-main sm:prose-base md:prose-lg lg:prose-xl mx-auto px-4">
       {% for block in self.body %}
         {% if block.block_type == 'image' %}
           {% image block.value original as full %}

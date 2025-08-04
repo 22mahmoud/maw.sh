@@ -1,22 +1,29 @@
 {% load link_tags base_tags wagtailcore_tags %}
 
 {% with heading_id=self.heading_text.source|striptags|slugify %}
-  <{{ self.size|default:"h2" }}
-  {% if self.use_anchor %}
-    id="{{ heading_id }}"
-  {% endif %}
-  class="scroll-mt-24 text-primary font-heading font-bold tracking-tight {{ self.text_size|default:'' }} text-{{ self.text_position|default:'left' }}" >
-  {{ self.heading_text.source|strip_p_tags|richtext }}
-
-  {% if self.use_anchor %}
-    {% link
-      icon="paperclip"
-      href="#"|add:heading_id size="md"
-      icon_class="w-5! h-5! text-secondary! hover:text-accent!"
-      aria_label="Anchor link for this section"
-      class="inline-block ml-2 align-baseline transition-all duration-200 transform hover:scale-110" %}
-    {% endlink %}
-  {% endif %}
-
-  </{{ self.size|default:"h2" }}>
+  <div class="group relative">
+    <{{ self.size|default:"h2" }}
+    {% if self.use_anchor %}
+      id="{{ heading_id }}"
+    {% endif %}
+    class="relative scroll-mt-24 font-heading font-bold tracking-tight text-primary {{ self.text_size|default:'' }} text-{{ self.text_position|default:'left' }} text-balance"
+    >
+    {% if self.use_anchor %}
+      <a href="#{{ heading_id }}"
+         aria-label="Anchor link for this section"
+         class="inline-block font-bold transition-colors duration-300 hover:text-secondary text-inherit no-underline">
+        {{ self.heading_text.source|strip_p_tags|richtext }}
+      </a>
+      <span class="absolute left-[-2rem] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <a href="#{{ heading_id }}"
+           aria-label="Anchor icon link for this section"
+           class="block text-secondary/70 hover:text-accent transition-colors duration-300">
+          {% icon "paperclip" %}
+        </a>
+      </span>
+    {% else %}
+      {{ self.heading_text.source|strip_p_tags|richtext }}
+    {% endif %}
+    </{{ self.size|default:"h2" }}>
+  </div>
 {% endwith %}
