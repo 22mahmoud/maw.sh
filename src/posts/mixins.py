@@ -1,5 +1,8 @@
 from django.http import HttpResponsePermanentRedirect
 from django.utils.timezone import now
+from wagtail import blocks
+
+from src.posts.utils import extract_headings_from_streamblock
 
 
 class SinglePostMixin:
@@ -28,6 +31,19 @@ class SinglePostMixin:
     @property
     def prev_sibling(self):
         return self.get_prev_siblings().live().first()  # type: ignore
+
+    @property
+    def toc(self):
+        if not self.body:  # type: ignore
+            return []
+
+        items = []
+        for block in self.body:  # type: ignore
+            body = block.value.get("body")
+            if isinstance(body, blocks.StreamValue):
+                items.extend(extract_headings_from_streamblock(body))
+
+        return items
 
     def generate_title(self, timestamp: str) -> str:
         return timestamp

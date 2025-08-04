@@ -14,6 +14,11 @@ def strip_p_tags(value):
     return re.sub(r"</?p[^>]*>", "", value)
 
 
+@register.filter
+def mul(value, arg):
+    return int(value) * int(arg)
+
+
 @register.simple_tag
 def icon(name: str, **kwargs):
     if not name:
