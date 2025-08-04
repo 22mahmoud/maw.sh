@@ -164,7 +164,7 @@
                          class="group block w-10 h-10 rounded-full overflow-hidden transition-all duration-200 hover:scale-110">
                         <div class="w-full h-full ring-2 ring-transparent group-hover:ring-accent/70 rounded-full transition-all duration-200">
                           {% if mention.author.photo %}
-                            {% picture mention.author.photo width-40 lading="lazy" class="w-full h-full object-cover" %}
+                            {% picture mention.author.photo format-{avif,webp,jpeg} width-40 lading="lazy" class="w-full h-full object-cover" %}
                           {% else %}
                             <div class="flex items-center justify-center w-full h-full bg-neutral-700 text-primary font-bold text-lg">
                               ?
@@ -189,7 +189,7 @@
                          class="group block w-10 h-10 rounded-full overflow-hidden transition-all duration-200 hover:scale-110">
                         <div class="w-full h-full ring-2 ring-transparent group-hover:ring-accent/70 rounded-full transition-all duration-200">
                           {% if mention.author.photo %}
-                            {% picture mention.author.photo width-40 lading="lazy" class="w-full h-full object-cover" %}
+                            {% picture mention.author.photo format-{avif,webp,jpeg} width-40 lading="lazy" class="w-full h-full object-cover" %}
                           {% else %}
                             <div class="flex items-center justify-center w-full h-full bg-neutral-700 text-primary font-bold text-lg">
                               ?
@@ -214,7 +214,7 @@
                          class="group block w-10 h-10 rounded-full overflow-hidden transition-all duration-200 hover:scale-110">
                         <div class="w-full h-full ring-2 ring-transparent group-hover:ring-accent/70 rounded-full transition-all duration-200">
                           {% if mention.author.photo %}
-                            {% picture mention.author.photo width-40 lading="lazy" class="w-full h-full object-cover" %}
+                            {% picture mention.author.photo format-{avif,webp,jpeg} width-40 lading="lazy" class="w-full h-full object-cover" %}
                           {% else %}
                             <div class="flex items-center justify-center w-full h-full bg-neutral-700 text-primary font-bold text-lg">
                               ?
@@ -240,7 +240,7 @@
                              class="group block w-10 h-10 rounded-full overflow-hidden">
                             <div class="w-full h-full rounded-full ring-2 ring-transparent group-hover:ring-accent/70 transition-all duration-200">
                               {% if mention.author.photo %}
-                                {% picture mention.author.photo width-40 lading="lazy" class="w-full h-full object-cover" %}
+                                {% picture mention.author.photo format-{avif,webp,jpeg} width-40 lading="lazy" class="w-full h-full object-cover" %}
                               {% else %}
                                 <div class="flex items-center justify-center w-full h-full bg-neutral-700 text-primary font-bold text-lg">
                                   ?
