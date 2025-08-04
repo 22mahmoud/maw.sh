@@ -1,5 +1,8 @@
 providers = ["python", "node"]
 
+[phases.setup]
+aptPkgs = ['...', 'libmagickwand-dev']
+
 [phases."python:post"]
 dependsOn = ['node:build']
 cmds = [

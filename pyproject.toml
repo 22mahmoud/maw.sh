@@ -36,6 +36,7 @@ dependencies = [
   "wagtail-meilisearch>=1.0.0",
   "wagtailmedia>=0.16.0",
   "wagtailmenus>=4.0.4",
+  "wand>=0.6.13",
   "whitenoise[brotli]>=6.9.0",
 ]
 
