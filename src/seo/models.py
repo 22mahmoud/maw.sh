@@ -22,7 +22,7 @@ class SeoMetaFields(Page):
     )
 
     og_image = models.ForeignKey(
-        "wagtailimages.Image",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -60,7 +60,7 @@ class SeoSettings(BaseSiteSetting):
     )
 
     og_image_default = models.ForeignKey(
-        "wagtailimages.Image",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,

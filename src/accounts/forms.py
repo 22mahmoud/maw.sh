@@ -13,7 +13,7 @@ from wagtail.models import Collection
 from src.base.renderers import FormRenderer
 
 User = get_user_model()
-ImageModel = get_image_model()
+Image = get_image_model()
 
 
 class UserProfileForm(forms.ModelForm):
@@ -37,15 +37,15 @@ class UserProfileForm(forms.ModelForm):
 
         if avatar_file:
             collection = Collection.objects.get(name="avatars")
-            image = ImageModel(
+            image = Image(
                 title=f"{user.username} Avatar",
                 file=avatar_file,
                 collection=collection,
             )
 
             image.save()
-
             user.avatar = image
+
             if existing_avatar:
                 existing_avatar.delete()
 

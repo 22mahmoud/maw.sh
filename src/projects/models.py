@@ -62,7 +62,7 @@ class ProjectPage(Page):
     )
 
     featured_image = models.ForeignKey(
-        "wagtailimages.Image",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,

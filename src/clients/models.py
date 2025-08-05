@@ -9,7 +9,7 @@ class Client(  # type: ignore
     name = models.CharField(max_length=255)
     website = models.URLField(blank=True)
     logo = models.ForeignKey(
-        "wagtailimages.Image",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,

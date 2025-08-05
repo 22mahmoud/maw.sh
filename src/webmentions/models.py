@@ -8,7 +8,7 @@ class WebmentionAuthor(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     url = models.URLField(blank=True, null=True)
     photo = models.ForeignKey(
-        "wagtailimages.Image",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,

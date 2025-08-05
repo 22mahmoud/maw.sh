@@ -7,9 +7,11 @@ from django.conf import settings
 from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
 from django.db import transaction
-from wagtail.images.models import Image
+from wagtail.images import get_image_model
 
 from src.webmentions.models import Webmention, WebmentionAuthor, WebmentionSync
+
+Image = get_image_model()
 
 
 class Command(BaseCommand):

@@ -4,7 +4,7 @@ from django.db import models
 
 class User(AbstractUser):
     avatar = models.ForeignKey(
-        "wagtailimages.Image",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,

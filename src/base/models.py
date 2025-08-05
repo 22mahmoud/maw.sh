@@ -66,7 +66,7 @@ class PostPersonRelationship(Orderable, models.Model):
 class Technology(models.Model):
     name = models.CharField(max_length=50, unique=True)
     icon = models.ForeignKey(
-        "wagtailimages.Image",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -111,7 +111,7 @@ class Person(  # type: ignore
     )
 
     image = models.ForeignKey(
-        "wagtailimages.Image",
+        "images.CustomImage",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
