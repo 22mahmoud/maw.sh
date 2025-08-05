@@ -61,7 +61,7 @@ class NoteBlockValue(blocks.StructValue):
 
 class NoteBlock(blocks.StructBlock):
     content = blocks.RichTextBlock(
-        features=["bold", "italic", "link", "blockquote", "hr"],
+        features=["bold", "italic", "link", "blockquote", "code", "ul", "ol", "hr"],
         required=True,
         help_text=(
             "Write your note content. Supports rich text formatting like bold, italic, and links"
