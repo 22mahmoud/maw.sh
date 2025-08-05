@@ -7,8 +7,6 @@ from src.contact.models import ContactSubmission
 class ContactForm(forms.ModelForm):
     default_renderer = FormRenderer()
 
-    nametest = forms.CharField()
-
     class Meta:
         model = ContactSubmission
         container_classes = {
@@ -16,7 +14,7 @@ class ContactForm(forms.ModelForm):
             "email": "w-full md:col-span-1",
             "message": "w-full md:col-span-2",
         }
-        fields = ["name", "email", "message", "nametest"]
+        fields = ["name", "email", "message"]
         widgets = {
             "name": forms.TextInput(
                 attrs={
