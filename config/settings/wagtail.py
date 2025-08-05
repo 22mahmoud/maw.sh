@@ -33,6 +33,7 @@ WAGTAIL_INSTALLED_APPS = [
     "wagtail.users",
     "wagtail.snippets",
     "wagtail.documents",
+    "src.images",
     "src.images.apps.CustomImagesAppConfig",
     "wagtail.search",
     "wagtail.admin",
@@ -117,6 +118,7 @@ WAGTAILSEARCH_BACKENDS = {
 }
 
 
+WAGTAILIMAGES_IMAGE_MODEL = "images.CustomImage"
 WAGTAILIMAGES_JPEG_QUALITY = 75
 WAGTAILIMAGES_WEBP_QUALITY = 65
 WAGTAILIMAGES_AVIF_QUALITY = 55
