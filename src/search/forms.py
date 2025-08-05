@@ -9,9 +9,8 @@ class SearchForm(forms.Form):
     q = forms.CharField(
         required=False,
         label="",
-        widget=forms.TextInput(
+        widget=forms.widgets.SearchInput(  # type: ignore
             attrs={
-                "type": "search",
                 "placeholder": "Search...",
                 "aria-label": "Search",
                 "autocomplete": "search",

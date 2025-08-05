@@ -47,13 +47,11 @@ class ProfileView(LoginRequiredMixin, FormView):
         return kwargs
 
     def form_valid(self, form):
-        print("avatar:", form.cleaned_data.get("avatar"))
-        print("avatar-clear in POST:", self.request.POST.get("avatar-clear"))
-
         form.save()
         messages.success(self.request, "Your profile has been updated.")
 
         if getattr(self.request, "htmx", False):
+            form = self.get_form_class()(instance=self.request.user)
             return self.render_htmx_partial(form)
 
         return super().form_valid(form)

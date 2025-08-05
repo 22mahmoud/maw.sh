@@ -3,7 +3,13 @@ from django.db import models
 
 
 class User(AbstractUser):
-    avatar = models.ImageField(upload_to="avatars/", blank=True, null=True)
+    avatar = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
 
     def __str__(self):
         return self.username

@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
-{% load comments_xtd %}
-{% load button_tags %}
+{% load button_tags i18n comments_xtd wagtailimages_tags %}
 
 {% block title %}
   {% trans "Confirm your opinion" %}
@@ -27,11 +25,16 @@
         <div class="flex-1 flex gap-4">
           <div class="flex-shrink-0">
             <div class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-transparent group-hover:ring-accent transition-all duration-200">
-              <img src="{{ comment.user_email|xtd_comment_gravatar_url }}"
-                   alt="{{ comment.user_email }}"
-                   width="40"
-                   height="40"
-                   class="w-full h-full object-cover" />
+              {% if comment.user.avatar %}
+                {% picture comment.user.avatar format-{avif,webp,jpeg} width-40 class="w-10 h-10 rounded-full object-cover" alt=comment.user_name %}
+              {% else %}
+                <img src="{{ comment.user_email|xtd_comment_gravatar_url }}"
+                     alt="{{ comment.user_name }}’s avatar"
+                     class="w-10 h-10 rounded-full object-cover"
+                     width="40"
+                     height="40"
+                     loading="lazy">
+              {% endif %}
             </div>
           </div>
 
