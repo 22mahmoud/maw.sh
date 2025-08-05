@@ -4,6 +4,11 @@ import django.db.models.deletion
 from django.db import migrations, models
 
 
+def clean_bad_avatar_data(apps, schema_editor):
+    User = apps.get_model("accounts", "User")
+    User.objects.filter(avatar="").update(avatar=None)
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -17,6 +22,7 @@ class Migration(migrations.Migration):
             name="old_avatar",
             field=models.ImageField(blank=True, null=True, upload_to="avatars/"),
         ),
+        migrations.RunPython(clean_bad_avatar_data),
         migrations.AlterField(
             model_name="user",
             name="avatar",
