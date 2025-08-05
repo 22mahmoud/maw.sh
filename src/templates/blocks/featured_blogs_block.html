@@ -14,8 +14,16 @@
 
     <ul class="h-feed grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       {% for post in posts %}
-        <li class="bg-gradient-to-r from-gradient-1 to-gradient-2 pb-[2px] hover:from-gradient-2 hover:to-gradient-1 transition-all duration-300">
-          {% include "posts/blocks/article_compact.html" with post=post %}
+        <li>
+          <div class="group relative">
+            <div class="pb-[2px]">
+              <div class="bg-dark rounded-t h-full">
+                {% include "posts/blocks/article_compact.html" with post=post %}
+              </div>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-gradient-1 to-gradient-2 group-hover:from-gradient-2 group-hover:to-gradient-1 transition-all duration-300 rounded-b">
+            </div>
+          </div>
         </li>
       {% endfor %}
     </ul>
