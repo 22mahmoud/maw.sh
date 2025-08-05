@@ -26,7 +26,6 @@ def migrate_images(apps, schema_editor):
                 file_hash=old_image.file_hash,
                 collection=old_image.collection,
                 uploaded_by_user=old_image.uploaded_by_user,
-                tags=old_image.tags.all(),
                 caption="",
             )
 
