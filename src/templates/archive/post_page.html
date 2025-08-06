@@ -8,23 +8,27 @@
 {% endblock head %}
 
 {% block aside %}
-  <details class="py-2 px-4">
-    <summary class="cursor-pointer text-accent font-semibold text-base hover:underline">
-      Table of Contents
-    </summary>
-    <nav aria-label="Table of contents">
-      <ul class="flex flex-col gap-y-2 mt-4">
-        {% for heading in page.toc %}
-          <li style="padding-left: {{ heading.depth|add:'-2'|add:'1'|mul:12 }}px;">
-            <a href="#{{ heading.slug }}"
-               class="block transition-colors duration-200 text-primary/90 hover:text-accent hover:underline">
-              {{ heading.text }}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </details>
+  {% with toc=page.toc %}
+    {% if toc %}
+      <details class="py-2 px-4">
+        <summary class="cursor-pointer text-accent font-semibold text-base hover:underline">
+          Table of Contents
+        </summary>
+        <nav aria-label="Table of contents">
+          <ul class="flex flex-col gap-y-2 mt-4">
+            {% for heading in toc %}
+              <li style="padding-left: {{ heading.depth|add:'-2'|add:'1'|mul:12 }}px;">
+                <a href="#{{ heading.slug }}"
+                   class="block transition-colors duration-200 text-primary/90 hover:text-accent hover:underline">
+                  {{ heading.text }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </details>
+    {% endif %}
+  {% endwith %}
 {% endblock aside %}
 
 {% block content %}
