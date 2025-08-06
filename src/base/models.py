@@ -5,9 +5,12 @@ from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from modelcluster.models import ClusterableModel
 from taggit.models import TaggedItemBase
+from wagtail import blocks
 from wagtail.admin.panels import FieldPanel, ObjectList, TabbedInterface
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
+from wagtail.embeds.blocks import EmbedBlock
 from wagtail.fields import StreamField
+from wagtail.images.blocks import ImageChooserBlock
 from wagtail.models import (
     DraftStateMixin,
     LockableMixin,
@@ -20,8 +23,10 @@ from wagtail.models import (
 from wagtail.models.pages import slugify
 from wagtailmedia.blocks import VideoChooserBlock
 
+from src.base.blocks import CodeBlock, ListBlock
 from src.base.blocks.feed import FeaturedBlogBlock, FeedBlock
 from src.base.blocks.layout import FlexLayoutBlock, SpacerBlock
+from src.base.blocks.text import HeadingBlock
 from src.clients.blocks import ClientsMarqueeStaticBlock
 from src.contact.blocks import ContactFormStaticBlock
 from src.projects.blocks import FeaturedProjectsStaticBlock
@@ -188,6 +193,26 @@ class GenericPage(SeoMetaFields, Page):  # type: ignore
             ("spacer", SpacerBlock()),
             ("contact_form", ContactFormStaticBlock()),
             ("featured_projects", FeaturedProjectsStaticBlock()),
+            (
+                "rich_text",
+                blocks.RichTextBlock(
+                    features=["bold", "italic", "link", "code", "blockquote"],
+                    help_text=(
+                        "Write your article content. Use headings (H2, H3) to structure your text"
+                    ),
+                ),
+            ),
+            (
+                "image",
+                ImageChooserBlock(
+                    help_text="Choose an image from your media library to display alongside content"
+                ),
+            ),
+            ("list", ListBlock()),
+            ("codeblock", CodeBlock()),
+            ("video", VideoChooserBlock()),
+            ("embed", EmbedBlock()),
+            ("heading", HeadingBlock()),
         ],
         use_json_field=True,
         blank=True,
