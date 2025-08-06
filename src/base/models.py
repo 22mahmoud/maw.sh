@@ -20,7 +20,11 @@ from wagtail.models import (
 from wagtail.models.pages import slugify
 from wagtailmedia.blocks import VideoChooserBlock
 
+from src.base.blocks.feed import FeaturedBlogBlock, FeedBlock
+from src.base.blocks.layout import FlexLayoutBlock, SpacerBlock
 from src.clients.blocks import ClientsMarqueeStaticBlock
+from src.contact.blocks import ContactFormStaticBlock
+from src.projects.blocks import FeaturedProjectsStaticBlock
 from src.seo.models import SeoMetaFields
 
 from .blocks import ButtonBlock, HeroBlock, SocialLinkStreamBlock
@@ -178,6 +182,12 @@ class GenericPage(SeoMetaFields, Page):  # type: ignore
             ("social_links", SocialLinkStreamBlock()),
             ("Video", VideoChooserBlock()),
             ("button", ButtonBlock()),
+            ("flex_layout", FlexLayoutBlock()),
+            ("featured_blog", FeaturedBlogBlock()),
+            ("feed", FeedBlock()),
+            ("spacer", SpacerBlock()),
+            ("contact_form", ContactFormStaticBlock()),
+            ("featured_projects", FeaturedProjectsStaticBlock()),
         ],
         use_json_field=True,
         blank=True,
