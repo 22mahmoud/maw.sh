@@ -33,6 +33,8 @@ class MediaStreamBlock(VideoStreamBlock):
         help_text="Choose an image from your media library to display alongside content"
     )
 
+    codeblock = CodeBlock()
+
     class Meta:  # type: ignore
         label = "Media"
 
