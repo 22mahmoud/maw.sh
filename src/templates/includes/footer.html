@@ -6,9 +6,19 @@
       Footer
     </div>
     <div class="bg-darker px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 text-sm sm:text-base">
-      <div class="flex flex-wrap gap-2 sm:gap-3">
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
         <span>Mahmoud Ashraf</span>
         <span class="text-secondary">© Copyright 2025 • All rights reserved</span>
+        <span class="hidden sm:inline">•</span>
+        {% link href="/privacy-policy/" class="underline text-secondary hover:text-white" %}
+          Privacy Policy
+        {% endlink %}
+        {% link href="/terms-of-service/" class="underline text-secondary hover:text-white" %}
+          Terms
+        {% endlink %}
+        {% link href="/contact/" class="underline text-secondary hover:text-white" %}
+          Contact
+        {% endlink %}
       </div>
       <div class="w-full sm:w-auto text-right sm:text-left">
         {% link href="#top" class="font-bold underline block sm:inline" %}
