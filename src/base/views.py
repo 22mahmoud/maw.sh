@@ -7,7 +7,7 @@ from src.base.models import DummyPage
 
 robots_txt_content = """\
 User-agent: *
-Sitemap: https://site.mahmoudashraf.dev/sitemap.xml
+Sitemap: https://mahmoudashraf.dev/sitemap.xml
 """
 
 
