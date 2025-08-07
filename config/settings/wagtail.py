@@ -72,6 +72,7 @@ WAGTAILDOCS_EXTENSIONS = [
     "txt",
     "xlsx",
     "zip",
+    "gpg",
 ]
 
 WAGTAILMEDIA = {

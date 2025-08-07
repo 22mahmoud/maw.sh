@@ -25,9 +25,9 @@
     - [ ] TV
     - [ ] Movies
     - [ ] Leetcode
-- [ ] About
+- [x] About
 - [ ] Uses
-- [ ] Contact
+- [x] Contact
 - [ ] Services / hire me
 - [ ] Resume
 - [x] RSS
