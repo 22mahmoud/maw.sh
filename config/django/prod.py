@@ -13,18 +13,13 @@ STORAGES = {
         "BACKEND": "config.settings.django_storage.MediaR2Storage",
     },
     "staticfiles": {
-        "BACKEND": "src.base.storage.CustomStaticFilesStorage",
+        "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
     },
     "wagtailrenditions": {
         "BACKEND": "config.settings.django_storage.WagtailRenditionStorage",
     },
 }
 
-
-STATICFILES_HASH_EXCLUDE = [
-    r"^assets/",
-    r"^manifest\.json$",
-]
 
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
