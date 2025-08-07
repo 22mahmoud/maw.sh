@@ -37,12 +37,18 @@
         </li>
 
         {% for entry in entries %}
-          <li class="prose-main prose break-inside-avoid mb-6 p-6 flex flex-col shadow-xl border border-neutral-700 transition hover:scale-[1.01] duration-150 ease-in-out {{ entry.get_style_classes }} {{ entry.radius }}">
+          <li class="prose-main prose break-inside-avoid mb-6 p-6 flex flex-col shadow-xl border
+                     {% if entry.pinned %}
+                       border-yellow-500
+                     {% else %}
+                       border-neutral-700
+                     {% endif %}
+                     transition hover:scale-[1.01] duration-150 ease-in-out {{ entry.get_style_classes }} {{ entry.radius }}">
             <div class="text-3xl">
               {{ entry.emoji|default:"✨" }}
             </div>
 
-            <div class="flex-1 mt-3 break-words line-clamp-5">
+            <div class="flex-1 mt-3 break-words">
               {{ entry.message_html|safe }}
             </div>
 

@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Case, IntegerField, Value, When
 from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
@@ -20,9 +21,15 @@ class GuestbookIndexPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context["entries"] = Guestbook.objects.filter(
-            visibility=Guestbook.Visibility.PUBLIC
-        ).order_by("-created_at")
+        context["entries"] = (
+            Guestbook.objects.filter(visibility=Guestbook.Visibility.PUBLIC)
+            .annotate(
+                pinned_order=Case(
+                    When(pinned=True, then=Value(0)), default=Value(1), output_field=IntegerField()
+                )
+            )
+            .order_by("pinned_order", "-created_at")
+        )
 
         return context
 
@@ -74,12 +81,13 @@ class Guestbook(models.Model):
         PRIVATE = "private", "Private"
         HIDDEN = "hidden", "Hidden"
 
+    pinned = models.BooleanField(default=False, blank=True)
     name = models.CharField(max_length=100)
     emoji = models.CharField(max_length=2, help_text="Emoji representing mood or vibe")
     message = models.TextField(
-        max_length=280,
+        max_length=2000,
         help_text=(
-            "Supports basic Markdown and HTML. Max 280 characters. "
+            "Supports basic Markdown and HTML. Max 2000 characters. "
             "GIFs allowed from giphy/tenor/imgur."
         ),
     )

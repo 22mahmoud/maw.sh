@@ -27,6 +27,7 @@ ALLOWED_TAGS = [
     "br",
     "strong",
     "em",
+    "hr",
     "code",
     "pre",
     "ul",

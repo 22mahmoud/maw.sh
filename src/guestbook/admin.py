@@ -20,6 +20,7 @@ class GuestbookAdmin(admin.ModelAdmin):
                     "message",
                     "message_html",
                     "url",
+                    "pinned",
                 )
             },
         ),
