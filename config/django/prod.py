@@ -6,22 +6,19 @@ from config.env import env
 from config.settings.wagtail_prod import *  # noqa: E402, F403
 
 from .base import *  # noqa: F403
-from .base import BASE_DIR
 
 STORAGES = {
     "default": {
         "BACKEND": "config.settings.django_storage.MediaR2Storage",
     },
     "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
+        "BACKEND": "src.base.storage.ManifestStaticFilesStorage",
     },
     "wagtailrenditions": {
         "BACKEND": "config.settings.django_storage.WagtailRenditionStorage",
     },
 }
 
-
-STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEBUG = env.bool("DEBUG", default=False)
 

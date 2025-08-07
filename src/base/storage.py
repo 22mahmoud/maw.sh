@@ -1,26 +1,13 @@
-import re
-
-from django.conf import settings
-from django.contrib.staticfiles.storage import ManifestStaticFilesStorage
+from django.contrib.staticfiles.storage import ManifestStaticFilesStorage as Base
 
 
-class CustomStaticFilesStorage(ManifestStaticFilesStorage):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+def _is_excluded(name):
+    return name.startswith("assets/") or name == "manifest.json"
 
-        patterns = getattr(settings, "STATICFILES_HASH_EXCLUDE", [])
-        self.exclude_patterns = [re.compile(p) for p in patterns]
 
-    def should_exclude(self, name):
-        return any(p.match(name) for p in self.exclude_patterns)
-
+class ManifestStaticFilesStorage(Base):
     def hashed_name(self, name, content=None, filename=None):
-        if self.should_exclude(name):
+        if _is_excluded(name):
             return name
-        return super().hashed_name(name, content, filename)
 
-    def post_process(self, paths, dry_run=False, **options):
-        filtered_paths = {
-            path: storage for path, storage in paths.items() if not self.should_exclude(path)
-        }
-        return super().post_process(filtered_paths, dry_run, **options)  # type: ignore
+        return super().hashed_name(name, content, filename)

@@ -13,6 +13,7 @@ export default defineConfig({
   build: {
     manifest: 'manifest.json',
     outDir: path.resolve('./static'),
+    copyPublicDir: false,
     emptyOutDir: true,
     minify: 'terser',
     cssMinify: 'esbuild',
