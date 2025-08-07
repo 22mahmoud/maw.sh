@@ -145,12 +145,18 @@
       {% if not request.htmx %}
         {% include "includes/footer.html" %}
 
+        <script defer
+                data-api="/api/p/event"
+                data-domain="mahmoudashraf.dev"
+                src="/js/p/script.js"></script>
+
         {% if False and not request.user.is_authenticated %}
           <script nonce="{{ CSP_NONCE }}" src="//accounts.google.com/gsi/client" async></script>
           {# djlint:off #}
-      <div id="g_id_onload"
-           data-client_id="269809974094-1mjt6e4clvjjbg06884vjv8k59t8qa6a.apps.googleusercontent.com"
-           data-login_uri="{% url 'google_login_by_token' %}">
+          <div
+            id="g_id_onload"
+            data-client_id="269809974094-1mjt6e4clvjjbg06884vjv8k59t8qa6a.apps.googleusercontent.com"
+            data-login_uri="{% url 'google_login_by_token' %}">
           {# djlint:on #}
         </div>
       {% endif %}
