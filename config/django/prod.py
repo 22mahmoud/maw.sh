@@ -4,7 +4,6 @@ from csp.constants import NONCE, NONE, SELF, UNSAFE_INLINE
 
 from config.env import env
 from config.settings.wagtail_prod import *  # noqa: E402, F403
-from config.settings.whitenoise import *  # noqa: F403
 
 from .base import *  # noqa: F403
 from .base import BASE_DIR
@@ -14,12 +13,18 @@ STORAGES = {
         "BACKEND": "config.settings.django_storage.MediaR2Storage",
     },
     "staticfiles": {
-        "BACKEND": "config.settings.whitenoise.CustomStaticFilesStorage",
+        "BACKEND": "src.base.storage.CustomStaticFilesStorage",
     },
     "wagtailrenditions": {
         "BACKEND": "config.settings.django_storage.WagtailRenditionStorage",
     },
 }
+
+
+STATICFILES_HASH_EXCLUDE = [
+    r"^assets/",
+    r"^manifest\.json$",
+]
 
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
