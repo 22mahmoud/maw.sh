@@ -4,6 +4,12 @@ from wagtail import blocks
 class HeadingBlock(blocks.StructBlock):
     heading_text = blocks.RichTextBlock(features=["bold", "italic", "link", "code"], required=True)
 
+    subheading_text = blocks.RichTextBlock(
+        features=["bold", "italic", "link", "code"],
+        required=False,
+        help_text="Optional subheading text displayed below the main heading.",
+    )
+
     size = blocks.ChoiceBlock(
         choices=[
             ("", "Select a heading size"),

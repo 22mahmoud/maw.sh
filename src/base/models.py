@@ -28,7 +28,7 @@ from src.base.blocks.feed import FeaturedBlogBlock, FeedBlock
 from src.base.blocks.layout import FlexLayoutBlock, SpacerBlock
 from src.base.blocks.text import HeadingBlock
 from src.clients.blocks import ClientsMarqueeStaticBlock
-from src.contact.blocks import ContactFormStaticBlock
+from src.contact.blocks import ContactFormBlock
 from src.projects.blocks import FeaturedProjectsStaticBlock
 from src.seo.models import SeoMetaFields
 
@@ -191,12 +191,12 @@ class GenericPage(SeoMetaFields, Page):  # type: ignore
             ("featured_blog", FeaturedBlogBlock()),
             ("feed", FeedBlock()),
             ("spacer", SpacerBlock()),
-            ("contact_form", ContactFormStaticBlock()),
+            ("contact_form", ContactFormBlock()),
             ("featured_projects", FeaturedProjectsStaticBlock()),
             (
                 "rich_text",
                 blocks.RichTextBlock(
-                    features=["bold", "italic", "link", "code", "blockquote"],
+                    features=["bold", "italic", "link", "blockquote", "code", "ul", "ol", "hr"],
                     help_text=(
                         "Write your article content. Use headings (H2, H3) to structure your text"
                     ),

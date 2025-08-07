@@ -1,42 +1,30 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
-{% load wagtailimages_tags %}
-
-{% block head %}
-  {% for block in page.body %}
-    {% if block.block_type == 'hero' %}
-      {% srcset_image block.value.image format-avif width-{160,192,256,288,576} as avif %}
-      {% srcset_image block.value.image format-webp width-{160,192,256,288,576} as webp %}
-
-      <link rel="preload"
-            as="image"
-            type="image/avif"
-            imagesrcset="{% for r in avif.renditions %}
-                           {{ r.url }} {{ r.width }}w
-                           {% if not forloop.last %}
-                             ,
-                           {% endif %}
-                         {% endfor %}"
-            imagesizes="(min-width: 1024px) 288px, (min-width: 640px) 256px, (min-width: 475px) 192px, 160px"
-            fetchpriority="high">
-
-      <link rel="preload"
-            as="image"
-            type="image/webp"
-            imagesrcset="{% for r in webp.renditions %}
-                           {{ r.url }} {{ r.width }}w
-                           {% if not forloop.last %}
-                             ,
-                           {% endif %}
-                         {% endfor %}"
-            imagesizes="(min-width: 1024px) 288px, (min-width: 640px) 256px, (min-width: 475px) 192px, 160px"
-            fetchpriority="high">
-    {% endif %}
-  {% endfor %}
-{% endblock head %}
 
 {% block content %}
-  {% for block in page.body %}
-    {% include_block block %}
-  {% endfor %}
+  <div class="flex-1 w-full bg-dark px-4 py-6 md:py-10 zigzag">
+    <div class="max-w-prose mx-auto">
+      <div class="max-w-3xl mx-auto mb-10 text-center">
+        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary">
+          {{ page.title }}
+        </h2>
+
+        {% if page.introduction %}
+          <p class="mt-4 text-base sm:text-lg text-secondary max-w-prose mx-auto">
+            {{ page.introduction }}
+          </p>
+        {% endif %}
+      </div>
+
+      {% for block in page.body %}
+        {% if block.block_type == "clients" or block.block_type == "contact_form" %}
+          {% include_block block %}
+        {% else %}
+          <div class="prose prose-main">
+            {% include_block block %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
 {% endblock content %}
