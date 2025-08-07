@@ -99,7 +99,7 @@ CONTENT_SECURITY_POLICY = {
         "img-src": [
             SELF,
             "data:",
-            "https://*.tenor.com",
+            "https://*.giphy.com",
             "https://*.tenor.com",
             "https://*.imgur.com",
             "https://static.mahmoudashraf.dev",
