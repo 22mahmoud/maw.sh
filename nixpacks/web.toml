@@ -1,7 +1,7 @@
 providers = ["python", "node"]
 
 [phases.setup]
-nixPkgs = ['...', 'imagemagick', 'imagemagick.dev', "bash"]
+nixPkgs = ['...', 'imagemagick', 'imagemagick.dev']
 
 [phases."python:post"]
 dependsOn = ['node:build']
