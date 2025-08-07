@@ -211,9 +211,9 @@
         {% include "includes/footer.html" %}
 
         <script defer
-                data-api="/api/p/event"
+                data-api="/api/event"
                 data-domain="mahmoudashraf.dev"
-                src="/js/p/script.js"></script>
+                src="/js/script.js"></script>
 
         {% if False and not request.user.is_authenticated %}
           <script nonce="{{ CSP_NONCE }}" src="//accounts.google.com/gsi/client" async></script>
