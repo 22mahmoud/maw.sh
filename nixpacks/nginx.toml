@@ -1,5 +1,8 @@
 providers = ["python", "node"]
 
+[phases.setup]
+nixPkgs = ['...', 'imagemagick', 'imagemagick.dev', 'bash']
+
 [phases."python:post"]
 dependsOn = ['node:build']
 cmds = ["uv run python manage.py collectstatic --noinput --clear --verbosity 2"]
