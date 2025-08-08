@@ -16,16 +16,17 @@ from src.base.blocks.hero import HeroBlock
 from src.base.blocks.layout import FlexLayoutBlock, SpacerBlock
 from src.base.blocks.link import SocialLinkStreamBlock
 from src.base.models import Person, PostPersonRelationship
+from src.base.page import BasePage
 from src.clients.blocks import ClientsMarqueeStaticBlock
 from src.contact.blocks import ContactFormBlock
 from src.pagination.mixins import PaginatedArchiveMixin
 from src.posts.models import BasePostPage
 from src.projects.blocks import FeaturedProjectsStaticBlock
-from src.seo.models import SeoMetaFields
 from src.utils import get_all_subclasses
 
 
-class HomePage(PaginatedArchiveMixin, RoutablePageMixin, SeoMetaFields, Page):  # type: ignore
+class HomePage(PaginatedArchiveMixin, RoutablePageMixin, BasePage):  # type: ignore
+    POSTS_PER_PAGE = 1
     introduction = models.TextField(help_text="Text to describe the page", blank=True)
     body = StreamField(
         [
@@ -149,6 +150,7 @@ class HomePage(PaginatedArchiveMixin, RoutablePageMixin, SeoMetaFields, Page):  
         context = self.get_paginated_context(request, paginated_posts=paginated_posts)
         context["page"].title = title
         context["page"].introduction = introduction
+        context["page"].canonical_url = request.build_absolute_uri()
 
         if extra_context:
             context.update(extra_context)

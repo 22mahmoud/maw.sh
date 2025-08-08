@@ -27,10 +27,10 @@ from src.base.blocks import CodeBlock, ListBlock
 from src.base.blocks.feed import FeaturedBlogBlock, FeedBlock
 from src.base.blocks.layout import FlexLayoutBlock, SpacerBlock
 from src.base.blocks.text import HeadingBlock
+from src.base.page import BasePage
 from src.clients.blocks import ClientsMarqueeStaticBlock
 from src.contact.blocks import ContactFormBlock
 from src.projects.blocks import FeaturedProjectsStaticBlock
-from src.seo.models import SeoMetaFields
 
 from .blocks import ButtonBlock, HeroBlock, SocialLinkStreamBlock
 from .constants import SOCIAL_PLATFORMS
@@ -177,7 +177,7 @@ class Person(  # type: ignore
         return f"{self.first_name} {self.last_name}"
 
 
-class GenericPage(SeoMetaFields, Page):  # type: ignore
+class GenericPage(BasePage):  # type: ignore
     introduction = models.TextField(help_text="Text to describe the page", blank=True)
 
     body = StreamField(

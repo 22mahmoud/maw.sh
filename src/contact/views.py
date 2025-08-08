@@ -26,8 +26,8 @@ class ContactView(View):
                 }
 
                 fragments = []
-                fragments.append(render_to_string("partials/contact_form.html", context, request))
-                fragments.append(render_to_string("base.html#messages", context, request))
+                fragments.append(render_to_string("includes/contact_form.html", context, request))
+                fragments.append(render_to_string("includes/messages.html", context, request))
 
                 return HttpResponse("".join(fragments), content_type="text/html")
 
@@ -36,7 +36,7 @@ class ContactView(View):
             return redirect(self.build_redirect_url(request, page))
 
         if is_htmx:
-            return render(request, "partials/contact_form.html", {"form": form})
+            return render(request, "includes/contact_form.html", {"form": form})
 
         page = self.get_page(request)
         page_context = page.get_context(request)

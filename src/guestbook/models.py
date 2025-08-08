@@ -4,10 +4,12 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 
+from src.base.page import BasePage
+
 from .blocks import GuestbookFormStaticBlock
 
 
-class GuestbookIndexPage(Page):
+class GuestbookIndexPage(BasePage):
     intro = RichTextField(
         blank=True, help_text="Optional introduction/help text for the guestbook."
     )
@@ -34,7 +36,7 @@ class GuestbookIndexPage(Page):
         return context
 
 
-class GuestbookFormPage(Page):
+class GuestbookFormPage(BasePage):
     intro = RichTextField(
         blank=True, help_text="Optional introduction/help text for the guestbook."
     )

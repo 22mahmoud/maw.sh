@@ -60,8 +60,12 @@ class PaginatedArchiveMixin:
         context = self.get_context(request, **kwargs)  # type: ignore
 
         if paginated_posts:
+
+            def full(url):
+                return request.build_absolute_uri(url) if url else None
+
             context["posts"] = paginated_posts
-            context["next_url"] = getattr(paginated_posts, "next", None)
-            context["prev_url"] = getattr(paginated_posts, "prev", None)
+            context["next_url"] = full(getattr(paginated_posts, "next", None))
+            context["prev_url"] = full(getattr(paginated_posts, "prev", None))
 
         return context

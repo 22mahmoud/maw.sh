@@ -29,7 +29,7 @@ class GuestbookView(View):
             return redirect("/guestbook")
 
         if is_htmx:
-            return render(request, "partials/guestbook_form.html", {"form": form})
+            return render(request, "includes/guestbook_form.html", {"form": form})
 
         page = self.get_page(request)
         page_context = page.get_context(request)
@@ -75,6 +75,6 @@ def validate_guestbook_field(request):
 
     return TemplateResponse(
         request,
-        f"partials/guestbook_form.html#{template_fragment_name}",
+        f"includes/guestbook_form.html#{template_fragment_name}",
         {"form": form},
     )

@@ -943,6 +943,7 @@ dependencies = [
     { name = "requests" },
     { name = "wagtail" },
     { name = "wagtail-meilisearch" },
+    { name = "wagtail-seo" },
     { name = "wagtailmedia" },
     { name = "wagtailmenus" },
     { name = "wand" },
@@ -987,6 +988,7 @@ requires-dist = [
     { name = "requests", specifier = ">=2.32.4" },
     { name = "wagtail", specifier = ">=7.0.1" },
     { name = "wagtail-meilisearch", specifier = ">=1.0.0" },
+    { name = "wagtail-seo", specifier = ">=3.1.1" },
     { name = "wagtailmedia", specifier = ">=0.16.0" },
     { name = "wagtailmenus", specifier = ">=4.0.4" },
     { name = "wand", specifier = ">=0.6.13" },
@@ -1552,6 +1554,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/e1/a1/9f3ed8813558c39a7865649d8cd32e4a4e066056e67d95b9bda5c178c633/wagtail_meilisearch-1.0.0.tar.gz", hash = "sha256:a5531d3c0c27f8e59102c70707e283065b749e19841d5c77b363cc79e50661da", size = 21141, upload-time = "2025-07-24T09:58:36.19Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/05/6f/54bc1642a98232e5a0ed3d67bea23c434d0bfbe97a97339bb61649ea31c5/wagtail_meilisearch-1.0.0-py3-none-any.whl", hash = "sha256:d1e62a95f6775cb33ba4a57c325b3a3d8440ab199698edb3f1136d5ae9183219", size = 27736, upload-time = "2025-07-24T09:58:34.805Z" },
+]
+
+[[package]]
+name = "wagtail-seo"
+version = "3.1.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "wagtail" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/0a/92/01c293830affb89c2ffc6b10e1ed0d70e5fcece82e40938c7405684ff215/wagtail_seo-3.1.1.tar.gz", hash = "sha256:8dbd2648f9c5c1a6c185a2253bd505bc50242867b0a3eacfa938332444b80923", size = 21821, upload-time = "2025-07-11T16:05:52.113Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ad/be/ca8a36f3a8889d9e3191938374d0df956aef462ee8fef5e6a8a6cf7fb074/wagtail_seo-3.1.1-py3-none-any.whl", hash = "sha256:649837f04aa0422d13f186a3c98ebf9977a59433836d1286f75aaac5f3d7e7ca", size = 26532, upload-time = "2025-07-11T16:05:50.015Z" },
 ]
 
 [[package]]

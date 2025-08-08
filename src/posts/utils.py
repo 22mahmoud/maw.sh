@@ -38,7 +38,6 @@ def get_post_content_panels(include_body=True, include_tags=True, include_author
     )
 
     panels.append(FieldPanel("first_published_at"))  # type:ignore
-    panels.append(FieldPanel("last_published_at", read_only=True))  # type:ignore
 
     return panels
 

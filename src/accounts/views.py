@@ -37,7 +37,7 @@ class ProfileView(LoginRequiredMixin, FormView):
 
         fragments = []
         fragments.append(render_to_string(f"{self.template_name}#profile-form", context, request))
-        fragments.append(render_to_string("base.html#messages", context, request))
+        fragments.append(render_to_string("includes/messages.html", context, request))
 
         return HttpResponse("".join(fragments), content_type="text/html")
 

@@ -25,6 +25,15 @@ class SinglePostMixin:
         self.slug = self.generate_slug(timestamp)  # type: ignore
 
     @property
+    def seo_author(self) -> str:
+        authors = self.get_authors()
+        if authors:
+            names = [a.full_name for a in authors if a]
+            return ", ".join(filter(None, names))
+
+        return ""
+
+    @property
     def next_sibling(self):
         return self.get_next_siblings().live().first()  # type: ignore
 

@@ -9,10 +9,11 @@ from django.shortcuts import get_object_or_404
 from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, re_path
 from wagtail.models import Page
+from wagtailseo.models import SeoType
 
+from src.base.page import BasePage
 from src.pagination import PaginatedArchiveMixin
 from src.posts.mixins import SinglePostMixin
-from src.seo.models import SeoMetaFields
 from src.webmentions.models import (
     BookmarkWebmention,
     LikeWebmention,
@@ -23,7 +24,7 @@ from src.webmentions.models import (
 )
 
 
-class BasePostPage(SinglePostMixin, SeoMetaFields):  # type: ignore
+class BasePostPage(SinglePostMixin, BasePage):  # type: ignore
     legacy_url_path = models.CharField(
         max_length=512,
         blank=True,
@@ -32,6 +33,8 @@ class BasePostPage(SinglePostMixin, SeoMetaFields):  # type: ignore
         db_index=True,
         help_text="The full path of the URL from the old static site (e.g., /blog/old-slug).",
     )
+
+    seo_content_type = SeoType.ARTICLE
 
     def get_webmentions(self):
         cache_key = f"webmentions:{self.slug}"
@@ -89,7 +92,7 @@ class BasePostPage(SinglePostMixin, SeoMetaFields):  # type: ignore
         abstract = True
 
 
-class BasePostsIndexPage(PaginatedArchiveMixin, SeoMetaFields, RoutablePageMixin, Page):
+class BasePostsIndexPage(PaginatedArchiveMixin, RoutablePageMixin, BasePage):
     """Base class for post index pages with pagination and routing"""
 
     introduction = models.TextField(help_text="Text to describe the page", blank=True)

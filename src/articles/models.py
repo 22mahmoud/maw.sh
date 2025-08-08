@@ -32,6 +32,8 @@ class ArticlePage(BasePostPage):  # type: ignore
     )
     tags = ClusterTaggableManager(through=PageTag, blank=True)
 
+    seo_description_sources = ["search_description", ["body", 0, "summary"]]
+
     parent_page_types = ["ArticlesPageIndex"]
     subpage_types = []
     content_panels = get_post_content_panels()

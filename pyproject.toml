@@ -34,6 +34,7 @@ dependencies = [
   "requests>=2.32.4",
   "wagtail>=7.0.1",
   "wagtail-meilisearch>=1.0.0",
+  "wagtail-seo>=3.1.1",
   "wagtailmedia>=0.16.0",
   "wagtailmenus>=4.0.4",
   "wand>=0.6.13",
