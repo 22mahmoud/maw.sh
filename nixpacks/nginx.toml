@@ -3,3 +3,10 @@ providers = ["python", "node"]
 [phases."python:post"]
 dependsOn = ['node:build']
 cmds = ["uv run python manage.py collectstatic --noinput --clear --verbosity 2"]
+
+[start]
+cmd = """
+mkdir -p /var/run/nginx-cache/jscache && \
+chown -R nginx:nginx /var/run/nginx-cache && \
+nginx -g 'daemon off;'
+"""
