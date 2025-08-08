@@ -3,7 +3,3 @@ providers = ["python", "node"]
 [phases."python:post"]
 dependsOn = ['node:build']
 cmds = ["uv run python manage.py collectstatic --noinput --clear --verbosity 2"]
-
-[phases."jscache"]
-dependsOn = ['python:post']
-cmds = ["mkdir -p /var/run/nginx-cache/jscache"]
