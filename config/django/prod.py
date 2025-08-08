@@ -120,6 +120,5 @@ CONTENT_SECURITY_POLICY = {
             "https://accounts.google.com",
         ],
         "base-uri": [SELF],
-        "upgrade-insecure-requests": True,
     },
 }
