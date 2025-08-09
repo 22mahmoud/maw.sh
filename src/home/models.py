@@ -26,7 +26,6 @@ from src.utils import get_all_subclasses
 
 
 class HomePage(PaginatedArchiveMixin, RoutablePageMixin, BasePage):  # type: ignore
-    POSTS_PER_PAGE = 1
     introduction = models.TextField(help_text="Text to describe the page", blank=True)
     body = StreamField(
         [
