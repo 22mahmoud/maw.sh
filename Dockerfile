@@ -34,7 +34,6 @@ COPY . /app
 RUN --mount=type=cache,target=/root/.cache/uv \
   uv sync --locked --no-dev
 
-COPY --from=frontend-prod-deps /app/node_modules /app/node_modules
 COPY --from=frontend-build /app/static /app/static
 
 RUN uv run python manage.py collectstatic --noinput --clear --verbosity 2

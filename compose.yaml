@@ -4,12 +4,25 @@ services:
       context: .
       target: django
     entrypoint: ["/app/bin/django-entrypoint.sh"]
+    networks:
+      - maw-django-network
 
   celery:
     build:
       context: .
       target: django
-    command: ["celery", "-A", "src.tasks", "worker", "-l", "INFO", "--without-gossip", "--without-mingle", "--without-heartbeat"]
+    command:
+      - celery
+      - '-A'
+      - src.tasks
+      - worker
+      - '-l'
+      - INFO
+      - '--without-gossip'
+      - '--without-mingle'
+      - '--without-heartbeat'
+    networks:
+      - maw-django-network
     depends_on:
       - django
 
@@ -17,7 +30,17 @@ services:
     build:
       context: .
       target: django
-    command: ["celery", "-A", "src.tasks", "beat", "-l", "INFO", "--scheduler", "django_celery_beat.schedulers:DatabaseScheduler"]
+    networks:
+      - maw-django-network
+    command:
+      - celery
+      - '-A'
+      - src.tasks
+      - beat
+      - '-l'
+      - INFO
+      - '--scheduler'
+      - 'django_celery_beat.schedulers:DatabaseScheduler'
     depends_on:
       - django
 
@@ -25,5 +48,13 @@ services:
     build:
       context: .
       target: nginx
+    networks:
+      - maw-django-network
     depends_on:
       - django
+
+
+networks:
+  maw-django-network:
+    name: coolify
+    external: true
