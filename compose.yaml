@@ -4,6 +4,12 @@ services:
       context: .
       target: django
     entrypoint: ["/app/bin/django-entrypoint.sh"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/ht/startup/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
     networks:
       - maw-django-network
 
@@ -24,14 +30,13 @@ services:
     networks:
       - maw-django-network
     depends_on:
-      - django
+      django:
+        condition: service_healthy
 
   celery_beat:
     build:
       context: .
       target: django
-    networks:
-      - maw-django-network
     command:
       - celery
       - '-A'
@@ -41,17 +46,27 @@ services:
       - INFO
       - '--scheduler'
       - 'django_celery_beat.schedulers:DatabaseScheduler'
+    networks:
+      - maw-django-network
     depends_on:
-      - django
+      django:
+        condition: service_healthy
 
   nginx:
     build:
       context: .
       target: nginx
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    depends_on:
+      django:
+        condition: service_healthy
     networks:
       - maw-django-network
-    depends_on:
-      - django
 
 
 networks:
