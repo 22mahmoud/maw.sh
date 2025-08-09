@@ -3,11 +3,14 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 WORKDIR /app
+
+FROM frontend-base AS frontend-prod-deps
 COPY package.json pnpm-lock.yaml ./
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
 FROM frontend-base AS frontend
 COPY . /app
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build
 
 FROM ghcr.io/astral-sh/uv:bookworm-slim AS builder
@@ -42,6 +45,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libmagickwand-dev \
   && rm -rf /var/lib/apt/lists/*
 
+COPY --from=frontend-prod-deps /usr/local/bin/node /usr/local/bin/node
+COPY --from=frontend-prod-deps /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=frontend-prod-deps /app/node_modules /app/node_modules
 COPY --from=builder --chown=python:python /python /python
 COPY --from=builder --chown=app:app /app /app
 ENV PATH="/app/.venv/bin:$PATH"

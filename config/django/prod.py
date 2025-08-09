@@ -2,10 +2,9 @@ import sys
 
 from csp.constants import NONCE, NONE, SELF, UNSAFE_INLINE
 
+from config.django.base import *  # noqa: F403
 from config.env import env
 from config.settings.wagtail_prod import *  # noqa: E402, F403
-
-from .base import *  # noqa: F403
 
 STORAGES = {
     "default": {
