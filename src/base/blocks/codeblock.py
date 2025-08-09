@@ -318,7 +318,7 @@ def highlight_code_with_shiki(
 
     try:
         result = subprocess.run(
-            ["node", "scripts/shiki.mjs", code, language, theme],
+            ["node", "bin/shiki.mjs", code, language, theme],
             capture_output=True,
             text=True,
             timeout=30,

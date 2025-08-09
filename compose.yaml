@@ -1,0 +1,29 @@
+services:
+  django:
+    build:
+      context: .
+      target: django
+    entrypoint: ["/app/bin/django-entrypoint.sh"]
+
+  celery:
+    build:
+      context: .
+      target: django
+    command: ["celery", "-A", "src.tasks", "worker", "-l", "INFO", "--without-gossip", "--without-mingle", "--without-heartbeat"]
+    depends_on:
+      - django
+
+  celery_beat:
+    build:
+      context: .
+      target: django
+    command: ["celery", "-A", "src.tasks", "beat", "-l", "INFO", "--scheduler", "django_celery_beat.schedulers:DatabaseScheduler"]
+    depends_on:
+      - django
+
+  nginx:
+    build:
+      context: .
+      target: nginx
+    depends_on:
+      - django

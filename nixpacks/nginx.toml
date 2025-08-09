@@ -1,5 +1,0 @@
-providers = ["python", "node"]
-
-[phases."python:post"]
-dependsOn = ['node:build']
-cmds = ["uv run python manage.py collectstatic --noinput --clear --verbosity 2"]
