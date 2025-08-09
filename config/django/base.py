@@ -207,6 +207,8 @@ CACHES = {
 
 CAPTCHA_IMAGE_SIZE = (80, 36)
 
+REDIS_URL = env.str("REDIS_LOCATION", "")
+
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 PERMISSIONS_POLICY = {
