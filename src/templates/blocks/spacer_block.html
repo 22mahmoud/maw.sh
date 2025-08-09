@@ -1,0 +1,11 @@
+<div class="{% if value.size == 'sm' %}
+              h-8 sm:h-10 md:h-12
+            {% elif value.size == 'md' %}
+              h-16 sm:h-20 md:h-24
+            {% elif value.size == 'lg' %}
+              h-24 sm:h-32 md:h-40
+            {% elif value.size == 'xl' %}
+              h-32 sm:h-40 md:h-48
+            {% endif %}"
+     aria-hidden="true">
+</div>

@@ -1,0 +1,23 @@
+{% load wagtailimages_tags wagtailroutablepage_tags wagtailcore_tags %}
+
+<div class="flex flex-col gap-6">
+  <div class="prose prose-invert prose-sm max-w-none">
+    {% if post.title %}
+      <h2 class="p-name font-heading text-2xl tracking-tight leading-tight">
+        {{ post.title }}
+      </h2>
+    {% endif %}
+
+    {% if value.summary %}
+      <p class="p-summary text-base leading-relaxed">
+        {{ value.summary }}
+      </p>
+    {% endif %}
+  </div>
+
+  {% if value.featured_image %}
+    <div class="relative overflow-hidden border border-primary/10 shadow-md hover:shadow-lg transition-shadow duration-200">
+      {% picture value.featured_image format-{avif,webp,jpeg} width-600 class="u-photo w-full h-full object-contain hover:scale-105 transition-transform duration-300" %}
+    </div>
+  {% endif %}
+</div>

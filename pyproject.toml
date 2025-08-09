@@ -1,0 +1,90 @@
+[project]
+name = "maw-sh"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+  "beautifulsoup4>=4.13.4",
+  "bleach>=6.2.0",
+  "boto3>=1.39.3",
+  "celery[redis]>=5.5.3",
+  "django>=5.2.3",
+  "django-allauth[socialaccount]>=65.10.0",
+  "django-celery-beat>=2.8.1",
+  "django-celery-email-reboot>=4.1.0",
+  "django-celery-results>=2.6.0",
+  "django-comments-xtd>=2.10.7",
+  "django-csp>=4.0",
+  "django-debug-toolbar>=6.0.0",
+  "django-health-check>=3.20.0",
+  "django-htmx>=1.23.2",
+  "django-permissions-policy>=4.26.0",
+  "django-polymorphic>=4.1.0",
+  "django-redis>=6.0.0",
+  "django-simple-captcha>=0.6.2",
+  "django-storages[s3]>=1.14.6",
+  "django-template-partials>=24.4",
+  "django-vite>=3.1.0",
+  "environs[django]>=14.2.0",
+  "gunicorn>=23.0.0",
+  "markdown>=3.8.2",
+  "pillow>=11.3.0",
+  "psutil>=7.0.0",
+  "psycopg[binary]>=3.2.9",
+  "python-json-logger>=3.3.0",
+  "requests>=2.32.4",
+  "wagtail>=7.0.1",
+  "wagtail-meilisearch>=1.0.0",
+  "wagtail-seo>=3.1.1",
+  "wagtailmedia>=0.16.0",
+  "wagtailmenus>=4.0.4",
+  "wand>=0.6.13",
+]
+
+[dependency-groups]
+dev = [
+  "django-stubs-ext>=5.2.0",
+  "django-types>=0.21.0",
+  "pre-commit>=4.2.0",
+  "ruff>=0.12.0",
+]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+reportAssignmentType = "none"
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+extend-exclude = ["migrations"]
+
+[tool.ruff.lint]
+select = [
+  "F",   # Pyflakes rules
+  "W",   # PyCodeStyle warnings
+  "E",   # PyCodeStyle errors
+  "I",   # Sort imports properly
+  "UP",  # Warn if certain things can changed due to newer Python versions
+  "C4",  # Catch incorrect use of comprehensions, dict, list, etc
+  "FA",  # Enforce from __future__ import annotations
+  "ISC", # Good use of string concatenation
+  "ICN", # Use common import conventions
+  "RET", # Good return practices
+  "SIM", # Common simplification rules
+  "TID", # Some good import practices
+  "TC",  # Enforce importing certain types in a TYPE_CHECKING block
+  "PTH", # Use pathlib instead of os.path
+  "TD",  # Be diligent with TODO comments
+  "NPY", # Some numpy-specific things
+]
+
+[tool.djlint]
+profile = "django"
+format_attribute_template_tags = true
+indent = 2
+line_break_after_multiline_tag = true
+max_line_length = 100
+preserve_blank_lines = true
+custom_blocks = "link,button,partialdef,partial,field,wagtailcache,wagtailpagecache"

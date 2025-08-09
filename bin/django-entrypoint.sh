@@ -1,0 +1,16 @@
+#!/bin/bash
+# set -e
+
+python manage.py migrate --noinput
+
+gunicorn config.wsgi \
+  --workers 5 \
+  --bind 0.0.0.0:8000 \
+  --worker-class sync \
+  --timeout 60 \
+  --access-logfile - \
+  --error-logfile - \
+  --log-level info \
+  --max-requests 1000 \
+  --log-config-json logconfig.json \
+  --max-requests-jitter 100

@@ -1,9 +1,38 @@
-### maw.sh - Mahmoud Ashraf Website
+# Todo
 
-#### dependencies
-
-- linux
-- pandoc
-- yq
-- node
-- npm
+- [x] Setup Django
+- [x] Setup wagtail
+- [x] Setup Postgres
+- [x] Setup Vite
+- [x] Home Page
+- [x] IndieWeb Post Types
+    - [x] Article (Blog Post)
+    - [x] Note (Thoughts)
+    - [x] Like
+    - [x] Reply
+    - [x] Bookmark
+    - [x] Photo
+    - [x] Video
+- [x] Search
+- [x] Webmentions
+- [x] Projects
+- [x] Guestbook
+- [x] Comments
+- [x] Auth
+- [ ] Tracker
+    - [ ] Video Games
+    - [ ] Reading
+    - [ ] TV
+    - [ ] Movies
+    - [ ] Leetcode
+- [x] About
+- [ ] Uses
+- [x] Contact
+- [ ] Services / hire me
+- [ ] Resume
+- [x] RSS
+- [x] Celery
+- [x] sitemap.xml
+- [x] robots.txt
+- [x] deployment
+- [x] CI

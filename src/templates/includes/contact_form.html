@@ -1,0 +1,30 @@
+{% load base_tags button_tags partials %}
+
+<form id="contact-form"
+      method="post"
+      action="{% url 'contact' %}"
+      class="w-full flex flex-col gap-4"
+      hx-post="{% url 'contact' %}"
+      hx-target="#contact-form"
+      hx-swap="outerHTML">
+
+  <noscript>
+    {% csrf_token %}
+    <input type="hidden" name="page_id" value="{{ page.id }}">
+    <input type="hidden" name="source_url_fragment" value="#contact-form">
+  </noscript>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    {{ form }}
+  </div>
+
+  {% button
+    size="md"
+    type="submit"
+    class="w-fit"
+    id="contact-submit-button"
+    %}
+    <span>Send Message</span>
+    {% icon 'circle-notch' id="spinner" class="htmx-indicator animate-spin h-5 w-5" %}
+  {% endbutton %}
+</form>

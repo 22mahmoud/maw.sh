@@ -1,0 +1,35 @@
+{% load link_tags base_tags wagtailcore_tags %}
+
+{% with heading_id=self.heading_text.source|striptags|slugify %}
+  <div class="group relative text-{{ self.text_position|default:'left' }}">
+    <{{ self.size|default:"h2" }}
+    {% if self.use_anchor %}
+      id="{{ heading_id }}"
+    {% endif %}
+    class="relative scroll-mt-24 font-heading font-bold tracking-tight text-primary {{ self.text_size|default:'' }} text-balance"
+    >
+    {% if self.use_anchor %}
+      <a href="#{{ heading_id }}"
+         aria-label="Anchor link for this section"
+         class="inline-block font-bold transition-colors duration-300 hover:text-secondary text-inherit no-underline">
+        {{ self.heading_text.source|strip_p_tags|richtext }}
+      </a>
+      <span class="absolute left-[-2rem] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <a href="#{{ heading_id }}"
+           aria-label="Anchor icon link for this section"
+           class="block text-secondary/70 hover:text-accent transition-colors duration-300">
+          {% icon "paperclip" class="w-5 h-5" %}
+        </a>
+      </span>
+    {% else %}
+      {{ self.heading_text.source|strip_p_tags|richtext }}
+    {% endif %}
+    </{{ self.size|default:"h2" }}>
+
+    {% if self.subheading_text %}
+      <div class="text-secondary text-base">
+        {{ self.subheading_text|richtext }}
+      </div>
+    {% endif %}
+  </div>
+{% endwith %}
