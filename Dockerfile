@@ -2,15 +2,10 @@ FROM node:22.18.0-slim AS frontend-base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
+COPY . /app
 WORKDIR /app
 
-FROM frontend-base AS frontend-prod-deps
-COPY package.json pnpm-lock.yaml ./
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
-
-FROM frontend-base AS frontend-build
-COPY src/resources src/resources
-COPY tailwind.config.ts package.json pnpm-lock.yaml vite.config.ts ./
+FROM frontend-base AS frontend
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build
 
@@ -34,7 +29,7 @@ COPY . /app
 RUN --mount=type=cache,target=/root/.cache/uv \
   uv sync --locked --no-dev
 
-COPY --from=frontend-build /app/static /app/static
+COPY --from=frontend /app/static /app/static
 
 RUN uv run python manage.py collectstatic --noinput --clear --verbosity 2
 
