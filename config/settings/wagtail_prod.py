@@ -10,3 +10,5 @@ WAGTAILFRONTENDCACHE = {
 }
 
 WAGTAILIMAGES_RENDITION_STORAGE = "wagtailrenditions"
+
+WAGTAILADMIN_BASE_URL = "https://mahmoudashraf.dev"

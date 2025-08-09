@@ -55,7 +55,7 @@ WAGTAIL_TEMPLATE_CONTEXT_PROCESSORS = [
 ]
 
 WAGTAIL_SITE_NAME = "Mahmoud Ashraf"
-WAGTAILADMIN_BASE_URL = "http:localhost:8000"
+WAGTAILADMIN_BASE_URL = "http://localhost:8000"
 
 # Allowed file extensions for documents in the document library.
 # This can be omitted to allow all files, but note that this may present a security risk
