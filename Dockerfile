@@ -48,7 +48,7 @@ ENV PATH="/app/.venv/bin:$PATH"
 EXPOSE 8000
 ENTRYPOINT []
 
-FROM georgjung/nginx-brotli:latest as nginx
+FROM nginx:stable  AS nginx
 RUN mkdir -p /var/run/nginx-cache/jscache
 RUN echo "D /var/run/nginx-cache 0755 root root -" > /usr/lib/tmpfiles.d/nginx-cache.conf
 COPY --from=builder /app/staticfiles /usr/share/nginx/html/static
