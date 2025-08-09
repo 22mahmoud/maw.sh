@@ -15,6 +15,7 @@ from config.settings.django_allauth import (
     ALLAUTH_INSTALLED_APPS,
     ALLAUTH_MIDDLEWARE,
 )
+from config.settings.django_health_check import DJANGO_HEALTH_CHECK_INSTALLED_APPS
 from config.settings.wagtail import (
     WAGTAIL_INSTALLED_APPS,
     WAGTAIL_MIDDLEWARE,
@@ -41,6 +42,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 INSTALLED_APPS = (
     WAGTAIL_INSTALLED_APPS
+    + DJANGO_HEALTH_CHECK_INSTALLED_APPS
     + [
         "src.feeds",
         "src.tasks",
@@ -249,6 +251,7 @@ WAGTAIL_ADMIN_PATH = env.str("WAGTAIL_ADMIN_PATH", "cms/")
 from config.settings.celery import *  # noqa: E402, F403
 from config.settings.django_allauth import *  # noqa: E402, F403
 from config.settings.django_comments_xtd import *  # noqa: E402, F403
+from config.settings.django_health_check import *  # noqa: E402, F403
 from config.settings.django_storage import *  # noqa: E402, F403
 from config.settings.vite import *  # noqa: E402, F403
 from config.settings.wagtail import *  # noqa: E402, F403

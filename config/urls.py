@@ -12,6 +12,7 @@ from src.base import views
 from src.search.views import SearchView
 
 urlpatterns = debug_toolbar_urls() + [
+    path(r"ht/", include("health_check.urls")),
     path(settings.DJANGO_ADMIN_PATH, admin.site.urls),
     path("forms/contact/", include("src.contact.urls")),
     path("forms/guestbook/", include("src.guestbook.urls")),
