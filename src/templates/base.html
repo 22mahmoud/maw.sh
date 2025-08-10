@@ -1,153 +1,131 @@
+{# djlint:off H006,H021 #}
+{% load django_vite static wagtail_cache wagtailuserbar %}
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mahmoud Ashraf</title>
-    <meta name="description" content="">
+<html lang="en" class="scroll-smooth no-js">
+  {% if not request.htmx %}
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="dns-prefetch" href="//static.mahmoudashraf.dev">
+      <link rel="preconnect" href="https://static.mahmoudashraf.dev" crossorigin>
+      <link rel="preload" as="image" href="{% static 'icons/fill.png' %}">
+      <link rel="preload"
+            href="{% static 'fonts/outfit-v14-latin-700.woff2' %}"
+            as="font"
+            type="font/woff2"
+            crossorigin>
+      <link rel="preload"
+            href="{% static 'fonts/figtree-v8-latin-regular.woff2' %}"
+            as="font"
+            type="font/woff2"
+            crossorigin>
+      <link rel="preload"
+            href="{% static 'fonts/figtree-v8-latin-600.woff2' %}"
+            as="font"
+            type="font/woff2"
+            crossorigin>
+      <meta charset="utf-8">
+      <meta name="htmx-config"
+            content='{"inlineStyleNonce": "{{ CSP_NONCE }}", "inlineScriptNonce":"{{ CSP_NONCE }}","includeIndicatorStyles":false, "allowEval": false}'>
 
-    <meta property="og:title" content="">
-    <meta property="og:type" content="">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="">
-    <meta property="og:image:alt" content="">
+      {% if not page %}
+        <title>
+          {% block title %}
+            Mahmoud Ashraf
+          {% endblock title %}
+        </title>
+        <meta name="description"
+              content="{% block description %}
+                         Mahmoud Ashraf — Frontend Engineer from Alexandria, Egypt. I craft fast, accessible, and user-focused web experiences.
+                       {% endblock description %}" />
 
-    <meta name="theme-color" content="#fafafa">
-  </head>
+        <meta name="author"
+              content="{% block author %}
+                         Mahmoud Ashraf
+                       {% endblock author %}" />
+      {% endif %}
 
-  <body>
-    <a href="https://mahmoudashraf.dev/" class="h-card" rel="me">Mahmoud Ashraf</a>
+      <link rel="author canonical self" href="https://mahmoudashraf.dev/">
+
+      <script nonce="{{ CSP_NONCE }}">
+        document.documentElement.classList.remove('no-js');
+      </script>
+
+      <style nonce="{{ CSP_NONCE }}">
+      [x-cloak] { display: none !important; }
+
+      .no-js .js-only {
+        display: none;
+      }
+
+     .js-only {
+        visibility: visible;
+      }
+      </style>
+
+
+      {% include "wagtailseo/meta.html" %}
+
+      <meta name="keywords" content="this,is,a,keywords">
+
+      <link rel="icon"
+            type="image/png"
+            href="{% static "favicon-96x96.png" %}"
+            sizes="96x96" />
+      <link rel="icon" type="image/svg+xml" href="{% static "favicon.svg" %}" />
+      <link rel="shortcut icon" href="{% static "favicon.ico" %}" />
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="{% static "apple-touch-icon.png" %}" />
+      <meta name="apple-mobile-web-app-title" content="Mahmoud Ashraf" />
+      <link rel="manifest" href="{% static "site.webmanifest" %}" />
+
+      {% if next_url %}
+        <link rel="next" href="{{ next_url }}" />
+      {% endif %}
+      {% if prev_url %}
+        <link rel="prev" href="{{ prev_url }}" />
+      {% endif %}
+
+      {% vite_hmr_client %}
+      {% vite_asset 'src/resources/js/app.ts' nonce=CSP_NONCE %}
+
+      {% block head %}
+      {% endblock head %}
+    </head>
+  {% endif %}
+
+  <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'
+        class="relative bg-darker text-primary">
+
+    <aside class="fixed left-4 bottom-4 max-w-xs z-10 bg-darker">
+      {% block aside %}
+      {% endblock aside %}
+    </aside>
+
+    <div class="min-h-full flex flex-col max-w-6xl mx-auto">
+      {% if not request.htmx %}
+        {% wagtailuserbar %}
+        <a id="top"></a>
+        {% include "includes/messages.html" %}
+        {% include "includes/header.html" %}
+      {% endif %}
+
+      <main class="bg-darker flex-1 flex flex-col relative z-1">
+        {% block content %}
+        {% endblock content %}
+      </main>
+
+      {% if not request.htmx %}
+        {% include "includes/footer.html" %}
+
+        {% include "wagtailseo/struct_data.html" %}
+
+        <script defer
+                data-api="/api/event"
+                data-domain="mahmoudashraf.dev"
+                src="/js/script.js"></script>
+      {% endif %}
+    </div>
   </body>
 </html>
-
-{# djlint:off H006,H021 #}
-{# {% load django_vite static wagtail_cache wagtailuserbar %} #}
-{##}
-{# <!DOCTYPE html> #}
-{# <html lang="en" class="h-full scroll-smooth no-js"> #}
-{#   {% if not request.htmx %} #}
-{#     <head> #}
-{#       <meta name="viewport" content="width=device-width, initial-scale=1"> #}
-{#       <link rel="dns-prefetch" href="//static.mahmoudashraf.dev"> #}
-{#       <link rel="preconnect" href="https://static.mahmoudashraf.dev" crossorigin> #}
-{#       <link rel="preload" as="image" href="{% static 'icons/fill.png' %}"> #}
-{#       <link rel="preload" #}
-{#             href="{% static 'fonts/outfit-v14-latin-700.woff2' %}" #}
-{#             as="font" #}
-{#             type="font/woff2" #}
-{#             crossorigin> #}
-{#       <link rel="preload" #}
-{#             href="{% static 'fonts/figtree-v8-latin-regular.woff2' %}" #}
-{#             as="font" #}
-{#             type="font/woff2" #}
-{#             crossorigin> #}
-{#       <link rel="preload" #}
-{#             href="{% static 'fonts/figtree-v8-latin-600.woff2' %}" #}
-{#             as="font" #}
-{#             type="font/woff2" #}
-{#             crossorigin> #}
-{#       <meta charset="utf-8"> #}
-{#       <meta name="htmx-config" #}
-{#             content='{"inlineStyleNonce": "{{ CSP_NONCE }}", "inlineScriptNonce":"{{ CSP_NONCE }}","includeIndicatorStyles":false, "allowEval": false}'> #}
-{##}
-{#       {% if not page %} #}
-{#         <title> #}
-{#           {% block title %} #}
-{#             Mahmoud Ashraf #}
-{#           {% endblock title %} #}
-{#         </title> #}
-{#         <meta name="description" #}
-{#               content="{% block description %} #}
-{#                          Mahmoud Ashraf — Frontend Engineer from Alexandria, Egypt. I craft fast, accessible, and user-focused web experiences. #}
-{#                        {% endblock description %}" /> #}
-{##}
-{#         <meta name="author" #}
-{#               content="{% block author %} #}
-{#                          Mahmoud Ashraf #}
-{#                        {% endblock author %}" /> #}
-{#       {% endif %} #}
-{##}
-{#       <link rel="author canonical self" href="https://mahmoudashraf.dev/"> #}
-{##}
-{#       <script nonce="{{ CSP_NONCE }}"> #}
-{#         document.documentElement.classList.remove('no-js'); #}
-{#       </script> #}
-{##}
-{#       <style nonce="{{ CSP_NONCE }}"> #}
-{#       [x-cloak] { display: none !important; } #}
-{##}
-{#       .no-js .js-only { #}
-{#         display: none; #}
-{#       } #}
-{##}
-{#      .js-only { #}
-{#         visibility: visible; #}
-{#       } #}
-{#       </style> #}
-{##}
-{##}
-{#       {% include "wagtailseo/meta.html" %} #}
-{##}
-{#       <meta name="keywords" content="this,is,a,keywords"> #}
-{##}
-{#       <link rel="icon" #}
-{#             type="image/png" #}
-{#             href="{% static "favicon-96x96.png" %}" #}
-{#             sizes="96x96" /> #}
-{#       <link rel="icon" type="image/svg+xml" href="{% static "favicon.svg" %}" /> #}
-{#       <link rel="shortcut icon" href="{% static "favicon.ico" %}" /> #}
-{#       <link rel="apple-touch-icon" #}
-{#             sizes="180x180" #}
-{#             href="{% static "apple-touch-icon.png" %}" /> #}
-{#       <meta name="apple-mobile-web-app-title" content="Mahmoud Ashraf" /> #}
-{#       <link rel="manifest" href="{% static "site.webmanifest" %}" /> #}
-{##}
-{#       {% if next_url %} #}
-{#         <link rel="next" href="{{ next_url }}" /> #}
-{#       {% endif %} #}
-{#       {% if prev_url %} #}
-{#         <link rel="prev" href="{{ prev_url }}" /> #}
-{#       {% endif %} #}
-{##}
-{#       {% vite_hmr_client %} #}
-{#       {% vite_asset 'src/resources/js/app.ts' nonce=CSP_NONCE %} #}
-{##}
-{#       {% block head %} #}
-{#       {% endblock head %} #}
-{#     </head> #}
-{#   {% endif %} #}
-{##}
-{#   <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}' #}
-{#         class="relative h-full bg-darker text-primary"> #}
-{##}
-{#     <aside class="fixed left-4 bottom-4 max-w-xs z-10 bg-darker"> #}
-{#       {% block aside %} #}
-{#       {% endblock aside %} #}
-{#     </aside> #}
-{##}
-{#     <div class="min-h-full flex flex-col max-w-6xl mx-auto"> #}
-{#       {% if not request.htmx %} #}
-{#         {% wagtailuserbar %} #}
-{#         <a id="top"></a> #}
-{#         {% include "includes/messages.html" %} #}
-{#         {% include "includes/header.html" %} #}
-{#       {% endif %} #}
-{##}
-{#       <main class="bg-darker flex-1 flex flex-col relative z-1"> #}
-{#         {% block content %} #}
-{#         {% endblock content %} #}
-{#       </main> #}
-{##}
-{#       {% if not request.htmx %} #}
-{#         {% include "includes/footer.html" %} #}
-{##}
-{#         {% include "wagtailseo/struct_data.html" %} #}
-{##}
-{#         <script defer #}
-{#                 data-api="/api/event" #}
-{#                 data-domain="mahmoudashraf.dev" #}
-{#                 src="/js/script.js"></script> #}
-{#       {% endif %} #}
-{#     </div> #}
-{#   </body> #}
-{# </html> #}
