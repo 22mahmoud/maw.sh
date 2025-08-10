@@ -1,4 +1,4 @@
-{# djlint:off H031 #}
+{# djlint:off H006,H021 #}
 {% load django_vite static wagtail_cache wagtailuserbar %}
 
 <!DOCTYPE html>
@@ -97,6 +97,20 @@
 
   <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'
         class="relative h-full bg-darker text-primary">
+
+    <div class="h-card sr-only">
+      <a class="u-url" rel="me" href="https://mahmoudashraf.dev/">
+        <p class="p-name">
+          Mahmoud Ashraf
+        </p>
+      </a>
+      <link class="u-photo"
+            href="https://static.mahmoudashraf.dev/cms/images/avatar.original.png" />
+      <p class="p-note">
+        Mahmoud Ashraf — Frontend Engineer from Alexandria, Egypt.
+        I craft fast, accessible, and user-focused web experiences.
+      </p>
+    </div>
 
     <aside class="fixed left-4 bottom-4 max-w-xs z-10 bg-darker">
       {% block aside %}
