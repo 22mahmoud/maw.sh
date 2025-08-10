@@ -1,20 +1,33 @@
-{% load link_tags base_tags %}
+{% load wagtailimages_tags link_tags base_tags %}
 
-<footer class="relative bg-dark zigzag shadow-inner">
+<footer class="h-card relative bg-dark zigzag shadow-inner text-secondary">
   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gradient-1 to-gradient-2">
   </div>
 
   <div class="container mx-auto px-6 py-12 mt-4">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
-      <div>
-        <h4 class="font-bold text-accent mb-4">
-          Social Media
-        </h4>
-        <div class="flex flex-col space-y-3">
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-12">
+      <div class="md:col-span-1 lg:col-span-2">
+        <div class="flex items-start gap-4">
+          {% get_image_by_title "avatar" as avatar %}
+          {% image avatar fill-150x150 class="u-photo rounded-full w-16 h-16 ring-2 ring-neutral-700" alt="Portrait of Mahmoud Ashraf" %}
+          <div>
+            <a class="u-url p-name block text-lg font-bold text-white hover:text-accent transition-colors duration-200"
+               rel="me"
+               href="https://mahmoudashraf.dev/">
+              Mahmoud Ashraf
+            </a>
+            <p class="p-note text-sm mt-1 max-w-xs">
+              Frontend Engineer from <span class="p-locality">Alexandria</span>,
+              <span class="p-country-name">Egypt</span>.
+              Crafting fast, accessible, and user-focused web experiences.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 mt-5">
           {% for social in settings.base.SiteSettings.social_links %}
-            {% link rel="me" href=social.url class="flex items-center gap-3 text-secondary hover:text-accent transition-colors duration-200" %}
-              {% icon social.icon class="w-5 h-5" %}
-              <span>{{ social.text }}</span>
+            {% link rel="me" href=social.url class="text-secondary hover:text-accent transition-colors duration-200" title=social.text %}
+              {% icon social.icon class="w-6 h-6" %}
+              <span class="sr-only">{{ social.text }}</span> {# Keep for accessibility, hide visually #}
             {% endlink %}
           {% endfor %}
         </div>
@@ -24,7 +37,7 @@
         <h4 class="font-bold text-accent mb-4">
           Main
         </h4>
-        <ul class="space-y-2">
+        <ul class="space-y-2 text-sm">
           <li>
             {% link href="/" class="hover:underline" %}
               Home
@@ -51,7 +64,7 @@
         <h4 class="font-bold text-accent mb-4">
           Content
         </h4>
-        <ul class="space-y-2">
+        <ul class="space-y-2 text-sm">
           <li>
             {% link href="/feed/" class="hover:underline" %}
               Feed
@@ -83,7 +96,7 @@
       {#   <h4 class="font-bold text-accent mb-4"> #}
       {#     Other #}
       {#   </h4> #}
-      {#   <ul class="space-y-2"> #}
+      {#   <ul class="space-y-2 text-sm"> #}
       {#     <li> #}
       {#       {% link href="/uses/" class="hover:underline" %} #}
       {#         Uses #}
@@ -98,10 +111,10 @@
       {# </div> #}
     </div>
 
-    {# <div class="border-t border-neutral-700 pt-8 mb-8"> #}
+    {# <div class="border-t border-neutral-800 pt-8 mb-8"> #}
     {#   <div class="grid grid-cols-1 md:grid-cols-2 gap-8"> #}
     {#     <div class="flex flex-wrap gap-4 justify-center md:justify-start"> #}
-    {#       <div class="border border-neutral-700 px-4 py-3 text-sm"> #}
+    {#       <div class="border border-neutral-700 rounded-lg px-4 py-3 text-sm"> #}
     {#         <div class="font-bold mb-2"> #}
     {#           IndieWeb Ring #}
     {#         </div> #}
@@ -111,7 +124,7 @@
     {#           <a href="#" class="hover:text-accent transition-colors duration-200">Next →</a> #}
     {#         </div> #}
     {#       </div> #}
-    {#       <div class="border border-neutral-700 px-4 py-3 text-sm"> #}
+    {#       <div class="border border-neutral-700 rounded-lg px-4 py-3 text-sm"> #}
     {#         <div class="font-bold mb-2"> #}
     {#           Another Ring #}
     {#         </div> #}
@@ -124,21 +137,22 @@
     {#     </div> #}
     {##}
     {#     <div class="flex flex-wrap gap-2 justify-center md:justify-end items-start"> #}
-    {#       <div class="border border-neutral-700 px-3 py-1 text-xs"> #}
+    {#       <div class="border border-neutral-700 bg-neutral-800/50 rounded-full px-3 py-1 text-xs"> #}
     {#         Hetzner VPS #}
     {#       </div> #}
-    {#       <div class="border border-neutral-700 px-3 py-1 text-xs"> #}
+    {#       <div class="border border-neutral-700 bg-neutral-800/50 rounded-full px-3 py-1 text-xs"> #}
     {#         Built with Django #}
     {#       </div> #}
-    {#       <div class="border border-neutral-700 px-3 py-1 text-xs"> #}
+    {#       <div class="border border-neutral-700 bg-neutral-800/50 rounded-full px-3 py-1 text-xs"> #}
     {#         Free Palestine 🇵🇸 #}
     {#       </div> #}
     {#     </div> #}
     {#   </div> #}
     {# </div> #}
 
-    <div class="border-t border-neutral-700 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="text-sm text-secondary text-center sm:text-left">
+    <!-- Copyright and Back to Top (largely unchanged) -->
+    <div class="border-t border-neutral-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-sm text-center sm:text-left">
         <span>© 2025 Mahmoud Ashraf. All rights reserved.</span>
         <span class="mx-2">•</span>
         {% link href="/privacy-policy/" class="hover:text-white transition-colors duration-200" %}
@@ -155,5 +169,6 @@
         {% endlink %}
       </div>
     </div>
+
   </div>
 </footer>

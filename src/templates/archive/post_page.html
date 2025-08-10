@@ -33,7 +33,7 @@
 
 {% block content %}
   <div class="zigzag bg-dark pt-6">
-    <article class="flex flex-col h-entry mx-auto max-w-3xl gap-8 py-6 px-4 sm:px-6">
+    <article class="h-entry flex flex-col mx-auto max-w-3xl gap-8 py-6 px-4 sm:px-6">
       {% wagtailpagecache 500 post_page_header %}
         {% include "includes/breadcrumb.html" with page=self %}
         <header class="px-4 bg-darker flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm py-4 border-b border-primary/20">

@@ -5,8 +5,11 @@ from django.forms import widgets
 from django.forms.utils import flatatt
 from django.template.loader import TemplateDoesNotExist, render_to_string
 from django.utils.safestring import mark_safe
+from wagtail.images import get_image_model
 
 register = template.Library()
+
+Image = get_image_model()
 
 
 @register.filter
@@ -76,3 +79,8 @@ def widget_type(field):
     if isinstance(widget, widgets.Select):
         return "select"
     return "input"
+
+
+@register.simple_tag
+def get_image_by_title(title):
+    return Image.objects.filter(title=title).first()
