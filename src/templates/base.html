@@ -2,7 +2,7 @@
 {% load django_vite static wagtail_cache wagtailuserbar %}
 
 <!DOCTYPE html>
-<html lang="en" class="ht-100% scroll-smooth no-js">
+<html lang="en" class="ht-full scroll-smooth no-js">
   {% if not request.htmx %}
     <head>
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -110,7 +110,7 @@
   {% endif %}
 
   <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'
-        class="ht-100% relative bg-darker text-primary">
+        class="ht-full relative bg-darker text-primary">
 
     <aside class="fixed left-4 bottom-4 max-w-xs z-10 bg-darker">
       {% block aside %}
