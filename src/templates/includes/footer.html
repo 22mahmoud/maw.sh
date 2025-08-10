@@ -1,20 +1,27 @@
 {% load wagtailimages_tags link_tags base_tags %}
 
-<footer class="h-card relative bg-dark zigzag shadow-inner text-secondary">
+<footer class="relative bg-dark zigzag shadow-inner text-secondary">
   <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gradient-1 to-gradient-2">
   </div>
 
   <div class="container mx-auto px-6 py-12 mt-4">
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-12">
       <div class="md:col-span-1 lg:col-span-2">
-        <div class="flex items-start gap-4">
+        <div class="h-card flex items-start gap-4">
           {% get_image_by_title "avatar" as avatar %}
-          {% image avatar fill-150x150 class="u-photo rounded-full w-16 h-16 ring-2 ring-neutral-700" alt="Portrait of Mahmoud Ashraf" %}
+          {% image avatar fill-150x150 as avatar_photo %}
+          <img src="{{ avatar_photo.full_url }}"
+               width="{{ avatar_photo.width }}"
+               height="{{ avatar_photo.height }}"
+               class="u-photo rounded-full w-16 h-16 ring-2 ring-neutral-700"
+               alt="Portrait of Mahmoud Ashraf" />
           <div>
-            <a class="u-url p-name block text-lg font-bold text-white hover:text-accent transition-colors duration-200"
+            <a class="u-url block text-lg font-bold text-white hover:text-accent transition-colors duration-200"
                rel="me"
                href="https://mahmoudashraf.dev/">
-              Mahmoud Ashraf
+              <span class="p-name">
+                Mahmoud Ashraf
+              </span>
             </a>
             <p class="p-note text-sm mt-1 max-w-xs">
               Frontend Engineer from <span class="p-locality">Alexandria</span>,
@@ -27,7 +34,7 @@
           {% for social in settings.base.SiteSettings.social_links %}
             {% link rel="me" href=social.url class="text-secondary hover:text-accent transition-colors duration-200" title=social.text %}
               {% icon social.icon class="w-6 h-6" %}
-              <span class="sr-only">{{ social.text }}</span> {# Keep for accessibility, hide visually #}
+              <span class="sr-only">{{ social.text }}</span>
             {% endlink %}
           {% endfor %}
         </div>
