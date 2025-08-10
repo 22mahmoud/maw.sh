@@ -39,8 +39,9 @@
         <header class="px-4 bg-darker flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm py-4 border-b border-primary/20">
           <div class="flex items-center flex-wrap gap-3 sm:gap-4 flex-1 min-w-0">
             {% for author in page.authors %}
-              <a href="{{ author.get_full_url }}"
-                 class="h-card flex items-center gap-3 transition-all duration-200 hover:scale-[1.02] group">
+              <a rel="author"
+                 href="{{ author.get_full_url }}"
+                 class="p-author h-card flex items-center gap-3 transition-all duration-200 hover:scale-[1.02] group">
                 <div class="w-10 ht-10 sm:w-12 sm:ht-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-transparent group-hover:ring-accent/30 transition-all duration-200">
                   {% picture author.image format-{avif,webp,jpeg} width-200 alt=author.full_name class="u-photo w-full ht-100% object-cover" %}
                 </div>
@@ -69,6 +70,11 @@
             <span class="hidden sm:inline">{{ page.first_published_at|date:"F j, Y" }}</span>
             <span class="sm:hidden">{{ page.first_published_at|date:"M j, Y" }}</span>
           </time>
+
+          <a href="{{ page.full_url }}"
+             class="u-url text-primary/50 hover:text-accent"
+             aria-label="Permalink to this post">permalink ¶</a>
+
           <span class="text-xs text-primary/70">
             {{ page.first_published_at|date:"g:i A" }}
           </span>
