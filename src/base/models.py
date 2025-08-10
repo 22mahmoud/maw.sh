@@ -21,6 +21,7 @@ from wagtail.models import (
     WorkflowMixin,
 )
 from wagtail.models.pages import slugify
+from wagtail.query import Site
 from wagtailmedia.blocks import VideoChooserBlock
 
 from src.base.blocks import CodeBlock, ListBlock
@@ -160,6 +161,13 @@ class Person(  # type: ignore
 
     def get_absolute_url(self):
         return f"/authors/{self.slug}"
+
+    def get_full_url(self):
+        try:
+            site = Site.find_for_request(None) or Site.objects.get(is_default_site=True)
+            return site.root_url.rstrip("/") + self.get_absolute_url()
+        except Site.DoesNotExist:
+            return self.get_absolute_url()
 
     def clean(self):
         super().clean()

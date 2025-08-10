@@ -32,7 +32,7 @@ class FeedMixin:
         return [
             {
                 "name": getattr(person, "full_name", str(person)),
-                "uri": person.website or person.get_absolute_url(),
+                "uri": person.website or person.get_full_url(),
                 "email": getattr(person, "email", None),
             }
             for person in item.authors()
