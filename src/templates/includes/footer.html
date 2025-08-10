@@ -6,8 +6,8 @@
 
   <div class="container mx-auto px-6 py-12 mt-4">
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-12">
-      <div class="md:col-span-1 lg:col-span-2">
-        <div class="h-card flex items-start gap-4">
+      <div class="h-card md:col-span-1 lg:col-span-2">
+        <div class="flex items-start gap-4">
           {% get_image_by_title "avatar" as avatar %}
           {% image avatar fill-150x150 as avatar_photo %}
           <img src="{{ avatar_photo.full_url }}"
@@ -34,7 +34,7 @@
         </div>
         <div class="flex flex-wrap items-center gap-4 mt-5">
           {% for social in settings.base.SiteSettings.social_links %}
-            {% link rel="me" href=social.url class="text-secondary hover:text-accent transition-colors duration-200" title=social.text %}
+            {% link rel="me" href=social.url class="u-url text-secondary hover:text-accent transition-colors duration-200" title=social.text %}
               {% icon social.icon class="w-6 h-6" %}
               <span class="sr-only">{{ social.text }}</span>
             {% endlink %}
@@ -178,6 +178,5 @@
         {% endlink %}
       </div>
     </div>
-
   </div>
 </footer>
