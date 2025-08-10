@@ -53,9 +53,9 @@ LINK_ICON_CVA = cva(
             "nav_active": "text-accent",
         },
         "size": {
-            "sm": "w-4 h-4",
-            "md": "w-6 h-6",
-            "lg": "w-8 h-8",
+            "sm": "w-4 ht-4",
+            "md": "w-6 ht-6",
+            "lg": "w-8 ht-8",
         },
     },
     default_variants={

@@ -8,9 +8,26 @@
   @apply bg-gradient-to-r from-gradient-1 to-gradient-2;
 }
 
-html,
-body {
-  height: 100%;
+@utility ht-* {
+  height: --value(--spacing-\*);
+  height: --spacing(--value(integer));
+  height: calc(--value([percentage]));
+  height: --value([length], [percentage]);
+  height: --value(
+    "auto",
+    "min-content",
+    "max-content",
+    "fit-content",
+    "1lh",
+    "100%",
+    "100vh",
+    "100dvh",
+    "100dvw",
+    "100lvh",
+    "100lvw",
+    "100svh",
+    "100svw"
+  );
 }
 
 @theme {

@@ -8,8 +8,8 @@
           {% for _ in range %}
             {% for client in clients %}
               <div class="flex items-center mx-[calc(var(--gap)/2)] shrink-0">
-                <div class="h-6 md:h-7 lg:h-8 w-auto transition-all duration-300 filter grayscale brightness-110 contrast-75 opacity-90 hover:grayscale-0 hover:brightness-100 hover:contrast-100 hover:opacity-100">
-                  {% picture client.logo format-{avif,webp,jpeg} height-48 class="h-full w-auto" %}
+                <div class="ht-6 md:ht-7 lg:ht-8 w-auto transition-all duration-300 filter grayscale brightness-110 contrast-75 opacity-90 hover:grayscale-0 hover:brightness-100 hover:contrast-100 hover:opacity-100">
+                  {% picture client.logo format-{avif,webp,jpeg} height-48 class="ht-100% w-auto" %}
                 </div>
               </div>
             {% endfor %}

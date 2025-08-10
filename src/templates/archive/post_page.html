@@ -41,8 +41,8 @@
             {% for author in page.authors %}
               <a href="{{ author.get_full_url }}"
                  class="h-card flex items-center gap-3 transition-all duration-200 hover:scale-[1.02] group">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-transparent group-hover:ring-accent/30 transition-all duration-200">
-                  {% picture author.image format-{avif,webp,jpeg} width-200 alt=author.full_name class="u-photo w-full h-full object-cover" %}
+                <div class="w-10 ht-10 sm:w-12 sm:ht-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-transparent group-hover:ring-accent/30 transition-all duration-200">
+                  {% picture author.image format-{avif,webp,jpeg} width-200 alt=author.full_name class="u-photo w-full ht-100% object-cover" %}
                 </div>
                 <div class="flex flex-col min-w-0 flex-1">
                   <span class="p-name font-medium text-primary group-hover:text-accent transition-colors duration-200 truncate">
@@ -189,12 +189,12 @@
                     {% for mention in webmentions.likes %}
                       <a href="{{ mention.author.url }}"
                          title="{{ mention.author.name }}"
-                         class="group block w-10 h-10 rounded-full overflow-hidden transition-all duration-200 hover:scale-110">
-                        <div class="w-full h-full ring-2 ring-transparent group-hover:ring-accent/70 rounded-full transition-all duration-200">
+                         class="group block w-10 ht-10 rounded-full overflow-hidden transition-all duration-200 hover:scale-110">
+                        <div class="w-full ht-100% ring-2 ring-transparent group-hover:ring-accent/70 rounded-full transition-all duration-200">
                           {% if mention.author.photo %}
-                            {% picture mention.author.photo format-{avif,webp,jpeg} width-40 lading="lazy" class="w-full h-full object-cover" %}
+                            {% picture mention.author.photo format-{avif,webp,jpeg} width-40 lading="lazy" class="w-full ht-100% object-cover" %}
                           {% else %}
-                            <div class="flex items-center justify-center w-full h-full bg-neutral-700 text-primary font-bold text-lg">
+                            <div class="flex items-center justify-center w-full ht-100% bg-neutral-700 text-primary font-bold text-lg">
                               ?
                             </div>
                           {% endif %}
@@ -214,12 +214,12 @@
                     {% for mention in webmentions.reposts %}
                       <a href="{{ mention.author.url }}"
                          title="{{ mention.author.name }}"
-                         class="group block w-10 h-10 rounded-full overflow-hidden transition-all duration-200 hover:scale-110">
-                        <div class="w-full h-full ring-2 ring-transparent group-hover:ring-accent/70 rounded-full transition-all duration-200">
+                         class="group block w-10 ht-10 rounded-full overflow-hidden transition-all duration-200 hover:scale-110">
+                        <div class="w-full ht-100% ring-2 ring-transparent group-hover:ring-accent/70 rounded-full transition-all duration-200">
                           {% if mention.author.photo %}
-                            {% picture mention.author.photo format-{avif,webp,jpeg} width-40 lading="lazy" class="w-full h-full object-cover" %}
+                            {% picture mention.author.photo format-{avif,webp,jpeg} width-40 lading="lazy" class="w-full ht-100% object-cover" %}
                           {% else %}
-                            <div class="flex items-center justify-center w-full h-full bg-neutral-700 text-primary font-bold text-lg">
+                            <div class="flex items-center justify-center w-full ht-100% bg-neutral-700 text-primary font-bold text-lg">
                               ?
                             </div>
                           {% endif %}
@@ -239,12 +239,12 @@
                     {% for mention in webmentions.bookmarks %}
                       <a href="{{ mention.author.url }}"
                          title="{{ mention.author.name }}"
-                         class="group block w-10 h-10 rounded-full overflow-hidden transition-all duration-200 hover:scale-110">
-                        <div class="w-full h-full ring-2 ring-transparent group-hover:ring-accent/70 rounded-full transition-all duration-200">
+                         class="group block w-10 ht-10 rounded-full overflow-hidden transition-all duration-200 hover:scale-110">
+                        <div class="w-full ht-100% ring-2 ring-transparent group-hover:ring-accent/70 rounded-full transition-all duration-200">
                           {% if mention.author.photo %}
-                            {% picture mention.author.photo format-{avif,webp,jpeg} width-40 lading="lazy" class="w-full h-full object-cover" %}
+                            {% picture mention.author.photo format-{avif,webp,jpeg} width-40 lading="lazy" class="w-full ht-100% object-cover" %}
                           {% else %}
-                            <div class="flex items-center justify-center w-full h-full bg-neutral-700 text-primary font-bold text-lg">
+                            <div class="flex items-center justify-center w-full ht-100% bg-neutral-700 text-primary font-bold text-lg">
                               ?
                             </div>
                           {% endif %}
@@ -265,12 +265,12 @@
                       <div class="flex gap-3 sm:gap-4">
                         <div class="flex-shrink-0">
                           <a href="{{ mention.author.url }}"
-                             class="group block w-10 h-10 rounded-full overflow-hidden">
-                            <div class="w-full h-full rounded-full ring-2 ring-transparent group-hover:ring-accent/70 transition-all duration-200">
+                             class="group block w-10 ht-10 rounded-full overflow-hidden">
+                            <div class="w-full ht-100% rounded-full ring-2 ring-transparent group-hover:ring-accent/70 transition-all duration-200">
                               {% if mention.author.photo %}
-                                {% picture mention.author.photo format-{avif,webp,jpeg} width-40 lading="lazy" class="w-full h-full object-cover" %}
+                                {% picture mention.author.photo format-{avif,webp,jpeg} width-40 lading="lazy" class="w-full ht-100% object-cover" %}
                               {% else %}
-                                <div class="flex items-center justify-center w-full h-full bg-neutral-700 text-primary font-bold text-lg">
+                                <div class="flex items-center justify-center w-full ht-100% bg-neutral-700 text-primary font-bold text-lg">
                                   ?
                                 </div>
                               {% endif %}

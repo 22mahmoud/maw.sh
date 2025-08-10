@@ -6,7 +6,7 @@
     {% link
       href=author.get_full_url
       class=authors|length|author_link_class %}
-      {% picture author.image format-{avif,webp,jpeg} width-64 alt=author.full_name class="u-photo w-full h-full object-cover rounded-full" %}
+      {% picture author.image format-{avif,webp,jpeg} width-64 alt=author.full_name class="u-photo w-full ht-100% object-cover rounded-full" %}
     {% endlink %}
   {% endfor %}
 </div>

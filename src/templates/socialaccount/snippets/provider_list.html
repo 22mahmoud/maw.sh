@@ -10,7 +10,7 @@
             {% provider_login_url provider openid=brand.openid_url process=process as href %}
             <a href="{{ href }}"
                class="flex items-center justify-center gap-2 rounded-md px-5 py-2.5 bg-muted text-primary hover:bg-muted/80 font-medium transition">
-              {% icon provider.id class="w-5 h-5" fallback=brand.name %}
+              {% icon provider.id class="w-5 ht-5" fallback=brand.name %}
               <span class="text-sm">{{ brand.name }}</span>
             </a>
           {% endfor %}
@@ -18,7 +18,7 @@
           {% provider_login_url provider process=process scope=scope auth_params=auth_params as href %}
           <a href="{{ href }}"
              class="flex items-center justify-center gap-2 rounded-md px-5 py-2.5 bg-primary text-black hover:bg-muted/80 font-medium transition">
-            {% icon provider.id class="w-5 h-5" fallback=provider.name %}
+            {% icon provider.id class="w-5 ht-5" fallback=provider.name %}
             <span class="text-sm">{{ provider.name }}</span>
           </a>
         {% endif %}

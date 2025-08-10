@@ -1,7 +1,7 @@
 {% load wagtailimages_tags link_tags base_tags %}
 
 <footer class="relative bg-dark zigzag shadow-inner text-secondary">
-  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gradient-1 to-gradient-2">
+  <div class="absolute top-0 left-0 w-full ht-1 bg-gradient-to-r from-gradient-1 to-gradient-2">
   </div>
 
   <div class="container mx-auto px-6 py-12 mt-4">
@@ -15,7 +15,7 @@
                height="{{ avatar_photo.height }}"
                decoding="async"
                loading="lazy"
-               class="u-photo rounded-full w-16 h-16 ring-2 ring-neutral-700"
+               class="u-photo rounded-full h w-16 ht-16 ring-2 ring-neutral-700"
                alt="Portrait of Mahmoud Ashraf" />
           <div>
             <a class="u-url block text-lg font-bold text-white hover:text-accent transition-colors duration-200"
@@ -35,7 +35,7 @@
         <div class="flex flex-wrap items-center gap-4 mt-5">
           {% for social in settings.base.SiteSettings.social_links %}
             {% link rel="me" href=social.url class="u-url text-secondary hover:text-accent transition-colors duration-200" title=social.text %}
-              {% icon social.icon class="w-6 h-6" %}
+              {% icon social.icon class="w-6 ht-6" %}
               <span class="sr-only">{{ social.text }}</span>
             {% endlink %}
           {% endfor %}

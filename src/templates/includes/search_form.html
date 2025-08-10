@@ -9,15 +9,15 @@
         class="w-full flex items-stretch gap-1 sm:gap-2 mb-4"
       {% endif %}>
 
-  <div class="flex-1 [&_input]:h-10 [&_input]:w-full [&_input]:text-base
+  <div class="flex-1 [&_input]:ht-10 [&_input]:w-full [&_input]:text-base
               {% if type == 'desktop' %}
                 [&_input]:max-w-[20rem] [&_input]:sm:max-w-[24rem]
               {% endif %}">
     {{ search_form }}
   </div>
 
-  {% button type="submit" variant="muted" size="sm" class="h-10 px-3 sm:px-4" %}
-    {% icon "magnifying-glass" class="w-5 h-5" %}
+  {% button type="submit" variant="muted" size="sm" class="ht-10 px-3 sm:px-4" %}
+    {% icon "magnifying-glass" class="w-5 ht-5" %}
     <span class="sr-only">Search</span>
   {% endbutton %}
 </form>

@@ -60,7 +60,7 @@
                 <div class="group overflow-hidden shadow-lg transform {% cycle 'rotate-2' '-rotate-2' 'rotate-1' '-rotate-1' %} transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:rotate-0 hover:z-10 focus-within:scale-105 focus-within:shadow-2xl focus-within:rotate-0 focus-within:z-10">
                   {% image image original as full_image %}
                   <a href="{{ full_image.full_url }}">
-                    {% picture image format-{avif,webp,jpeg} width-800 class="object-cover w-full h-full" %}
+                    {% picture image format-{avif,webp,jpeg} width-800 class="object-cover w-full ht-100%" %}
                   </a>
                 </div>
               {% endfor %}

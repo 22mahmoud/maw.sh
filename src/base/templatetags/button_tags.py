@@ -51,9 +51,9 @@ BUTTON_ICON_CVA = cva(
             "disabled": "text-secondary",
         },
         "size": {
-            "sm": "w-4 h-4",
-            "md": "w-5 h-5",
-            "lg": "w-6 h-6",
+            "sm": "w-4 ht-4",
+            "md": "w-5 ht-5",
+            "lg": "w-6 ht-6",
         },
     },
     default_variants={

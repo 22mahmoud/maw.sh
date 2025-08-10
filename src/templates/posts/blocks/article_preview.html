@@ -17,7 +17,7 @@
 
   {% if value.featured_image %}
     <div class="relative overflow-hidden border border-primary/10 shadow-md hover:shadow-lg transition-shadow duration-200">
-      {% picture value.featured_image format-{avif,webp,jpeg} width-600 class="u-photo w-full h-full object-contain hover:scale-105 transition-transform duration-300" %}
+      {% picture value.featured_image format-{avif,webp,jpeg} width-600 class="u-photo w-full ht-100% object-contain hover:scale-105 transition-transform duration-300" %}
     </div>
   {% endif %}
 </div>

@@ -5,7 +5,7 @@
     {% for image in value.images %}
       {% if layout == 'preview' or layout == 'compact' %}
         <div class="group relative aspect-square overflow-hidden border border-primary/10 shadow-sm transition-all duration-300 hover:shadow-xl">
-          {% picture image format-{avif,webp,jpeg} width-200 alt=image.title class="u-photo h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" %}
+          {% picture image format-{avif,webp,jpeg} width-200 alt=image.title class="u-photo ht-100% w-full object-cover transition-transform duration-300 group-hover:scale-105" %}
         </div>
       {% else %}
         {% image image original as full %}
@@ -13,7 +13,7 @@
            target="_blank"
            rel="noopener noreferrer"
            class="group relative aspect-square cursor-pointer overflow-hidden border border-primary/10 shadow-sm transition-all duration-300 hover:shadow-xl">
-          {% picture image format-{avif,webp,jpeg} width-400 alt=image.title class="u-photo h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" %}
+          {% picture image format-{avif,webp,jpeg} width-400 alt=image.title class="u-photo ht-100% w-full object-cover transition-transform duration-300 group-hover:scale-105" %}
         </a>
       {% endif %}
     {% endfor %}
@@ -34,7 +34,7 @@
       {% if value.taken_date %}
         <time class="dt-photo flex items-center gap-2">
           <span class="inline-flex items-center gap-2">
-            {% icon "camera" class="h-4 w-4 text-accent sm:h-5 sm:w-5" %}
+            {% icon "camera" class="ht-4 w-4 text-accent sm:ht-5 sm:w-5" %}
             <span>
               Taken on {{ value.taken_date|date:"F j, Y" }}
             </span>
@@ -44,7 +44,7 @@
 
       {% if value.location %}
         <div class="p-location flex items-center gap-2">
-          {% icon "map-pin" class="h-4 w-4 text-accent sm:h-5 sm:w-5" %}
+          {% icon "map-pin" class="ht-4 w-4 text-accent sm:ht-5 sm:w-5" %}
           <span>
             {{ value.location }}
           </span>
