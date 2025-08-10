@@ -1,27 +1,156 @@
-{% load link_tags %}
+{% load link_tags base_tags %}
 
-<footer class="shadow bg-gradient-to-r from-gradient-1 to-gradient-2 pt-[2px]">
-  <div class="bg-dark zigzag flex flex-col">
-    <div class="px-3 py-1.5">
-      Footer
+<footer class="relative bg-dark zigzag shadow-inner">
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gradient-1 to-gradient-2">
+  </div>
+
+  <div class="container mx-auto px-6 py-12 mt-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
+      <div>
+        <h4 class="font-bold text-accent mb-4">
+          Social Media
+        </h4>
+        <div class="flex flex-col space-y-3">
+          {% for social in settings.base.SiteSettings.social_links %}
+            {% link rel="me" href=social.url class="flex items-center gap-3 text-secondary hover:text-accent transition-colors duration-200" %}
+              {% icon social.icon class="w-5 h-5" %}
+              <span>{{ social.text }}</span>
+            {% endlink %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-accent mb-4">
+          Main
+        </h4>
+        <ul class="space-y-2">
+          <li>
+            {% link href="/" class="hover:underline" %}
+              Home
+            {% endlink %}
+          </li>
+          <li>
+            {% link href="/about/" class="hover:underline" %}
+              About
+            {% endlink %}
+          </li>
+          <li>
+            {% link href="/contact/" class="hover:underline" %}
+              Contact
+            {% endlink %}
+          </li>
+          <li>
+            {% link href="/guestbook/" class="hover:underline" %}
+              Guestbook
+            {% endlink %}
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-accent mb-4">
+          Content
+        </h4>
+        <ul class="space-y-2">
+          <li>
+            {% link href="/feed/" class="hover:underline" %}
+              Feed
+            {% endlink %}
+          </li>
+          <li>
+            {% link href="/blog/" class="hover:underline" %}
+              Blog
+            {% endlink %}
+          </li>
+          <li>
+            {% link href="/notes/" class="hover:underline" %}
+              Notes
+            {% endlink %}
+          </li>
+          <li>
+            {% link href="/photos/" class="hover:underline" %}
+              Photos
+            {% endlink %}
+          </li>
+          <li>
+            {% link href="/likes/" class="hover:underline" %}
+              Likes
+            {% endlink %}
+          </li>
+        </ul>
+      </div>
+      {# <div> #}
+      {#   <h4 class="font-bold text-accent mb-4"> #}
+      {#     Other #}
+      {#   </h4> #}
+      {#   <ul class="space-y-2"> #}
+      {#     <li> #}
+      {#       {% link href="/uses/" class="hover:underline" %} #}
+      {#         Uses #}
+      {#       {% endlink %} #}
+      {#     </li> #}
+      {#     <li> #}
+      {#       {% link href="/clophone/" class="hover:underline" %} #}
+      {#         Clophone #}
+      {#       {% endlink %} #}
+      {#     </li> #}
+      {#   </ul> #}
+      {# </div> #}
     </div>
-    <div class="bg-darker px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 text-sm sm:text-base">
-      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
-        <span>Mahmoud Ashraf</span>
-        <span class="text-secondary">© Copyright 2025 • All rights reserved</span>
-        <span class="hidden sm:inline">•</span>
-        {% link href="/privacy-policy/" class="underline text-secondary hover:text-white" %}
+
+    {# <div class="border-t border-neutral-700 pt-8 mb-8"> #}
+    {#   <div class="grid grid-cols-1 md:grid-cols-2 gap-8"> #}
+    {#     <div class="flex flex-wrap gap-4 justify-center md:justify-start"> #}
+    {#       <div class="border border-neutral-700 px-4 py-3 text-sm"> #}
+    {#         <div class="font-bold mb-2"> #}
+    {#           IndieWeb Ring #}
+    {#         </div> #}
+    {#         <div class="flex gap-4"> #}
+    {#           <a href="#" class="hover:text-accent transition-colors duration-200">← Prev</a> #}
+    {#           <a href="#" class="hover:text-accent transition-colors duration-200">Main</a> #}
+    {#           <a href="#" class="hover:text-accent transition-colors duration-200">Next →</a> #}
+    {#         </div> #}
+    {#       </div> #}
+    {#       <div class="border border-neutral-700 px-4 py-3 text-sm"> #}
+    {#         <div class="font-bold mb-2"> #}
+    {#           Another Ring #}
+    {#         </div> #}
+    {#         <div class="flex gap-4"> #}
+    {#           <a href="#" class="hover:text-accent transition-colors duration-200">← Prev</a> #}
+    {#           <a href="#" class="hover:text-accent transition-colors duration-200">Main</a> #}
+    {#           <a href="#" class="hover:text-accent transition-colors duration-200">Next →</a> #}
+    {#         </div> #}
+    {#       </div> #}
+    {#     </div> #}
+    {##}
+    {#     <div class="flex flex-wrap gap-2 justify-center md:justify-end items-start"> #}
+    {#       <div class="border border-neutral-700 px-3 py-1 text-xs"> #}
+    {#         Hetzner VPS #}
+    {#       </div> #}
+    {#       <div class="border border-neutral-700 px-3 py-1 text-xs"> #}
+    {#         Built with Django #}
+    {#       </div> #}
+    {#       <div class="border border-neutral-700 px-3 py-1 text-xs"> #}
+    {#         Free Palestine 🇵🇸 #}
+    {#       </div> #}
+    {#     </div> #}
+    {#   </div> #}
+    {# </div> #}
+
+    <div class="border-t border-neutral-700 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-sm text-secondary text-center sm:text-left">
+        <span>© 2025 Mahmoud Ashraf. All rights reserved.</span>
+        <span class="mx-2">•</span>
+        {% link href="/privacy-policy/" class="hover:text-white transition-colors duration-200" %}
           Privacy Policy
         {% endlink %}
-        {% link href="/terms-of-service/" class="underline text-secondary hover:text-white" %}
+        <span class="mx-2">•</span>
+        {% link href="/terms-of-service/" class="hover:text-white transition-colors duration-200" %}
           Terms
         {% endlink %}
-        {% link href="/contact/" class="underline text-secondary hover:text-white" %}
-          Contact
-        {% endlink %}
       </div>
-      <div class="w-full sm:w-auto text-right sm:text-left">
-        {% link href="#top" class="font-bold underline block sm:inline" %}
+      <div class="text-sm">
+        {% link href="#top" class="font-medium hover:text-accent transition-colors duration-200" %}
           Back to top ↑
         {% endlink %}
       </div>
