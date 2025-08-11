@@ -1,5 +1,8 @@
+from modelcluster.contrib.taggit import ClusterTaggableManager
 from wagtail.models import Page
 from wagtailseo.models import SeoMixin
+
+from src.base.tags import PageTag
 
 
 def _resolve_steps(obj, steps):
@@ -19,6 +22,8 @@ def _resolve_steps(obj, steps):
 
 
 class BasePage(SeoMixin, Page):
+    tags = ClusterTaggableManager(through=PageTag, blank=True)
+
     @property
     def seo_description(self):
         for steps in self.seo_description_sources:
@@ -33,6 +38,14 @@ class BasePage(SeoMixin, Page):
             "Mahmoud Ashraf — Frontend Engineer from Alexandria, Egypt. "
             "I craft fast, accessible, and user-focused web experiences."
         )
+
+    @property
+    def keywords_content(self) -> str:
+        if not self.tags.exists():  # type: ignore
+            return "indieweb,front-end,linux,personal,blog"
+
+        tag_names = [tag.name for tag in self.tags.all()]  # type: ignore
+        return ",".join(tag_names)
 
     class Meta:  # type: ignore
         abstract = True

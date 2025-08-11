@@ -4,7 +4,6 @@ from django.db import models
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from modelcluster.models import ClusterableModel
-from taggit.models import TaggedItemBase
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel, ObjectList, TabbedInterface
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
@@ -47,14 +46,6 @@ class DummyPage(Page):
             self.title or 0,
             self.introduction or "",
         ]
-
-
-class PageTag(TaggedItemBase):
-    content_object = ParentalKey(
-        "wagtailcore.Page",
-        related_name="tagged_items",
-        on_delete=models.CASCADE,
-    )
 
 
 class PostPersonRelationship(Orderable, models.Model):

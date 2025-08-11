@@ -80,7 +80,11 @@
 
       {% include "wagtailseo/meta.html" %}
 
-      <meta name="keywords" content="this,is,a,keywords">
+      {% if page.keywords_content %}
+        <meta name="keywords" content="{{ page.keywords_content }}">
+      {% else %}
+        <meta name="keywords" content="indieweb,front-end,linux,personal,blog">
+      {% endif %}
 
       <link rel="icon"
             type="image/png"

@@ -1,7 +1,5 @@
-from modelcluster.contrib.taggit import ClusterTaggableManager
 from wagtail.fields import StreamField
 
-from src.base.models import PageTag
 from src.posts.blocks import VideoBlock
 from src.posts.models import BasePostPage, BasePostsIndexPage
 from src.posts.utils import get_post_content_panels, get_post_search_fields
@@ -29,7 +27,6 @@ class VideoPage(BasePostPage):  # type: ignore
         min_num=1,
         max_num=1,
     )
-    tags = ClusterTaggableManager(through=PageTag, blank=True)
     parent_page_types = ["VideosPageIndex"]
     subpage_types = []
     content_panels = get_post_content_panels()
