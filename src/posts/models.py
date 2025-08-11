@@ -8,7 +8,6 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404
 from wagtail.admin.panels import FieldPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, re_path
-from wagtail.models import Page
 from wagtailseo.models import SeoType
 
 from src.base.page import BasePage
@@ -97,7 +96,7 @@ class BasePostsIndexPage(PaginatedArchiveMixin, RoutablePageMixin, BasePage):
 
     introduction = models.TextField(help_text="Text to describe the page", blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = BasePage.content_panels + [
         FieldPanel("introduction"),
     ]
 

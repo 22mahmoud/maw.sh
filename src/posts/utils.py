@@ -5,16 +5,15 @@ from wagtail.admin.panels import FieldPanel, MultiFieldPanel, MultipleChooserPan
 from wagtail.models import Page
 from wagtail.search import index
 
+from src.base.page import BasePage
 
-def get_post_content_panels(include_body=True, include_tags=True, include_authors=True):
+
+def get_post_content_panels(include_body=True, include_authors=True):
     """Generate content panels for post pages"""
-    panels = Page.content_panels.copy()
+    panels = BasePage.content_panels.copy()
 
     if include_body:
         panels.append(FieldPanel("body"))  # type: ignore
-
-    if include_tags:
-        panels.append(FieldPanel("tags"))  # type: ignore
 
     if include_authors:
         panels.append(

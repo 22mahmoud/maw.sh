@@ -217,7 +217,7 @@ class GenericPage(BasePage):  # type: ignore
         blank=True,
     )
 
-    content_panels = Page.content_panels + [
+    content_panels = BasePage.content_panels + [
         FieldPanel("introduction"),
         FieldPanel("body"),
     ]

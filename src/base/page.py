@@ -1,4 +1,5 @@
 from modelcluster.contrib.taggit import ClusterTaggableManager
+from wagtail.admin.panels import FieldPanel
 from wagtail.models import Page
 from wagtailseo.models import SeoMixin
 
@@ -46,6 +47,10 @@ class BasePage(SeoMixin, Page):
 
         tag_names = [tag.name for tag in self.tags.all()]  # type: ignore
         return ",".join(tag_names)
+
+    content_panels = Page.content_panels + [FieldPanel("tags")]
+
+    promote_panels = SeoMixin.seo_panels
 
     class Meta:  # type: ignore
         abstract = True

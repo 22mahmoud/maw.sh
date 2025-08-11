@@ -2,7 +2,6 @@ from django.db import models
 from django.db.models import Case, IntegerField, Value, When
 from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField, StreamField
-from wagtail.models import Page
 
 from src.base.page import BasePage
 
@@ -14,7 +13,7 @@ class GuestbookIndexPage(BasePage):
         blank=True, help_text="Optional introduction/help text for the guestbook."
     )
 
-    content_panels = Page.content_panels + [
+    content_panels = BasePage.content_panels + [
         FieldPanel("intro"),
     ]
 
@@ -49,7 +48,7 @@ class GuestbookFormPage(BasePage):
         blank=True,
     )
 
-    content_panels = Page.content_panels + [
+    content_panels = BasePage.content_panels + [
         FieldPanel("intro"),
         FieldPanel("body"),
     ]

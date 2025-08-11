@@ -45,7 +45,7 @@ class HomePage(PaginatedArchiveMixin, RoutablePageMixin, BasePage):  # type: ign
         blank=True,
     )
 
-    content_panels = Page.content_panels + [
+    content_panels = BasePage.content_panels + [
         FieldPanel("introduction"),
         FieldPanel("body"),
     ]

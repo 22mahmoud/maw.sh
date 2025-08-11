@@ -4,12 +4,13 @@ from wagtail.admin.panels import FieldPanel, MultiFieldPanel, MultipleChooserPan
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.fields import StreamField
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.models import Orderable, Page, ParentalKey
+from wagtail.models import Orderable, ParentalKey
 from wagtailmedia.blocks import VideoChooserBlock
 
 from src.base.blocks.codeblock import CodeBlock
 from src.base.blocks.list import ListBlock
 from src.base.blocks.text import HeadingBlock
+from src.base.page import BasePage
 
 
 class ProjectPageTechnologyRelationship(Orderable):
@@ -28,7 +29,7 @@ class ProjectPageTechnologyRelationship(Orderable):
     panels = [FieldPanel("technology")]
 
 
-class ProjectsIndexPage(Page):
+class ProjectsIndexPage(BasePage):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
 
@@ -46,7 +47,7 @@ class ProjectsIndexPage(Page):
     subpage_types = ["projects.ProjectPage"]
 
 
-class ProjectPage(Page):
+class ProjectPage(BasePage):
     client = models.ForeignKey(
         "clients.Client",
         null=True,
@@ -109,7 +110,7 @@ class ProjectPage(Page):
         blank=True,
     )
 
-    content_panels = Page.content_panels + [
+    content_panels = BasePage.content_panels + [
         FieldPanel("client"),
         MultiFieldPanel(
             [
