@@ -42,7 +42,6 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 INSTALLED_APPS = (
     WAGTAIL_INSTALLED_APPS
-    + DJANGO_HEALTH_CHECK_INSTALLED_APPS
     + [
         "src.feeds",
         "src.tasks",
@@ -72,6 +71,7 @@ INSTALLED_APPS = (
         "django.contrib.sitemaps",
     ]
     + ALLAUTH_INSTALLED_APPS
+    + DJANGO_HEALTH_CHECK_INSTALLED_APPS
 )
 
 MIDDLEWARE = (
