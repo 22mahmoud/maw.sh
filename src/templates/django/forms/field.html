@@ -9,7 +9,7 @@
     <div {% if field.auto_id %}
            id="{{ field.auto_id }}_helptext"
          {% endif %}
-         class="prose prose-sm prose-main text-sm text-secondary">
+         class="prose text-sm text-secondary">
       {{ field.help_text|safe }}
     </div>
   {% endif %}
@@ -32,7 +32,7 @@
       <div {% if field.auto_id %}
              id="{{ field.auto_id }}_helptext"
            {% endif %}
-           class="prose prose-sm prose-main text-sm text-secondary">
+           class="prose text-sm text-secondary">
         {{ field.help_text|safe }}
       </div>
     {% endif %}

@@ -105,7 +105,7 @@
         <div class="relative">
 
           {% if page.body.0.block_type == 'article' %}
-            <header class="mb-10 prose prose-main prose-headings:font-heading prose-headings:text-primary text-center space-y-3 sm:space-y-5">
+            <header class="mb-10 prose text-center space-y-3 sm:space-y-5">
               <h1 class="p-name text-balance font-heading">
                 {{ page.title }}
               </h1>
@@ -295,7 +295,7 @@
                               <time datetime="{{ mention.published|date:'c' }}">{{ mention.published|date:"M j, Y" }}</time>
                             </a>
                           </div>
-                          <div class="prose prose-main prose-sm max-w-none text-primary/90 break-words sm:break-normal break-all">
+                          <div class="prose max-w-none text-primary/90 break-words sm:break-normal break-all">
                             {{ mention.content_html|safe }}
                           </div>
                         </div>

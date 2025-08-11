@@ -1,6 +1,6 @@
 {% load wagtailcore_tags base_tags %}
 
-<div class="prose prose-main
+<div class="prose
             {% if layout == 'compact' %}
               text-sm
             {% else %}
@@ -25,7 +25,7 @@
   </div>
 
   {% if layout != "compact" and self.description %}
-    <div class="prose prose-main prose-sm max-w-none sm:prose-base mt-2">
+    <div class="prose max-w-none mt-2">
       <blockquote>
         {{ self.description }}
       </blockquote>
@@ -33,7 +33,7 @@
   {% endif %}
 
   {% if layout != "compact" and self.notes %}
-    <div class="e-content prose prose-main max-w-none mt-4">
+    <div class="e-content prose max-w-none mt-4">
       {{ self.notes|richtext }}
     </div>
   {% endif %}

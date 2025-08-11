@@ -8,7 +8,7 @@
 {% block content %}
   <div class="grow flex zigzag bg-dark pt-6">
     <article class="grow flex flex-col mx-auto max-w-3xl gap-6 py-4 px-4 sm:px-6">
-      <header class="prose prose-main text-center space-y-2">
+      <header class="prose text-center space-y-2">
         <h1 class="text-xl font-semibold text-primary">
           {% if already_liked_it %}
             {% trans "You liked this comment, do you want to change it?" %}
@@ -56,7 +56,7 @@
                 {{ comment.submit_date|date:"M j, Y · H:i" }}
               </time>
             </div>
-            <div class="prose prose-main prose-sm max-w-none text-primary/90 mb-3 leading-relaxed">
+            <div class="prose max-w-none text-primary/90 mb-3 leading-relaxed">
               {{ comment.comment|linebreaks }}
             </div>
           </div>

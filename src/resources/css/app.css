@@ -1,8 +1,8 @@
 @import "@/css/fonts.css";
 @import "tailwindcss";
 @import "@/css/utils.css";
+@import "@/css/typography.css" layer(components);
 
-@plugin "@tailwindcss/typography";
 @config "../../../tailwind.config.ts";
 
 .bg-sunset {

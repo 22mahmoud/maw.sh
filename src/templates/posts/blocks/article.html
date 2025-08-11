@@ -8,7 +8,7 @@
       </div>
     {% endif %}
 
-    <div class="w-full e-content prose prose-main sm:prose-base md:prose-lg lg:prose-xl mx-auto px-4">
+    <div class="w-full e-content prose mx-auto px-4">
       {% for block in self.body %}
         {% if block.block_type == 'image' %}
           {% with block.value as img %}

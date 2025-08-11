@@ -16,14 +16,12 @@
         {% endif %}
       </header>
 
-      <div class="space-y-10">
+      <div class="prose max-w-prose">
         {% for block in page.body %}
           {% if block.block_type == "clients" or block.block_type == "contact_form" %}
             {% include_block block %}
           {% else %}
-            <article class="prose prose-main sm:prose-base md:prose-lg max-w-none">
-              {% include_block block %}
-            </article>
+            {% include_block block %}
           {% endif %}
         {% endfor %}
       </div>
