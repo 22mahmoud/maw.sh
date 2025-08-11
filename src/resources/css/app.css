@@ -9,6 +9,10 @@
   @apply bg-gradient-to-r from-gradient-1 to-gradient-2;
 }
 
+body {
+  line-height: 1.5;
+}
+
 @theme {
   --font-heading: "Outfit", sans-serif;
   --font-sans: "Figtree", sans-serif;
