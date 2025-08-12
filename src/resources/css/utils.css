@@ -52,6 +52,7 @@
 
 @utility ht-* {
   height: --spacing(--value(integer));
+  height: calc(var(--spacing) * --value(number));
   height: --value([length], [percentage]);
   height: calc(--value(ratio) * 100%);
 }

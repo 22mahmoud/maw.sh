@@ -1,4 +1,4 @@
-{% load wagtailimages_tags link_tags base_tags %}
+{% load button_tags menu_tags wagtailimages_tags link_tags base_tags %}
 
 <footer class="relative bg-dark zigzag shadow-inner text-secondary">
   <div class="absolute top-0 left-0 w-full ht-1 bg-gradient-to-r from-gradient-1 to-gradient-2">
@@ -42,122 +42,76 @@
         </div>
       </div>
 
-      <div>
-        <h4 class="font-bold text-accent mb-4">
-          Main
-        </h4>
-        <ul class="space-y-2 text-sm">
-          <li>
-            {% link href="/" class="hover:underline" %}
-              Home
-            {% endlink %}
-          </li>
-          <li>
-            {% link href="/about/" class="hover:underline" %}
-              About
-            {% endlink %}
-          </li>
-          <li>
-            {% link href="/contact/" class="hover:underline" %}
-              Contact
-            {% endlink %}
-          </li>
-          <li>
-            {% link href="/guestbook/" class="hover:underline" %}
-              Guestbook
-            {% endlink %}
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-bold text-accent mb-4">
-          Content
-        </h4>
-        <ul class="space-y-2 text-sm">
-          <li>
-            {% link href="/feed/" class="hover:underline" %}
-              Feed
-            {% endlink %}
-          </li>
-          <li>
-            {% link href="/blog/" class="hover:underline" %}
-              Blog
-            {% endlink %}
-          </li>
-          <li>
-            {% link href="/notes/" class="hover:underline" %}
-              Notes
-            {% endlink %}
-          </li>
-          <li>
-            {% link href="/photos/" class="hover:underline" %}
-              Photos
-            {% endlink %}
-          </li>
-          <li>
-            {% link href="/likes/" class="hover:underline" %}
-              Likes
-            {% endlink %}
-          </li>
-        </ul>
-      </div>
-      {# <div> #}
-      {#   <h4 class="font-bold text-accent mb-4"> #}
-      {#     Other #}
-      {#   </h4> #}
-      {#   <ul class="space-y-2 text-sm"> #}
-      {#     <li> #}
-      {#       {% link href="/uses/" class="hover:underline" %} #}
-      {#         Uses #}
-      {#       {% endlink %} #}
-      {#     </li> #}
-      {#     <li> #}
-      {#       {% link href="/clophone/" class="hover:underline" %} #}
-      {#         Clophone #}
-      {#       {% endlink %} #}
-      {#     </li> #}
-      {#   </ul> #}
-      {# </div> #}
+      {% flat_menu 'main-footer' template="includes/footer_menu.html" %}
+      {% flat_menu 'content-footer' template="includes/footer_menu.html" %}
     </div>
 
-    {# <div class="border-t border-neutral-800 pt-8 mb-8"> #}
-    {#   <div class="grid grid-cols-1 md:grid-cols-2 gap-8"> #}
-    {#     <div class="flex flex-wrap gap-4 justify-center md:justify-start"> #}
-    {#       <div class="border border-neutral-700 rounded-lg px-4 py-3 text-sm"> #}
-    {#         <div class="font-bold mb-2"> #}
-    {#           IndieWeb Ring #}
-    {#         </div> #}
-    {#         <div class="flex gap-4"> #}
-    {#           <a href="#" class="hover:text-accent transition-colors duration-200">← Prev</a> #}
-    {#           <a href="#" class="hover:text-accent transition-colors duration-200">Main</a> #}
-    {#           <a href="#" class="hover:text-accent transition-colors duration-200">Next →</a> #}
-    {#         </div> #}
-    {#       </div> #}
-    {#       <div class="border border-neutral-700 rounded-lg px-4 py-3 text-sm"> #}
-    {#         <div class="font-bold mb-2"> #}
-    {#           Another Ring #}
-    {#         </div> #}
-    {#         <div class="flex gap-4"> #}
-    {#           <a href="#" class="hover:text-accent transition-colors duration-200">← Prev</a> #}
-    {#           <a href="#" class="hover:text-accent transition-colors duration-200">Main</a> #}
-    {#           <a href="#" class="hover:text-accent transition-colors duration-200">Next →</a> #}
-    {#         </div> #}
-    {#       </div> #}
-    {#     </div> #}
-    {##}
-    {#     <div class="flex flex-wrap gap-2 justify-center md:justify-end items-start"> #}
-    {#       <div class="border border-neutral-700 bg-neutral-800/50 rounded-full px-3 py-1 text-xs"> #}
-    {#         Hetzner VPS #}
-    {#       </div> #}
-    {#       <div class="border border-neutral-700 bg-neutral-800/50 rounded-full px-3 py-1 text-xs"> #}
-    {#         Built with Django #}
-    {#       </div> #}
-    {#       <div class="border border-neutral-700 bg-neutral-800/50 rounded-full px-3 py-1 text-xs"> #}
-    {#         Free Palestine 🇵🇸 #}
-    {#       </div> #}
-    {#     </div> #}
-    {#   </div> #}
-    {# </div> #}
+    <div class="border-t border-neutral-800 pt-10 mb-10">
+      <div class="flex gap-8 items-center justify-center">
+        <div class="relative bg-darker border border-neutral-800 p-6 flex flex-col gap-4">
+          <div class="absolute bottom-0 left-0 w-full ht-0.5 bg-gradient-to-r from-gradient-1 to-gradient-2">
+          </div>
+          <div class="text-center">
+            <a href="https://xn--sr8hvo.ws"
+               class="font-sans text-sm text-secondary hover:text-accent transition-colors">
+              IndieWeb Webring 🕸💍
+            </a>
+          </div>
+
+          <div class="grid grid-cols-2 gap-0">
+            {% button href="https://xn--sr8hvo.ws/previous" variant="muted" size="md" class="w-full justify-center" %}
+              ← Previous
+            {% endbutton %}
+
+            {% button href="https://xn--sr8hvo.ws/next" variant="muted" size="md" class="w-full justify-center" %}
+              Next →
+            {% endbutton %}
+          </div>
+        </div>
+
+        <div class="relative bg-darker border border-neutral-800 p-6 flex flex-col gap-4">
+          <div class="absolute bottom-0 left-0 w-full ht-0.5 bg-gradient-to-r from-gradient-1 to-gradient-2">
+          </div>
+          <div class="text-center">
+            <a href="https://fediring.net"
+               class="font-sans text-sm text-secondary hover:text-accent transition-colors">
+              Fediring
+            </a>
+          </div>
+
+          <div class="grid grid-cols-2 gap-0">
+            {% button href="https://fediring.net/previous?host=mahmoudashraf.dev" variant="muted" size="md" class="w-full justify-center" %}
+              ← Previous
+            {% endbutton %}
+
+            {% button href="https://fediring.net/next?host=mahmoudashraf.dev" variant="muted" size="md" class="w-full justify-center" %}
+              Next →
+            {% endbutton %}
+          </div>
+        </div>
+
+        <div class="relative bg-darker border border-neutral-800 p-6 flex flex-col gap-4">
+          <div class="absolute bottom-0 left-0 w-full ht-0.5 bg-gradient-to-r from-gradient-1 to-gradient-2">
+          </div>
+          <div class="text-center">
+            <a href="https://geekring.net/site/NUMBER/random"
+               class="font-sans text-sm text-secondary hover:text-accent transition-colors">
+              Geekring
+            </a>
+          </div>
+
+          <div class="grid grid-cols-2 gap-0">
+            {% button href="https://geekring.net/site/NUMBER/previous" variant="muted" size="md" class="w-full justify-center" %}
+              ← Previous
+            {% endbutton %}
+
+            {% button href="https://geekring.net/site/NUMBER/next" variant="muted" size="md" class="w-full justify-center" %}
+              Next →
+            {% endbutton %}
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Copyright and Back to Top (largely unchanged) -->
     <div class="border-t border-neutral-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">

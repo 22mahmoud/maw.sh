@@ -8,6 +8,7 @@ from wagtail.admin.panels import (
 )
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.views.snippets import SnippetViewSet
+from wagtailmenus.models.menus import MainMenu
 
 from .models import Person, Technology
 
@@ -58,7 +59,12 @@ register_snippet(TechnologyViewSet)
 
 
 @hooks.register("menus_modify_primed_menu_items")  # type: ignore
-def modify_primed_menu_items(menu_items, request, **_):
+def modify_primed_menu_items(menu_items, request, **kwargs):
+    menu_instance = kwargs.get("menu_instance")
+
+    if not isinstance(menu_instance, MainMenu):
+        return menu_items
+
     for item in menu_items:
         item.url = item.href
         item.variant = "nav_active" if bool(item.active_class) else "nav"
