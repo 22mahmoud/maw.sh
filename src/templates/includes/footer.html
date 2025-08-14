@@ -1,129 +1,149 @@
 {% load button_tags menu_tags wagtailimages_tags link_tags base_tags %}
-<footer class="zigzag relative bg-dark text-secondary overflow-hidden">
-  <!-- Top Gradient Border -->
-  <div class="absolute top-0 left-0 w-full ht-1 bg-gradient-to-r from-gradient-1 to-gradient-2">
+<footer class="zigzag relative bg-dark text-secondary overflow-hidden"
+        role="contentinfo"
+        aria-label="Site footer">
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gradient-1 to-gradient-2"
+       aria-hidden="true">
   </div>
 
-  <div class="relative z-10 container mx-auto px-6 py-16">
+  <div class="relative z-10 container mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-x-8 lg:gap-y-12">
+      <section class="h-card md:col-span-3 lg:col-span-3"
+               aria-labelledby="author-heading">
+        {% get_image_by_title "avatar" as avatar %}
+        {% image avatar fill-150x150 as avatar_photo %}
 
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-12">
-      <div class="h-card md:col-span-3 lg:col-span-3">
-        <div class="flex items-start gap-4">
-          {% get_image_by_title "avatar" as avatar %}
-          {% image avatar fill-150x150 as avatar_photo %}
-          <div class="relative">
-            <div class="absolute -inset-0.5 bg-gradient-to-r from-accent to-gradient-1 rounded-full opacity-75 blur-sm">
-            </div>
-            <img src="{{ avatar_photo.full_url }}"
-                 width="{{ avatar_photo.width }}"
-                 height="{{ avatar_photo.height }}"
-                 decoding="async"
-                 loading="lazy"
-                 class="u-photo relative rounded-full w-16 ht-16 ring-2 ring-neutral-700 shrink-0 transition-transform duration-300 hover:scale-105"
-                 alt="Portrait of Mahmoud Ashraf" />
+        <div class="relative float-left mr-4 mb-8">
+          <div class="absolute -inset-1 bg-gradient-to-r from-accent to-gradient-1 rounded-full opacity-80 blur-sm animate-pulse">
           </div>
-          <div>
-            <a class="u-url u-uid block text-lg font-bold text-primary hover:text-accent transition-all duration-300 hover:translate-x-1"
-               rel="me"
-               href="https://mahmoudashraf.dev/">
-              <span class="p-name">Mahmoud Ashraf</span>
-            </a>
-            <p class="p-note text-sm mt-1 max-w-md leading-relaxed">
-              Frontend Engineer from <span class="p-locality text-accent font-medium">Alexandria</span>,
-              <span class="p-country-name text-accent font-medium">Egypt</span>.
-              Crafting fast, accessible, and user-focused web experiences.
-            </p>
-          </div>
+          <img src="{{ avatar_photo.full_url }}"
+               width="{{ avatar_photo.width }}"
+               height="{{ avatar_photo.height }}"
+               decoding="async"
+               loading="lazy"
+               class="u-photo relative rounded-full w-16 h-16 ring-2 ring-neutral-700 shrink-0 transition-all duration-300 hover:scale-105 hover:ring-accent/50 object-cover"
+               alt="Portrait of Mahmoud Ashraf" />
         </div>
-        <div class="flex flex-wrap items-center gap-3 mt-6">
+
+        <h2 id="author-heading" class="sr-only">
+          About the Author
+        </h2>
+        <a class="u-url u-uid block text-lg sm:text-xl font-bold text-primary hover:text-accent transition-all duration-300 hover:translate-x-1 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:rounded"
+           rel="me"
+           href="https://mahmoudashraf.dev/"
+           aria-label="Visit Mahmoud Ashraf's website">
+          <span class="p-name">Mahmoud Ashraf</span>
+        </a>
+
+        <p class="p-note text-sm sm:text-base mt-2 max-w-md leading-relaxed text-stuble">
+          Frontend Engineer from
+          <span class="p-locality text-accent font-medium">Alexandria</span>,
+          <span class="p-country-name text-accent font-medium">Egypt</span>.
+          <br class="hidden sm:inline">
+          Crafting fast, accessible, and user-focused web experiences.
+        </p>
+
+        <nav class="flex flex-wrap items-center gap-2 sm:gap-3 mt-6 clear-left"
+             aria-label="Social media links">
           {% for social in settings.base.SiteSettings.social_links %}
-            {% link rel="me" href=social.url class="u-url text-secondary hover:text-accent transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-neutral-800/50" title=social.text %}
-              {% icon social.icon class="w-5 ht-5" %}
+            {% link rel="me" href=social.url class="u-url text-secondary hover:text-accent focus:text-accent transition-all duration-300 hover:scale-110 focus:scale-110 p-2 sm:p-3 rounded-full hover:bg-neutral-800/50 focus:bg-neutral-800/50 focus:outline-none focus:ring-2 focus:ring-accent/30" title=social.text aria-label=social.text %}
+              {% icon social.icon class="w-5 h-5 sm:w-6 sm:h-6" %}
               <span class="sr-only">{{ social.text }}</span>
             {% endlink %}
           {% endfor %}
-        </div>
-      </div>
+        </nav>
+      </section>
 
-      <!-- Footer Menus -->
       {% flat_menu 'main-footer' template="includes/footer_menu.html" class="lg:col-span-1" %}
       {% flat_menu 'content-footer' template="includes/footer_menu.html" class="lg:col-span-1" %}
     </div>
 
-    <!-- SECTION 2: SECONDARY (Webrings) - ENHANCED -->
-    <div class="my-12 py-12 border-y border-neutral-800/50">
-      <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-12">
-          <h3 class="font-heading font-bold text-xl text-primary mb-3 tracking-wide">
+    <section class="my-12 py-8 sm:py-12 border-y border-neutral-800/60"
+             aria-labelledby="webrings-heading">
+      <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-8 sm:mb-12">
+          <h3 id="webrings-heading"
+              class="font-heading font-bold text-xl sm:text-2xl text-primary mb-3 tracking-wide">
             Explore the IndieWeb
           </h3>
-          <p class="text-sm text-stuble max-w-2xl mx-auto">
+          <p class="text-sm sm:text-base text-stuble max-w-2xl mx-auto leading-relaxed">
             Discover amazing independent websites through these community webrings
           </p>
-        </div>
+        </header>
 
-        <!-- Enhanced Grid with better spacing -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {% for webring in webrings %}
-            <div class="group relative border border-neutral-800/60 bg-gradient-to-br from-darker/80 to-dark/40 p-6 hover:border-accent/40 transition-all duration-500 hover:transform hover:-translate-y-1 backdrop-blur-sm overflow-hidden">
-              <div class="relative z-10 flex flex-col gap-4">
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-full bg-darker flex items-center justify-center text-xl">
+            <article class="group relative border border-neutral-800/60 bg-gradient-to-br from-darker/90 to-dark/50 p-4 sm:p-6 hover:border-accent/50 focus-within:border-accent/50 transition-all duration-500 hover:transform hover:-translate-y-1 focus-within:transform focus-within:-translate-y-1 backdrop-blur-sm overflow-hidden">
+
+              <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-neutral-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                   aria-hidden="true">
+              </div>
+
+              <div class="relative ht-full z-10 flex flex-col gap-3 sm:gap-4">
+                <header class="flex items-center gap-3">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-darker border border-neutral-700 flex items-center justify-center text-lg sm:text-xl group-hover:border-accent/30 transition-colors duration-300"
+                       aria-hidden="true">
                     {{ webring.icon }}
                   </div>
-                  <a href="{{ webring.link }}"
-                     class="font-heading font-semibold text-lg text-primary hover:text-accent transition-colors duration-300 group-hover:text-accent">
-                    {{ webring.title }}
-                  </a>
-                </div>
-                <p class="text-sm text-stuble group-hover:text-secondary transition-colors duration-300">
+                  <h4 class="font-heading font-semibold text-base sm:text-lg text-primary group-hover:text-accent transition-colors duration-300 flex-1 min-w-0">
+                    <a href="{{ webring.link }}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="flex gap-2 items-center hover:text-accent focus:text-accent focus:outline-none focus:underline decoration-accent/50 underline-offset-2 transition-colors duration-300 group-hover:text-accent"
+                       aria-label="Visit {{ webring.title }} webring">
+                      <span>{{ webring.title }}</span>
+                      {% icon 'arrow-square-out' class="w-4 h-4" %}
+                    </a>
+                  </h4>
+                </header>
+
+                <p class="flex-1 text-sm sm:text-base text-stuble group-hover:text-secondary transition-colors duration-300 leading-relaxed">
                   {{ webring.description }}
                 </p>
+
                 <nav aria-label="{{ webring.title }} navigation"
-                     class="flex items-center justify-between pt-2">
-                  {% if webring.previous_link %}
-                    {% button size="sm" variant="muted" as="a" href=webring.next_link class="transition-all duration-400 hover:scale-105" %}
-                      ← Previous
-                    {% endbutton %}
-                  {% endif %}
-                  {% if webring.next_link %}
-                    {% button size="sm" variant="muted" as="a" href=webring.next_link class="transition-all duration-400 hover:scale-105" %}
-                      Next →
-                    {% endbutton %}
-                  {% endif %}
+                     class="flex items-center justify-between pt-2 gap-3">
+                  {% button size="sm" variant="muted" as="a" href=webring.previous_link class="transition-all duration-300 hover:scale-105 focus:scale-105 hover:bg-neutral-700/50 focus:bg-neutral-700/50 flex-shrink-0" %}
+                    ← Previous
+                  {% endbutton %}
+                  {% button size="sm" variant="muted" as="a" href=webring.next_link class="transition-all duration-300 hover:scale-105 focus:scale-105 hover:bg-neutral-700/50 focus:bg-neutral-700/50 flex-shrink-0" %}
+                    Next →
+                  {% endbutton %}
                 </nav>
               </div>
-            </div>
+            </article>
           {% endfor %}
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- SECTION 3: TERTIARY (Copyright & Utility) -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 pt-4">
       <div class="text-sm text-center sm:text-left">
-        <span>© {% now "Y" %} Mahmoud Ashraf. All rights reserved.</span>
-        <span class="mx-2 text-neutral-600">•</span>
-        {% link href="/privacy-policy/" class="hover:text-primary transition-colors duration-200" %}
-          Privacy Policy
-        {% endlink %}
-        <span class="mx-2 text-neutral-600">•</span>
-        {% link href="/terms-of-service/" class="hover:text-primary transition-colors duration-200" %}
-          Terms
-        {% endlink %}
+        <span class="text-stuble">© {% now "Y" %} Mahmoud Ashraf. All rights reserved.</span>
+        <span class="mx-2 text-neutral-600 hidden sm:inline" aria-hidden="true">•</span>
+        <div class="flex items-center justify-center sm:inline gap-1 mt-2 sm:mt-0">
+          {% link href="/privacy-policy/" class="hover:text-primary focus:text-primary transition-colors duration-200 focus:outline-none focus:underline decoration-primary/50 underline-offset-2" %}
+            Privacy Policy
+          {% endlink %}
+          <span class="mx-2 text-neutral-600" aria-hidden="true">•</span>
+          {% link href="/terms-of-service/" class="hover:text-primary focus:text-primary transition-colors duration-200 focus:outline-none focus:underline decoration-primary/50 underline-offset-2" %}
+            Terms
+          {% endlink %}
+        </div>
       </div>
+
       <div class="text-sm">
-        {% link href="#top" class="inline-flex items-center gap-2 font-medium hover:text-accent transition-all duration-300 hover:-translate-y-0.5 group" %}
+        {% link href="#top" class="inline-flex items-center gap-2 font-medium text-stuble hover:text-accent focus:text-accent transition-all duration-300 hover:-translate-y-0.5 focus:-translate-y-0.5 group focus:outline-none focus:ring-2 focus:ring-accent/30 focus:rounded px-2 py-1" aria-label="Back to top of page" %}
           Back to top
-          <svg class="w-4 ht-4 transition-transform duration-300 group-hover:-translate-y-1"
+          <svg class="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-focus:-translate-y-1"
                fill="none"
                stroke="currentColor"
-               viewBox="0 0 24 24">
+               viewBox="0 0 24 24"
+               aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
           </svg>
         {% endlink %}
       </div>
     </div>
-
   </div>
 </footer>
