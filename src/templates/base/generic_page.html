@@ -18,11 +18,7 @@
 
       <div class="prose max-w-prose">
         {% for block in page.body %}
-          {% if block.block_type == "clients" or block.block_type == "contact_form" %}
-            {% include_block block %}
-          {% else %}
-            {% include_block block %}
-          {% endif %}
+          {% include_block block %}
         {% endfor %}
       </div>
     </div>

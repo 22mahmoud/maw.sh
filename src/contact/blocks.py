@@ -1,10 +1,6 @@
 from wagtail import blocks
 
 
-class ContactFormStaticBlock(blocks.StaticBlock):
-    pass
-
-
 class ContactFormBlock(blocks.StructBlock):
     heading = blocks.CharBlock(
         required=False,
@@ -18,10 +14,15 @@ class ContactFormBlock(blocks.StructBlock):
         help_text="Introductory text for the contact form section",
     )
 
-    show_container = blocks.BooleanBlock(
-        required=False,
-        default=True,
-        help_text="Wrap the form section with outer padding & zigzag container",
+    TYPE_CHOICES = [
+        ("section", "Full Section (with heading, description & container)"),
+        ("form", "Just Form (simple padded block)"),
+    ]
+
+    type = blocks.ChoiceBlock(
+        choices=TYPE_CHOICES,
+        default="section",
+        help_text="Choose whether to display as a full section or just the form",
     )
 
     def get_context(self, value, parent_context=None):
@@ -34,10 +35,14 @@ class ContactFormBlock(blocks.StructBlock):
         if not form:
             form = ContactForm()
 
-        context["form"] = form
-        context["heading"] = value.get("heading")
-        context["description"] = value.get("description")
-        context["show_container"] = value.get("show_container")
+        context.update(
+            {
+                "form": form,
+                "type": value.get("type"),
+                "heading": value.get("heading"),
+                "description": value.get("description"),
+            }
+        )
 
         return context
 
