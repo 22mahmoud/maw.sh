@@ -48,13 +48,6 @@ class BasePage(SeoMixin, Page):
         tag_names = [tag.name for tag in self.tags.all()]  # type: ignore
         return ",".join(tag_names)
 
-    def get_context(self, request):
-        from src.base.models import Webring
-
-        context = super().get_context(request)
-        context["webrings"] = Webring.objects.all()
-        return context
-
     content_panels = Page.content_panels + [FieldPanel("tags")]
 
     promote_panels = SeoMixin.seo_panels

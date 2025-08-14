@@ -108,6 +108,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "src.base.context_processors.global_search_form",
+                "src.base.context_processors.webrings_context",
                 "csp.context_processors.nonce",
             ]
             + WAGTAIL_TEMPLATE_CONTEXT_PROCESSORS,
