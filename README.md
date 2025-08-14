@@ -30,6 +30,7 @@
 - [x] Contact
 - [ ] Services / hire me
 - [ ] Resume
+- [x] footer (webrings, info, menus)
 - [x] RSS
 - [x] Celery
 - [x] sitemap.xml
