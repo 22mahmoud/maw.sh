@@ -116,6 +116,7 @@ CONTENT_SECURITY_POLICY = {
         ],
         "form-action": [
             SELF,
+            "https://mahmoudashraf.dev",
             "https://github.com",
             "https://accounts.google.com",
         ],
