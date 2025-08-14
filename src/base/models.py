@@ -21,6 +21,7 @@ from wagtail.models import (
 )
 from wagtail.models.pages import slugify
 from wagtail.query import Site
+from wagtail.snippets.models import register_snippet
 from wagtailmedia.blocks import VideoChooserBlock
 
 from src.base.blocks import CodeBlock, ListBlock
@@ -220,6 +221,35 @@ class GenericPage(BasePage):  # type: ignore
     content_panels = BasePage.content_panels + [
         FieldPanel("introduction"),
         FieldPanel("body"),
+    ]
+
+
+@register_snippet
+class Webring(models.Model):
+    title = models.CharField(max_length=255, help_text="Name of the webring")
+    icon = models.CharField(
+        max_length=10, blank=True, help_text="Emoji or small text icon, e.g. 🌐"
+    )
+    link = models.URLField(help_text="Main webring URL")
+    description = models.TextField(blank=True)
+    previous_link = models.URLField(blank=True, help_text="URL to previous site in the webring")
+    next_link = models.URLField(blank=True, help_text="URL to next site in the webring")
+
+    class Meta:
+        verbose_name = "Webring"
+        verbose_name_plural = "Webrings"
+        ordering = ["title"]
+
+    def __str__(self):
+        return self.title
+
+    panels = [
+        FieldPanel("title"),
+        FieldPanel("icon"),
+        FieldPanel("link"),
+        FieldPanel("description"),
+        FieldPanel("previous_link"),
+        FieldPanel("next_link"),
     ]
 
 

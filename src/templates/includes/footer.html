@@ -1,136 +1,129 @@
 {% load button_tags menu_tags wagtailimages_tags link_tags base_tags %}
-
-<footer class="relative bg-dark zigzag shadow-inner text-secondary">
+<footer class="zigzag relative bg-dark text-secondary overflow-hidden">
+  <!-- Top Gradient Border -->
   <div class="absolute top-0 left-0 w-full ht-1 bg-gradient-to-r from-gradient-1 to-gradient-2">
   </div>
 
-  <div class="container mx-auto px-6 py-12 mt-4">
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-12">
-      <div class="h-card md:col-span-1 lg:col-span-2">
+  <div class="relative z-10 container mx-auto px-6 py-16">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-12">
+      <div class="h-card md:col-span-3 lg:col-span-3">
         <div class="flex items-start gap-4">
           {% get_image_by_title "avatar" as avatar %}
           {% image avatar fill-150x150 as avatar_photo %}
-          <img src="{{ avatar_photo.full_url }}"
-               width="{{ avatar_photo.width }}"
-               height="{{ avatar_photo.height }}"
-               decoding="async"
-               loading="lazy"
-               class="u-photo rounded-full h w-16 ht-16 ring-2 ring-neutral-700"
-               alt="Portrait of Mahmoud Ashraf" />
+          <div class="relative">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-accent to-gradient-1 rounded-full opacity-75 blur-sm">
+            </div>
+            <img src="{{ avatar_photo.full_url }}"
+                 width="{{ avatar_photo.width }}"
+                 height="{{ avatar_photo.height }}"
+                 decoding="async"
+                 loading="lazy"
+                 class="u-photo relative rounded-full w-16 ht-16 ring-2 ring-neutral-700 shrink-0 transition-transform duration-300 hover:scale-105"
+                 alt="Portrait of Mahmoud Ashraf" />
+          </div>
           <div>
-            <a class="u-url u-uid block text-lg font-bold text-white hover:text-accent transition-colors duration-200"
+            <a class="u-url u-uid block text-lg font-bold text-primary hover:text-accent transition-all duration-300 hover:translate-x-1"
                rel="me"
                href="https://mahmoudashraf.dev/">
-              <span class="p-name">
-                Mahmoud Ashraf
-              </span>
+              <span class="p-name">Mahmoud Ashraf</span>
             </a>
-            <p class="p-note text-sm mt-1 max-w-xs">
-              Frontend Engineer from <span class="p-locality">Alexandria</span>,
-              <span class="p-country-name">Egypt</span>.
+            <p class="p-note text-sm mt-1 max-w-md leading-relaxed">
+              Frontend Engineer from <span class="p-locality text-accent font-medium">Alexandria</span>,
+              <span class="p-country-name text-accent font-medium">Egypt</span>.
               Crafting fast, accessible, and user-focused web experiences.
             </p>
           </div>
         </div>
-        <div class="flex flex-wrap items-center gap-4 mt-5">
+        <div class="flex flex-wrap items-center gap-3 mt-6">
           {% for social in settings.base.SiteSettings.social_links %}
-            {% link rel="me" href=social.url class="u-url text-secondary hover:text-accent transition-colors duration-200" title=social.text %}
-              {% icon social.icon class="w-6 ht-6" %}
+            {% link rel="me" href=social.url class="u-url text-secondary hover:text-accent transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-neutral-800/50" title=social.text %}
+              {% icon social.icon class="w-5 ht-5" %}
               <span class="sr-only">{{ social.text }}</span>
             {% endlink %}
           {% endfor %}
         </div>
       </div>
 
-      {% flat_menu 'main-footer' template="includes/footer_menu.html" %}
-      {% flat_menu 'content-footer' template="includes/footer_menu.html" %}
+      <!-- Footer Menus -->
+      {% flat_menu 'main-footer' template="includes/footer_menu.html" class="lg:col-span-1" %}
+      {% flat_menu 'content-footer' template="includes/footer_menu.html" class="lg:col-span-1" %}
     </div>
 
-    <div class="border-t border-neutral-800 pt-10 mb-10">
-      <div class="flex gap-8 items-center justify-center">
-        <div class="relative bg-darker border border-neutral-800 p-6 flex flex-col gap-4">
-          <div class="absolute bottom-0 left-0 w-full ht-0.5 bg-gradient-to-r from-gradient-1 to-gradient-2">
-          </div>
-          <div class="text-center">
-            <a href="https://xn--sr8hvo.ws"
-               class="font-sans text-sm text-secondary hover:text-accent transition-colors">
-              IndieWeb Webring 🕸💍
-            </a>
-          </div>
-
-          <div class="grid grid-cols-2 gap-0">
-            {% button href="https://xn--sr8hvo.ws/previous" variant="muted" size="md" class="w-full justify-center" %}
-              ← Previous
-            {% endbutton %}
-
-            {% button href="https://xn--sr8hvo.ws/next" variant="muted" size="md" class="w-full justify-center" %}
-              Next →
-            {% endbutton %}
-          </div>
+    <!-- SECTION 2: SECONDARY (Webrings) - ENHANCED -->
+    <div class="my-12 py-12 border-y border-neutral-800/50">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h3 class="font-heading font-bold text-xl text-primary mb-3 tracking-wide">
+            Explore the IndieWeb
+          </h3>
+          <p class="text-sm text-stuble max-w-2xl mx-auto">
+            Discover amazing independent websites through these community webrings
+          </p>
         </div>
 
-        <div class="relative bg-darker border border-neutral-800 p-6 flex flex-col gap-4">
-          <div class="absolute bottom-0 left-0 w-full ht-0.5 bg-gradient-to-r from-gradient-1 to-gradient-2">
-          </div>
-          <div class="text-center">
-            <a href="https://fediring.net"
-               class="font-sans text-sm text-secondary hover:text-accent transition-colors">
-              Fediring
-            </a>
-          </div>
-
-          <div class="grid grid-cols-2 gap-0">
-            {% button href="https://fediring.net/previous?host=mahmoudashraf.dev" variant="muted" size="md" class="w-full justify-center" %}
-              ← Previous
-            {% endbutton %}
-
-            {% button href="https://fediring.net/next?host=mahmoudashraf.dev" variant="muted" size="md" class="w-full justify-center" %}
-              Next →
-            {% endbutton %}
-          </div>
-        </div>
-
-        <div class="relative bg-darker border border-neutral-800 p-6 flex flex-col gap-4">
-          <div class="absolute bottom-0 left-0 w-full ht-0.5 bg-gradient-to-r from-gradient-1 to-gradient-2">
-          </div>
-          <div class="text-center">
-            <a href="https://geekring.net/site/NUMBER/random"
-               class="font-sans text-sm text-secondary hover:text-accent transition-colors">
-              Geekring
-            </a>
-          </div>
-
-          <div class="grid grid-cols-2 gap-0">
-            {% button href="https://geekring.net/site/NUMBER/previous" variant="muted" size="md" class="w-full justify-center" %}
-              ← Previous
-            {% endbutton %}
-
-            {% button href="https://geekring.net/site/NUMBER/next" variant="muted" size="md" class="w-full justify-center" %}
-              Next →
-            {% endbutton %}
-          </div>
+        <!-- Enhanced Grid with better spacing -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+          {% for webring in webrings %}
+            <div class="group relative border border-neutral-800/60 bg-gradient-to-br from-darker/80 to-dark/40 p-6 hover:border-accent/40 transition-all duration-500 hover:transform hover:-translate-y-1 backdrop-blur-sm overflow-hidden">
+              <div class="relative z-10 flex flex-col gap-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-darker flex items-center justify-center text-xl">
+                    {{ webring.icon }}
+                  </div>
+                  <a href="{{ webring.link }}"
+                     class="font-heading font-semibold text-lg text-primary hover:text-accent transition-colors duration-300 group-hover:text-accent">
+                    {{ webring.title }}
+                  </a>
+                </div>
+                <p class="text-sm text-stuble group-hover:text-secondary transition-colors duration-300">
+                  {{ webring.description }}
+                </p>
+                <nav aria-label="{{ webring.title }} navigation"
+                     class="flex items-center justify-between pt-2">
+                  {% if webring.previous_link %}
+                    {% button size="sm" variant="muted" as="a" href=webring.next_link class="transition-all duration-400 hover:scale-105" %}
+                      ← Previous
+                    {% endbutton %}
+                  {% endif %}
+                  {% if webring.next_link %}
+                    {% button size="sm" variant="muted" as="a" href=webring.next_link class="transition-all duration-400 hover:scale-105" %}
+                      Next →
+                    {% endbutton %}
+                  {% endif %}
+                </nav>
+              </div>
+            </div>
+          {% endfor %}
         </div>
       </div>
     </div>
 
-    <!-- Copyright and Back to Top (largely unchanged) -->
-    <div class="border-t border-neutral-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <!-- SECTION 3: TERTIARY (Copyright & Utility) -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="text-sm text-center sm:text-left">
-        <span>© 2025 Mahmoud Ashraf. All rights reserved.</span>
-        <span class="mx-2">•</span>
-        {% link href="/privacy-policy/" class="hover:text-white transition-colors duration-200" %}
+        <span>© {% now "Y" %} Mahmoud Ashraf. All rights reserved.</span>
+        <span class="mx-2 text-neutral-600">•</span>
+        {% link href="/privacy-policy/" class="hover:text-primary transition-colors duration-200" %}
           Privacy Policy
         {% endlink %}
-        <span class="mx-2">•</span>
-        {% link href="/terms-of-service/" class="hover:text-white transition-colors duration-200" %}
+        <span class="mx-2 text-neutral-600">•</span>
+        {% link href="/terms-of-service/" class="hover:text-primary transition-colors duration-200" %}
           Terms
         {% endlink %}
       </div>
       <div class="text-sm">
-        {% link href="#top" class="font-medium hover:text-accent transition-colors duration-200" %}
-          Back to top ↑
+        {% link href="#top" class="inline-flex items-center gap-2 font-medium hover:text-accent transition-all duration-300 hover:-translate-y-0.5 group" %}
+          Back to top
+          <svg class="w-4 ht-4 transition-transform duration-300 group-hover:-translate-y-1"
+               fill="none"
+               stroke="currentColor"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+          </svg>
         {% endlink %}
       </div>
     </div>
+
   </div>
 </footer>
