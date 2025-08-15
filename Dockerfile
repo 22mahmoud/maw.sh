@@ -44,6 +44,8 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
   libmagickwand-dev \
+  ca-certificates \
+  && update-ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 
 COPY --from=frontend-prod-deps /usr/local/bin/node /usr/local/bin/node
