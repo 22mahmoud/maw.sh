@@ -25,6 +25,9 @@
           "level": "error",
           "options": {}
         }
+      },
+      "suspicious": {
+        "noUnknownAtRules": "warn"
       }
     }
   },

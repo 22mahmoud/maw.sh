@@ -1,7 +1,7 @@
-@import "@/css/fonts.css";
 @import "tailwindcss";
-@import "@/css/utils.css";
-@import "@/css/typography.css" layer(components);
+@import "./fonts.css";
+@import "./utils.css";
+@import "./typography.css" layer(components);
 
 @config "../../../tailwind.config.ts";
 
