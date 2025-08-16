@@ -33,20 +33,15 @@ class WatchItemPage(BasePage):
     WATCH_TYPE = [
         ("movie", "Movie"),
         ("tv", "TV Show"),
-        ("short", "Short Film"),
-        ("play", "Play / Theatre"),
     ]
 
-    tmdb_id = models.PositiveIntegerField(
-        blank=True, null=True, help_text="TMDb ID for Movie/TV (leave blank if not in TMDb)"
-    )
+    tmdb_id = models.PositiveIntegerField(blank=True, null=True, help_text="TMDb ID for Movie/TV")
     watch_type = models.CharField(max_length=20, choices=WATCH_TYPE, default="movie")
     watch_status = models.CharField(max_length=20, choices=WATCH_STATUS, default="watching")
     watch_date = models.DateField(blank=True, null=True)
 
     overview = models.TextField(blank=True)
     release_date = models.DateField(blank=True, null=True)
-
     poster_image = models.ForeignKey(
         "images.CustomImage",
         null=True,
