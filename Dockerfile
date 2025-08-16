@@ -42,20 +42,29 @@ FROM debian:bookworm-slim AS django
 
 WORKDIR /app
 
+RUN groupadd --gid 1000 app \
+  && useradd --uid 1000 --gid app --shell /bin/bash --create-home app
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
   libmagickwand-dev \
   ca-certificates \
   && update-ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 
+# Node.js for runtime
 COPY --from=frontend-prod-deps /usr/local/bin/node /usr/local/bin/node
 COPY --from=frontend-prod-deps /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=frontend-prod-deps /app/node_modules /app/node_modules
-COPY --from=builder --chown=python:python /python /python
+
+COPY --from=builder --chown=app:app /python /python
 COPY --from=builder --chown=app:app /app /app
+COPY --from=frontend-prod-deps --chown=app:app /app/node_modules /app/node_modules
+
+USER app
+
 ENV PATH="/app/.venv/bin:$PATH"
 
 EXPOSE 8000
+
 ENTRYPOINT []
 
 FROM nginx:stable  AS nginx
