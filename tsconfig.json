@@ -21,6 +21,6 @@
       "@/*": ["src/resources/*"]
     }
   },
-  "include": ["src/**/*.ts", "bin/**/*.ts", "global.d.ts"],
+  "include": ["src/**/*.ts", "bin/**/*.ts", "global.d.ts", "vite.config.ts"],
   "exclude": ["node_modules", "static", "staticfiles"]
 }
