@@ -4,6 +4,7 @@ WAGTAIL_INSTALLED_APPS = [
     # my apps
     "src.guestbook",
     "src.search",
+    "src.watch",
     "src.contact",
     "src.webmentions",
     "src.videos",

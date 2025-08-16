@@ -250,6 +250,8 @@ AUTH_USER_MODEL = "accounts.User"
 DJANGO_ADMIN_PATH = env.str("DJANGO_ADMIN_PATH", "admin/")
 WAGTAIL_ADMIN_PATH = env.str("WAGTAIL_ADMIN_PATH", "cms/")
 
+TMDB_API_KEY = env.str("TMDB_API_KEY", "")
+
 # lib settings
 from config.settings.celery import *  # noqa: E402, F403
 from config.settings.django_allauth import *  # noqa: E402, F403
