@@ -3,8 +3,6 @@
 @import "./utils.css";
 @import "./typography.css" layer(components);
 
-@config "../../../tailwind.config.ts";
-
 .bg-sunset {
   @apply bg-gradient-to-r from-gradient-1 to-gradient-2;
 }
