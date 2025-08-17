@@ -6,7 +6,7 @@ from src.base.renderers import FormRenderer
 
 class XtdCommentForm(DjangoXtdCommentForm):
     default_renderer = FormRenderer()
-    honeypot = forms.CharField(
+    phone = forms.CharField(
         required=False,
         label="Phone number",
         widget=forms.widgets.TelInput(  # type: ignore
