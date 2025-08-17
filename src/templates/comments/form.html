@@ -1,3 +1,4 @@
+{# djlint:off H021 #}
 {% load i18n %}
 {% load comments button_tags base_tags %}
 
@@ -15,10 +16,6 @@
   {% for hidden in form.hidden_fields %}
     {{ hidden }}
   {% endfor %}
-
-  <div class="sr-only">
-    {{ form.honeypot }}
-  </div>
 
   {% if form.reply_to and form.reply_to.value and form.reply_to.value != "0" %}
     <div class="js-only flex items-center pt-6 gap-4 text-sm text-primary"
@@ -52,6 +49,8 @@
       {{ form.url.as_field_group }}
     </div>
   {% endif %}
+
+  {{ form.phone }}
 
   <div class="flex flex-col gap-1.5 group">
     {{ form.comment.as_field_group }}
