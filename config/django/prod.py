@@ -28,14 +28,14 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[])
 CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 USE_X_FORWARDED_HOST = True
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = env.bool("SECURE_SSL_REDIRECT", default=False)
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_SAMESITE = "Lax"
 
-DEFAULT_HSTS_SECONDS = 30 * 24 * 60 * 60  # 30 days
+DEFAULT_HSTS_SECONDS = 365 * 24 * 60 * 60  # 1 year
 SECURE_HSTS_SECONDS = int(env.int("SECURE_HSTS_SECONDS", DEFAULT_HSTS_SECONDS))
 
 LOGGING = {
@@ -121,5 +121,6 @@ CONTENT_SECURITY_POLICY = {
             "https://accounts.google.com",
         ],
         "base-uri": [SELF],
+        "upgrade-insecure-requests": True,
     },
 }
