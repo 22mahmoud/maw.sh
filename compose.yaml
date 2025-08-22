@@ -1,16 +1,12 @@
 services:
   django:
-    build:
-      context: .
-      target: django
+    image: myapp-django
     entrypoint: ["/app/bin/django-entrypoint.sh"]
     networks:
       - maw-django-network
 
   celery:
-    build:
-      context: .
-      target: django
+    image: myapp-django
     command:
       - celery
       - '-A'
@@ -27,9 +23,7 @@ services:
       - django
 
   celery_beat:
-    build:
-      context: .
-      target: django
+    image: myapp-django
     command:
       - celery
       - '-A'
@@ -45,9 +39,7 @@ services:
       - django
 
   nginx:
-    build:
-      context: .
-      target: nginx
+    image: myapp-nginx
     networks:
       - maw-django-network
     depends_on:
