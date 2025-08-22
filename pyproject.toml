@@ -44,6 +44,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+  "debugpy>=1.8.16",
   "django-stubs-ext>=5.2.0",
   "django-types>=0.21.0",
   "honcho>=2.0.0",
