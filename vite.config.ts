@@ -10,6 +10,7 @@ export default defineConfig({
       '@': path.resolve('src/resources'),
     },
   },
+  clearScreen: false,
   build: {
     manifest: 'manifest.json',
     outDir: path.resolve('./static'),
