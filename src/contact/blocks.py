@@ -50,3 +50,8 @@ class ContactFormBlock(blocks.StructBlock):
         icon = "form"
         label = "Contact Form"
         template = "blocks/contact_form_block.html"
+
+
+class DummyDeprecatedContactFormStaticBlock(blocks.StaticBlock):
+    class Meta:  # type: ignore
+        label = "Deprecated DummyDeprecatedContactFormStaticBlock (Ignored)"

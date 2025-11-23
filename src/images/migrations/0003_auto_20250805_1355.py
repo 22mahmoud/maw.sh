@@ -3,7 +3,11 @@
 from django.db import migrations
 
 def migrate_images(apps, schema_editor):
-    OldImage = apps.get_model("wagtailimages", "Image")
+    try:
+        OldImage = apps.get_model("wagtailimages", "Image")
+    except LookupError:
+        return
+
     NewImage = apps.get_model("images", "CustomImage")
 
     db_alias = schema_editor.connection.alias

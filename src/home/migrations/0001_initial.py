@@ -388,7 +388,7 @@ class Migration(migrations.Migration):
                                 },
                             ),
                             40: ("wagtail.blocks.StructBlock", [[("size", 39)]], {}),
-                            41: ("src.contact.blocks.ContactFormStaticBlock", (), {}),
+                            41: ("src.contact.blocks.DummyDeprecatedContactFormStaticBlock", (), {}),
                             42: (
                                 "src.projects.blocks.FeaturedProjectsStaticBlock",
                                 (),
