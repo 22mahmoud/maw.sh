@@ -18,30 +18,33 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.23.0",
   "devDependencies": {
-    "@biomejs/biome": "2.2.4",
-    "@tailwindcss/vite": "^4.1.13",
+    "@biomejs/biome": "2.3.7",
+    "@tailwindcss/vite": "^4.1.17",
     "@types/alpinejs": "^3.13.11",
     "@types/alpinejs__collapse": "^3.13.4",
-    "@types/node": "^24.6.1",
-    "tailwindcss": "4.1.13",
-    "terser": "^5.44.0",
+    "@types/node": "^24.10.1",
+    "tailwindcss": "4.1.17",
+    "terser": "^5.44.1",
     "typescript": "^5.9.3",
-    "vite": "^7.1.7"
+    "vite": "^7.2.4"
   },
   "dependencies": {
-    "@alpinejs/collapse": "^3.15.0",
+    "@alpinejs/collapse": "^3.15.2",
     "@hotwired/stimulus": "^3.2.2",
-    "@shikijs/transformers": "^3.13.0",
-    "alpinejs": "npm:@alpinejs/csp@^3.15.0",
-    "dompurify": "^3.2.7",
-    "htmx.org": "^2.0.7",
-    "marked": "^16.3.0",
-    "shiki": "^3.13.0"
+    "@shikijs/transformers": "^3.15.0",
+    "alpinejs": "npm:@alpinejs/csp@^3.15.2",
+    "dompurify": "^3.3.0",
+    "htmx.org": "^2.0.8",
+    "marked": "^17.0.1",
+    "shiki": "^3.15.0"
   },
   "engines": {
-    "node": "22",
-    "pnpm": "10.14.0"
+    "node": "24",
+    "pnpm": "10.23.0"
+  },
+  "volta": {
+    "node": "24.11.1"
   }
 }
