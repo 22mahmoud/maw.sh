@@ -1,6 +1,11 @@
 from config.env import env
 
 WAGTAIL_INSTALLED_APPS = [
+    # 3rd party apps
+    "wagtailmenus",
+    "wagtailmedia",
+    "taggit",
+    "modelcluster",
     # my apps
     "src.guestbook",
     "src.search",
@@ -39,11 +44,6 @@ WAGTAIL_INSTALLED_APPS = [
     "wagtail.search",
     "wagtail.admin",
     "wagtail",
-    # 3rd party apps
-    "wagtailmenus",
-    "wagtailmedia",
-    "taggit",
-    "modelcluster",
 ]
 
 WAGTAIL_MIDDLEWARE = [
