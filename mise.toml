@@ -1,0 +1,16 @@
+[tasks.dev]
+alias = "d"
+description = "start dev"
+run = [{ tasks = ["django", "vite", "celery-worker", "celery-beat"] }]
+
+[tasks.django]
+run = "uv run python -m debugpy --listen 5678 manage.py runserver $PORT"
+
+[tasks.vite]
+run = "pnpm exec vite"
+
+[tasks.celery-worker]
+run = "celery -A src.tasks worker -l INFO --without-gossip --without-mingle --without-heartbeat"
+
+[tasks.celery-beat]
+run = "celery -A src.tasks beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler"
