@@ -1,3 +1,6 @@
+[tools]
+uv = "0.10.0"
+
 [tasks.dev]
 alias = "d"
 description = "start dev"
