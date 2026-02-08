@@ -85,6 +85,14 @@ Alpine.data('guestbookEditor', () => {
   const initialPreset = presets[0] ?? {};
 
   return {
+    init() {
+      this.updatePreviewMessage();
+
+      this.$watch('form.message', () => {
+        this.updatePreviewMessage();
+      });
+    },
+
     isPreviewVisible: true,
 
     form: {
@@ -115,12 +123,6 @@ Alpine.data('guestbookEditor', () => {
       return this.isPreviewVisible ? 'rotate-180' : '';
     },
 
-    get renderedMessage(): Promise<string> | string {
-      return this.form.message
-        ? this.renderMarkdown(this.form.message)
-        : 'Your message will appear here';
-    },
-
     get canShowNameWithUrl() {
       return this.form.name && this.form.url;
     },
@@ -147,6 +149,18 @@ Alpine.data('guestbookEditor', () => {
 
     togglePreviewVisibility() {
       this.isPreviewVisible = !this.isPreviewVisible;
+    },
+
+    async updatePreviewMessage() {
+      const previewMessage = this.$refs.previewMessage as HTMLElement | undefined;
+      if (!previewMessage) return;
+
+      if (!this.form.message) {
+        previewMessage.textContent = 'Your message will appear here';
+        return;
+      }
+
+      previewMessage.innerHTML = await this.renderMarkdown(this.form.message);
     },
 
     async renderMarkdown(md: string = '') {
